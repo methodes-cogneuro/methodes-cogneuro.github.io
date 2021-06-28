@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartes cérébrales &#8212; Méthodes en neurosciences cognitives</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Imagerie par résonance magnétique" href="irm.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Méthodes en neurosciences cognitives</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cartes cérébrales
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="irm.html">
+   Imagerie par résonance magnétique
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrie.html">
+   Analyses morphométriques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="irm_fonctionnelle.html">
+   IRM fonctionnelle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression.html">
+   Régression linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="connectivite.html">
+   Connectivité fonctionnelle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="irm_diffusion.html">
+   IRM de diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tep.html">
+   Tomographie par émission de positrons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imagerie_optique.html">
+   Imagerie optique
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cartes_statistiques.html">
+   Cartes statistiques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reproducibilite.html">
+   Reproducibilité et controverses
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/cartes_cerebrales.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/cartes_cerebrales.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/cartes_cerebrales.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-chapitre">
+   Objectifs du chapitre
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imagerie-structurelle-et-fonctionnelle">
+   Imagerie structurelle et fonctionnelle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolutions-spatiale-et-temporelle">
+   Résolutions spatiale et temporelle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imagerie-par-resonance-magnetique">
+   Imagerie par résonance magnétique
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#irm-structurelle">
+   IRM structurelle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#irm-fonctionnelle">
+   IRM fonctionnelle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#couplage-neurovasculaire">
+   Couplage neurovasculaire
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cartes-cerebrales">
+<h1>Cartes cérébrales<a class="headerlink" href="#cartes-cerebrales" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
+</div>
+<div class="section" id="objectifs-du-chapitre">
+<h2>Objectifs du chapitre<a class="headerlink" href="#objectifs-du-chapitre" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="cartes-cerebrales-fig">
+<a class="reference internal image-reference" href="_images/fig_cartes_cerebrales.png"><img alt="_images/fig_cartes_cerebrales.png" src="_images/fig_cartes_cerebrales.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">L’arbre de la neuroimagerie. Chaque branche représente une des techniques qui sera présentée durant le cours. Figure adaptée par P. Bellec à partir d’une variété de sources non-libres de droit, et inspirée du livre <span class="xref std std-ref">book-wager</span>.</span><a class="headerlink" href="#cartes-cerebrales-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Ce premier chapitre a pour but de donner un aperçu du cours dans sa globalité. Il s’agit d’un format condensé, qui couvre l’ensemble des techniques d’imagerie que l’on va voir dans le cours. Si vous souhaitez prendre l’examen final et ne travailler qu’un seul chapitre, vous êtes au bon endroit. Mais cette stratégie n’est pas recommandée! Si au contraire vous souhaitez travailler la matière de chaque chapitre de façon approfondie, l’essentiel de l’information peut être trouvée ailleurs dans les notes de cours avec plus de détails. Malgré tout, ce chapitre précise des éléments de vocabulaire et des notions de base, et vous permettra de faire rapidement des connexions entre les différentes techniques vues dans le cours.</p>
+</div>
+<div class="section" id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+<p>Toutes les techniques de neuroimagerie que l’on va voir ont des forces et faiblesses distinctes, qui les rendent mieux adaptées à différents types d’application. L’objectif général du cours est pour vous de comprendre si une technique est bien adaptée à une question de recherche. Pour chaque technique, on vise plus spécifiquement à comprendre quatre aspects:</p>
+<ul class="simple">
+<li><p>Quel est le <strong>principe physique</strong> qui nous permet de faire une mesure?</p></li>
+<li><p>Quel est le <strong>principe physiologique</strong>, c’est à dire quel aspect biologique du cerveau mesure-t-on?</p></li>
+<li><p>Quelles <strong>méthodes d’analyse</strong> sont nécessaires pour pouvoir interpréter les données?</p></li>
+<li><p>Quelles <strong>questions de recherche</strong> peuvent être étudiées avec ces techniques?</p></li>
+</ul>
+</div>
+<div class="section" id="imagerie-structurelle-et-fonctionnelle">
+<h2>Imagerie structurelle et fonctionnelle<a class="headerlink" href="#imagerie-structurelle-et-fonctionnelle" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="structure-function-fig">
+<a class="reference internal image-reference" href="_images/fig_structure_fonction.png"><img alt="_images/fig_structure_fonction.png" src="_images/fig_structure_fonction.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Illustration des techniques structurelles et fonctionnelles étudiées dans ce livre, ainsi que quelques applications possibles en neurosciences cognitives. Figure adaptée par P. Bellec à partir d’une variété de sources non-libres de droit, et inspirée du livre <span class="xref std std-ref">book-wager</span>.</span><a class="headerlink" href="#structure-function-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Les techniques étudiées dans ce cours ont un commun de générer des cartes du cerveau. Ce sont aussi des outils centraux dans beaucoup d’études en neurosciences cognitives qui utilisent la neuroimagerie. Ces techniques incluent:</p>
+<ul class="simple">
+<li><p>L’<strong>imagerie par résonance magnétique (IRM) structurelle</strong>. C’est la technique la plus connue en IRM. C’est une image qui permet de capturer la forme du cerveau. Elle permet aussi de voir différents types de tissus, et notamment la matière grise, là où sont les corps des neurones dans le cerveau.</p></li>
+<li><p>L’<strong>IRM de diffusion (IRMd)</strong>. Il s’agit d’un autre type d’image que l’on peut acquérir avec le même appareil d’IRM que l’IRM structurelle. Cette technique permet de reconstruire les grands faisceaux de fibres, les connexions entre les neurones.</p></li>
+<li><p>L’<strong>IRM fonctionnelle (IRMf)</strong> est encore un autre type d’IRM, qui permet de voir l’activité du cerveau. Il y a deux grandes techniques d’analyse en IRMf. Les cartes d’activation sont générées lorsque le sujet réalise une tâche dans l’IRM, et on va chercher les régions qui sont engagées quand le sujet effectue cette tâche. On peut également effectuer des analyses quand les sujets sont dans un état de repos, où on va regarder la cohérence de l’activité entre différentes régions. Il s’agit des cartes de connectivité fonctionnelle.</p></li>
+<li><p>La <strong>tomographie par émission de positrons (TEP)</strong>, qui n’utilise pas l’IRM (enfin!). Cette technique repose sur des traceurs radioactifs qui génèrent des rayons gamma, et des caméras qui détectent ces rayons gamma. Certains traceurs, comme le FDG, permettent de mesurer le métabolisme cérébral, en lien avec l’activité des neurones.</p></li>
+<li><p>L’<strong>imagerie optique</strong>, qui mesure les changements de la couleur du sang dans le cerveau, et donc de son niveau d’oxygénation, qui est elle même reliée à l’activité des neurones.</p></li>
+</ul>
+<p>Les deux premières techniques, IRM structurelle et de diffusion, permettent d’étudier la <strong>structure</strong> du cerveau. Les trois dernières techniques (IRMf, TEP FDG et imagerie optique) mesurent toutes des <strong>phénomènes fonctionnels</strong>. Notez que, comme l’IRM, la TEP peut aussi être utilisé pour générer des cartes de la structure du cerveau.</p>
+</div>
+<div class="section" id="resolutions-spatiale-et-temporelle">
+<h2>Résolutions spatiale et temporelle<a class="headerlink" href="#resolutions-spatiale-et-temporelle" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="resolution-fig">
+<a class="reference internal image-reference" href="_images/fig_resolution.png"><img alt="_images/fig_resolution.png" src="_images/fig_resolution.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration du compromis entre résolution temporelle et spatiale pour les techniques de neuroimagerie étudiées dans ce livre. Figure adaptée par P. Bellec à partir d’une variété de sources non-libres de droit.</span><a class="headerlink" href="#resolution-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Les techniques vues dans ce cours ont en commun d’avoir une bonne résolution spatiale, mais il existe malgré tout des variations importantes entre techniques:</p>
+<ul class="simple">
+<li><p>La meilleure de ce point de vue est l’<strong>IRM structurelle</strong> dont la résolution spatiale est excellente, avec des voxels d’environ 1 mm<span class="math notranslate nohighlight">\(^3\)</span>, soit un cube de 1 mm x 1 mm x 1 mm. Cela permet de voir la structure du cerveau avec beaucoup de détails.</p></li>
+<li><p>L’<strong>IRMd</strong> est un peu moins bonne, avec une résolution spatiale plus proche de 2 mm x 2 mm x 2 mm (soit 8 mm<span class="math notranslate nohighlight">\(^3\)</span>).</p></li>
+<li><p>L’<strong>IRMf</strong> quand à elle utilise couramment une résolution de 3 mm x 3 mm x 3 mm - soit 27 mm<span class="math notranslate nohighlight">\(^3\)</span>, près de 30 fois plus gros que le voxel de l’IRM structurelle!</p></li>
+<li><p>Enfin la <strong>TEP</strong> et l’<strong>imagerie optique</strong> ont une résolution spatiale plus grossière, plutôt équivalente à 1 cm x 1 cm x 1 cm (soit 1000 mm<span class="math notranslate nohighlight">\(^3\)</span> !!). Même si les voxels de la TEP sont plus petits que 1 cm<span class="math notranslate nohighlight">\(^3\)</span>, l’image est “floue” et il n’est pas possible de distinguer de petites structures.</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">La résolution spatiale</p>
+<p>La notion de résolution spatiale fait généralement référence à la taille minimale d’un objet que l’on peut distinguer dans une image. Si on peut distinguer des petits objets, la résolution est haute. Si l’on peut voir seulement de gros objets, la résolution est basse. Si l’on parle de photo numérique, le plus petit objet possible est un pixel, soit un des petits carrés qui composent l’image. Pour des cartes du cerveau, on parle de voxel, ou élément de volume 3D.
+TODO: ajouter des images illustrant ces concepts.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>La résolution spatiale ne correspond pas simplement à la taille d’un pixel. Deux images avec la même taille de pixel (ou voxel) peuvent avoir une résolution effective différente, si l’une des deux images est floue. Sur l’image nette on distingue des objets plus petits que sur l’image floue. La <strong>résolution effective</strong> de l’image nette est donc supérieure à l’image floue.
+TODO: ajouter des images illustrant ces concepts.</p>
+</div>
+<p>En ce qui concerne la résolution spatiale, l’IRM structurelle peut apparaitre comme la meilleure technique. Mais il existe de multiples autres facteurs à considérer pour comparer des techniques de neuroimagerie. Un autre facteur important est la résolution temporelle. Les modalités structurelles capturent des changements qui sont lents à se mettre en place. La forme du cortex et les faisceaux de fibres se mettent en place tout au long du développement et du vieillissement, et sont assez stables même à l’échelle de plusieurs années. En revanche, l’IRM fonctionnelle, la TEP (utilisant le FDG) et l’imagerie optique examinent l’activité du cerveau, et mesurent des changements qui peuvent se produire à l’échelle de la minute, de la seconde ou même de la milliseconde.</p>
+<div class="tip admonition" id="resolution-temporelle-tip">
+<p class="admonition-title">La résolution temporelle</p>
+<p>La notion de résolution temporelle fait généralement référence à la durée minimale d’un événement que l’on peut distinguer dans un signal temporel. Les signaux que l’on voit dans le cours sont composés de mesures répétées dans le temps avec un intervalle <span class="math notranslate nohighlight">\(\Delta_t\)</span>, généralement mesuré en secondes. On parle parfois de la fréquence d’échantillonnage, <span class="math notranslate nohighlight">\(f=1/\Delta_t\)</span>, mesurée en Hz. La fréqunce d’échantillonnage (Hz) représente le nombre de points de mesure par seconde.</p>
+<p>TODO: ajouter des images illustrant ces concepts.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>La résolution temporelle ne correspond pas simplement au temps qui s’écoulent entre deux mesures successives <span class="math notranslate nohighlight">\(\Delta_t\)</span>. Ce concept est plus difficile à comprendre, mais est important en particulier dans le cas de l’imagerie optique. L’imagerie optique capture un phénomène vasculaire lent. Donc même si l’on a des pics d’activité séparés dans le temps au niveau neuronale (image de gauche), si l’intervalle de temps entre les pics est trop court on ne verra qu’un seul événement au niveau vasculaire (image de droite). C’est l’équivalent d’une image floue, mais dans la dimension temporelle.
+TODO: ajouter des images illustrant ces concepts.</p>
+</div>
+</div>
+<div class="section" id="imagerie-par-resonance-magnetique">
+<h2>Imagerie par résonance magnétique<a class="headerlink" href="#imagerie-par-resonance-magnetique" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="mri-fig">
+<a class="reference internal image-reference" href="_images/mri.jpg"><img alt="_images/mri.jpg" src="_images/mri.jpg" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Un appareil d’imagerie par résonance magnétique fonctionnelle. Image <a class="reference external" href="https://www.shutterstock.com">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1866109303</span></code>.</span><a class="headerlink" href="#mri-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Un appareil d’IRM est une machine imposante, qui peut peser plusieurs dizaines de tonnes! L’élément le plus évident dans un système IRM est le tunnel relativement profond, qui est un aimant géant. Le sujet est installé sur une table, qui peut se déplacer pour amener le sujet au centre de l’aimant. La motivation pour placer le sujet de recherche à cet endroit est que le champ magnétique au centre de l’aimant est très homogène, et pointe dans une direction constante. Ce champ magnétique homogène, appelé B0, est comme une toile vierge pour une peinture. De plus petits aimants, dits de gradients, seront allumés puis éteints rapidement pour venir modifier le champ magnétique dans différentes parties du cerveau. Comme différents tissus biologiques réagissent différement à ces stimulations, les gradients nous permettent de “peindre” une image du cerveau sur la “toile” B0. On acquiert en fait une série d’images, qui vont former un volume 3D couvrant tout le cerveau. Nous discuterons plus en détails du processus physique de génération d’une image IRM dans le chapitre <a class="reference internal" href="irm.html#irm-chapitre"><span class="std std-ref">Imagerie par résonance magnétique</span></a>.</p>
+</div>
+<div class="section" id="irm-structurelle">
+<h2>IRM structurelle<a class="headerlink" href="#irm-structurelle" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ce code récupère des données IRM T1</span>
+<span class="c1"># et génère une image dans trois plans de coupes</span>
+
+<span class="c1"># Enlève les warnings</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Télécharge un scan anatomique (template MNI152)</span>
+<span class="kn">from</span> <span class="nn">nilearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_icbm152_2009</span>
+<span class="n">mni</span> <span class="o">=</span> <span class="n">fetch_icbm152_2009</span><span class="p">()</span>
+
+<span class="c1"># Visualise le volume cérébral</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_anat</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plot_anat</span><span class="p">(</span>
+  <span class="n">mni</span><span class="o">.</span><span class="n">t1</span><span class="p">,</span>
+  <span class="n">axes</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span>
+  <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span>
+  <span class="n">title</span><span class="o">=</span><span class="s1">&#39;IRM en contraste T1&#39;</span>
+<span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;t1-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="t1-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/cartes_cerebrales_1_0.png" src="_images/cartes_cerebrales_1_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Un exemple d’IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer les coupes du cerveau</span></a> pour une explication de ces termes.</span><a class="headerlink" href="#t1-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le type d’images le plus couramment acquis avec un appareil d’IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure <a class="reference internal" href="#t1-fig"><span class="std std-ref">ci-dessus</span></a>, on distingue aisément certains éléments anatomiques:</p>
+<ul class="simple">
+<li><p>La <strong>matière grise</strong>, en périphérie du cortex, apparait en gris dans l’image. C’est là que les corps des neurones sont présents.</p></li>
+<li><p>Il est aussi possible de distinguer la <strong>matière blanche</strong> en blanc (ou plutôt gris clair), qui contient des paquets d’axones - c’est à dire les connexions entre les neurones.</p></li>
+<li><p>Enfin en <strong>noir</strong> on peut voir des structures comme les ventricules, qui contiennent de l’eau et des nutriments, ainsi que des déchêts métaboliques.</p></li>
+</ul>
+<p>La taille et la forme de ces structures peut varier en fonction de nombreux facteurs comportementaux ou démographiques. Par exemple, la quantité de matière grise diminue de manière massive avec l’âge: on parle d’<strong>atrophie corticale</strong>. Plusieurs techniques d’analyse des images ont été développées pour quantifier ces changements morphologiques, comme la <strong>volumétrie</strong>, la “<strong>voxel-based morphometry</strong>”, ou bien encore des <strong>analyses de surface</strong>. Ces techniques seront présentées dans le chapitre <a class="reference internal" href="morphometrie.html#morphometrie-chapitre"><span class="std std-ref">Analyses morphométriques</span></a>.</p>
+<div class="tip admonition" id="coupes-tip">
+<p class="admonition-title">Naviguer les coupes du cerveau</p>
+<p>Il existe trois manières principales de découper le cerveau: coronal (C), sagital (S) et axial (A), tel qu’illustré dans la figure. Par ailleurs certains termes sont utilisés couramment pour se repérer dans ces coupes:</p>
+<ul class="simple">
+<li><p>l’axe <code class="docutils literal notranslate"><span class="pre">l</span></code> (ou <code class="docutils literal notranslate"><span class="pre">x</span></code>) va typiquement de la gauche vers la droite. Quand est proche du milieu du cerveau, on parle d’une structure médiale.</p></li>
+<li><p>l’axe <code class="docutils literal notranslate"><span class="pre">m</span></code> (ou <code class="docutils literal notranslate"><span class="pre">y</span></code>) va de l’arrière du crâne (postérieur) vers le visage (antérieur). Par référence à la souris, antérieur se dit parfois rostral (vers le museau) ou caudal (vers la queue).</p></li>
+<li><p>l’axe <code class="docutils literal notranslate"><span class="pre">d</span></code> (ou <code class="docutils literal notranslate"><span class="pre">z</span></code>) va des pieds vers la tête. La direction des pieds s’appelle “ventral”, et la direction de la tête s’appelle “dorsal”. Cette terminologie est logique quand on pense à une souris, et illogique pour l’humain - mais on l’utilise quand même!
+<img alt="Coupes cérébrales" src="_images/coupes.jpg" />
+Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous license CC BY-SA 4.0, tirée de <a class="reference external" href="https://commons.wikimedia.org/w/index.php?curid=36397692">wikimedia</a>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="irm-fonctionnelle">
+<h2>IRM fonctionnelle<a class="headerlink" href="#irm-fonctionnelle" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="volumes4d-fig">
+<a class="reference internal image-reference" href="_images/fig_volumes4D.png"><img alt="_images/fig_volumes4D.png" src="_images/fig_volumes4D.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Les données d’IRMf sont constituées d’une série de volumes cérébraux. Chaque voxel est associé à une série temporelle. Figure tiré de la <a class="reference external" href="https://nilearn.github.io/manipulating_images/masker_objects.html">documentation Nilearn</a> sous license BSD.</span><a class="headerlink" href="#volumes4d-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>L’IRM fonctionnelle est une modalité d’imagerie 4D. C’est à dire qu’au lieu d’acquérir un seul volume cérébral, on en acquiert une série séparés par un intervalle de temps appelé temps de répétition (<code class="docutils literal notranslate"><span class="pre">TR</span></code>) (aussi appelé <span class="math notranslate nohighlight">\(\Delta_t\)</span> dans la <a class="reference internal" href="#resolution-temporelle-tip"><span class="std std-ref">note sur la résolution temporelle</span></a>). Le <code class="docutils literal notranslate"><span class="pre">TR</span></code> varie de quelques centaines de millisecondes (peu courant) jusqu’à 2 ou 3 secondes. Le nombre de répétitions est typiquement de quelques dizaines à quelques centaines. Pour chaque voxel, on a donc tout une série de points de mesures, qui peuvent être représentés comme une série temporelle. Pour être capable des volumes du cerveau aussi vite, on doit utiliser des gros voxels, qui vont de 2x2x2 mm<span class="math notranslate nohighlight">\(^3\)</span> (peu courant) jusqu’à 3x3x3 mm<span class="math notranslate nohighlight">\(^3\)</span> (plus standard). Avec cette résolution, on a à peu près 50k voxels dans la matière grise (plus de 100k quand la résolution est proche de 2x2x2 mm<span class="math notranslate nohighlight">\(^3\)</span>).</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ce code récupère des données d&#39;IRMf</span>
+<span class="c1"># et génère une image d&#39;un volume dans trois plans de coupes</span>
+
+<span class="c1"># Enlève les warnings</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Télécharge un scan fonctionnel (ADHD200)</span>
+<span class="kn">from</span> <span class="nn">nilearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_adhd</span>
+<span class="n">adhd</span> <span class="o">=</span> <span class="n">fetch_adhd</span><span class="p">(</span><span class="n">n_subjects</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Visualise le volume cérébral</span>
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_img</span>
+<span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">index_img</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plot_img</span><span class="p">(</span><span class="n">index_img</span><span class="p">(</span><span class="n">adhd</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">),</span>
+              <span class="n">bg_img</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">axes</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span>
+              <span class="n">cut_coords</span><span class="o">=</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="o">-</span><span class="mi">27</span><span class="p">,</span> <span class="mi">66</span><span class="p">),</span>
+              <span class="n">black_bg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span><span class="s2">&quot;un volume IRMf&quot;</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;irmf-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="irmf-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/cartes_cerebrales_3_0.png" src="_images/cartes_cerebrales_3_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Un exemple d’un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer les coupes du cerveau</span></a> pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l’<span class="xref std std-ref">IRM anatomique &lt;t1-fig&gt;, et que l’on a beaucoup de mal à voir les détails de l’anatomie du cerveau</span>.</span><a class="headerlink" href="#irmf-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Ces mesures ne reflètent pas directement l’activité des neurones, mais plutôt l’oxygénation du sang. On parle de signal dépendant du niveau d’oxygénation dans sang, ou signal BOLD (pour Blood Oxygen Level Dependent, en anglais). Comme on le verra dans la section <a class="reference internal" href="#couplage-neurovasculaire-section"><span class="std std-ref">Couplage neurovasculaire</span></a>, ce signal BOLD reflète malgré tout de manière indirecte l’activité des neurones, et va nous permettre de faire des cartes de l’activité du cerveau. Il y a deux types majeurs de techniques d’analyse en IRMf:</p>
+<ul class="simple">
+<li><p>les <strong>cartes d’activation</strong>: avec cette approche, on va faire effectuer certaines tâches au participant de recherche. Pour chaque voxel dans le cerveau, on va alors regarder si le niveau d’activité BOLD est plus élevé dans une certaine tâche d’intérêt, que lors d’une tâche de contrôle. On va parler de ce type de technique d’analyse dans le chapitre <a class="reference internal" href="irm_fonctionnelle.html#irmf-chapitre"><span class="std std-ref">IRM fonctionnelle</span></a>.</p></li>
+<li><p>les <strong>cartes de connectivité</strong>: avec cette approche, on demande généralement au participant de recherche de rester au repos, sans faire de tâche particulière. On va alors examiner à quel point l’activité spontanée de différentes régions du cerveau est similaire, ou synchrone. Un fort niveau de synchronie suggère que ces régions sont engagées dans un processus cognitif spontané similaire, et forment un réseau fonctionnel. On va parler de ce type de technique d’analyse dans le chapitre <a class="reference internal" href="connectivite.html#connectivite-chapitre"><span class="std std-ref">Connectivité fonctionnelle</span></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="couplage-neurovasculaire">
+<span id="couplage-neurovasculaire-section"></span><h2>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="cerveau-vasculaire-fig">
+<a class="reference internal image-reference" href="_images/fig_cerveau_vasculaire.jpg"><img alt="_images/fig_cerveau_vasculaire.jpg" src="_images/fig_cerveau_vasculaire.jpg" style="height: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Rendu 3D réaliste de la vascularisation cérébrale. Image <a class="reference external" href="https://www.shutterstock.com">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1571296897</span></code>.</span><a class="headerlink" href="#cerveau-vasculaire-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le cerveau ne représente que 2% de la masse corporelle, mais consomme 20% de l’oxygène! Le cerveau a donc besoin d’un apport régulier et important de sang frais, qui est régulé de manière fine aussi bien au niveau spatial (quelles régions reçoivent beaucoup de sang) que temporel (l’afflux de sang frais change au cours du temps). La concentration locale en sang oxygéné varie en fonction du niveau d’activité local des populations de neurones. C’est grâce à ce mécanisme de <strong>couplage neurovasculaire</strong> que l’on peut mesurer l’activité du cerveau indirectement au moyen de la vascularisation. C’est sur ce phénomène de couplage que repose aussi bien l’IRMf, que l’imagerie optique ou bien la TEP par FDG. Toutes ces techniques sont avant tout des techniques d’imagerie vasculaires, et seulement indirectement reliées à l’activité neuronale. Le couplage neurovasculaire est présenté plus en détails dans le chapitre <a class="reference internal" href="irm_fonctionnelle.html#irmf-chapitre"><span class="std std-ref">IRM fonctionnelle</span></a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="irm.html" title="next page">Imagerie par résonance magnétique</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Pierre Bellec et l'équipe PSY3018<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
