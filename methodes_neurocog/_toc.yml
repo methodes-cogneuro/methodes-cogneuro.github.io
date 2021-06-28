@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: cartes_cerebrales
+- file: irm
+- file: morphometrie
+- file: irm_fonctionnelle
+- file: regression
+- file: connectivite
+- file: irm_diffusion
+- file: tep
+- file: imagerie_optique
+- file: cartes_statistiques
+- file: reproducibilite
