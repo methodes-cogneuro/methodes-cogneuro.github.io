@@ -48,3 +48,4 @@ Ces notes de cours sont possibles grâce aux projets suivants:
  * La librairie [nilearn](https://nilearn.github.io/) en [python](https://www.python.org/) offre tous les outils de visualisation utilisés dans le cours.
  * Les visualisations d'images cérébrales utilisées dans le cours proviennent en partie de jeux de données publiques.
  * Le logo provient du site <a href="https://www.vecteezy.com/free-vector/brain">Brain Vectors by Vecteezy</a>
+ * Certaines images du livre ont été obtenues sous droits illimités pour diffusion web et limités pour impression (500k copies) via [shutterstock](https://www.shutterstock.com) par P. Bellec.

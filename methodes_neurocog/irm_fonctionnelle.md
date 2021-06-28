@@ -12,5 +12,5 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(irmf-chapitre)=
 # IRM fonctionnelle

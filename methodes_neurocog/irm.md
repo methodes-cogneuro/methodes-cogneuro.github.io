@@ -12,5 +12,9 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(irm-chapitre)=
 # Imagerie par résonance magnétique
+
+```{warning}
+Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
+```
