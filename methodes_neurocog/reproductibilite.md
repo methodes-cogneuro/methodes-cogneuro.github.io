@@ -12,5 +12,5 @@ kernelspec:
   language: python
   name: python3
 ---
-(reproducibilite-controverses-chapitre)=
-# Reproducibilité et controverses
+(reproductibilite-controverses-chapitre)=
+# Reproductibilité et controverses
