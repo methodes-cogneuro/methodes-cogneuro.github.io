@@ -12,5 +12,5 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(irm-diffusion-chapitre)=
 # IRM de diffusion

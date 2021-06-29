@@ -15,6 +15,23 @@ kernelspec:
 
 # Cartes cérébrales
 
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+        <a title="Code">💻</a>
+        <a title="Quizz">⚠️</a>
+        <a title="Révision du texte">👀</a>
+    </td>
+
+  </tr>
+</table>
+
 ```{warning}
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
@@ -25,7 +42,7 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 width: 800px
 name: cartes-cerebrales-fig
 ---
-L'arbre de la neuroimagerie. Chaque branche représente une des techniques qui sera présentée durant le cours. Figure adaptée par P. Bellec à partir d'une variété de sources non-libres de droit, et inspirée du livre {ref}`book-wager`.
+L'arbre de la neuroimagerie. Chaque branche représente une des techniques qui sera présentée durant le cours. Figure adaptée par P. Bellec à partir d'une variété de sources non-libres de droit, et inspirée du livre {cite:p}`wager2015`.
 ```
 Ce premier chapitre a pour but de donner un aperçu du cours dans sa globalité. Il s'agit d'un format condensé, qui couvre l'ensemble des techniques d'imagerie que l'on va voir dans le cours. Si vous souhaitez prendre l'examen final et ne travailler qu'un seul chapitre, vous êtes au bon endroit. Mais cette stratégie n'est pas recommandée! Si au contraire vous souhaitez travailler la matière de chaque chapitre de façon approfondie, l'essentiel de l'information peut être trouvée ailleurs dans les notes de cours avec plus de détails. Malgré tout, ce chapitre précise des éléments de vocabulaire et des notions de base, et vous permettra de faire rapidement des connexions entre les différentes techniques vues dans le cours.
 
@@ -42,7 +59,7 @@ Ce premier chapitre a pour but de donner un aperçu du cours dans sa globalité.
 width: 800px
 name: structure-function-fig
 ---
-Illustration des techniques structurelles et fonctionnelles étudiées dans ce livre, ainsi que quelques applications possibles en neurosciences cognitives. Figure adaptée par P. Bellec à partir d'une variété de sources non-libres de droit, et inspirée du livre {ref}`book-wager`.
+Illustration des techniques structurelles et fonctionnelles étudiées dans ce livre, ainsi que quelques applications possibles en neurosciences cognitives. Figure adaptée par P. Bellec à partir d'une variété de sources non-libres de droit, et inspirée du livre {cite:p}`wager2015`.
 ```
 
 Les techniques étudiées dans ce cours ont un commun de générer des cartes du cerveau. Ce sont aussi des outils centraux dans beaucoup d'études en neurosciences cognitives qui utilisent la neuroimagerie. Ces techniques incluent:
@@ -91,7 +108,8 @@ TODO: ajouter des images illustrant ces concepts.
 ```
 
 ```{warning}
-La résolution temporelle ne correspond pas simplement au temps qui s'écoulent entre deux mesures successives $\Delta_t$. Ce concept est plus difficile à comprendre, mais est important en particulier dans le cas de l'imagerie optique. L'imagerie optique capture un phénomène vasculaire lent. Donc même si l'on a des pics d'activité séparés dans le temps au niveau neuronale (image de gauche), si l'intervalle de temps entre les pics est trop court on ne verra qu'un seul événement au niveau vasculaire (image de droite). C'est l'équivalent d'une image floue, mais dans la dimension temporelle.
+:name: resolution-temporelle-warning
+La résolution temporelle ne correspond pas simplement au temps qui s'écoulent entre deux mesures successives $\Delta_t$. Ce concept est plus difficile à visualiser que la résolution spatiale effective, mais est important en particulier dans le cas de l'imagerie optique. L'imagerie optique capture un phénomène vasculaire lent. Donc même si l'on a des pics d'activité séparés dans le temps au niveau neuronale (image de gauche), si l'intervalle de temps entre les pics est trop court on ne verra qu'un seul événement au niveau vasculaire (image de droite). C'est l'équivalent d'une image floue, mais dans la dimension temporelle.
 TODO: ajouter des images illustrant ces concepts.
 ```
 
@@ -137,7 +155,7 @@ glue("t1-fig", fig, display=False)
 ```{glue:figure} t1-fig
 :figwidth: 800px
 :name: "t1-fig"
-Un exemple d'IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes.
+Un exemple d'IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
 ```
 Le type d'images le plus couramment acquis avec un appareil d'IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure {ref}`ci-dessus <t1-fig>`, on distingue aisément certains éléments anatomiques:
  * La **matière grise**, en périphérie du cortex, apparait en gris dans l'image. C'est là que les corps des neurones sont présents.
@@ -196,7 +214,7 @@ glue("irmf-fig", fig, display=False)
 ```{glue:figure} irmf-fig
 :figwidth: 800px
 :name: "irmf-fig"
-Un exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig>, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau`.
+Un exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig>`, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau. Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé ADHD200 {cite:p}`HD-200_Consortium2012-uv, BELLEC2017275` (cliquer sur + pour voir le code).
 ```
 
 Ces mesures ne reflètent pas directement l'activité des neurones, mais plutôt l'oxygénation du sang. On parle de signal dépendant du niveau d'oxygénation dans sang, ou signal BOLD (pour Blood Oxygen Level Dependent, en anglais). Comme on le verra dans la section {ref}`couplage-neurovasculaire-section`, ce signal BOLD reflète malgré tout de manière indirecte l'activité des neurones, et va nous permettre de faire des cartes de l'activité du cerveau. Il y a deux types majeurs de techniques d'analyse en IRMf:
@@ -214,3 +232,38 @@ name: cerveau-vasculaire-fig
 Rendu 3D réaliste de la vascularisation cérébrale. Image [shutterstock](https://www.shutterstock.com) ID `1571296897`.
 ```
 Le cerveau ne représente que 2% de la masse corporelle, mais consomme 20% de l'oxygène! Le cerveau a donc besoin d'un apport régulier et important de sang frais, qui est régulé de manière fine aussi bien au niveau spatial (quelles régions reçoivent beaucoup de sang) que temporel (l'afflux de sang frais change au cours du temps). La concentration locale en sang oxygéné varie en fonction du niveau d'activité local des populations de neurones. C'est grâce à ce mécanisme de **couplage neurovasculaire** que l'on peut mesurer l'activité du cerveau indirectement au moyen de la vascularisation. C'est sur ce phénomène de couplage que repose aussi bien l'IRMf, que l'imagerie optique ou bien la TEP par FDG. Toutes ces techniques sont avant tout des techniques d'imagerie vasculaires, et seulement indirectement reliées à l'activité neuronale. Le couplage neurovasculaire est présenté plus en détails dans le chapitre {ref}`irmf-chapitre`.
+
+## IRM de diffusion
+```{figure} ./cartes_cerebrales/fig_dissection_virtuelle.jpg
+---
+width: 800px
+name: dissection-virtuelle-fig
+---
+À gauche, une coupe de cerveau post-mortem, préparée pour mettre en valeurs les faisceaux de fibres de matière blanche. À droite: dissection virtuelle des faisceaux de matière blanche générée grâce à des données d'IRM de diffusion. Image [shutterstock](https://www.shutterstock.com) ID `412065940`.
+```
+L'IRM de diffusion est encore une autre variété d'image que l'on peut acquérir, toujours à l'aide d'un appareil d'IRM. Cette fois, la manière dont on excite le champ magnétique local est spécialement conçu pour être sensible à la manière dont les molécules d'eau diffuse dans un voxel. Ce type de mesure est répété de nombreuses fois avec des directions différentes, et il est possible ainsi de déterminer dans quelle direction les molécules d'eau diffusent de manière principale. Cette information nous renseigne indirectement sur la micro-structure de la matière blanche, car les faisceaux de fibres constituées d'axones reliant les neurones entre eux viennent contraindre la manière dont l'eau diffuse. À l'aide de techniques sophistiquées de modélisation il est possible de reconstruire en 3D la géométrie des principales fibres de matière blanche, et d'en quantifier l'intégrité au moyen de différentes métriques. Ces métriques peuvent alors être associées à différentes mesures comportementales, démographiques ou cliniques, comme par exemple un historique de traumatisme cranien. Cette technique d'imagerie sera présentée plus en détails dans le chapitre {ref}`irm-diffusion-chapitre`.
+
+## Imagerie optique
+```{figure} ./cartes_cerebrales/fig_optique.png
+---
+width: 800px
+name: optique-fig
+---
+Illustration schématique du parcours de la lumière proche infra-rouge au travers de la boîte crânienne et du cerveau. Image par Dr Julien Cohen-Adad et Dr Claudine Gauthier.
+```
+L'imagerie optique est notre première technique qui n'utilise pas l'IRM! Mais le phénomène physiologique capturé par l'imagerie optique est identique à celui qui est à l'origine du signal BOLD en IRMf. Il s'agit du {ref}`couplage neurovasculaire <couplage-neurovasculaire-section>`, qui fait que la concentration en hémoglobine oxygénée reflète de manière indirecte l'activité neuronale. La grande différence entre l'imagerie optique et l'IRMf est la manière dont on mesure les changements vasculaires. L'imagerie optique, parfois aussi appelée spectroscopie proche infra-rouge - ou NIRS en anglais - utilise le fait que la lumière proche infra-rouge peut traverser la boîte crânienne ainsi que les tissus cérébraux superficiels. Par un phénomène de diffusion, la lumière envoyée directement dans la boîte crânienne va ressortir non loin de la source. En analysant le contenu spectral, ou autrement dit la couleur, de la lumière qui a traversé le cerveau, on peut en déduire la concentration locale en hémoglobine oxygénée et dé-oxygénée. Ces deux molécules ont en effet des couleurs différentes, et absorbent la lumière proche infra-rouge très différemment. La résolution spatiale de l'imagerie optique est bien plus limitée que l'IRMf, car les mesures sont effectuées sur la scalp, comme en EEG, plutôt qu'une image complète du cerveau avec des voxels cubiques de taille contrôlée. En revanche il est possible de prendre des mesures à l'échelle de la milliseconde. Il est important de se rappeler malgré tout que le phénomène temporel étudié reste le couplage neurovasculaire, et que ce phénomène est lent (voir l'avertissement concernant la {ref}`résolution temporelle effective <resolution-temporelle-warning>`).
+
+## Tomographie par émission de positrons
+```{figure} ./cartes_cerebrales/fig_tep.jpg
+---
+width: 800px
+name: tep-fig
+---
+Montage de coupes axiales d'un scanner TEP avec un radiotraceur FDG, illustrant le niveau d'activité métabolique du glucose durant la durant du scan. Image [shutterstock](https://www.shutterstock.com) ID `1342194254`.
+```
+
+## References
+
+```{bibliography}
+:filter: docname in docnames
+```
