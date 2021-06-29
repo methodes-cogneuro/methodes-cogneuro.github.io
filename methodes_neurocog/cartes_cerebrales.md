@@ -28,7 +28,14 @@ kernelspec:
         <a title="Quizz">⚠️</a>
         <a title="Révision du texte">👀</a>
     </td>
-
+    <td align="center">
+      <a href="https://github.com/SamGuay">
+        <img src="https://avatars.githubusercontent.com/u/30598330?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Samuel Guay</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
   </tr>
 </table>
 
