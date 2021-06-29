@@ -182,7 +182,7 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 width: 800px
 name: volumes4D-fig
 ---
-Les données d'IRMf sont constituées d'une série de volumes cérébraux. Chaque voxel est associé à une série temporelle. Figure tiré de la [documentation Nilearn](https://nilearn.github.io/manipulating_images/masker_objects.html) sous license BSD.
+Les données d'IRMf sont constituées d'une série de volumes cérébraux. Chaque voxel est associé à une série temporelle. Figure tirée de la [documentation Nilearn](https://nilearn.github.io/manipulating_images/masker_objects.html) sous license BSD.
 ```
 L'IRM fonctionnelle est une modalité d'imagerie 4D. C'est à dire qu'au lieu d'acquérir un seul volume cérébral, on en acquiert une série séparés par un intervalle de temps appelé temps de répétition (`TR`) (aussi appelé $\Delta_t$ dans la {ref}`note sur la résolution temporelle <resolution-temporelle-tip>`). Le `TR` varie de quelques centaines de millisecondes (peu courant) jusqu'à 2 ou 3 secondes. Le nombre de répétitions est typiquement de quelques dizaines à quelques centaines. Pour chaque voxel, on a donc tout une série de points de mesures, qui peuvent être représentés comme une série temporelle. Pour être capable des volumes du cerveau aussi vite, on doit utiliser des gros voxels, qui vont de 2x2x2 mm$^3$ (peu courant) jusqu'à 3x3x3 mm$^3$ (plus standard). Avec cette résolution, on a à peu près 50k voxels dans la matière grise (plus de 100k quand la résolution est proche de 2x2x2 mm$^3$).
 
