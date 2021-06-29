@@ -1,0 +1,73 @@
+Traceback (most recent call last):
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Importe les librairies de visualisation
+# et prépare le layout de la figure
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_theme(color_codes=True)
+fig = plt.figure(figsize=(12, 4))
+
+# Télécharge les données tips, et visualise une régression
+ax_plot = plt.subplot(1, 2, 1)
+tips = sns.load_dataset("tips")
+sns.regplot(x="total_bill", y="tip", data=tips, axes=ax_plot);
+
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+# Télécharge un contraste d'activation motrice depuis NeuroVault
+from nilearn import datasets
+motor_images = datasets.fetch_neurovault_motor_task()
+stat_img = motor_images.images[0]
+
+# Visualise le volume cérébral
+from nilearn.plotting import plot_stat_map
+from myst_nb import glue
+ax_plot = plt.subplot(1, 2, 1)
+plot_stat_map(stat_img,
+              threshold=3,
+              axes = ax_plot,
+              title="plot_stat_map",
+              cut_coords=[36, -27, 66]
+              )
+glue("regression-fig", fig, display=False)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-3-4c736b7c0e07>[0m in [0;36m<module>[0;34m[0m
+[1;32m     10[0m [0max_plot[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0msubplot[0m[0;34m([0m[0;36m1[0m[0;34m,[0m [0;36m2[0m[0;34m,[0m [0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     11[0m [0mtips[0m [0;34m=[0m [0msns[0m[0;34m.[0m[0mload_dataset[0m[0;34m([0m[0;34m"tips"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 12[0;31m [0msns[0m[0;34m.[0m[0mregplot[0m[0;34m([0m[0mx[0m[0;34m=[0m[0;34m"total_bill"[0m[0;34m,[0m [0my[0m[0;34m=[0m[0;34m"tip"[0m[0;34m,[0m [0mdata[0m[0;34m=[0m[0mtips[0m[0;34m,[0m [0maxes[0m[0;34m=[0m[0max_plot[0m[0;34m)[0m[0;34m;[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     13[0m [0;34m[0m[0m
+[1;32m     14[0m [0;31m# Enlève les warnings[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/env/psy3018/lib/python3.8/site-packages/seaborn/_decorators.py[0m in [0;36minner_f[0;34m(*args, **kwargs)[0m
+[1;32m     44[0m             )
+[1;32m     45[0m         [0mkwargs[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0;34m{[0m[0mk[0m[0;34m:[0m [0marg[0m [0;32mfor[0m [0mk[0m[0;34m,[0m [0marg[0m [0;32min[0m [0mzip[0m[0;34m([0m[0msig[0m[0;34m.[0m[0mparameters[0m[0;34m,[0m [0margs[0m[0;34m)[0m[0;34m}[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 46[0;31m         [0;32mreturn[0m [0mf[0m[0;34m([0m[0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     47[0m     [0;32mreturn[0m [0minner_f[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     48[0m [0;34m[0m[0m
+
+[0;31mTypeError[0m: regplot() got an unexpected keyword argument 'axes'
+TypeError: regplot() got an unexpected keyword argument 'axes'
+

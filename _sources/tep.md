@@ -12,5 +12,5 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(tep-chapitre)=
 # Tomographie par émission de positrons
