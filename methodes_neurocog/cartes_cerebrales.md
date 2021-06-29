@@ -93,6 +93,7 @@ TODO: ajouter des images illustrant ces concepts.
 ```
 
 ```{warning}
+:name: resolution-spatiale-warning
 La résolution spatiale ne correspond pas simplement à la taille d'un pixel. Deux images avec la même taille de pixel (ou voxel) peuvent avoir une résolution effective différente, si l'une des deux images est floue. Sur l'image nette on distingue des objets plus petits que sur l'image floue. La **résolution effective** de l'image nette est donc supérieure à l'image floue.
 TODO: ajouter des images illustrant ces concepts.
 ```
@@ -201,6 +202,7 @@ adhd = fetch_adhd(n_subjects=1)
 # Visualise le volume cérébral
 from nilearn.plotting import plot_img
 from nilearn.image import index_img
+from myst_nb import glue
 fig = plt.figure(figsize=(12, 4))
 plot_img(index_img(adhd.func[0], 0),
               bg_img=None,
@@ -251,7 +253,7 @@ name: optique-fig
 ---
 Illustration schématique du parcours de la lumière proche infra-rouge au travers de la boîte crânienne et du cerveau. Image par Dr Julien Cohen-Adad et Dr Claudine Gauthier.
 ```
-L'imagerie optique est notre première technique qui n'utilise pas l'IRM! Mais le phénomène physiologique capturé par l'imagerie optique est identique à celui qui est à l'origine du signal BOLD en IRMf. Il s'agit du {ref}`couplage neurovasculaire <couplage-neurovasculaire-section>`, qui fait que la concentration en hémoglobine oxygénée reflète de manière indirecte l'activité neuronale. La grande différence entre l'imagerie optique et l'IRMf est la manière dont on mesure les changements vasculaires. L'imagerie optique, parfois aussi appelée spectroscopie proche infra-rouge - ou NIRS en anglais - utilise le fait que la lumière proche infra-rouge peut traverser la boîte crânienne ainsi que les tissus cérébraux superficiels. Par un phénomène de diffusion, la lumière envoyée directement dans la boîte crânienne va ressortir non loin de la source. En analysant le contenu spectral, ou autrement dit la couleur, de la lumière qui a traversé le cerveau, on peut en déduire la concentration locale en hémoglobine oxygénée et dé-oxygénée. Ces deux molécules ont en effet des couleurs différentes, et absorbent la lumière proche infra-rouge très différemment. La résolution spatiale de l'imagerie optique est bien plus limitée que l'IRMf, car les mesures sont effectuées sur la scalp, comme en EEG, plutôt qu'une image complète du cerveau avec des voxels cubiques de taille contrôlée. En revanche il est possible de prendre des mesures à l'échelle de la milliseconde. Il est important de se rappeler malgré tout que le phénomène temporel étudié reste le couplage neurovasculaire, et que ce phénomène est lent (voir l'avertissement concernant la {ref}`résolution temporelle effective <resolution-temporelle-warning>`).
+L'imagerie optique est notre première technique qui n'utilise pas l'IRM! Mais le phénomène physiologique capturé par l'imagerie optique est identique à celui qui est à l'origine du signal BOLD en IRMf. Il s'agit du {ref}`couplage neurovasculaire <couplage-neurovasculaire-section>`, qui fait que la concentration en hémoglobine oxygénée reflète de manière indirecte l'activité neuronale. La grande différence entre l'imagerie optique et l'IRMf est la manière dont on mesure les changements vasculaires. L'imagerie optique, parfois aussi appelée spectroscopie proche infra-rouge - ou NIRS en anglais - utilise le fait que la lumière proche infra-rouge peut traverser la boîte crânienne ainsi que les tissus cérébraux superficiels. Par un phénomène de diffusion, la lumière envoyée directement dans la boîte crânienne va ressortir non loin de la source. En analysant le contenu spectral, ou autrement dit la couleur, de la lumière qui a traversé le cerveau, on peut en déduire la concentration locale en hémoglobine oxygénée et dé-oxygénée. Ces deux molécules ont en effet des couleurs différentes, et absorbent la lumière proche infra-rouge très différemment. La résolution spatiale de l'imagerie optique est bien plus limitée que l'IRMf, car les mesures sont effectuées sur la scalp, comme en EEG, plutôt qu'une image complète du cerveau avec des voxels cubiques de taille contrôlée. En revanche il est possible de prendre des mesures à l'échelle de la milliseconde. Il est important de se rappeler malgré tout que le phénomène temporel étudié reste le couplage neurovasculaire, et que ce phénomène est lent (voir l'avertissement concernant la {ref}`résolution temporelle effective <resolution-temporelle-warning>`). Cette technique d'imagerie sera présentée plus en détails dans le chapitre {ref}`imagerie-optique-chapitre`.
 
 ## Tomographie par émission de positrons
 ```{figure} ./cartes_cerebrales/fig_tep.jpg
@@ -261,6 +263,56 @@ name: tep-fig
 ---
 Montage de coupes axiales d'un scanner TEP avec un radiotraceur FDG, illustrant le niveau d'activité métabolique du glucose durant la durant du scan. Image [shutterstock](https://www.shutterstock.com) ID `1342194254`.
 ```
+La dernière modalité de neuroimagerie que ce livre présente est la TEP. Le principe de base de la TEP est d'injecter un produit radioactif, appelé radiotraceur, dans le sang du participant de recherche. Cela peut faire peur en lisant cette phrase, mais pas d'inquiétude. La dose radioactive auquelle est exposé le participant est faible, et sans danger si l'on ne répète pas l'examen trop souvent. Le radiotraceur va aller s'accumuler dans certains tissus du cerveau, et émettre des rayons gamma. Les rayons gamma sont de la lumière (photons) à très haute énergie. Il est possible de détecter de manière précise l'origine de ces rayons gamma à l'aide d'une série de caméras disposés autour de la tête du sujet, et reconstruire une carte du cerveau qui reflète la concentration en radiotraceur à chaque voxel. Le radiotraceur principal pour le cours est le fluorodeoxyglucose (FDG), qui est consommé comme carburant de manière indirecte par les neurones, tout comme l'oxygène. Le FDG PET fonctionne donc grâce au {ref}`couplage neurovasculaire <couplage-neurovasculaire-section>`, tout comme l'IRMf et l'imagerie optique. Il faut en revanche plusieurs minutes pour bâtir une carte de l'activité cérébrale, donc la résolution temporelle de la TEP est inférieure à l'IRMf et la TEP. Par ailleurs, comme vous pouvez l'observer sur les images ci dessus, les cartes TEP reconstruites sont floues, et la {ref}`résolution spatiale effective <resolution-spatiale-warning>` des images est inférieure à la taille des voxels. Enfin, il est important de savoir que beaucoup d'autres traceurs existent en dehors du FDG. Il existe notamment des traceurs structuraux. Tout comme l'IRM, la TEP peut donc être utilisée pour générer des images structurelles et fonctionnelles du cerveau. Cette technique d'imagerie sera présentée plus en détails dans le chapitre {ref}`tep-chapitre`.
+
+## Cartes statistiques
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies de visualisation
+# et prépare le layout de la figure
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_theme(color_codes=True)
+fig = plt.figure(figsize=(12, 4))
+
+# Télécharge les données tips, et visualise une régression
+ax_plot = plt.subplot(1, 2, 1)
+tips = sns.load_dataset("tips")
+sns.regplot(x="total_bill", y="tip", data=tips, ax=ax_plot);
+
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+# Télécharge un contraste d'activation motrice depuis NeuroVault
+from nilearn import datasets
+motor_images = datasets.fetch_neurovault_motor_task()
+stat_img = motor_images.images[0]
+
+# Visualise le volume cérébral
+from nilearn.plotting import plot_stat_map
+from myst_nb import glue
+ax_plot = plt.subplot(1, 2, 2)
+plot_stat_map(stat_img,
+              threshold=3,
+              axes = ax_plot,
+              title="carte d'activation motrice",
+              cut_coords=[36, -27, 66]
+              )
+glue("regression-fig", fig, display=False)
+```
+
+```{glue:figure} regression-fig
+:figwidth: 800px
+:name: "regression-fig"
+Gauche: illustration d'une régression linéaire entre une variable indépendante sur l'axe des x (aussi appelé facteur d'explication), et une variable dépendante sur l'axe des y. La droite représente la meilleure relation linéaire entre x et y, et l'intervalle de confiance statistique est également indiqué. Droite: un modèle de régression est appliqué à chaque voxel pour générer une carte cérébrale statistique. Ici, la carte statistique correspond aux changements d'activation IRMf lors d'un mouvement de la main. La figure de régression est adaptée de ce [tutoriel seaborn](https://seaborn.pydata.org/tutorial/regression.html) à l'aide du jeu de données `tips`. La carte statistique est visualisée grâce à ce [tutoriel nilearn](https://nilearn.github.io/auto_examples/01_plotting/plot_demo_plotting.html#sphx-glr-auto-examples-01-plotting-plot-demo-plotting-py) et une carte d'activité motrice distribuée via [NeuroVault](https://neurovault.org/). Cliquer sur + pour voir le code.
+```
+
+Le dernier aspect important de ces notes de cours est que nous allons discuter de la manière dont les données sont analysées. Cela implique notamment des étapes d'analyse d'images, qui sont nécessaires pour générer des mesures interprétables. Cela implique aussi de faire des statistiques sur les images du cerveau que l'on génère. Il existe de nombreuses manières de faire ces statistiques, et le domaine des neurosciences cognitives utilise de plus en plus des techniques multivariées d'apprentissage machine. Mais la technique de référence reste le modèle de régression linéaire, qui est appliqué indépendamment à chaque voxel. Il s'agit d'un modèle très flexible, qui permet de répondre à un grand nombre de questions, aussi bien au niveau individuel que de groupe. Le modèle de régression linéaire est utilisé par l'ensemble des techniques de neuroimagerie vu en cours, et sera discuté dans le chapitre {ref}`regression-chapitre`. Le fait de répéter un test statistique à chaque voxel, des dizaines de milliers de fois, pose un problème pour décider du seuil de significativité. Nous discuterons des approches de seuillage dans le chapitre {ref}`cartes-statistiques-chapitre`. Enfin, ce type de modèle statistique peut être abusé de multiples manières, et amener à la publication de résultats non reproductibles. Nous discuterons de ces défis et de solution possible dans le dernier chapitre {ref}`reproducibilite-controverses-chapitre`.
+
+## Conclusions
+Ce chapitre vous a présenté un rapide tour de vue des différentes méthodes en neuroscience cognitives présentées dans le cours. Nous espérons que cela vous donne envie d'en apprendre davantage, et d'explorer ces notes de cours!
 
 ## References
 

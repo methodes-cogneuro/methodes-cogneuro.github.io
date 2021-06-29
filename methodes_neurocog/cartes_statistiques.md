@@ -12,5 +12,5 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(cartes-statistiques-chapitre)=
 # Cartes statistiques

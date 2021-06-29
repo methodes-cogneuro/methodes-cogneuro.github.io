@@ -12,5 +12,5 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(imagerie-optique-chapitre)=
 # Imagerie optique
