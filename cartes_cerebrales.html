@@ -113,13 +113,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="regression.html">
-   Régression linéaire
+  <a class="reference internal" href="connectivite.html">
+   Connectivité fonctionnelle
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
+  <a class="reference internal" href="regression.html">
+   Régression linéaire
   </a>
  </li>
  <li class="toctree-l1">
@@ -143,8 +143,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="reproducibilite.html">
-   Reproducibilité et controverses
+  <a class="reference internal" href="reproductibilite.html">
+   Reproductibilité et controverses
   </a>
  </li>
 </ul>
@@ -308,6 +308,43 @@
    References
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-1">
+     Exercice 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-2">
+     Exercice 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-3">
+     Exercice 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-4">
+     Exercice 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-5">
+     Exercice 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-6">
+     Exercice 6
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -332,6 +369,14 @@
         <a title="Contenu">🤔</a>
         <a title="Code">💻</a>
         <a title="Quizz">⚠️</a>
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SamGuay">
+        <img src="https://avatars.githubusercontent.com/u/30598330?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Samuel Guay</b></sub>
+      </a>
+      <br />
         <a title="Révision du texte">👀</a>
     </td>
   </tr>
@@ -478,7 +523,7 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 <h2>IRM fonctionnelle<a class="headerlink" href="#irm-fonctionnelle" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="volumes4d-fig">
 <a class="reference internal image-reference" href="_images/fig_volumes4D.png"><img alt="_images/fig_volumes4D.png" src="_images/fig_volumes4D.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Les données d’IRMf sont constituées d’une série de volumes cérébraux. Chaque voxel est associé à une série temporelle. Figure tiré de la <a class="reference external" href="https://nilearn.github.io/manipulating_images/masker_objects.html">documentation Nilearn</a> sous license BSD.</span><a class="headerlink" href="#volumes4d-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Les données d’IRMf sont constituées d’une série de volumes cérébraux. Chaque voxel est associé à une série temporelle. Figure tirée de la <a class="reference external" href="https://nilearn.github.io/manipulating_images/masker_objects.html">documentation Nilearn</a> sous license BSD.</span><a class="headerlink" href="#volumes4d-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>L’IRM fonctionnelle est une modalité d’imagerie 4D. C’est à dire qu’au lieu d’acquérir un seul volume cérébral, on en acquiert une série séparés par un intervalle de temps appelé temps de répétition (<code class="docutils literal notranslate"><span class="pre">TR</span></code>) (aussi appelé <span class="math notranslate nohighlight">\(\Delta_t\)</span> dans la <a class="reference internal" href="#resolution-temporelle-tip"><span class="std std-ref">note sur la résolution temporelle</span></a>). Le <code class="docutils literal notranslate"><span class="pre">TR</span></code> varie de quelques centaines de millisecondes (peu courant) jusqu’à 2 ou 3 secondes. Le nombre de répétitions est typiquement de quelques dizaines à quelques centaines. Pour chaque voxel, on a donc tout une série de points de mesures, qui peuvent être représentés comme une série temporelle. Pour être capable des volumes du cerveau aussi vite, on doit utiliser des gros voxels, qui vont de 2x2x2 mm<span class="math notranslate nohighlight">\(^3\)</span> (peu courant) jusqu’à 3x3x3 mm<span class="math notranslate nohighlight">\(^3\)</span> (plus standard). Avec cette résolution, on a à peu près 50k voxels dans la matière grise (plus de 100k quand la résolution est proche de 2x2x2 mm<span class="math notranslate nohighlight">\(^3\)</span>).</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
@@ -601,7 +646,7 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 </div>
 <p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Gauche: illustration d’une régression linéaire entre une variable indépendante sur l’axe des x (aussi appelé facteur d’explication), et une variable dépendante sur l’axe des y. La droite représente la meilleure relation linéaire entre x et y, et l’intervalle de confiance statistique est également indiqué. Droite: un modèle de régression est appliqué à chaque voxel pour générer une carte cérébrale statistique. Ici, la carte statistique correspond aux changements d’activation IRMf lors d’un mouvement de la main. La figure de régression est adaptée de ce <a class="reference external" href="https://seaborn.pydata.org/tutorial/regression.html">tutoriel seaborn</a> à l’aide du jeu de données <code class="docutils literal notranslate"><span class="pre">tips</span></code>. La carte statistique est visualisée grâce à ce <a class="reference external" href="https://nilearn.github.io/auto_examples/01_plotting/plot_demo_plotting.html#sphx-glr-auto-examples-01-plotting-plot-demo-plotting-py">tutoriel nilearn</a> et une carte d’activité motrice distribuée via <a class="reference external" href="https://neurovault.org/">NeuroVault</a>. Cliquer sur + pour voir le code.</span><a class="headerlink" href="#regression-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Le dernier aspect important de ces notes de cours est que nous allons discuter de la manière dont les données sont analysées. Cela implique notamment des étapes d’analyse d’images, qui sont nécessaires pour générer des mesures interprétables. Cela implique aussi de faire des statistiques sur les images du cerveau que l’on génère. Il existe de nombreuses manières de faire ces statistiques, et le domaine des neurosciences cognitives utilise de plus en plus des techniques multivariées d’apprentissage machine. Mais la technique de référence reste le modèle de régression linéaire, qui est appliqué indépendamment à chaque voxel. Il s’agit d’un modèle très flexible, qui permet de répondre à un grand nombre de questions, aussi bien au niveau individuel que de groupe. Le modèle de régression linéaire est utilisé par l’ensemble des techniques de neuroimagerie vu en cours, et sera discuté dans le chapitre <a class="reference internal" href="regression.html#regression-chapitre"><span class="std std-ref">Régression linéaire</span></a>. Le fait de répéter un test statistique à chaque voxel, des dizaines de milliers de fois, pose un problème pour décider du seuil de significativité. Nous discuterons des approches de seuillage dans le chapitre <a class="reference internal" href="cartes_statistiques.html#cartes-statistiques-chapitre"><span class="std std-ref">Cartes statistiques</span></a>. Enfin, ce type de modèle statistique peut être abusé de multiples manières, et amener à la publication de résultats non reproductibles. Nous discuterons de ces défis et de solution possible dans le dernier chapitre <a class="reference internal" href="reproducibilite.html#reproducibilite-controverses-chapitre"><span class="std std-ref">Reproducibilité et controverses</span></a>.</p>
+<p>Le dernier aspect important de ces notes de cours est que nous allons discuter de la manière dont les données sont analysées. Cela implique notamment des étapes d’analyse d’images, qui sont nécessaires pour générer des mesures interprétables. Cela implique aussi de faire des statistiques sur les images du cerveau que l’on génère. Il existe de nombreuses manières de faire ces statistiques, et le domaine des neurosciences cognitives utilise de plus en plus des techniques multivariées d’apprentissage machine. Mais la technique de référence reste le modèle de régression linéaire, qui est appliqué indépendamment à chaque voxel. Il s’agit d’un modèle très flexible, qui permet de répondre à un grand nombre de questions, aussi bien au niveau individuel que de groupe. Le modèle de régression linéaire est utilisé par l’ensemble des techniques de neuroimagerie vu en cours, et sera discuté dans le chapitre <a class="reference internal" href="regression.html#regression-chapitre"><span class="std std-ref">Régression linéaire</span></a>. Le fait de répéter un test statistique à chaque voxel, des dizaines de milliers de fois, pose un problème pour décider du seuil de significativité. Nous discuterons des approches de seuillage dans le chapitre <a class="reference internal" href="cartes_statistiques.html#cartes-statistiques-chapitre"><span class="std std-ref">Cartes statistiques</span></a>. Enfin, ce type de modèle statistique peut être abusé de multiples manières, et amener à la publication de résultats non reproductibles. Nous discuterons de ces défis et de solution possible dans le dernier chapitre <a class="reference internal" href="reproductibilite.html#reproductibilite-controverses-chapitre"><span class="std std-ref">Reproductibilité et controverses</span></a>.</p>
 </div>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
@@ -624,6 +669,52 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 </dd>
 </dl>
 </p>
+</div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercice-1">
+<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Permalink to this headline">¶</a></h3>
+<p>On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.</p>
+</div>
+<div class="section" id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Permalink to this headline">¶</a></h3>
+<p>Classez ces techniques par leur résolution spatiale:</p>
+<ol class="simple">
+<li><p>IRMf</p></li>
+<li><p>IRM structurelle</p></li>
+<li><p>PET</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Permalink to this headline">¶</a></h3>
+<p>Classez ces techniques par leur résolution temporelle:</p>
+<ol class="simple">
+<li><p>IRMf</p></li>
+<li><p>Imagerie optique</p></li>
+<li><p>EEG</p></li>
+<li><p>IRM de diffusion</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Permalink to this headline">¶</a></h3>
+<p>On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.</p>
+<ol class="simple">
+<li><p>Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.</p></li>
+<li><p>Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Permalink to this headline">¶</a></h3>
+<p>Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.</p>
+<ol class="simple">
+<li><p>Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.</p></li>
+<li><p>Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Permalink to this headline">¶</a></h3>
+<p>On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.</p>
+</div>
 </div>
 </div>
 

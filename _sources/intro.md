@@ -22,7 +22,7 @@ Ce texte contient l'ensemble des notes du cours PSY3018 "Méthodes en neuroscien
 
 Le principal objectif d’apprentissage pour ce cours est l’acquisition de connaissances théoriques sur les bases physiques et physiologiques de différentes techniques de neuroimagerie, ainsi que les principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Le cours présentera aussi comment ces techniques de neuroimagerie sont appliquées dans le cadre de projets de recherche en neurosciences cognitives, notamment via des quizzs, études d’articles et code pour la visualisation de données.
 
- Le cours est donné principalement par Dr Pierre Bellec, avec des contributions par les auxiliaires de recherche, ainsi que de multiples intervenants supplémentaires. Ces notes de cours bénéficie également du retour constructif des étudiants du cours PSY3018 depuis sa création en 2018. Les contributions générales sont présentées ci dessous. Des contributions spécifiques sont listées au sein de chaque chapitre.
+Le cours est donné principalement par Dr Pierre Bellec, avec des contributions par les auxiliaires de recherche, ainsi que de multiples intervenants supplémentaires. Ces notes de cours bénéficie également du retour constructif des étudiants du cours PSY3018 depuis sa création en 2018. Les contributions générales sont présentées ci dessous. Des contributions spécifiques sont listées au sein de chaque chapitre.
 
 <table>
   <tr>
@@ -33,13 +33,18 @@ Le principal objectif d’apprentissage pour ce cours est l’acquisition de con
       </a>
       <br />
         <a title="Contenu">🤔</a>
-        <a title="Vidéos">📹</a>
-        <a title="Infrastructure (jupyter book)">🚇</a>
         <a title="Code">💻</a>
         <a title="Quizz">⚠️</a>
         <a title="Révision du texte">👀</a>
     </td>
-
+    <td align="center">
+      <a href="https://github.com/SamGuay">
+        <img src="https://avatars.githubusercontent.com/u/30598330?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Samuel Guay</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
   </tr>
 </table>
 

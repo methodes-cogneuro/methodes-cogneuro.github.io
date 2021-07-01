@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Régression linéaire" href="regression.html" />
+    <link rel="next" title="Connectivité fonctionnelle" href="connectivite.html" />
     <link rel="prev" title="Analyses morphométriques" href="morphometrie.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -111,13 +111,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="regression.html">
-   Régression linéaire
+  <a class="reference internal" href="connectivite.html">
+   Connectivité fonctionnelle
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
+  <a class="reference internal" href="regression.html">
+   Régression linéaire
   </a>
  </li>
  <li class="toctree-l1">
@@ -141,8 +141,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="reproducibilite.html">
-   Reproducibilité et controverses
+  <a class="reference internal" href="reproductibilite.html">
+   Reproductibilité et controverses
   </a>
  </li>
 </ul>
@@ -231,6 +231,103 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#couplage-neurovasculaire">
+   Couplage neurovasculaire
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modele-de-reponse-hemodynamique">
+   Modèle de réponse hémodynamique
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pretraitement-des-donnees-d-irmf">
+     Prétraitement des données d’IRMf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cartes-d-activation">
+     Cartes d’activation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusions-et-references-suggerees">
+     Conclusions et références suggérées
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     Références
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-1">
+     Exercice 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-2">
+     Exercice 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-3">
+     Exercice 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-4">
+     Exercice 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Exercice 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-5">
+     Exercice 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-6">
+     Exercice 6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-7">
+     Exercice 7
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-8">
+     Exercice 8
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -241,6 +338,180 @@
                 
   <div class="section" id="irm-fonctionnelle">
 <span id="irmf-chapitre"></span><h1>IRM fonctionnelle<a class="headerlink" href="#irm-fonctionnelle" title="Permalink to this headline">¶</a></h1>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/anproulx">
+        <img src="https://avatars.githubusercontent.com/u/65092948?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Andréanne Proulx</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+  </tr>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
+</div>
+<div class="section" id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="couplage-neurovasculaire">
+<h2>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/SWOww_Ensqg&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/SWOww_Ensqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="modele-de-reponse-hemodynamique">
+<h2>Modèle de réponse hémodynamique<a class="headerlink" href="#modele-de-reponse-hemodynamique" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/91JVOAwOOyE&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/91JVOAwOOyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<div class="section" id="pretraitement-des-donnees-d-irmf">
+<h3>Prétraitement des données d’IRMf<a class="headerlink" href="#pretraitement-des-donnees-d-irmf" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/-u0WCHGi8_A&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/-u0WCHGi8_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="cartes-d-activation">
+<h3>Cartes d’activation<a class="headerlink" href="#cartes-d-activation" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ayr6xFw2qPs&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xFw2qPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="conclusions-et-references-suggerees">
+<h3>Conclusions et références suggérées<a class="headerlink" href="#conclusions-et-references-suggerees" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="references">
+<h3>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="id1"></span></div>
+</div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercice-1">
+<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Permalink to this headline">¶</a></h3>
+<p>Choisissez la bonne réponse. Des données d’IRMf sont en général…</p>
+<ol class="simple">
+<li><p>Une image du cerveau.</p></li>
+<li><p>Une dizaine d’images du cerveau.</p></li>
+<li><p>Des centaines d’images du cerveau.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Permalink to this headline">¶</a></h3>
+<p>Qu’est ce que le signal BOLD? (vrai / faux).</p>
+<ol class="simple">
+<li><p>Un signal très courageux.</p></li>
+<li><p>Une séquence pondérée en T2*.</p></li>
+<li><p>Un type de séquence d’IRM qui mesure l’activité du cerveau.</p></li>
+<li><p>Un type de séquence d’IRM qui mesure l’oxygénation du sang.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Permalink to this headline">¶</a></h3>
+<p>Choisissez la bonne réponse. Le signal BOLD dépend sur…</p>
+<ol class="simple">
+<li><p>Le flux sanguin local.</p></li>
+<li><p>Le volume sanguin local.</p></li>
+<li><p>La concentration relative en désoxyhémoglobine.</p></li>
+<li><p>Toutes les réponses ci-dessus.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Permalink to this headline">¶</a></h3>
+<p>Vrai / faux. Le principe d’additivité de la réponse hémodynamique est…</p>
+<ol class="simple">
+<li><p>Un modèle mathématique.</p></li>
+<li><p>Une propriété bien connue du couplage neurovasculaire.</p></li>
+<li><p>Une hypothèse courante, en partie confirmée expérimentalement.</p></li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h3>Exercice 4<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Quel est l’événement principal à l’origine des changements de signal mesuré par le BOLD?</p>
+</div>
+<div class="section" id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Permalink to this headline">¶</a></h3>
+<p>Dans quelle portion de l’arbre vasculaire observe-t-on les changements principaux liés à l’activité neuronale locale?</p>
+</div>
+<div class="section" id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Permalink to this headline">¶</a></h3>
+<p>Vrai / faux?</p>
+<ol class="simple">
+<li><p>La réponse hémodynamique démarre immédiatement après l’excitation neuronale.</p></li>
+<li><p>La réponse hémodynamique est visible une seconde après l’excitation neuronale.</p></li>
+<li><p>La réponse hémodynamique est maximale 2 secondes après l’excitation neuronale.</p></li>
+<li><p>La réponse hémodynamique est toujours visible 7 secondes après l’excitation neuronale.</p></li>
+<li><p>La réponse hémodynamique est toujours visible 30 secondes après l’excitation neuronale.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-7">
+<h3>Exercice 7<a class="headerlink" href="#exercice-7" title="Permalink to this headline">¶</a></h3>
+<p>Vrai / faux / peut-être? (expliquez pourquoi)</p>
+<ol class="simple">
+<li><p>Les données IRM fonctionnelle et structurelle doivent être réalignées pour générer une carte d’activation.</p></li>
+<li><p>Les données d’IRMf “brutes” (avant prétraitement) sont inutilisables pour générer une carte d’activation.</p></li>
+<li><p>Le lissage spatial est important, même pour une analyse individuelle.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-8">
+<h3>Exercice 8<a class="headerlink" href="#exercice-8" title="Permalink to this headline">¶</a></h3>
+<p>On compare l’activation pour une tâche de mémoire dans le cortex frontal entre deux groupes de participants: des sujets sains et des sujets âgés (N=20 par groupe). Contrairement à nos hypothèses, on ne trouve aucune différence. Donnez trois raisons qui peuvent expliquer ce résultat.</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -269,7 +540,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="morphometrie.html" title="previous page">Analyses morphométriques</a>
-    <a class='right-next' id="next-link" href="regression.html" title="next page">Régression linéaire</a>
+    <a class='right-next' id="next-link" href="connectivite.html" title="next page">Connectivité fonctionnelle</a>
 
         </div>
         

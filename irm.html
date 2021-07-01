@@ -111,13 +111,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="regression.html">
-   Régression linéaire
+  <a class="reference internal" href="connectivite.html">
+   Connectivité fonctionnelle
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
+  <a class="reference internal" href="regression.html">
+   Régression linéaire
   </a>
  </li>
  <li class="toctree-l1">
@@ -141,8 +141,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="reproducibilite.html">
-   Reproducibilité et controverses
+  <a class="reference internal" href="reproductibilite.html">
+   Reproductibilité et controverses
   </a>
  </li>
 </ul>
@@ -231,6 +231,113 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomie-d-un-irm">
+   Anatomie d’un IRM
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spin-magnetique-et-champ-b0">
+   Spin magnétique et champ B0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resonance-magnetique">
+   Résonance magnétique
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contrastes-t1-et-t2">
+   Contrastes T1 et T2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#t2-et-sequences-d-acquisition">
+   T2* et séquences d’acquisition
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusions-et-references-suggerees">
+     Conclusions et références suggérées
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     Références
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-1">
+     Exercice 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-2">
+     Exercice 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-3">
+     Exercice 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-4">
+     Exercice 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-5">
+     Exercice 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-6">
+     Exercice 6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-7">
+     Exercice 7
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-8">
+     Exercice 8
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-9">
+     Exercice 9
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-10">
+     Exercice 10
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -241,9 +348,169 @@
                 
   <div class="section" id="imagerie-par-resonance-magnetique">
 <span id="irm-chapitre"></span><h1>Imagerie par résonance magnétique<a class="headerlink" href="#imagerie-par-resonance-magnetique" title="Permalink to this headline">¶</a></h1>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Ève Picard</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+  </tr>
+</table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
+</div>
+<div class="section" id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="anatomie-d-un-irm">
+<h2>Anatomie d’un IRM<a class="headerlink" href="#anatomie-d-un-irm" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="spin-magnetique-et-champ-b0">
+<h2>Spin magnétique et champ B0<a class="headerlink" href="#spin-magnetique-et-champ-b0" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/xP9M486fRrY&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/xP9M486fRrY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="resonance-magnetique">
+<h2>Résonance magnétique<a class="headerlink" href="#resonance-magnetique" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/OAtffIWjzSM&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/OAtffIWjzSM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="contrastes-t1-et-t2">
+<h2>Contrastes T1 et T2<a class="headerlink" href="#contrastes-t1-et-t2" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/xzmMqHB0uyM&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/xzmMqHB0uyM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="t2-et-sequences-d-acquisition">
+<h2>T2* et séquences d’acquisition<a class="headerlink" href="#t2-et-sequences-d-acquisition" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/w9z_AN3df_c&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/w9z_AN3df_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<div class="section" id="conclusions-et-references-suggerees">
+<h3>Conclusions et références suggérées<a class="headerlink" href="#conclusions-et-references-suggerees" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="references">
+<h3>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="id1"></span></div>
+</div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercice-1">
+<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Permalink to this headline">¶</a></h3>
+<p>Classez les temps caractéristiques par ordre croissant, si possible.</p>
+<ul class="simple">
+<li><p>TE</p></li>
+<li><p>TR</p></li>
+<li><p>T1</p></li>
+</ul>
+</div>
+<div class="section" id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Permalink to this headline">¶</a></h3>
+<p>Vrai ou faux? la force du champ d’un IRM est liée à la taille de l’IRM.</p>
+</div>
+<div class="section" id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Permalink to this headline">¶</a></h3>
+<p>a ou b? le spin d’un proton d’hydrogène a…</p>
+<ul class="simple">
+<li><p>Une fréquence de rotation fixe, c’est la fréquence de Larmor.</p></li>
+<li><p>Une fréquence de rotation variable.</p></li>
+</ul>
+</div>
+<div class="section" id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Permalink to this headline">¶</a></h3>
+<p>Qu’est ce qui produit le bruit dans une acquisition IRM?</p>
+<ul class="simple">
+<li><p>Le champ B0.</p></li>
+<li><p>La climatisation pour refroidir l’aimant.</p></li>
+<li><p>Les bobines de gradient.</p></li>
+<li><p>L’antenne radio-fréquence.</p></li>
+</ul>
+</div>
+<div class="section" id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Permalink to this headline">¶</a></h3>
+<p>Vrai ou faux? L’aimant de l’IRM consomme beaucoup d’électricité.</p>
+</div>
+<div class="section" id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Permalink to this headline">¶</a></h3>
+<p>Vrai ou faux? L’IRM fonctionnelle et l’IRM de diffusion utilisent toutes les deux un contraste T2*.</p>
+</div>
+<div class="section" id="exercice-7">
+<h3>Exercice 7<a class="headerlink" href="#exercice-7" title="Permalink to this headline">¶</a></h3>
+<p>Dans un image anatomique, on voit des ventricules blancs sur fond noir. S’agit-il d’une acquisition pondérée en T1 ou en T2? Expliquez pourquoi.</p>
+</div>
+<div class="section" id="exercice-8">
+<h3>Exercice 8<a class="headerlink" href="#exercice-8" title="Permalink to this headline">¶</a></h3>
+<p>On décide de modifier une séquence IRM pour diminuer l’angle de bascule: les spins basculeront de 70 degrés, au lieu de 90 degrés. Quel sera l’effet sur le TR de cette modification?</p>
+</div>
+<div class="section" id="exercice-9">
+<h3>Exercice 9<a class="headerlink" href="#exercice-9" title="Permalink to this headline">¶</a></h3>
+<p>On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, et un résolution in-plane de 1 mm isotrope. Quelle est la taille de la matrice d’acquisition in-plane?</p>
+</div>
+<div class="section" id="exercice-10">
+<h3>Exercice 10<a class="headerlink" href="#exercice-10" title="Permalink to this headline">¶</a></h3>
+<p>On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm in-plane, une matrice in-plane de taille 64x64, une épaisseur de coupe de 3,4 mm (31 coupes). On a un TR de 2 secondes, et on acquiert 150 volumes.
+Quelle est la taille du champ de vue 3D, sachant que les coupes sont acquises dans le plan axial?
+Quelle est la durée de l’acquisition?</p>
+</div>
 </div>
 </div>
 

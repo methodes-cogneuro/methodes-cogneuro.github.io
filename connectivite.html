@@ -51,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="IRM de diffusion" href="irm_diffusion.html" />
-    <link rel="prev" title="Régression linéaire" href="regression.html" />
+    <link rel="next" title="Régression linéaire" href="regression.html" />
+    <link rel="prev" title="IRM fonctionnelle" href="irm_fonctionnelle.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -110,14 +110,14 @@
    IRM fonctionnelle
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="regression.html">
-   Régression linéaire
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Connectivité fonctionnelle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="regression.html">
+   Régression linéaire
   </a>
  </li>
  <li class="toctree-l1">
@@ -141,8 +141,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="reproducibilite.html">
-   Reproducibilité et controverses
+  <a class="reference internal" href="reproductibilite.html">
+   Reproductibilité et controverses
   </a>
  </li>
 </ul>
@@ -231,6 +231,88 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#carte-de-connectivite-fonctionnelle">
+   Carte de connectivité fonctionnelle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activite-intrinseque-et-activite-evoquee">
+   Activité intrinsèque et activité évoquée
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reseaux-fonctionnels">
+   Réseaux fonctionnels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications">
+   Applications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusions-et-references-suggerees">
+     Conclusions et références suggérées
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     Références
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-1">
+     Exercice 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-2">
+     Exercice 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-3">
+     Exercice 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-4">
+     Exercice 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-5">
+     Exercice 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-6">
+     Exercice 6
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -241,6 +323,198 @@
                 
   <div class="section" id="connectivite-fonctionnelle">
 <span id="connectivite-chapitre"></span><h1>Connectivité fonctionnelle<a class="headerlink" href="#connectivite-fonctionnelle" title="Permalink to this headline">¶</a></h1>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/sangfrois">
+        <img src="https://avatars.githubusercontent.com/u/38385719?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>François Lespinasse</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+  </tr>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
+</div>
+<div class="section" id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="carte-de-connectivite-fonctionnelle">
+<h2>Carte de connectivité fonctionnelle<a class="headerlink" href="#carte-de-connectivite-fonctionnelle" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/sRL6MyBG_VE&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/sRL6MyBG_VE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="activite-intrinseque-et-activite-evoquee">
+<h2>Activité intrinsèque et activité évoquée<a class="headerlink" href="#activite-intrinseque-et-activite-evoquee" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/OTWDQgEVOIA&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/OTWDQgEVOIA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="reseaux-fonctionnels">
+<h2>Réseaux fonctionnels<a class="headerlink" href="#reseaux-fonctionnels" title="Permalink to this headline">¶</a></h2>
+<p>Note pour plus de ressources voir cette <a class="reference external" href="https://pbellec.github.io/functional_parcellation/#/">présentation</a> et les <a class="reference external" href="https://github.com/pbellec/functional_parcellation">notebooks correspondants</a>.</p>
+</div>
+<div class="section" id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/5v4nnQ_FctQ&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/5v4nnQ_FctQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<div class="section" id="conclusions-et-references-suggerees">
+<h3>Conclusions et références suggérées<a class="headerlink" href="#conclusions-et-references-suggerees" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="references">
+<h3>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="id1"></span></div>
+</div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<p>On commence par des exercices de révisions, qui concernent la vidéo “resting-state network” suivante:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/_Iph3WW9UOU?start=18&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/_Iph3WW9UOU?start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<div class="section" id="exercice-1">
+<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Permalink to this headline">¶</a></h3>
+<p>“La septième jour” (sic), extrait en français: 0:54 - 4:35</p>
+<ol class="simple">
+<li><p>Qui représente le jeune homme?</p></li>
+<li><p>À quel résultat fait-il référence?</p></li>
+<li><p>Qui représente la jeune femme?</p></li>
+<li><p>À quel résultat fait-elle référence?</p></li>
+<li><p>Pourquoi appeler ce film “la septième jour” (sic) ?</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Permalink to this headline">¶</a></h3>
+<p>“Neuro-météorologie”: 4:48 - 5:30</p>
+<div class="tip admonition" id="neuro-meteorologie-tip">
+<p class="admonition-title">Traduction de l’extrait</p>
+<p>Regardons quelle activité intrinsèque nous arrive pour cette fin de semaine.
+Comme vous pouvez le voir ici, le mode par défaut et le réseau “tâche-positif” font leurs affaires habituelles, présent / absent, yin et yang. Cela ressemble à l’activité habituelle de rêverie et de concentration intense pour la fin de semaine.
+Le mode par défaut semble un peu dominant.
+Le visuel sera beau, le moteur sera beau, à moins qu’une fluctuation alcoolique soudaine nous arrive du sud.
+L’imagerie satellite nous indique des turbulences dans la région du précunéus qui pourraient devenir très intéressantes en début de semaine.
+Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d’être de tout repos.</p>
+</div>
+<ol class="simple">
+<li><p>De quels réseaux parle-t-on ici?</p></li>
+<li><p>Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?</p></li>
+<li><p>Est ce qu’il manque des réseaux dans cette prévision?</p></li>
+<li><p>Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Permalink to this headline">¶</a></h3>
+<p>“Hardball”: 8:01 - 9:46</p>
+<div class="tip admonition" id="hardball-tip">
+<p class="admonition-title">Traduction de l’extrait</p>
+<ul class="simple">
+<li><p>Présentateur (Pr): “Bonjour, aujourd’hui nous avons avec nous deux chercheurs distingués, Dr Yann Schnizel et Dr Paul Salami. Prêt à débattre sans compromis?”</p></li>
+<li><p>Paul Salami (PS): “Je souhaite dire que le développement de la littérature sur le mode par défaut et l’état de repos propose de bonnes questions, de bonnes expériences, et cela bénéficie pour l’essentiel aux jeunes qui démarrent la recherche, mais je ne pense pas personnellement qu’étudier le repos est particulièrement utile. Si vous voulez étudier le comportement, vous le faites de la façon traditionnelle, comme nous le faisions avant, vous le faites expérimentalement.”</p></li>
+<li><p>Yann Schnizel (YS): “Ce n’est pas le cas! La distinction importante n’est pas entre repos et tâche, mais plutôt entre activité intrinsèque et évoquée.”</p></li>
+<li><p>PS: “Si nous sommes tous les deux d’accord pour dire que l’activité spontanée est présente dans tous les états cognitifs, je ne vois pas pourquoi nous devrions spécifiquement, je dis bien spécifiquement!, dans un état de repos.”</p></li>
+<li><p>YS: “Nous ne devons certainement pas l’étudier exclusivement au repos, mais l’état de repos est LA condition dans laquelle ces fluctuations spontanées ont été étudiées de la manière la plus détaillée.”</p></li>
+<li><p>PS: “Ceci est fondamentalement non-psychologique!”</p></li>
+<li><p>YS: “Non!”</p></li>
+<li><p>PS: “non-psychologique!”</p></li>
+<li><p>YS: “VOUS êtes fondamentalement non-psychologique!”</p></li>
+<li><p>PS: “au moins j’étudie la cognition durant l’instant où l’événement cognitif se passe.”</p></li>
+<li><p>Pr: “whaou messieurs, les esprits s’échauffent! Calmons nous un peu. Il semble qu’il ne nous reste plus de temps.”
+(bataille entre PS et YS)</p></li>
+<li><p>Pr: “La semaine prochaine, dans “cluster analysis”, nous partirons sur la route avec Michael Milham, chanteur folk légendaire. Il voyage de par le monde pour partager l’histoire des réseaux au repos, en chanson. Merci d’avoir regardé cluster analysis sur le réseau du repos,”</p></li>
+</ul>
+</div>
+<ol class="simple">
+<li><p>Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?</p></li>
+<li><p>Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?</p></li>
+<li><p>En quoi est-il “non psychologique” d’étudier une condition de repos?</p></li>
+<li><p>Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Permalink to this headline">¶</a></h3>
+<p>Carte de connectivité: vrai/faux</p>
+<ol class="simple">
+<li><p>Une carte de connectivité change si on change la région cible.</p></li>
+<li><p>Pour définir une région cible, on doit faire une carte d’activation.</p></li>
+<li><p>Une carte de connectivité peut être générée avec un modèle de régression.</p></li>
+<li><p>Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.</p></li>
+<li><p>Une carte de connectivité en IRMf est un outil pour identifier le réseau du mode par défaut.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Permalink to this headline">¶</a></h3>
+<p>Activité spontanée et évoquée: vrai/faux</p>
+<ol class="simple">
+<li><p>L’activité spontanée du cerveau ne s’observe que dans un état de repos.</p></li>
+<li><p>L’activité cérébrale évoquée par une tâche peut être caractérisée par une carte d’activation IRMf.</p></li>
+<li><p>L’activité spontanée du cerveau est plus importante au repos que pendant une tâche visuelle dans certaines parties du cerveau.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Permalink to this headline">¶</a></h3>
+<p>On souhaite comparer la connectivité fonctionnelle entre des personnes jeunes et âgées.</p>
+<ol class="simple">
+<li><p>Citer un facteur de confusion potentiel, qui n’est pas lié à l’activité neuronale intrinsèque.</p></li>
+<li><p>On souhaite contrôler l’atrophie globale du cerveau dans cette analyse. Décriver brièvement une procédure statistique permettant de tenir compte de cette atrophie dans une comparaison de groupes.</p></li>
+</ol>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -268,8 +542,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="regression.html" title="previous page">Régression linéaire</a>
-    <a class='right-next' id="next-link" href="irm_diffusion.html" title="next page">IRM de diffusion</a>
+    <a class='left-prev' id="prev-link" href="irm_fonctionnelle.html" title="previous page">IRM fonctionnelle</a>
+    <a class='right-next' id="next-link" href="regression.html" title="next page">Régression linéaire</a>
 
         </div>
         

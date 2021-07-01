@@ -51,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Connectivité fonctionnelle" href="connectivite.html" />
-    <link rel="prev" title="IRM fonctionnelle" href="irm_fonctionnelle.html" />
+    <link rel="next" title="IRM de diffusion" href="irm_diffusion.html" />
+    <link rel="prev" title="Connectivité fonctionnelle" href="connectivite.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -110,14 +110,14 @@
    IRM fonctionnelle
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Régression linéaire
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="connectivite.html">
    Connectivité fonctionnelle
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Régression linéaire
   </a>
  </li>
  <li class="toctree-l1">
@@ -141,8 +141,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="reproducibilite.html">
-   Reproducibilité et controverses
+  <a class="reference internal" href="reproductibilite.html">
+   Reproductibilité et controverses
   </a>
  </li>
 </ul>
@@ -231,6 +231,34 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modele-de-la-reponse-hemodynamique">
+   Modèle de la réponse hémodynamique
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modele-lineaire-et-cartes-statistiques-individuelles">
+   Modéle linéaire et cartes statistiques individuelles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cartes-statistiques-de-groupe">
+   Cartes statistiques de groupe
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -241,6 +269,76 @@
                 
   <div class="section" id="regression-lineaire">
 <span id="regression-chapitre"></span><h1>Régression linéaire<a class="headerlink" href="#regression-lineaire" title="Permalink to this headline">¶</a></h1>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+  </tr>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
+</div>
+<div class="section" id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="modele-de-la-reponse-hemodynamique">
+<h2>Modèle de la réponse hémodynamique<a class="headerlink" href="#modele-de-la-reponse-hemodynamique" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/unzLOP9GS3Q&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/unzLOP9GS3Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="modele-lineaire-et-cartes-statistiques-individuelles">
+<h2>Modéle linéaire et cartes statistiques individuelles<a class="headerlink" href="#modele-lineaire-et-cartes-statistiques-individuelles" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/WIvMt3r7AVU&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/WIvMt3r7AVU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="cartes-statistiques-de-groupe">
+<h2>Cartes statistiques de groupe<a class="headerlink" href="#cartes-statistiques-de-groupe" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/mQtO_RwUIaE&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/mQtO_RwUIaE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -268,8 +366,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="irm_fonctionnelle.html" title="previous page">IRM fonctionnelle</a>
-    <a class='right-next' id="next-link" href="connectivite.html" title="next page">Connectivité fonctionnelle</a>
+    <a class='left-prev' id="prev-link" href="connectivite.html" title="previous page">Connectivité fonctionnelle</a>
+    <a class='right-next' id="next-link" href="irm_diffusion.html" title="next page">IRM de diffusion</a>
 
         </div>
         

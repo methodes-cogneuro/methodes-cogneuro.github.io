@@ -28,7 +28,14 @@ kernelspec:
         <a title="Quizz">⚠️</a>
         <a title="Révision du texte">👀</a>
     </td>
-
+    <td align="center">
+      <a href="https://github.com/SamGuay">
+        <img src="https://avatars.githubusercontent.com/u/30598330?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Samuel Guay</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
   </tr>
 </table>
 
@@ -182,7 +189,7 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 width: 800px
 name: volumes4D-fig
 ---
-Les données d'IRMf sont constituées d'une série de volumes cérébraux. Chaque voxel est associé à une série temporelle. Figure tiré de la [documentation Nilearn](https://nilearn.github.io/manipulating_images/masker_objects.html) sous license BSD.
+Les données d'IRMf sont constituées d'une série de volumes cérébraux. Chaque voxel est associé à une série temporelle. Figure tirée de la [documentation Nilearn](https://nilearn.github.io/manipulating_images/masker_objects.html) sous license BSD.
 ```
 L'IRM fonctionnelle est une modalité d'imagerie 4D. C'est à dire qu'au lieu d'acquérir un seul volume cérébral, on en acquiert une série séparés par un intervalle de temps appelé temps de répétition (`TR`) (aussi appelé $\Delta_t$ dans la {ref}`note sur la résolution temporelle <resolution-temporelle-tip>`). Le `TR` varie de quelques centaines de millisecondes (peu courant) jusqu'à 2 ou 3 secondes. Le nombre de répétitions est typiquement de quelques dizaines à quelques centaines. Pour chaque voxel, on a donc tout une série de points de mesures, qui peuvent être représentés comme une série temporelle. Pour être capable des volumes du cerveau aussi vite, on doit utiliser des gros voxels, qui vont de 2x2x2 mm$^3$ (peu courant) jusqu'à 3x3x3 mm$^3$ (plus standard). Avec cette résolution, on a à peu près 50k voxels dans la matière grise (plus de 100k quand la résolution est proche de 2x2x2 mm$^3$).
 
@@ -309,7 +316,7 @@ glue("regression-fig", fig, display=False)
 Gauche: illustration d'une régression linéaire entre une variable indépendante sur l'axe des x (aussi appelé facteur d'explication), et une variable dépendante sur l'axe des y. La droite représente la meilleure relation linéaire entre x et y, et l'intervalle de confiance statistique est également indiqué. Droite: un modèle de régression est appliqué à chaque voxel pour générer une carte cérébrale statistique. Ici, la carte statistique correspond aux changements d'activation IRMf lors d'un mouvement de la main. La figure de régression est adaptée de ce [tutoriel seaborn](https://seaborn.pydata.org/tutorial/regression.html) à l'aide du jeu de données `tips`. La carte statistique est visualisée grâce à ce [tutoriel nilearn](https://nilearn.github.io/auto_examples/01_plotting/plot_demo_plotting.html#sphx-glr-auto-examples-01-plotting-plot-demo-plotting-py) et une carte d'activité motrice distribuée via [NeuroVault](https://neurovault.org/). Cliquer sur + pour voir le code.
 ```
 
-Le dernier aspect important de ces notes de cours est que nous allons discuter de la manière dont les données sont analysées. Cela implique notamment des étapes d'analyse d'images, qui sont nécessaires pour générer des mesures interprétables. Cela implique aussi de faire des statistiques sur les images du cerveau que l'on génère. Il existe de nombreuses manières de faire ces statistiques, et le domaine des neurosciences cognitives utilise de plus en plus des techniques multivariées d'apprentissage machine. Mais la technique de référence reste le modèle de régression linéaire, qui est appliqué indépendamment à chaque voxel. Il s'agit d'un modèle très flexible, qui permet de répondre à un grand nombre de questions, aussi bien au niveau individuel que de groupe. Le modèle de régression linéaire est utilisé par l'ensemble des techniques de neuroimagerie vu en cours, et sera discuté dans le chapitre {ref}`regression-chapitre`. Le fait de répéter un test statistique à chaque voxel, des dizaines de milliers de fois, pose un problème pour décider du seuil de significativité. Nous discuterons des approches de seuillage dans le chapitre {ref}`cartes-statistiques-chapitre`. Enfin, ce type de modèle statistique peut être abusé de multiples manières, et amener à la publication de résultats non reproductibles. Nous discuterons de ces défis et de solution possible dans le dernier chapitre {ref}`reproducibilite-controverses-chapitre`.
+Le dernier aspect important de ces notes de cours est que nous allons discuter de la manière dont les données sont analysées. Cela implique notamment des étapes d'analyse d'images, qui sont nécessaires pour générer des mesures interprétables. Cela implique aussi de faire des statistiques sur les images du cerveau que l'on génère. Il existe de nombreuses manières de faire ces statistiques, et le domaine des neurosciences cognitives utilise de plus en plus des techniques multivariées d'apprentissage machine. Mais la technique de référence reste le modèle de régression linéaire, qui est appliqué indépendamment à chaque voxel. Il s'agit d'un modèle très flexible, qui permet de répondre à un grand nombre de questions, aussi bien au niveau individuel que de groupe. Le modèle de régression linéaire est utilisé par l'ensemble des techniques de neuroimagerie vu en cours, et sera discuté dans le chapitre {ref}`regression-chapitre`. Le fait de répéter un test statistique à chaque voxel, des dizaines de milliers de fois, pose un problème pour décider du seuil de significativité. Nous discuterons des approches de seuillage dans le chapitre {ref}`cartes-statistiques-chapitre`. Enfin, ce type de modèle statistique peut être abusé de multiples manières, et amener à la publication de résultats non reproductibles. Nous discuterons de ces défis et de solution possible dans le dernier chapitre {ref}`reproductibilite-controverses-chapitre`.
 
 ## Conclusions
 Ce chapitre vous a présenté un rapide tour de vue des différentes méthodes en neuroscience cognitives présentées dans le cours. Nous espérons que cela vous donne envie d'en apprendre davantage, et d'explorer ces notes de cours!
@@ -319,3 +326,36 @@ Ce chapitre vous a présenté un rapide tour de vue des différentes méthodes e
 ```{bibliography}
 :filter: docname in docnames
 ```
+
+## Exercices
+
+### Exercice 1
+
+On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.
+
+### Exercice 2
+
+Classez ces techniques par leur résolution spatiale:
+ 1. IRMf
+ 2. IRM structurelle
+ 3. PET
+
+### Exercice 3
+Classez ces techniques par leur résolution temporelle:
+ 1. IRMf
+ 2. Imagerie optique
+ 3. EEG
+ 4. IRM de diffusion
+
+### Exercice 4
+On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.
+ 1. Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.
+ 2. Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.
+
+### Exercice 5
+Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.
+ 1. Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.
+ 2. Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.
+
+### Exercice 6
+On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
