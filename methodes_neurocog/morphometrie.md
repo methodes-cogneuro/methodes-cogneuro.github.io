@@ -43,6 +43,9 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 ## Objectifs du cours
 
 Ce troisième chapitre introduit différentes approches utilisées afin de modéliser et d'exploiter les données acquises grâce aux techniques d'imagerie par résonance magnétique anatomique vues lors du cours 2.
+Tout d'abord, on y survolera des approches basées sur l'analyse de **volumes** telles que la **volumétrie manuelle** et l'**approche par voxel (*voxel-based morphometry* ou VBM)**
+Il sera ensuite question de l'utilisation du **recalage** dans le traitement des données d'imagerie.
+Nous terminerons cette séance avec une approche basées sur l'**analyse de surface**.
 
 ## Volumétrie manuelle
 ```{code-cell} ipython 3
