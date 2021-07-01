@@ -42,6 +42,8 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 
 ## Objectifs du cours
 
+Ce troisième chapitre introduit différentes approches utilisées afin de modéliser et d'exploiter les données acquises grâce aux techniques d'imagerie par résonance magnétique anatomique vues lors du cours 2.
+
 ## Volumétrie manuelle
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
