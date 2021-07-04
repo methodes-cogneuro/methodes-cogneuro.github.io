@@ -102,10 +102,9 @@ L'avantage premier de cette approche est son économie au niveau du temps néces
 En effet, comme cette technique présente une approche de segmentation automatisée, la présence d'une personne externe ne devient nécessaire que lors de l'étape de la vérification de la segmentation.
 Par contre, cette approche ayant une quantité importante de points de mesure (liés à chaque voxel étudié), elle pose aussi un sérieux problème de **comparaisons multiples** lorsque vient le temps de faire les analyses statistiques.
 
-
 > Les particularités des analyses statistiques en neuroimagerie seront vues en détail lors du [Chapitre 6: Régression linéaire](https://psy3018.github.io/notes_cours_psy3018/regression.html).
+>
 > Les particularités des corrections à apporter lors de ces analyses statistiques seront vues en détail lors du [Chapitre 10: Cartes statistiques](https://psy3018.github.io/notes_cours_psy3018/cartes_statistiques.html).
-
 
 Le traitement des données en VBM suit un processus en quatre étapes:
 1. La segmentation
@@ -114,15 +113,47 @@ Le traitement des données en VBM suit un processus en quatre étapes:
 4. Les analyses statistiques
 
 La **segmentation** est la première étape de la séquence.
-L'objectif de cette étape est de déterminer s'il y a de la matière grise dans chacun des voxels.
-La segmentation retournera donc une carte des voxels contenant de la matière grise.
+Dans le contexte de la VBM, qui est une analyse de la matière grise, l'objectif principal de cette étape est de déterminer s'il y a de la matière grise dans chacun des voxels.
+Un des types de segmentation automatisée qu'il est possible d'utiliser pour obtenir cette information est la segmentation probabiliste.
+Dans ce genre d'algorithme, on essaie d'attribuer une étiquette concernant le contenu du voxel (air autour de la tête, liquide céphalo-rachidien, matière grise, matière blanche, etc.).
+Pour ce faire, on établit la probabilité que la valeur du voxel appartienne à l'une ou l'autre des catégories possibles.
+La segmentation retournera donc une carte des voxels contenant probablement de la matière grise.
+Il est en effet possible que la segmentation automatique nous retourne certains autres tissus non-désirés, mais dont les valeurs étant similaires à celle de la matière grise, ne sont pas distinguées par l'algorithme de segmentation.
+Il est aussi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir).
+On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
+- Ce genre d'erreur est une source possible de faux positifs.
+Il est aussi possible de perdre certaines structures pour lequelles le contraste entre matière blanche et matière grise ne seraient pas assez important pour que l'algorithme réussisse à les classer efficacement.
+Pour ce genre de structure, il est important d'ajouter des a priori (des règles/conditions supplémentaires) dans notre algorithme de traitement afin de ne pas les perdre.
+Il est aussi envisageable d'effectuer cette partie de la segmentation de façon manuelle.
+- Ce genre d'erreur est une source possible de faux négatifs.
 
-La seconde étape est l'étape du **recalage dans un espace stéréotaxique de référence**.
-Celle-ci sert à pouvoir mettre en relation les différents voxels à travers différents sujets.
-Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, ni plus, ni moins, lorsque l'on fait une analyse en VBM, les unités de volume que nous obtenons ne sont pas liées à une structure particulière.
-En fonction de différentes sources de variation (par exemple: la position de la tête du sujet durant l'acquisition, la variabilité interindividuelle, etc.), un voxel *x* peut se retrouver dans des structures différents lorsque l'on compare deux sujets.
+La seconde étape est l'étape du **recalage dans un espace stéréotaxique de référence** (*coregistration* en anglais).
+Celle-ci sert à pouvoir mettre en relation les différents voxels à travers différents sujets (nécessaire pour les analyses statistiques).
+Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, ni plus, ni moins, lorsque l'on fait une analyse en VBM, les unités de volume (voxels) que nous obtenons ne sont pas liées à une structure particulière.
+En fonction de différentes sources de variation (par exemple: la position de la tête du sujet durant l'acquisition, la variabilité interindividuelle, etc.), un voxel *x* peut se retrouver dans des structures différentes lorsque l'on compare deux sujets.
 Il faut donc que l'on procède à cette étape afin de créer une concordance des différents voxels à travers les sujets à l'étude.
-L'espace stéréotaxique de référence que l'on crée est donc un système de référence sur lequel on réaligne les données de chaque sujet afin de permettre ces comparaisons.
+L'espace stéréotaxique de référence que l'on crée ainsi est donc un système de référence sur lequel on réaligne les données de chaque sujet afin de permettre ces comparaisons.
+Ainsi, on s'assure que lorsque l'on observe une coupe particulière du cerveau de différents participants, on observe aussi les mêmes structures.
+
+> Les détails concernant l'étape du recalage seront présentés plus en détail plus loin dans le [présent chapitre](https://psy3018.github.io/notes_cours_psy3018/morphometrie.html#recalage-d-images).
+
+L'étape suivante correspond au **lissage spatial** (aussi appelée convolution spatiale).
+Le lissage s'apparente à ajouter un filtre sur l'image la rendant plus floue.
+Il est nécessaire de procéder à cette étape afin d'obtenir des valeurs de densité de matière grise pour des zones qui dépasse le voxel unique.
+Comme l'objectif de notre carte de densité de matière grise est de pouvoir observer des densités locales contenant des groupes (voisinages) de voxels, il est plus facile de procéder à ce genre d'observation après l'étape du lissage spatial.
+Lors de cette opération, on remplace la valeur obtenue pour le voxel *x* par une moyenne pondérée par une distribution gaussienne des valeurs de ce voxel et des voxels avoisinants.
+Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement.
+Mais plus on s'éloigne du voxel d'intérêt *x*, moins les autres voxels influencent sa valeur.
+Afin de savoir jusqu'à quel point on s'éloignera du voxel *x* pour calculer la valeur lissée, il nous faudra un autre paramètre: le FWHM (*full width at half maximum*).
+- Il est important de ne pas confondre cette valeur avec l'écart-type.
+Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage de voxels qui auront un impact sur la valeur lissée du voxel *x*.
+
+> Les détails concernant l'étape du lissage spatial seront présentés plus en détail lors du [Chapitre 4: IRM fonctionnelle](https://psy3018.github.io/notes_cours_psy3018/irm_fonctionnelle.html#pretraitement-des-donnees-d-irmf).
+
+L'ultime étape de ce processus est celle des **analyses statistiques**.
+C'est lors de cette étape que l'on parvient à obtenir les cartes finales avec lesquelles il est possible de procéder aux analyses et de tirer les observations et conclusions d'une étude en morphométrie.
+On y superpose à l'image de l'espace stéréotaxique de référence les valeurs obtenues pour les régions où des informations d'intérêt statistique pour le protocol de recherche ont été obtenues.
+C'est généralement le genre d'image qui sera par la suite utilisé lors de publications scientifiques.
 
 ## Recalage d'images
 ```{code-cell} ipython 3
@@ -136,7 +167,7 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/VYN4K-K-Fjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
-## Recalage d'images
+## Recalage d'images (CETTE SECTION EST REDONDANTE??!!)
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
 
