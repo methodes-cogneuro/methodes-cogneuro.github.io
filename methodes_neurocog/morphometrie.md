@@ -94,6 +94,35 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/yyUKkPaG3Q8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
+L'**approche par voxel**, aussi mieux connue sous le nom de ***voxel-based morphometry*** (ou **VBM**) est une autre approche qu'il est possible d'employer afin de segmenter différentes aires d'intérêt du cerveau.
+Son objectif est de mesurer la densité de matière grise à l'intérieur et immédiatement autour d'un voxel donné.
+Cette approche est donc moins limitée par le besoin d'avoir des frontières préétablies claires entre les différentes structures à l'étude.
+Lorsque répétée pour l'entièreté du volume du cerveau, on peut obtenir une carte tridimensionnelle de la densité de matière grise à travers celui-ci.
+L'avantage premier de cette approche est son économie au niveau du temps nécessaire à un.e chercheur.e pour l'étape de la segmentation.
+En effet, comme cette technique présente une approche de segmentation automatisée, la présence d'une personne externe ne devient nécessaire que lors de l'étape de la vérification de la segmentation.
+Par contre, cette approche ayant une quantité importante de points de mesure (liés à chaque voxel étudié), elle pose aussi un sérieux problème de **comparaisons multiples** lorsque vient le temps de faire les analyses statistiques.
+
+> Les particularités des analyses statistiques en neuroimagerie seront vues en détail lors du [Chapitre 6: Régression linéaire](https://psy3018.github.io/notes_cours_psy3018/regression.html).
+>
+> Les particularités des corrections à apporter lors de ces analyses statistiques seront vues en détail lors du [Chapitre 10: Cartes statistiques](https://psy3018.github.io/notes_cours_psy3018/cartes_statistiques.html).
+
+Le traitement des données en VBM suit un processus en quatre étapes:
+1. La segmentation
+2. Le recalage dans un espace stéréotaxique de référence
+3. Le lissage spatial
+4. Les analyses statistiques
+
+La **segmentation** est la première étape de la séquence.
+L'objectif de cette étape est de déterminer s'il y a de la matière grise dans chacun des voxels.
+La segmentation retournera donc une carte des voxels contenant de la matière grise.
+
+La seconde étape est l'étape du **recalage dans un espace stéréotaxique de référence**.
+Celle-ci sert à pouvoir mettre en relation les différents voxels à travers différents sujets.
+Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, ni plus, ni moins, lorsque l'on fait une analyse en VBM, les unités de volume que nous obtenons ne sont pas liées à une structure particulière.
+En fonction de différentes sources de variation (par exemple: la position de la tête du sujet durant l'acquisition, la variabilité interindividuelle, etc.), un voxel *x* peut se retrouver dans des structures différents lorsque l'on compare deux sujets.
+Il faut donc que l'on procède à cette étape afin de créer une concordance des différents voxels à travers les sujets à l'étude.
+L'espace stéréotaxique de référence que l'on crée est donc un système de référence sur lequel on réaligne les données de chaque sujet afin de permettre ces comparaisons.
+
 ## Recalage d'images
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
