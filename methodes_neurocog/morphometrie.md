@@ -122,6 +122,7 @@ Il est en effet possible que la segmentation automatique nous retourne certains 
 Il est aussi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir).
 On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
 - Ce genre d'erreur est une source possible de faux positifs.
+
 Il est aussi possible de perdre certaines structures pour lequelles le contraste entre matière blanche et matière grise ne seraient pas assez important pour que l'algorithme réussisse à les classer efficacement.
 Pour ce genre de structure, il est important d'ajouter des a priori (des règles/conditions supplémentaires) dans notre algorithme de traitement afin de ne pas les perdre.
 Il est aussi envisageable d'effectuer cette partie de la segmentation de façon manuelle.
@@ -146,6 +147,7 @@ Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui a
 Mais plus on s'éloigne du voxel d'intérêt *x*, moins les autres voxels influencent sa valeur.
 Afin de savoir jusqu'à quel point on s'éloignera du voxel *x* pour calculer la valeur lissée, il nous faudra un autre paramètre: le FWHM (*full width at half maximum*).
 - Il est important de ne pas confondre cette valeur avec l'écart-type.
+
 Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage de voxels qui auront un impact sur la valeur lissée du voxel *x*.
 
 > Les détails concernant l'étape du lissage spatial seront présentés plus en détail lors du [Chapitre 4: IRM fonctionnelle](https://psy3018.github.io/notes_cours_psy3018/irm_fonctionnelle.html#pretraitement-des-donnees-d-irmf).
