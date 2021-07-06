@@ -168,32 +168,56 @@ warnings.filterwarnings("ignore")
 # Youtube
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/VYN4K-K-Fjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
-Le **recalage* est une étape cruciale du processus lorsque l'on utilise des approches automatisées basées sur des unités de volumes fixes à travers le cerveau (voxels) et que nous voulons pouvoir procéder à des comparaisons entre plusieurs sujets.
+Le **recalage** est une étape cruciale du processus lorsque l'on utilise des approches automatisées basées sur des unités de volumes fixes à travers le cerveau (voxels) et que nous voulons pouvoir procéder à des comparaisons entre plusieurs sujets.
 Cette étape peut aussi être nécessaire afin de comparer les données d'un même sujet acquises lors de différentes séances dans le scanneur.
 En effet, à chaque fois que les images de la tête d'un sujet présentent des différences:
--À cause d'un possible mouvement de la tête durant une même séance
--À cause d'un positionnement qui peut différer légèrement d'une séance à l'autre
--À cause des différences inter-individuelles
--etc.
+- À cause d'un possible mouvement de la tête durant une même séance
+- À cause d'un positionnement qui peut différer légèrement d'une séance à l'autre
+- À cause des différences inter-individuelles
+- Etc.
 
 il y aura un besoin de recalage afin de palier à ces différences et permettre les comparaisons.
 Sa principale fonction est de réaligner les images du cerveau sur une même référence, permettant ainsi de pouvoir comparer les voxels à leur équivalent (voxels représentant le même lieu physique dans les cerveaux représentés par différentes images).
 Différents types de recalage sont disponibles, ont des propriétés plus ou moins complexes et permettent des comparaisons entre des cerveau présentant plus ou moins de variations inter-individuelles.
 
-#### Recalage linéaire
+### Recalage linéaire
 Le **recalage linéaire** est la version la plus simple du processus de recalage, mais il est aussi la première étape de la version plus complexe du processus qu'est le recalage non-linéaire.
 Cette technique est efficace pour aligner le contour du cerveau et/ou les structures de grande taille s'y trouvant.
 En d'autres mots, cette technique peut être utilisé pour ajuster les grosses différences.
 Le recalage linéaire est une combinaison plus ou moins complexe, selon les besoins, de trois paramètres de transformation linéaire:
--La rotation (pour corriger si la tête a pivoté)
--La translation (si la tête est décalée latéralement)
--La mise à l'échelle (afin d'ajuster la taille et/ou la forme du cerveau)
+- La rotation (pour corriger si la tête a pivoté)
+- La translation (si la tête est décalée latéralement)
+- La mise à l'échelle (afin d'ajuster la taille et/ou la forme du cerveau)
 
 Chacun de ces paramètres peut être modifié le long des trois axes (espace tridimensionnel), ce qui nous donne un total de 9 paramètres pouvant être ajustés.
 Ces paramètres seront estimés par un algorithme et nous permettront de réaligner grossièrement les images de cerveau étudiées.
 
-#### Recalage non-linéaire
-Le **recalage non-linéaire** est une étape plus complexe permettant des ajustements localisés, tels que des asymétries, grâce à une norme (*template*) basée sur notre espace stéréotaxique de référence.
+### Recalage non-linéaire
+Le **recalage non-linéaire** est une étape plus complexe permettant des ajustements localisés.
+Il reste tout de même nécessaire de débuter par un racalage linaire avant de procéder au recalage non-linéaire.
+Cette seconde étape permettra de tenir compte des différences plus fines pour lesquelles il n'était pas possible d'obtenir de correction à l'aide du recalage linéaire.
+Il permettra aussi de positionner les aires cérébrales de différents sujets aux mêmes endroits sur les images afin de faciliter les analyses comparatives.
+Afin de compléter ce second recalage, il est nécessaire de construire une norme (*template*) basée sur notre espace stéréotaxique de référence.
+L'objectif de la norme est de construire une carte caractérisant l'ensemble des changements non-linéaires locaux qu'il est nécessaire d'effectuer afin de parvenir à la référence.
+Il est important que les déformations soient continues.
+Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage.
+Il est possible que la distance entre ces points soit plus ou moins grande que celle d'origine, mais il est nécessaire de conserver la continuité dans les lignes du cadrillage de la norme.
+
+### Volumétrie
+Maintenant, que l'espace stéréotaxique de référence de notre groupe de participants est généré et que l'ensemble des images individuelles ont été recalées sur cette référence, il est possible de procéder à une analyse de la volumétrie
+Que le choix se porte vers une segmentation manuelle (telle que vu précédement dans ce chapitre) ou vers l'utilisation d'un atlas, le recalage rend la segmentation de la référence généralisable aux images individuelles recalées.
+On facilite ainsi grandement le processus en permettant une automatisation du processus de segmentation pour chacun des sujets.
+
+### Contrôle de qualité
+Comme pour toute opération automatisée, il reste toujours une possibilité d'erreur au cours du processus de recalage.
+Il est donc nécessaire de prévoir une étape de vérification des résultats afin de s'assurer qu'il n'y a pas eu d'aberrations qui se sont introduites dans les données.
+Ces aberrations peuvent venir de plusieurs sources différentes:
+- Erreurs dans les étapes de recalage linéaire et/ou non-linéaire
+- Présence d'artéfacts lors de l'acquisition des données (présence d'objects métalliques, etc.)
+- Etc.
+
+Cette vérification de la qualité des images permettra d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
+Concerver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées, c'est pourquoi il est primordial de garder ce risque en tête lors du traitement des données.
 
 ## Recalage d'images (CETTE SECTION SEMBLE REDONDANTE??!!)
 ```{code-cell} ipython 3
