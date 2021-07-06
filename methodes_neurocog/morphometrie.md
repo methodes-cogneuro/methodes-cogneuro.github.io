@@ -168,8 +168,34 @@ warnings.filterwarnings("ignore")
 # Youtube
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/VYN4K-K-Fjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
+Le **recalage* est une étape cruciale du processus lorsque l'on utilise des approches automatisées basées sur des unités de volumes fixes à travers le cerveau (voxels) et que nous voulons pouvoir procéder à des comparaisons entre plusieurs sujets.
+Cette étape peut aussi être nécessaire afin de comparer les données d'un même sujet acquises lors de différentes séances dans le scanneur.
+En effet, à chaque fois que les images de la tête d'un sujet présentent des différences:
+-À cause d'un possible mouvement de la tête durant une même séance
+-À cause d'un positionnement qui peut différer légèrement d'une séance à l'autre
+-À cause des différences inter-individuelles
+-etc.
 
-## Recalage d'images (CETTE SECTION EST REDONDANTE??!!)
+il y aura un besoin de recalage afin de palier à ces différences et permettre les comparaisons.
+Sa principale fonction est de réaligner les images du cerveau sur une même référence, permettant ainsi de pouvoir comparer les voxels à leur équivalent (voxels représentant le même lieu physique dans les cerveaux représentés par différentes images).
+Différents types de recalage sont disponibles, ont des propriétés plus ou moins complexes et permettent des comparaisons entre des cerveau présentant plus ou moins de variations inter-individuelles.
+
+#### Recalage linéaire
+Le **recalage linéaire** est la version la plus simple du processus de recalage, mais il est aussi la première étape de la version plus complexe du processus qu'est le recalage non-linéaire.
+Cette technique est efficace pour aligner le contour du cerveau et/ou les structures de grande taille s'y trouvant.
+En d'autres mots, cette technique peut être utilisé pour ajuster les grosses différences.
+Le recalage linéaire est une combinaison plus ou moins complexe, selon les besoins, de trois paramètres de transformation linéaire:
+-La rotation (pour corriger si la tête a pivoté)
+-La translation (si la tête est décalée latéralement)
+-La mise à l'échelle (afin d'ajuster la taille et/ou la forme du cerveau)
+
+Chacun de ces paramètres peut être modifié le long des trois axes (espace tridimensionnel), ce qui nous donne un total de 9 paramètres pouvant être ajustés.
+Ces paramètres seront estimés par un algorithme et nous permettront de réaligner grossièrement les images de cerveau étudiées.
+
+#### Recalage non-linéaire
+Le **recalage non-linéaire** est une étape plus complexe permettant des ajustements localisés, tels que des asymétries, grâce à une norme (*template*) basée sur notre espace stéréotaxique de référence.
+
+## Recalage d'images (CETTE SECTION SEMBLE REDONDANTE??!!)
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
 
