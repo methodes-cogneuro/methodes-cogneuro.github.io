@@ -204,7 +204,7 @@ Autrement dit, des endroits adjacents dans les images non-recalées doivent touj
 Il est possible que la distance entre ces points soit plus ou moins grande que celle d'origine, mais il est nécessaire de conserver la continuité dans les lignes du cadrillage de la norme.
 
 ### Volumétrie
-Maintenant, que l'espace stéréotaxique de référence de notre groupe de participants est généré et que l'ensemble des images individuelles ont été recalées sur cette référence, il est possible de procéder à une analyse de la volumétrie
+Maintenant, que l'espace stéréotaxique de référence de notre groupe de participants est généré et que l'ensemble des images individuelles ont été recalées sur cette référence, il est possible de procéder à une analyse de la volumétrie.
 Que le choix se porte vers une segmentation manuelle (telle que vu précédement dans ce chapitre) ou vers l'utilisation d'un atlas, le recalage rend la segmentation de la référence généralisable aux images individuelles recalées.
 On facilite ainsi grandement le processus en permettant une automatisation du processus de segmentation pour chacun des sujets.
 
@@ -217,7 +217,7 @@ Ces aberrations peuvent venir de plusieurs sources différentes:
 - Etc.
 
 Cette vérification de la qualité des images permettra d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
-Concerver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées, c'est pourquoi il est primordial de garder ce risque en tête lors du traitement des données.
+Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées, c'est pourquoi il est primordial de garder ce risque en tête lors du traitement des données.
 
 ## Recalage d'images (CETTE SECTION SEMBLE REDONDANTE??!!)
 ```{code-cell} ipython 3
