@@ -40,6 +40,11 @@ kernelspec:
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
 ## Objectifs du cours
+*   Comprendre la définition de la connectivité fonctionnelle.
+*   Comprendre la distinction entre activité intrinsèque et évoquée.
+*   Comprendre la notion de réseau fonctionnel.
+*   Connaître les principaux réseaux au repos.
+
 
 ## Carte de connectivité fonctionnelle
 
@@ -123,10 +128,10 @@ Le visuel sera beau, le moteur sera beau, à moins qu’une fluctuation alcooliq
 L’imagerie satellite nous indique des turbulences dans la région du précunéus qui pourraient devenir très intéressantes en début de semaine.
 Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d’être de tout repos.  
 ```
- 1. De quels réseaux parle-t-on ici?
- 2. Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
- 3. Est ce qu’il manque des réseaux dans cette prévision?
- 4. Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
+1.  De quels réseaux parle-t-on ici?
+2.  Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
+3.  Est ce qu’il manque des réseaux dans cette prévision?
+4.  Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
 
 ### Exercice 3
 “Hardball”: 8:01 - 9:46
@@ -147,7 +152,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 (bataille entre PS et YS)
  - Pr: “La semaine prochaine, dans “cluster analysis”, nous partirons sur la route avec Michael Milham, chanteur folk légendaire. Il voyage de par le monde pour partager l’histoire des réseaux au repos, en chanson. Merci d’avoir regardé cluster analysis sur le réseau du repos,”
 ```
- 1. Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
+ 1.Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
  2. Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?
  3. En quoi est-il “non psychologique” d’étudier une condition de repos?
  4. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
