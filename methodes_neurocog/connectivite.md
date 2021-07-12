@@ -47,6 +47,14 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 
 
 ## Carte de connectivité fonctionnelle
+Revenons ce qu'est une carte d'activation IRMf afin de nous donner une compréhension intuitive de ce qu'est une carte connectivité fonctionnelle. Une carte d'activation exploite des fluctuations BOLD évoquées par une tâche, de sorte que nous puissions les associer avec des fluctuations qui changent en fonction d'un paradigme expérimental.
+
+La carte d'activation illustre donc les voxels dont l'activité est plus ou moins reliée à une tâche (ou bloc expérimental) à comparer à l'autre. En d'autres mots, elle indique la corrélation entre l'activité attendue (soit, celle hypothétiquement associée au bloc expérimental) et l'activité mesurée (soit, le signal BOLD-IRMf de tous les voxels).
+
+Ici, il est important de souligner que le signal BOLD peut être exploité par de nombreux modèles statistiques différents, c'est-à-dire que la carte d'activation  d'un seul sujet elle-même est un modèle.
+
+**Exemples:** Nous pourrions décider de mesurer la corrélation entre le décours temporel de chaque voxel et l'intensité avec laquelle un participant presse sur un ou des boutons d'un contrôleur avec son pouce. Nous obtiendrions probablement une carte d'activation montrant des voxels significativement activés au cortex moteur. Nous pourrions aussi mesurer la corrélation entre le décours temporel de chaque voxel et le décours temporel du rythme du coeur. Nous obtiendrions probablement une carte d'activation montrant des voxels significativement activés au niveau des strucutures sous-corticales. Finalement, dans le contexte du cours, notre intérêt serait de mesurer la corrélation entre le décours temporel des voxels d'une région particulière et le reste des voxels. De cette façon, nous obtiendrions une carte de connectivité fonctionnelle montrant avec quelle autre(s) région(s) l'activité BOLD de celle choisie est reliée.
+{: .note}
 
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
@@ -60,6 +68,11 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/sRL6My
 ```
 
 ## Activité intrinsèque et activité évoquée
+La connectivité cérébrale locale (cytoarchitecture) et distribuée (fibres de matière blanche) amènent à l’émergence transitoire d’assemblées neuronales fonctionnelles à différentes échelles spatiales. Différentes techniques existent pour capturer ce phénomène à partir du signal BOLD [@Varela2001].
+En général, les modèles de connectivité fonctionnelle tente de répondre à ce que @Varela2001 a nommé le problème d'intégration à grande-échelle. Ceci réfère à l'idée que le système nerveux coordonne un série de procesus distribués hiérarchiquement au travers les différentes régions cérébrales afin de produire un "moment cognitif unifié". Ceux-ci émergent d'une synchronisation de l'activité dans des régions cérébrales distantes, d'où l'intérêt de mesurer la corrélation entre un ensemble de voxels d'avec le reste.
+
+Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Dans ce cas, nous pouvons créer des cartes de connectivité fonctionnelle de l'activité intrinsèque du cerveau. Ou alors, celui-ci peut réaliser une tâche quelconque, et nous tentons de mesurer la corrélation entre la tâche et l'activité d'un ensemble de régions co-activés.
+
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
 
@@ -72,6 +85,14 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/OTWDQg
 ```
 
 ## Réseaux fonctionnels
+Une méta-analyse effectuée à partir de données TEP identifie un réseau de régions dont l’activité est plus élevée au repos que durant l’exécution d’une série de tâches [@Shulman1997]. Dans un article de revue, @Raichle2001 proposent que ce réseau de régions est engagé de manière systématique dans des processus cognitifs dominant dans l’état de repos, et baptisent ce réseau “mode par défaut”.
+
+@Greicius2002 utilisent la méthodologie introduite par @Biswal1995, en utilisant l’IRMf au repos, et une région cible dans le cortex cingulaire postérieur. Cette analyse identifie un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, identifié via les déactivations en TEP.
+
+Une carte de connectivité au repos associé au réseau attentionnel dorsal identifie une corrélation négative avec le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état dirigé vers l’extérieur, et un état introspectif, reflétant la compétition entre deux réseaux distribués [@Fox2005].
+
+@ThomasYeo2011 identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.
+
 Note pour plus de ressources voir cette [présentation](https://pbellec.github.io/functional_parcellation/#/) et les [notebooks correspondants](https://github.com/pbellec/functional_parcellation).
 
 ## Applications
@@ -87,6 +108,11 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/5v4nnQ
 ```
 
 ### Conclusions et références suggérées
+*   La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité d’une région cible et l’activité du reste du cerveau.
+
+*   La connectivité fonctionnelle peut être observée au repos (activité spontanée), en l’absence de protocole expérimental. En général, on a une superposition de l’activité évoquée vs spontanée.
+
+*   Un réseau fonctionnel est un groupe de régions dont l’activité spontanée prés ente une forte connectivité fonctionnelle. On distingue 7 réseaux principaux, dont le réseau du mode par défaut.
 
 ### Références
 
