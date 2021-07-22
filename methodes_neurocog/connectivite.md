@@ -53,10 +53,10 @@ La carte d'activation illustre donc les voxels dont l'activité est plus ou moin
 
 Ici, il est important de souligner que le signal BOLD peut être exploité par de nombreux modèles statistiques différents, c'est-à-dire que la carte d'activation  d'un seul sujet elle-même est un modèle.
 
-```{admonition} Exemples
+```{admonition} Exemple
 :class: tip
 :name: hardball-tip
-Nous pourrions décider de mesurer la corrélation entre le décours temporel de chaque voxel et l'intensité avec laquelle un participant presse sur un ou des boutons d'un contrôleur avec son pouce. Nous obtiendrions probablement une carte d'activation montrant des voxels significativement activés au cortex moteur. Nous pourrions aussi mesurer la corrélation entre le décours temporel de chaque voxel et le décours temporel du rythme du coeur. Nous obtiendrions probablement une carte d'activation montrant des voxels significativement activés au niveau des strucutures sous-corticales. Finalement, dans le contexte du cours, notre intérêt serait de mesurer la corrélation entre le décours temporel des voxels d'une région particulière et le reste des voxels. De cette façon, nous obtiendrions une carte de connectivité fonctionnelle montrant avec quelle autre(s) région(s) l'activité BOLD de celle choisie est reliée.
+Nous pourrions décider de mesurer la corrélation entre le décours temporel de chaque voxel et le moment auquel un participant presse sur un bouton d'un contrôleur avec son pouce. Nous obtiendrions une carte d'activation montrant des voxels significativement activés au cortex moteur. Dans le contexte du cours, nous nous intéressons à la corrélation entre le décours temporel des voxels d'une région particulière et le reste des voxels. De cette façon, nous obtiendrions une carte de connectivité fonctionnelle.
 ```
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
@@ -70,11 +70,11 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/sRL6My
 ```
 
 ## Activité intrinsèque et activité évoquée
-La connectivité cérébrale locale (cytoarchitecture) et distribuée (fibres de matière blanche) amènent à l’émergence transitoire d’assemblées neuronales fonctionnelles à différentes échelles spatiales. Différentes techniques existent pour capturer ce phénomène à partir du signal BOLD {cite:p}`Varela2001`.
+La connectivité cérébrale locale (cytoarchitecture) et distribuée (fibres de matière blanche) amènent l’émergence transitoire d’assemblées neuronales fonctionnelles à différentes échelles spatiales. Différentes techniques existent pour capturer ce phénomène à partir du signal BOLD {cite:p}`Varela2001`.
 
-En général, les modèles de connectivité fonctionnelle tentent de répondre à ce que Varela et collègues {cite:p}`Varela2001` ont nommé le problème d'intégration à grande-échelle. Ceci réfère à l'idée que le système nerveux coordonne une série de procesus distribuée hiérarchiquement au travers les différentes régions cérébrales afin de produire un "moment cognitif unifié". Ceci émerge d'une synchronisation de l'activité dans des régions cérébrales distantes, d'où l'intérêt de mesurer la corrélation entre un ensemble de voxels d'avec le reste.
+En général, les modèles de connectivité fonctionnelle tentent de répondre à ce que Varela et collègues {cite:p}`Varela2001` ont nommé le problème d'intégration à grande-échelle (ou *large-scale integration problem*). Ceci réfère à l'idée que le système nerveux coordonne une série de procesus distribuée hiérarchiquement au travers les différentes régions cérébrales afin de produire un "moment cognitif unifié". Ceci émerge d'une synchronisation de l'activité dans des régions cérébrales distantes, d'où l'intérêt de mesurer la corrélation entre un ensemble de voxels d'avec le reste.
 
-Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Dans ce cas, nous pouvons créer des cartes de connectivité fonctionnelle de l'activité intrinsèque du cerveau. Ou alors, nous tentons de mesurer l'activité évoquée par la tâche en observant les régions cérébrales les plus corrélées. Dans un tel cas, nous obtenons une carte de connectivité fonctionnelle de l'activité évoquée par la tâche.
+Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Dans ce cas, nous pouvons créer des cartes de connectivité fonctionnelle de *l'activité intrinsèque* du cerveau. Ou alors, nous mesurons le signal BOLD associé à la tâche en observant les régions cérébrales les plus corrélées. Dans un tel cas, nous obtenons une carte de connectivité fonctionnelle de *l'activité évoquée* par la tâche.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
