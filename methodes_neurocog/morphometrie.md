@@ -78,6 +78,7 @@ La procédure nécessitera l'utilisation d'un logiciel permettant de dessiner le
 On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
 
 > Pour un rappel concernant termes et les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](https://psy3018.github.io/cartes_cerebrales.html#irm-structurelle).
+
 Le processus nécessaire à l'obtention d'une segmentation finale précise d'une structure unique peut donc être très long et ardu.
 Il devra d'ailleurs être répété de nouveau pour chaque nouvelle structure d'intérêt.
 
@@ -161,12 +162,12 @@ La segmentation retournera donc une carte des voxels contenant probablement de l
 Il est en effet possible que la segmentation automatique nous retourne certains autres tissus non-désirés, mais dont les valeurs étant similaires à celle de la matière grise, ne sont pas distinguées par l'algorithme de segmentation.
 Il est aussi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir).
 On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
-- Ce genre d'erreur est une source possible de faux positifs.
+- Ce genre d'erreur est une source possible de **faux positifs**.
 
 Il est aussi possible de perdre certaines structures pour lequelles le contraste entre matière blanche et matière grise ne seraient pas assez important pour que l'algorithme réussisse à les classer efficacement.
 Pour ce genre de structure, il est important d'ajouter des a priori (des règles/conditions supplémentaires) dans notre algorithme de traitement afin de ne pas les perdre.
 Il est aussi envisageable d'effectuer cette partie de la segmentation de façon manuelle.
-- Ce genre d'erreur est une source possible de faux négatifs.
+- Ce genre d'erreur est une source possible de **faux négatifs**.
 
 La seconde étape est l'étape du **recalage dans un espace stéréotaxique de référence** (*coregistration* en anglais).
 Celle-ci sert à pouvoir mettre en relation les différents voxels à travers différents sujets (nécessaire pour les analyses statistiques).
@@ -289,16 +290,17 @@ Par contre, qui dit surface corticale, sous-entend aussi que les structures sous
 Cette famille de techniques n'est donc pas recommandée pour un protocol de recherche durant lequel on voudrait étudier des structures enfouies dans la boîte crânienne telles que l'hypothalamus, les ganglions de la base, etc.
 Plutôt que de procéder à l'analyse du contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
 Ainsi, on cherche à étudier à l'aide de ceux-ci la forme que prend localement la matière grise.
+
 Le processus permettant d'arriver aux résultats débute de façon similaire à celui des analyses volumétriques précédentes.
-En effet, la première étape consiste encore à procéder au prétraitement (recalage et contrôle de qualité) et à la segmentation des images du cerveau.
+- En effet, la première étape consiste encore à procéder au **prétraitement** (recalage et contrôle de qualité) et à la **segmentation** des images du cerveau.
 Par contre, certaines des étapes suivantes diffèrent de celles utilisées lors des protocols de volumétrie.
-De ce fait, la seconde étape vise à délimiter la frontière entre la surface de matière grise et les tissus/milieux environnant.
-Afin d'y parvenir, on utilisera des modèles permettant d'estimer la surface piale (surface extérieure du cortex, à la frontière entre la matière grise et le liquide céphalo-rachidien) et la surface intérieure (à la frontière entre la matière grise et la matière blanche).
+- De ce fait, la seconde étape vise à **délimiter la frontière** entre la surface de matière grise et les tissus/milieux environnant.
+Afin d'y parvenir, on utilisera des modèles permettant d'estimer la **surface piale** (surface extérieure du cortex, à la frontière entre la matière grise et le liquide céphalo-rachidien) et la **surface intérieure** (à la frontière entre la matière grise et la matière blanche).
 Il faudra, pour y parvenir, éliminer des images les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.).
-C'est l'étape de la création du masque du cerveau.
+C'est l'étape de la création du **masque** du cerveau.
 Il est important de s'assurer, une fois que le masque est généré, qu'il contient bel et bien l'ensemble du volume du cerveau, ni plus, ni moins.
-Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre ne péril l'ensemble des étapes suivantes.
-On procédera ensuite à la délimitation à proprement dit des surfaces piale et interne.
+Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre en péril l'ensemble des étapes suivantes.
+- On procédera ensuite à la **délimitation des surfaces** piale et interne.
 Pour ce faire, on modélisera un volume en forme de ballon virtuel au centre de chacun des hémisphères du cerveau.
 On définit ensuite des contraintes physiques (délimitation de la "cavité" interne dans laquelle le ballon peut évoluer) afin de marquer la frontière entre la matière blanche et la matière grise (surface interne).
 On procède ensuite à "gonfler" ce ballon jusqu'à ce qu'il épouse le mieux possible la frontière de la surface interne (jusqu'à ce que le ballon soit gonflé jusqu'à occuper tout l'espace dans la cavité et suivre l'ensemble des courbes de la paroi).
@@ -308,12 +310,18 @@ Lorsque l'une des frontières (surface interne ou surface piale) est délimitée
 On peut ensuite utiliser la distance entre les deux surfaces en un point donné afin d'évaluer l'épaisseur corticale pour ce vertex.
 Cette distance est obtenue en prenant la perpendiculaire à l'une des surfaces et en mesurant la distance entre les deux surfaces le long de cette perpendiculaire.
 Ce genre de technique permet par la suite de générer des cartes d'épaisseur corticale.
+
+```{admonition} Attention
+:class: caution attention
+:name: controle-qualite-attention
 Malheureusement, ce genre de technique est coûteuse en terme de ressources de calcul et des erreurs peuvent survenir à plusieurs niveaux.
 Par exemple, cette technique est particulièrement peu robuste face aux effets des volumes partiels.
 On pourrait en effet avoir une surface qui ne se rend pas jusqu'au fond d'un sulcus, ou lorsque les giri sont très rapprochés, qui ne rentre même pas à l'intérieur du sulcus.
 Le résultat de ces deux types d'erreurs, qui sont possibles autant sur la surface piale que sur la surface interne, sera une forte surestimation localisée de l'épaisseur corticale.
 C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment.
-La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des analyses statistiques.
+```
+
+- La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des analyses statistiques.
 
 ## Conclusion
 Ce chapitre vous a introduit aux différentes familles de techniques de segmentation qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
