@@ -242,3 +242,36 @@ warnings.filterwarnings("ignore")
 # Youtube
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/S-8rk7PlWBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
+
+## Exercices (version provisoire: copy/paste du template depuis le chapitre 1)
+
+### Exercice 1
+
+On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.
+
+### Exercice 2
+
+Classez ces techniques par leur résolution spatiale:
+ 1. IRMf
+ 2. IRM structurelle
+ 3. PET
+
+### Exercice 3
+Classez ces techniques par leur résolution temporelle:
+ 1. IRMf
+ 2. Imagerie optique
+ 3. EEG
+ 4. IRM de diffusion
+
+### Exercice 4
+On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.
+ 1. Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.
+ 2. Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.
+
+### Exercice 5
+Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.
+ 1. Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.
+ 2. Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.
+
+### Exercice 6
+On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
