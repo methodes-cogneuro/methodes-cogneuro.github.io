@@ -291,7 +291,7 @@ Cette famille de techniques n'est donc pas recommandée pour un protocol de rech
 Plutôt que de procéder à l'analyse du contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
 Ainsi, on cherche à étudier à l'aide de ceux-ci la forme que prend localement la matière grise.
 
-Le processus permettant d'arriver aux résultats débute de façon similaire à celui des analyses volumétriques précédentes.
+Le processus permettant d'arriver aux résultats partage certaines similitudes avec les analyses volumétriques, alors que d'autres étapes sont spécifiques aux analyses de surface.
 - En effet, la première étape consiste encore à procéder au **prétraitement** (recalage et contrôle de qualité) et à la **segmentation** des images du cerveau.
 Par contre, certaines des étapes suivantes diffèrent de celles utilisées lors des protocols de volumétrie.
 - De ce fait, la seconde étape vise à **délimiter la frontière** entre la surface de matière grise et les tissus/milieux environnant.
@@ -321,7 +321,7 @@ Le résultat de ces deux types d'erreurs, qui sont possibles autant sur la surfa
 C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment.
 ```
 
-- La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des analyses statistiques.
+- La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des **analyses statistiques**.
 
 ## Conclusion
 Ce chapitre vous a introduit aux différentes familles de techniques de segmentation qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
