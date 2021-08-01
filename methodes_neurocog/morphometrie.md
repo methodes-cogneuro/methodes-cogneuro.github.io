@@ -77,10 +77,48 @@ Cette façon de faire est essentielle afin d'assurer une segmentation logique, u
 La procédure nécessitera l'utilisation d'un logiciel permettant de dessiner les "frontières" de chacune des aires que l'on veut pouvoir identifier sur les images obtenues lors du scan d'un cerveau.
 On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
 
-> Pour un rappel concernant termes et les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](https://psy3018.github.io/notes_cours_psy3018/cartes_cerebrales.html#irm-structurelle).
-
+> Pour un rappel concernant termes et les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales]({ref}`Naviguer les coupes du cerveau<coupes-tip>`).
 Le processus nécessaire à l'obtention d'une segmentation finale précise d'une structure unique peut donc être très long et ardu.
 Il devra d'ailleurs être répété de nouveau pour chaque nouvelle structure d'intérêt.
+
+## Un mot sur l'utilisation d'atlas de segmentation
+
+Afin de faciliter la standardisation de la segmentation, il est possible d'utiliser des cartes préétablies par des équipes de chercheurs.
+On appelle ces cartes des **atlas de segmentation**.
+Ceux-ci sont développés par des équipes de scientifiques afin de permettre une segmentation robuste 
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+# Téléchargement de l'atlas de Yeo (2011)
+from nilearn import datasets
+
+atlas_yeo_2011 = datasets.fetch_atlas_yeo_2011()
+atlas_yeo = atlas_yeo_2011.thick_7
+
+# Visualisation de la figure
+from myst_nb import glue
+from nilearn import plotting
+
+plotting.plot_roi(atlas_yeo,
+                  title = 'Original Yeo atlas',
+                  cut_coords = (8, -4, 9),
+                  colorbar = True,
+                  cmap = 'Paired')
+
+glue("atlas1-fig", fig, display=False)
+```
+
+```{glue:figure} atlas1-fig
+
+:figwidth: 800px
+:name: "atlas1-fig"
+
+Un exemple de segmentation utilisant l'atlas de Yeo (2011), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite).
+Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes.
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé fetch_atlas_yeo_2011 **CITATION À AJOUTER** (cliquer sur + pour voir le code).
+```
+
 
 ## Approche par voxel (*Voxel-based morphometry*)
 ```{code-cell} ipython 3
@@ -102,9 +140,9 @@ L'avantage premier de cette approche est son économie au niveau du temps néces
 En effet, comme cette technique présente une approche de segmentation automatisée, la présence d'une personne externe ne devient nécessaire que lors de l'étape de la vérification de la segmentation.
 Par contre, cette approche ayant une quantité importante de points de mesure (liés à chaque voxel étudié), elle pose aussi un sérieux problème de **comparaisons multiples** lorsque vient le temps de faire les analyses statistiques.
 
-> Les particularités des analyses statistiques en neuroimagerie seront vues en détail lors du [Chapitre 6: Régression linéaire](https://psy3018.github.io/notes_cours_psy3018/regression.html).
+> Les particularités des analyses statistiques en neuroimagerie seront vues en détail lors du [Chapitre 6: Régression linéaire](https://psy3018.github.io/regression.html).
 >
-> Les particularités des corrections à apporter lors de ces analyses statistiques seront vues en détail lors du [Chapitre 10: Cartes statistiques](https://psy3018.github.io/notes_cours_psy3018/cartes_statistiques.html).
+> Les particularités des corrections à apporter lors de ces analyses statistiques seront vues en détail lors du [Chapitre 10: Cartes statistiques](https://psy3018.github.io/cartes_statistiques.html).
 
 Le traitement des données en VBM suit un processus en quatre étapes:
 1. La segmentation
@@ -136,7 +174,7 @@ Il faut donc que l'on procède à cette étape afin de créer une concordance de
 L'espace stéréotaxique de référence que l'on crée ainsi est donc un système de référence sur lequel on réaligne les données de chaque sujet afin de permettre ces comparaisons.
 Ainsi, on s'assure que lorsque l'on observe une coupe particulière du cerveau de différents participants, on observe aussi les mêmes structures.
 
-> Les détails concernant l'étape du recalage seront présentés plus en détail plus loin dans le [présent chapitre](https://psy3018.github.io/notes_cours_psy3018/morphometrie.html#recalage-d-images).
+> Les détails concernant l'étape du recalage seront présentés plus en détail plus loin dans le [présent chapitre](https://psy3018.github.io/morphometrie.html#recalage-d-images).
 
 L'étape suivante correspond au **lissage spatial** (aussi appelée convolution spatiale).
 Le lissage s'apparente à ajouter un filtre sur l'image la rendant plus floue.
@@ -150,7 +188,7 @@ Afin de savoir jusqu'à quel point on s'éloignera du voxel *x* pour calculer la
 
 Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage de voxels qui auront un impact sur la valeur lissée du voxel *x*.
 
-> Les détails concernant l'étape du lissage spatial seront présentés plus en détail lors du [Chapitre 4: IRM fonctionnelle](https://psy3018.github.io/notes_cours_psy3018/irm_fonctionnelle.html#pretraitement-des-donnees-d-irmf).
+> Les détails concernant l'étape du lissage spatial seront présentés plus en détail lors du [Chapitre 4: IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html#pretraitement-des-donnees-d-irmf).
 
 L'ultime étape de ce processus est celle des **analyses statistiques**.
 C'est lors de cette étape que l'on parvient à obtenir les cartes finales avec lesquelles il est possible de procéder aux analyses et de tirer les observations et conclusions d'une étude en morphométrie.
