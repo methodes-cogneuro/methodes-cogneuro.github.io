@@ -113,7 +113,6 @@ glue("atlas1-fig", fig, display=False)
 ```
 
 ```{glue:figure} atlas1-fig
-
 :figwidth: 800px
 :name: "atlas1-fig"
 
@@ -300,16 +299,27 @@ C'est l'étape de la création du masque du cerveau.
 Il est important de s'assurer, une fois que le masque est généré, qu'il contient bel et bien l'ensemble du volume du cerveau, ni plus, ni moins.
 Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre ne péril l'ensemble des étapes suivantes.
 On procédera ensuite à la délimitation à proprement dit des surfaces piale et interne.
+Pour ce faire, on modélisera un volume en forme de ballon virtuel au centre de chacun des hémisphères du cerveau.
+On définit ensuite des contraintes physiques (délimitation de la "cavité" interne dans laquelle le ballon peut évoluer) afin de marquer la frontière entre la matière blanche et la matière grise (surface interne).
+On procède ensuite à "gonfler" ce ballon jusqu'à ce qu'il épouse le mieux possible la frontière de la surface interne (jusqu'à ce que le ballon soit gonflé jusqu'à occuper tout l'espace dans la cavité et suivre l'ensemble des courbes de la paroi).
+Il est aussi possible de faire la procédure inverse.
+On pourrait en effet générer un ballon virtuel autour de chacun des hémisphères et les "dégonfler" jusqu'à ce qu'ils épousent les contours des frontières délimitées par les contraintes physiques.
+Lorsque l'une des frontières (surface interne ou surface piale) est délimitées, il est possible de continuer la procédure de gonflement/dégonflement afin d'obtenir la seconde surface.
 On peut ensuite utiliser la distance entre les deux surfaces en un point donné afin d'évaluer l'épaisseur corticale pour ce vertex.
-La dernière étape marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des analyses statistiques.
-
+Cette distance est obtenue en prenant la perpendiculaire à l'une des surfaces et en mesurant la distance entre les deux surfaces le long de cette perpendiculaire.
+Ce genre de technique permet par la suite de générer des cartes d'épaisseur corticale.
+Malheureusement, ce genre de technique est coûteuse en terme de ressources de calcul et des erreurs peuvent survenir à plusieurs niveaux.
+Par exemple, cette technique est particulièrement peu robuste face aux effets des volumes partiels.
+On pourrait en effet avoir une surface qui ne se rend pas jusqu'au fond d'un sulcus, ou lorsque les giri sont très rapprochés, qui ne rentre même pas à l'intérieur du sulcus.
+Le résultat de ces deux types d'erreurs, qui sont possibles autant sur la surface piale que sur la surface interne, sera une forte surestimation localisée de l'épaisseur corticale.
+C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment.
+La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des analyses statistiques.
 
 ## Conclusion
 Ce chapitre vous a introduit aux différentes familles de techniques de segmentation qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
 Il a en effet été question de **volumétrie manuelle**, d'**approche par voxel** (***voxel-based morphometry*** ou **VBM**) et d'**analyse de surface**.
 Les processus de **recalage** et l'importance du **contrôle de qualité** ont aussi été abordés.
 Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle.
-
 
 ## Références (version provisoire: copy/paste du template depuis le chapitre 1)
 
