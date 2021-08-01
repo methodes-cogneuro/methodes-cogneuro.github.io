@@ -82,7 +82,7 @@ On commencera d'abord par identifier ce contour sur chaque coupe où la structur
 Le processus nécessaire à l'obtention d'une segmentation finale précise d'une structure unique peut donc être très long et ardu.
 Il devra d'ailleurs être répété de nouveau pour chaque nouvelle structure d'intérêt.
 
-## Voxel-based morphometry
+## Approche par voxel (*Voxel-based morphometry*)
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
 
@@ -208,7 +208,7 @@ Maintenant, que l'espace stéréotaxique de référence de notre groupe de parti
 Que le choix se porte vers une segmentation manuelle (telle que vu précédement dans ce chapitre) ou vers l'utilisation d'un atlas, le recalage rend la segmentation de la référence généralisable aux images individuelles recalées.
 On facilite ainsi grandement le processus en permettant une automatisation du processus de segmentation pour chacun des sujets.
 
-### Contrôle de qualité
+## Contrôle de qualité
 Comme pour toute opération automatisée, il reste toujours une possibilité d'erreur au cours du processus de recalage.
 Il est donc nécessaire de prévoir une étape de vérification des résultats afin de s'assurer qu'il n'y a pas eu d'aberrations qui se sont introduites dans les données.
 Ces aberrations peuvent venir de plusieurs sources différentes:
@@ -241,6 +241,19 @@ warnings.filterwarnings("ignore")
 
 # Youtube
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/S-8rk7PlWBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```
+
+## Conclusion
+Ce chapitre vous a introduit aux différentes familles de techniques de segmentation qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
+Il a en effet été question de **volumétrie manuelle**, d'**approche par voxel** (***voxel-based morphometry*** ou **VBM**) et d'**analyse de surface**.
+Les processus de **recalage** et l'importance du **contrôle de qualité** ont aussi été abordés.
+Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle.
+
+
+## Références (version provisoire: copy/paste du template depuis le chapitre 1)
+
+```{bibliography}
+:filter: docname in docnames
 ```
 
 ## Exercices (version provisoire: copy/paste du template depuis le chapitre 1)
