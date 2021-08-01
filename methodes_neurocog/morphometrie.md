@@ -81,11 +81,14 @@ On commencera d'abord par identifier ce contour sur chaque coupe où la structur
 Le processus nécessaire à l'obtention d'une segmentation finale précise d'une structure unique peut donc être très long et ardu.
 Il devra d'ailleurs être répété de nouveau pour chaque nouvelle structure d'intérêt.
 
-## Un mot sur l'utilisation d'atlas de segmentation
-
+```{admonition} Un mot sur l'utilisation d'atlas de segmentation
+:class: info
+:name: atlas-info
 Afin de faciliter la standardisation de la segmentation, il est possible d'utiliser des cartes préétablies par des équipes de chercheurs.
 On appelle ces cartes des **atlas de segmentation**.
-Ceux-ci sont développés par des équipes de scientifiques afin de permettre une segmentation robuste 
+Ceux-ci sont développés par des équipes de scientifiques afin de permettre une segmentation robuste de certaines structures d'intérêt.
+Comme il existe une variété d'atlas permettant de rencontrer divers besoin en terme de segmentaton, il est important de choisir adéquatement celui qui sera utilisé en fonction des structures particulières que vous vouler étudier.
+```
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
