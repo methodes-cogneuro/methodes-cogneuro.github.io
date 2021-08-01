@@ -243,6 +243,26 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/S-8rk7PlWBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
+Cette famille d'approches diffère des précédentes en ce qu'elle ne mesure pas la densité de la matière grise, mais plutôt sa répartition, son épaisseur et/ou sa surface.
+Cette façon de faire particulière permet de faire des analyses sur l'ensemble de la surface corticale.
+Par contre, qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté.
+Cette famille de techniques n'est donc pas recommandée pour un protocol de recherche durant lequel on voudrait étudier des structures enfouies dans la boîte crânienne telles que l'hypothalamus, les ganglions de la base, etc.
+Plutôt que de procéder à l'analyse du contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
+Ainsi, on cherche à étudier à l'aide de ceux-ci la forme que prend localement la matière grise.
+Le processus permettant d'arriver aux résultats débute de façon similaire à celui des analyses volumétriques précédentes.
+En effet, la première étape consiste encore à procéder au prétraitement (recalage et contrôle de qualité) et à la segmentation des images du cerveau.
+Par contre, certaines des étapes suivantes diffèrent de celles utilisées lors des protocols de volumétrie.
+De ce fait, la seconde étape vise à délimiter la frontière entre la surface de matière grise et les tissus/milieux environnant.
+Afin d'y parvenir, on utilisera des modèles permettant d'estimer la surface piale (surface extérieure du cortex, à la frontière entre la matière grise et le liquide céphalo-rachidien) et la surface intérieure (à la frontière entre la matière grise et la matière blanche).
+Il faudra, pour y parvenir, éliminer des images les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.).
+C'est l'étape de la création du masque du cerveau.
+Il est important de s'assurer, une fois que le masque est généré, qu'il contient bel et bien l'ensemble du volume du cerveau, ni plus, ni moins.
+Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre ne péril l'ensemble des étapes suivantes.
+On procédera ensuite à la délimitation à proprement dit des surfaces piale et interne.
+On peut ensuite utiliser la distance entre les deux surfaces en un point donné afin d'évaluer l'épaisseur corticale pour ce vertex.
+La dernière étape marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des analyses statistiques.
+
+
 ## Conclusion
 Ce chapitre vous a introduit aux différentes familles de techniques de segmentation qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
 Il a en effet été question de **volumétrie manuelle**, d'**approche par voxel** (***voxel-based morphometry*** ou **VBM**) et d'**analyse de surface**.
