@@ -236,6 +236,7 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/w9z_AN
 ```
 
 ### Conclusions et références suggérées
+Ce chapitre vous a introduit aux principles physiques de l'IRM. Nous avons vu les différentes composantes d'un appareil IRM, les différents phénomènes magnétiques nous permettant d'acquérir des images, ainsi que quelques paramètres que nous pouvons modifier lors de l'acquisition de données IRM. Lors du prochain chapitre, nous parlerons de morphométrie. 
 
 ### Références
 
