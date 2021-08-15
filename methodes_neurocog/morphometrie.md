@@ -329,6 +329,19 @@ Il a en effet été question de **volumétrie manuelle**, d'**approche par voxel
 Les processus de **recalage** et l'importance du **contrôle de qualité** ont aussi été abordés.
 Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle.
 
+## Exemples d'articles présentant des analyses morphométriques:
+#### Volumétrie manuelle
+- 
+
+#### Utilisation d'atlas de segmentation
+- 
+
+#### Approche par voxel
+- 
+
+#### Analyse de surface
+- 
+
 ## Références (version provisoire: copy/paste du template depuis le chapitre 1)
 
 ```{bibliography}
