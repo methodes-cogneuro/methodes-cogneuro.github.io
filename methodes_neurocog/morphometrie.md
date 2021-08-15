@@ -333,11 +333,11 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 #### Volumétrie manuelle
 - 
 
-#### Utilisation d'atlas de segmentation
+#### Utilisation d'un atlas de segmentation
 - 
 
 #### Approche par voxel
-- 
+- Melcher, J. R., Knudson, I. M., & Levine, R. A. (2013). Subcallosal brain structure: correlation with hearing threshold at supra-clinical frequencies (>8 kHz), but not with tinnitus. *Hearing research*, *295*, 79–86. https://doi.org/10.1016/j.heares.2012.03.013
 
 #### Analyse de surface
 - 
