@@ -331,13 +331,18 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 
 ## Exemples d'articles présentant des analyses morphométriques:
 #### Volumétrie manuelle
-- 
+- Schneider, P., Sluming, V., Roberts, N., Scherg, M., Goebel, R., Specht, H. J., Dosch, H. G., Bleeck, S., Stippich, C., & Rupp, A. (2005). Structural and functional asymmetry of lateral Heschl's gyrus reflects pitch perception preference. *Nature neuroscience*, *8*(9), 1241–1247. https://doi.org/10.1038/nn1530
+- von Plessen, K., Lundervold, A., Duta, N., Heiervang, E., Klauschen, F., Smievoll, A. I., Ersland, L., & Hugdahl, K. (2002). Less developed corpus callosum in dyslexic subjects--a structural MRI study. *Neuropsychologia*, *40*(7), 1035–1044. https://doi.org/10.1016/s0028-3932(01)00143-9
 
 #### Utilisation d'un atlas de segmentation
 - 
 
 #### Approche par voxel
+- Kikuchi, Y., Ogata, K., Umesaki, T., Yoshiura, T., Kenjo, M., Hirano, Y., Okamoto, T., Komune, S., & Tobimatsu, S. (2011). Spatiotemporal signatures of an abnormal auditory system in stuttering. *NeuroImage*, *55*(3), 891–899. https://doi.org/10.1016/j.neuroimage.2010.12.083
+- Kirchner, H., Kremmyda, O., Hüfner, K., Stephan, T., Zingler, V., Brandt, T., Jahn, K., & Strupp, M. (2011). Clinical, electrophysiological, and MRI findings in patients with cerebellar ataxia and a bilaterally pathological head-impulse test. *Annals of the New York Academy of Sciences*, *1233*, 127–138. https://doi.org/10.1111/j.1749-6632.2011.06175.x
 - Melcher, J. R., Knudson, I. M., & Levine, R. A. (2013). Subcallosal brain structure: correlation with hearing threshold at supra-clinical frequencies (>8 kHz), but not with tinnitus. *Hearing research*, *295*, 79–86. https://doi.org/10.1016/j.heares.2012.03.013
+- Wang, X., Xu, P., Li, P., Wang, Z., Zhao, F., Gao, Z., Xu, L., Luo, Y. J., Fan, J., & Liu, P. (2016). Alterations in gray matter volume due to unilateral hearing loss. *Scientific reports*, *6*, 25811. https://doi.org/10.1038/srep25811
+- Yang, M., Chen, H. J., Liu, B., Huang, Z. C., Feng, Y., Li, J., Chen, J. Y., Zhang, L. L., Ji, H., Feng, X., Zhu, X., & Teng, G. J. (2014). Brain structural and functional alterations in patients with unilateral hearing loss. *Hearing research*, *316*, 37–43. https://doi.org/10.1016/j.heares.2014.07.006
 
 #### Analyse de surface
 - 
