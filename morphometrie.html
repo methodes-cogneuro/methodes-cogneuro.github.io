@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -242,29 +242,107 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#morphometrie">
+   Morphométrie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#volumetrie-manuelle">
    Volumétrie manuelle
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#voxel-based-morphometry">
-   Voxel-based morphometry
+  <a class="reference internal nav-link" href="#approche-par-voxel-voxel-based-morphometry">
+   Approche par voxel (
+   <em>
+    Voxel-based morphometry
+   </em>
+   )
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recalage-d-images">
    Recalage d’images
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recalage-lineaire">
+     Recalage linéaire
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recalage-non-lineaire">
+     Recalage non-linéaire
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#volumetrie">
+     Volumétrie
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Recalage d’images
+  <a class="reference internal nav-link" href="#controle-de-qualite">
+   Contrôle de qualité
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recalage-d-images-cette-section-semble-redondante">
+   Recalage d’images (CETTE SECTION SEMBLE REDONDANTE??!!)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analyses-de-surface">
    Analyses de surface
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references-version-provisoire-copy-paste-du-template-depuis-le-chapitre-1">
+   Références (version provisoire: copy/paste du template depuis le chapitre 1)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices-version-provisoire-copy-paste-du-template-depuis-le-chapitre-1">
+   Exercices (version provisoire: copy/paste du template depuis le chapitre 1)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-1">
+     Exercice 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-2">
+     Exercice 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-3">
+     Exercice 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-4">
+     Exercice 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-5">
+     Exercice 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercice-6">
+     Exercice 6
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -305,6 +383,23 @@
 </div>
 <div class="section" id="objectifs-du-cours">
 <h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+<p>Ce troisième chapitre introduit différentes approches utilisées afin de modéliser et d’exploiter les données acquises grâce aux techniques d’imagerie par résonance magnétique anatomique vues lors du cours 2.
+Tout d’abord, on y survolera des approches basées sur l’analyse de <strong>volumes</strong> telles que la <strong>volumétrie manuelle</strong> et l’<strong>approche par voxel (<em>voxel-based morphometry</em> ou VBM)</strong>.
+On tente par ce type d’analyse d’identifier et/ou de délimiter différentes aires du cerveau.
+Ce processus rendra par la suite possible l’étude des tissus présents dans ces différentes segmentations/unités de volume.
+Il sera ensuite question de l’utilisation du <strong>recalage</strong> et du <strong>contrôle de qualité</strong> dans le traitement des données d’imagerie.
+Nous terminerons cette séance avec une famille d’approches permettant l’étude de l’épaisseur corticale: les <strong>analyses de surface</strong>.</p>
+</div>
+<div class="section" id="morphometrie">
+<h2>Morphométrie<a class="headerlink" href="#morphometrie" title="Permalink to this headline">¶</a></h2>
+<p>En neurosciences, la <strong>morphométrie</strong> est l’étude de la forme du cerveau et de ses structures.
+Le terme morphométrie vient de deux termes tirés du grec ancien: <em>morphos</em> (forme) et <em>métron</em> (mesure).
+La morphométrie est donc la “mesure” de la “forme”.
+Cette discipline se concentre sur la caractérisation des dimensions et des formes des différentes structures d’intérêt.
+Pour ce faire, il est nécessaire de pouvoir observer clairement les délimitations de ces structures.
+L’utilisation de ce genre de technique permet aussi de faire des comparaisons inter-individuelles.
+On pourrait en effet vouloir comparer les variations dans la forme de divers structures à travers les cerveaux de différentes personnes.
+De telles comparaisons peuvent être informatrices au niveau du stade développemental d’un sujet, ou même, de la présence de certaines lésions ou pathologies.</p>
 </div>
 <div class="section" id="volumetrie-manuelle">
 <h2>Volumétrie manuelle<a class="headerlink" href="#volumetrie-manuelle" title="Permalink to this headline">¶</a></h2>
@@ -322,9 +417,53 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/CzsZdtqBmCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
+<p>La <strong>volumétrie manuelle</strong> est une approche qui peut sembler assez simple a priori, mais qui nécessite du temps et un protocol rigoureux ayant des critères de segmentation clairs.
+Cette façon de faire est essentielle afin d’assurer une segmentation logique, un bon niveau de reproductibilité des résultats et un accord inter-juge acceptable.
+La procédure nécessitera l’utilisation d’un logiciel permettant de dessiner les “frontières” de chacune des aires que l’on veut pouvoir identifier sur les images obtenues lors du scan d’un cerveau.
+On commencera d’abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).</p>
+<blockquote>
+<div><p>Pour un rappel concernant termes et les différents types de coupes du cerveau, veuillez vous référer au <a class="reference external" href="https://psy3018.github.io/cartes_cerebrales.html#irm-structurelle">Chapitre 1: Cartes cérébrales</a>.</p>
+</div></blockquote>
+<p>Le processus nécessaire à l’obtention d’une segmentation finale précise d’une structure unique peut donc être très long et ardu.
+Il devra d’ailleurs être répété de nouveau pour chaque nouvelle structure d’intérêt.</p>
+<div class="info admonition" id="atlas-info">
+<p class="admonition-title">Un mot sur l’utilisation d’atlas de segmentation</p>
+<p>Afin de faciliter la standardisation de la segmentation, il est possible d’utiliser des cartes préétablies par des équipes de chercheurs.
+On appelle ces cartes des <strong>atlas de segmentation</strong>.
+Ceux-ci sont développés par des équipes de scientifiques afin de permettre une segmentation robuste de certaines structures d’intérêt.
+Comme il existe une variété d’atlas permettant de rencontrer divers besoin en terme de segmentaton, il est important de choisir adéquatement celui qui sera utilisé en fonction des structures particulières que vous voulez étudier.</p>
 </div>
-<div class="section" id="voxel-based-morphometry">
-<h2>Voxel-based morphometry<a class="headerlink" href="#voxel-based-morphometry" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Téléchargement de l&#39;atlas de Yeo (2011)</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+
+<span class="n">atlas_yeo_2011</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_atlas_yeo_2011</span><span class="p">()</span>
+<span class="n">atlas_yeo</span> <span class="o">=</span> <span class="n">atlas_yeo_2011</span><span class="o">.</span><span class="n">thick_7</span>
+
+<span class="c1"># Visualisation de la figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span><span class="p">(</span><span class="n">atlas_yeo</span><span class="p">,</span>
+                  <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Original Yeo atlas&#39;</span><span class="p">,</span>
+                  <span class="n">cut_coords</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                  <span class="n">colorbar</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                  <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Paired&#39;</span><span class="p">)</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;atlas1-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="atlas1-fig" style="width: 800px">
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Un exemple de segmentation utilisant l’atlas de Yeo (2011), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite).
+Voir l’astuce <a class="reference internal" href="cartes_cerebrales.html#coupes-tip"><span class="std std-ref">Naviguer les coupes du cerveau</span></a> pour une explication de ces termes.
+Cette figure est générée par du code python à l’aide de la librairie <span class="xref myst">nilearn</span> à partir d’un jeu de données publique appelé fetch_atlas_yeo_2011 <strong>CITATION À AJOUTER</strong> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#atlas1-fig" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="approche-par-voxel-voxel-based-morphometry">
+<h2>Approche par voxel (<em>Voxel-based morphometry</em>)<a class="headerlink" href="#approche-par-voxel-voxel-based-morphometry" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -336,9 +475,72 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/yyUKkPaG3Q8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
+<p>L’<strong>approche par voxel</strong>, aussi mieux connue sous le nom de <em><strong>voxel-based morphometry</strong></em> (ou <strong>VBM</strong>), est une autre approche qu’il est possible d’employer afin de segmenter différentes aires d’intérêt du cerveau.
+Son objectif est de mesurer la densité de matière grise à l’intérieur et immédiatement autour d’un voxel donné.
+Cette approche est donc moins limitée par le besoin d’avoir des frontières préétablies claires entre les différentes structures à l’étude.
+Lorsque répétée pour l’entièreté du volume du cerveau, on peut obtenir une carte tridimensionnelle de la densité de matière grise à travers celui-ci.
+L’avantage premier de cette approche est son économie au niveau du temps nécessaire à un.e chercheur.e pour l’étape de la segmentation.
+En effet, comme cette technique présente une approche de segmentation automatisée, la présence d’une personne externe ne devient nécessaire que lors de l’étape de la vérification de la segmentation.
+Par contre, cette approche ayant une quantité importante de points de mesure (liés à chaque voxel étudié), elle pose aussi un sérieux problème de <strong>comparaisons multiples</strong> lorsque vient le temps de faire les analyses statistiques.</p>
+<blockquote>
+<div><p>Les particularités des analyses statistiques en neuroimagerie seront vues en détail lors du <a class="reference external" href="https://psy3018.github.io/regression.html">Chapitre 6: Régression linéaire</a>.</p>
+<p>Les particularités des corrections à apporter lors de ces analyses statistiques seront vues en détail lors du <a class="reference external" href="https://psy3018.github.io/cartes_statistiques.html">Chapitre 10: Cartes statistiques</a>.</p>
+</div></blockquote>
+<p>Le traitement des données en VBM suit un processus en quatre étapes:</p>
+<ol class="simple">
+<li><p>La segmentation</p></li>
+<li><p>Le recalage dans un espace stéréotaxique de référence</p></li>
+<li><p>Le lissage spatial</p></li>
+<li><p>Les analyses statistiques</p></li>
+</ol>
+<p>La <strong>segmentation</strong> est la première étape de la séquence.
+Dans le contexte de la VBM, qui est une analyse de la matière grise, l’objectif principal de cette étape est de déterminer s’il y a de la matière grise dans chacun des voxels.
+Un des types de segmentation automatisée qu’il est possible d’utiliser pour obtenir cette information est la segmentation probabiliste.
+Dans ce genre d’algorithme, on essaie d’attribuer une étiquette concernant le contenu du voxel (air autour de la tête, liquide céphalo-rachidien, matière grise, matière blanche, etc.).
+Pour ce faire, on établit la probabilité que la valeur du voxel appartienne à l’une ou l’autre des catégories possibles.
+La segmentation retournera donc une carte des voxels contenant probablement de la matière grise.
+Il est en effet possible que la segmentation automatique nous retourne certains autres tissus non-désirés, mais dont les valeurs étant similaires à celle de la matière grise, ne sont pas distinguées par l’algorithme de segmentation.
+Il est aussi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s’apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir).
+On appelle ce genre d’effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l’autre partie est noire).</p>
+<ul class="simple">
+<li><p>Ce genre d’erreur est une source possible de <strong>faux positifs</strong>.</p></li>
+</ul>
+<p>Il est aussi possible de perdre certaines structures pour lequelles le contraste entre matière blanche et matière grise ne seraient pas assez important pour que l’algorithme réussisse à les classer efficacement.
+Pour ce genre de structure, il est important d’ajouter des a priori (des règles/conditions supplémentaires) dans notre algorithme de traitement afin de ne pas les perdre.
+Il est aussi envisageable d’effectuer cette partie de la segmentation de façon manuelle.</p>
+<ul class="simple">
+<li><p>Ce genre d’erreur est une source possible de <strong>faux négatifs</strong>.</p></li>
+</ul>
+<p>La seconde étape est l’étape du <strong>recalage dans un espace stéréotaxique de référence</strong> (<em>coregistration</em> en anglais).
+Celle-ci sert à pouvoir mettre en relation les différents voxels à travers différents sujets (nécessaire pour les analyses statistiques).
+Contrairement à la volumétrie manuelle où chaque volume à l’étude est délimité de façon à représenter la même structure d’intérêt, ni plus, ni moins, lorsque l’on fait une analyse en VBM, les unités de volume (voxels) que nous obtenons ne sont pas liées à une structure particulière.
+En fonction de différentes sources de variation (par exemple: la position de la tête du sujet durant l’acquisition, la variabilité interindividuelle, etc.), un voxel <em>x</em> peut se retrouver dans des structures différentes lorsque l’on compare deux sujets.
+Il faut donc que l’on procède à cette étape afin de créer une concordance des différents voxels à travers les sujets à l’étude.
+L’espace stéréotaxique de référence que l’on crée ainsi est donc un système de référence sur lequel on réaligne les données de chaque sujet afin de permettre ces comparaisons.
+Ainsi, on s’assure que lorsque l’on observe une coupe particulière du cerveau de différents participants, on observe aussi les mêmes structures.</p>
+<blockquote>
+<div><p>Les détails concernant l’étape du recalage seront présentés plus en détail plus loin dans le <a class="reference external" href="https://psy3018.github.io/morphometrie.html#recalage-d-images">présent chapitre</a>.</p>
+</div></blockquote>
+<p>L’étape suivante correspond au <strong>lissage spatial</strong> (aussi appelée convolution spatiale).
+Le lissage s’apparente à ajouter un filtre sur l’image la rendant plus floue.
+Il est nécessaire de procéder à cette étape afin d’obtenir des valeurs de densité de matière grise pour des zones qui dépasse le voxel unique.
+Comme l’objectif de notre carte de densité de matière grise est de pouvoir observer des densités locales contenant des groupes (voisinages) de voxels, il est plus facile de procéder à ce genre d’observation après l’étape du lissage spatial.
+Lors de cette opération, on remplace la valeur obtenue pour le voxel <em>x</em> par une moyenne pondérée par une distribution gaussienne des valeurs de ce voxel et des voxels avoisinants.
+Comme c’est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l’affecter grandement.
+Mais plus on s’éloigne du voxel d’intérêt <em>x</em>, moins les autres voxels influencent sa valeur.
+Afin de savoir jusqu’à quel point on s’éloignera du voxel <em>x</em> pour calculer la valeur lissée, il nous faudra un autre paramètre: le FWHM (<em>full width at half maximum</em>).</p>
+<ul class="simple">
+<li><p>Il est important de ne pas confondre cette valeur avec l’écart-type.</p></li>
+</ul>
+<p>Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage de voxels qui auront un impact sur la valeur lissée du voxel <em>x</em>.</p>
+<blockquote>
+<div><p>Les détails concernant l’étape du lissage spatial seront présentés plus en détail lors du <a class="reference external" href="https://psy3018.github.io/irm_fonctionnelle.html#pretraitement-des-donnees-d-irmf">Chapitre 4: IRM fonctionnelle</a>.</p>
+</div></blockquote>
+<p>L’ultime étape de ce processus est celle des <strong>analyses statistiques</strong>.
+C’est lors de cette étape que l’on parvient à obtenir les cartes finales avec lesquelles il est possible de procéder aux analyses et de tirer les observations et conclusions d’une étude en morphométrie.
+On y superpose à l’image de l’espace stéréotaxique de référence les valeurs obtenues pour les régions où des informations d’intérêt statistique pour le protocol de recherche ont été obtenues.
+C’est généralement le genre d’image qui sera par la suite utilisé lors de publications scientifiques.</p>
 </div>
 <div class="section" id="recalage-d-images">
 <h2>Recalage d’images<a class="headerlink" href="#recalage-d-images" title="Permalink to this headline">¶</a></h2>
@@ -353,12 +555,67 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/VYN4K-K-Fjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<p>Le <strong>recalage</strong> est une étape cruciale du processus lorsque l’on utilise des approches automatisées basées sur des unités de volumes fixes à travers le cerveau (voxels) et que nous voulons pouvoir procéder à des comparaisons entre plusieurs sujets.
+Cette étape peut aussi être nécessaire afin de comparer les données d’un même sujet acquises lors de différentes séances dans le scanneur.
+En effet, à chaque fois que les images de la tête d’un sujet présentent des différences:</p>
+<ul class="simple">
+<li><p>À cause d’un possible mouvement de la tête durant une même séance</p></li>
+<li><p>À cause d’un positionnement qui peut différer légèrement d’une séance à l’autre</p></li>
+<li><p>À cause des différences inter-individuelles</p></li>
+<li><p>Etc.</p></li>
+</ul>
+<p>il y aura un besoin de recalage afin de palier à ces différences et permettre les comparaisons.
+Sa principale fonction est de réaligner les images du cerveau sur une même référence, permettant ainsi de pouvoir comparer les voxels à leur équivalent (voxels représentant le même lieu physique dans les cerveaux représentés par différentes images).
+Différents types de recalage sont disponibles, ont des propriétés plus ou moins complexes et permettent des comparaisons entre des cerveau présentant plus ou moins de variations inter-individuelles.</p>
+<div class="section" id="recalage-lineaire">
+<h3>Recalage linéaire<a class="headerlink" href="#recalage-lineaire" title="Permalink to this headline">¶</a></h3>
+<p>Le <strong>recalage linéaire</strong> est la version la plus simple du processus de recalage, mais il est aussi la première étape de la version plus complexe du processus qu’est le recalage non-linéaire.
+Cette technique est efficace pour aligner le contour du cerveau et/ou les structures de grande taille s’y trouvant.
+En d’autres mots, cette technique peut être utilisé pour ajuster les grosses différences.
+Le recalage linéaire est une combinaison plus ou moins complexe, selon les besoins, de trois paramètres de transformation linéaire:</p>
+<ul class="simple">
+<li><p>La rotation (pour corriger si la tête a pivoté)</p></li>
+<li><p>La translation (si la tête est décalée latéralement)</p></li>
+<li><p>La mise à l’échelle (afin d’ajuster la taille et/ou la forme du cerveau)</p></li>
+</ul>
+<p>Chacun de ces paramètres peut être modifié le long des trois axes (espace tridimensionnel), ce qui nous donne un total de 9 paramètres pouvant être ajustés.
+Ces paramètres seront estimés par un algorithme et nous permettront de réaligner grossièrement les images de cerveau étudiées.</p>
+</div>
+<div class="section" id="recalage-non-lineaire">
+<h3>Recalage non-linéaire<a class="headerlink" href="#recalage-non-lineaire" title="Permalink to this headline">¶</a></h3>
+<p>Le <strong>recalage non-linéaire</strong> est une étape plus complexe permettant des ajustements localisés.
+Il reste tout de même nécessaire de débuter par un racalage linaire avant de procéder au recalage non-linéaire.
+Cette seconde étape permettra de tenir compte des différences plus fines pour lesquelles il n’était pas possible d’obtenir de correction à l’aide du recalage linéaire.
+Il permettra aussi de positionner les aires cérébrales de différents sujets aux mêmes endroits sur les images afin de faciliter les analyses comparatives.
+Afin de compléter ce second recalage, il est nécessaire de construire une norme (<em>template</em>) basée sur notre espace stéréotaxique de référence.
+L’objectif de la norme est de construire une carte caractérisant l’ensemble des changements non-linéaires locaux qu’il est nécessaire d’effectuer afin de parvenir à la référence.
+Il est important que les déformations soient continues.
+Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage.
+Il est possible que la distance entre ces points soit plus ou moins grande que celle d’origine, mais il est nécessaire de conserver la continuité dans les lignes du cadrillage de la norme.</p>
+</div>
+<div class="section" id="volumetrie">
+<h3>Volumétrie<a class="headerlink" href="#volumetrie" title="Permalink to this headline">¶</a></h3>
+<p>Maintenant, que l’espace stéréotaxique de référence de notre groupe de participants est généré et que l’ensemble des images individuelles ont été recalées sur cette référence, il est possible de procéder à une analyse de la volumétrie.
+Que le choix se porte vers une segmentation manuelle (telle que vu précédement dans ce chapitre) ou vers l’utilisation d’un atlas, le recalage rend la segmentation de la référence généralisable aux images individuelles recalées.
+On facilite ainsi grandement le processus en permettant une automatisation du processus de segmentation pour chacun des sujets.</p>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>Recalage d’images<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="controle-de-qualite">
+<h2>Contrôle de qualité<a class="headerlink" href="#controle-de-qualite" title="Permalink to this headline">¶</a></h2>
+<p>Comme pour toute opération automatisée, il reste toujours une possibilité d’erreur au cours du processus de recalage.
+Il est donc nécessaire de prévoir une étape de vérification des résultats afin de s’assurer qu’il n’y a pas eu d’aberrations qui se sont introduites dans les données.
+Ces aberrations peuvent venir de plusieurs sources différentes:</p>
+<ul class="simple">
+<li><p>Erreurs dans les étapes de recalage linéaire et/ou non-linéaire</p></li>
+<li><p>Présence d’artéfacts lors de l’acquisition des données (présence d’objects métalliques, etc.)</p></li>
+<li><p>Etc.</p></li>
+</ul>
+<p>Cette vérification de la qualité des images permettra d’éliminer les images inutilisables avant de procéder aux analyses statistiques.
+Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées, c’est pourquoi il est primordial de garder ce risque en tête lors du traitement des données.</p>
+</div>
+<div class="section" id="recalage-d-images-cette-section-semble-redondante">
+<h2>Recalage d’images (CETTE SECTION SEMBLE REDONDANTE??!!)<a class="headerlink" href="#recalage-d-images-cette-section-semble-redondante" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -370,8 +627,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/VYN4K-K-Fjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 </div>
 <div class="section" id="analyses-de-surface">
@@ -387,8 +642,100 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/S-8rk7PlWBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<p>Cette famille d’approches diffère des précédentes en ce qu’elle ne mesure pas la densité de la matière grise, mais plutôt sa répartition, son épaisseur et/ou sa surface.
+Cette façon de faire particulière permet de faire des analyses sur l’ensemble de la surface corticale.
+Par contre, qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté.
+Cette famille de techniques n’est donc pas recommandée pour un protocol de recherche durant lequel on voudrait étudier des structures enfouies dans la boîte crânienne telles que l’hypothalamus, les ganglions de la base, etc.
+Plutôt que de procéder à l’analyse du contenu d’unités de volume (voxels), comme c’était le cas pour la VBM, on utilisera ici l’analyse du contenu d’unités de surface: les <strong>vertex</strong>.
+Ainsi, on cherche à étudier à l’aide de ceux-ci la forme que prend localement la matière grise.</p>
+<p>Le processus permettant d’arriver aux résultats partage certaines similitudes avec les analyses volumétriques, alors que d’autres étapes sont spécifiques aux analyses de surface.</p>
+<ul class="simple">
+<li><p>En effet, la première étape consiste encore à procéder au <strong>prétraitement</strong> (recalage et contrôle de qualité) et à la <strong>segmentation</strong> des images du cerveau.
+Par contre, certaines des étapes suivantes diffèrent de celles utilisées lors des protocols de volumétrie.</p></li>
+<li><p>De ce fait, la seconde étape vise à <strong>délimiter la frontière</strong> entre la surface de matière grise et les tissus/milieux environnant.
+Afin d’y parvenir, on utilisera des modèles permettant d’estimer la <strong>surface piale</strong> (surface extérieure du cortex, à la frontière entre la matière grise et le liquide céphalo-rachidien) et la <strong>surface intérieure</strong> (à la frontière entre la matière grise et la matière blanche).
+Il faudra, pour y parvenir, éliminer des images les structures n’appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.).
+C’est l’étape de la création du <strong>masque</strong> du cerveau.
+Il est important de s’assurer, une fois que le masque est généré, qu’il contient bel et bien l’ensemble du volume du cerveau, ni plus, ni moins.
+Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre en péril l’ensemble des étapes suivantes.</p></li>
+<li><p>On procédera ensuite à la <strong>délimitation des surfaces</strong> piale et interne.
+Pour ce faire, on modélisera un volume en forme de ballon virtuel au centre de chacun des hémisphères du cerveau.
+On définit ensuite des contraintes physiques (délimitation de la “cavité” interne dans laquelle le ballon peut évoluer) afin de marquer la frontière entre la matière blanche et la matière grise (surface interne).
+On procède ensuite à “gonfler” ce ballon jusqu’à ce qu’il épouse le mieux possible la frontière de la surface interne (jusqu’à ce que le ballon soit gonflé jusqu’à occuper tout l’espace dans la cavité et suivre l’ensemble des courbes de la paroi).
+Il est aussi possible de faire la procédure inverse.
+On pourrait en effet générer un ballon virtuel autour de chacun des hémisphères et les “dégonfler” jusqu’à ce qu’ils épousent les contours des frontières délimitées par les contraintes physiques.
+Lorsque l’une des frontières (surface interne ou surface piale) est délimitées, il est possible de continuer la procédure de gonflement/dégonflement afin d’obtenir la seconde surface.
+On peut ensuite utiliser la distance entre les deux surfaces en un point donné afin d’évaluer l’épaisseur corticale pour ce vertex.
+Cette distance est obtenue en prenant la perpendiculaire à l’une des surfaces et en mesurant la distance entre les deux surfaces le long de cette perpendiculaire.
+Ce genre de technique permet par la suite de générer des cartes d’épaisseur corticale.</p></li>
+</ul>
+<div class="caution attention admonition" id="controle-qualite-attention">
+<p class="admonition-title">Attention</p>
+<p>Malheureusement, ce genre de technique est coûteuse en terme de ressources de calcul et des erreurs peuvent survenir à plusieurs niveaux.
+Par exemple, cette technique est particulièrement peu robuste face aux effets des volumes partiels.
+On pourrait en effet avoir une surface qui ne se rend pas jusqu’au fond d’un sulcus, ou lorsque les giri sont très rapprochés, qui ne rentre même pas à l’intérieur du sulcus.
+Le résultat de ces deux types d’erreurs, qui sont possibles autant sur la surface piale que sur la surface interne, sera une forte surestimation localisée de l’épaisseur corticale.
+C’est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment.</p>
+</div>
+<ul class="simple">
+<li><p>La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c’est l’étape des <strong>analyses statistiques</strong>.</p></li>
+</ul>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Ce chapitre vous a introduit aux différentes familles de techniques de segmentation qu’il est possible d’utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
+Il a en effet été question de <strong>volumétrie manuelle</strong>, d’<strong>approche par voxel</strong> (<em><strong>voxel-based morphometry</strong></em> ou <strong>VBM</strong>) et d’<strong>analyse de surface</strong>.
+Les processus de <strong>recalage</strong> et l’importance du <strong>contrôle de qualité</strong> ont aussi été abordés.
+Lors du prochain chapitre, il sera question des principes de l’IRM fonctionnelle.</p>
+</div>
+<div class="section" id="references-version-provisoire-copy-paste-du-template-depuis-le-chapitre-1">
+<h2>Références (version provisoire: copy/paste du template depuis le chapitre 1)<a class="headerlink" href="#references-version-provisoire-copy-paste-du-template-depuis-le-chapitre-1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="id1"></span></div>
+<div class="section" id="exercices-version-provisoire-copy-paste-du-template-depuis-le-chapitre-1">
+<h2>Exercices (version provisoire: copy/paste du template depuis le chapitre 1)<a class="headerlink" href="#exercices-version-provisoire-copy-paste-du-template-depuis-le-chapitre-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercice-1">
+<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Permalink to this headline">¶</a></h3>
+<p>On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.</p>
+</div>
+<div class="section" id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Permalink to this headline">¶</a></h3>
+<p>Classez ces techniques par leur résolution spatiale:</p>
+<ol class="simple">
+<li><p>IRMf</p></li>
+<li><p>IRM structurelle</p></li>
+<li><p>PET</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Permalink to this headline">¶</a></h3>
+<p>Classez ces techniques par leur résolution temporelle:</p>
+<ol class="simple">
+<li><p>IRMf</p></li>
+<li><p>Imagerie optique</p></li>
+<li><p>EEG</p></li>
+<li><p>IRM de diffusion</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Permalink to this headline">¶</a></h3>
+<p>On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.</p>
+<ol class="simple">
+<li><p>Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.</p></li>
+<li><p>Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Permalink to this headline">¶</a></h3>
+<p>Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.</p>
+<ol class="simple">
+<li><p>Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.</p></li>
+<li><p>Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Permalink to this headline">¶</a></h3>
+<p>On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.</p>
 </div>
 </div>
 </div>
