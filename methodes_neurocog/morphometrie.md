@@ -92,23 +92,23 @@ Comme il existe une variété d'atlas permettant de rencontrer divers besoin en 
 ```
 
 ```{code-cell} ipython 3
-:tags: ["hide-input", "remove-output"]
+:tags: ["hide-input"]
 
-# Téléchargement de l'atlas de Yeo (2011)
+# Téléchargement de l'atlas Harvard-Oxford
 from nilearn import datasets
 
-atlas_yeo_2011 = datasets.fetch_atlas_yeo_2011()
-atlas_yeo = atlas_yeo_2011.thick_7
+dataset = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
+atlas_filename = dataset.maps
 
 # Visualisation de la figure
 from myst_nb import glue
 from nilearn import plotting
 
-plotting.plot_roi(atlas_yeo,
-                  title = 'Original Yeo atlas',
-                  cut_coords = (8, -4, 9),
-                  colorbar = True,
-                  cmap = 'Paired')
+fig = plotting.plot_roi(atlas_filename,
+                        title="Harvard Oxford atlas",
+                        cut_coords=(8, -4, 9),
+                        colorbar=True,
+                        cmap='Paired')
 
 glue("atlas1-fig", fig, display=False)
 ```
@@ -117,11 +117,10 @@ glue("atlas1-fig", fig, display=False)
 :figwidth: 800px
 :name: "atlas1-fig"
 
-Un exemple de segmentation utilisant l'atlas de Yeo (2011), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite).
+Un exemple de segmentation utilisant l'atlas Harvard-Oxford sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite).
 Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes.
-Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé fetch_atlas_yeo_2011 **CITATION À AJOUTER** (cliquer sur + pour voir le code).
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
 ```
-
 
 ## Approche par voxel (*Voxel-based morphometry*)
 ```{code-cell} ipython 3
@@ -260,18 +259,6 @@ Ces aberrations peuvent venir de plusieurs sources différentes:
 Cette vérification de la qualité des images permettra d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
 Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées, c'est pourquoi il est primordial de garder ce risque en tête lors du traitement des données.
 
-## Recalage d'images (CETTE SECTION SEMBLE REDONDANTE??!!)
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/VYN4K-K-Fjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-```
-
 ## Analyses de surface
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
@@ -330,6 +317,7 @@ Les processus de **recalage** et l'importance du **contrôle de qualité** ont a
 Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle.
 
 ## Exemples d'articles présentant des analyses morphométriques:
+
 #### Volumétrie manuelle
 - Schneider, P., Sluming, V., Roberts, N., Scherg, M., Goebel, R., Specht, H. J., Dosch, H. G., Bleeck, S., Stippich, C., & Rupp, A. (2005). Structural and functional asymmetry of lateral Heschl's gyrus reflects pitch perception preference. *Nature neuroscience*, *8*(9), 1241–1247. https://doi.org/10.1038/nn1530
 - von Plessen, K., Lundervold, A., Duta, N., Heiervang, E., Klauschen, F., Smievoll, A. I., Ersland, L., & Hugdahl, K. (2002). Less developed corpus callosum in dyslexic subjects--a structural MRI study. *Neuropsychologia*, *40*(7), 1035–1044. https://doi.org/10.1016/s0028-3932(01)00143-9
@@ -347,7 +335,7 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 #### Analyse de surface
 - 
 
-## Références (version provisoire: copy/paste du template depuis le chapitre 1)
+## Références
 
 ```{bibliography}
 :filter: docname in docnames
