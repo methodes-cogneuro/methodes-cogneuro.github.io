@@ -39,10 +39,6 @@ kernelspec:
   </tr>
 </table>
 
-```{warning}
-Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
-```
-
 ## Objectifs du chapitre
 ```{figure} ./cartes_cerebrales/fig_cartes_cerebrales.png
 ---
@@ -96,13 +92,11 @@ Les techniques vues dans ce cours ont en commun d'avoir une bonne résolution sp
 ```{admonition} La résolution spatiale
 :class: tip
 La notion de résolution spatiale fait généralement référence à la taille minimale d'un objet que l'on peut distinguer dans une image. Si on peut distinguer des petits objets, la résolution est haute. Si l'on peut voir seulement de gros objets, la résolution est basse. Si l'on parle de photo numérique, le plus petit objet possible est un pixel, soit un des petits carrés qui composent l'image. Pour des cartes du cerveau, on parle de voxel, ou élément de volume 3D.
-TODO: ajouter des images illustrant ces concepts.
 ```
 
 ```{warning}
 :name: resolution-spatiale-warning
 La résolution spatiale ne correspond pas simplement à la taille d'un pixel. Deux images avec la même taille de pixel (ou voxel) peuvent avoir une résolution effective différente, si l'une des deux images est floue. Sur l'image nette on distingue des objets plus petits que sur l'image floue. La **résolution effective** de l'image nette est donc supérieure à l'image floue.
-TODO: ajouter des images illustrant ces concepts.
 ```
 En ce qui concerne la résolution spatiale, l'IRM structurelle peut apparaitre comme la meilleure technique. Mais il existe de multiples autres facteurs à considérer pour comparer des techniques de neuroimagerie. Un autre facteur important est la résolution temporelle. Les modalités structurelles capturent des changements qui sont lents à se mettre en place. La forme du cortex et les faisceaux de fibres se mettent en place tout au long du développement et du vieillissement, et sont assez stables même à l'échelle de plusieurs années. En revanche, l'IRM fonctionnelle, la TEP (utilisant le FDG) et l'imagerie optique examinent l'activité du cerveau, et mesurent des changements qui peuvent se produire à l'échelle de la minute, de la seconde ou même de la milliseconde.
 
@@ -111,14 +105,11 @@ En ce qui concerne la résolution spatiale, l'IRM structurelle peut apparaitre c
 :class: tip
 :name: resolution-temporelle-tip
 La notion de résolution temporelle fait généralement référence à la durée minimale d'un événement que l'on peut distinguer dans un signal temporel. Les signaux que l'on voit dans le cours sont composés de mesures répétées dans le temps avec un intervalle $\Delta_t$, généralement mesuré en secondes. On parle parfois de la fréquence d'échantillonnage, $f=1/\Delta_t$, mesurée en Hz. La fréqunce d'échantillonnage (Hz) représente le nombre de points de mesure par seconde.
-
-TODO: ajouter des images illustrant ces concepts.
 ```
 
 ```{warning}
 :name: resolution-temporelle-warning
 La résolution temporelle ne correspond pas simplement au temps qui s'écoulent entre deux mesures successives $\Delta_t$. Ce concept est plus difficile à visualiser que la résolution spatiale effective, mais est important en particulier dans le cas de l'imagerie optique. L'imagerie optique capture un phénomène vasculaire lent. Donc même si l'on a des pics d'activité séparés dans le temps au niveau neuronale (image de gauche), si l'intervalle de temps entre les pics est trop court on ne verra qu'un seul événement au niveau vasculaire (image de droite). C'est l'équivalent d'une image floue, mais dans la dimension temporelle.
-TODO: ajouter des images illustrant ces concepts.
 ```
 
 ## Imagerie par résonance magnétique
@@ -163,7 +154,7 @@ glue("t1-fig", fig, display=False)
 ```{glue:figure} t1-fig
 :figwidth: 800px
 :name: "t1-fig"
-Un exemple d'IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
+Un exemple d'IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données publique appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
 ```
 Le type d'images le plus couramment acquis avec un appareil d'IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure {ref}`ci-dessus <t1-fig>`, on distingue aisément certains éléments anatomiques:
  * La **matière grise**, en périphérie du cortex, apparait en gris dans l'image. C'est là que les corps des neurones sont présents.
@@ -223,7 +214,7 @@ glue("irmf-fig", fig, display=False)
 ```{glue:figure} irmf-fig
 :figwidth: 800px
 :name: "irmf-fig"
-Un exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig>`, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau. Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé ADHD200 {cite:p}`HD-200_Consortium2012-uv, BELLEC2017275` (cliquer sur + pour voir le code).
+Un exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig>`, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données publique appelé ADHD200 {cite:p}`HD-200_Consortium2012-uv, BELLEC2017275` (cliquer sur + pour voir le code).
 ```
 
 Ces mesures ne reflètent pas directement l'activité des neurones, mais plutôt l'oxygénation du sang. On parle de signal dépendant du niveau d'oxygénation dans sang, ou signal BOLD (pour Blood Oxygen Level Dependent, en anglais). Comme on le verra dans la section {ref}`couplage-neurovasculaire-section`, ce signal BOLD reflète malgré tout de manière indirecte l'activité des neurones, et va nous permettre de faire des cartes de l'activité du cerveau. Il y a deux types majeurs de techniques d'analyse en IRMf:
@@ -329,33 +320,75 @@ Ce chapitre vous a présenté un rapide tour de vue des différentes méthodes e
 
 ## Exercices
 
-### Exercice 1
+```{admonition} Exercice 1.1
+:class: note
 
-On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.
+On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital.
+ * Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question.
+ * Expliquez pourquoi.
+```
 
-### Exercice 2
+```{admonition} Exercice 1.2
+:class: note
 
 Classez ces techniques par leur résolution spatiale:
  1. IRMf
  2. IRM structurelle
  3. PET
+```
 
-### Exercice 3
+```{admonition} Exercice 1.3
+:class: note
 Classez ces techniques par leur résolution temporelle:
  1. IRMf
  2. Imagerie optique
  3. EEG
  4. IRM de diffusion
+```
 
-### Exercice 4
+```{admonition} Exercice 1.4
+:class: note
 On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.
  1. Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.
  2. Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.
+```  
 
-### Exercice 5
+```{admonition} Exercice 1.5
+:class: note
 Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.
  1. Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.
  2. Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.
+```
 
-### Exercice 6
-On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
+```{admonition} Exercice 1.6
+:class: note
+On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois.
+ * Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
+```
+
+```{admonition} Exercice 1.8
+:class: note
+On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois.
+ * Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
+```
+
+```{admonition} Exercice 1.9
+:class: note
+Pour répondre à cette question, lire l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_" publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et [disponible](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/) de manière libre. Les questions suivantes sont à développement court.
+ * Quelle type de participants ont été recrutés dans l'étude?
+ * Quel est l'objectif principal de l'étude?
+ * Quels sont les critères d'inclusion et d'exclusion?
+ * Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
+ * Où sont décrites les régions d'intérêt utilisées dans l'étude? Comment sont-elles définies?
+ * Où sont décrits les paramètres d'imagerie pour l'étude? Notez une liste des paramètres utilisés.
+ * Quelle figure répond à l'objectif principal de l'étude? Quelle est la conclusion principale?
+```
+
+```{admonition} Exercice 1.10
+:class: note
+On souhaite comparer différents aspects de l'architecture cérébrale entre un population de patients schizophrènes, et une population de sujets contrôles.
+
+ * On s'intéresse à la manière dont le cerveau traite des stimuli visuels, composés d'images à forte valence émotionnelle. Quelle modalité d'imagerie et quelle technique d'analyse utiliser et pourquoi?
+ * On s'intéresse à une atrophie possible du cortex frontale. Quelle modalité d'imagerie et quelle technique d'analyse utiliser et pourquoi?
+ * On souhaite étudier l'activité spontanée du cerveau, et acquérir un échantillon aussi grand que possible avec un budget fixe. Quelle modalité d'imagerie et quelle technique d'analyse utiliser et pourquoi?
+```

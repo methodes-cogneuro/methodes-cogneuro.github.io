@@ -312,38 +312,6 @@
   <a class="reference internal nav-link" href="#exercices">
    Exercices
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercice-1">
-     Exercice 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercice-2">
-     Exercice 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercice-3">
-     Exercice 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercice-4">
-     Exercice 4
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercice-5">
-     Exercice 5
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercice-6">
-     Exercice 6
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -381,10 +349,6 @@
     </td>
   </tr>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
-</div>
 <div class="section" id="objectifs-du-chapitre">
 <h2>Objectifs du chapitre<a class="headerlink" href="#objectifs-du-chapitre" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="cartes-cerebrales-fig">
@@ -434,24 +398,20 @@
 </ul>
 <div class="tip admonition">
 <p class="admonition-title">La résolution spatiale</p>
-<p>La notion de résolution spatiale fait généralement référence à la taille minimale d’un objet que l’on peut distinguer dans une image. Si on peut distinguer des petits objets, la résolution est haute. Si l’on peut voir seulement de gros objets, la résolution est basse. Si l’on parle de photo numérique, le plus petit objet possible est un pixel, soit un des petits carrés qui composent l’image. Pour des cartes du cerveau, on parle de voxel, ou élément de volume 3D.
-TODO: ajouter des images illustrant ces concepts.</p>
+<p>La notion de résolution spatiale fait généralement référence à la taille minimale d’un objet que l’on peut distinguer dans une image. Si on peut distinguer des petits objets, la résolution est haute. Si l’on peut voir seulement de gros objets, la résolution est basse. Si l’on parle de photo numérique, le plus petit objet possible est un pixel, soit un des petits carrés qui composent l’image. Pour des cartes du cerveau, on parle de voxel, ou élément de volume 3D.</p>
 </div>
 <div class="admonition warning" id="resolution-spatiale-warning">
 <p class="admonition-title">Warning</p>
-<p>La résolution spatiale ne correspond pas simplement à la taille d’un pixel. Deux images avec la même taille de pixel (ou voxel) peuvent avoir une résolution effective différente, si l’une des deux images est floue. Sur l’image nette on distingue des objets plus petits que sur l’image floue. La <strong>résolution effective</strong> de l’image nette est donc supérieure à l’image floue.
-TODO: ajouter des images illustrant ces concepts.</p>
+<p>La résolution spatiale ne correspond pas simplement à la taille d’un pixel. Deux images avec la même taille de pixel (ou voxel) peuvent avoir une résolution effective différente, si l’une des deux images est floue. Sur l’image nette on distingue des objets plus petits que sur l’image floue. La <strong>résolution effective</strong> de l’image nette est donc supérieure à l’image floue.</p>
 </div>
 <p>En ce qui concerne la résolution spatiale, l’IRM structurelle peut apparaitre comme la meilleure technique. Mais il existe de multiples autres facteurs à considérer pour comparer des techniques de neuroimagerie. Un autre facteur important est la résolution temporelle. Les modalités structurelles capturent des changements qui sont lents à se mettre en place. La forme du cortex et les faisceaux de fibres se mettent en place tout au long du développement et du vieillissement, et sont assez stables même à l’échelle de plusieurs années. En revanche, l’IRM fonctionnelle, la TEP (utilisant le FDG) et l’imagerie optique examinent l’activité du cerveau, et mesurent des changements qui peuvent se produire à l’échelle de la minute, de la seconde ou même de la milliseconde.</p>
 <div class="tip admonition" id="resolution-temporelle-tip">
 <p class="admonition-title">La résolution temporelle</p>
 <p>La notion de résolution temporelle fait généralement référence à la durée minimale d’un événement que l’on peut distinguer dans un signal temporel. Les signaux que l’on voit dans le cours sont composés de mesures répétées dans le temps avec un intervalle <span class="math notranslate nohighlight">\(\Delta_t\)</span>, généralement mesuré en secondes. On parle parfois de la fréquence d’échantillonnage, <span class="math notranslate nohighlight">\(f=1/\Delta_t\)</span>, mesurée en Hz. La fréqunce d’échantillonnage (Hz) représente le nombre de points de mesure par seconde.</p>
-<p>TODO: ajouter des images illustrant ces concepts.</p>
 </div>
 <div class="admonition warning" id="resolution-temporelle-warning">
 <p class="admonition-title">Warning</p>
-<p>La résolution temporelle ne correspond pas simplement au temps qui s’écoulent entre deux mesures successives <span class="math notranslate nohighlight">\(\Delta_t\)</span>. Ce concept est plus difficile à visualiser que la résolution spatiale effective, mais est important en particulier dans le cas de l’imagerie optique. L’imagerie optique capture un phénomène vasculaire lent. Donc même si l’on a des pics d’activité séparés dans le temps au niveau neuronale (image de gauche), si l’intervalle de temps entre les pics est trop court on ne verra qu’un seul événement au niveau vasculaire (image de droite). C’est l’équivalent d’une image floue, mais dans la dimension temporelle.
-TODO: ajouter des images illustrant ces concepts.</p>
+<p>La résolution temporelle ne correspond pas simplement au temps qui s’écoulent entre deux mesures successives <span class="math notranslate nohighlight">\(\Delta_t\)</span>. Ce concept est plus difficile à visualiser que la résolution spatiale effective, mais est important en particulier dans le cas de l’imagerie optique. L’imagerie optique capture un phénomène vasculaire lent. Donc même si l’on a des pics d’activité séparés dans le temps au niveau neuronale (image de gauche), si l’intervalle de temps entre les pics est trop court on ne verra qu’un seul événement au niveau vasculaire (image de droite). C’est l’équivalent d’une image floue, mais dans la dimension temporelle.</p>
 </div>
 </div>
 <div class="section" id="imagerie-par-resonance-magnetique">
@@ -498,7 +458,7 @@ TODO: ajouter des images illustrant ces concepts.</p>
 <div class="cell_output docutils container">
 <img alt="_images/cartes_cerebrales_1_0.png" src="_images/cartes_cerebrales_1_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Un exemple d’IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer les coupes du cerveau</span></a> pour une explication de ces termes. Cette figure est générée par du code python à l’aide de la librairie <span class="xref myst">nilearn</span> à partir d’un jeu de données publique appelé template MNI152 2009 <span id="id3">[<a class="reference internal" href="#id9">FEB+11</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#t1-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Un exemple d’IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer les coupes du cerveau</span></a> pour une explication de ces termes. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données publique appelé template MNI152 2009 <span id="id3">[<a class="reference internal" href="#id9">FEB+11</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#t1-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Le type d’images le plus couramment acquis avec un appareil d’IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure <a class="reference internal" href="#t1-fig"><span class="std std-ref">ci-dessus</span></a>, on distingue aisément certains éléments anatomiques:</p>
 <ul class="simple">
@@ -559,7 +519,7 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 <div class="cell_output docutils container">
 <img alt="_images/cartes_cerebrales_3_0.png" src="_images/cartes_cerebrales_3_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Un exemple d’un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer les coupes du cerveau</span></a> pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l’<a class="reference internal" href="#t1-fig"><span class="std std-ref">IRM anatomique</span></a>, et que l’on a beaucoup de mal à voir les détails de l’anatomie du cerveau. Cette figure est générée par du code python à l’aide de la librairie <span class="xref myst">nilearn</span> à partir d’un jeu de données publique appelé ADHD200 <span id="id4">[<a class="reference internal" href="#id8">BCCD+17</a>, <a class="reference internal" href="#id7">HD200Consortium12</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#irmf-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Un exemple d’un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer les coupes du cerveau</span></a> pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l’<a class="reference internal" href="#t1-fig"><span class="std std-ref">IRM anatomique</span></a>, et que l’on a beaucoup de mal à voir les détails de l’anatomie du cerveau. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données publique appelé ADHD200 <span id="id4">[<a class="reference internal" href="#id8">BCCD+17</a>, <a class="reference internal" href="#id7">HD200Consortium12</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#irmf-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Ces mesures ne reflètent pas directement l’activité des neurones, mais plutôt l’oxygénation du sang. On parle de signal dépendant du niveau d’oxygénation dans sang, ou signal BOLD (pour Blood Oxygen Level Dependent, en anglais). Comme on le verra dans la section <a class="reference internal" href="#couplage-neurovasculaire-section"><span class="std std-ref">Couplage neurovasculaire</span></a>, ce signal BOLD reflète malgré tout de manière indirecte l’activité des neurones, et va nous permettre de faire des cartes de l’activité du cerveau. Il y a deux types majeurs de techniques d’analyse en IRMf:</p>
 <ul class="simple">
@@ -641,9 +601,6 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 </div>
 </div>
 <div class="figure align-default" id="regression-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/cartes_cerebrales_5_0.png" src="_images/cartes_cerebrales_5_0.png" />
-</div>
 <p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Gauche: illustration d’une régression linéaire entre une variable indépendante sur l’axe des x (aussi appelé facteur d’explication), et une variable dépendante sur l’axe des y. La droite représente la meilleure relation linéaire entre x et y, et l’intervalle de confiance statistique est également indiqué. Droite: un modèle de régression est appliqué à chaque voxel pour générer une carte cérébrale statistique. Ici, la carte statistique correspond aux changements d’activation IRMf lors d’un mouvement de la main. La figure de régression est adaptée de ce <a class="reference external" href="https://seaborn.pydata.org/tutorial/regression.html">tutoriel seaborn</a> à l’aide du jeu de données <code class="docutils literal notranslate"><span class="pre">tips</span></code>. La carte statistique est visualisée grâce à ce <a class="reference external" href="https://nilearn.github.io/auto_examples/01_plotting/plot_demo_plotting.html#sphx-glr-auto-examples-01-plotting-plot-demo-plotting-py">tutoriel nilearn</a> et une carte d’activité motrice distribuée via <a class="reference external" href="https://neurovault.org/">NeuroVault</a>. Cliquer sur + pour voir le code.</span><a class="headerlink" href="#regression-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Le dernier aspect important de ces notes de cours est que nous allons discuter de la manière dont les données sont analysées. Cela implique notamment des étapes d’analyse d’images, qui sont nécessaires pour générer des mesures interprétables. Cela implique aussi de faire des statistiques sur les images du cerveau que l’on génère. Il existe de nombreuses manières de faire ces statistiques, et le domaine des neurosciences cognitives utilise de plus en plus des techniques multivariées d’apprentissage machine. Mais la technique de référence reste le modèle de régression linéaire, qui est appliqué indépendamment à chaque voxel. Il s’agit d’un modèle très flexible, qui permet de répondre à un grand nombre de questions, aussi bien au niveau individuel que de groupe. Le modèle de régression linéaire est utilisé par l’ensemble des techniques de neuroimagerie vu en cours, et sera discuté dans le chapitre <a class="reference internal" href="regression.html#regression-chapitre"><span class="std std-ref">Régression linéaire</span></a>. Le fait de répéter un test statistique à chaque voxel, des dizaines de milliers de fois, pose un problème pour décider du seuil de significativité. Nous discuterons des approches de seuillage dans le chapitre <a class="reference internal" href="cartes_statistiques.html#cartes-statistiques-chapitre"><span class="std std-ref">Cartes statistiques</span></a>. Enfin, ce type de modèle statistique peut être abusé de multiples manières, et amener à la publication de résultats non reproductibles. Nous discuterons de ces défis et de solution possible dans le dernier chapitre <a class="reference internal" href="reproductibilite.html#reproductibilite-controverses-chapitre"><span class="std std-ref">Reproductibilité et controverses</span></a>.</p>
@@ -672,12 +629,16 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 </div>
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="exercice-1">
-<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Permalink to this headline">¶</a></h3>
-<p>On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.</p>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.1</p>
+<p>On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital.</p>
+<ul class="simple">
+<li><p>Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question.</p></li>
+<li><p>Expliquez pourquoi.</p></li>
+</ul>
 </div>
-<div class="section" id="exercice-2">
-<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Permalink to this headline">¶</a></h3>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.2</p>
 <p>Classez ces techniques par leur résolution spatiale:</p>
 <ol class="simple">
 <li><p>IRMf</p></li>
@@ -685,8 +646,8 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 <li><p>PET</p></li>
 </ol>
 </div>
-<div class="section" id="exercice-3">
-<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Permalink to this headline">¶</a></h3>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.3</p>
 <p>Classez ces techniques par leur résolution temporelle:</p>
 <ol class="simple">
 <li><p>IRMf</p></li>
@@ -695,25 +656,57 @@ Principaux plans de coupes en imagerie cérébrale. Figure par JonRichfield sous
 <li><p>IRM de diffusion</p></li>
 </ol>
 </div>
-<div class="section" id="exercice-4">
-<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Permalink to this headline">¶</a></h3>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.4</p>
 <p>On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.</p>
 <ol class="simple">
 <li><p>Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.</p></li>
 <li><p>Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.</p></li>
 </ol>
 </div>
-<div class="section" id="exercice-5">
-<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Permalink to this headline">¶</a></h3>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.5</p>
 <p>Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.</p>
 <ol class="simple">
 <li><p>Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.</p></li>
 <li><p>Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.</p></li>
 </ol>
 </div>
-<div class="section" id="exercice-6">
-<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Permalink to this headline">¶</a></h3>
-<p>On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.</p>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.6</p>
+<p>On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois.</p>
+<ul class="simple">
+<li><p>Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.8</p>
+<p>On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois.</p>
+<ul class="simple">
+<li><p>Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.9</p>
+<p>Pour répondre à cette question, lire l’article de Shukla et collaborateurs, “<em>Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia</em>” publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/">disponible</a> de manière libre. Les questions suivantes sont à développement court.</p>
+<ul class="simple">
+<li><p>Quelle type de participants ont été recrutés dans l’étude?</p></li>
+<li><p>Quel est l’objectif principal de l’étude?</p></li>
+<li><p>Quels sont les critères d’inclusion et d’exclusion?</p></li>
+<li><p>Quelle technique de neuroimagerie est utilisée? S’agit-il d’une technique structurelle ou fonctionnelle?</p></li>
+<li><p>Où sont décrites les régions d’intérêt utilisées dans l’étude? Comment sont-elles définies?</p></li>
+<li><p>Où sont décrits les paramètres d’imagerie pour l’étude? Notez une liste des paramètres utilisés.</p></li>
+<li><p>Quelle figure répond à l’objectif principal de l’étude? Quelle est la conclusion principale?</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 1.10</p>
+<p>On souhaite comparer différents aspects de l’architecture cérébrale entre un population de patients schizophrènes, et une population de sujets contrôles.</p>
+<ul class="simple">
+<li><p>On s’intéresse à la manière dont le cerveau traite des stimuli visuels, composés d’images à forte valence émotionnelle. Quelle modalité d’imagerie et quelle technique d’analyse utiliser et pourquoi?</p></li>
+<li><p>On s’intéresse à une atrophie possible du cortex frontale. Quelle modalité d’imagerie et quelle technique d’analyse utiliser et pourquoi?</p></li>
+<li><p>On souhaite étudier l’activité spontanée du cerveau, et acquérir un échantillon aussi grand que possible avec un budget fixe. Quelle modalité d’imagerie et quelle technique d’analyse utiliser et pourquoi?</p></li>
+</ul>
 </div>
 </div>
 </div>
