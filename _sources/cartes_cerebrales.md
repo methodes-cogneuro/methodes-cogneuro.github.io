@@ -29,13 +29,21 @@ kernelspec:
         <a title="Révision du texte">👀</a>
     </td>
     <td align="center">
+      <a href="https://github.com/eddyfortier">
+        <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Eddy Fortier</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
       <a href="https://github.com/SamGuay">
         <img src="https://avatars.githubusercontent.com/u/30598330?v=4?s=100" width="100px;" alt=""/>
         <br /><sub><b>Samuel Guay</b></sub>
       </a>
       <br />
         <a title="Révision du texte">👀</a>
-    </td>
+    </td>    
   </tr>
 </table>
 
@@ -331,7 +339,7 @@ On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la r�
 ```{admonition} Exercice 1.2
 :class: note
 
-Classez ces techniques par leur résolution spatiale:
+Classez ces techniques selon leur résolution spatiale (à partir de la plus précise):
  1. IRMf
  2. IRM structurelle
  3. PET
@@ -339,7 +347,7 @@ Classez ces techniques par leur résolution spatiale:
 
 ```{admonition} Exercice 1.3
 :class: note
-Classez ces techniques par leur résolution temporelle:
+Classez ces techniques selon leur résolution temporelle (à partir de la plus précise):
  1. IRMf
  2. Imagerie optique
  3. EEG
@@ -350,45 +358,38 @@ Classez ces techniques par leur résolution temporelle:
 :class: note
 On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.
  1. Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.
- 2. Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.
+ 2. Proposez une expérience complémentaire permettant de répondre à cette limitation, et décrivez ce qu'elle apporte comme complément.
 ```  
 
 ```{admonition} Exercice 1.5
 :class: note
-Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.
- 1. Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.
- 2. Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.
+Un participant à une étude a souffert d’un accident ayant laissé des débris métalliques dans son oeil par le passé.
+ 1. Citez une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.
+ 2. Citez une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.
 ```
 
 ```{admonition} Exercice 1.6
 :class: note
 On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois.
- * Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
+ * Dans le cadre spécifique de cette expérience, citez un problème et un point fort du F18-FDG TEP.
+```
+
+```{admonition} Exercice 1.7
+:class: note
+Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
+ * Quel(s) type(s) de participant a(ont) été recruté(s) dans cette étude?
+ * Quel est l'objectif principal de l'étude?
+ * Quels sont les critères d'inclusion et d'exclusion?
+ * Quelle(s) technique(s) de neuroimagerie est(sont) utilisée(s)? S'agit-il d'une technique structurelle ou fonctionnelle?
+ * Où sont décrites les régions d'intérêt utilisées dans l'étude? Comment sont-elles définies?
+ * Où sont décrits les paramètres d'imagerie utilisés dans l'étude? Listez des paramètres utilisés.
+ * Quelle figure répond à l'objectif principal de l'étude? Quelle est la conclusion principale?
 ```
 
 ```{admonition} Exercice 1.8
 :class: note
-On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois.
- * Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
-```
-
-```{admonition} Exercice 1.9
-:class: note
-Pour répondre à cette question, lire l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_" publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et [disponible](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/) de manière libre. Les questions suivantes sont à développement court.
- * Quelle type de participants ont été recrutés dans l'étude?
- * Quel est l'objectif principal de l'étude?
- * Quels sont les critères d'inclusion et d'exclusion?
- * Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
- * Où sont décrites les régions d'intérêt utilisées dans l'étude? Comment sont-elles définies?
- * Où sont décrits les paramètres d'imagerie pour l'étude? Notez une liste des paramètres utilisés.
- * Quelle figure répond à l'objectif principal de l'étude? Quelle est la conclusion principale?
-```
-
-```{admonition} Exercice 1.10
-:class: note
-On souhaite comparer différents aspects de l'architecture cérébrale entre un population de patients schizophrènes, et une population de sujets contrôles.
-
- * On s'intéresse à la manière dont le cerveau traite des stimuli visuels, composés d'images à forte valence émotionnelle. Quelle modalité d'imagerie et quelle technique d'analyse utiliser et pourquoi?
- * On s'intéresse à une atrophie possible du cortex frontale. Quelle modalité d'imagerie et quelle technique d'analyse utiliser et pourquoi?
- * On souhaite étudier l'activité spontanée du cerveau, et acquérir un échantillon aussi grand que possible avec un budget fixe. Quelle modalité d'imagerie et quelle technique d'analyse utiliser et pourquoi?
+On souhaite comparer différents aspects de l'architecture cérébrale entre une population de patients schizophrènes et une population de sujets contrôles.
+ * On s'intéresse au traitement cérébral de stimuli visuels composés d'images à forte valence émotionnelle. Quelle modalité d'imagerie et quelle technique d'analyse utiliseriez-vous et pourquoi?
+ * On s'intéresse à une atrophie possible du cortex frontale. Quelle modalité d'imagerie et quelle technique d'analyse utiliseriez-vous et pourquoi?
+ * On souhaite étudier l'activité spontanée du cerveau et acquérir un échantillon aussi grand que possible avec un budget fixe. Quelle modalité d'imagerie et quelle technique d'analyse utiliseriez-vous et pourquoi?
 ```

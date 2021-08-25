@@ -119,7 +119,7 @@ glue("atlas1-fig", fig, display=False)
 
 Un exemple de segmentation utilisant l'atlas Harvard-Oxford sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite).
 Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes.
-Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
 ```
 
 ## Approche par voxel (*Voxel-based morphometry*)
@@ -323,7 +323,7 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 - von Plessen, K., Lundervold, A., Duta, N., Heiervang, E., Klauschen, F., Smievoll, A. I., Ersland, L., & Hugdahl, K. (2002). Less developed corpus callosum in dyslexic subjects--a structural MRI study. *Neuropsychologia*, *40*(7), 1035–1044. https://doi.org/10.1016/s0028-3932(01)00143-9
 
 #### Utilisation d'un atlas de segmentation
-- 
+-
 
 #### Approche par voxel
 - Kikuchi, Y., Ogata, K., Umesaki, T., Yoshiura, T., Kenjo, M., Hirano, Y., Okamoto, T., Komune, S., & Tobimatsu, S. (2011). Spatiotemporal signatures of an abnormal auditory system in stuttering. *NeuroImage*, *55*(3), 891–899. https://doi.org/10.1016/j.neuroimage.2010.12.083
@@ -333,7 +333,7 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 - Yang, M., Chen, H. J., Liu, B., Huang, Z. C., Feng, Y., Li, J., Chen, J. Y., Zhang, L. L., Ji, H., Feng, X., Zhu, X., & Teng, G. J. (2014). Brain structural and functional alterations in patients with unilateral hearing loss. *Hearing research*, *316*, 37–43. https://doi.org/10.1016/j.heares.2014.07.006
 
 #### Analyse de surface
-- 
+-
 
 ## Références
 
