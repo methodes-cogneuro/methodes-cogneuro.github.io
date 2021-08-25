@@ -29,13 +29,21 @@ kernelspec:
         <a title="Révision du texte">👀</a>
     </td>
     <td align="center">
+      <a href="https://github.com/eddyfortier">
+        <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Eddy Fortier</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
       <a href="https://github.com/SamGuay">
         <img src="https://avatars.githubusercontent.com/u/30598330?v=4?s=100" width="100px;" alt=""/>
         <br /><sub><b>Samuel Guay</b></sub>
       </a>
       <br />
         <a title="Révision du texte">👀</a>
-    </td>
+    </td>    
   </tr>
 </table>
 
@@ -154,7 +162,7 @@ glue("t1-fig", fig, display=False)
 ```{glue:figure} t1-fig
 :figwidth: 800px
 :name: "t1-fig"
-Un exemple d'IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
+Un exemple d'IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données publique appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
 ```
 Le type d'images le plus couramment acquis avec un appareil d'IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure {ref}`ci-dessus <t1-fig>`, on distingue aisément certains éléments anatomiques:
  * La **matière grise**, en périphérie du cortex, apparait en gris dans l'image. C'est là que les corps des neurones sont présents.
@@ -214,7 +222,7 @@ glue("irmf-fig", fig, display=False)
 ```{glue:figure} irmf-fig
 :figwidth: 800px
 :name: "irmf-fig"
-Un exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig>`, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau. Cette figure est générée par du code python à l'aide de la librairie [nilearn](nilearn.github.io/) à partir d'un jeu de données publique appelé ADHD200 {cite:p}`HD-200_Consortium2012-uv, BELLEC2017275` (cliquer sur + pour voir le code).
+Un exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig>`, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données publique appelé ADHD200 {cite:p}`HD-200_Consortium2012-uv, BELLEC2017275` (cliquer sur + pour voir le code).
 ```
 
 Ces mesures ne reflètent pas directement l'activité des neurones, mais plutôt l'oxygénation du sang. On parle de signal dépendant du niveau d'oxygénation dans sang, ou signal BOLD (pour Blood Oxygen Level Dependent, en anglais). Comme on le verra dans la section {ref}`couplage-neurovasculaire-section`, ce signal BOLD reflète malgré tout de manière indirecte l'activité des neurones, et va nous permettre de faire des cartes de l'activité du cerveau. Il y a deux types majeurs de techniques d'analyse en IRMf:
