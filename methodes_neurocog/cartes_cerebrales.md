@@ -117,7 +117,7 @@ La notion de résolution temporelle fait généralement référence à la durée
 
 ```{warning}
 :name: resolution-temporelle-warning
-La résolution temporelle ne correspond pas simplement au temps qui s'écoulent entre deux mesures successives $\Delta_t$. Ce concept est plus difficile à visualiser que la résolution spatiale effective, mais est important en particulier dans le cas de l'imagerie optique. L'imagerie optique capture un phénomène vasculaire lent. Donc même si l'on a des pics d'activité séparés dans le temps au niveau neuronale (image de gauche), si l'intervalle de temps entre les pics est trop court on ne verra qu'un seul événement au niveau vasculaire (image de droite). C'est l'équivalent d'une image floue, mais dans la dimension temporelle.
+La résolution temporelle ne correspond pas simplement au temps qui s'écoulent entre deux mesures successives $\Delta_t$. Ce concept est plus difficile à visualiser que la résolution spatiale effective, mais est important en particulier dans le cas de l'imagerie optique. L'imagerie optique capture un phénomène vasculaire lent. Donc même si l'on a des pics d'activité séparés dans le temps au niveau neuronale, si l'intervalle de temps entre les pics est trop court on ne verra qu'un seul événement au niveau vasculaire. C'est l'équivalent d'une image floue, mais dans la dimension temporelle.
 ```
 
 ## Imagerie par résonance magnétique
