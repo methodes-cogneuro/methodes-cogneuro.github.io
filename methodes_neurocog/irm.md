@@ -189,6 +189,10 @@ fig.show()
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
+
 #Ce code génère la figure pour les courbes T2
 import matplotlib.pyplot as plt
 import numpy as np
