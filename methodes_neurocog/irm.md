@@ -154,66 +154,6 @@ Les contrastes T1 et T2 sont les paramètres principaux acquis durant une séanc
 
 > La diminution de la composante selon B1 (composante Mxy) suit plutôt une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance s'appelle le **T2 (relaxation transverse)**.
 
-:warning: (insérer images des courbes)
-
-
-<br>**TR et TE**
-
-Temps de répétition (TR): délai entre les excitations des atomes d'hydrogène (entre les impulsions RF).
-
-Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
-
-<br>Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-). 
-
----
-***Réfléchissez-y !***
-
-Pourquoi s'embêter à faire des contrastes T1 et T2 quand l'un semble être l'exact opposé de l'autre ?
-
-Observez  bien les images ci-dessous. Y a-t-il certaines régions du cerveau où l'image T2 n'est pas l'exact opposé de l'image T1 ?
-
-```{code-cell} ipython 3
-:tags: ["hide-input", "remove-output"]
-#Importer les modules requis et le jeu de données
-from nilearn.datasets import fetch_icbm152_2009
-from nilearn.plotting import plot_anat
-
-data_mri = fetch_icbm152_2009()
-
-#afficher l'image pondérée en T1
-plot_anat(data_mri.t1, title="MRI en contraste T1")
-```
-
-```{code-cell} ipython 3
-:tags: ["hide-input", "remove-output"]
-#afficher l'image pondérée en T2
-plot_anat(data_mri.t2, title="MRI en contraste T2")
-```
-
-*En T2, nous pouvons entre autre voir une partie gris foncé au niveau des noyaux gris centraux. Ces différences sont liées au fait que ces structures possèdent des compositions chimiques différentes qui vont créer des **déphasages** importants. Le contraste T2 est sensible au déphasage alors que le contraste T1 ne l'ai pas, faisant en sorte que ces contrastes ne sont pas l'exact opposé l'un de l'autre ! Nous reparlerons du déphasage dans la prochaine section.* 
-
----
-
-Bref, les processus de relaxation en T1 et en T2 ne vont pas capturer les mêmes aspects au niveau des tissus. Grâce aux antennes radio-fréquence, nous pouvons construire les contrastes et les mesurer, ce qui nous permet ultimement de faire des cartes du cerveau !
-
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/xzmMqHB0uyM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-```
-
-## T2* et séquences d'acquisition
-Dans la section précédentes, nous avons vu les contrastes T1 et T2 qui nous permettent d'observer les différents tissus du cerveau (matière grise et matière blanche) et le liquide céphalo-rachidien. Le contraste le plus utilisé pour obtenir des images structurelles est le T1. Dans le [cours sur les cartes cérébrales](https://psy3018.github.io/cartes_cerebrales.html), nous avons vu qu'il existait d'autres types d'IRM. Ces différents types d'IRM vont utiliser des séquences d'acquisition différentes. 
-
-Revenons sur le concept de déphasage précédement introduit. En soumettant les tissus à une même impulsion RF, le moment magnétique des protons s'aligne dans la même direction et leur mouvement de rotation se synchronise (i.e., que les protons sont en phase). Lorsque nous arrêtons les impulsions RF, il va y avoir des différences dans le mouvement de précession des protons. C'est le phénomène de déphasage. Les mouvements de précession des protons sont de plus en plus déphasés au fur et à mesure qu'ils retournent à l'équilibre (i.e., alignés avec B0). La décroissance selon l'axe B1 est donc aussi influencé par ce phénomène de déphasage.
-
-Nous avons vu que le champ magnétique B0 permettait d'homogénéisé le champ magnétique dans le cerveau. Certaines molécules agissent comme des aimants et viennent créer des irrégularités dans le champ magnétique, ce qui va accélérer le déphasage des spins. Lorsque nous observons le T2 en présence d'irrégularités, la composante selon B1 décroit plus rapidement. C'est ce que nous appelons le T2* ou T2 apparent.
-
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 
@@ -273,8 +213,63 @@ plt.legend()
 plt.gca().axes.yaxis.set_ticklabels([])
 plt.gca().axes.xaxis.set_ticklabels([])
 plt.show()
-
 ```
+<br>**TR et TE**
+
+Temps de répétition (TR): délai entre les excitations des atomes d'hydrogène (entre les impulsions RF).
+
+Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
+
+<br>Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-). 
+
+---
+***Réfléchissez-y !***
+
+Pourquoi s'embêter à faire des contrastes T1 et T2 quand l'un semble être l'exact opposé de l'autre ?
+
+Observez  bien les images ci-dessous. Y a-t-il certaines régions du cerveau où l'image T2 n'est pas l'exact opposé de l'image T1 ?
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+#Importer les modules requis et le jeu de données
+from nilearn.datasets import fetch_icbm152_2009
+from nilearn.plotting import plot_anat
+
+data_mri = fetch_icbm152_2009()
+
+#afficher l'image pondérée en T1
+plot_anat(data_mri.t1, title="MRI en contraste T1")
+```
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+#afficher l'image pondérée en T2
+plot_anat(data_mri.t2, title="MRI en contraste T2")
+```
+
+*En T2, nous pouvons entre autre voir une partie gris foncé au niveau des noyaux gris centraux. Ces différences sont liées au fait que ces structures possèdent des compositions chimiques différentes qui vont créer des **déphasages** importants. Le contraste T2 est sensible au déphasage alors que le contraste T1 ne l'ai pas, faisant en sorte que ces contrastes ne sont pas l'exact opposé l'un de l'autre ! Nous reparlerons du déphasage dans la prochaine section.* 
+
+---
+
+Bref, les processus de relaxation en T1 et en T2 ne vont pas capturer les mêmes aspects au niveau des tissus. Grâce aux antennes radio-fréquence, nous pouvons construire les contrastes et les mesurer, ce qui nous permet ultimement de faire des cartes du cerveau !
+
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+
+from IPython.display import HTML
+import warnings
+warnings.filterwarnings("ignore")
+
+# Youtube
+HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/xzmMqHB0uyM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```
+
+## T2* et séquences d'acquisition
+Dans la section précédentes, nous avons vu les contrastes T1 et T2 qui nous permettent d'observer les différents tissus du cerveau (matière grise et matière blanche) et le liquide céphalo-rachidien. Le contraste le plus utilisé pour obtenir des images structurelles est le T1. Dans le [cours sur les cartes cérébrales](https://psy3018.github.io/cartes_cerebrales.html), nous avons vu qu'il existait d'autres types d'IRM. Ces différents types d'IRM vont utiliser des séquences d'acquisition différentes. 
+
+Revenons sur le concept de déphasage précédement introduit. En soumettant les tissus à une même impulsion RF, le moment magnétique des protons s'aligne dans la même direction et leur mouvement de rotation se synchronise (i.e., que les protons sont en phase). Lorsque nous arrêtons les impulsions RF, il va y avoir des différences dans le mouvement de précession des protons. C'est le phénomène de déphasage. Les mouvements de précession des protons sont de plus en plus déphasés au fur et à mesure qu'ils retournent à l'équilibre (i.e., alignés avec B0). La décroissance selon l'axe B1 est donc aussi influencé par ce phénomène de déphasage.
+
+Nous avons vu que le champ magnétique B0 permettait d'homogénéisé le champ magnétique dans le cerveau. Certaines molécules agissent comme des aimants et viennent créer des irrégularités dans le champ magnétique, ce qui va accélérer le déphasage des spins. Lorsque nous observons le T2 en présence d'irrégularités, la composante selon B1 décroit plus rapidement. C'est ce que nous appelons le T2* ou T2 apparent.
 
 Ces inhomogénéités dans le champ magnétique peuvent entre autre être créées par l'oxyhémoglobine et la déoxyhémoglobine que l'on retrouve dans le sang. Nous allons voir plus en détails comment l'oxyhémoglobine et la déoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l'[IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html). En IRM fonctionnelle, nous utilisons des séquences pondérées en T2*.
 
