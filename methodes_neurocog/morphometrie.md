@@ -341,35 +341,65 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 :filter: docname in docnames
 ```
 
-## Exercices (version provisoire: copy/paste du template depuis le chapitre 1)
+## Exercices
 
-### Exercice 1
+```{admonition} Exercice 3.1
+:class: note
 
-On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.
+Choisissez la meilleure réponse et expliquez pourquoi.
+Des données d’IRM T1 individuelle sont...
+ 1. Une image d’un cerveau
+ 2. Des dizaines d’image d’un cerveau
+ 3. Des centaines d’images d’un cerveau
+```
 
-### Exercice 2
+```{admonition} Exercice 3.2
+:class: note
 
-Classez ces techniques par leur résolution spatiale:
- 1. IRMf
- 2. IRM structurelle
- 3. PET
+On souhaite comparer le volume moyen du putamen droit entre des participants neurotypiques et des participants étant sur le spectre de l’autisme.
+On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
+Citez une force et une faiblesse en lien avec les objectifs de l'étude pour chacune de ces techniques.
+``` 
 
-### Exercice 3
-Classez ces techniques par leur résolution temporelle:
- 1. IRMf
- 2. Imagerie optique
- 3. EEG
- 4. IRM de diffusion
+```{admonition} Exercice 3.3
+:class: note
 
-### Exercice 4
-On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.
- 1. Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.
- 2. Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.
+Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
+ - Les données IRM T1 doivent être réalignées pour étudier la morphologie du cerveau à l’échelle d’une population.
+ - Les données d’IRM "brutes" (avant prétraitement) sont inutilisables pour étudier la morphométrie.
+ - Le lissage spatial est important, même pour une analyse individuelle. 
+```
 
-### Exercice 5
-Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.
- 1. Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.
- 2. Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.
+```{admonition} Exercice 3.4
+:class: note
 
-### Exercice 6
-On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
+Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
+ - Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.
+ - La présence de métal peut créer du bruit et des déformations dans une carte VBM.
+ - La présence d'une déformation majeure dans une carte cérébrale VBM signifie nécessairement qu'il y a présence d'une déformation dans le cerveau du participant. 
+```
+
+```{admonition} Exercice 3.5
+:class: note
+
+En vérifiant ses données structurelles, un chercheur réalise qu’un de ses participants de recherche a un volume cérébral de deux fois supérieur à la normale!
+Pourtant, le crâne de ce participant semblait normal.
+Proposez une explication. 
+```
+
+```{admonition} Exercice 3.6
+:class: note
+
+On souhaite faire une comparaison entre la quantité de matière grise présente au niveau du sillon post-central et celle contenue dans le sillon précentral, en moyenne, sur une population.
+On considère pour cela deux méthodes alternatives: une analyse VBM ou bien une analyse de l’épaisseur corticale (analyse de surface).
+Quelle technique choisiriez-vous et pourquoi?
+```
+
+```{admonition} Exercice 3.7
+:class: note
+
+Les données d’un participant de recherche sont de qualité médiocre et la segmentation de la matière grise est imprécise.
+Pour chacune des combinaisons de choix suivantes, quelle technique choisiriez-vous et pourquoi?
+ - VBM vs volumétrie manuelle?
+ - VBM vs analyse de surface?
+```
