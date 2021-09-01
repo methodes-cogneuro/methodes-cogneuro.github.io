@@ -58,7 +58,7 @@ name: irm-collection-fig
 Différents appareils IRM dont le champ magnétique varie en force: 1.5T, 3T, 7T et 10.5 T. Cette figure correspond à la diapositive 3 du cours. Pour des raisons de droits d'auteurs, la figure ne peut être partagée publiquement.
 ```
 
-Dans l'image ci-haut, nous pouvons voir différents appareils d'imagerie par résonance magnétique. Nous pouvons remarquer que la taille de l'aimant est proportionnelle à sa force. Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre.
+Dans l'image ci-haut, nous pouvons voir différents appareils d'imagerie par résonance magnétique. Nous pouvons remarquer que la taille de l'aimant est proportionnelle à sa force. Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre. 
 
 Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!
 
@@ -79,22 +79,22 @@ En général, les système IRM utilisent des aimants supra-conductrices qui perm
 Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
  * L'**antenne radio-fréquence**: permettent 1- d'exciter la matière grâce à des émetteurs et 2- de mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs.
-Les impulsions radio-fréquence générées par l'antenne un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Nous en parlons un peu plus en profondeur dans la prochaine section.
+Les impulsions radio-fréquence générées par l'antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Nous en parlons un peu plus en profondeur dans la prochaine section.
 
- ```{warning}
+```{warning}
 L'IRM est très sensible aux mouvements de la tête ! Il est possible d'utiliser des coussins ou autres dispositifs pour réduire le mouvement.
 ```
 
 ## Spin magnétique et champ B0
 Les protons qui constitue en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe,similairement à une toupie. Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
 
-Quelques mots sur le moment magnétique... Si l'on considère qu'un proton agit comme un petit aimant, nous pouvons penser à son moment magnétique comme étant la force de cet aimant. Cette force est traduit sous forme de quantité vectorielle avec une direction et une orientation. Peut-être avez-vous entendu parlé de la règle de la main droite ? Et bien, on peut s'en servir pour trouver la direction du moment magnétique, selon son mouvement de précession.
+Quelques mots sur le moment magnétique... Si l'on considère qu'un proton agit comme un petit aimant, nous pouvons penser à son moment magnétique comme étant la force de cet aimant. Cette force est traduit sous forme de quantité vectorielle avec une direction et une orientation. Peut-être avez-vous entendu parlé de la règle de la main droite ? Et bien, nous pouvons nous en servir pour trouver la direction du moment magnétique, selon son mouvement de précession. 
 
 ```{admonition} Fréquence de Larmor d'un atome d'hydrogène
-Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Donc, placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde ! Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne son moment magnétique va augmenter.
+Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Donc, placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde ! Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne son moment magnétique va augmenter. 
 ```
 
-En produisant un champ magnétique (géant !), l'aimant de l'IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. Lorsque nous parlons d'un IRM 1.5T, 3T, 7T, etc., on réfère à la force du champ B0.
+En produisant un champ magnétique (géant !), l'aimant de l'IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. Lorsque nous parlons d'un IRM 1.5T, 3T, 7T, etc., nous réfèrons à la force du champ B0.
 
 ```{admonition} Bobine + courant = champ magnétique !
 En créant un anneau avec du fil électrique et en passant un courant électrique, nous produisons un champ magnétique. Dans la [vidéo](https://www.youtube.com/watch?v=bq6IhapfucE), nous pouvons voir les lignes de champ magnétique se dessiner lorsque le champ magnétique est activé. Les lignes de champ sont droites lorsqu'elles passent par le centre de l'anneau, mais elles se propagent en cercles en s'éloignant du centre de l'anneau.
@@ -154,6 +154,8 @@ Les contrastes T1 et T2 sont les paramètres principaux acquis durant une séanc
 > L'augmentation de la composante selon B0 (composante Mz) suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le **T1 (relaxation longitudinale)**. Le temps T1 correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z (M0).
 
 ```{admonition} M0
+:class: tip
+:name: M0-tip
 À l'état d'équilibre, la contribution du moment magnétique selon l'axe z est appelée B0. Cette valeur dépend de la densité de protons dans les tissus. Ainsi, d'un voxel à un autre, nous n'obtenons pas nécessairement la même valeur de M0.
 ```
 
@@ -161,9 +163,70 @@ Les contrastes T1 et T2 sont les paramètres principaux acquis durant une séanc
 
 > La diminution de la composante selon B1 (composante Mxy) suit plutôt une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance s'appelle le **T2 (relaxation transverse)**.
 
-:warning: (insérer images des courbes)
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
 
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
 
+#Ce code génère la figure pour les courbes T1
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0,15,100)
+#Fonctions exponentiels pour les courbes T1 (à titre d'exemple seulement)
+y1 = -5.8 * 0.8**x +5.8
+y2 = -5.6 * 0.7**x +5.7
+y3 = -5.7 * 0.6**x + 5.6
+#Tracer la figure
+plt.plot(x,y1,label="Liquide céphalo-rachidien")
+plt.plot(x,y2,label="matière grise")
+plt.plot(x,y3,label="matière blanche")
+plt.vlines(4, 0, 6, colors="black", linestyles="--")
+plt.text(4.1,5.8,"TE")
+plt.vlines(12, 0, 6, colors="black", linestyles="--")
+plt.text(12.1,5.8,"TR")
+plt.xlabel("Temps", loc="right")
+plt.ylabel("Mz", loc="top")
+plt.title("Courbe T1")
+plt.legend()
+plt.gca().axes.yaxis.set_ticklabels([])
+plt.gca().axes.xaxis.set_ticklabels([])
+fig.show()
+```
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+#Ce code génère la figure pour les courbes T2
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0,15,100)
+#Fonctions exponentiels pour les courbes T2 (à titre d'exemple seulement)
+y4 = 11.6 * 0.8**x +0.4
+y5 = 11.6 * 0.7**x +0.4
+y6 = 11.6 * 0.6**x +0.4
+#Tracer la figure
+plt.plot(x,y4,label="Liquide céphalo-rachidien")
+plt.plot(x,y5,label="matière grise")
+plt.plot(x,y6,label="matière blanche")
+plt.vlines(4, 0, 11.5, colors="black", linestyles="--")
+plt.text(4.1,8.5,"TE")
+plt.vlines(12, 0, 11.5, colors="black", linestyles="--")
+plt.text(12.1,8.5,"TR")
+plt.xlabel("Temps", loc="right")
+plt.ylabel("Mz", loc="top")
+plt.title("Courbe T2")
+plt.legend()
+plt.gca().axes.yaxis.set_ticklabels([])
+plt.gca().axes.xaxis.set_ticklabels([])
+plt.show()
+```
 <br>**TR et TE**
 
 Temps de répétition (TR): délai entre les excitations des atomes d'hydrogène (entre les impulsions RF).
@@ -179,7 +242,23 @@ Pourquoi s'embêter à faire des contrastes T1 et T2 quand l'un semble être l'e
 
 Observez  bien les images ci-dessous. Y a-t-il certaines régions du cerveau où l'image T2 n'est pas l'exact opposé de l'image T1 ?
 
-:warning: Insérer images T1 vs T2
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+#Importer les modules requis et le jeu de données
+from nilearn.datasets import fetch_icbm152_2009
+from nilearn.plotting import plot_anat
+
+data_mri = fetch_icbm152_2009()
+
+#afficher l'image pondérée en T1
+plot_anat(data_mri.t1, title="MRI en contraste T1")
+```
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+#afficher l'image pondérée en T2
+plot_anat(data_mri.t2, title="MRI en contraste T2")
+```
 
 *En T2, nous pouvons entre autre voir une partie gris foncé au niveau des noyaux gris centraux. Ces différences sont liées au fait que ces structures possèdent des compositions chimiques différentes qui vont créer des **déphasages** importants. Le contraste T2 est sensible au déphasage alors que le contraste T1 ne l'ai pas, faisant en sorte que ces contrastes ne sont pas l'exact opposé l'un de l'autre ! Nous reparlerons du déphasage dans la prochaine section.*
 
@@ -205,13 +284,9 @@ Revenons sur le concept de déphasage précédement introduit. En soumettant les
 
 Nous avons vu que le champ magnétique B0 permettait d'homogénéisé le champ magnétique dans le cerveau. Certaines molécules agissent comme des aimants et viennent créer des irrégularités dans le champ magnétique, ce qui va accélérer le déphasage des spins. Lorsque nous observons le T2 en présence d'irrégularités, la composante selon B1 décroit plus rapidement. C'est ce que nous appelons le T2* ou T2 apparent.
 
-:warning: Insérer courbe T2 réel vs T2*
-
 Ces inhomogénéités dans le champ magnétique peuvent entre autre être créées par l'oxyhémoglobine et la déoxyhémoglobine que l'on retrouve dans le sang. Nous allons voir plus en détails comment l'oxyhémoglobine et la déoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l'[IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html). En IRM fonctionnelle, nous utilisons des séquences pondérées en T2*.
 
 **Formation d'images en IRMf**
-
-:warning: Insérer image pondérée en T2*
 
 Nous pouvons observer deux principales différences entre l'image pondérée en T2* et l'image pondérée en T1:
  1. L'image pondérée en T2* est inversé par rapport à l'image en T1.
@@ -219,6 +294,22 @@ Nous pouvons observer deux principales différences entre l'image pondérée en 
  3. Le temps d'acquisition des images T2* est beaucoup plus court (1-2s) que celui des images T1 (10min).
 
 Quelle est l'utilité d'acquérir des voxels plus gros si ne nous pouvons pas voir correctement l'anatomie du cerveau ? En fait, ce qui nous intéresse en IRMf c'est plutôt les changements d'oxygénation locaux, i.e., les inhomogénéités dans le champ magnétique créés par le ratio d'oxyhémoglobine et de déoxyhémoglobine.
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+#Importer les modules requis et le jeu de données
+from nilearn.plotting import plot_img
+from nilearn.image import index_img
+from nilearn.datasets import fetch_adhd
+
+adhd = fetch_adhd(n_subjects=1)
+
+#Afficher le premier volume de la série
+plot_img(index_img(adhd.func[0], 0),
+              bg_img=None,
+              black_bg=True,
+              title="un volume BOLD")
+```
 
 **Formation d'images en IRM de diffusion**
 
@@ -251,6 +342,13 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/w9z_AN
 
 ### Conclusions et références suggérées
 Ce chapitre vous a introduit aux principles physiques de l'IRM. Nous avons vu les différentes composantes d'un appareil IRM, les différents phénomènes magnétiques nous permettant d'acquérir des images, ainsi que quelques paramètres que nous pouvons modifier lors de l'acquisition de données IRM. Lors du prochain chapitre, nous parlerons de morphométrie.
+
+### Exemples d'articles présentant des analyses IRM:
+
+- de Vos, F., Schouten, T. M., Hafkemeijer, A., Dopper, E. G. P., van Swieten, J. C., de Rooij, M, van der Grond, J. & Rombouts, S. A. R. B. (2016). Combining multiple anatomical MRI measures improves Alzheimer's disease classification. *Human Brain Mapping, 37*(5), 1920-1929. https://doi.org/10.1002/hbm.23147 
+- 
+
+Cette [chaîne youtube](https://www.youtube.com/channel/UC_BIby85hZmcItMrkAlc8eA) contient une série de vidéos qui couvre plus en détails les principles de IRM et de l'IRMf.
 
 ### Références
 
