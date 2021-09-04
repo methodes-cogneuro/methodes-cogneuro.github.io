@@ -50,48 +50,38 @@ Ce cours a pour but de vous initier aux principes physiques de l'imagerie par r�
  * Les séquences IRM
 
 ## Anatomie d'un IRM
-```{figure} ./irm/fig_irm_collection.png
+
+La figure {ref}`irm-schema-fig` nous permet d'observer les éléments principaux d'un appareil IRM.
+
+```{figure} ./irm/irm_schema.png
 ---
 width: 800px
-name: irm-collection-fig
+name: irm-schema-fig
 ---
-Différents appareils IRM dont le champ magnétique varie en force: 1.5T, 3T, 7T et 10.5 T. Cette figure correspond à la diapositive 3 du cours. Pour des raisons de droits d'auteurs, la figure ne peut être partagée publiquement.
+Illustration schématique des principales composantes d'un appareil IRM. Cette figure correspond à la diapositive 4 du cours. Figure générée par P. Bellec, 2021, sous licence CC-BY.
 ```
-
-Dans l'image ci-haut, nous pouvons voir différents appareils d'imagerie par résonance magnétique. Nous pouvons remarquer que la taille de l'aimant est proportionnelle à sa force. Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre. 
-
-Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!
-
-Dans l'image ci-dessous, nous pouvons observer les trois éléments principaux d'un appareil IRM.
-
-```{figure} ./irm/fig_irm_composantes.png
----
-width: 800px
-name: irm-composantes-fig
----
-Illustration schématique des principales composantes d'un appareil IRM. Cette figure correspond à la diapositive 4 du cours. Pour des raisons de droits d'auteurs, la figure ne peut être partagée publiquement.
-```
-
+En particulier, on voit:
  * L'**aimant**: en faisant passer un courant électrique dans un aimant, on génère un champ magnétique !
 En général, les système IRM utilisent des aimants supra-conductrices qui permettent de produire des champs magnétiques beaucoup plus forts.
 
  * Les **bobines de gradient**: permettent de faire varier l'intensité du champ magnétique dans l'espace.
 Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
- * L'**antenne radio-fréquence**: permettent 1- d'exciter la matière grâce à des émetteurs et 2- de mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs.
-Les impulsions radio-fréquence générées par l'antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Nous en parlons un peu plus en profondeur dans la prochaine section.
+ * L'**antenne radio-fréquence**: permettent de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Nous en parlons un peu plus en profondeur dans la prochaine section.
+
+La force de l'aimant principal est mesurée en Teslas (T). Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre! Les appareils à 7T représente à ce jour la nouvelle frontière utilisée en recherche, et quelques appareils à 10T+ existent dans le monde. Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!
 
 ```{warning}
 L'IRM est très sensible aux mouvements de la tête ! Il est possible d'utiliser des coussins ou autres dispositifs pour réduire le mouvement.
 ```
 
 ## Spin magnétique et champ B0
-Les protons qui constitue en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe,similairement à une toupie. Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
+Les protons qui constitue en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe, de manière analogue à une toupie. Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
 
-Quelques mots sur le moment magnétique... Si l'on considère qu'un proton agit comme un petit aimant, nous pouvons penser à son moment magnétique comme étant la force de cet aimant. Cette force est traduit sous forme de quantité vectorielle avec une direction et une orientation. Peut-être avez-vous entendu parlé de la règle de la main droite ? Et bien, nous pouvons nous en servir pour trouver la direction du moment magnétique, selon son mouvement de précession. 
+Quelques mots sur le moment magnétique... Si l'on considère qu'un proton agit comme un petit aimant, nous pouvons penser à son moment magnétique comme étant la force de cet aimant. Cette force est traduit sous forme de quantité vectorielle avec une direction et une orientation. Peut-être avez-vous entendu parlé de la règle de la main droite ? Et bien, nous pouvons nous en servir pour trouver la direction du moment magnétique, selon son mouvement de précession.
 
 ```{admonition} Fréquence de Larmor d'un atome d'hydrogène
-Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Donc, placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde ! Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne son moment magnétique va augmenter. 
+Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Cette fréquence n'est donc pas fixe, mais *dépend de la force du champ magnétique!**  Donc, placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde. Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne son moment magnétique va augmenter.
 ```
 
 En produisant un champ magnétique (géant !), l'aimant de l'IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. Lorsque nous parlons d'un IRM 1.5T, 3T, 7T, etc., nous réfèrons à la force du champ B0.
@@ -345,8 +335,8 @@ Ce chapitre vous a introduit aux principles physiques de l'IRM. Nous avons vu le
 
 ### Exemples d'articles présentant des analyses IRM:
 
-- de Vos, F., Schouten, T. M., Hafkemeijer, A., Dopper, E. G. P., van Swieten, J. C., de Rooij, M, van der Grond, J. & Rombouts, S. A. R. B. (2016). Combining multiple anatomical MRI measures improves Alzheimer's disease classification. *Human Brain Mapping, 37*(5), 1920-1929. https://doi.org/10.1002/hbm.23147 
-- 
+- de Vos, F., Schouten, T. M., Hafkemeijer, A., Dopper, E. G. P., van Swieten, J. C., de Rooij, M, van der Grond, J. & Rombouts, S. A. R. B. (2016). Combining multiple anatomical MRI measures improves Alzheimer's disease classification. *Human Brain Mapping, 37*(5), 1920-1929. https://doi.org/10.1002/hbm.23147
+-
 
 Cette [chaîne youtube](https://www.youtube.com/channel/UC_BIby85hZmcItMrkAlc8eA) contient une série de vidéos qui couvre plus en détails les principles de IRM et de l'IRMf.
 
