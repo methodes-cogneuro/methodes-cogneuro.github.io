@@ -217,13 +217,12 @@ plt.gca().axes.yaxis.set_ticklabels([])
 plt.gca().axes.xaxis.set_ticklabels([])
 plt.show()
 ```
-<br>**TR et TE**
+**TR et TE**
 
 Temps de répétition (TR): délai entre les excitations des atomes d'hydrogène (entre les impulsions RF).
+<br>Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
 
-Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
-
-<br>Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-).
+Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-).
 
 ---
 ***Réfléchissez-y !***
@@ -307,11 +306,7 @@ En IRM de diffusion, nous utilisons également un contraste en T2*. Par contre, 
 
 **Séquences IRM**
 
-Les séquences IRM sont souvent représentés par la figure ci-dessous:
-
-:warning: Insérer figure séquence
-
-Nous pouvons mesurer différentes propriétés magnétiques grâce à l'interaction entre ces différents paramètres. Nous pouvons obtenir un contraste T2* par exemple à partir de différentes séquences. Il est donc possible de modifier les paramètres d'une séquence donnée lorsque nous faisons une acquisition IRM à partir de la console IRM. À partir de la console, nous pouvons aussi modifier d'autres paramètres:
+Nous pouvons mesurer différentes propriétés magnétiques grâce à l'interaction entre les différents paramètres d'une séquence IRM. Nous pouvons obtenir un contraste T2* par exemple à partir de différentes séquences. Il est donc possible de modifier les paramètres d'une séquence donnée lorsque nous faisons une acquisition IRM à partir de la console IRM. À partir de la console, nous pouvons aussi modifier d'autres paramètres:
 * TE
 * TR
 * champ de vue (field of view, FOV)
@@ -336,7 +331,6 @@ Ce chapitre vous a introduit aux principles physiques de l'IRM. Nous avons vu le
 ### Exemples d'articles présentant des analyses IRM:
 
 - de Vos, F., Schouten, T. M., Hafkemeijer, A., Dopper, E. G. P., van Swieten, J. C., de Rooij, M, van der Grond, J. & Rombouts, S. A. R. B. (2016). Combining multiple anatomical MRI measures improves Alzheimer's disease classification. *Human Brain Mapping, 37*(5), 1920-1929. https://doi.org/10.1002/hbm.23147
--
 
 Cette [chaîne youtube](https://www.youtube.com/channel/UC_BIby85hZmcItMrkAlc8eA) contient une série de vidéos qui couvre plus en détails les principles de IRM et de l'IRMf.
 
