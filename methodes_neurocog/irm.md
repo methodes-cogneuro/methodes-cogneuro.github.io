@@ -340,12 +340,12 @@ Classez les temps caractéristiques par ordre croissant, si possible.
 
 ```{admonition} Exercice 2.2
 :class: note
-Vrai ou faux? la force du champ d’un IRM est liée à la taille de l’IRM.
+Vrai ou faux? La force du champ d’un IRM est liée à la taille de l’IRM.
 ```
 
 ```{admonition} Exercice 2.3
 :class: note
-Choisissez parmi la bonne réponse parmi 1 ou 2. le spin d’un proton d’hydrogène a...
+Choisissez la bonne réponse parmi 1 ou 2. Le spin d’un proton d’hydrogène a...
 
  1. Une fréquence de rotation fixe, c’est la fréquence de Larmor.
  2. Une fréquence de rotation variable.
@@ -353,7 +353,7 @@ Choisissez parmi la bonne réponse parmi 1 ou 2. le spin d’un proton d’hydro
 
 ```{admonition} Exercice 2.4
 :class: note
-Qu’est ce qui produit le bruit dans une acquisition IRM?
+Qu’est-ce qui produit le bruit dans une acquisition IRM?
  * Le champ B0.
  * La climatisation pour refroidir l’aimant.
  * Les bobines de gradient.
@@ -367,7 +367,7 @@ Vrai ou faux? L’aimant de l’IRM consomme beaucoup d’électricité.
 
 ```{admonition} Exercice 2.6
 :class: note
-Vrai ou faux? L’IRM fonctionnelle et l’IRM de diffusion utilisent toutes les deux un contraste T2*.
+Vrai ou faux? L’IRM fonctionnelle et l’IRM de diffusion utilisent toutes deux un contraste T2*.
 ```
 
 ```{admonition} Exercice 2.7
@@ -397,10 +397,10 @@ Quelle est la durée de l’acquisition?
 Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
  * Quel est la force de l'aimant de l'IRM?
  * Combien de canaux sont présents dans l'antenne de tête?
- * Quel est le TR de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
+ * Quel est le TR de l'acquisition structurelle? Et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est-il logique que l'un soit plus grand que l'autre?
  * Quel est le nom de la séquence utilisée pour l'acquisition structurelle?
  * Quel est le nom de la séquence utilisée pour l'acquisition fonctionnelle?
- * Quel est le TE de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
+ * Quel est le TE de l'acquisition structurelle? Et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
  * Quelle est la taille du champ de vue de l'acquisition fonctionnelle, en cm?
  * Combien de volumes cérébraux sont acquis durant la séquence fonctionnelle?
 ```
