@@ -349,6 +349,7 @@ Choisissez parmi la bonne réponse parmi 1 ou 2. le spin d’un proton d’hydro
 
  1. Une fréquence de rotation fixe, c’est la fréquence de Larmor.
  2. Une fréquence de rotation variable.
+ 3. Une fréquence de rotation qui dépend de la force du champ magnétique dans l'IRM.
 ```
 
 ```{admonition} Exercice 2.4
