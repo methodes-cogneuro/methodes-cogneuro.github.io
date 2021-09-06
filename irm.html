@@ -264,8 +264,15 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contrastes-t1-et-t2">
-   Contrastes T1 et T2
+  <a class="reference internal nav-link" href="#contrastes-t-1-et-t-2">
+   Contrastes
+   <span class="math notranslate nohighlight">
+    \(T_1\)
+   </span>
+   et
+   <span class="math notranslate nohighlight">
+    \(T_2\)
+   </span>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -416,7 +423,7 @@
 <p>Nous pouvons penser à la résonance comme un mouvement de balançoire. Si nous poussons la balançoire de manière aléatoire, elle n’oscillera pas beaucoup. Pour avoir un mouvement de balançoire qui s’amplifie, nous devons pousser la balançoire à la même fréquence que la fréquence naturelle de l’oscillation de la balançoire. Nous allons alors <strong>entrer en résonance</strong> avec la balançoire, et son mouvement va s’amplifier. Nous pouvons donc voir la balançoire comme un phénomène de résonance entre l’objet qui se balance et la personne qui donne une impulsion à cet objet.</p>
 <p>L’IRM exploite ce phénomène de résonance. <strong>L’antenne radio-fréquence (RF)</strong> crée une série d’<strong>ondes radio-fréquences</strong> dans la direction perpendiculaire au champ B0, c’est-à-dire en direction du champ B1. En produisant une série d’impulsions suivant la fréquence de Larmor de l’hydrogène, les atomes d’hydrogène entrent en résonance et basculent dans la direction perpendiculaire.</p>
 <p>En arrêtant les impulsions, les atomes d’hydrogène entrent en relaxation, c’est-à-dire que leur moment magnétique va retourner dans la direction initiale B0. Autrement dit, le moment magnétique en direction B1 décroit pour revenir dans la direction B0. Ce phénomène de relaxation est très important, car la vitesse de la relaxation va dépendre des caractéristiques des tissus qui ont été excités. La vitesse de relaxation est mesurée par les antennes de réception placées dans le casque autour de la tête du sujet!</p>
-<div class="admonition-mise-en-phase admonition">
+<div class="tip admonition" id="phase-tip">
 <p class="admonition-title">Mise en phase</p>
 <p>Il est important de comprendre que le signal que nous mesurons en IRM ne provient pas d’un unique proton. Pour référence, 18 grammes d’eau contiennent une <a class="reference external" href="https://fr.wikipedia.org/wiki/Mole_(unit%C3%A9)">mole</a> de molécules H2O, soient environ <span class="math notranslate nohighlight">\(10^{24}\)</span> atomes d’hydrogène… Le signal que nous mesurons provient de la juxtaposition des spins de l’ensemble de ces atomes. Une onde radio-fréquence qui entre en résonance avec l’hydrogène ne va pas juste faire basculer les spins, mais aussi les mettre en phase. Imaginez que vous avez mille balançoires, que vous poussez au même moment (à la bonne fréquence). Non seulement le mouvement des balançoires va gagner en amplitude, mais toutes les balançoires seront au même point de leur trajectoire au même moment. C’est la même chose pour les spins après une excitation.</p>
 </div>
@@ -437,25 +444,14 @@
 <p>Nous nous rappellons que la fréquence de Larmor d’une particule dépend de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d’hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d’hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d’excitation. De cette manière, au lieu de recevoir du signal de l’ensemble du cerveau, nous ne recevons du signal que de la coupe sélectionnée, car seuls les atomes d’hydrogène dans cette coupe seront rentrés en résonance.</p>
 <p>Il nous reste encore à découper notre coupe en pixels… Mais cela sort largement du contexte de ce chapitre d’introduction. Pour en apprendre plus sur l’encodage spatial en IRM, vous pouvez consulter cette <a class="reference external" href="https://www.imaios.com/en/e-Courses/e-MRI/Signal-spatial-encoding/Spatial-encoding-intro">ressource</a> (en anglais).</p>
 </div>
-<div class="section" id="contrastes-t1-et-t2">
-<h2>Contrastes T1 et T2<a class="headerlink" href="#contrastes-t1-et-t2" title="Permalink to this headline">¶</a></h2>
-<p>Les contrastes T1 et T2 sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d’hydrogène sont alignés avec B0. L’application d’impulsions RF fait basculer les spins selon l’axe B1, axe perpendiculaire à B0. Une fois les impulsions RF arrêtées, les spins se réalignent avec le champ B0. Ce réalignement est caractérisé par:</p>
-<ol class="simple">
-<li><p>La composante selon B0 augmente</p></li>
-</ol>
-<blockquote>
-<div><p>L’augmentation de la composante selon B0 (composante Mz) suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s’appelle le <strong>T1 (relaxation longitudinale)</strong>. Le temps T1 correspond au temps écoulé pour obtenir 63% de la valeur d’équilibre de la contribution du moment magnétique selon l’axe z (M0).</p>
-</div></blockquote>
-<div class="tip admonition" id="m0-tip">
-<p class="admonition-title">M0</p>
-<p>À l’état d’équilibre, la contribution du moment magnétique selon l’axe z est appelée B0. Cette valeur dépend de la densité de protons dans les tissus. Ainsi, d’un voxel à un autre, nous n’obtenons pas nécessairement la même valeur de M0.</p>
+<div class="section" id="contrastes-t-1-et-t-2">
+<h2>Contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span><a class="headerlink" href="#contrastes-t-1-et-t-2" title="Permalink to this headline">¶</a></h2>
+<p>Les contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span> sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d’hydrogène sont alignés avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. L’application d’impulsions radio-fréquences fait basculer les spins selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>, axe perpendiculaire à <span class="math notranslate nohighlight">\(B_0\)</span>. Une fois les impulsions radio-fréquences arrêtées, les spins se réalignent avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span>.</p>
+<div class="admonition-champ-de-vue-fov admonition">
+<p class="admonition-title">Champ de vue (FOV)</p>
+<p>Quand on réalise une image 3D du cerveau, on va découper le cerveau en une série de coupes. En connaissant la taille des coupes ainsi que le nombre de coupes, on peut en déduire la taille du cube 3D qui correspond à l’image. Cette taille est appelée champ de vue, ou FOV en anglais (Field of view).</p>
 </div>
-<ol class="simple">
-<li><p>La composante selon B1 diminue</p></li>
-</ol>
-<blockquote>
-<div><p>La diminution de la composante selon B1 (composante Mxy) suit plutôt une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance s’appelle le <strong>T2 (relaxation transverse)</strong>.</p>
-</div></blockquote>
+<p><strong>Contraste en <span class="math notranslate nohighlight">\(T_1\)</span></strong>. L’augmentation de la composante selon <span class="math notranslate nohighlight">\(B_0\)</span> (composante <span class="math notranslate nohighlight">\(M_z\)</span>), ou <em>relaxation longitudinale</em>, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s’appelle le <span class="math notranslate nohighlight">\(T_1\)</span>. Le temps <span class="math notranslate nohighlight">\(T_1\)</span> correspond au temps écoulé pour obtenir 63% de la valeur d’équilibre de la contribution du moment magnétique selon l’axe z (<span class="math notranslate nohighlight">\(M_0\)</span>). Pour ceux qui sont à l’aise avec les expressions mathématiques, la repousse en <span class="math notranslate nohighlight">\(B_0\)</span> suit l’équation <span class="math notranslate nohighlight">\(M_z(t) = M_0 ( 1 - e^{-t / T_1})\)</span>.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enlève les warnings</span>
@@ -468,66 +464,127 @@
 <span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
 
 <span class="c1"># Initialise la figure</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Fonctions exponentielles pour les courbes T1 (à titre d&#39;exemple seulement)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.8</span> <span class="o">*</span> <span class="mf">0.8</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span><span class="mf">5.8</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.6</span> <span class="o">*</span> <span class="mf">0.7</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span><span class="mf">5.7</span>
-<span class="n">y3</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.7</span> <span class="o">*</span> <span class="mf">0.6</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span> <span class="mf">5.6</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="mf">0.8</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.7</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="mf">4.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.6</span> <span class="o">**</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># Tracer la figure</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Liquide céphalo-rachidien&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière grise&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière blanche&quot;</span><span class="p">)</span>
+<span class="n">ax_plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Liquide céphalo-rachidien&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière grise&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière blanche&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">4.1</span><span class="p">,</span><span class="mf">5.8</span><span class="p">,</span><span class="s2">&quot;TE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">4.1</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="s2">&quot;TE&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">12.1</span><span class="p">,</span><span class="mf">5.8</span><span class="p">,</span><span class="s2">&quot;TR&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">12.1</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="s2">&quot;TR&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temps&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mz&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Courbe T1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Courbe en T1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
 
-<span class="c1"># Fonctions exponentielles pour les courbes T2 (à titre d&#39;exemple seulement)</span>
-<span class="n">y4</span> <span class="o">=</span> <span class="mf">11.6</span> <span class="o">*</span> <span class="mf">0.8</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span><span class="mf">0.4</span>
-<span class="n">y5</span> <span class="o">=</span> <span class="mf">11.6</span> <span class="o">*</span> <span class="mf">0.7</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span><span class="mf">0.4</span>
-<span class="n">y6</span> <span class="o">=</span> <span class="mf">11.6</span> <span class="o">*</span> <span class="mf">0.6</span><span class="o">**</span><span class="n">x</span> <span class="o">+</span><span class="mf">0.4</span>
+<span class="c1">#Importer les modules requis et le jeu de données</span>
+<span class="kn">from</span> <span class="nn">nilearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_icbm152_2009</span>
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_anat</span>
 
-<span class="c1"># Tracer la figure</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Liquide céphalo-rachidien&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière grise&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y6</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière blanche&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">11.5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">4.1</span><span class="p">,</span><span class="mf">8.5</span><span class="p">,</span><span class="s2">&quot;TE&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">11.5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">12.1</span><span class="p">,</span><span class="mf">8.5</span><span class="p">,</span><span class="s2">&quot;TR&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temps&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mxy&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Courbe T2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
+<span class="n">data_mri</span> <span class="o">=</span> <span class="n">fetch_icbm152_2009</span><span class="p">()</span>
 
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;trte-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># afficher l&#39;image pondérée en T1</span>
+<span class="n">ax_plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_anat</span><span class="p">(</span><span class="n">data_mri</span><span class="o">.</span><span class="n">t1</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IRM en contraste T1&quot;</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax_plot</span><span class="p">,</span>
+    <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">])</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;relax-t1-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="figure align-default" id="trte-fig" style="width: 800px">
+<div class="figure align-default" id="relax-t1-fig" style="width: 800px">
 <div class="cell_output docutils container">
 <img alt="_images/irm_5_0.png" src="_images/irm_5_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">La figure de gauche représente la repousse du champ magnétique selon l’axe <code class="docutils literal notranslate"><span class="pre">Mz</span></code>, aligné avec le champ <code class="docutils literal notranslate"><span class="pre">B0</span></code>. La figure de droite représente la décroissance du champ magnétique selon l’axe <code class="docutils literal notranslate"><span class="pre">Mxy</span></code>, perpendiculaire au champ B0. Notez que différents types de tissus présentent des dynamiques différentes, aussi bien selon <code class="docutils literal notranslate"><span class="pre">Mz</span></code> que selon <code class="docutils literal notranslate"><span class="pre">Mxy</span></code>. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://matplotlib.org/">matplotlib</a>, cliquer sur + pour voir le code.</span><a class="headerlink" href="#trte-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Relaxation longitudinale et contraste <span class="math notranslate nohighlight">\(T_1\)</span>. Image de gauche: croissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_0\)</span>, appelé <span class="math notranslate nohighlight">\(M_{z}. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps \)</span>TE<span class="math notranslate nohighlight">\( présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste \)</span>T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.</span><a class="headerlink" href="#relax-t1-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p><strong>TR, TE et champ de vue (FOV)</strong></p>
-<p>Temps de répétition (TR): délai entre les excitations des atomes d’hydrogène (entre les impulsions RF).
-<br>Temps d’écho (TE): délai entre les impulsions RF et l’acquisition des points de mesure.</p>
-<p>Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-).</p>
+<div class="tip admonition" id="m0-tip">
+<p class="admonition-title">M0</p>
+<p>À l’état d’équilibre, la contribution du moment magnétique selon l’axe <span class="math notranslate nohighlight">\(B_0\)</span> est appelée <span class="math notranslate nohighlight">\(M_0\)</span>. Cette valeur dépend de la densité de protons dans les tissus, c’est à dire du nombre d’atomes d’hydrogène présents dans le tissu. Ainsi, d’un voxel à un autre, nous n’obtenons pas nécessairement la même valeur de <span class="math notranslate nohighlight">\(M_0\)</span>. Il est possible d’imager ce paramètre, et on parle alors d’image en densité de protons (PD en anglais, pour proton density).</p>
+</div>
+<p><strong>Contraste en <span class="math notranslate nohighlight">\(T_2\)</span></strong>. La diminution de la composante selon <span class="math notranslate nohighlight">\(B_1\)</span> (composante <span class="math notranslate nohighlight">\(M_{xy}\)</span>), ou <em>relaxation transverse</em>, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s’appelle le <span class="math notranslate nohighlight">\(T_2\)</span>. Le temps <span class="math notranslate nohighlight">\(T_2\)</span> correspond au temps écoulé pour obtenir 37% de la valeur de la contribution du moment magnétique initiale selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>. Pour ceux qui sont à l’aise avec les expressions mathématiques, la décroissonce en <span class="math notranslate nohighlight">\(B_1\)</span> suit l’équation <span class="math notranslate nohighlight">\(M_{xy}(t) = M_1 e^{-t / T_2}\)</span>. La constante <span class="math notranslate nohighlight">\(M_1\)</span> va dépendre entre autre chose de la densité de protons, comme <span class="math notranslate nohighlight">\(M_0\)</span>, et va varier d’un tissu à l’autre.</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enlève les warnings</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Improte les librairies nécessaires</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+
+<span class="c1"># Initialise la figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Fonctions exponentielles pour les courbes T2 (à titre d&#39;exemple seulement)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">85</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="mi">70</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># Tracer la figure</span>
+<span class="n">ax_plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Liquide céphalo-rachidien&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière grise&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;matière blanche&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;TE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;TR&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temps&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mz&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Courbe en T2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1">#plt.gca().axes.yaxis.set_ticklabels([])</span>
+<span class="c1">#plt.gca().axes.xaxis.set_ticklabels([])</span>
+
+<span class="c1">#Importer les modules requis et le jeu de données</span>
+<span class="kn">from</span> <span class="nn">nilearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_icbm152_2009</span>
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_anat</span>
+
+<span class="n">data_mri</span> <span class="o">=</span> <span class="n">fetch_icbm152_2009</span><span class="p">()</span>
+
+<span class="c1"># afficher l&#39;image pondérée en T2</span>
+<span class="n">ax_plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_anat</span><span class="p">(</span><span class="n">data_mri</span><span class="o">.</span><span class="n">t2</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MRI en contraste T2&quot;</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax_plot</span><span class="p">,</span>
+    <span class="n">cut_coords</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">])</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;relax-t2-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="relax-t2-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_7_0.png" src="_images/irm_7_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Relaxation transverse et contraste <span class="math notranslate nohighlight">\(T_2\)</span>. Image de gauche: décroissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>, appelé <span class="math notranslate nohighlight">\(M_{xy}. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps \)</span>TE<span class="math notranslate nohighlight">\( présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste \)</span>T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.</span><a class="headerlink" href="#relax-t2-fig" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition-te admonition">
+<p class="admonition-title"><span class="math notranslate nohighlight">\(TE\)</span></p>
+<p>Lorsqu’on acquière des données IRM, on ne mesure généralement pas toute la courbe de relaxation, mais simplement un point de mesure au temps <span class="math notranslate nohighlight">\(TE\)</span>. En choississant le <span class="math notranslate nohighlight">\(TE\)</span> adéquatement, nous allons obtenir des valeurs de lecture très différentes pour les différents tissus. Le temps <span class="math notranslate nohighlight">\(TE\)</span> sera différent pour un contraste <span class="math notranslate nohighlight">\(T_1\)</span> et un contraste <span class="math notranslate nohighlight">\(T_2\)</span>.</p>
+</div>
+<div class="admonition-tr admonition">
+<p class="admonition-title"><span class="math notranslate nohighlight">\(TR\)</span></p>
+<p>On appele <span class="math notranslate nohighlight">\(TR\)</span> le temps qui séparent deux séries d’excitations. Cette valeur va correspondre au temps d’acquisition d’une coupe pour un IRM structurel, et le temps d’acquisition d’un volume cérébral complet en IRMf. C’est une convention bizarre, mais très utilisée par les physiciens IRM.</p>
+</div>
+<div class="admonition-angle-de-bascule admonition">
+<p class="admonition-title">angle de bascule</p>
+<p>Si l’on s’intéresse à la fin du processus de relaxation, on n’a pas besoin de basculer les spins complètement dans la direction <span class="math notranslate nohighlight">\(B_1\)</span>, mais simplement à un certain nombre de degrés de <span class="math notranslate nohighlight">\(B_0\)</span>. Ce paramètre est appelé angle de bascule (“flip angle” en anglais).</p>
+</div>
 <hr class="docutils" />
 <p><em><strong>Réfléchissez-y !</strong></em></p>
 <p>Pourquoi s’embêter à faire des contrastes T1 et T2 quand l’un semble être l’exact opposé de l’autre ?</p>
@@ -546,10 +603,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoSlicer at 0x7f9cd5ba5ca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoSlicer at 0x7f31674d0e20&gt;
 </pre></div>
 </div>
-<img alt="_images/irm_7_1.png" src="_images/irm_7_1.png" />
+<img alt="_images/irm_9_1.png" src="_images/irm_9_1.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -560,29 +617,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoSlicer at 0x7f9cd5b6d640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;nilearn.plotting.displays.OrthoSlicer at 0x7f3135b0eaf0&gt;
 </pre></div>
 </div>
-<img alt="_images/irm_8_1.png" src="_images/irm_8_1.png" />
+<img alt="_images/irm_10_1.png" src="_images/irm_10_1.png" />
 </div>
 </div>
 <p><em>En T2, nous pouvons entre autre voir une partie gris foncé au niveau des noyaux gris centraux. Ces différences sont liées au fait que ces structures possèdent des compositions chimiques différentes qui vont créer des <strong>déphasages</strong> importants. Le contraste T2 est sensible au déphasage alors que le contraste T1 ne l’est pas, faisant en sorte que ces contrastes ne sont pas l’exact opposé l’un de l’autre ! Nous reparlerons du déphasage dans la prochaine section.</em></p>
-<hr class="docutils" />
-<p>Bref, les processus de relaxation en T1 et en T2 ne vont pas capturer les mêmes aspects au niveau des tissus. Grâce aux antennes radio-fréquence, nous pouvons construire les contrastes et les mesurer, ce qui nous permet ultimement de faire des cartes du cerveau !</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-
-<span class="c1"># Youtube</span>
-<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/xzmMqHB0uyM&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/xzmMqHB0uyM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
-</div>
 </div>
 <div class="section" id="t2-et-sequences-d-acquisition">
 <h2>T2* et séquences d’acquisition<a class="headerlink" href="#t2-et-sequences-d-acquisition" title="Permalink to this headline">¶</a></h2>

@@ -124,6 +124,9 @@ L'IRM exploite ce phénomène de résonance. **L'antenne radio-fréquence (RF)**
 En arrêtant les impulsions, les atomes d'hydrogène entrent en relaxation, c'est-à-dire que leur moment magnétique va retourner dans la direction initiale B0. Autrement dit, le moment magnétique en direction B1 décroit pour revenir dans la direction B0. Ce phénomène de relaxation est très important, car la vitesse de la relaxation va dépendre des caractéristiques des tissus qui ont été excités. La vitesse de relaxation est mesurée par les antennes de réception placées dans le casque autour de la tête du sujet!
 
 ```{admonition} Mise en phase
+:class: tip
+:name: phase-tip
+
 Il est important de comprendre que le signal que nous mesurons en IRM ne provient pas d'un unique proton. Pour référence, 18 grammes d'eau contiennent une [mole](https://fr.wikipedia.org/wiki/Mole_(unité)) de molécules H2O, soient environ $10^{24}$ atomes d'hydrogène... Le signal que nous mesurons provient de la juxtaposition des spins de l'ensemble de ces atomes. Une onde radio-fréquence qui entre en résonance avec l'hydrogène ne va pas juste faire basculer les spins, mais aussi les mettre en phase. Imaginez que vous avez mille balançoires, que vous poussez au même moment (à la bonne fréquence). Non seulement le mouvement des balançoires va gagner en amplitude, mais toutes les balançoires seront au même point de leur trajectoire au même moment. C'est la même chose pour les spins après une excitation.
 ```
 
@@ -144,22 +147,14 @@ Nous nous rappellons que la fréquence de Larmor d'une particule dépend de la f
 
 Il nous reste encore à découper notre coupe en pixels... Mais cela sort largement du contexte de ce chapitre d'introduction. Pour en apprendre plus sur l'encodage spatial en IRM, vous pouvez consulter cette [ressource](https://www.imaios.com/en/e-Courses/e-MRI/Signal-spatial-encoding/Spatial-encoding-intro) (en anglais).
 
-## Contrastes T1 et T2
-Les contrastes T1 et T2 sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec B0. L'application d'impulsions RF fait basculer les spins selon l'axe B1, axe perpendiculaire à B0. Une fois les impulsions RF arrêtées, les spins se réalignent avec le champ B0. Ce réalignement est caractérisé par:
+## Contrastes $T_1$ et $T_2$
+Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radio-fréquences fait basculer les spins selon l'axe $B_1$, axe perpendiculaire à $B_0$. Une fois les impulsions radio-fréquences arrêtées, les spins se réalignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
 
-1. La composante selon B0 augmente
-
-> L'augmentation de la composante selon B0 (composante Mz) suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le **T1 (relaxation longitudinale)**. Le temps T1 correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z (M0).
-
-```{admonition} M0
-:class: tip
-:name: M0-tip
-À l'état d'équilibre, la contribution du moment magnétique selon l'axe z est appelée B0. Cette valeur dépend de la densité de protons dans les tissus. Ainsi, d'un voxel à un autre, nous n'obtenons pas nécessairement la même valeur de M0.
+```{admonition} Champ de vue (FOV)
+Quand on réalise une image 3D du cerveau, on va découper le cerveau en une série de coupes. En connaissant la taille des coupes ainsi que le nombre de coupes, on peut en déduire la taille du cube 3D qui correspond à l'image. Cette taille est appelée champ de vue, ou FOV en anglais (Field of view).
 ```
 
-2. La composante selon B1 diminue
-
-> La diminution de la composante selon B1 (composante Mxy) suit plutôt une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance s'appelle le **T2 (relaxation transverse)**.
+**Contraste en $T_1$**. L'augmentation de la composante selon $B_0$ (composante $M_z$), ou _relaxation longitudinale_, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le $T_1$. Le temps $T_1$ correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z ($M_0$). Pour ceux qui sont à l'aise avec les expressions mathématiques, la repousse en $B_0$ suit l'équation $M_z(t) = M_0 ( 1 - e^{-t / T_1})$.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -174,66 +169,124 @@ import numpy as np
 from myst_nb import glue
 
 # Initialise la figure
-fig = plt.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(15, 5))
 
 # Fonctions exponentielles pour les courbes T1 (à titre d'exemple seulement)
 x = np.linspace(0,15,100)
-y1 = -5.8 * 0.8**x +5.8
-y2 = -5.6 * 0.7**x +5.7
-y3 = -5.7 * 0.6**x + 5.6
+y1 = 3 * (1- 0.8 ** x)
+y2 = 4 * (1 - 0.7 ** x)
+y3 = 4.5 * (1 - 0.6 ** x)
 
 # Tracer la figure
-plt.subplot(1, 2, 1)
-plt.plot(x,y1,label="Liquide céphalo-rachidien")
-plt.plot(x,y2,label="matière grise")
-plt.plot(x,y3,label="matière blanche")
+ax_plot = plt.subplot(1, 3, 1)
+plt.plot(x, y1, label="Liquide céphalo-rachidien")
+plt.plot(x, y2, label="matière grise")
+plt.plot(x, y3, label="matière blanche")
 plt.vlines(4, 0, 6, colors="black", linestyles="--")
-plt.text(4.1,5.8,"TE")
+plt.text(4.1, 5.8, "TE")
 plt.vlines(12, 0, 6, colors="black", linestyles="--")
-plt.text(12.1,5.8,"TR")
+plt.text(12.1, 5.8, "TR")
 plt.xlabel("Temps", loc="right")
 plt.ylabel("Mz", loc="top")
-plt.title("Courbe T1")
+plt.title("Courbe en T1")
 plt.legend()
 plt.gca().axes.yaxis.set_ticklabels([])
 plt.gca().axes.xaxis.set_ticklabels([])
+
+#Importer les modules requis et le jeu de données
+from nilearn.datasets import fetch_icbm152_2009
+from nilearn.plotting import plot_anat
+
+data_mri = fetch_icbm152_2009()
+
+# afficher l'image pondérée en T1
+ax_plot = plt.subplot2grid((1, 3), (0, 1), colspan=2)
+plot_anat(data_mri.t1, figure=fig, title="IRM en contraste T1", axes=ax_plot,
+    cut_coords=[-17, 0, 17])
+
+glue("relax-t1-fig", fig, display=False)
+```
+
+```{glue:figure} relax-t1-fig
+:figwidth: 800px
+:name: "relax-t1-fig"
+Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
+```
+
+```{admonition} M0
+:class: tip
+:name: M0-tip
+À l'état d'équilibre, la contribution du moment magnétique selon l'axe $B_0$ est appelée $M_0$. Cette valeur dépend de la densité de protons dans les tissus, c'est à dire du nombre d'atomes d'hydrogène présents dans le tissu. Ainsi, d'un voxel à un autre, nous n'obtenons pas nécessairement la même valeur de $M_0$. Il est possible d'imager ce paramètre, et on parle alors d'image en densité de protons (PD en anglais, pour proton density).
+```
+
+**Contraste en $T_2$**. La diminution de la composante selon $B_1$ (composante $M_{xy}$), ou _relaxation transverse_, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s'appelle le $T_2$. Le temps $T_2$ correspond au temps écoulé pour obtenir 37% de la valeur de la contribution du moment magnétique initiale selon l'axe $B_1$. Pour ceux qui sont à l'aise avec les expressions mathématiques, la décroissonce en $B_1$ suit l'équation $M_{xy}(t) = M_1 e^{-t / T_2}$. La constante $M_1$ va dépendre entre autre chose de la densité de protons, comme $M_0$, et va varier d'un tissu à l'autre.
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+# Improte les librairies nécessaires
+import matplotlib.pyplot as plt
+import numpy as np
+from myst_nb import glue
+
+# Initialise la figure
+fig = plt.figure(figsize=(15, 5))
 
 # Fonctions exponentielles pour les courbes T2 (à titre d'exemple seulement)
-y4 = 11.6 * 0.8**x +0.4
-y5 = 11.6 * 0.7**x +0.4
-y6 = 11.6 * 0.6**x +0.4
+t = np.linspace(0, 5, 100)
+y1 = 100 * np.exp(-t / 1.5)
+y2 = 85 * np.exp(-t / 1.1)
+y3 = 70 * np.exp(-t / 0.8)
 
 # Tracer la figure
-plt.subplot(1, 2, 2)
-plt.plot(x,y4,label="Liquide céphalo-rachidien")
-plt.plot(x,y5,label="matière grise")
-plt.plot(x,y6,label="matière blanche")
-plt.vlines(4, 0, 11.5, colors="black", linestyles="--")
-plt.text(4.1,8.5,"TE")
-plt.vlines(12, 0, 11.5, colors="black", linestyles="--")
-plt.text(12.1,8.5,"TR")
+ax_plot = plt.subplot(1, 3, 1)
+plt.plot(t, y1, label="Liquide céphalo-rachidien")
+plt.plot(t, y2, label="matière grise")
+plt.plot(t, y3, label="matière blanche")
+plt.vlines(1, 0, 60, colors="black", linestyles="--")
+plt.text(1.1, 60, "TE")
+plt.vlines(3, 0, 60, colors="black", linestyles="--")
+plt.text(3.1, 60, "TR")
 plt.xlabel("Temps", loc="right")
-plt.ylabel("Mxy", loc="top")
-plt.title("Courbe T2")
+plt.ylabel("Mz", loc="top")
+plt.title("Courbe en T2")
 plt.legend()
-plt.gca().axes.yaxis.set_ticklabels([])
-plt.gca().axes.xaxis.set_ticklabels([])
+#plt.gca().axes.yaxis.set_ticklabels([])
+#plt.gca().axes.xaxis.set_ticklabels([])
 
-glue("trte-fig", fig, display=False)
+#Importer les modules requis et le jeu de données
+from nilearn.datasets import fetch_icbm152_2009
+from nilearn.plotting import plot_anat
+
+data_mri = fetch_icbm152_2009()
+
+# afficher l'image pondérée en T2
+ax_plot = plt.subplot2grid((1, 3), (0, 1), colspan=2)
+plot_anat(data_mri.t2, figure=fig, title="MRI en contraste T2", axes=ax_plot,
+    cut_coords=[-17, 0, 17])
+
+glue("relax-t2-fig", fig, display=False)
 ```
 
-```{glue:figure} trte-fig
+```{glue:figure} relax-t2-fig
 :figwidth: 800px
-:name: "trte-fig"
-La figure de gauche représente la repousse du champ magnétique selon l'axe `Mz`, aligné avec le champ `B0`. La figure de droite représente la décroissance du champ magnétique selon l'axe `Mxy`, perpendiculaire au champ B0. Notez que différents types de tissus présentent des dynamiques différentes, aussi bien selon `Mz` que selon `Mxy`. Cette figure est générée par du code python à l'aide de la librairie [matplotlib](https://matplotlib.org/), cliquer sur + pour voir le code.
+:name: "relax-t2-fig"
+Relaxation transverse et contraste $T_2$. Image de gauche: décroissance du champ magnétique selon l'axe $B_1$, appelé $M_{xy}. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
 ```
-**TR, TE et champ de vue (FOV)**
+```{admonition} $TE$
+Lorsqu'on acquière des données IRM, on ne mesure généralement pas toute la courbe de relaxation, mais simplement un point de mesure au temps $TE$. En choississant le $TE$ adéquatement, nous allons obtenir des valeurs de lecture très différentes pour les différents tissus. Le temps $TE$ sera différent pour un contraste $T_1$ et un contraste $T_2$.
+```
 
-Temps de répétition (TR): délai entre les excitations des atomes d'hydrogène (entre les impulsions RF).
-<br>Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
-
-Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-).
-
+```{admonition} $TR$
+On appele $TR$ le temps qui séparent deux séries d'excitations. Cette valeur va correspondre au temps d'acquisition d'une coupe pour un IRM structurel, et le temps d'acquisition d'un volume cérébral complet en IRMf. C'est une convention bizarre, mais très utilisée par les physiciens IRM.
+```
+```{admonition} angle de bascule
+Si l'on s'intéresse à la fin du processus de relaxation, on n'a pas besoin de basculer les spins complètement dans la direction $B_1$, mais simplement à un certain nombre de degrés de $B_0$. Ce paramètre est appelé angle de bascule ("flip angle" en anglais).
+```
 ---
 ***Réfléchissez-y !***
 
@@ -261,20 +314,6 @@ plot_anat(data_mri.t2, title="MRI en contraste T2")
 
 *En T2, nous pouvons entre autre voir une partie gris foncé au niveau des noyaux gris centraux. Ces différences sont liées au fait que ces structures possèdent des compositions chimiques différentes qui vont créer des **déphasages** importants. Le contraste T2 est sensible au déphasage alors que le contraste T1 ne l'est pas, faisant en sorte que ces contrastes ne sont pas l'exact opposé l'un de l'autre ! Nous reparlerons du déphasage dans la prochaine section.*
 
----
-
-Bref, les processus de relaxation en T1 et en T2 ne vont pas capturer les mêmes aspects au niveau des tissus. Grâce aux antennes radio-fréquence, nous pouvons construire les contrastes et les mesurer, ce qui nous permet ultimement de faire des cartes du cerveau !
-
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/xzmMqHB0uyM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-```
 
 ## T2* et séquences d'acquisition
 Dans la section précédentes, nous avons vu les contrastes T1 et T2 qui nous permettent d'observer les différents tissus du cerveau (matière grise et matière blanche) et le liquide céphalo-rachidien. Le contraste le plus utilisé pour obtenir des images structurelles est le T1. Dans le [cours sur les cartes cérébrales](https://psy3018.github.io/cartes_cerebrales.html), nous avons vu qu'il existait d'autres types d'IRM. Ces différents types d'IRM vont utiliser des séquences d'acquisition différentes.
