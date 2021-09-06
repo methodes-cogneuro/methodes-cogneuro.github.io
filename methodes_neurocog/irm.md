@@ -87,7 +87,7 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/bq6Iha
 ## Spin magnétique et champ B0
 ```{figure} ./irm/spin.png
 ---
-width: 800px
+width: 500px
 name: spin-fig
 ---
 Un proton est comme un petit aimant, dont le champ magnétique oscille autour d’une position donnée (mouvement de précession), et caractérisé par a moment angulaire, ou spin.  Partie droite de la figure générée par P. Bellec, 2021, sous licence CC-BY. La partie gauche de la figure est adaptée d'une image [shutterstock](https://www.shutterstock.com) ID `130826045`, utilisée sous licence shutterstock standard.
@@ -293,45 +293,36 @@ Si l'on s'intéresse à la fin du processus de relaxation, on n'a pas besoin de 
 Pourquoi s'embêter à faire des contrastes $T_1$ et $T_2$ quand l'un semble être l'exact opposé de l'autre? Observez  bien les images ci-dessous. Y a-t-il certaines régions du cerveau où l'image $T_2$ n'est pas l'exact opposé de l'image $T_1$?
 ```
 
-## $T_2^*, IRM fonctionnelle et de diffusion
-**Déphasage.** Comme on l'a vu dans l'encadré `ref`{phase-tip}, les impulsions radio-fréquence vont non seulement faire basculer les spins, mais aussi les mettre en phase. Lorsque nous arrêtons les impulsions, les spins vont progressivement se déphaser. Ce déphasage est dû à des micro-interactions entre protons ainsi que des molécules des tissus qui présentent des propriétés magnétiques. La courbe de relaxation va avoir la même forme, mais avec des temps caractéristiques modifiés, que l'on appelle $T_1^*$ et $T_2^*$.
+## $T_2^*$, IRMf, IRMd
+**Déphasage.** Comme on l'a vu dans l'encadré {ref}`sur la phase <phase-tip>`, les impulsions radio-fréquence vont non seulement faire basculer les spins, mais aussi les mettre en phase. Lorsque nous arrêtons les impulsions, les spins vont progressivement se déphaser. Ce déphasage est dû à des micro-interactions entre protons ainsi que des molécules des tissus qui présentent des propriétés magnétiques. La courbe de relaxation va avoir la même forme, mais avec des temps caractéristiques modifiés, que l'on appelle $T_1^*$ et $T_2^*$.
 
 **IRM fonctionnelle.** Les inhomogénéités dans le champ magnétique qui causent le déphasage peuvent notamment être créées par la déoxyhémoglobine que l'on retrouve dans le sang. Nous allons voir plus en détails comment l'oxyhémoglobine et la déoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l'[IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html). En IRM fonctionnelle, nous utilisons des séquences pondérées en T2*.
 
 
 **IRM de diffusion.** En IRM de diffusion, nous utilisons également un contraste en T2*. Par contre, en IRM de diffusion, nous mesurons les inhomogénéités en alternant la direction des impulsions (ex. en donnant une impulsion selon l'axe xy, puis en donnant une impulsion selon l'axe -xy). En effectuant plusieurs images avec des directions d'excitation différentes, nous pouvons obtenir une idée de la direction de la diffusion de l'eau. Cette opération nous permet au final de connaître la direction des fibres de matière blanche, car plus une fibre pointe vers une direction donnée, plus la diffusion sera grande dans cette direction. Nous allons revenir sur ce sujet dans le chapitre sur [l'IRM de diffusion](https://psy3018.github.io/irm_diffusion.html)
 
-## Séquences IRM
+## Console et séquences d'acquisition.
+```{figure} ./irm/irm_console.png
+---
+width: 500px
+name: irm-console-fig
+---
+Illustration schématique des principales composantes d'un appareil IRM. Figure adaptée par P. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l'article par Gruber et coll. (2018) {cite:p}`Gruber2018-pq`, sous licence CC-BY-NC.
+```
 
-Nous pouvons mesurer différentes propriétés magnétiques grâce à l'interaction entre les différents paramètres d'une séquence IRM. Nous pouvons obtenir un contraste T2* par exemple à partir de différentes séquences. Il est donc possible de modifier les paramètres d'une séquence donnée lorsque nous faisons une acquisition IRM à partir de la console IRM. À partir de la console, nous pouvons aussi modifier d'autres paramètres:
-* TE
-* TR
+L'ensemble des éléments de l'appareil IRM peuvent être controlés par la console (voir {numref}`irm-console-fig`). Nous avons vu ensemble les principes clés de l'IRM, mais une image réelle est acquise avec une série complexe d'excitations et de mesures, que l'on appelle une _séquence d'acquisition_. Une fois la séquence programmée, nous pouvons toujours modifier certains paramètres de la séquence, comme par exemple:
+* $TE$
+* $TR$
 * champ de vue (field of view, FOV)
 * Nombre de coupes
 * Épaisseur des coupes
+* Taille des voxels.
 
 
-```{code-cell} ipython 3
-:tags: ["hide-input"]
+### Conclusions
+Ce chapitre vous a introduit aux principes physiques de l'IRM. Nous avons vu les différentes composantes d'un appareil IRM, les différents phénomènes magnétiques nous permettant d'acquérir des images, ainsi que quelques paramètres que nous pouvons modifier lors de l'acquisition de données IRM. Lors du prochain chapitre, nous parlerons de morphométrie à l'aide de l'IRM structurelle.
 
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/w9z_AN3df_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-```
-
-### Conclusions et références suggérées
-Ce chapitre vous a introduit aux principles physiques de l'IRM. Nous avons vu les différentes composantes d'un appareil IRM, les différents phénomènes magnétiques nous permettant d'acquérir des images, ainsi que quelques paramètres que nous pouvons modifier lors de l'acquisition de données IRM. Lors du prochain chapitre, nous parlerons de morphométrie.
-
-### Exemples d'articles présentant des analyses IRM:
-
-- de Vos, F., Schouten, T. M., Hafkemeijer, A., Dopper, E. G. P., van Swieten, J. C., de Rooij, M, van der Grond, J. & Rombouts, S. A. R. B. (2016). Combining multiple anatomical MRI measures improves Alzheimer's disease classification. *Human Brain Mapping, 37*(5), 1920-1929. https://doi.org/10.1002/hbm.23147
-
-Cette [chaîne youtube](https://www.youtube.com/channel/UC_BIby85hZmcItMrkAlc8eA) contient une série de vidéos qui couvre plus en détails les principles de IRM et de l'IRMf.
-
-### Références
+## Références
 
 ```{bibliography}
 :filter: docname in docnames
