@@ -307,7 +307,7 @@ Pourquoi s'embêter à faire des contrastes $T_1$ et $T_2$ quand l'un semble êt
 width: 500px
 name: irm-console-fig
 ---
-Illustration schématique des principales composantes d'un appareil IRM. Figure adaptée par P. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l'article par Gruber et coll. (2018) {cite:p}`Gruber2018-pq`, sous licence CC-BY-NC.
+Connexions entre la console et les différentes parties d'un système IRM. Figure adaptée par P. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l'article par Gruber et coll. (2018) {cite:p}`Gruber2018-pq`, sous licence CC-BY-NC.
 ```
 
 L'ensemble des éléments de l'appareil IRM peuvent être controlés par la console (voir {numref}`irm-console-fig`). Nous avons vu ensemble les principes clés de l'IRM, mais une image réelle est acquise avec une série complexe d'excitations et de mesures, que l'on appelle une _séquence d'acquisition_. Une fois la séquence programmée, nous pouvons toujours modifier certains paramètres de la séquence, comme par exemple:
