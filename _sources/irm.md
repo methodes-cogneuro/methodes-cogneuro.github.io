@@ -172,20 +172,20 @@ from myst_nb import glue
 fig = plt.figure(figsize=(15, 5))
 
 # Fonctions exponentielles pour les courbes T1 (à titre d'exemple seulement)
-x = np.linspace(0,15,100)
-y1 = 3 * (1- 0.8 ** x)
-y2 = 4 * (1 - 0.7 ** x)
-y3 = 4.5 * (1 - 0.6 ** x)
+t = np.linspace(0,5,100)
+y1 = 70 * (1 - np.exp(-t / 1.2))
+y2 = 85 * (1 - np.exp(-t / 1.3))
+y3 = 100 * (1 - np.exp(-t / 1.5))
 
 # Tracer la figure
 ax_plot = plt.subplot(1, 3, 1)
-plt.plot(x, y1, label="Liquide céphalo-rachidien")
-plt.plot(x, y2, label="matière grise")
-plt.plot(x, y3, label="matière blanche")
-plt.vlines(4, 0, 6, colors="black", linestyles="--")
-plt.text(4.1, 5.8, "TE")
-plt.vlines(12, 0, 6, colors="black", linestyles="--")
-plt.text(12.1, 5.8, "TR")
+plt.plot(t, y1, label="Liquide céphalo-rachidien")
+plt.plot(t, y2, label="matière grise")
+plt.plot(t, y3, label="matière blanche")
+plt.vlines(1, 0, 60, colors="black", linestyles="--")
+plt.text(1, 60, "TE")
+plt.vlines(4, 0, 60, colors="black", linestyles="--")
+plt.text(4, 60, "TR")
 plt.xlabel("Temps", loc="right")
 plt.ylabel("Mz", loc="top")
 plt.title("Courbe en T1")
@@ -210,7 +210,7 @@ glue("relax-t1-fig", fig, display=False)
 ```{glue:figure} relax-t1-fig
 :figwidth: 800px
 :name: "relax-t1-fig"
-Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
+Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
 ```
 
 ```{admonition} M0
@@ -219,7 +219,7 @@ Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du cham
 À l'état d'équilibre, la contribution du moment magnétique selon l'axe $B_0$ est appelée $M_0$. Cette valeur dépend de la densité de protons dans les tissus, c'est à dire du nombre d'atomes d'hydrogène présents dans le tissu. Ainsi, d'un voxel à un autre, nous n'obtenons pas nécessairement la même valeur de $M_0$. Il est possible d'imager ce paramètre, et on parle alors d'image en densité de protons (PD en anglais, pour proton density).
 ```
 
-**Contraste en $T_2$**. La diminution de la composante selon $B_1$ (composante $M_{xy}$), ou _relaxation transverse_, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s'appelle le $T_2$. Le temps $T_2$ correspond au temps écoulé pour obtenir 37% de la valeur de la contribution du moment magnétique initiale selon l'axe $B_1$. Pour ceux qui sont à l'aise avec les expressions mathématiques, la décroissonce en $B_1$ suit l'équation $M_{xy}(t) = M_1 e^{-t / T_2}$. La constante $M_1$ va dépendre entre autre chose de la densité de protons, comme $M_0$, et va varier d'un tissu à l'autre.
+**Contraste en $T_2$**. La diminution de la composante selon $B_1$ (composante $M_{xy}$), ou _relaxation transverse_, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s'appelle le $T_2$. Le temps $T_2$ correspond au temps écoulé pour obtenir 37% de la valeur de la contribution du moment magnétique initiale selon l'axe $B_1$. Pour ceux qui sont à l'aise avec les expressions mathématiques, la décroissonce en $B_1$ suit l'équation $M_{xy}(t) = M_1 e^{-t / T_2}$. La constante $M_1$ va dépendre entre autres choses de la densité de protons, comme $M_0$, et va varier d'un tissu à l'autre.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -249,14 +249,14 @@ plt.plot(t, y2, label="matière grise")
 plt.plot(t, y3, label="matière blanche")
 plt.vlines(1, 0, 60, colors="black", linestyles="--")
 plt.text(1.1, 60, "TE")
-plt.vlines(3, 0, 60, colors="black", linestyles="--")
-plt.text(3.1, 60, "TR")
+plt.vlines(4, 0, 60, colors="black", linestyles="--")
+plt.text(4, 60, "TR")
 plt.xlabel("Temps", loc="right")
 plt.ylabel("Mz", loc="top")
 plt.title("Courbe en T2")
 plt.legend()
-#plt.gca().axes.yaxis.set_ticklabels([])
-#plt.gca().axes.xaxis.set_ticklabels([])
+plt.gca().axes.yaxis.set_ticklabels([])
+plt.gca().axes.xaxis.set_ticklabels([])
 
 #Importer les modules requis et le jeu de données
 from nilearn.datasets import fetch_icbm152_2009
@@ -275,7 +275,7 @@ glue("relax-t2-fig", fig, display=False)
 ```{glue:figure} relax-t2-fig
 :figwidth: 800px
 :name: "relax-t2-fig"
-Relaxation transverse et contraste $T_2$. Image de gauche: décroissance du champ magnétique selon l'axe $B_1$, appelé $M_{xy}. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
+Relaxation transverse et contraste $T_2$. Image de gauche: décroissance du champ magnétique selon l'axe $B_1$, appelé $M_{xy}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
 ```
 ```{admonition} $TE$
 Lorsqu'on acquière des données IRM, on ne mesure généralement pas toute la courbe de relaxation, mais simplement un point de mesure au temps $TE$. En choississant le $TE$ adéquatement, nous allons obtenir des valeurs de lecture très différentes pour les différents tissus. Le temps $TE$ sera différent pour un contraste $T_1$ et un contraste $T_2$.
