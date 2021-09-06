@@ -56,7 +56,7 @@ Ce cours a pour but de vous initier aux principes physiques de l'imagerie par r�
 width: 800px
 name: irm-schema-fig
 ---
-Illustration schématique des principales composantes d'un appareil IRM. Cette figure correspond à la diapositive 4 du cours. Figure générée par P. Bellec, 2021, sous licence CC-BY.
+Illustration schématique des principales composantes d'un appareil IRM. Figure générée par P. Bellec, 2021, sous licence CC-BY.
 ```
 {numref}`irm-schema-fig` nous permet d'observer les éléments principaux d'un appareil IRM, et en particulier:
  * L'**aimant**: il s'agit d'une bobine supraconductrice qui génère un champ magnétique très important.
@@ -65,7 +65,7 @@ Illustration schématique des principales composantes d'un appareil IRM. Cette f
 
  * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.
 
- Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans la prochaine section.
+ Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans les prochaines sections.
 ```{warning}
 L'IRM est très sensible aux mouvements de la tête ! Il est possible d'utiliser des coussins ou autres dispositifs pour réduire le mouvement.
 ```
@@ -85,7 +85,15 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/bq6Iha
 ```
 
 ## Spin magnétique et champ B0
-Les protons qui constituent en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe, de manière analogue à une toupie. Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
+```{figure} ./irm/spin.png
+---
+width: 800px
+name: spin-fig
+---
+Un proton est comme un petit aimant, dont le champ magnétique oscille autour d’une position donnée (mouvement de précession), et caractérisé par a moment angulaire, ou spin.  Partie droite de la figure générée par P. Bellec, 2021, sous licence CC-BY. La partie gauche de la figure est adaptée d'une image [shutterstock](https://www.shutterstock.com) ID `130826045`, utilisée sous licence shutterstock standard.
+```
+
+Les protons qui constituent en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe, de manière analogue à une toupie (voir {numref}`spin-fig`). Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
 
 ```{admonition} Fréquence de Larmor d'un atome d'hydrogène
 Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Cette fréquence n'est donc pas fixe, mais **dépend de la force du champ magnétique!**  Placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde. Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne le moment magnétique de ce proton va augmenter.
@@ -130,9 +138,9 @@ Nous avons vu comment une onde radio-fréquence permet d'exciter les noyaux d'hy
  * Direction x : de la gauche vers la droite
  * Direction y : de l'arrière de la tête vers le nez
 
-Ces variations sont beaucoup plus faibles que le champ B0, et ne représentent qu'une fraction de teslas, mais cela va nous permettre d'extraire une information spatiale dans un processuse de résonance. À l'aide de ces gradients, il est possible de mesurer des propriétés magnétiques de tissus situés à un point spécifique dans l'espace, et donc de faire une image (3D). Ce processus est complexe, mais la première étape est relativement simple à comprendre: c'est la sélection de coupes.
+Ces variations sont beaucoup plus faibles que le champ B0, et ne représentent qu'une fraction de teslas, mais cela va nous permettre d'extraire une information spatiale dans un processus de résonance. À l'aide de ces gradients, il est possible de mesurer des propriétés magnétiques de tissus situés à un point spécifique dans l'espace, et donc de faire une image (3D). Ce processus est complexe, mais la première étape est relativement simple à comprendre: c'est la sélection de coupe.
 
-Nous nous rappellons que la fréquence de Larmor d'une particule dépend également de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d'hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d'hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d'excitation. De cette manière, au lieu de recevoir du signal de l'ensemble du cerveau, nous ne recevons du signal que de la coupe sélectionnée, car seuls les atomes d'hydrogène dans cette coupe seront rentrés en résonance.
+Nous nous rappellons que la fréquence de Larmor d'une particule dépend de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d'hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d'hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d'excitation. De cette manière, au lieu de recevoir du signal de l'ensemble du cerveau, nous ne recevons du signal que de la coupe sélectionnée, car seuls les atomes d'hydrogène dans cette coupe seront rentrés en résonance.
 
 Il nous reste encore à découper notre coupe en pixels... Mais cela sort largement du contexte de ce chapitre d'introduction. Pour en apprendre plus sur l'encodage spatial en IRM, vous pouvez consulter cette [ressource](https://www.imaios.com/en/e-Courses/e-MRI/Signal-spatial-encoding/Spatial-encoding-intro) (en anglais).
 
@@ -219,7 +227,7 @@ glue("trte-fig", fig, display=False)
 :name: "trte-fig"
 La figure de gauche représente la repousse du champ magnétique selon l'axe `Mz`, aligné avec le champ `B0`. La figure de droite représente la décroissance du champ magnétique selon l'axe `Mxy`, perpendiculaire au champ B0. Notez que différents types de tissus présentent des dynamiques différentes, aussi bien selon `Mz` que selon `Mxy`. Cette figure est générée par du code python à l'aide de la librairie [matplotlib](https://matplotlib.org/), cliquer sur + pour voir le code.
 ```
-**TR et TE**
+**TR, TE et champ de vue (FOV)**
 
 Temps de répétition (TR): délai entre les excitations des atomes d'hydrogène (entre les impulsions RF).
 <br>Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
@@ -404,4 +412,22 @@ On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, e
 On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm in-plane, une matrice in-plane de taille 64x64, une épaisseur de coupe de 3,4 mm (31 coupes). On a un TR de 2 secondes, et on acquiert 150 volumes.
 Quelle est la taille du champ de vue 3D, sachant que les coupes sont acquises dans le plan axial?
 Quelle est la durée de l’acquisition?
+```
+
+```{admonition} Exercice 2.11
+:class: note
+Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
+ * Quel est la force de l'aimant de l'IRM?
+ * Combien de canaux sont présents dans l'antenne de tête?
+ * Quel est le TR de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
+ * Quel est le nom de la séquence utilisée pour l'acquisition structurelle?
+ * Quel est le nom de la séquence utilisée pour l'acquisition fonctionnelle?
+ * Quel est le TE de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
+ * Quelle est la taille du champ de vue de l'acquisition fonctionnelle, en cm?
+ * Combien de volumes cérébraux sont acquis durant la séquence fonctionnelle?
+```
+
+```{admonition} Exercice 2.12
+:class: note
+On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser, T1, T2 ou les deux? Justifiez votre réponse.
 ```
