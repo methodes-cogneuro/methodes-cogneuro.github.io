@@ -56,22 +56,22 @@ Ce cours a pour but de vous initier aux principes physiques de l'imagerie par r�
 width: 800px
 name: irm-schema-fig
 ---
-Illustration schématique des principales composantes d'un appareil IRM. Cette figure correspond à la diapositive 4 du cours. Figure générée par P. Bellec, 2021, sous licence CC-BY.
+Illustration schématique des principales composantes d'un appareil IRM. Figure générée par P. Bellec, 2021, sous licence CC-BY.
 ```
 {numref}`irm-schema-fig` nous permet d'observer les éléments principaux d'un appareil IRM, et en particulier:
- * L'**aimant**: Il s'agit d'une bobine supraconductrice, qui génère un champ magnétique très important.
+ * L'**aimant**: il s'agit d'une bobine supraconductrice qui génère un champ magnétique très important.
 
  * Les **bobines de gradient**: permettent de faire varier l'intensité du champ magnétique dans l'espace. Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
- * L'**antenne radio-fréquence**: permettent de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.
+ * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.
 
- Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans la prochaine section.
+ Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans les prochaines sections.
 ```{warning}
 L'IRM est très sensible aux mouvements de la tête ! Il est possible d'utiliser des coussins ou autres dispositifs pour réduire le mouvement.
 ```
 
 ```{admonition} Bobine + courant = champ magnétique !
-En créant un anneau avec du fil électrique et en passant un courant électrique, nous produisons un champ magnétique. Dans la vidéo ci dessous, nous pouvons voir les lignes de champ magnétique se dessiner lorsque le champ magnétique est activé. Les lignes de champ sont droites lorsqu'elles passent par le centre de l'anneau, mais elles se propagent en cercles en s'éloignant du centre de l'anneau. Pour obtenir un champ magnétique constant à l'intérieur de l'anneau, nous pouvons épaissir l'anneau de sorte à former un cylindre. C'est le même principe que nous retrouvons dans un appareil IRM !
+En créant un anneau avec du fil électrique et en passant un courant électrique, nous produisons un champ magnétique. Dans la vidéo ci-dessous, nous pouvons voir les lignes de champ magnétique se dessiner lorsque le champ magnétique est activé. Les lignes de champ sont droites lorsqu'elles passent par le centre de l'anneau, mais elles se propagent en cercles en s'éloignant du centre de l'anneau. Pour obtenir un champ magnétique constant à l'intérieur de l'anneau, nous pouvons épaissir l'anneau de sorte à former un cylindre. C'est le même principe que nous retrouvons dans un appareil IRM !
 ```
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
@@ -85,17 +85,25 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/bq6Iha
 ```
 
 ## Spin magnétique et champ B0
-Les protons qui constitue en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe, de manière analogue à une toupie. Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
+```{figure} ./irm/spin.png
+---
+width: 800px
+name: spin-fig
+---
+Un proton est comme un petit aimant, dont le champ magnétique oscille autour d’une position donnée (mouvement de précession), et caractérisé par a moment angulaire, ou spin.  Partie droite de la figure générée par P. Bellec, 2021, sous licence CC-BY. La partie gauche de la figure est adaptée d'une image [shutterstock](https://www.shutterstock.com) ID `130826045`, utilisée sous licence shutterstock standard.
+```
+
+Les protons qui constituent en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe, de manière analogue à une toupie (voir {numref}`spin-fig`). Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
 
 ```{admonition} Fréquence de Larmor d'un atome d'hydrogène
-Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Cette fréquence n'est donc pas fixe, mais **dépend de la force du champ magnétique!**  Donc, placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde. Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne son moment magnétique va augmenter.
+Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Cette fréquence n'est donc pas fixe, mais **dépend de la force du champ magnétique!**  Placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde. Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne le moment magnétique de ce proton va augmenter.
 ```
 
 L'aimant de l'IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. La force de l'aimant principal est mesurée en Teslas (T). Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre! Les appareils à 7T représente à ce jour la nouvelle frontière utilisée en recherche, et quelques appareils à 10T+ existent dans le monde. Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!
 
 ## Résonance magnétique
 ```{admonition} La résonance... pas juste magnétique
-On retrouve les phénomènes de résonance dans de nombreuses situations. Un exemple connu est la résonance entre le vent et le pont de Tacoma, qui a amené à l'effondrement du pont, voir la vidéo ci dessous.
+Nous retrouvons les phénomènes de résonance dans de nombreuses situations. Un exemple connu est la résonance entre le vent et le pont de Tacoma, qui a mené à l'effondrement du pont, voir la vidéo ci dessous.
 ```
 
 ```{code-cell} ipython 3
@@ -109,30 +117,30 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/3mclp9QmCGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
-Nous pouvons penser à la résonance comme un mouvement de balançoire. Si nous poussons la balançoire de manière aléatoire, elle n'oscillera pas beaucoup. Pour avoir un mouvement de balançoire qui s'amplifie, nous devons pousser la balançoire de manière à la même fréquence que la fréquence naturelle de l'oscillation de la balançoire. Nous allons alors **entrer en résonance** avec la balançoire, et son mouvement va s'amplifier. Nous pouvons donc voir la balançoire comme un phénomène de résonance entre l'objet qui se balance et la personne qui donne une impulsion à cet objet.
+Nous pouvons penser à la résonance comme un mouvement de balançoire. Si nous poussons la balançoire de manière aléatoire, elle n'oscillera pas beaucoup. Pour avoir un mouvement de balançoire qui s'amplifie, nous devons pousser la balançoire à la même fréquence que la fréquence naturelle de l'oscillation de la balançoire. Nous allons alors **entrer en résonance** avec la balançoire, et son mouvement va s'amplifier. Nous pouvons donc voir la balançoire comme un phénomène de résonance entre l'objet qui se balance et la personne qui donne une impulsion à cet objet.
 
-L'IRM exploite ce phénomène de résonance. **L'antenne radio-fréquence (RF)** crée une série d'**ondes radio-fréquences** direction perpendiculaire de B0, c'est-à-dire en direction du champ B1. En produisant une série d'impulsion suivant la fréquence de Larmor de l'hydrogène, les atomes d'hydrogène entrent en résonance et basculent dans la direction perpendiculaire.
+L'IRM exploite ce phénomène de résonance. **L'antenne radio-fréquence (RF)** crée une série d'**ondes radio-fréquences** dans la direction perpendiculaire au champ B0, c'est-à-dire en direction du champ B1. En produisant une série d'impulsions suivant la fréquence de Larmor de l'hydrogène, les atomes d'hydrogène entrent en résonance et basculent dans la direction perpendiculaire.
 
 En arrêtant les impulsions, les atomes d'hydrogène entrent en relaxation, c'est-à-dire que leur moment magnétique va retourner dans la direction initiale B0. Autrement dit, le moment magnétique en direction B1 décroit pour revenir dans la direction B0. Ce phénomène de relaxation est très important, car la vitesse de la relaxation va dépendre des caractéristiques des tissus qui ont été excités. La vitesse de relaxation est mesurée par les antennes de réception placées dans le casque autour de la tête du sujet!
 
 ```{admonition} Mise en phase
-Il est important de comprendre que le signal qu'on mesure en IRM ne provient pas d'un unique proton. Pour référence, 18 grammes d'eau contiennent une [mole](https://fr.wikipedia.org/wiki/Mole_(unité)) de molécules H2O, soient environ $10^{24}$ atomes d'hydrogènes... Le signal que l'on mesure provient de la juxtaposition des spins de l'ensemble de ces atomes. Une onde radio-fréquence qui rentre en résonance avec l'hydrogène ne va pas juste faire basculer les spins, mais aussi les mettre en phase. Imaginer que vous avez mille balançoires, que vous poussez au même moment (à la bonne fréquence). Non seulement le mouvement des balançoires va gagner en amplitude, mais toutes les balançoires seront au même point de leur trajectoire au même moment. C'est la même chose pour les spins après une excitation.
+Il est important de comprendre que le signal que nous mesurons en IRM ne provient pas d'un unique proton. Pour référence, 18 grammes d'eau contiennent une [mole](https://fr.wikipedia.org/wiki/Mole_(unité)) de molécules H2O, soient environ $10^{24}$ atomes d'hydrogène... Le signal que nous mesurons provient de la juxtaposition des spins de l'ensemble de ces atomes. Une onde radio-fréquence qui entre en résonance avec l'hydrogène ne va pas juste faire basculer les spins, mais aussi les mettre en phase. Imaginez que vous avez mille balançoires, que vous poussez au même moment (à la bonne fréquence). Non seulement le mouvement des balançoires va gagner en amplitude, mais toutes les balançoires seront au même point de leur trajectoire au même moment. C'est la même chose pour les spins après une excitation.
 ```
 
 ```{admonition} Pourquoi radio?
-Comme on l'a vu, la fréquence de Larmor de l'hydrogène est de 42.58 MHz/Tesla. Dans un IRM à 3T, on va donc exciter avec une onde à une fréquence d'environ 120 MHz, soit 120 millions d'ondes par secondes (!). Ce type de fréquences tombe dans le domaine des [ondes radio](https://fr.wikipedia.org/wiki/Onde_radio).
+Comme nous l'avons vu, la fréquence de Larmor de l'hydrogène est de 42.58 MHz/Tesla. Dans un IRM à 3T, nous allons donc exciter avec une onde à une fréquence d'environ 120 MHz, soit 120 millions d'ondes par secondes (!). Ce type de fréquences tombe dans le domaine des [ondes radio](https://fr.wikipedia.org/wiki/Onde_radio).
 ```
 
-## Sélection de coupe et formation d'image  
+## Sélection de coupes et formation d'images  
 
-On a vu comment une onde radio-fréquence permet d'exciter les noyaux d'hydrogène, et mesurer la réponse à cette excitation pour interroger les caractéristiques des tissus. Mais comment faire une image? Les **bobines de gradient** permettent de faire varier l'amplitude du champ magnétique dans trois directions:
+Nous avons vu comment une onde radio-fréquence permet d'exciter les noyaux d'hydrogène et mesurer la réponse à cette excitation pour interroger les caractéristiques des tissus. Mais comment faire une image? Les **bobines de gradient** permettent de faire varier l'amplitude du champ magnétique dans trois directions:
  * Direction z : des pieds vers la tête
  * Direction x : de la gauche vers la droite
  * Direction y : de l'arrière de la tête vers le nez
 
-Ces variations sont beaucoup plus faible que le champ B0, et ne représente qu'une fraction de teslas, mais cela va nous permettre d'extraire une information spatiale dans un processuse de résonance. À l'aide de ces gradients, il est possible de mesurer des propriétés magnétiques de tissus situés à un point spécifique dans l'espace, et donc de faire une image (3D). Ce processus est complexe, mais la première étape est relativement simple à comprendre: c'est la sélection de coupes.
+Ces variations sont beaucoup plus faibles que le champ B0, et ne représentent qu'une fraction de teslas, mais cela va nous permettre d'extraire une information spatiale dans un processus de résonance. À l'aide de ces gradients, il est possible de mesurer des propriétés magnétiques de tissus situés à un point spécifique dans l'espace, et donc de faire une image (3D). Ce processus est complexe, mais la première étape est relativement simple à comprendre: c'est la sélection de coupe.
 
-On se rappelle que la fréquence de Larmor d'une particule dépend également de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d'hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d'hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d'excitation. De cette manière, au lieu de recevoir du signal de l'ensemble du cerveau, on ne reçoit du signal que de la coupe sélectionnée, car seuls les atomes d'hydrogène dans cette coupe seront rentrés en résonance.
+Nous nous rappellons que la fréquence de Larmor d'une particule dépend de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d'hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d'hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d'excitation. De cette manière, au lieu de recevoir du signal de l'ensemble du cerveau, nous ne recevons du signal que de la coupe sélectionnée, car seuls les atomes d'hydrogène dans cette coupe seront rentrés en résonance.
 
 Il nous reste encore à découper notre coupe en pixels... Mais cela sort largement du contexte de ce chapitre d'introduction. Pour en apprendre plus sur l'encodage spatial en IRM, vous pouvez consulter cette [ressource](https://www.imaios.com/en/e-Courses/e-MRI/Signal-spatial-encoding/Spatial-encoding-intro) (en anglais).
 
@@ -219,14 +227,12 @@ glue("trte-fig", fig, display=False)
 :name: "trte-fig"
 La figure de gauche représente la repousse du champ magnétique selon l'axe `Mz`, aligné avec le champ `B0`. La figure de droite représente la décroissance du champ magnétique selon l'axe `Mxy`, perpendiculaire au champ B0. Notez que différents types de tissus présentent des dynamiques différentes, aussi bien selon `Mz` que selon `Mxy`. Cette figure est générée par du code python à l'aide de la librairie [matplotlib](https://matplotlib.org/), cliquer sur + pour voir le code.
 ```
-
-<br>**TR et TE**
+**TR, TE et champ de vue (FOV)**
 
 Temps de répétition (TR): délai entre les excitations des atomes d'hydrogène (entre les impulsions RF).
+<br>Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
 
-Temps d'écho (TE): délai entre les impulsions RF et l'acquisition des points de mesure.
-
-<br>Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-).
+Lorsque nous acquièrons des données IRM, nous ne mesurons pas la valeur de Mz à plusieurs temps pour réproduire la courbe. Nous prenons simplement un point de mesure au temps TE. Les différents tissus que nous retrouvons dans le cerveau vont avoir des courbes de croissance différentes. En choississant le TE adéquatement, nous allons obtenir des valeurs T1 différentes pour la matière blanche (++), la matière grise (+) et le liquide céphalo-rachidien (-).
 
 ---
 ***Réfléchissez-y !***
@@ -253,7 +259,7 @@ plot_anat(data_mri.t1, title="MRI en contraste T1")
 plot_anat(data_mri.t2, title="MRI en contraste T2")
 ```
 
-*En T2, nous pouvons entre autre voir une partie gris foncé au niveau des noyaux gris centraux. Ces différences sont liées au fait que ces structures possèdent des compositions chimiques différentes qui vont créer des **déphasages** importants. Le contraste T2 est sensible au déphasage alors que le contraste T1 ne l'ai pas, faisant en sorte que ces contrastes ne sont pas l'exact opposé l'un de l'autre ! Nous reparlerons du déphasage dans la prochaine section.*
+*En T2, nous pouvons entre autre voir une partie gris foncé au niveau des noyaux gris centraux. Ces différences sont liées au fait que ces structures possèdent des compositions chimiques différentes qui vont créer des **déphasages** importants. Le contraste T2 est sensible au déphasage alors que le contraste T1 ne l'est pas, faisant en sorte que ces contrastes ne sont pas l'exact opposé l'un de l'autre ! Nous reparlerons du déphasage dans la prochaine section.*
 
 ---
 
@@ -310,11 +316,7 @@ En IRM de diffusion, nous utilisons également un contraste en T2*. Par contre, 
 
 **Séquences IRM**
 
-Les séquences IRM sont souvent représentés par la figure ci-dessous:
-
-:warning: Insérer figure séquence
-
-Nous pouvons mesurer différentes propriétés magnétiques grâce à l'interaction entre ces différents paramètres. Nous pouvons obtenir un contraste T2* par exemple à partir de différentes séquences. Il est donc possible de modifier les paramètres d'une séquence donnée lorsque nous faisons une acquisition IRM à partir de la console IRM. À partir de la console, nous pouvons aussi modifier d'autres paramètres:
+Nous pouvons mesurer différentes propriétés magnétiques grâce à l'interaction entre les différents paramètres d'une séquence IRM. Nous pouvons obtenir un contraste T2* par exemple à partir de différentes séquences. Il est donc possible de modifier les paramètres d'une séquence donnée lorsque nous faisons une acquisition IRM à partir de la console IRM. À partir de la console, nous pouvons aussi modifier d'autres paramètres:
 * TE
 * TR
 * champ de vue (field of view, FOV)
@@ -339,7 +341,6 @@ Ce chapitre vous a introduit aux principles physiques de l'IRM. Nous avons vu le
 ### Exemples d'articles présentant des analyses IRM:
 
 - de Vos, F., Schouten, T. M., Hafkemeijer, A., Dopper, E. G. P., van Swieten, J. C., de Rooij, M, van der Grond, J. & Rombouts, S. A. R. B. (2016). Combining multiple anatomical MRI measures improves Alzheimer's disease classification. *Human Brain Mapping, 37*(5), 1920-1929. https://doi.org/10.1002/hbm.23147
--
 
 Cette [chaîne youtube](https://www.youtube.com/channel/UC_BIby85hZmcItMrkAlc8eA) contient une série de vidéos qui couvre plus en détails les principles de IRM et de l'IRMf.
 
@@ -411,4 +412,22 @@ On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, e
 On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm in-plane, une matrice in-plane de taille 64x64, une épaisseur de coupe de 3,4 mm (31 coupes). On a un TR de 2 secondes, et on acquiert 150 volumes.
 Quelle est la taille du champ de vue 3D, sachant que les coupes sont acquises dans le plan axial?
 Quelle est la durée de l’acquisition?
+```
+
+```{admonition} Exercice 2.11
+:class: note
+Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
+ * Quel est la force de l'aimant de l'IRM?
+ * Combien de canaux sont présents dans l'antenne de tête?
+ * Quel est le TR de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
+ * Quel est le nom de la séquence utilisée pour l'acquisition structurelle?
+ * Quel est le nom de la séquence utilisée pour l'acquisition fonctionnelle?
+ * Quel est le TE de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
+ * Quelle est la taille du champ de vue de l'acquisition fonctionnelle, en cm?
+ * Combien de volumes cérébraux sont acquis durant la séquence fonctionnelle?
+```
+
+```{admonition} Exercice 2.12
+:class: note
+On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser, T1, T2 ou les deux? Justifiez votre réponse.
 ```
