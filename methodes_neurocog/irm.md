@@ -210,7 +210,7 @@ glue("relax-t1-fig", fig, display=False)
 ```{glue:figure} relax-t1-fig
 :figwidth: 800px
 :name: "relax-t1-fig"
-Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
+Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Cette figure est générée par du code python, cliquer sur + pour voir le code.
 ```
 
 ```{admonition} M0
