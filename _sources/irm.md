@@ -38,10 +38,6 @@ kernelspec:
   </tr>
 </table>
 
-```{warning}
-Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
-```
-
 ## Objectifs du cours
 Ce cours a pour but de vous initier aux principes physiques de l'imagerie par résonance magnétique. Au courant de ce cours, nous allons aborder quatre principes fondamentaux de l'IRM:
  * La résonance magnétique
@@ -59,11 +55,11 @@ name: irm-schema-fig
 Illustration schématique des principales composantes d'un appareil IRM. Figure générée par P. Bellec, 2021, sous licence CC-BY.
 ```
 {numref}`irm-schema-fig` nous permet d'observer les éléments principaux d'un appareil IRM, et en particulier:
- * L'**aimant**: il s'agit d'une bobine supraconductrice qui génère un champ magnétique très important.
+ * L'**aimant**: il s'agit d'une bobine qui génère un champ magnétique très important. Cette bobine est plongée dans de l'hélium liquide, proche du zéro absolu, ce qui la rend supra-condutrice: le courant électrique qui la traverse ne subit pas de perte d'énergie, et peut continuer de circuler pendant très longtemps. Pour cette raison, l'aimant de l'IRM continue de fonctionner en permanence, même quand on n'utilise pas la machine.
 
  * Les **bobines de gradient**: permettent de faire varier l'intensité du champ magnétique dans l'espace. Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
- * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.
+ * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne créent un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.
 
  Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans les prochaines sections.
 ```{warning}
@@ -147,12 +143,28 @@ Nous nous rappellons que la fréquence de Larmor d'une particule dépend de la f
 
 Il nous reste encore à découper notre coupe en pixels... Mais cela sort largement du contexte de ce chapitre d'introduction. Pour en apprendre plus sur l'encodage spatial en IRM, vous pouvez consulter cette [ressource](https://www.imaios.com/en/e-Courses/e-MRI/Signal-spatial-encoding/Spatial-encoding-intro) (en anglais).
 
-## Contrastes $T_1$ et $T_2$
-Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radio-fréquences fait basculer les spins selon l'axe $B_1$, axe perpendiculaire à $B_0$. Une fois les impulsions radio-fréquences arrêtées, les spins se réalignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
-
 ```{admonition} Champ de vue (FOV)
 Quand on réalise une image 3D du cerveau, on va découper le cerveau en une série de coupes. En connaissant la taille des coupes ainsi que le nombre de coupes, on peut en déduire la taille du cube 3D qui correspond à l'image. Cette taille est appelée champ de vue, ou FOV en anglais (Field of view).
 ```
+
+```{admonition} L'IRM: un appareil bruyant
+L'acquisition d'une image nécessite de modifier les gradients de manière rapide. Les changements rapides de courant dans les bobines de gradient, ainsi que dans les bobines émettrices d'ondes radio-fréquences, provoquent des expansions et des contractions rapides des bobines. Ces mouvements créent un bruit important. Chaque type d'image a sa "musique" propre, qui dépend de la nature et de l'ordre des excitations et des gradients. Voir extraits ci-dessous.
+```
+
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+
+from IPython.display import HTML
+import warnings
+warnings.filterwarnings("ignore")
+
+# Youtube
+HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/9GZvd_4ot04?start=11" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```
+
+
+## Contrastes $T_1$ et $T_2$
+Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radio-fréquences fait basculer les spins selon l'axe $B_1$, axe perpendiculaire à $B_0$. Une fois les impulsions radio-fréquences arrêtées, les spins se réalignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
 
 **Contraste en $T_1$**. L'augmentation de la composante selon $B_0$ (composante $M_z$), ou _relaxation longitudinale_, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le $T_1$. Le temps $T_1$ correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z ($M_0$). Pour ceux qui sont à l'aise avec les expressions mathématiques, la repousse en $B_0$ suit l'équation $M_z(t) = M_0 ( 1 - e^{-t / T_1})$.
 
@@ -290,7 +302,7 @@ Si l'on s'intéresse à la fin du processus de relaxation, on n'a pas besoin de 
 ```{admonition} $T_1$ vs $T_2$: cherchez la différence.
 :class: tip
 :name: diff-t1-t2-tip
-Pourquoi s'embêter à faire des contrastes $T_1$ et $T_2$ quand l'un semble être l'exact opposé de l'autre? Observez  bien les images ci-dessous. Y a-t-il certaines régions du cerveau où l'image $T_2$ n'est pas l'exact opposé de l'image $T_1$?
+Pourquoi s'embêter à faire des contrastes $T_1$ et $T_2$ quand l'un semble être l'exact opposé de l'autre? Observez  bien les images {numref}`relax-t1-fig` et {numref}`relax-t2-fig`. Y a-t-il certaines régions du cerveau où l'image $T_2$ n'est pas l'exact opposé de l'image $T_1$?
 ```
 
 ## $T_2^*$, IRMf, IRMd
@@ -333,9 +345,9 @@ Ce chapitre vous a introduit aux principes physiques de l'IRM. Nous avons vu les
 ```{admonition} Exercice 2.1
 :class: note
 Classez les temps caractéristiques par ordre croissant, si possible.
- * TE
- * TR
- * T1
+ * TE vs TR
+ * TR vs T1
+ * T1 vs TE
 ```
 
 ```{admonition} Exercice 2.2
@@ -383,12 +395,12 @@ On décide de modifier une séquence IRM pour diminuer l’angle de bascule: les
 
 ```{admonition} Exercice 2.9
 :class: note
-On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, et un résolution in-plane de 1 mm isotrope. Quelle est la taille de la matrice d’acquisition in-plane?
+On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, et une résolution de 1 mm x 1 mm dans la coupe. Quelle est la taille de la coupe (nombre de pixels x nombre de pixels)?
 ```
 
 ```{admonition} Exercice 2.10
 :class: note
-On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm in-plane, une matrice in-plane de taille 64x64, une épaisseur de coupe de 3,4 mm (31 coupes). On a un TR de 2 secondes, et on acquiert 150 volumes.
+On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm dans la coupe, une coupe de dimension 64x64, une épaisseur de coupe de 3,4 mm avec 31 coupes. On a un TR de 2 secondes, et on acquiert 150 volumes.
 Quelle est la taille du champ de vue 3D, sachant que les coupes sont acquises dans le plan axial?
 Quelle est la durée de l’acquisition?
 ```
@@ -408,5 +420,5 @@ Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "
 
 ```{admonition} Exercice 2.12
 :class: note
-On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser, T1, T2 ou les deux? Justifiez votre réponse.
+On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser: T1, T2 ou les deux? Justifiez votre réponse.
 ```

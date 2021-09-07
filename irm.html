@@ -340,10 +340,6 @@
     </td>
   </tr>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
-</div>
 <div class="section" id="objectifs-du-cours">
 <h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
 <p>Ce cours a pour but de vous initier aux principes physiques de l’imagerie par résonance magnétique. Au courant de ce cours, nous allons aborder quatre principes fondamentaux de l’IRM:</p>
@@ -362,9 +358,9 @@
 </div>
 <p><a class="reference internal" href="#irm-schema-fig"><span class="std std-numref">Fig. 13</span></a> nous permet d’observer les éléments principaux d’un appareil IRM, et en particulier:</p>
 <ul class="simple">
-<li><p>L’<strong>aimant</strong>: il s’agit d’une bobine supraconductrice qui génère un champ magnétique très important.</p></li>
+<li><p>L’<strong>aimant</strong>: il s’agit d’une bobine qui génère un champ magnétique très important. Cette bobine est plongée dans de l’hélium liquide, proche du zéro absolu, ce qui la rend supra-condutrice: le courant électrique qui la traverse ne subit pas de perte d’énergie, et peut continuer de circuler pendant très longtemps. Pour cette raison, l’aimant de l’IRM continue de fonctionner en permanence, même quand on n’utilise pas la machine.</p></li>
 <li><p>Les <strong>bobines de gradient</strong>: permettent de faire varier l’intensité du champ magnétique dans l’espace. Durant l’acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.</p></li>
-<li><p>L’<strong>antenne radio-fréquence</strong>: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l’excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l’antenne crée un faible champ magnétique perpendiculaire au champ magnétique principal généré par l’aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.</p></li>
+<li><p>L’<strong>antenne radio-fréquence</strong>: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l’excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l’antenne créent un faible champ magnétique perpendiculaire au champ magnétique principal généré par l’aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.</p></li>
 </ul>
 <p>Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans les prochaines sections.</p>
 <div class="admonition warning">
@@ -446,14 +442,32 @@
 <p>Ces variations sont beaucoup plus faibles que le champ B0, et ne représentent qu’une fraction de teslas, mais cela va nous permettre d’extraire une information spatiale dans un processus de résonance. À l’aide de ces gradients, il est possible de mesurer des propriétés magnétiques de tissus situés à un point spécifique dans l’espace, et donc de faire une image (3D). Ce processus est complexe, mais la première étape est relativement simple à comprendre: c’est la sélection de coupe.</p>
 <p>Nous nous rappellons que la fréquence de Larmor d’une particule dépend de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d’hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d’hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d’excitation. De cette manière, au lieu de recevoir du signal de l’ensemble du cerveau, nous ne recevons du signal que de la coupe sélectionnée, car seuls les atomes d’hydrogène dans cette coupe seront rentrés en résonance.</p>
 <p>Il nous reste encore à découper notre coupe en pixels… Mais cela sort largement du contexte de ce chapitre d’introduction. Pour en apprendre plus sur l’encodage spatial en IRM, vous pouvez consulter cette <a class="reference external" href="https://www.imaios.com/en/e-Courses/e-MRI/Signal-spatial-encoding/Spatial-encoding-intro">ressource</a> (en anglais).</p>
-</div>
-<div class="section" id="contrastes-t-1-et-t-2">
-<h2>Contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span><a class="headerlink" href="#contrastes-t-1-et-t-2" title="Permalink to this headline">¶</a></h2>
-<p>Les contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span> sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d’hydrogène sont alignés avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. L’application d’impulsions radio-fréquences fait basculer les spins selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>, axe perpendiculaire à <span class="math notranslate nohighlight">\(B_0\)</span>. Une fois les impulsions radio-fréquences arrêtées, les spins se réalignent avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span>.</p>
 <div class="admonition-champ-de-vue-fov admonition">
 <p class="admonition-title">Champ de vue (FOV)</p>
 <p>Quand on réalise une image 3D du cerveau, on va découper le cerveau en une série de coupes. En connaissant la taille des coupes ainsi que le nombre de coupes, on peut en déduire la taille du cube 3D qui correspond à l’image. Cette taille est appelée champ de vue, ou FOV en anglais (Field of view).</p>
 </div>
+<div class="admonition-l-irm-un-appareil-bruyant admonition">
+<p class="admonition-title">L’IRM: un appareil bruyant</p>
+<p>L’acquisition d’une image nécessite de modifier les gradients de manière rapide. Les changements rapides de courant dans les bobines de gradient, ainsi que dans les bobines émettrices d’ondes radio-fréquences, provoquent des expansions et des contractions rapides des bobines. Ces mouvements créent un bruit important. Chaque type d’image a sa “musique” propre, qui dépend de la nature et de l’ordre des excitations et des gradients. Voir extraits ci-dessous.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/9GZvd_4ot04?start=11&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/9GZvd_4ot04?start=11" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+</div>
+<div class="section" id="contrastes-t-1-et-t-2">
+<h2>Contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span><a class="headerlink" href="#contrastes-t-1-et-t-2" title="Permalink to this headline">¶</a></h2>
+<p>Les contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span> sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d’hydrogène sont alignés avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. L’application d’impulsions radio-fréquences fait basculer les spins selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>, axe perpendiculaire à <span class="math notranslate nohighlight">\(B_0\)</span>. Une fois les impulsions radio-fréquences arrêtées, les spins se réalignent avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span>.</p>
 <p><strong>Contraste en <span class="math notranslate nohighlight">\(T_1\)</span></strong>. L’augmentation de la composante selon <span class="math notranslate nohighlight">\(B_0\)</span> (composante <span class="math notranslate nohighlight">\(M_z\)</span>), ou <em>relaxation longitudinale</em>, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s’appelle le <span class="math notranslate nohighlight">\(T_1\)</span>. Le temps <span class="math notranslate nohighlight">\(T_1\)</span> correspond au temps écoulé pour obtenir 63% de la valeur d’équilibre de la contribution du moment magnétique selon l’axe z (<span class="math notranslate nohighlight">\(M_0\)</span>). Pour ceux qui sont à l’aise avec les expressions mathématiques, la repousse en <span class="math notranslate nohighlight">\(B_0\)</span> suit l’équation <span class="math notranslate nohighlight">\(M_z(t) = M_0 ( 1 - e^{-t / T_1})\)</span>.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -509,7 +523,7 @@
 </div>
 <div class="figure align-default" id="relax-t1-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/irm_5_0.png" src="_images/irm_5_0.png" />
+<img alt="_images/irm_7_0.png" src="_images/irm_7_0.png" />
 </div>
 <p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Relaxation longitudinale et contraste <span class="math notranslate nohighlight">\(T_1\)</span>. Image de gauche: croissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_0\)</span>, appelé <span class="math notranslate nohighlight">\(M_{z}\)</span>. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps <span class="math notranslate nohighlight">\(TE\)</span> présente un contraste entre les différents types de tissus. Ce contraste est pour l’essentiel inversé par rapport au contraste <span class="math notranslate nohighlight">\(T_1\)</span>. Cette figure est générée par du code python, cliquer sur + pour voir le code.</span><a class="headerlink" href="#relax-t1-fig" title="Permalink to this image">¶</a></p>
 </div>
@@ -572,7 +586,7 @@
 </div>
 <div class="figure align-default" id="relax-t2-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/irm_7_0.png" src="_images/irm_7_0.png" />
+<img alt="_images/irm_9_0.png" src="_images/irm_9_0.png" />
 </div>
 <p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Relaxation transverse et contraste <span class="math notranslate nohighlight">\(T_2\)</span>. Image de gauche: décroissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>, appelé <span class="math notranslate nohighlight">\(M_{xy}\)</span>. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps <span class="math notranslate nohighlight">\(TE\)</span> présente un contraste entre les différents types de tissus. Ce contraste est pour l’essentiel inversé par rapport au contraste <span class="math notranslate nohighlight">\(T_1\)</span>. Cette figure est générée par du code python, cliquer sur + pour voir le code.</span><a class="headerlink" href="#relax-t2-fig" title="Permalink to this image">¶</a></p>
 </div>
@@ -590,7 +604,7 @@
 </div>
 <div class="tip admonition" id="diff-t1-t2-tip">
 <p class="admonition-title"><span class="math notranslate nohighlight">\(T_1\)</span> vs <span class="math notranslate nohighlight">\(T_2\)</span>: cherchez la différence.</p>
-<p>Pourquoi s’embêter à faire des contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span> quand l’un semble être l’exact opposé de l’autre? Observez  bien les images ci-dessous. Y a-t-il certaines régions du cerveau où l’image <span class="math notranslate nohighlight">\(T_2\)</span> n’est pas l’exact opposé de l’image <span class="math notranslate nohighlight">\(T_1\)</span>?</p>
+<p>Pourquoi s’embêter à faire des contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span> quand l’un semble être l’exact opposé de l’autre? Observez  bien les images <a class="reference internal" href="#relax-t1-fig"><span class="std std-numref">Fig. 15</span></a> et <a class="reference internal" href="#relax-t2-fig"><span class="std std-numref">Fig. 16</span></a>. Y a-t-il certaines régions du cerveau où l’image <span class="math notranslate nohighlight">\(T_2\)</span> n’est pas l’exact opposé de l’image <span class="math notranslate nohighlight">\(T_1\)</span>?</p>
 </div>
 </div>
 <div class="section" id="t-2-irmf-irmd">
@@ -634,9 +648,9 @@
 <p class="admonition-title">Exercice 2.1</p>
 <p>Classez les temps caractéristiques par ordre croissant, si possible.</p>
 <ul class="simple">
-<li><p>TE</p></li>
-<li><p>TR</p></li>
-<li><p>T1</p></li>
+<li><p>TE vs TR</p></li>
+<li><p>TR vs T1</p></li>
+<li><p>T1 vs TE</p></li>
 </ul>
 </div>
 <div class="note admonition">
@@ -680,11 +694,11 @@
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 2.9</p>
-<p>On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, et un résolution in-plane de 1 mm isotrope. Quelle est la taille de la matrice d’acquisition in-plane?</p>
+<p>On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, et une résolution de 1 mm x 1 mm dans la coupe. Quelle est la taille de la coupe (nombre de pixels x nombre de pixels)?</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 2.10</p>
-<p>On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm in-plane, une matrice in-plane de taille 64x64, une épaisseur de coupe de 3,4 mm (31 coupes). On a un TR de 2 secondes, et on acquiert 150 volumes.
+<p>On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm dans la coupe, une coupe de dimension 64x64, une épaisseur de coupe de 3,4 mm avec 31 coupes. On a un TR de 2 secondes, et on acquiert 150 volumes.
 Quelle est la taille du champ de vue 3D, sachant que les coupes sont acquises dans le plan axial?
 Quelle est la durée de l’acquisition?</p>
 </div>
@@ -704,7 +718,7 @@ Quelle est la durée de l’acquisition?</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 2.12</p>
-<p>On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser, T1, T2 ou les deux? Justifiez votre réponse.</p>
+<p>On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser: T1, T2 ou les deux? Justifiez votre réponse.</p>
 </div>
 </div>
 </div>
