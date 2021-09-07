@@ -20,7 +20,7 @@ Ce texte contient l'ensemble des notes du cours PSY3018 "Méthodes en neuroscien
  * tomographie par émission de positrons,
  * imagerie optique.
 
-Le principal objectif d’apprentissage pour ce cours est l’acquisition de connaissances théoriques sur les bases physiques et physiologiques de différentes techniques de neuroimagerie, ainsi que les principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Le cours présentera aussi comment ces techniques de neuroimagerie sont appliquées dans le cadre de projets de recherche en neurosciences cognitives, notamment via des quizzs, études d’articles et code pour la visualisation de données.
+Le principal objectif d’apprentissage pour ce cours est l’acquisition de connaissances théoriques sur les bases physiques et physiologiques de différentes techniques de neuroimagerie, ainsi que les principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Le cours présentera aussi comment ces techniques de neuroimagerie sont appliquées dans le cadre de projets de recherche en neurosciences cognitives, et chaque chapitre comporte une série d'exercices.
 
 Le cours est donné principalement par Dr Pierre Bellec, avec des contributions par les auxiliaires de recherche, ainsi que de multiples intervenants supplémentaires. Ces notes de cours bénéficie également du retour constructif des étudiants du cours PSY3018 depuis sa création en 2018. Les contributions générales sont présentées ci dessous. Des contributions spécifiques sont listées au sein de chaque chapitre.
 
@@ -52,6 +52,15 @@ Le cours est donné principalement par Dr Pierre Bellec, avec des contributions 
         <br /><sub><b>Samuel Guay</b></sub>
       </a>
       <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
         <a title="Révision du texte">👀</a>
     </td>
   </tr>
