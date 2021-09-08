@@ -77,12 +77,52 @@ Cette façon de faire est essentielle afin d'assurer une segmentation logique, u
 La procédure nécessitera l'utilisation d'un logiciel permettant de dessiner les "frontières" de chacune des aires que l'on veut pouvoir identifier sur les images obtenues lors du scan d'un cerveau.
 On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
 
-> Pour un rappel concernant termes et les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](https://psy3018.github.io/notes_cours_psy3018/cartes_cerebrales.html#irm-structurelle).
+> Pour un rappel concernant termes et les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](https://psy3018.github.io/cartes_cerebrales.html#irm-structurelle).
 
 Le processus nécessaire à l'obtention d'une segmentation finale précise d'une structure unique peut donc être très long et ardu.
 Il devra d'ailleurs être répété de nouveau pour chaque nouvelle structure d'intérêt.
 
-## Voxel-based morphometry
+```{admonition} Un mot sur l'utilisation d'atlas de segmentation
+:class: info
+:name: atlas-info
+Afin de faciliter la standardisation de la segmentation, il est possible d'utiliser des cartes préétablies par des équipes de chercheurs.
+On appelle ces cartes des **atlas de segmentation**.
+Ceux-ci sont développés par des équipes de scientifiques afin de permettre une segmentation robuste de certaines structures d'intérêt.
+Comme il existe une variété d'atlas permettant de rencontrer divers besoin en terme de segmentaton, il est important de choisir adéquatement celui qui sera utilisé en fonction des structures particulières que vous voulez étudier.
+```
+
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+
+# Téléchargement de l'atlas Harvard-Oxford
+from nilearn import datasets
+
+dataset = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
+atlas_filename = dataset.maps
+
+# Visualisation de la figure
+from myst_nb import glue
+from nilearn import plotting
+
+fig = plotting.plot_roi(atlas_filename,
+                        title="Harvard Oxford atlas",
+                        cut_coords=(8, -4, 9),
+                        colorbar=True,
+                        cmap='Paired')
+
+glue("atlas1-fig", fig, display=False)
+```
+
+```{glue:figure} atlas1-fig
+:figwidth: 800px
+:name: "atlas1-fig"
+
+Un exemple de segmentation utilisant l'atlas Harvard-Oxford sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite).
+Voir l'astuce {ref}`Naviguer à travers les coupes du cerveau<coupes-tip>` pour une explication de ces termes.
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
+```
+
+## Approche par voxel (*Voxel-based morphometry*)
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
 
@@ -94,7 +134,7 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/yyUKkPaG3Q8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
-L'**approche par voxel**, aussi mieux connue sous le nom de ***voxel-based morphometry*** (ou **VBM**) est une autre approche qu'il est possible d'employer afin de segmenter différentes aires d'intérêt du cerveau.
+L'**approche par voxel**, aussi mieux connue sous le nom de ***voxel-based morphometry*** (ou **VBM**), est une autre approche qu'il est possible d'employer afin de segmenter différentes aires d'intérêt du cerveau.
 Son objectif est de mesurer la densité de matière grise à l'intérieur et immédiatement autour d'un voxel donné.
 Cette approche est donc moins limitée par le besoin d'avoir des frontières préétablies claires entre les différentes structures à l'étude.
 Lorsque répétée pour l'entièreté du volume du cerveau, on peut obtenir une carte tridimensionnelle de la densité de matière grise à travers celui-ci.
@@ -102,9 +142,9 @@ L'avantage premier de cette approche est son économie au niveau du temps néces
 En effet, comme cette technique présente une approche de segmentation automatisée, la présence d'une personne externe ne devient nécessaire que lors de l'étape de la vérification de la segmentation.
 Par contre, cette approche ayant une quantité importante de points de mesure (liés à chaque voxel étudié), elle pose aussi un sérieux problème de **comparaisons multiples** lorsque vient le temps de faire les analyses statistiques.
 
-> Les particularités des analyses statistiques en neuroimagerie seront vues en détail lors du [Chapitre 6: Régression linéaire](https://psy3018.github.io/notes_cours_psy3018/regression.html).
+> Les particularités des analyses statistiques en neuroimagerie seront vues en détail lors du [Chapitre 6: Régression linéaire](https://psy3018.github.io/regression.html).
 >
-> Les particularités des corrections à apporter lors de ces analyses statistiques seront vues en détail lors du [Chapitre 10: Cartes statistiques](https://psy3018.github.io/notes_cours_psy3018/cartes_statistiques.html).
+> Les particularités des corrections à apporter lors de ces analyses statistiques seront vues en détail lors du [Chapitre 10: Cartes statistiques](https://psy3018.github.io/cartes_statistiques.html).
 
 Le traitement des données en VBM suit un processus en quatre étapes:
 1. La segmentation
@@ -121,12 +161,12 @@ La segmentation retournera donc une carte des voxels contenant probablement de l
 Il est en effet possible que la segmentation automatique nous retourne certains autres tissus non-désirés, mais dont les valeurs étant similaires à celle de la matière grise, ne sont pas distinguées par l'algorithme de segmentation.
 Il est aussi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir).
 On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
-- Ce genre d'erreur est une source possible de faux positifs.
+- Ce genre d'erreur est une source possible de **faux positifs**.
 
 Il est aussi possible de perdre certaines structures pour lequelles le contraste entre matière blanche et matière grise ne seraient pas assez important pour que l'algorithme réussisse à les classer efficacement.
 Pour ce genre de structure, il est important d'ajouter des a priori (des règles/conditions supplémentaires) dans notre algorithme de traitement afin de ne pas les perdre.
 Il est aussi envisageable d'effectuer cette partie de la segmentation de façon manuelle.
-- Ce genre d'erreur est une source possible de faux négatifs.
+- Ce genre d'erreur est une source possible de **faux négatifs**.
 
 La seconde étape est l'étape du **recalage dans un espace stéréotaxique de référence** (*coregistration* en anglais).
 Celle-ci sert à pouvoir mettre en relation les différents voxels à travers différents sujets (nécessaire pour les analyses statistiques).
@@ -136,7 +176,7 @@ Il faut donc que l'on procède à cette étape afin de créer une concordance de
 L'espace stéréotaxique de référence que l'on crée ainsi est donc un système de référence sur lequel on réaligne les données de chaque sujet afin de permettre ces comparaisons.
 Ainsi, on s'assure que lorsque l'on observe une coupe particulière du cerveau de différents participants, on observe aussi les mêmes structures.
 
-> Les détails concernant l'étape du recalage seront présentés plus en détail plus loin dans le [présent chapitre](https://psy3018.github.io/notes_cours_psy3018/morphometrie.html#recalage-d-images).
+> Les détails concernant l'étape du recalage seront présentés plus en détail plus loin dans le [présent chapitre](https://psy3018.github.io/morphometrie.html#recalage-d-images).
 
 L'étape suivante correspond au **lissage spatial** (aussi appelée convolution spatiale).
 Le lissage s'apparente à ajouter un filtre sur l'image la rendant plus floue.
@@ -150,7 +190,7 @@ Afin de savoir jusqu'à quel point on s'éloignera du voxel *x* pour calculer la
 
 Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage de voxels qui auront un impact sur la valeur lissée du voxel *x*.
 
-> Les détails concernant l'étape du lissage spatial seront présentés plus en détail lors du [Chapitre 4: IRM fonctionnelle](https://psy3018.github.io/notes_cours_psy3018/irm_fonctionnelle.html#pretraitement-des-donnees-d-irmf).
+> Les détails concernant l'étape du lissage spatial seront présentés plus en détail lors du [Chapitre 4: IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html#pretraitement-des-donnees-d-irmf).
 
 L'ultime étape de ce processus est celle des **analyses statistiques**.
 C'est lors de cette étape que l'on parvient à obtenir les cartes finales avec lesquelles il est possible de procéder aux analyses et de tirer les observations et conclusions d'une étude en morphométrie.
@@ -208,7 +248,7 @@ Maintenant, que l'espace stéréotaxique de référence de notre groupe de parti
 Que le choix se porte vers une segmentation manuelle (telle que vu précédement dans ce chapitre) ou vers l'utilisation d'un atlas, le recalage rend la segmentation de la référence généralisable aux images individuelles recalées.
 On facilite ainsi grandement le processus en permettant une automatisation du processus de segmentation pour chacun des sujets.
 
-### Contrôle de qualité
+## Contrôle de qualité
 Comme pour toute opération automatisée, il reste toujours une possibilité d'erreur au cours du processus de recalage.
 Il est donc nécessaire de prévoir une étape de vérification des résultats afin de s'assurer qu'il n'y a pas eu d'aberrations qui se sont introduites dans les données.
 Ces aberrations peuvent venir de plusieurs sources différentes:
@@ -218,18 +258,6 @@ Ces aberrations peuvent venir de plusieurs sources différentes:
 
 Cette vérification de la qualité des images permettra d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
 Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées, c'est pourquoi il est primordial de garder ce risque en tête lors du traitement des données.
-
-## Recalage d'images (CETTE SECTION SEMBLE REDONDANTE??!!)
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/VYN4K-K-Fjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-```
 
 ## Analyses de surface
 ```{code-cell} ipython 3
@@ -242,3 +270,106 @@ warnings.filterwarnings("ignore")
 # Youtube
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/S-8rk7PlWBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
+
+Cette famille d'approches diffère des précédentes en ce qu'elle ne mesure pas la densité de la matière grise, mais plutôt sa répartition, son épaisseur et/ou sa surface.
+Cette façon de faire particulière permet de faire des analyses sur l'ensemble de la surface corticale.
+Par contre, qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté.
+Cette famille de techniques n'est donc pas recommandée pour un protocol de recherche durant lequel on voudrait étudier des structures enfouies dans la boîte crânienne telles que l'hypothalamus, les ganglions de la base, etc.
+Plutôt que de procéder à l'analyse du contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
+Ainsi, on cherche à étudier à l'aide de ceux-ci la forme que prend localement la matière grise.
+
+Le processus permettant d'arriver aux résultats partage certaines similitudes avec les analyses volumétriques, alors que d'autres étapes sont spécifiques aux analyses de surface.
+- En effet, la première étape consiste encore à procéder au **prétraitement** (recalage et contrôle de qualité) et à la **segmentation** des images du cerveau.
+Par contre, certaines des étapes suivantes diffèrent de celles utilisées lors des protocols de volumétrie.
+- De ce fait, la seconde étape vise à **délimiter la frontière** entre la surface de matière grise et les tissus/milieux environnant.
+Afin d'y parvenir, on utilisera des modèles permettant d'estimer la **surface piale** (surface extérieure du cortex, à la frontière entre la matière grise et le liquide céphalo-rachidien) et la **surface intérieure** (à la frontière entre la matière grise et la matière blanche).
+Il faudra, pour y parvenir, éliminer des images les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.).
+C'est l'étape de la création du **masque** du cerveau.
+Il est important de s'assurer, une fois que le masque est généré, qu'il contient bel et bien l'ensemble du volume du cerveau, ni plus, ni moins.
+Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre en péril l'ensemble des étapes suivantes.
+- On procédera ensuite à la **délimitation des surfaces** piale et interne.
+Pour ce faire, on modélisera un volume en forme de ballon virtuel au centre de chacun des hémisphères du cerveau.
+On définit ensuite des contraintes physiques (délimitation de la "cavité" interne dans laquelle le ballon peut évoluer) afin de marquer la frontière entre la matière blanche et la matière grise (surface interne).
+On procède ensuite à "gonfler" ce ballon jusqu'à ce qu'il épouse le mieux possible la frontière de la surface interne (jusqu'à ce que le ballon soit gonflé jusqu'à occuper tout l'espace dans la cavité et suivre l'ensemble des courbes de la paroi).
+Il est aussi possible de faire la procédure inverse.
+On pourrait en effet générer un ballon virtuel autour de chacun des hémisphères et les "dégonfler" jusqu'à ce qu'ils épousent les contours des frontières délimitées par les contraintes physiques.
+Lorsque l'une des frontières (surface interne ou surface piale) est délimitées, il est possible de continuer la procédure de gonflement/dégonflement afin d'obtenir la seconde surface.
+On peut ensuite utiliser la distance entre les deux surfaces en un point donné afin d'évaluer l'épaisseur corticale pour ce vertex.
+Cette distance est obtenue en prenant la perpendiculaire à l'une des surfaces et en mesurant la distance entre les deux surfaces le long de cette perpendiculaire.
+Ce genre de technique permet par la suite de générer des cartes d'épaisseur corticale.
+
+```{admonition} Attention
+:class: caution attention
+:name: controle-qualite-attention
+Malheureusement, ce genre de technique est coûteuse en terme de ressources de calcul et des erreurs peuvent survenir à plusieurs niveaux.
+Par exemple, cette technique est particulièrement peu robuste face aux effets des volumes partiels.
+On pourrait en effet avoir une surface qui ne se rend pas jusqu'au fond d'un sulcus, ou lorsque les giri sont très rapprochés, qui ne rentre même pas à l'intérieur du sulcus.
+Le résultat de ces deux types d'erreurs, qui sont possibles autant sur la surface piale que sur la surface interne, sera une forte surestimation localisée de l'épaisseur corticale.
+C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment.
+```
+
+- La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des **analyses statistiques**.
+
+## Conclusion
+Ce chapitre vous a introduit aux différentes familles de techniques de segmentation qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
+Il a en effet été question de **volumétrie manuelle**, d'**approche par voxel** (***voxel-based morphometry*** ou **VBM**) et d'**analyse de surface**.
+Les processus de **recalage** et l'importance du **contrôle de qualité** ont aussi été abordés.
+Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle.
+
+## Exemples d'articles présentant des analyses morphométriques:
+
+#### Volumétrie manuelle
+- Schneider, P., Sluming, V., Roberts, N., Scherg, M., Goebel, R., Specht, H. J., Dosch, H. G., Bleeck, S., Stippich, C., & Rupp, A. (2005). Structural and functional asymmetry of lateral Heschl's gyrus reflects pitch perception preference. *Nature neuroscience*, *8*(9), 1241–1247. https://doi.org/10.1038/nn1530
+- von Plessen, K., Lundervold, A., Duta, N., Heiervang, E., Klauschen, F., Smievoll, A. I., Ersland, L., & Hugdahl, K. (2002). Less developed corpus callosum in dyslexic subjects--a structural MRI study. *Neuropsychologia*, *40*(7), 1035–1044. https://doi.org/10.1016/s0028-3932(01)00143-9
+
+#### Utilisation d'un atlas de segmentation
+-
+
+#### Approche par voxel
+- Kikuchi, Y., Ogata, K., Umesaki, T., Yoshiura, T., Kenjo, M., Hirano, Y., Okamoto, T., Komune, S., & Tobimatsu, S. (2011). Spatiotemporal signatures of an abnormal auditory system in stuttering. *NeuroImage*, *55*(3), 891–899. https://doi.org/10.1016/j.neuroimage.2010.12.083
+- Kirchner, H., Kremmyda, O., Hüfner, K., Stephan, T., Zingler, V., Brandt, T., Jahn, K., & Strupp, M. (2011). Clinical, electrophysiological, and MRI findings in patients with cerebellar ataxia and a bilaterally pathological head-impulse test. *Annals of the New York Academy of Sciences*, *1233*, 127–138. https://doi.org/10.1111/j.1749-6632.2011.06175.x
+- Melcher, J. R., Knudson, I. M., & Levine, R. A. (2013). Subcallosal brain structure: correlation with hearing threshold at supra-clinical frequencies (>8 kHz), but not with tinnitus. *Hearing research*, *295*, 79–86. https://doi.org/10.1016/j.heares.2012.03.013
+- Wang, X., Xu, P., Li, P., Wang, Z., Zhao, F., Gao, Z., Xu, L., Luo, Y. J., Fan, J., & Liu, P. (2016). Alterations in gray matter volume due to unilateral hearing loss. *Scientific reports*, *6*, 25811. https://doi.org/10.1038/srep25811
+- Yang, M., Chen, H. J., Liu, B., Huang, Z. C., Feng, Y., Li, J., Chen, J. Y., Zhang, L. L., Ji, H., Feng, X., Zhu, X., & Teng, G. J. (2014). Brain structural and functional alterations in patients with unilateral hearing loss. *Hearing research*, *316*, 37–43. https://doi.org/10.1016/j.heares.2014.07.006
+
+#### Analyse de surface
+-
+
+## Références
+
+```{bibliography}
+:filter: docname in docnames
+```
+
+## Exercices (version provisoire: copy/paste du template depuis le chapitre 1)
+
+### Exercice 1
+
+On effectue une stimulation visuelle durant 100 ms et on souhaite étudier la réponse cérébrale au niveau du cortex occipital. Citez une force et une faiblesse de l’IRMf et de l’EEG pour étudier cette question, et expliquez pourquoi.
+
+### Exercice 2
+
+Classez ces techniques par leur résolution spatiale:
+ 1. IRMf
+ 2. IRM structurelle
+ 3. PET
+
+### Exercice 3
+Classez ces techniques par leur résolution temporelle:
+ 1. IRMf
+ 2. Imagerie optique
+ 3. EEG
+ 4. IRM de diffusion
+
+### Exercice 4
+On observe une activation du cortex moteur ipsilatéral dans le cadre d’un mouvement de la main droite, suite à accident vasculaire cérébral. Cette observation est effectuée à l’aide de l’IRMf.
+ 1. Citez une limitation possible de cette observation, dans le cadre spécifique de cette expérience.
+ 2. Proposez une expérience complémentaire permettant de répondre à cette limitation, et pourquoi.
+
+### Exercice 5
+Un participant à une étude de recherche a souffert d’un accident par le passé, qui a laissé des débris métalliques dans son oeil.
+ 1. Citer une technique d’imagerie pour laquelle il s’agit d’une contre indication. Expliquez pourquoi.
+ 2. Citer une technique pour laquelle ce n’est pas un problème. Expliquez pourquoi.
+
+### Exercice 6
+On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois. Citez un problème et un point fort du F18-FDG TEP, dans le cadre spécifique de cette expérience.
