@@ -320,7 +320,7 @@ Le dernier aspect important qui sera abordé dans ces notes de cours est une dis
 ## Conclusions
 Ce chapitre vous a présenté un rapide tour d'horizon des différentes méthodes utilisées en neuroscience cognitives qui seront présentées dans le cours. Nous espérons que cela vous donne envie d'en apprendre davantage et d'explorer ces notes de cours!
 
-## References
+## Références
 
 ```{bibliography}
 :filter: docname in docnames

@@ -40,6 +40,7 @@ The support for pdf generation is experimental with jupyter book, and the output
  * install xetex `sudo apt-get install texlive-xetex`
  * go in the build directory `cd methodes_neurocog/_build/latex`
  * edit manually the `tex` file of the chapter. Replace all `\chapter` by `\section` and add a proper `\chapter` at the beginning. You can also search `Content` and replace by `Table des matières`. I have tried to switch the whole doc in French but without success so far. 
+ * before adding the chapter title, add the following lines: `\setcounter{chapter}{n} \addtocounter{chapter}{-1}`, where `n` is the number of the chapter.
  * Compile a chapter, e.g. `xelatex cartes_cerebrales.tex`
  * the resulting pdf is mega-huge. So shrink it with `gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=notes_cours_cartes_cerebrales.pdf -dPDFSETTINGS=/ebook cartes_cerebrales.pdf`
  * Voilà 🎉 🎉 🎉
