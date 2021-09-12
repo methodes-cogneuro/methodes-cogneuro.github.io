@@ -17,19 +17,17 @@ kernelspec:
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/pbellec">
-        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
-        <br /><sub><b>Pierre bellec</b></sub>
+      <a href="https://github.com/elisabethloranger">
+        <img src="https://avatars.githubusercontent.com/u/90270981?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Élisabeth Loranger</b></sub>
       </a>
       <br />
         <a title="Contenu">🤔</a>
     </td>
-  </tr>
-  <tr>
     <td align="center">
-      <a href="https://github.com/elisabethloranger">
-        <img src="https://avatars.githubusercontent.com/u/90270981?v=4?s=100" width="100px;" alt=""/>
-        <br /><sub><b>Élisabeth Loranger</b></sub>
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
       </a>
       <br />
         <a title="Contenu">🤔</a>
