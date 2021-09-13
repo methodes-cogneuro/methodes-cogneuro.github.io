@@ -359,7 +359,7 @@ Des données d’IRM T1 individuelle sont...
 On souhaite comparer le volume moyen du putamen droit entre des participants neurotypiques et des participants étant sur le spectre de l’autisme.
 On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
 Citez une force et une faiblesse en lien avec les objectifs de l'étude pour chacune de ces techniques.
-``` 
+```
 
 ```{admonition} Exercice 3.3
 :class: note
@@ -367,7 +367,7 @@ Citez une force et une faiblesse en lien avec les objectifs de l'étude pour cha
 Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
  - Les données IRM T1 doivent être réalignées pour étudier la morphologie du cerveau à l’échelle d’une population.
  - Les données d’IRM "brutes" (avant prétraitement) sont inutilisables pour étudier la morphométrie.
- - Le lissage spatial est important, même pour une analyse individuelle. 
+ - Le lissage spatial est important, même pour une analyse individuelle.
 ```
 
 ```{admonition} Exercice 3.4
@@ -376,7 +376,7 @@ Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fau
 Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
  - Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.
  - La présence de métal peut créer du bruit et des déformations dans une carte VBM.
- - La présence d'une déformation majeure dans une carte cérébrale VBM signifie nécessairement qu'il y a présence d'une déformation dans le cerveau du participant. 
+ - La présence d'une déformation majeure dans une carte cérébrale VBM signifie nécessairement qu'il y a présence d'une déformation dans le cerveau du participant.
 ```
 
 ```{admonition} Exercice 3.5
@@ -384,7 +384,7 @@ Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fau
 
 En vérifiant ses données structurelles, un chercheur réalise qu’un de ses participants de recherche a un volume cérébral de deux fois supérieur à la normale!
 Pourtant, le crâne de ce participant semblait normal.
-Proposez une explication. 
+Proposez une explication.
 ```
 
 ```{admonition} Exercice 3.6
@@ -402,4 +402,23 @@ Les données d’un participant de recherche sont de qualité médiocre et la se
 Pour chacune des combinaisons de choix suivantes, quelle technique choisiriez-vous et pourquoi?
  - VBM vs volumétrie manuelle?
  - VBM vs analyse de surface?
+```
+
+```{admonition} Exercice 3.8
+:class: note
+Pour répondre à cette question, lisez l'article de Mensen et collaborateurs, "_Development of cortical thickness and surface area in autism spectrum disorder_", publié dans Neuroimage Clinical (2017, 13: 215-22) et disponible en libre accès à cette [adresse](https://www.sciencedirect.com/science/article/pii/S2213158216302406). Les questions suivantes sont à développement court.
+* Quel(s) type(s) de participant a(ont) été recruté(s) dans cette étude?
+* Quel est l'objectif principal de l'étude?
+* Quels sont les critères d'inclusion et d'exclusion?
+* Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
+* Quelle séquence d'image est utilisée? Listez les paramètres.
+* Est ce qu'une étape de recalage est appliquée? laquelle?
+* Y-a-t-il une procédure de contrôle qualité? Résumez cette procédure.
+* Comment les régions d'intérêt sont-elles définies? avec quel atlas? Combien y-a-t-il de régions?
+* Quelles mesures morphologiques sont utilisées pour chaque région?
+* Quelle figure (ou tableau) répond à l'objectif principal de l'étude? 
+```
+
+```{admonition} Exercice 3.9
+:class: note
 ```

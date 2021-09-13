@@ -408,7 +408,7 @@ Quelle est la durée de l’acquisition?
 ```{admonition} Exercice 2.11
 :class: note
 Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
- * Quel est la force de l'aimant de l'IRM?
+ * Quelle est la force de l'aimant de l'IRM?
  * Combien de canaux sont présents dans l'antenne de tête?
  * Quel est le TR de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
  * Quel est le nom de la séquence utilisée pour l'acquisition structurelle?
