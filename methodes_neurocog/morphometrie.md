@@ -348,16 +348,16 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 
 Choisissez la meilleure réponse et expliquez pourquoi.
 Des données d’IRM T1 individuelle sont...
- 1. Une image d’un cerveau
- 2. Des dizaines d’image d’un cerveau
- 3. Des centaines d’images d’un cerveau
+ 1. Une image 3D d’un cerveau,
+ 2. Des dizaines d’images 2D sagittales d’un cerveau,
+ 3. Des centaines d’images 2D axiales, coronales et sagittales d’un cerveau,
+ 4. Toutes les réponses 1-3.
 ```
 
 ```{admonition} Exercice 3.2
 :class: note
 
-On souhaite comparer le volume moyen du putamen droit entre des participants neurotypiques et des participants étant sur le spectre de l’autisme.
-On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
+On souhaite comparer le volume moyen du putamen droit entre des participants neurotypiques et des participants étant sur le spectre de l’autisme. On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
 Citez une force et une faiblesse en lien avec les objectifs de l'étude pour chacune de ces techniques.
 ```
 
@@ -367,7 +367,7 @@ Citez une force et une faiblesse en lien avec les objectifs de l'étude pour cha
 Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
  - Les données IRM T1 doivent être réalignées pour étudier la morphologie du cerveau à l’échelle d’une population.
  - Les données d’IRM "brutes" (avant prétraitement) sont inutilisables pour étudier la morphométrie.
- - Le lissage spatial est important, même pour une analyse individuelle.
+ - Le lissage spatial est important en VBM, même pour une analyse individuelle.
 ```
 
 ```{admonition} Exercice 3.4
@@ -376,15 +376,13 @@ Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fau
 Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
  - Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.
  - La présence de métal peut créer du bruit et des déformations dans une carte VBM.
- - La présence d'une déformation majeure dans une carte cérébrale VBM signifie nécessairement qu'il y a présence d'une déformation dans le cerveau du participant.
+ - Un trou dans une carte cérébrale VBM signifie qu'il y a un trou dans le cerveau du participant.
 ```
 
 ```{admonition} Exercice 3.5
 :class: note
 
-En vérifiant ses données structurelles, un chercheur réalise qu’un de ses participants de recherche a un volume cérébral de deux fois supérieur à la normale!
-Pourtant, le crâne de ce participant semblait normal.
-Proposez une explication.
+En vérifiant ses données structurelles, une chercheuse réalise qu’un de ses participants de recherche a un volume cérébral de deux fois supérieur à la normale! Pourtant, le crâne de ce participant semblait normal. Proposez une explication.
 ```
 
 ```{admonition} Exercice 3.6
@@ -453,9 +451,4 @@ Pour répondre à cette question, lisez l'article de Mensen et collaborateurs, "
 * Comment les régions d'intérêt sont-elles définies? avec quel atlas? Combien y-a-t-il de régions?
 * Quelles mesures morphologiques sont utilisées pour chaque région?
 * Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
-```
-
-```{admonition} Exercice 3.10
-:class: note
-Une chercheuse s'intéresse aux différences de volume de la matière grise entre des individus neurotypiques et des invididus sur le spectre de l'autisme sur un gros échantillon (N=1000 par groupe). Existe-t-il une motivation claire pour utiliser la VBM ou une analyse de surface **dans ce contexte spécifique**. Pouvez vous pensez à un avantage pour une de ces deux techniques **dans ce contexte spécifique**?
 ```
