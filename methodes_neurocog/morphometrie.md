@@ -348,17 +348,18 @@ Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle
 
 Choisissez la meilleure réponse et expliquez pourquoi.
 Des données d’IRM T1 individuelle sont...
- 1. Une image 3D d’un cerveau,
- 2. Des dizaines d’images 2D sagittales d’un cerveau,
- 3. Des centaines d’images 2D axiales, coronales et sagittales d’un cerveau,
- 4. Toutes les réponses 1-3.
+ 1. Une image 3D d’un cerveau.
+ 2. Des dizaines d’images 2D sagittales d’un cerveau.
+ 3. Des centaines d’images 2D axiales, coronales et sagittales d’un cerveau.
+ 4. Toutes ces réponses.
 ```
 
 ```{admonition} Exercice 3.2
 :class: note
 
-On souhaite comparer le volume moyen du putamen droit entre des participants neurotypiques et des participants étant sur le spectre de l’autisme. On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
-Citez une force et une faiblesse en lien avec les objectifs de l'étude pour chacune de ces techniques.
+On souhaite comparer le volume moyen du putamen droit entre des participants neurotypiques et des participants étant sur le spectre de l’autisme.
+On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
+Pour chacune de ces techniques, citez une force et une faiblesse en lien avec les objectifs de l'étude.
 ```
 
 ```{admonition} Exercice 3.3
@@ -366,8 +367,8 @@ Citez une force et une faiblesse en lien avec les objectifs de l'étude pour cha
 
 Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
  - Les données IRM T1 doivent être réalignées pour étudier la morphologie du cerveau à l’échelle d’une population.
- - Les données d’IRM "brutes" (avant prétraitement) sont inutilisables pour étudier la morphométrie.
- - Le lissage spatial est important en VBM, même pour une analyse individuelle.
+ - Les données d’IRM "brutes" (avant l'étape du prétraitement) sont inutilisables pour étudier la morphométrie.
+ - En VBM, le lissage spatial est important, même pour une analyse individuelle.
 ```
 
 ```{admonition} Exercice 3.4
@@ -376,13 +377,15 @@ Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fau
 Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
  - Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.
  - La présence de métal peut créer du bruit et des déformations dans une carte VBM.
- - Un trou dans une carte cérébrale VBM signifie qu'il y a un trou dans le cerveau du participant.
+ - Un trou dans une carte cérébrale VBM signifie nécessairement qu'il y a un trou dans le cerveau du participant.
 ```
 
 ```{admonition} Exercice 3.5
 :class: note
 
-En vérifiant ses données structurelles, une chercheuse réalise qu’un de ses participants de recherche a un volume cérébral de deux fois supérieur à la normale! Pourtant, le crâne de ce participant semblait normal. Proposez une explication.
+En vérifiant ses données structurelles, une chercheuse réalise qu’un de ses participants de recherche a un volume cérébral de deux fois supérieur à la normale!
+Pourtant, le crâne de ce participant semblait normal.
+Proposez une explication.
 ```
 
 ```{admonition} Exercice 3.6
@@ -404,11 +407,14 @@ Pour chacune des combinaisons de choix suivantes, quelle technique choisiriez-vo
 
 ```{admonition} Exercice 3.8
 :class: note
-On a vu quelques exemples exemples de structures anatomiques cérébrales en cours. Faisons un peu de révisions... Vous trouverez un visualisateur interactif de cerveau ci dessous, si vous êtes sur la [page web du cours](morphometrie.html#exercices). Donnez les coordonnées (`x`, `y` ou `z`) où l'on voit...
-* une coupe sagitale avec le corps calleux.
-* une coupe corononale avec le corps calleux.
-* une coupe axiale avec des ventricules.
-* une coupe axiale avec le sillon central.
+
+Nous avons vu en cours quelques exemples de structures anatomiques cérébrales.
+Faisons un peu de révision...
+En utilisant la fenêtre de visualisation ci-dessous (accessible sur cette [page web du cours](morphometrie.html#exercices)), donnez les coordonnées (x, y, z) où l'on peut voir...
+ - une coupe sagittale présentant le corps calleux.
+ - une coupe coronale présentant le corps calleux.
+ - une coupe axiale contenant des ventricules.
+ - une coupe axiale avec le sillon central.
 ```
 
 ```{code-cell} ipython 3
@@ -433,22 +439,25 @@ view_img(
     black_bg=True,
     cut_coords=[-17, 0, 17],
     title='IRM pondérée en T1',
-    cmap = 'gray',
+    cmap='gray',
     symmetric_cmap=False
 )
 ```
 
 ```{admonition} Exercice 3.9
 :class: note
-Pour répondre à cette question, lisez l'article de Mensen et collaborateurs, "_Development of cortical thickness and surface area in autism spectrum disorder_", publié dans Neuroimage Clinical (2017, 13: 215-22) et disponible en libre accès à cette [adresse](https://www.sciencedirect.com/science/article/pii/S2213158216302406). Les questions suivantes sont à développement court.
-* Quel(s) type(s) de participant a(ont) été recruté(s) dans cette étude?
-* Quel est l'objectif principal de l'étude?
-* Quels sont les critères d'inclusion et d'exclusion?
-* Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
-* Quelle séquence d'image est utilisée? Listez les paramètres.
-* Est ce qu'une étape de recalage est appliquée? laquelle?
-* Y-a-t-il une procédure de contrôle qualité? Résumez cette procédure.
-* Comment les régions d'intérêt sont-elles définies? avec quel atlas? Combien y-a-t-il de régions?
-* Quelles mesures morphologiques sont utilisées pour chaque région?
-* Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
+
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Development of cortical thickness and surface area in autism spectrum disorder* de Mensen et collaborateurs (publié en 2017 dans la revue *Neuroimage: Clinical*, volume 13, pages 215 à 222).
+Celui-ci est disponible en libre accès à cette [adresse](https://www.sciencedirect.com/science/article/pii/S2213158216302406).
+Les questions suivantes requièrent des réponses à développement court.
+ - Quel(s) type(s) de participant a(ont) été recruté(s) dans cette étude?
+ - Quel est l'objectif principal de l'étude?
+ - Quels sont les critères d'inclusion et d'exclusion?
+ - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
+ - Quelle type de séquence d'acquisition d'image est utilisé? Listez les paramètres.
+ - Est ce que le traitement des images inclut une(des) étape(s) de recalage? Si oui, de quel(s) type(s)?
+ - Les chercheurs ont-ils mis en place une procédure de contrôle qualité? Si oui, résumez cette procédure.
+ - Les régions d'intérêt (ROI) sont-elles définies? Si oui, de quelle façon? Avec quel atlas? Combien y en a-t-il?
+ - Quelles mesures morphologiques sont utilisées pour chaque région?
+ - Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
 ```
