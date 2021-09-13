@@ -349,9 +349,22 @@
 </div>
 <div class="section" id="objectifs-du-cours">
 <h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Comprendre la définition de la connectivité fonctionnelle.</p></li>
+<li><p>Comprendre la distinction entre activité intrinsèque et évoquée.</p></li>
+<li><p>Comprendre la notion de réseau fonctionnel.</p></li>
+<li><p>Connaître les principaux réseaux au repos.</p></li>
+</ul>
 </div>
 <div class="section" id="carte-de-connectivite-fonctionnelle">
 <h2>Carte de connectivité fonctionnelle<a class="headerlink" href="#carte-de-connectivite-fonctionnelle" title="Permalink to this headline">¶</a></h2>
+<p>Revenons ce qu’est une carte d’activation IRMf afin de nous donner une compréhension intuitive de ce qu’est une carte connectivité fonctionnelle. Une carte d’activation exploite des fluctuations BOLD évoquées par une tâche, de sorte que nous puissions les associer avec des fluctuations qui changent en fonction d’un paradigme expérimental.</p>
+<p>La carte d’activation illustre donc les voxels dont l’activité est plus ou moins reliée à une tâche (ou bloc expérimental) à comparer à l’autre. En d’autres mots, elle indique la corrélation entre l’activité attendue (soit, celle hypothétiquement associée au bloc expérimental) et l’activité mesurée (soit, le signal BOLD-IRMf de tous les voxels).</p>
+<p>Ici, il est important de souligner que le signal BOLD peut être exploité par de nombreux modèles statistiques différents, c’est-à-dire que la carte d’activation  d’un seul sujet elle-même est un modèle.</p>
+<div class="tip admonition" id="hardball-tip">
+<p class="admonition-title">Exemple</p>
+<p>Nous pourrions décider de mesurer la corrélation entre le décours temporel de chaque voxel et le moment auquel un participant presse sur un bouton d’un contrôleur avec son pouce. Nous obtiendrions une carte d’activation montrant des voxels significativement activés au cortex moteur. Dans le contexte du cours, nous nous intéressons à la corrélation entre le décours temporel des voxels d’une région particulière et le reste des voxels. De cette façon, nous obtiendrions une carte de connectivité fonctionnelle.</p>
+</div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -369,6 +382,9 @@
 </div>
 <div class="section" id="activite-intrinseque-et-activite-evoquee">
 <h2>Activité intrinsèque et activité évoquée<a class="headerlink" href="#activite-intrinseque-et-activite-evoquee" title="Permalink to this headline">¶</a></h2>
+<p>La connectivité cérébrale locale (cytoarchitecture) et distribuée (fibres de matière blanche) amènent l’émergence transitoire d’assemblées neuronales fonctionnelles à différentes échelles spatiales. Différentes techniques existent pour capturer ce phénomène à partir du signal BOLD <span id="id1">[<a class="reference internal" href="#id14">VLRM01</a>]</span>.</p>
+<p>En général, les modèles de connectivité fonctionnelle tentent de répondre à ce que Varela et collègues <span id="id2">[<a class="reference internal" href="#id14">VLRM01</a>]</span> ont nommé le problème d’intégration à grande-échelle (ou <em>large-scale integration problem</em>). Ceci réfère à l’idée que le système nerveux coordonne une série de procesus distribuée hiérarchiquement au travers les différentes régions cérébrales afin de produire un “moment cognitif unifié”. Ceci émerge d’une synchronisation de l’activité dans des régions cérébrales distantes, d’où l’intérêt de mesurer la corrélation entre un ensemble de voxels d’avec le reste.</p>
+<p>Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l’activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu’on lui instruit de fixer une croix sur l’écran devant lui. Dans ce cas, nous pouvons créer des cartes de connectivité fonctionnelle de <em>l’activité intrinsèque</em> du cerveau. Ou alors, nous mesurons le signal BOLD associé à la tâche en observant les régions cérébrales les plus corrélées. Dans un tel cas, nous obtenons une carte de connectivité fonctionnelle de <em>l’activité évoquée</em> par la tâche.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -386,6 +402,10 @@
 </div>
 <div class="section" id="reseaux-fonctionnels">
 <h2>Réseaux fonctionnels<a class="headerlink" href="#reseaux-fonctionnels" title="Permalink to this headline">¶</a></h2>
+<p>Une méta-analyse effectuée à partir de données TEP identifie un réseau de régions dont l’activité est plus élevée au repos que durant l’exécution d’une série de tâches <span id="id3">[<a class="reference internal" href="#id16">SCB+97</a>]</span>. Dans un article de revue, Raischle et collègues <span id="id4">[<a class="reference internal" href="#id15">RMS+01</a>]</span> proposent que ce réseau de régions est engagé de manière systématique dans des processus cognitifs dominant dans l’état de repos, et baptisent ce réseau “mode par défaut”.</p>
+<p>Greicius et collègues <span id="id5">[<a class="reference internal" href="#id17">GKRM02</a>]</span> utilisent la méthodologie introduite par Biswal et collègues <span id="id6">[<a class="reference internal" href="#id18">BYHH95</a>]</span>, en utilisant l’IRMf au repos, et une région cible dans le cortex cingulaire postérieur. Cette analyse identifie un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, identifié via les déactivations en TEP.</p>
+<p>Une carte de connectivité au repos associé au réseau attentionnel dorsal identifie une corrélation négative avec le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état dirigé vers l’extérieur, et un état introspectif, reflétant la compétition entre deux réseaux distribués <span id="id7">[<a class="reference internal" href="#id19">FSV+05</a>]</span>.</p>
+<p>Yeo et collègues <span id="id8">[<a class="reference internal" href="#id20">YKS+11</a>]</span> identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.</p>
 <p>Note pour plus de ressources voir cette <a class="reference external" href="https://pbellec.github.io/functional_parcellation/#/">présentation</a> et les <a class="reference external" href="https://github.com/pbellec/functional_parcellation">notebooks correspondants</a>.</p>
 </div>
 <div class="section" id="applications">
@@ -406,10 +426,39 @@
 </div>
 <div class="section" id="conclusions-et-references-suggerees">
 <h3>Conclusions et références suggérées<a class="headerlink" href="#conclusions-et-references-suggerees" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité d’une région cible et l’activité du reste du cerveau.</p></li>
+<li><p>La connectivité fonctionnelle peut être observée au repos (activité spontanée), en l’absence de protocole expérimental. En général, on a une superposition de l’activité évoquée vs spontanée.</p></li>
+<li><p>Un réseau fonctionnel est un groupe de régions dont l’activité spontanée prés ente une forte connectivité fonctionnelle. On distingue 7 réseaux principaux, dont le réseau du mode par défaut.</p></li>
+</ul>
 </div>
 <div class="section" id="references">
 <h3>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="id1"></span></div>
+<p id="id9"><dl class="citation">
+<dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id6">BYHH95</a></span></dt>
+<dd><p>Bharat Biswal, F. Zerrin Yetkin, Victor M. Haughton, and James S. Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar mri. <em>Magnetic Resonance in Medicine</em>, 34(4):537–541, October 1995. URL: <a class="reference external" href="https://doi.org/10.1002/mrm.1910340409">https://doi.org/10.1002/mrm.1910340409</a>, <a class="reference external" href="https://doi.org/10.1002/mrm.1910340409">doi:10.1002/mrm.1910340409</a>.</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id7">FSV+05</a></span></dt>
+<dd><p>M. D. Fox, A. Z. Snyder, J. L. Vincent, M. Corbetta, D. C. Van Essen, and M. E. Raichle. From the cover:the human brain is intrinsically organized into dynamic, anticorrelated functional networks. <em>Proceedings of the National Academy of Sciences</em>, 102(27):9673–9678, June 2005. URL: <a class="reference external" href="https://doi.org/10.1073/pnas.0504136102">https://doi.org/10.1073/pnas.0504136102</a>, <a class="reference external" href="https://doi.org/10.1073/pnas.0504136102">doi:10.1073/pnas.0504136102</a>.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id5">GKRM02</a></span></dt>
+<dd><p>M. D. Greicius, B. Krasnow, A. L. Reiss, and V. Menon. Functional connectivity in the resting brain:a network analysis of the default mode hypothesis. <em>Proceedings of the National Academy of Sciences</em>, 100(1):253–258, December 2002. URL: <a class="reference external" href="https://doi.org/10.1073/pnas.0135058100">https://doi.org/10.1073/pnas.0135058100</a>, <a class="reference external" href="https://doi.org/10.1073/pnas.0135058100">doi:10.1073/pnas.0135058100</a>.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id4">RMS+01</a></span></dt>
+<dd><p>M. E. Raichle, A. M. MacLeod, A. Z. Snyder, W. J. Powers, D. A. Gusnard, and G. L. Shulman. A default mode of brain function. <em>Proceedings of the National Academy of Sciences</em>, 98(2):676–682, January 2001. URL: <a class="reference external" href="https://doi.org/10.1073/pnas.98.2.676">https://doi.org/10.1073/pnas.98.2.676</a>, <a class="reference external" href="https://doi.org/10.1073/pnas.98.2.676">doi:10.1073/pnas.98.2.676</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id3">SCB+97</a></span></dt>
+<dd><p>Gordon L. Shulman, Maurizio Corbetta, Randy L. Buckner, Julie A. Fiez, Francis M. Miezin, Marcus E. Raichle, and Steven E. Petersen. Common blood flow changes across visual tasks:i. increases in subcortical structures and cerebellum but not in nonvisual cortex. <em>Journal of Cognitive Neuroscience</em>, 9(5):624–647, October 1997. URL: <a class="reference external" href="https://doi.org/10.1162/jocn.1997.9.5.624">https://doi.org/10.1162/jocn.1997.9.5.624</a>, <a class="reference external" href="https://doi.org/10.1162/jocn.1997.9.5.624">doi:10.1162/jocn.1997.9.5.624</a>.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">VLRM01</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>Francisco Varela, Jean-Philippe Lachaux, Eugenio Rodriguez, and Jacques Martinerie. The brainweb:phase synchronization and large-scale integration. <em>Nature Reviews Neuroscience</em>, 2(4):229–239, April 2001. URL: <a class="reference external" href="https://doi.org/10.1038/35067550">https://doi.org/10.1038/35067550</a>, <a class="reference external" href="https://doi.org/10.1038/35067550">doi:10.1038/35067550</a>.</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id8">YKS+11</a></span></dt>
+<dd><p>B. T. Thomas Yeo, Fenna M. Krienen, Jorge Sepulcre, Mert R. Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L. Roffman, Jordan W. Smoller, Lilla Zöllei, Jonathan R. Polimeni, Bruce Fischl, Hesheng Liu, and Randy L. Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. <em>Journal of Neurophysiology</em>, 106(3):1125–1165, September 2011. URL: <a class="reference external" href="https://doi.org/10.1152/jn.00338.2011">https://doi.org/10.1152/jn.00338.2011</a>, <a class="reference external" href="https://doi.org/10.1152/jn.00338.2011">doi:10.1152/jn.00338.2011</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
 </div>
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
@@ -461,7 +510,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 <div class="section" id="exercice-3">
 <h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Permalink to this headline">¶</a></h3>
 <p>“Hardball”: 8:01 - 9:46</p>
-<div class="tip admonition" id="hardball-tip">
+<div class="tip admonition" id="id26">
 <p class="admonition-title">Traduction de l’extrait</p>
 <ul class="simple">
 <li><p>Présentateur (Pr): “Bonjour, aujourd’hui nous avons avec nous deux chercheurs distingués, Dr Yann Schnizel et Dr Paul Salami. Prêt à débattre sans compromis?”</p></li>
@@ -479,12 +528,10 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 <li><p>Pr: “La semaine prochaine, dans “cluster analysis”, nous partirons sur la route avec Michael Milham, chanteur folk légendaire. Il voyage de par le monde pour partager l’histoire des réseaux au repos, en chanson. Merci d’avoir regardé cluster analysis sur le réseau du repos,”</p></li>
 </ul>
 </div>
-<ol class="simple">
-<li><p>Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?</p></li>
-<li><p>Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?</p></li>
-<li><p>En quoi est-il “non psychologique” d’étudier une condition de repos?</p></li>
-<li><p>Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?</p></li>
-</ol>
+<p>1.Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
+2. Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?
+3. En quoi est-il “non psychologique” d’étudier une condition de repos?
+4. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?</p>
 </div>
 <div class="section" id="exercice-4">
 <h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Permalink to this headline">¶</a></h3>
