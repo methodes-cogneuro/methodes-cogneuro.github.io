@@ -406,6 +406,42 @@ Pour chacune des combinaisons de choix suivantes, quelle technique choisiriez-vo
 
 ```{admonition} Exercice 3.8
 :class: note
+On a vu quelques exemples exemples de structures anatomiques cérébrales en cours. Faisons un peu de révisions... Sur la [page web du cours](morphometrie.html#exercices), vous trouverez un visualisateur interactif de cerveau ci dessous. Donnez les coordonnées (`x`, `y` ou `z`) où l'on voit...
+* une coupe axiale avec le corps calleux.
+* une coupe corononale avec le corps calleux.
+* une coupe axiale avec des ventricules.
+* une coupe axiale avec le sillon central.
+```
+
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+# Ce code récupère des données IRM T1
+# et génère une image dans trois plans de coupes
+
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+# Télécharge un scan anatomique (template MNI152)
+from nilearn.datasets import fetch_icbm152_2009
+mni = fetch_icbm152_2009()
+
+# Visualise le volume cérébral
+from nilearn.plotting import view_img
+
+view_img(
+    mni.t1,
+    bg_img=None,
+    black_bg=True,
+    cut_coords=[-17, 0, 17],
+    title='IRM pondérée en T1',
+    cmap = 'gray',
+    symmetric_cmap=False
+)
+```
+
+```{admonition} Exercice 3.9
+:class: note
 Pour répondre à cette question, lisez l'article de Mensen et collaborateurs, "_Development of cortical thickness and surface area in autism spectrum disorder_", publié dans Neuroimage Clinical (2017, 13: 215-22) et disponible en libre accès à cette [adresse](https://www.sciencedirect.com/science/article/pii/S2213158216302406). Les questions suivantes sont à développement court.
 * Quel(s) type(s) de participant a(ont) été recruté(s) dans cette étude?
 * Quel est l'objectif principal de l'étude?
@@ -416,9 +452,10 @@ Pour répondre à cette question, lisez l'article de Mensen et collaborateurs, "
 * Y-a-t-il une procédure de contrôle qualité? Résumez cette procédure.
 * Comment les régions d'intérêt sont-elles définies? avec quel atlas? Combien y-a-t-il de régions?
 * Quelles mesures morphologiques sont utilisées pour chaque région?
-* Quelle figure (ou tableau) répond à l'objectif principal de l'étude? 
+* Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
 ```
 
-```{admonition} Exercice 3.9
+```{admonition} Exercice 3.10
 :class: note
+Une chercheuse s'intéresse aux différences de volume de la matière grise entre des individus neurotypiques et des invididus sur le spectre de l'autisme sur un gros échantillon (N=1000 par groupe). Existe-t-il une motivation claire pour utiliser la VBM ou une analyse de surface **dans ce contexte spécifique**. Pouvez vous pensez à un avantage pour une de ces deux techniques **dans ce contexte spécifique**?
 ```
