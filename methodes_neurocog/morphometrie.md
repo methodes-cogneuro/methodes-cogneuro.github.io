@@ -406,7 +406,7 @@ Pour chacune des combinaisons de choix suivantes, quelle technique choisiriez-vo
 
 ```{admonition} Exercice 3.8
 :class: note
-On a vu quelques exemples exemples de structures anatomiques cérébrales en cours. Faisons un peu de révisions... Sur la [page web du cours](morphometrie.html#exercices), vous trouverez un visualisateur interactif de cerveau ci dessous. Donnez les coordonnées (`x`, `y` ou `z`) où l'on voit...
+On a vu quelques exemples exemples de structures anatomiques cérébrales en cours. Faisons un peu de révisions... Vous trouverez un visualisateur interactif de cerveau ci dessous si vous êtes sur la [page web du cours](morphometrie.html#exercices). Donnez les coordonnées (`x`, `y` ou `z`) où l'on voit...
 * une coupe axiale avec le corps calleux.
 * une coupe corononale avec le corps calleux.
 * une coupe axiale avec des ventricules.
