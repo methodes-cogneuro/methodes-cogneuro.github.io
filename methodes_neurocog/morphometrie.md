@@ -45,13 +45,12 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 
 ## Objectifs du cours
 
-Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique.
-Il sera question dans ce chapitre de trois grandes approches d'analyse:
- * la **volumétrie**, qui vise a mesurer la taille d'une région cérébrale;
- * la **morphométrie basée sur les voxels (*voxel-based morphometry* ou VBM)**, qui vise à mesurer le volume de matière grise pour l'ensemble du cerveau;
- * les **analyses de surface**, qui exploitent la structure en ruban de la matière grise.
+Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique. Il sera question dans ce chapitre de trois grandes approches d'analyse:
+ * la **volumétrie**, qui vise à mesurer la taille d'une région cérébrale;
+ * la **morphométrie basée sur les voxels (*voxel-based morphometry* ou VBM)**, qui vise à mesurer le volume de matière grise locale pour chaque voxel dans le cerveau;
+ * les **analyses de surface**, qui exploitent la structure en ruban de la matière grise pour mesurer l'épaisseur et la surface corticale.
 
-On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces techniques: le **recalage**, la **segmentation** et le **contrôle de qualité**.
+On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces techniques: le **recalage**, la **segmentation**, le **lissage** et le **contrôle de qualité**.
 
 ## Morphométrie
 
@@ -64,10 +63,11 @@ name: morphometrie-durer-fig
 ```
 
 En neurosciences, la [morphométrie](https://fr.wikipedia.org/wiki/Morphom%C3%A9trie) est l'étude de la forme du cerveau et de ses structures.
-Le terme morphométrie vient de deux termes tirés du grec ancien: *morphos* (forme) et *métron* (mesure).
+Le terme morphométrie combine deux termes tirés du grec ancien: *morphos* (forme) et *métron* (mesure).
 La morphométrie est donc la "mesure" de la "forme".
-Cette discipline se concentre sur la caractérisation des dimensions et des formes des différentes structures d'intérêt.
-Pour ce faire, il est nécessaire de pouvoir observer clairement les délimitations de ces structures.
+Pour mesurer la forme du cerveau, il est nécessaire de pouvoir observer clairement les délimitations neuroanatomiques.
+L'IRM anatomique nous donne un bon contraste entre matière grise, matière blanche et liquide céphalo-rachidien.
+Combinée avec des outils automatiques d'analyse d'images, l'IRM permet donc de réaliser des études de morphologie computationnelle.
 
 ```{figure} ./morphometrie/ledig2018.webp
 ---
@@ -79,9 +79,8 @@ Par ailleurs, il est également possible d'observer des différences longitudina
 Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
 ```
 
-Comme le démontre la figure ci-haut, l'utilisation de ce genre de technique permet aussi de faire des comparaisons inter-individuelles.
-On pourrait en effet vouloir comparer les variations dans la forme de diverses structures à travers les cerveaux de différentes personnes.
-De telles comparaisons peuvent être informatrices au niveau du stade développemental d'un sujet, ou même, de la présence de certaines lésions ou pathologies.
+Comme le démontre la figure ci-haut, les études morphologiques IRM permettent de comparer des individus et des groupes.
+De telles comparaisons peuvent nous informer sur l'effet de l'âge, ou bien encore l'effet d'une lésion ou d'une maladie sur la forme du cerveau.
 
 ## Volumétrie
 
@@ -97,20 +96,18 @@ Vue coronale d'une segmentation manuelle de l'amygdale gauche (jaune) et droit (
 Figure tirée de {cite:p}`Hashempour2019-jq`, sous licence CC-BY.
 ```
 
-La **volumétrie manuelle** consiste à manuellement délimiter une aire cérébrale particulière, comme l'hippocampe ou l'amygdale (voir {numref}`ashempour2019-fig`).
-Cette approche nécessite du temps, car le contour des structures d'intérêt doit être délimité manuellement sur chaque coupe d'IRM.
-On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
+La **volumétrie manuelle** consiste à délimiter visuellement une aire cérébrale particulière, comme l'hippocampe ou l'amygdale (voir {numref}`ashempour2019-fig`).
+Cette approche nécessite du temps, car le contour des structures d'intérêt doit être dessiné à la main sur chaque coupe d'IRM. On commence d'abord par segmenter une structure dans un premier plan de coupe (par exemple, axial), puis il faudra aller corriger cette segmentation dans les autres plans (par exemple, sagittal et coronal).
 
 > Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](<coupes-tip>).
 
-Ce type d'approche requiert également un protocole de segmentation rigoureux, avec des critères anatomiques clairs, pour décider où une région cérébrale se trouve.
-Pour certaines structures, comme les ventricules latéraux, c'est assez clair.
-Pour d'autres structures, comme pour l'hippocampe, il existe des protocoles détaillés (par exemple: {cite:p}`Wisse2017-ff`).
-Enfin, pour d'autres régions, comme les aires visuelles (V1, V2, etc.), il est nécessaire de réaliser des expériences fonctionnelles afin de pouvoir les délimiter.
+Ce type d'approche requiert également un protocole de segmentation avec des critères anatomiques clairs, pour décider où une région cérébrale se trouve.
+Pour certaines structures, comme pour l'hippocampe, il existe des protocoles détaillés (par exemple: {cite:p}`Wisse2017-ff`).
+Mais pour d'autres régions, comme les aires visuelles (V1, V2, etc.), il est nécessaire de réaliser des expériences fonctionnelles afin de pouvoir les délimiter.
 En effet, dans ce dernier cas, les délimitations anatomiques ne sont pas toujours disponibles ou bien établies.
 
-Un protocole de segmentation clair est donc nécessaire pour assurer un bon niveau de reproductibilité des résultats et un [accord inter-juge](https://en.wikipedia.org/wiki/Inter-rater_reliability) acceptable.
-Certains protocoles offrent aussi un processus de certification, ce qui offre un certain niveau de garantie que la personne effectuant la segmentation applique le protocole correctement.
+Un protocole de segmentation rigoureux est nécessaire pour obtenir un bon niveau de [concordance](https://en.wikipedia.org/wiki/Inter-rater_reliability) des résultats entre différents chercheurs.
+Certains protocoles proposent aussi un processus de certification, ce qui offre une garantie que la personne effectuant la segmentation applique le protocole correctement.
 
 ### Segmentation automatique
 
@@ -152,9 +149,7 @@ Un exemple d'atlas de régions anatomiques: l'atlas Harvard-Oxford.
 Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
 ```
 
-Afin d'automatiser le travail de segmentation, il est possible d'utiliser une segmentation déjà effectuée par une équipe de chercheurs dans un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`.
-On appelle ces outils de référence des atlas de segmentation, ou parfois, des atlas de parcellisation.
-Comme il existe une variété de parcellisations basées sur différents critères anatomiques ou fonctionnels, il est important de choisir adéquatement l'atlas en fonction des structures particulières que vous voulez étudier.
+Afin d'automatiser le travail de segmentation, il est possible d'utiliser un atlas, c'est à dire une segmentation déjà effectuée par une équipe de chercheurs dans un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`. Il existe une variété d'atlas basées sur différents critères anatomiques ou fonctionnels, il est important de choisir adéquatement l'atlas en fonction des structures étudiées.
 Afin d'ajuster l'atlas sur les données d'un participant, les images structurelles de ce dernier sont d'abord {ref}`recalées <registration-tip>` de manière automatisée vers l'{ref}`espace stéréotaxique <stereotaxique-tip>` de référence.
 Cette transformation permet par la suite d'adapter l'atlas à l'anatomie de chaque sujet.
 
@@ -164,8 +159,8 @@ Cette transformation permet par la suite d'adapter l'atlas à l'anatomie de chaq
 
 Afin d'appliquer un atlas de régions cérébrales sur une IRM individuelle, il est nécessaire de recaler cette IRM sur l'espace stéréotaxique qui a été utilisé pour établir les régions.
 Ce processus mathématique va chercher à déformer l'image individuelle afin de l'ajuster à l'espace stéréotaxique.
-Cette transformation peut être affine (aussi appelée transformation linéaire: translation, rotation, mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace).
-L'objectif du recalage d'augmenter le niveau de similarité entre les images, mais il est aussi important que les déformations soient continues.
+Cette transformation peut être affine (incluant notamment translation, rotation, mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace).
+L'objectif du recalage est d'augmenter le niveau de similarité entre les images, mais il est aussi important que les déformations soient continues.
 Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage.
 Les images ci-dessous illustrent l'effet de différents types de recalage.
 Elles sont tirées de la documentation du logiciel [slicer](https://www.slicer.org/wiki/Documentation:Nightly:Registration:RegistrationLibrary:RegLib_C42), sous licence CC-Attributions Share Alike.
@@ -227,8 +222,8 @@ glue("mni-template-fig", fig, display=False)
 :name: stereotaxique-tip
 
 Afin de définir une anatomie de référence, les chercheurs utilisent généralement un cerveau "moyen".
-Afin d'obtenir cette référence, le cerveau de plusieurs dizaines d'individus sont recalés les uns avec les autres, puis moyennés jusqu'à obtenir une seule image.
-Si le recalage a bien fonctionné, les détails de la neuroanatomie sont préservés dans la moyenne.
+Le cerveau de plusieurs dizaines d'individus sont recalés les uns avec les autres, puis moyennés jusqu'à obtenir une seule image.
+Si le recalage a bien fonctionné, comme dans le cas de l'atlas MNI152 ci-dessous, les détails de la neuroanatomie sont préservés dans la moyenne.
 ```{glue:figure} mni-template-fig
 :figwidth: 600px
 :align: left
@@ -246,7 +241,7 @@ Cette figure illustre les différences de volume de l'hippocampe entre participa
 ```
 Pour les analyses statistiques, on extrait le volume de chaque structure segmentée (en $mm^3$), et on peut par exemple comparer statistiquement le volume moyen entre deux groupes, ou tester l'association du volume avec une variable comme l'âge. Par exemple, dans la {numref}`ledig2018-stats-fig`, on compare le volume de l'hippocampe entre différents groupes cliniques avec différents risques de la maladie d'Alzheimer.
 
-## Morphométrie basée sur les voxels (VBM)
+## VBM
 
 ### Densité de matière grise
 La morphométrie basée voxel (VBM) a pour objectif de mesurer le volume de matière grise immédiatement autour d'un voxel donné. Cette approche n'est donc pas limitée par le besoin d'avoir des frontières préétablies claires entre différentes structures cérébrales.
@@ -483,9 +478,7 @@ glue("vbm-fig", fig, display=False)
 :name: vbm-fig
 Régression linéaire en VBM. On teste ici l'effet de l'âge sur un groupe (N=50) de participants de la base de données OASIS. La significativité $-\log_{10}(p)$ de l'effet de l'âge est présentée superposé à une image de densité de matière grise. Cette figure est adapté d'un tutoriel [Nilearn](https://nilearn.github.io/auto_examples/02_decoding/plot_oasis_vbm.html#sphx-glr-auto-examples-02-decoding-plot-oasis-vbm-py).
 ```
-Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique. Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière. Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut faire des tests statistiques à chaque voxel. Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise. C'est généralement le genre d'image qui sera par la suite utilisé lors de publications scientifiques.
-
-> Les détails concernant les modèles stastistiques seront présentés dans le chapitre sur la [régression linéaire](regression.html).
+Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique. Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière. Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut faire des tests statistiques à chaque voxel. Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise. C'est généralement le genre d'image qui sera par la suite utilisé lors de publications scientifiques. Les détails concernant les modèles stastistiques seront présentés dans le chapitre sur la [régression linéaire](regression.html).
 
 ## Analyses de surface
 
@@ -518,7 +511,7 @@ Ce genre de technique permet par la suite de générer des cartes d'épaisseur c
 
 - La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des **analyses statistiques**.
 
-## Chaine de traitements
+## Contrôle de qualité
 Comme pour toute opération automatisée, il reste toujours une possibilité d'erreur au cours du processus de recalage.
 Il est donc nécessaire de prévoir une étape de vérification des résultats afin de s'assurer qu'il n'y a pas eu d'aberrations qui se sont introduites dans les données.
 Ces aberrations peuvent venir de plusieurs sources différentes:
