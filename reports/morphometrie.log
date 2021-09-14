@@ -17,41 +17,40 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Ce code récupère des données IRM T1
-# et génère une image dans trois plans de coupes
+# Téléchargement de l'atlas Harvard-Oxford
+from nilearn import datasets
 
 # Enlève les warnings
 import warnings
 warnings.filterwarnings("ignore")
 
-# Télécharge un scan anatomique (template MNI152)
-from nilearn.datasets import fetch_icbm152_2009
-mni = fetch_icbm152_2009()
+dataset = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
+atlas_filename = dataset.maps
 
-# Visualise le volume cérébral
-from nilearn.plotting import view_img
+# Visualisation de la figure
+from myst_nb import glue
+from nilearn import plotting
 
-view_img(
-    mni.t1,
-    bg_img=None,
-    black_bg=True,
+fig = plt.figure(figsize=(12, 4))
+plotting.plot_roi(atlas_filename,
     axes=fig.gca(),
-    cut_coords=[-17, 0, 17],
-    title='IRM pondérée en T1',
-    cmap = 'gray',
-    symmetric_cmap=False
-)
+    title="Harvard Oxford atlas",
+    cut_coords=(8, -4, 9),
+    colorbar=True,
+    cmap='Paired')
+
+glue("harvard-oxford-fig", fig, display=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mAttributeError[0m                            Traceback (most recent call last)
-[0;32m<ipython-input-6-99e45ab966a6>[0m in [0;36m<module>[0;34m[0m
-[1;32m     17[0m     [0mbg_img[0m[0;34m=[0m[0;32mNone[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     18[0m     [0mblack_bg[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 19[0;31m     [0maxes[0m[0;34m=[0m[0mfig[0m[0;34m.[0m[0mgca[0m[0;34m([0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     20[0m     [0mcut_coords[0m[0;34m=[0m[0;34m[[0m[0;34m-[0m[0;36m17[0m[0;34m,[0m [0;36m0[0m[0;34m,[0m [0;36m17[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     21[0m     [0mtitle[0m[0;34m=[0m[0;34m'IRM pondérée en T1'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-033b58b5783b>[0m in [0;36m<module>[0;34m[0m
+[1;32m     13[0m [0;32mfrom[0m [0mnilearn[0m [0;32mimport[0m [0mplotting[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     14[0m [0;34m[0m[0m
+[0;32m---> 15[0;31m [0mfig[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0mfigsize[0m[0;34m=[0m[0;34m([0m[0;36m12[0m[0;34m,[0m [0;36m4[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     16[0m plotting.plot_roi(atlas_filename,
+[1;32m     17[0m     [0maxes[0m[0;34m=[0m[0mfig[0m[0;34m.[0m[0mgca[0m[0;34m([0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mAttributeError[0m: 'OrthoSlicer' object has no attribute 'gca'
-AttributeError: 'OrthoSlicer' object has no attribute 'gca'
+[0;31mNameError[0m: name 'plt' is not defined
+NameError: name 'plt' is not defined
 
