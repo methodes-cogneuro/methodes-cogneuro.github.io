@@ -42,97 +42,173 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 
 ## Objectifs du cours
 
-Ce troisième chapitre introduit différentes approches utilisées afin de modéliser et d'exploiter les données acquises grâce aux techniques d'imagerie par résonance magnétique anatomique vues lors du cours 2.
-Tout d'abord, on y survolera des approches basées sur l'analyse de **volumes** telles que la **volumétrie manuelle** et l'**approche par voxel (*voxel-based morphometry* ou VBM)**.
-On tente par ce type d'analyse d'identifier et/ou de délimiter différentes aires du cerveau.
-Ce processus rendra par la suite possible l'étude des tissus présents dans ces différentes segmentations/unités de volume.
-Il sera ensuite question de l'utilisation du **recalage** et du **contrôle de qualité** dans le traitement des données d'imagerie.
-Nous terminerons cette séance avec une famille d'approches permettant l'étude de l'épaisseur corticale: les **analyses de surface**.
+Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique. On va tout d'abord présenter trois grandes approches d'analyses:
+ * la **volumétrie manuelle**, qui vise a mesurer la taille d'une région cérébrale;
+ * la **morphométrie basée voxel (*voxel-based morphometry* ou VBM)**, qui vise à mesurer le volume de matière grise systématiquement partout dans le cerveau;
+ * les **analyses de surface**, qui exploitent la structure en ruban de la matière grise.
+
+On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces techniques, telles que le **recalage**, la **segmentation**, et le **contrôle de qualité**.
 
 ## Morphométrie
 
-En neurosciences, la **morphométrie** est l'étude de la forme du cerveau et de ses structures.
+```{figure} ./morphometrie/morphometrie_durer.jpg
+---
+width: 600px
+name: morphometrie-durer-fig
+---
+Étude de Dürer sur les proportions du visage. Image sous domaine public, tirée de [wikimedia](https://commons.wikimedia.org/wiki/File:Morpho_durer.JPG).
+```
+
+En neurosciences, la [morphométrie](https://fr.wikipedia.org/wiki/Morphom%C3%A9trie) est l'étude de la forme du cerveau et de ses structures.
 Le terme morphométrie vient de deux termes tirés du grec ancien: *morphos* (forme) et *métron* (mesure).
 La morphométrie est donc la "mesure" de la "forme".
 Cette discipline se concentre sur la caractérisation des dimensions et des formes des différentes structures d'intérêt.
 Pour ce faire, il est nécessaire de pouvoir observer clairement les délimitations de ces structures.
+
+```{figure} ./morphometrie/ledig2018.webp
+---
+width: 600px
+name: ledig2018-fig
+---
+Cette figure illustre les différences morphologiques entre individus qui présentent des profils cliniques différents: cognitivement normal (haut), troubles légers de la cognition (milieu), démence de type Alzheimer (bas). Par ailleurs on peut également observer des différences longitudinales au sein d'un même individu (de gauche à droite, visite initiale, suivi à deux ans, différence des deux images). Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
+```
 L'utilisation de ce genre de technique permet aussi de faire des comparaisons inter-individuelles.
 On pourrait en effet vouloir comparer les variations dans la forme de divers structures à travers les cerveaux de différentes personnes.
 De telles comparaisons peuvent être informatrices au niveau du stade développemental d'un sujet, ou même, de la présence de certaines lésions ou pathologies.
 
-## Volumétrie manuelle
-```{code-cell} ipython 3
-:tags: ["hide-input"]
+## volumétrie
 
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
+## Segmentation manuelle
 
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/CzsZdtqBmCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```{figure} ./morphometrie/ashempour2019.jpg
+---
+width: 600px
+name: ashempour2019-fig
+---
+Cette figure illustre un protocole de segmentation manuelle de l'amygdale. Vue coronale d'une segmentation manuelle de l'amygdale gauche (jaune) et droit (bleu) avant (gauche) et après (droite) corrections dans le plan coronal. Figure tirée de {cite:p}`Hashempour2019-jq`, sous licence CC-BY.
 ```
 
-La **volumétrie manuelle** est une approche qui peut sembler assez simple a priori, mais qui nécessite du temps et un protocol rigoureux ayant des critères de segmentation clairs.
-Cette façon de faire est essentielle afin d'assurer une segmentation logique, un bon niveau de reproductibilité des résultats et un accord inter-juge acceptable.
-La procédure nécessitera l'utilisation d'un logiciel permettant de dessiner les "frontières" de chacune des aires que l'on veut pouvoir identifier sur les images obtenues lors du scan d'un cerveau.
-On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
+La **volumétrie manuelle** constiste à manuellement délimiter une aire cérébrale particulière, comme l'hippocampe ou l'amygdale (voir {numref}`ashempour2019-fig`). Cette approche nécessite du temps, car chaque coupe d'IRM doit être délimitée manuellement. On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
 
-> Pour un rappel concernant termes et les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](<coupes-tip>).
+> Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](<coupes-tip>).
 
-Le processus nécessaire à l'obtention d'une segmentation finale précise d'une structure unique peut donc être très long et ardu.
-Il devra d'ailleurs être répété de nouveau pour chaque nouvelle structure d'intérêt.
+Ce type d'approche requiert également un protocole de segmentation rigoureux, avec des critères anatomiques claires pour décider où une région cérébrale se trouve. Pour certaines structures, comme les ventricules latéraux, c'est assez clair. Pour d'autres structures, comme l'hippocampe, il existe des protocoles détaillés, voir par exemple {cite:p}`Wisse2017-ff`. Enfin pour d'autres régions, comme les aires visuelles V1, V2, etc, il est nécessaire de réaliser des expériences fonctionnelles pour les délimiter, et les délimitations anatomiques ne sont pas nécessairement disponibles ou bien établies.
 
-```{admonition} Un mot sur l'utilisation d'atlas de segmentation
-:class: info
-:name: atlas-info
-Afin de faciliter la standardisation de la segmentation, il est possible d'utiliser des cartes préétablies par des équipes de chercheurs.
-On appelle ces cartes des **atlas de segmentation**.
-Ceux-ci sont développés par des équipes de scientifiques afin de permettre une segmentation robuste de certaines structures d'intérêt.
-Comme il existe une variété d'atlas permettant de rencontrer divers besoin en terme de segmentaton, il est important de choisir adéquatement celui qui sera utilisé en fonction des structures particulières que vous voulez étudier.
-```
+Un protocole de segmentation clair est nécessaire pour assurer un bon niveau de reproductibilité des résultats et un [accord inter-juge](https://en.wikipedia.org/wiki/Inter-rater_reliability) acceptable. Certains protocoles offrent une certification, qui offre un certain niveau de garantie que la chercheuse effectuant la segmentation applique le protocole correctement.
+
+## Segmentation automatique
 
 ```{code-cell} ipython 3
-:tags: ["hide-input"]
+:tags: ["hide-input", "remove-output"]
 
 # Téléchargement de l'atlas Harvard-Oxford
 from nilearn import datasets
 
-dataset = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
-atlas_filename = dataset.maps
-
-# Visualisation de la figure
-from myst_nb import glue
-from nilearn import plotting
-
-fig = plotting.plot_roi(atlas_filename,
-                        title="Atlas Harvard-Oxford",
-                        cut_coords=(8, -4, 9),
-                        colorbar=True,
-                        cmap='Paired')
-
-glue("atlas1-fig", fig, display=False)
-```
-
-```{glue:figure} atlas1-fig
-:figwidth: 800px
-:name: "atlas1-fig"
-
-Un exemple de segmentation utilisant l'atlas Harvard-Oxford sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite).
-Voir l'astuce {ref}`Naviguer à travers les coupes du cerveau<coupes-tip>` pour une explication de ces termes.
-Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
-```
-
-## Approche par voxel (*Voxel-based morphometry*)
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
+# Enlève les warnings
 import warnings
 warnings.filterwarnings("ignore")
 
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/yyUKkPaG3Q8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+atlas = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm').maps
+mni = datasets.fetch_icbm152_2009()
+
+# Visualisation de la figure
+import matplotlib.pyplot as plt
+from myst_nb import glue
+from nilearn import plotting
+
+fig = plt.figure(figsize=(12, 4))
+plotting.plot_roi(atlas,
+    bg_img=mni.t1,
+    axes=fig.gca(),
+    title="Atlas Harvard-Oxford",
+    cut_coords=(8, -4, 9),
+    colorbar=True,
+    cmap='Paired')
+
+glue("harvard-oxford-fig", fig, display=False)
 ```
+
+```{glue:figure} harvard-oxford-fig
+:figwidth: 800px
+:name: "harvard-oxford-fig"
+
+Un exemple d'atlas de régions anatomiques: l'atlas Harvard-Oxford. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
+```
+
+Afin d'automatiser le travail de segmentation, il est possible d'utiliser une segmentation déjà effectuée par une équipe de chercheurs dans un espace de référence, encore appelé espace stéréotaxique. On appelle ces segmentations de référence des atlas, ou parfois parcellisations. Comme il existe une variété de parcellisations correspondant à différents critères anatomiques ou fonctionnels, il est important de choisir adéquatement l'atlas en fonction des structures particulières que vous voulez étudier. L'IRM structurelle d'un participant est {ref}`recalée <registration-tip>` de manière automatisée vers l'{ref}`espace stéréotaxique <stereotaxique-tip>` de référence, et cette transformation permet d'adapter l'atlas à l'anatomie du sujet.
+
+```{admonition} Recalage
+:class: tip
+:name: registration-tip
+
+Afin d'appliquer un atlas de régions cérébrales sur une IRM individuelle, il est nécessaire de recaler cette IRM sur l'espace stéréotaxique qui a été utilisé pour établir les régions. Ce processus mathématique va chercher à déformer l'image individuelle vers l'espace stéréotaxique. Cette transformation peut être affine (notamment translation, rotation, mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace). L'objectif du recalage est de rendre les images plus similaires possible, mais il est important que les déformations soient continues. Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage. Les images ci dessous illustrent l'effet de différents types de recalage, et sont tirées de la documentation du logiciel [slicer](https://www.slicer.org/wiki/Documentation:Nightly:Registration:RegistrationLibrary:RegLib_C42) sous licence CC-Attributions Share Alike.
+```{figure} morphometrie/registration_slicer_raw.gif
+:figwidth: 400px
+:align: left
+:figclass: margin-caption
+Images brutes: deux scans du même sujet, prises à des jours différents.
+
+```{figure} morphometrie/registration_slicer_affine.gif
+:figwidth: 400px
+:align: left
+:figclass: margin-caption
+Images recalées après une transformation affine.
+
+```{figure} morphometrie/registration_slicer_nonlinear.gif
+:figwidth: 400px
+:align: left
+:figclass: margin-caption
+Images recalées après une transformation non-linéaire.
+
+```{figure} morphometrie/registration_slicer_nonlinear_only.gif
+:figwidth: 400px
+:align: left
+:figclass: margin-caption
+Effet du recalage non-linéaire seulement
+```
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Ce code récupère des données IRM T1
+# et génère une image dans trois plans de coupes
+
+# Enlève les warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+# Télécharge un scan anatomique (template MNI152)
+from nilearn.datasets import fetch_icbm152_2009
+mni = fetch_icbm152_2009()
+
+# Visualise le volume cérébral
+import matplotlib.pyplot as plt
+from myst_nb import glue
+from nilearn.plotting import plot_anat
+
+fig = plt.figure(figsize=(12, 4))
+plot_anat(
+  mni.t1,
+  axes=fig.gca(),
+  cut_coords=[-17, 0, 17],
+  title='Espace stereotaxique MNI152'
+)
+glue("mni-template-fig", fig, display=False)
+```
+
+```{admonition} Espace stéréotaxique
+:class: tip
+:name: stereotaxique-tip
+
+Afin de définir une anatomie de référence, les chercheurs utilisent généralement un cerveau "moyen". Le cerveau de plusieurs dizaines d'individus sont recalées les uns avec les autres, puis moyennés pour obtenir une seule image. Si le recalage a bien fonctionné, les détails de la neuroanatomie sont préservés dans la moyenne.
+```{glue:figure} mni-template-fig
+:figwidth: 600px
+:align: left
+Espace stéréotaxique de l'Institut Neurologique de Montréal (MNI), moyenne de 152 sujets après recalage non-linéaire itératif {cite:p}`Fonov2011-xr`.
+
+```
+
+## Morphométrie basée voxel (VBM)
+
 
 L'**approche par voxel**, aussi mieux connue sous le nom de ***voxel-based morphometry*** (ou **VBM**), est une autre approche qu'il est possible d'employer afin de segmenter différentes aires d'intérêt du cerveau.
 Son objectif est de mesurer la densité de matière grise à l'intérieur et immédiatement autour d'un voxel donné.
@@ -316,24 +392,6 @@ Il a en effet été question de **volumétrie manuelle**, d'**approche par voxel
 Les processus de **recalage** et l'importance du **contrôle de qualité** ont aussi été abordés.
 Lors du prochain chapitre, il sera question des principes de l'IRM fonctionnelle.
 
-## Exemples d'articles présentant des analyses morphométriques:
-
-#### Volumétrie manuelle
-- Schneider, P., Sluming, V., Roberts, N., Scherg, M., Goebel, R., Specht, H. J., Dosch, H. G., Bleeck, S., Stippich, C., & Rupp, A. (2005). Structural and functional asymmetry of lateral Heschl's gyrus reflects pitch perception preference. *Nature neuroscience*, *8*(9), 1241–1247. https://doi.org/10.1038/nn1530
-- von Plessen, K., Lundervold, A., Duta, N., Heiervang, E., Klauschen, F., Smievoll, A. I., Ersland, L., & Hugdahl, K. (2002). Less developed corpus callosum in dyslexic subjects--a structural MRI study. *Neuropsychologia*, *40*(7), 1035–1044. https://doi.org/10.1016/s0028-3932(01)00143-9
-
-#### Utilisation d'un atlas de segmentation
--
-
-#### Approche par voxel
-- Kikuchi, Y., Ogata, K., Umesaki, T., Yoshiura, T., Kenjo, M., Hirano, Y., Okamoto, T., Komune, S., & Tobimatsu, S. (2011). Spatiotemporal signatures of an abnormal auditory system in stuttering. *NeuroImage*, *55*(3), 891–899. https://doi.org/10.1016/j.neuroimage.2010.12.083
-- Kirchner, H., Kremmyda, O., Hüfner, K., Stephan, T., Zingler, V., Brandt, T., Jahn, K., & Strupp, M. (2011). Clinical, electrophysiological, and MRI findings in patients with cerebellar ataxia and a bilaterally pathological head-impulse test. *Annals of the New York Academy of Sciences*, *1233*, 127–138. https://doi.org/10.1111/j.1749-6632.2011.06175.x
-- Melcher, J. R., Knudson, I. M., & Levine, R. A. (2013). Subcallosal brain structure: correlation with hearing threshold at supra-clinical frequencies (>8 kHz), but not with tinnitus. *Hearing research*, *295*, 79–86. https://doi.org/10.1016/j.heares.2012.03.013
-- Wang, X., Xu, P., Li, P., Wang, Z., Zhao, F., Gao, Z., Xu, L., Luo, Y. J., Fan, J., & Liu, P. (2016). Alterations in gray matter volume due to unilateral hearing loss. *Scientific reports*, *6*, 25811. https://doi.org/10.1038/srep25811
-- Yang, M., Chen, H. J., Liu, B., Huang, Z. C., Feng, Y., Li, J., Chen, J. Y., Zhang, L. L., Ji, H., Feng, X., Zhu, X., & Teng, G. J. (2014). Brain structural and functional alterations in patients with unilateral hearing loss. *Hearing research*, *316*, 37–43. https://doi.org/10.1016/j.heares.2014.07.006
-
-#### Analyse de surface
--
 
 ## Références
 
@@ -407,14 +465,15 @@ Pour chacune des combinaisons de choix suivantes, quelle technique choisiriez-vo
 
 ```{admonition} Exercice 3.8
 :class: note
-
 Nous avons vu en cours quelques exemples de structures anatomiques cérébrales.
 Faisons un peu de révision...
-En utilisant la fenêtre de visualisation ci-dessous (accessible sur cette [page web du cours](morphometrie.html#exercices)), donnez les coordonnées (x, y, z) où l'on peut voir...
+En utilisant la fenêtre de visualisation ci-dessous (aussi accessible sur cette [page web du cours](morphometrie.html#exercices)), donnez les coordonnées (x, y, ou z) où l'on peut voir...
  - une coupe sagittale présentant le corps calleux.
  - une coupe coronale présentant le corps calleux.
  - une coupe axiale contenant des ventricules.
  - une coupe axiale avec le sillon central.
+
+Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au {ref}`Chapitre 1: Cartes cérébrales <coupes-tip>`.
 ```
 
 ```{code-cell} ipython 3
