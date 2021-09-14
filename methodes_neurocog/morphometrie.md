@@ -299,7 +299,7 @@ plot_stat_map(mni.mask,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='cerveau'
+              title='Cerveau'
               )
 
 # Gray matter
@@ -314,7 +314,7 @@ plot_stat_map(mni.gm,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='matière grise'
+              title='Matière grise'
               )
 
 # White matter
@@ -329,7 +329,7 @@ plot_stat_map(mni.wm,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='matière blanche'
+              title='Matière blanche'
               )
 
 # CSF
@@ -344,7 +344,7 @@ plot_stat_map(mni.csf,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='liquide cephalo rachidien'
+              title='Liquide céphalo-rachidien'
               )
 
 from myst_nb import glue
@@ -353,32 +353,48 @@ glue("mni-segmentation-fig", fig, display=False)
 ```{glue:figure} mni-segmentation-fig
 :figwidth: 600px
 :name: mni-segmentation-fig
-Segmentation probabiliste des principaux types de tissus, et distribution des valeurs pondérées en T1 dans les voxels "purs" (probabilité supérieure à 80% pour un type de tissu donné). L'image pondérée en T1 ainsi que les segmentations correspondent à l'espace stéréotaxique MNI152 {cite:p}`Fonov2011-xr`.
+Segmentation probabiliste des principaux types de tissus et distribution des valeurs pondérées en T1 dans les voxels "purs" (probabilité supérieure à 80% pour un type de tissu donné).
+L'image pondérée en T1 ainsi que les segmentations correspondent à l'espace stéréotaxique MNI152 {cite:p}`Fonov2011-xr`.
 ```
-Une étape importante de la VBM est la segmentation. Cette analyse vise à catégoriser les différents tissus du cerveau en classes, notamment matière grise, matière blanche et liquide céphalo-rachidien. On va aussi généralement extraire un masque du cerveau et exclure les méninges ainsi que le crâne. On va généralement inclure d'autres types de tissus également, comme la graisse. Un algorithme de segmentation va examiner la distribution des niveaux de gris dans l'image, par exemple pondérée en T1, et estimer pour chaque voxel la proportion du voxel qui contient un tissu donné. Cette proportion est souvent appelé {ref}`effet de volume partiel <volume-partiel-tip>`. Un voxel peut par exemple être assigné à 80% de matière grise et 20% de liquide céphalo-rachidien.
 
-```{admonition} Effets de volume partiel
+Une étape importante de la VBM est la segmentation.
+Cette analyse vise à catégoriser les types de tissus du cerveau en différentes classes contenant notamment la matière grise, la matière blanche et le liquide céphalo-rachidien.
+Un masque du cerveau est généralement extrait afin d'exclure les méninges ainsi que le crâne.
+On va généralement y inclure d'autres types de tissus également, comme la graisse.
+Un algorithme de segmentation va ensuite examiner la distribution des niveaux de gris dans l'image (par exemple, dans une image pondérée en T1) et estimer pour chaque voxel la proportion du voxel qui contient un type de tissu donné.
+Cette proportion est souvent appelé l'{ref}`effet de volume partiel <volume-partiel-tip>`.
+Un voxel peut par exemple être assigné à 80% de matière grise et 20% de liquide céphalo-rachidien.
+Le niveau de gris résultant pourrait alors donner une indication trompeuse sur son contenu réel.
+
+```{admonition} Effet de volume partiel
 :class: tip
 :name: volume-partiel-tip
-Il est possible que la segmentation automatique nous retourne certains tissus non-désirés, mais dont les valeurs dont les valeurs dans l'image sont similaires à celle de la matière grise. Il est ainsi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir). On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
+Il est possible que la segmentation automatique nous retourne pour certains tissus non-désirés des valeurs similaires à celle de la matière grise sur l'image résultant de cette étape.
+En effet, il est possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir).
+On appelle ce genre d'effet de mélange de noir et de blanc un volume partiel (une partie du volume du voxel est blanche alors que l'autre partie est noire).
 ```
 
 ```{admonition} Erreurs de segmentation
 :class: tip
-Il est possible de perdre certaines structures pour lequelles le contraste entre la matière blanche et matière grise n'est pas assez important pour que l'algorithme réussisse à les classifier efficacement. Pour ce genre de structure, il est important d'ajouter des a priori (des règles, ou conditions supplémentaires) afin de ne pas les perdre. Il est aussi envisageable de corriger cette partie de la segmentation de façon manuelle.
+Il est possible de perdre certaines structures pour lesquelles le contraste entre la matière blanche et la matière grise n'est pas assez important pour que l'algorithme réussisse à les classer efficacement.
+Pour ce genre de structure, il est important d'ajouter des *a priori* (des règles ou conditions supplémentaires) afin de contourner ce genre de situation problématique.
+Il est aussi envisageable de corriger cette partie de la segmentation de façon manuelle.
 
 ```{figure} ./morphometrie/segmentation-error-volume-fig.png
 ---
 width: 600px
 name: segmentation-error-volume-fig
 ---
-Image de gauche: IRM individuelle pondérée en T1. Image de droite: classification matière grise et matière blanche générée par le logiciel [ANTS](http://stnava.github.io/ANTs/). Notez comment la matière blanche proche du gyrus est classifié de manière erronnée comme matière grise. Image sous licence CC Attribution, tirée de Klein et al., 2017 {cite:p}`Klein2017-zh`.
+Image de gauche: IRM individuelle pondérée en T1.
+Image de droite: classification de la matière grise et de la matière blanche générée par le logiciel [ANTS](http://stnava.github.io/ANTs/).
+Notez comment la matière blanche située proche du gyrus est classée à tort comme étant de la matière grise.
+Image sous licence CC Attribution, tirée de Klein et al., 2017 {cite:p}`Klein2017-zh`.
 ```
 
 ### Lissage
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
-# Improte les librairies nécessaires
+# Importe les librairies nécessaires
 import matplotlib.pyplot as plt
 import numpy as np
 from myst_nb import glue
@@ -419,11 +435,19 @@ glue("smoothing-fig", fig, display=False)
 ```{glue:figure} smoothing-fig
 :figwidth: 600px
 :name: smoothing-fig
-Illustration de l'impact du lissage sur une carte de densité de matière grise en VBM. Lorsque le paramère `FWHM` augmente, la mesure de densité représente une région entourant le voxel de plus en plus grande. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
+Illustration de l'impact du lissage sur une carte de densité de matière grise en VBM.
+À mesure que le paramètre `FWHM` augmente, la mesure de la densité représente une région entourant le voxel de plus en plus grande.
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
 ```
 
-L'étape suivante correspond au lissage spatial, qui consiste à ajouter un filtre sur l'image qui va la rendre plus  floue. En pratique, le lissage remplace la valeur à chaque voxel par une moyenne pondérée de ses voisins.
-Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement. La valeur des poids suit un profil de distribution Gaussienne 3D. Il est nécessaire de procéder à cette étape afin d'obtenir des valeurs de densité de matière grise pour des zones qui dépasse le voxel unique, et analogue du volume d'une petite région, centrée sur le voxel. La taille de la région est contrôlée par un paramètre de _largeur à mi-hauteur_, ou `FWHM` (_full width at half maximum_), qui se mesure en millimètres. Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage de voxels qui auront un impact sur la valeur lissée du voxel, voir {numref}`smoothing-fig`.
+L'étape suivante correspond au *lissage spatial*.
+Celui-ci consiste à ajouter un filtre sur l'image qui va la rendre plus floue.
+En pratique, le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins.
+Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement.
+La valeur des poids suit le profil d'une distribution Gaussienne 3D (plus un voxel voisin est loin du voxel d'intérêt, moins il en affectera la valeur).
+Il est nécessaire de procéder à cette étape afin d'obtenir des valeurs de densité de matière grise pour des zones qui dépasse le voxel unique, mais qui représentent plutôt le volume d'une petite région, centrée sur le voxel.
+La taille de la région est contrôlée par un paramètre de _largeur à mi-hauteur_, ou `FWHM` (_full width at half maximum_), qui se mesure en millimètres.
+Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage contenant les voxels qui auront un impact sur la valeur lissée du voxel (voir la {numref}`smoothing-fig`).
 
 ### Analyses statistiques
 ```{code-cell} ipython 3
@@ -489,9 +513,19 @@ glue("vbm-fig", fig, display=False)
 ```{glue:figure} vbm-fig
 :figwidth: 600px
 :name: vbm-fig
-Régression linéaire en VBM. On teste ici l'effet de l'âge sur un groupe (N=50) de participants de la base de données OASIS. La significativité $-\log_{10}(p)$ de l'effet de l'âge est présentée superposé à une image de densité de matière grise. Cette figure est adapté d'un tutoriel [Nilearn](https://nilearn.github.io/auto_examples/02_decoding/plot_oasis_vbm.html#sphx-glr-auto-examples-02-decoding-plot-oasis-vbm-py).
+Régression linéaire en VBM.
+On teste ici l'effet de l'âge sur un groupe (N=50) de participants de la base de données OASIS.
+La significativité $-\log_{10}(p)$ de l'effet de l'âge est superposée à une image de densité de matière grise.
+Cette figure est adaptée d'un tutoriel [Nilearn](https://nilearn.github.io/auto_examples/02_decoding/plot_oasis_vbm.html#sphx-glr-auto-examples-02-decoding-plot-oasis-vbm-py).
 ```
-Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique. Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière. Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut faire des tests statistiques à chaque voxel. Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise. C'est généralement le genre d'image qui sera par la suite utilisé lors de publications scientifiques. Les détails concernant les modèles stastistiques seront présentés dans le chapitre sur la [régression linéaire](regression.html).
+
+Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique.
+Contrairement à la volumétrie manuelle, où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière.
+Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut procéder à des tests statistiques à chaque voxel.
+Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise.
+C'est généralement ce genre d'image qui sera par la suite inséré à l'intérieur des publications scientifiques.
+
+> Les détails concernant les modèles stastistiques seront présentés dans le [Chapitre 6: Régression linéaire](regression.html).
 
 ## Analyses de surface
 
