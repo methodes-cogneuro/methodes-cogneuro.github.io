@@ -40,9 +40,24 @@ kernelspec:
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
 ## Objectifs du cours
+*   Comprendre la définition de la connectivité fonctionnelle.
+*   Comprendre la distinction entre activité intrinsèque et évoquée.
+*   Comprendre la notion de réseau fonctionnel.
+*   Connaître les principaux réseaux au repos.
+
 
 ## Carte de connectivité fonctionnelle
+Revenons ce qu'est une carte d'activation IRMf afin de nous donner une compréhension intuitive de ce qu'est une carte connectivité fonctionnelle. Une carte d'activation exploite des fluctuations BOLD évoquées par une tâche, de sorte que nous puissions les associer avec des fluctuations qui changent en fonction d'un paradigme expérimental.
 
+La carte d'activation illustre donc les voxels dont l'activité est plus ou moins reliée à une tâche (ou bloc expérimental) à comparer à l'autre. En d'autres mots, elle indique la corrélation entre l'activité attendue (soit, celle hypothétiquement associée au bloc expérimental) et l'activité mesurée (soit, le signal BOLD-IRMf de tous les voxels).
+
+Ici, il est important de souligner que le signal BOLD peut être exploité par de nombreux modèles statistiques différents, c'est-à-dire que la carte d'activation  d'un seul sujet elle-même est un modèle.
+
+```{admonition} Exemple
+:class: tip
+:name: hardball-tip
+Nous pourrions décider de mesurer la corrélation entre le décours temporel de chaque voxel et le moment auquel un participant presse sur un bouton d'un contrôleur avec son pouce. Nous obtiendrions une carte d'activation montrant des voxels significativement activés au cortex moteur. Dans le contexte du cours, nous nous intéressons à la corrélation entre le décours temporel des voxels d'une région particulière et le reste des voxels. De cette façon, nous obtiendrions une carte de connectivité fonctionnelle.
+```
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
 
@@ -55,6 +70,12 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/sRL6My
 ```
 
 ## Activité intrinsèque et activité évoquée
+La connectivité cérébrale locale (cytoarchitecture) et distribuée (fibres de matière blanche) amènent l’émergence transitoire d’assemblées neuronales fonctionnelles à différentes échelles spatiales. Différentes techniques existent pour capturer ce phénomène à partir du signal BOLD {cite:p}`Varela2001`.
+
+En général, les modèles de connectivité fonctionnelle tentent de répondre à ce que Varela et collègues {cite:p}`Varela2001` ont nommé le problème d'intégration à grande-échelle (ou *large-scale integration problem*). Ceci réfère à l'idée que le système nerveux coordonne une série de procesus distribuée hiérarchiquement au travers les différentes régions cérébrales afin de produire un "moment cognitif unifié". Ceci émerge d'une synchronisation de l'activité dans des régions cérébrales distantes, d'où l'intérêt de mesurer la corrélation entre un ensemble de voxels d'avec le reste.
+
+Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Dans ce cas, nous pouvons créer des cartes de connectivité fonctionnelle de *l'activité intrinsèque* du cerveau. Ou alors, nous mesurons le signal BOLD associé à la tâche en observant les régions cérébrales les plus corrélées. Dans un tel cas, nous obtenons une carte de connectivité fonctionnelle de *l'activité évoquée* par la tâche.
+
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
 
@@ -67,6 +88,14 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/OTWDQg
 ```
 
 ## Réseaux fonctionnels
+Une méta-analyse effectuée à partir de données TEP identifie un réseau de régions dont l’activité est plus élevée au repos que durant l’exécution d’une série de tâches {cite:p}`Shulman1997`. Dans un article de revue, Raischle et collègues {cite:p}`Raichle2001` proposent que ce réseau de régions est engagé de manière systématique dans des processus cognitifs dominant dans l’état de repos, et baptisent ce réseau “mode par défaut”.
+
+Greicius et collègues {cite:p}`Greicius2002` utilisent la méthodologie introduite par Biswal et collègues {cite:p}`Biswal1995`, en utilisant l’IRMf au repos, et une région cible dans le cortex cingulaire postérieur. Cette analyse identifie un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, identifié via les déactivations en TEP.
+
+Une carte de connectivité au repos associé au réseau attentionnel dorsal identifie une corrélation négative avec le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état dirigé vers l’extérieur, et un état introspectif, reflétant la compétition entre deux réseaux distribués {cite:p}`Fox2005`.
+
+Yeo et collègues {cite:p}`ThomasYeo2011` identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.
+
 Note pour plus de ressources voir cette [présentation](https://pbellec.github.io/functional_parcellation/#/) et les [notebooks correspondants](https://github.com/pbellec/functional_parcellation).
 
 ## Applications
@@ -82,6 +111,11 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/5v4nnQ
 ```
 
 ### Conclusions et références suggérées
+*   La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité d’une région cible et l’activité du reste du cerveau.
+
+*   La connectivité fonctionnelle peut être observée au repos (activité spontanée), en l’absence de protocole expérimental. En général, on a une superposition de l’activité évoquée vs spontanée.
+
+*   Un réseau fonctionnel est un groupe de régions dont l’activité spontanée prés ente une forte connectivité fonctionnelle. On distingue 7 réseaux principaux, dont le réseau du mode par défaut.
 
 ### Références
 
@@ -123,10 +157,10 @@ Le visuel sera beau, le moteur sera beau, à moins qu’une fluctuation alcooliq
 L’imagerie satellite nous indique des turbulences dans la région du précunéus qui pourraient devenir très intéressantes en début de semaine.
 Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d’être de tout repos.  
 ```
- 1. De quels réseaux parle-t-on ici?
- 2. Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
- 3. Est ce qu’il manque des réseaux dans cette prévision?
- 4. Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
+1.  De quels réseaux parle-t-on ici?
+2.  Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
+3.  Est ce qu’il manque des réseaux dans cette prévision?
+4.  Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
 
 ### Exercice 3
 “Hardball”: 8:01 - 9:46
@@ -147,7 +181,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 (bataille entre PS et YS)
  - Pr: “La semaine prochaine, dans “cluster analysis”, nous partirons sur la route avec Michael Milham, chanteur folk légendaire. Il voyage de par le monde pour partager l’histoire des réseaux au repos, en chanson. Merci d’avoir regardé cluster analysis sur le réseau du repos,”
 ```
- 1. Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
+ 1.Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
  2. Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?
  3. En quoi est-il “non psychologique” d’étudier une condition de repos?
  4. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
