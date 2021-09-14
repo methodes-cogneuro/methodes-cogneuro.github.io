@@ -97,16 +97,17 @@ Figure tirée de {cite:p}`Hashempour2019-jq`, sous licence CC-BY.
 ```
 
 La **volumétrie manuelle** consiste à délimiter visuellement une aire cérébrale particulière, comme l'hippocampe ou l'amygdale (voir {numref}`ashempour2019-fig`).
-Cette approche nécessite du temps, car le contour des structures d'intérêt doit être dessiné à la main sur chaque coupe d'IRM. On commence d'abord par segmenter une structure dans un premier plan de coupe (par exemple, axial), puis il faudra aller corriger cette segmentation dans les autres plans (par exemple, sagittal et coronal).
+Cette approche nécessite du temps, car le contour des structures d'intérêt doit être dessiné à la main sur chaque coupe d'IRM.
+On commence d'abord par segmenter une structure dans un premier plan de coupe (par exemple, dans le plan axial), puis il faudra aller corriger cette segmentation dans les autres plans (par exemple, dans le plan sagittal, puis dans le plan coronal).
 
 > Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](<coupes-tip>).
 
-Ce type d'approche requiert également un protocole de segmentation avec des critères anatomiques clairs, pour décider où une région cérébrale se trouve.
+Afin de déterminer où une région cérébrale se situe, ce type d'approche nécessite également un protocole de segmentation avec des critères anatomiques clairs.
 Pour certaines structures, comme pour l'hippocampe, il existe des protocoles détaillés (par exemple: {cite:p}`Wisse2017-ff`).
 Mais pour d'autres régions, comme les aires visuelles (V1, V2, etc.), il est nécessaire de réaliser des expériences fonctionnelles afin de pouvoir les délimiter.
 En effet, dans ce dernier cas, les délimitations anatomiques ne sont pas toujours disponibles ou bien établies.
 
-Un protocole de segmentation rigoureux est nécessaire pour obtenir un bon niveau de [concordance](https://en.wikipedia.org/wiki/Inter-rater_reliability) des résultats entre différents chercheurs.
+Un protocole de segmentation rigoureux est nécessaire pour obtenir un bon niveau de [concordance](https://en.wikipedia.org/wiki/Inter-rater_reliability) des résultats entre différents chercheurs (accord inter-juges).
 Certains protocoles proposent aussi un processus de certification, ce qui offre une garantie que la personne effectuant la segmentation applique le protocole correctement.
 
 ### Segmentation automatique
@@ -149,7 +150,9 @@ Un exemple d'atlas de régions anatomiques: l'atlas Harvard-Oxford.
 Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
 ```
 
-Afin d'automatiser le travail de segmentation, il est possible d'utiliser un atlas, c'est à dire une segmentation déjà effectuée par une équipe de chercheurs dans un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`. Il existe une variété d'atlas basées sur différents critères anatomiques ou fonctionnels, il est important de choisir adéquatement l'atlas en fonction des structures étudiées.
+Afin d'automatiser le travail de segmentation, il est possible d'utiliser un atlas, c'est à dire une segmentation déjà effectuée par une équipe de chercheurs.
+Pour ce faire, ceux-ci ont construit une carte des régions d'intérêt à l'intérieur d'un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`.
+Il existe une variété d'atlas basés sur différents critères anatomiques ou fonctionnels, il est donc important de choisir adéquatement l'atlas en fonction des structures étudiées.
 Afin d'ajuster l'atlas sur les données d'un participant, les images structurelles de ce dernier sont d'abord {ref}`recalées <registration-tip>` de manière automatisée vers l'{ref}`espace stéréotaxique <stereotaxique-tip>` de référence.
 Cette transformation permet par la suite d'adapter l'atlas à l'anatomie de chaque sujet.
 
@@ -159,7 +162,7 @@ Cette transformation permet par la suite d'adapter l'atlas à l'anatomie de chaq
 
 Afin d'appliquer un atlas de régions cérébrales sur une IRM individuelle, il est nécessaire de recaler cette IRM sur l'espace stéréotaxique qui a été utilisé pour établir les régions.
 Ce processus mathématique va chercher à déformer l'image individuelle afin de l'ajuster à l'espace stéréotaxique.
-Cette transformation peut être affine (incluant notamment translation, rotation, mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace).
+Cette transformation peut être affine (incluant notamment translation, rotation et mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace).
 L'objectif du recalage est d'augmenter le niveau de similarité entre les images, mais il est aussi important que les déformations soient continues.
 Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage.
 Les images ci-dessous illustrent l'effet de différents types de recalage.
@@ -222,7 +225,7 @@ glue("mni-template-fig", fig, display=False)
 :name: stereotaxique-tip
 
 Afin de définir une anatomie de référence, les chercheurs utilisent généralement un cerveau "moyen".
-Le cerveau de plusieurs dizaines d'individus sont recalés les uns avec les autres, puis moyennés jusqu'à obtenir une seule image.
+Pour y parvenir, les cerveaux de plusieurs dizaines d'individus sont recalés les uns avec les autres, puis moyennés jusqu'à obtenir une seule image.
 Si le recalage a bien fonctionné, comme dans le cas de l'atlas MNI152 ci-dessous, les détails de la neuroanatomie sont préservés dans la moyenne.
 ```{glue:figure} mni-template-fig
 :figwidth: 600px
@@ -237,16 +240,26 @@ Cette espace de référence a été obtenu en faisant la moyenne des images cér
 width: 400px
 name: ledig2018-stats-fig
 ---
-Cette figure illustre les différences de volume de l'hippocampe entre participants cognitivement sains (HC), participants avec troubles cognitifs légers stables (sMCI) ou progressifs (pMCI), ou patients avec une démence de type Alzheimer (AD), dans la cohorte ADNI. Plus les symptômes cliniques sont sévères, plus la probabilité de présenter la maladie d'Alzheimer est grand, et plus le stade de la maladie est sévère. L'atrophie de l'hippocampe est claire chez les patients présentant les symptômes les plus sévères. Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
+Cette figure illustre les différences de volume de l'hippocampe entre des participants cognitivement sains (HC), des participants présentant des troubles cognitifs légers stables (sMCI) ou progressifs (pMCI), ainsi que des patients atteints d'une démence de type Alzheimer (AD), dans la cohorte ADNI.
+Plus les symptômes cliniques sont sévères, plus la probabilité de présenter la maladie d'Alzheimer est grande, et plus le stade d'avancement de la maladie est sévère.
+L'atrophie de l'hippocampe est claire chez les patients présentant les symptômes les plus sévères.
+Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
 ```
-Pour les analyses statistiques, on extrait le volume de chaque structure segmentée (en $mm^3$), et on peut par exemple comparer statistiquement le volume moyen entre deux groupes, ou tester l'association du volume avec une variable comme l'âge. Par exemple, dans la {numref}`ledig2018-stats-fig`, on compare le volume de l'hippocampe entre différents groupes cliniques avec différents risques de la maladie d'Alzheimer.
+Afin de procéder aux analyses statistiques, on extrait d'abord le volume de chaque structure segmentée (en $mm^3$).
+On peut ensuite comparer statistiquement le volume moyen entre deux groupes, par exemple, ou encore tester l'association entre le volume et une autre variable, comme l'âge.
+Dans l'exemple de la {numref}`ledig2018-stats-fig`, on compare le volume de l'hippocampe entre différents groupes cliniques ayant différents niveaux de risques liés à la maladie d'Alzheimer.
 
-## VBM
+## Morphométrie basée sur les voxels (VBM)
 
 ### Densité de matière grise
-La morphométrie basée voxel (VBM) a pour objectif de mesurer le volume de matière grise immédiatement autour d'un voxel donné. Cette approche n'est donc pas limitée par le besoin d'avoir des frontières préétablies claires entre différentes structures cérébrales.
-Lorsque l'on génère une mesure de volume pour l'ensemble des voxels du cerveau, on obtient une carte 3D de la densité de matière grise.
-L'avantage premier de cette approche est d'être automatisée et systématique. La présence d'une personne ne devient nécessaire que pour vérifier que la procédure a fonctionné correctement, une étape appelée contrôle qualité (ou QC, pour "quality control"). On va aussi tester la morphologie du cerveau au travers de l'ensemble de la matière grise. Mais le grand nombre de mesures différentes générées pose un  problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques, voir le [Chapitre 10: Cartes statistiques](cartes_statistiques.html).
+La morphométrie basée sur les voxels (*voxel-based morphometry* ou VBM) a pour objectif de mesurer le volume de matière grise situé immédiatement autour d'un voxel donné.
+Cette approche n'est donc pas limitée par le besoin d'avoir des frontières préétablies claires entre différentes structures cérébrales.
+Lorsque l'on génère une mesure de volume pour l'ensemble des voxels du cerveau à l'aide de ce genre de technique, on obtient une carte 3D de la densité de la matière grise.
+Les principaux avantages de cette approche sont ses aspects automatisés et systématiques.
+La présence d'une personne ne devient nécessaire que pour vérifier que la procédure a fonctionné correctement: c'est l'étape du contrôle de qualité (ou QC, pour "quality control").
+On va aussi tester la morphologie du cerveau à travers l'ensemble de la matière grise.
+D'un autre côté, cette technique comporte aussi un inconvénient important.
+En effet, le grand nombre de mesures générées pose un problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques (voir le [Chapitre 10: Cartes statistiques](cartes_statistiques.html)).
 
 ### Segmentation
 ```{code-cell} ipython 3
