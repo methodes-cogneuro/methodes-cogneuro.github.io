@@ -535,9 +535,16 @@ C'est généralement ce genre d'image qui sera par la suite inséré à l'intér
 width: 600px
 name: morphometrie-durer-fig
 ---
-Illustration de la position de surface piale et de la surface intérieure. En haut: coupe d'IRM pondérée en T1, avec les surfaces estimées de manière automatique. En bas: illustration schématique des surfaces. Figure adaptée par P Bellec à partir de figures de l'article Klein et al., 2017 {cite:p}`Klein2017-zh` sous licence CC-BY.
+Illustration de la position de la surface piale et de la surface intérieure.
+En haut: coupe d'IRM pondérée en T1 avec les surfaces estimées de manière automatique.
+En bas: illustration schématique des surfaces.
+Figure adaptée par P. Bellec à partir de figures de l'article de Klein et al., 2017 {cite:p}`Klein2017-zh` sous licence CC-BY.
 ```
-Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu'elles utilisent la forme de ruban de la matière grise, qui s'étend en surface de la matière blanche. En plus des étapes de segmentation et de recalage que l'on a vu précédemment, on va utiliser un algorithme qui va détecter la surface _piale_, à la frontière entre la matière grise et le liquide céphalo-rachidien, et la surface _intérieure_, ou surface _blanche_, à la frontière entre la matière blanche et la matière grise. Il faudra également, comme pour la VBM, extraire un masque du cerveau en éliminant les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.). Cette surface peut être visualisée comme un objet 3D, et donne lieu à de [magnifiques visulisations interactives](https://gallantlab.org/huth2016/).
+
+Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu'elles exploitent le ruban que la matière grise forme en s'étendant à la surface de la matière blanche.
+En plus des étapes de segmentation et de recalage que l'on a vu précédemment, on va utiliser ici un algorithme qui va détecter la *surface piale*, à la frontière entre la matière grise et le liquide céphalo-rachidien, et la *surface intérieure* (aussi appelée *surface blanche*), à la frontière entre la matière blanche et la matière grise.
+Il faudra également, comme pour la VBM, extraire un masque du cerveau en éliminant les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.).
+Ce genre d'analyse permet de produire des surfaces pouvant être visualisées comme des objets 3D, donnant ainsi lieu à de [magnifiques visulisations interactives](https://gallantlab.org/huth2016/).
 
 
 ### Épaisseur, surface et volume
@@ -546,16 +553,23 @@ Les analyses de surface corticale diffèrent des précédentes techniques de mor
 width: 600px
 name: thickness-fig
 ---
-Illustration des mesures de surface, épaisseur et volume du cortex. Figure adaptée par P Bellec à partir de figures de l'article Winkler et al., 2018 {cite:p}`Winkler2018-wq` sous licence CC-BY.
+Illustration des mesures de surface, d'épaisseur et de volume du cortex.
+Figure adaptée par P. Bellec à partir de figures de l'article de Winkler et al., 2018 {cite:p}`Winkler2018-wq` sous licence CC-BY.
 ```
-La reconstruction de la géométrie de la surface va permettre de décomposer le volume de la matière grise en une épaisseur locale, et une surface locale. Ces deux propriétés peuvent maintenant être étudiées séparément, contrairement à une analyse VBM, et il a été démontré qu'elles associent de manière distincte avec différentes conditions neurologiques et psychiatriques. Plutôt que de procéder à l'analyse du contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
+
+La reconstruction de la géométrie de la surface va permettre de décomposer le volume de la matière grise en une épaisseur locale, et une surface locale.
+Ces deux propriétés peuvent maintenant être étudiées séparément, contrairement à ce qu'il est possible de faire avec une analyse VBM, et il a été démontré qu'elles sont liées de manière indépendante à différentes conditions neurologiques et psychiatriques.
+Pour ce faire, au lieu d'analyser le contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
 
 ```{warning}
 :name: surface-warning
-Qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté. Pour les structures enfouies dans la boîte crânienne telles que les thalami et les ganglions de la base, il faut combiner l'analyse de surface avec une volumétrie automatique (pour le sous-cortical).
+Qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté.
+Pour les structures enfouies dans la boîte crânienne, telles que les thalami et les ganglions de la base, il faut combiner l'analyse de surface avec une volumétrie automatique (pour les structures sous-corticales).
 ```
 
 ### Contrôle qualité
+
+Comme pour toute opération automatisée, il reste toujours une possibilité d'erreur au cours du processus
 Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre en péril l'ensemble des étapes suivantes.
 - On procédera ensuite à la **délimitation des surfaces** piale et interne.
 Pour ce faire, on modélisera un volume en forme de ballon virtuel au centre de chacun des hémisphères du cerveau.
