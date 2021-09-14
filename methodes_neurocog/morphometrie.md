@@ -42,12 +42,13 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 
 ## Objectifs du cours
 
-Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique. On va tout d'abord présenter trois grandes approches d'analyses:
- * la **volumétrie manuelle**, qui vise a mesurer la taille d'une région cérébrale;
- * la **morphométrie basée voxel (*voxel-based morphometry* ou VBM)**, qui vise à mesurer le volume de matière grise systématiquement partout dans le cerveau;
+Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique.
+Il sera question dans ce chapitre de trois grandes approches d'analyse:
+ * la **volumétrie**, qui vise a mesurer la taille d'une région cérébrale;
+ * la **morphométrie basée sur les voxels (*voxel-based morphometry* ou VBM)**, qui vise à mesurer le volume de matière grise pour l'ensemble du cerveau;
  * les **analyses de surface**, qui exploitent la structure en ruban de la matière grise.
 
-On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces techniques, telles que le **recalage**, la **segmentation**, et le **contrôle de qualité**.
+On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces techniques: le **recalage**, la **segmentation** et le **contrôle de qualité**.
 
 ## Morphométrie
 
@@ -56,7 +57,7 @@ On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces
 width: 600px
 name: morphometrie-durer-fig
 ---
-Étude de Dürer sur les proportions du visage. Image sous domaine public, tirée de [wikimedia](https://commons.wikimedia.org/wiki/File:Morpho_durer.JPG).
+Étude de Dürer sur les proportions du visage. Image appartenent au domaine public, tirée de [wikimedia](https://commons.wikimedia.org/wiki/File:Morpho_durer.JPG).
 ```
 
 En neurosciences, la [morphométrie](https://fr.wikipedia.org/wiki/Morphom%C3%A9trie) est l'étude de la forme du cerveau et de ses structures.
@@ -70,33 +71,45 @@ Pour ce faire, il est nécessaire de pouvoir observer clairement les délimitati
 width: 600px
 name: ledig2018-fig
 ---
-Cette figure illustre les différences morphologiques entre individus qui présentent des profils cliniques différents: cognitivement normal (haut), troubles légers de la cognition (milieu), démence de type Alzheimer (bas). Par ailleurs on peut également observer des différences longitudinales au sein d'un même individu (de gauche à droite, visite initiale, suivi à deux ans, différence des deux images). Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
+Cette figure illustre des différences morphologiques entre des individus présentant des profils cliniques différents: sans atteinte cognitive (haut), troubles légers de la cognition (milieu), démence de type Alzheimer (bas).
+Par ailleurs, il est également possible d'observer des différences longitudinales au sein d'un même individu (de gauche à droite, visite initiale, suivi après deux ans, différence entre les deux images).
+Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
 ```
-L'utilisation de ce genre de technique permet aussi de faire des comparaisons inter-individuelles.
-On pourrait en effet vouloir comparer les variations dans la forme de divers structures à travers les cerveaux de différentes personnes.
+
+Comme le démontre la figure ci-haut, l'utilisation de ce genre de technique permet aussi de faire des comparaisons inter-individuelles.
+On pourrait en effet vouloir comparer les variations dans la forme de diverses structures à travers les cerveaux de différentes personnes.
 De telles comparaisons peuvent être informatrices au niveau du stade développemental d'un sujet, ou même, de la présence de certaines lésions ou pathologies.
 
-## volumétrie
+## Volumétrie
 
-## Segmentation manuelle
+### Segmentation manuelle
 
 ```{figure} ./morphometrie/ashempour2019.jpg
 ---
 width: 600px
 name: ashempour2019-fig
 ---
-Cette figure illustre un protocole de segmentation manuelle de l'amygdale. Vue coronale d'une segmentation manuelle de l'amygdale gauche (jaune) et droit (bleu) avant (gauche) et après (droite) corrections dans le plan coronal. Figure tirée de {cite:p}`Hashempour2019-jq`, sous licence CC-BY.
+Cette figure illustre un protocole de segmentation manuelle de l'amygdale.
+Vue coronale d'une segmentation manuelle de l'amygdale gauche (jaune) et droit (bleu) avant (gauche) et après (droite) avoir procédé aux corrections dans le plan coronal.
+Figure tirée de {cite:p}`Hashempour2019-jq`, sous licence CC-BY.
 ```
 
-La **volumétrie manuelle** constiste à manuellement délimiter une aire cérébrale particulière, comme l'hippocampe ou l'amygdale (voir {numref}`ashempour2019-fig`). Cette approche nécessite du temps, car chaque coupe d'IRM doit être délimitée manuellement. On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
+La **volumétrie manuelle** consiste à manuellement délimiter une aire cérébrale particulière, comme l'hippocampe ou l'amygdale (voir {numref}`ashempour2019-fig`).
+Cette approche nécessite du temps, car le contour des structures d'intérêt doit être délimité manuellement sur chaque coupe d'IRM.
+On commencera d'abord par identifier ce contour sur chaque coupe où la structure est présente dans un premier plan (par exemple, sur une coupe axiale), puis il faudra aller corriger cette délimitation sur chaque coupe prise dans un second plan (comme une coupe sagitale) et finalement, répéter de nouveau cette correction sur le troisième plan (une coupe coronale).
 
 > Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](<coupes-tip>).
 
-Ce type d'approche requiert également un protocole de segmentation rigoureux, avec des critères anatomiques claires pour décider où une région cérébrale se trouve. Pour certaines structures, comme les ventricules latéraux, c'est assez clair. Pour d'autres structures, comme l'hippocampe, il existe des protocoles détaillés, voir par exemple {cite:p}`Wisse2017-ff`. Enfin pour d'autres régions, comme les aires visuelles V1, V2, etc, il est nécessaire de réaliser des expériences fonctionnelles pour les délimiter, et les délimitations anatomiques ne sont pas nécessairement disponibles ou bien établies.
+Ce type d'approche requiert également un protocole de segmentation rigoureux, avec des critères anatomiques clairs, pour décider où une région cérébrale se trouve.
+Pour certaines structures, comme les ventricules latéraux, c'est assez clair.
+Pour d'autres structures, comme pour l'hippocampe, il existe des protocoles détaillés (par exemple: {cite:p}`Wisse2017-ff`).
+Enfin, pour d'autres régions, comme les aires visuelles (V1, V2, etc.), il est nécessaire de réaliser des expériences fonctionnelles afin de pouvoir les délimiter.
+En effet, dans ce dernier cas, les délimitations anatomiques ne sont pas toujours disponibles ou bien établies.
 
-Un protocole de segmentation clair est nécessaire pour assurer un bon niveau de reproductibilité des résultats et un [accord inter-juge](https://en.wikipedia.org/wiki/Inter-rater_reliability) acceptable. Certains protocoles offrent une certification, qui offre un certain niveau de garantie que la chercheuse effectuant la segmentation applique le protocole correctement.
+Un protocole de segmentation clair est donc nécessaire pour assurer un bon niveau de reproductibilité des résultats et un [accord inter-juge](https://en.wikipedia.org/wiki/Inter-rater_reliability) acceptable.
+Certains protocoles offrent aussi un processus de certification, ce qui offre un certain niveau de garantie que la personne effectuant la segmentation applique le protocole correctement.
 
-## Segmentation automatique
+### Segmentation automatique
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -132,39 +145,50 @@ glue("harvard-oxford-fig", fig, display=False)
 :figwidth: 800px
 :name: "harvard-oxford-fig"
 
-Un exemple d'atlas de régions anatomiques: l'atlas Harvard-Oxford. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
+Un exemple d'atlas de régions anatomiques: l'atlas Harvard-Oxford.
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
 ```
 
-Afin d'automatiser le travail de segmentation, il est possible d'utiliser une segmentation déjà effectuée par une équipe de chercheurs dans un espace de référence, encore appelé espace stéréotaxique. On appelle ces segmentations de référence des atlas, ou parfois parcellisations. Comme il existe une variété de parcellisations correspondant à différents critères anatomiques ou fonctionnels, il est important de choisir adéquatement l'atlas en fonction des structures particulières que vous voulez étudier. L'IRM structurelle d'un participant est {ref}`recalée <registration-tip>` de manière automatisée vers l'{ref}`espace stéréotaxique <stereotaxique-tip>` de référence, et cette transformation permet d'adapter l'atlas à l'anatomie du sujet.
+Afin d'automatiser le travail de segmentation, il est possible d'utiliser une segmentation déjà effectuée par une équipe de chercheurs dans un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`.
+On appelle ces outils de référence des atlas de segmentation, ou parfois, des atlas de parcellisation.
+Comme il existe une variété de parcellisations basées sur différents critères anatomiques ou fonctionnels, il est important de choisir adéquatement l'atlas en fonction des structures particulières que vous voulez étudier.
+Afin d'ajuster l'atlas sur les données d'un participant, les images structurelles de ce dernier sont d'abord {ref}`recalées <registration-tip>` de manière automatisée vers l'{ref}`espace stéréotaxique <stereotaxique-tip>` de référence.
+Cette transformation permet par la suite d'adapter l'atlas à l'anatomie de chaque sujet.
 
-```{admonition} Recalage
+```{admonition} Le recalage
 :class: tip
 :name: registration-tip
 
-Afin d'appliquer un atlas de régions cérébrales sur une IRM individuelle, il est nécessaire de recaler cette IRM sur l'espace stéréotaxique qui a été utilisé pour établir les régions. Ce processus mathématique va chercher à déformer l'image individuelle vers l'espace stéréotaxique. Cette transformation peut être affine (notamment translation, rotation, mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace). L'objectif du recalage est de rendre les images plus similaires possible, mais il est important que les déformations soient continues. Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage. Les images ci dessous illustrent l'effet de différents types de recalage, et sont tirées de la documentation du logiciel [slicer](https://www.slicer.org/wiki/Documentation:Nightly:Registration:RegistrationLibrary:RegLib_C42) sous licence CC-Attributions Share Alike.
+Afin d'appliquer un atlas de régions cérébrales sur une IRM individuelle, il est nécessaire de recaler cette IRM sur l'espace stéréotaxique qui a été utilisé pour établir les régions.
+Ce processus mathématique va chercher à déformer l'image individuelle afin de l'ajuster à l'espace stéréotaxique.
+Cette transformation peut être affine (aussi appelée transformation linéaire: translation, rotation, mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace).
+L'objectif du recalage d'augmenter le niveau de similarité entre les images, mais il est aussi important que les déformations soient continues.
+Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage.
+Les images ci-dessous illustrent l'effet de différents types de recalage.
+Elles sont tirées de la documentation du logiciel [slicer](https://www.slicer.org/wiki/Documentation:Nightly:Registration:RegistrationLibrary:RegLib_C42), sous licence CC-Attributions Share Alike.
 ```{figure} morphometrie/registration_slicer_raw.gif
 :figwidth: 400px
 :align: left
 :figclass: margin-caption
-Images brutes: deux scans du même sujet, prises à des jours différents.
+Images brutes: deux scans du même sujet, prises durant deux séances d'acquisition différentes.
 
 ```{figure} morphometrie/registration_slicer_affine.gif
 :figwidth: 400px
 :align: left
 :figclass: margin-caption
-Images recalées après une transformation affine.
+Images recalées par un processus de transformation affine seulement.
 
 ```{figure} morphometrie/registration_slicer_nonlinear.gif
 :figwidth: 400px
 :align: left
 :figclass: margin-caption
-Images recalées après une transformation non-linéaire.
+Images recalées par une transformation affine suivie d'une transformation non-linéaire.
 
 ```{figure} morphometrie/registration_slicer_nonlinear_only.gif
 :figwidth: 400px
 :align: left
 :figclass: margin-caption
-Effet du recalage non-linéaire seulement
+Visualisation des effets du recalage non-linéaire seulement.
 ```
 
 ```{code-cell} ipython 3
@@ -199,15 +223,18 @@ glue("mni-template-fig", fig, display=False)
 :class: tip
 :name: stereotaxique-tip
 
-Afin de définir une anatomie de référence, les chercheurs utilisent généralement un cerveau "moyen". Le cerveau de plusieurs dizaines d'individus sont recalées les uns avec les autres, puis moyennés pour obtenir une seule image. Si le recalage a bien fonctionné, les détails de la neuroanatomie sont préservés dans la moyenne.
+Afin de définir une anatomie de référence, les chercheurs utilisent généralement un cerveau "moyen".
+Afin d'obtenir cette référence, le cerveau de plusieurs dizaines d'individus sont recalés les uns avec les autres, puis moyennés jusqu'à obtenir une seule image.
+Si le recalage a bien fonctionné, les détails de la neuroanatomie sont préservés dans la moyenne.
 ```{glue:figure} mni-template-fig
 :figwidth: 600px
 :align: left
-Espace stéréotaxique de l'Institut Neurologique de Montréal (MNI), moyenne de 152 sujets après recalage non-linéaire itératif {cite:p}`Fonov2011-xr`.
+Espace stéréotaxique de l'Institut Neurologique de Montréal (MNI).
+Cette espace de référence a été obtenu en faisant la moyenne des images cérébrales de 152 sujets après avoir procédé à un recalage non-linéaire itératif {cite:p}`Fonov2011-xr`.
 
 ```
 
-## Morphométrie basée voxel (VBM)
+## Morphométrie basée sur les voxels (VBM)
 
 
 L'**approche par voxel**, aussi mieux connue sous le nom de ***voxel-based morphometry*** (ou **VBM**), est une autre approche qu'il est possible d'employer afin de segmenter différentes aires d'intérêt du cerveau.
