@@ -347,7 +347,7 @@ Une étape importante de la VBM est la segmentation. Cette analyse vise à caté
 ```{admonition} Effets de volume partiel
 :class: tip
 :name: volume-partiel-tip
-Il est possible que la segmentation automatique nous retourne certains tissus non-désirés, mais dont les valeurs dont les valeurs dans l'image sont similaires à celle de la matière grise. Il est ainsi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir). On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
+Il est possible que la segmentation automatique nous retourne certains tissus non-désirés, mais dont les valeurs dans l'image sont similaires à celles de la matière grise. Il est ainsi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir). On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
 ```
 
 ```{admonition} Erreurs de segmentation
@@ -476,7 +476,7 @@ glue("vbm-fig", fig, display=False)
 ```{glue:figure} vbm-fig
 :figwidth: 600px
 :name: vbm-fig
-Régression linéaire en VBM. On teste ici l'effet de l'âge sur un groupe (N=50) de participants de la base de données OASIS. La significativité $-\log_{10}(p)$ de l'effet de l'âge est présentée superposé à une image de densité de matière grise. Cette figure est adapté d'un tutoriel [Nilearn](https://nilearn.github.io/auto_examples/02_decoding/plot_oasis_vbm.html#sphx-glr-auto-examples-02-decoding-plot-oasis-vbm-py).
+Régression linéaire en VBM. On teste ici l'effet de l'âge sur un groupe (N=50) de participants de la base de données OASIS. La significativité $-\log_{10}(p)$ de l'effet de l'âge est présentée superposé à une image de densité de matière grise. Cette figure est adaptée d'un tutoriel [Nilearn](https://nilearn.github.io/auto_examples/02_decoding/plot_oasis_vbm.html#sphx-glr-auto-examples-02-decoding-plot-oasis-vbm-py).
 ```
 Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique. Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière. Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut faire des tests statistiques à chaque voxel. Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise. C'est généralement le genre d'image qui sera par la suite utilisé lors de publications scientifiques. Les détails concernant les modèles stastistiques seront présentés dans le chapitre sur la [régression linéaire](regression.html).
 
