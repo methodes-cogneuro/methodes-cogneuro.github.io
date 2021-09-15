@@ -107,16 +107,17 @@ Figure tirée de {cite:p}`Hashempour2019-jq`, sous licence CC-BY.
 ```
 
 La **volumétrie manuelle** consiste à délimiter visuellement une aire cérébrale particulière, comme l'hippocampe ou l'amygdale (voir {numref}`ashempour2019-fig`).
-Cette approche nécessite du temps, car le contour des structures d'intérêt doit être dessiné à la main sur chaque coupe d'IRM. On commence d'abord par segmenter une structure dans un premier plan de coupe (par exemple, axial), puis il faudra aller corriger cette segmentation dans les autres plans (par exemple, sagittal et coronal).
+Cette approche nécessite du temps, car le contour des structures d'intérêt doit être dessiné à la main sur chaque coupe d'IRM.
+On commence d'abord par segmenter une structure dans un premier plan de coupe (par exemple, dans le plan axial), puis il faudra aller corriger cette segmentation dans les autres plans (par exemple, dans le plan sagittal, puis dans le plan coronal).
 
 > Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au [Chapitre 1: Cartes cérébrales](<coupes-tip>).
 
-Ce type d'approche requiert également un protocole de segmentation avec des critères anatomiques clairs, pour décider où une région cérébrale se trouve.
+Afin de déterminer où une région cérébrale se situe, ce type d'approche nécessite également un protocole de segmentation avec des critères anatomiques clairs.
 Pour certaines structures, comme pour l'hippocampe, il existe des protocoles détaillés (par exemple: {cite:p}`Wisse2017-ff`).
 Mais pour d'autres régions, comme les aires visuelles (V1, V2, etc.), il est nécessaire de réaliser des expériences fonctionnelles afin de pouvoir les délimiter.
 En effet, dans ce dernier cas, les délimitations anatomiques ne sont pas toujours disponibles ou bien établies.
 
-Un protocole de segmentation rigoureux est nécessaire pour obtenir un bon niveau de [concordance](https://en.wikipedia.org/wiki/Inter-rater_reliability) des résultats entre différents chercheurs.
+Un protocole de segmentation rigoureux est nécessaire pour obtenir un bon niveau de [concordance](https://en.wikipedia.org/wiki/Inter-rater_reliability) des résultats entre différents chercheurs (accord inter-juges).
 Certains protocoles proposent aussi un processus de certification, ce qui offre une garantie que la personne effectuant la segmentation applique le protocole correctement.
 
 ### Segmentation automatique
@@ -159,7 +160,9 @@ Un exemple d'atlas de régions anatomiques: l'atlas Harvard-Oxford.
 Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
 ```
 
-Afin d'automatiser le travail de segmentation, il est possible d'utiliser un atlas, c'est à dire une segmentation déjà effectuée par une équipe de chercheurs dans un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`. Il existe une variété d'atlas basées sur différents critères anatomiques ou fonctionnels, il est important de choisir adéquatement l'atlas en fonction des structures étudiées.
+Afin d'automatiser le travail de segmentation, il est possible d'utiliser un atlas, c'est à dire une segmentation déjà effectuée par une équipe de chercheurs.
+Pour ce faire, ceux-ci ont construit une carte des régions d'intérêt à l'intérieur d'un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`.
+Il existe une variété d'atlas basés sur différents critères anatomiques ou fonctionnels, il est donc important de choisir adéquatement l'atlas en fonction des structures étudiées.
 Afin d'ajuster l'atlas sur les données d'un participant, les images structurelles de ce dernier sont d'abord {ref}`recalées <registration-tip>` de manière automatisée vers l'{ref}`espace stéréotaxique <stereotaxique-tip>` de référence.
 Cette transformation permet par la suite d'adapter l'atlas à l'anatomie de chaque sujet.
 
@@ -169,7 +172,7 @@ Cette transformation permet par la suite d'adapter l'atlas à l'anatomie de chaq
 
 Afin d'appliquer un atlas de régions cérébrales sur une IRM individuelle, ou plus généralement mettre en correspondance deux images de cerveaux, il est nécessaire de recaler cette IRM sur l'espace stéréotaxique qui a été utilisé pour établir les régions.
 Ce processus mathématique va chercher à déformer l'image individuelle afin de l'ajuster à l'espace stéréotaxique.
-Cette transformation peut être affine (incluant notamment translation, rotation, mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace).
+Cette transformation peut être affine (incluant notamment translation, rotation et mise à l'échelle) ou bien non-linéaire (déplacement dans n'importe quelle direction de l'espace).
 L'objectif du recalage est d'augmenter le niveau de similarité entre les images, mais il est aussi important que les déformations soient continues.
 Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage.
 Les images ci-dessous illustrent l'effet de différents types de recalage.
@@ -232,7 +235,7 @@ glue("mni-template-fig", fig, display=False)
 :name: stereotaxique-tip
 
 Afin de définir une anatomie de référence, les chercheurs utilisent généralement un cerveau "moyen".
-Le cerveau de plusieurs dizaines d'individus sont recalés les uns avec les autres, puis moyennés jusqu'à obtenir une seule image.
+Pour y parvenir, les cerveaux de plusieurs dizaines d'individus sont recalés les uns avec les autres, puis moyennés jusqu'à obtenir une seule image.
 Si le recalage a bien fonctionné, comme dans le cas de l'atlas MNI152 ci-dessous, les détails de la neuroanatomie sont préservés dans la moyenne.
 ```{glue:figure} mni-template-fig
 :figwidth: 600px
@@ -247,9 +250,14 @@ Cette espace de référence a été obtenu en faisant la moyenne des images cér
 width: 400px
 name: ledig2018-stats-fig
 ---
-Cette figure illustre les différences de volume de l'hippocampe entre participants cognitivement sains (HC), participants avec troubles cognitifs légers stables (sMCI) ou progressifs (pMCI), ou patients avec une démence de type Alzheimer (AD), dans la cohorte ADNI. Plus les symptômes cliniques sont sévères, plus la probabilité de présenter la maladie d'Alzheimer est grand, et plus le stade de la maladie est sévère. L'atrophie de l'hippocampe est claire chez les patients présentant les symptômes les plus sévères. Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
+Cette figure illustre les différences de volume de l'hippocampe entre des participants cognitivement sains (HC), des participants présentant des troubles cognitifs légers stables (sMCI) ou progressifs (pMCI), ainsi que des patients atteints d'une démence de type Alzheimer (AD), dans la cohorte ADNI.
+Plus les symptômes cliniques sont sévères, plus la probabilité de présenter la maladie d'Alzheimer est grande, et plus le stade d'avancement de la maladie est sévère.
+L'atrophie de l'hippocampe est claire chez les patients présentant les symptômes les plus sévères.
+Figure tirée de {cite:p}`Ledig2018-ai`, sous licence CC-BY.
 ```
-Pour les analyses statistiques, on extrait le volume de chaque structure segmentée (en $mm^3$), et on peut par exemple comparer statistiquement le volume moyen entre deux groupes, ou tester l'association du volume avec une variable comme l'âge. Par exemple, dans la {numref}`ledig2018-stats-fig`, on compare le volume de l'hippocampe entre différents groupes cliniques avec différents risques de la maladie d'Alzheimer.
+Afin de procéder aux analyses statistiques, on extrait d'abord le volume de chaque structure segmentée (en $mm^3$).
+On peut ensuite comparer statistiquement le volume moyen entre deux groupes, par exemple, ou encore tester l'association entre le volume et une autre variable, comme l'âge.
+Dans l'exemple de la {numref}`ledig2018-stats-fig`, on compare le volume de l'hippocampe entre différents groupes cliniques ayant différents niveaux de risques liés à la maladie d'Alzheimer.
 
 ### Contrôle qualité
 ```{figure} ./morphometrie/artefact-fig.png
@@ -272,9 +280,14 @@ Conserver ces dernières pourrait avoir des impacts importants sur les résultat
 ## VBM
 
 ### Densité de matière grise
-La morphométrie basée voxel (VBM) a pour objectif de mesurer le volume de matière grise immédiatement autour d'un voxel donné. Cette approche n'est donc pas limitée par le besoin d'avoir des frontières préétablies claires entre différentes structures cérébrales.
-Lorsque l'on génère une mesure de volume pour l'ensemble des voxels du cerveau, on obtient une carte 3D de la densité de matière grise.
-L'avantage premier de cette approche est d'être automatisée et systématique. La présence d'une personne ne devient nécessaire que pour vérifier que la procédure a fonctionné correctement, une étape appelée contrôle qualité (ou QC, pour "quality control"). On va aussi tester la morphologie du cerveau au travers de l'ensemble de la matière grise. Mais le grand nombre de mesures différentes générées pose un  problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques, voir le [Chapitre 10: Cartes statistiques](cartes_statistiques.html).
+La morphométrie basée sur les voxels (*voxel-based morphometry* ou VBM) a pour objectif de mesurer le volume de matière grise situé immédiatement autour d'un voxel donné.
+Cette approche n'est donc pas limitée par le besoin d'avoir des frontières préétablies claires entre différentes structures cérébrales.
+Lorsque l'on génère une mesure de volume pour l'ensemble des voxels du cerveau à l'aide de ce genre de technique, on obtient une carte 3D de la densité de la matière grise.
+Les principaux avantages de cette approche sont ses aspects automatisés et systématiques.
+La présence d'une personne ne devient nécessaire que pour vérifier que la procédure a fonctionné correctement: c'est l'étape du contrôle de qualité (ou QC, pour "quality control").
+On va aussi tester la morphologie du cerveau à travers l'ensemble de la matière grise.
+D'un autre côté, cette technique comporte aussi un inconvénient important.
+En effet, le grand nombre de mesures générées pose un problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques (voir le [Chapitre 10: Cartes statistiques](cartes_statistiques.html)).
 
 ### Segmentation
 ```{code-cell} ipython 3
@@ -314,7 +327,7 @@ plot_stat_map(mni.mask,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='cerveau'
+              title='Cerveau'
               )
 
 # Gray matter
@@ -329,7 +342,7 @@ plot_stat_map(mni.gm,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='matière grise'
+              title='Matière grise'
               )
 
 # White matter
@@ -344,7 +357,7 @@ plot_stat_map(mni.wm,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='matière blanche'
+              title='Matière blanche'
               )
 
 # CSF
@@ -359,7 +372,7 @@ plot_stat_map(mni.csf,
               cut_coords=coords,
               axes=ax_plot,
               black_bg=True,
-              title='liquide cephalo rachidien'
+              title='Liquide céphalo-rachidien'
               )
 
 from myst_nb import glue
@@ -368,20 +381,31 @@ glue("mni-segmentation-fig", fig, display=False)
 ```{glue:figure} mni-segmentation-fig
 :figwidth: 600px
 :name: mni-segmentation-fig
-Segmentation probabiliste des principaux types de tissus, et distribution des valeurs pondérées en T1 dans les voxels "purs" (probabilité supérieure à 80% pour un type de tissu donné). L'image pondérée en T1 ainsi que les segmentations correspondent à l'espace stéréotaxique MNI152 {cite:p}`Fonov2011-xr`.
+Segmentation probabiliste des principaux types de tissus et distribution des valeurs pondérées en T1 dans les voxels "purs" (probabilité supérieure à 80% pour un type de tissu donné).
+L'image pondérée en T1 ainsi que les segmentations correspondent à l'espace stéréotaxique MNI152 {cite:p}`Fonov2011-xr`.
 ```
-Une étape importante de la VBM est la segmentation. Cette analyse vise à catégoriser les différents tissus du cerveau en classes, notamment matière grise, matière blanche et liquide céphalo-rachidien. On va aussi généralement extraire un masque du cerveau et exclure les méninges ainsi que le crâne. On va généralement inclure d'autres types de tissus également, comme la graisse. Un algorithme de segmentation va examiner la distribution des niveaux de gris dans l'image, par exemple pondérée en T1, et estimer pour chaque voxel la proportion du voxel qui contient un tissu donné. Cette proportion est souvent appelé {ref}`effet de volume partiel <volume-partiel-tip>`. Un voxel peut par exemple être assigné à 80% de matière grise et 20% de liquide céphalo-rachidien.
 
-```{admonition} Effets de volume partiel
+Une étape importante de la VBM est la segmentation.
+Cette analyse vise à catégoriser les types de tissus du cerveau en différentes classes contenant notamment la matière grise, la matière blanche et le liquide céphalo-rachidien.
+Un masque du cerveau est généralement extrait afin d'exclure les méninges ainsi que le crâne.
+On va généralement y inclure d'autres types de tissus également, comme la graisse.
+Un algorithme de segmentation va ensuite examiner la distribution des niveaux de gris dans l'image (par exemple, dans une image pondérée en T1) et estimer pour chaque voxel la proportion du voxel qui contient un type de tissu donné.
+Cette proportion est souvent appelé l'{ref}`effet de volume partiel <volume-partiel-tip>`.
+Un voxel peut par exemple être assigné à 80% de matière grise et 20% de liquide céphalo-rachidien.
+Le niveau de gris résultant pourrait alors donner une indication trompeuse sur son contenu réel.
+
+```{admonition} Effet de volume partiel
 :class: tip
 :name: volume-partiel-tip
-Il est possible que la segmentation automatique nous retourne certains tissus non-désirés, mais dont les valeurs dont les valeurs dans l'image sont similaires à celle de la matière grise. Il est ainsi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir). On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
+Il est possible que la segmentation automatique nous retourne pour certains tissus non-désirés des valeurs similaires à celle de la matière grise sur l'image résultant de cette étape.
+En effet, il est possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir).
+On appelle ce genre d'effet de mélange de noir et de blanc un volume partiel (une partie du volume du voxel est blanche alors que l'autre partie est noire).
 ```
 
 ### Lissage
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
-# Improte les librairies nécessaires
+# Importe les librairies nécessaires
 import matplotlib.pyplot as plt
 import numpy as np
 from myst_nb import glue
@@ -422,11 +446,19 @@ glue("smoothing-fig", fig, display=False)
 ```{glue:figure} smoothing-fig
 :figwidth: 600px
 :name: smoothing-fig
-Illustration de l'impact du lissage sur une carte de densité de matière grise en VBM. Lorsque le paramère `FWHM` augmente, la mesure de densité représente une région entourant le voxel de plus en plus grande. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
+Illustration de l'impact du lissage sur une carte de densité de matière grise en VBM.
+À mesure que le paramètre `FWHM` augmente, la mesure de la densité représente une région entourant le voxel de plus en plus grande.
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
 ```
 
-L'étape suivante correspond au lissage spatial, qui consiste à ajouter un filtre sur l'image qui va la rendre plus  floue. En pratique, le lissage remplace la valeur à chaque voxel par une moyenne pondérée de ses voisins.
-Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement. La valeur des poids suit un profil de distribution Gaussienne 3D. Il est nécessaire de procéder à cette étape afin d'obtenir des valeurs de densité de matière grise pour des zones qui dépasse le voxel unique, et analogue du volume d'une petite région, centrée sur le voxel. La taille de la région est contrôlée par un paramètre de _largeur à mi-hauteur_, ou `FWHM` (_full width at half maximum_), qui se mesure en millimètres. Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage de voxels qui auront un impact sur la valeur lissée du voxel, voir {numref}`smoothing-fig`.
+L'étape suivante correspond au *lissage spatial*.
+Celui-ci consiste à ajouter un filtre sur l'image qui va la rendre plus floue.
+En pratique, le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins.
+Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement.
+La valeur des poids suit le profil d'une distribution Gaussienne 3D (plus un voxel voisin est loin du voxel d'intérêt, moins il en affectera la valeur).
+Il est nécessaire de procéder à cette étape afin d'obtenir des valeurs de densité de matière grise pour des zones qui dépasse le voxel unique, mais qui représentent plutôt le volume d'une petite région, centrée sur le voxel.
+La taille de la région est contrôlée par un paramètre de _largeur à mi-hauteur_, ou `FWHM` (_full width at half maximum_), qui se mesure en millimètres.
+Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage contenant les voxels qui auront un impact sur la valeur lissée du voxel (voir la {numref}`smoothing-fig`).
 
 ### Analyses statistiques
 ```{code-cell} ipython 3
@@ -492,9 +524,19 @@ glue("vbm-fig", fig, display=False)
 ```{glue:figure} vbm-fig
 :figwidth: 600px
 :name: vbm-fig
-Régression linéaire en VBM. On teste ici l'effet de l'âge sur un groupe (N=50) de participants de la base de données OASIS. La significativité $-\log_{10}(p)$ de l'effet de l'âge est présentée superposé à une image de densité de matière grise. Cette figure est adapté d'un tutoriel [Nilearn](https://nilearn.github.io/auto_examples/02_decoding/plot_oasis_vbm.html#sphx-glr-auto-examples-02-decoding-plot-oasis-vbm-py).
+Régression linéaire en VBM.
+On teste ici l'effet de l'âge sur un groupe (N=50) de participants de la base de données OASIS.
+La significativité $-\log_{10}(p)$ de l'effet de l'âge est superposée à une image de densité de matière grise.
+Cette figure est adaptée d'un tutoriel [Nilearn](https://nilearn.github.io/auto_examples/02_decoding/plot_oasis_vbm.html#sphx-glr-auto-examples-02-decoding-plot-oasis-vbm-py).
 ```
-Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique. Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière. Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut faire des tests statistiques à chaque voxel. Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise. C'est généralement le genre d'image qui sera par la suite utilisé lors de publications scientifiques. Les détails concernant les modèles stastistiques seront présentés dans le chapitre sur la [régression linéaire](regression.html).
+
+Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique.
+Contrairement à la volumétrie manuelle, où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière.
+Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut procéder à des tests statistiques à chaque voxel.
+Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise.
+C'est généralement ce genre d'image qui sera par la suite inséré à l'intérieur des publications scientifiques.
+
+> Les détails concernant les modèles stastistiques seront présentés dans le [Chapitre 6: Régression linéaire](regression.html).
 
 ### Contrôle qualité
 ```{figure} ./morphometrie/segmentation-error-volume-fig.png
@@ -515,9 +557,16 @@ Il est donc nécessaire de prévoir une étape de contrôle de qualité afin de 
 width: 600px
 name: morphometrie-durer-fig
 ---
-Illustration de la position de surface piale et de la surface intérieure. En haut: coupe d'IRM pondérée en T1, avec les surfaces estimées de manière automatique. En bas: illustration schématique des surfaces. Figure adaptée par P Bellec à partir de figures de l'article Klein et al., 2017 {cite:p}`Klein2017-zh` sous licence CC-BY.
+Illustration de la position de la surface piale et de la surface intérieure.
+En haut: coupe d'IRM pondérée en T1 avec les surfaces estimées de manière automatique.
+En bas: illustration schématique des surfaces.
+Figure adaptée par P. Bellec à partir de figures de l'article de Klein et al., 2017 {cite:p}`Klein2017-zh` sous licence CC-BY.
 ```
-Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu'elles utilisent la forme de ruban de la matière grise, qui s'étend en surface de la matière blanche. En plus des étapes de segmentation et de recalage que l'on a vu précédemment, on va utiliser un algorithme qui va détecter la surface _piale_, à la frontière entre la matière grise et le liquide céphalo-rachidien, et la surface _intérieure_, ou surface _blanche_, à la frontière entre la matière blanche et la matière grise. Il faudra également, comme pour la VBM, extraire un masque du cerveau en éliminant les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.). Cette surface peut être visualisée comme un objet 3D, et donne lieu à de [magnifiques visulisations interactives](https://gallantlab.org/huth2016/).
+
+Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu'elles exploitent le ruban que la matière grise forme en s'étendant à la surface de la matière blanche.
+En plus des étapes de segmentation et de recalage que l'on a vu précédemment, on va utiliser ici un algorithme qui va détecter la *surface piale*, à la frontière entre la matière grise et le liquide céphalo-rachidien, et la *surface intérieure* (aussi appelée *surface blanche*), à la frontière entre la matière blanche et la matière grise.
+Il faudra également, comme pour la VBM, extraire un masque du cerveau en éliminant les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.).
+Ce genre d'analyse permet de produire des surfaces pouvant être visualisées comme des objets 3D, donnant ainsi lieu à de [magnifiques visulisations interactives](https://gallantlab.org/huth2016/).
 
 ```{admonition} Croissance de ballon
 :class: tip
@@ -541,14 +590,19 @@ Les techniques d'extraction de surface telles que celle proposée par le logicie
 width: 600px
 name: thickness-fig
 ---
-Illustration des mesures de surface, épaisseur et volume du cortex. Figure adaptée par P Bellec à partir de figures de l'article Winkler et al., 2018 {cite:p}`Winkler2018-wq` sous licence CC-BY.
+Illustration des mesures de surface, d'épaisseur et de volume du cortex.
+Figure adaptée par P. Bellec à partir de figures de l'article de Winkler et al., 2018 {cite:p}`Winkler2018-wq` sous licence CC-BY.
 ```
-La reconstruction de la géométrie de la surface va permettre de décomposer le volume de la matière grise en une épaisseur locale, et une surface locale. Ces deux propriétés peuvent maintenant être étudiées séparément, contrairement à une analyse VBM, et il a été démontré qu'elles associent de manière distincte avec différentes conditions neurologiques et psychiatriques. Plutôt que de procéder à l'analyse du contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
+
+La reconstruction de la géométrie de la surface va permettre de décomposer le volume de la matière grise en une épaisseur locale, et une surface locale.
+Ces deux propriétés peuvent maintenant être étudiées séparément, contrairement à ce qu'il est possible de faire avec une analyse VBM, et il a été démontré qu'elles sont liées de manière indépendante à différentes conditions neurologiques et psychiatriques.
+Pour ce faire, au lieu d'analyser le contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
 
 ```{admonition} Attention
 :class: caution attention
 :name: surface-warning
-Qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté. Pour les structures enfouies dans la boîte crânienne telles que les thalami et les ganglions de la base, il faut combiner l'analyse de surface avec une volumétrie automatique (pour le sous-cortical).
+Qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté.
+Pour les structures enfouies dans la boîte crânienne, telles que les thalami et les ganglions de la base, il faut combiner l'analyse de surface avec une volumétrie automatique (pour les structures sous-corticales).
 ```
 
 ### Analyses statistiques
