@@ -49,10 +49,6 @@ kernelspec:
   </tr>
 </table>
 
-```{warning}
-Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
-```
-
 ## Objectifs du cours
 
 Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique. Il sera question dans ce chapitre de trois grandes approches d'analyse:
@@ -287,7 +283,7 @@ Les principaux avantages de cette approche sont ses aspects automatisés et syst
 La présence d'une personne ne devient nécessaire que pour vérifier que la procédure a fonctionné correctement: c'est l'étape du contrôle de qualité (ou QC, pour "quality control").
 On va aussi tester la morphologie du cerveau à travers l'ensemble de la matière grise.
 D'un autre côté, cette technique comporte aussi un inconvénient important.
-En effet, le grand nombre de mesures générées pose un problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques (voir le [Chapitre 10: Cartes statistiques](cartes_statistiques.html)).
+En effet, le grand nombre de mesures générées pose un problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques (voir le [Chapitre 10: Cartes statistiques](cartes-statistiques-chapitre)).
 
 ### Segmentation
 ```{code-cell} ipython 3
@@ -534,9 +530,7 @@ Afin de pouvoir comparer les valeurs de densité de matière grise entre les suj
 Contrairement à la volumétrie manuelle, où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière.
 Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut procéder à des tests statistiques à chaque voxel.
 Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise.
-C'est généralement ce genre d'image qui sera par la suite inséré à l'intérieur des publications scientifiques.
-
-> Les détails concernant les modèles stastistiques seront présentés dans le [Chapitre 6: Régression linéaire](regression.html).
+C'est généralement ce genre d'image qui sera par la suite inséré à l'intérieur des publications scientifiques. 
 
 ### Contrôle qualité
 ```{figure} ./morphometrie/segmentation-error-volume-fig.png
@@ -555,7 +549,7 @@ Il est donc nécessaire de prévoir une étape de contrôle de qualité afin de 
 ```{figure} ./morphometrie/surface-fig.png
 ---
 width: 600px
-name: morphometrie-durer-fig
+name: surface-fig
 ---
 Illustration de la position de la surface piale et de la surface intérieure.
 En haut: coupe d'IRM pondérée en T1 avec les surfaces estimées de manière automatique.
