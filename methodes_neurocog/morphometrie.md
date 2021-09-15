@@ -241,6 +241,24 @@ Cette figure illustre les différences de volume de l'hippocampe entre participa
 ```
 Pour les analyses statistiques, on extrait le volume de chaque structure segmentée (en $mm^3$), et on peut par exemple comparer statistiquement le volume moyen entre deux groupes, ou tester l'association du volume avec une variable comme l'âge. Par exemple, dans la {numref}`ledig2018-stats-fig`, on compare le volume de l'hippocampe entre différents groupes cliniques avec différents risques de la maladie d'Alzheimer.
 
+### Contrôle qualité
+```{figure} ./morphometrie/artefact-fig.png
+---
+width: 600px
+name: artefact-fig
+---
+La présence de métals ou d'éléments défectueux dans le scanner peuvent provoquer des artefacts et des distortions dans les images, qui ne reflètent pas la morphologie réelle de la tête. Figure d'origine inconnue, possiblement sous droits réservés.
+```
+```{figure} ./morphometrie/qc-fail-fig.png
+---
+width: 600px
+name: qc-fail-fig
+---
+Le recalage peut parfois échouer de manière spectaculaire. Ici, la forme rouge indique le pourtour attendu du cerveau, et de certains repères anatomiques. L'IRM individuelle recalée n'est pas du tout alignée avec les repères attendus. Figure par P Bellec, sous licence CC-BY.
+```
+Il est possible d'obtenir des résultats aberrants en volumétrie, soit à cause de la présence d'erreurs dans les étapes de recalage linéaire et/ou non-linéaire ({numref}`qc-fail-fig`), soit à cause d'artefacts lors de l'acquisition des données (présence d'objects métalliques, etc, {numref}`artefact-fig`). Il est important d'effectuer un contrồle qualité afin d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
+Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées.
+
 ## VBM
 
 ### Densité de matière grise
@@ -350,18 +368,6 @@ Une étape importante de la VBM est la segmentation. Cette analyse vise à caté
 Il est possible que la segmentation automatique nous retourne certains tissus non-désirés, mais dont les valeurs dont les valeurs dans l'image sont similaires à celle de la matière grise. Il est ainsi possible que des voxels se trouvant directement sur la jonction entre une zone blanche et une zone noire (par exemple, sur une paroi de matière blanche qui borderait un ventricule) aient comme valeur résultante une valeur s'apparentant plutôt au gris associé à la matière grise (valeur moyenne entre blanc et noir). On appelle ce genre d'effet de mélange de noir et de blanc les volumes partiels (une partie du volume du voxel est blanche alors que l'autre partie est noire).
 ```
 
-```{admonition} Erreurs de segmentation
-:class: tip
-Il est possible de perdre certaines structures pour lequelles le contraste entre la matière blanche et matière grise n'est pas assez important pour que l'algorithme réussisse à les classifier efficacement. Pour ce genre de structure, il est important d'ajouter des a priori (des règles, ou conditions supplémentaires) afin de ne pas les perdre. Il est aussi envisageable de corriger cette partie de la segmentation de façon manuelle.
-
-```{figure} ./morphometrie/segmentation-error-volume-fig.png
----
-width: 600px
-name: segmentation-error-volume-fig
----
-Image de gauche: IRM individuelle pondérée en T1. Image de droite: classification matière grise et matière blanche générée par le logiciel [ANTS](http://stnava.github.io/ANTs/). Notez comment la matière blanche proche du gyrus est classifié de manière erronnée comme matière grise. Image sous licence CC Attribution, tirée de Klein et al., 2017 {cite:p}`Klein2017-zh`.
-```
-
 ### Lissage
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -421,7 +427,7 @@ from nilearn import datasets
 from nilearn.input_data import NiftiMasker
 from nilearn.image import get_data
 
-n_subjects = 50  # more subjects requires more memory
+n_subjects = 100  # more subjects requires more memory
 
 # Charge les données
 oasis_dataset = datasets.fetch_oasis_vbm(n_subjects=n_subjects)
@@ -480,6 +486,17 @@ Régression linéaire en VBM. On teste ici l'effet de l'âge sur un groupe (N=50
 ```
 Afin de pouvoir comparer les valeurs de densité de matière grise entre les sujets, on utilise la même procédure de {ref}`recalage <registration-tip>` non-linéaire que pour la volumétrie automatique. Contrairement à la volumétrie manuelle où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière. Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut faire des tests statistiques à chaque voxel. Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise. C'est généralement le genre d'image qui sera par la suite utilisé lors de publications scientifiques. Les détails concernant les modèles stastistiques seront présentés dans le chapitre sur la [régression linéaire](regression.html).
 
+### Contrôle qualité
+```{figure} ./morphometrie/segmentation-error-volume-fig.png
+---
+width: 600px
+name: segmentation-error-volume-fig
+---
+Image de gauche: IRM individuelle pondérée en T1. Image de droite: classification matière grise et matière blanche générée par le logiciel [ANTS](http://stnava.github.io/ANTs/). Notez comment la matière blanche proche du gyrus est classifié de manière erronnée comme matière grise. Image sous licence CC Attribution, tirée de Klein et al., 2017 {cite:p}`Klein2017-zh`.
+```
+Comme pour toute opération automatisée, il existe toujours une possibilité d'erreur en VBM.
+Il est donc nécessaire de prévoir une étape de contrôle de qualité afin de s'assurer qu'il n'y a pas eu d'aberrations qui se sont introduites dans les traitements. On a déjà discuté des artefacts dans les données ainsi que des problèmes de recalage. La VBM est très sensible aux erreurs dans l'étape de segmentation. Il est possible de perdre certaines structures pour lequelles le contraste entre la matière blanche et matière grise n'est pas assez important pour que l'algorithme réussisse à les classifier efficacement. Pour ce genre de structure, il est important d'ajouter des a priori (des règles, ou conditions supplémentaires) afin de ne pas les perdre. Il est aussi envisageable de corriger cette partie de la segmentation de façon manuelle, ou d'exclure les données de certains participants.
+
 ## Analyses de surface
 
 ### Extraction de surface
@@ -492,6 +509,21 @@ Illustration de la position de surface piale et de la surface intérieure. En ha
 ```
 Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu'elles utilisent la forme de ruban de la matière grise, qui s'étend en surface de la matière blanche. En plus des étapes de segmentation et de recalage que l'on a vu précédemment, on va utiliser un algorithme qui va détecter la surface _piale_, à la frontière entre la matière grise et le liquide céphalo-rachidien, et la surface _intérieure_, ou surface _blanche_, à la frontière entre la matière blanche et la matière grise. Il faudra également, comme pour la VBM, extraire un masque du cerveau en éliminant les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.). Cette surface peut être visualisée comme un objet 3D, et donne lieu à de [magnifiques visulisations interactives](https://gallantlab.org/huth2016/).
 
+```{admonition} Croissance de ballon
+:class: tip
+Pour estimer la position des surfaces piale et intérieure, on place un ballon virtuel au centre de chacun des hémisphères du cerveau.
+On modélise ensuite des contraintes physiques à la frontière entre la matière blanche et la matière grise (surface interne).
+On procède ensuite à "gonfler" ce ballon jusqu'à ce qu'il épouse le mieux possible la frontière de la surface interne (jusqu'à ce que le ballon soit gonflé jusqu'à occuper tout l'espace dans la cavité et suivre l'ensemble des courbes de la paroi).
+Il est aussi possible de faire la procédure inverse.
+On pourrait en effet générer un ballon virtuel autour de chacun des hémisphères et les "dégonfler" jusqu'à ce qu'ils épousent les contours des frontières délimitées par les contraintes physiques.
+Lorsque l'une des frontières (surface interne ou surface piale) est délimitées, il est possible de continuer la procédure de gonflement/dégonflement afin d'obtenir la seconde surface.
+```
+
+```{admonition} Attention
+:class: caution attention
+:name: controle-qualite-attention
+Les techniques d'extraction de surface telles que celle proposée par le logiciel FreeSurfer sont coûteuses en terme de ressources de calcul. Générer une surface à partir d'une IRM structurelle peut prendre 10 heures sur un ordinateur standard.
+```
 
 ### Épaisseur, surface et volume
 ```{figure} ./morphometrie/thickness-fig.png
@@ -503,46 +535,52 @@ Illustration des mesures de surface, épaisseur et volume du cortex. Figure adap
 ```
 La reconstruction de la géométrie de la surface va permettre de décomposer le volume de la matière grise en une épaisseur locale, et une surface locale. Ces deux propriétés peuvent maintenant être étudiées séparément, contrairement à une analyse VBM, et il a été démontré qu'elles associent de manière distincte avec différentes conditions neurologiques et psychiatriques. Plutôt que de procéder à l'analyse du contenu d'unités de volume (voxels), comme c'était le cas pour la VBM, on utilisera ici l'analyse du contenu d'unités de surface: les **vertex**.
 
-```{warning}
+```{admonition} Attention
+:class: caution attention
 :name: surface-warning
 Qui dit surface corticale, sous-entend aussi que les structures sous-corticales sont laissées de côté. Pour les structures enfouies dans la boîte crânienne telles que les thalami et les ganglions de la base, il faut combiner l'analyse de surface avec une volumétrie automatique (pour le sous-cortical).
 ```
 
-### Contrôle qualité
-Il y a en effet un aspect de contrôle de qualité qui doit être vérifié à ce stade afin de ne pas mettre en péril l'ensemble des étapes suivantes.
-- On procédera ensuite à la **délimitation des surfaces** piale et interne.
-Pour ce faire, on modélisera un volume en forme de ballon virtuel au centre de chacun des hémisphères du cerveau.
-On définit ensuite des contraintes physiques (délimitation de la "cavité" interne dans laquelle le ballon peut évoluer) afin de marquer la frontière entre la matière blanche et la matière grise (surface interne).
-On procède ensuite à "gonfler" ce ballon jusqu'à ce qu'il épouse le mieux possible la frontière de la surface interne (jusqu'à ce que le ballon soit gonflé jusqu'à occuper tout l'espace dans la cavité et suivre l'ensemble des courbes de la paroi).
-Il est aussi possible de faire la procédure inverse.
-On pourrait en effet générer un ballon virtuel autour de chacun des hémisphères et les "dégonfler" jusqu'à ce qu'ils épousent les contours des frontières délimitées par les contraintes physiques.
-Lorsque l'une des frontières (surface interne ou surface piale) est délimitées, il est possible de continuer la procédure de gonflement/dégonflement afin d'obtenir la seconde surface.
-On peut ensuite utiliser la distance entre les deux surfaces en un point donné afin d'évaluer l'épaisseur corticale pour ce vertex.
-Cette distance est obtenue en prenant la perpendiculaire à l'une des surfaces et en mesurant la distance entre les deux surfaces le long de cette perpendiculaire.
-Ce genre de technique permet par la suite de générer des cartes d'épaisseur corticale.
+### Analyses statistiques
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+from nilearn import datasets
+fsaverage = datasets.fetch_surf_fsaverage()
 
-- La dernière étape des analyses de surfaces marque un retour aux similitudes avec les techniques de volumétrie: c'est l'étape des **analyses statistiques**.
+from nilearn.plotting import plot_surf_stat_map
+from nilearn.surface import vol_to_surf
+fig = plt.figure(figsize=(10, 8))
 
-## Contrôle de qualité
-Comme pour toute opération automatisée, il reste toujours une possibilité d'erreur au cours du processus de recalage.
-Il est donc nécessaire de prévoir une étape de vérification des résultats afin de s'assurer qu'il n'y a pas eu d'aberrations qui se sont introduites dans les données.
-Ces aberrations peuvent venir de plusieurs sources différentes:
-- Erreurs dans les étapes de recalage linéaire et/ou non-linéaire
-- Présence d'artéfacts lors de l'acquisition des données (présence d'objects métalliques, etc.)
-- Etc.
+texture = vol_to_surf(signed_neg_log_pvals_unmasked, fsaverage.pial_right)
 
-Cette vérification de la qualité des images permettra d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
-Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées, c'est pourquoi il est primordial de garder ce risque en tête lors du traitement des données.
+plot_surf_stat_map(fsaverage.white_right, texture, hemi='right', view='lateral',
+                            title='Surface blanche hémisphère droit', colorbar=True,
+                            threshold=0.5, bg_map=fsaverage.sulc_right,
+                            figure=fig)
 
-```{admonition} Attention
-:class: caution attention
-:name: controle-qualite-attention
-Malheureusement, ce genre de technique est coûteuse en terme de ressources de calcul et des erreurs peuvent survenir à plusieurs niveaux.
-Par exemple, cette technique est particulièrement peu robuste face aux effets des volumes partiels.
-On pourrait en effet avoir une surface qui ne se rend pas jusqu'au fond d'un sulcus, ou lorsque les giri sont très rapprochés, qui ne rentre même pas à l'intérieur du sulcus.
-Le résultat de ces deux types d'erreurs, qui sont possibles autant sur la surface piale que sur la surface interne, sera une forte surestimation localisée de l'épaisseur corticale.
-C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment.
+from myst_nb import glue
+glue("surf-stat-fig", fig, display=False)
 ```
+```{glue:figure} surf-stat-fig
+:figwidth: 700px
+:name: surf-stat-fig
+ Projection de la carte statistique présentée en {numref}`vbm-fig` sur l'atlas de surface corticale `fsaverage`. Cette figure est adapté d'un tutoriel [Nilearn](https://nilearn.github.io/modules/generated/nilearn.plotting.plot_surf_stat_map.html).
+```
+Les analyses statistiques fonctionnent exactement pareil pour les analyses de surface que pour la VBM. Mais à la place de faire un test pour chacun des voxels (comme en VBM), on fait maintenant un test pour chaque vertex (surface).
+
+
+### Contrôle qualité
+```{figure} ./morphometrie/segmentation-error-surface-fig.png
+---
+width: 600px
+name: segmentation-error-surface-fig
+---
+Image de gauche: IRM individuelle pondérée en T1. Image de droite: Extraction de surface automatisée. Notez que la surface piale ne suit pas correctement l'interface entre la matière grise et le liquide céphalo-rachidien à l'endroit indiqué. Image sous licence CC Attribution, tirée de Klein et al., 2017 {cite:p}`Klein2017-zh`.
+```
+La technique d'extraction de surface n'est pas robuste aux effets de volumes partiels.
+On pourrait en effet avoir une surface qui ne se rend pas jusqu'au fond d'un sulcus, ou lorsque les gyri sont très rapprochés, qui ne rentre même pas à l'intérieur du sulcus.
+Le résultat de ces deux types d'erreurs, qui sont possibles autant sur la surface piale que sur la surface interne, sera une forte surestimation localisée de l'épaisseur corticale.
+C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment sur l'ensemble des images, et de corriger les erreurs de segmentation à la main, ou bien exclure les données de certains participants.
 
 ## Conclusion
 Ce chapitre vous a introduit aux différentes familles de techniques de morphologie computationnelle qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique. On a discuté de plusieurs techniques clés d'analyse d'image, et l'on a parlé de modèles statistiques.
