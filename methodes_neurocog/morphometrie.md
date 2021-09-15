@@ -27,6 +27,14 @@ kernelspec:
         <a title="Révision du texte">👀</a>
     </td>
     <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
       <a href="https://github.com/pbellec">
         <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
         <br /><sub><b>Pierre bellec</b></sub>
@@ -35,6 +43,8 @@ kernelspec:
         <a title="Contenu">🤔</a>
         <a title="Quizz">⚠️</a>
         <a title="Révision du texte">👀</a>
+        <a title="Code">💻</a>
+        <a title="Quizz">⚠️</a>
     </td>
   </tr>
 </table>
