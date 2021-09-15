@@ -644,7 +644,7 @@ Projection de la carte statistique présentée à la {numref}`vbm-fig` sur l'atl
 Les analyses statistiques fonctionnent exactement de la même façon pour les analyses de surface que pour la VBM.
 Mais à la place de faire un test statistique au niveau de chacun des voxels (comme en VBM), on fait maintenant un test pour chacun des vertex (surface).
 
-### Contrôle qualité
+### Contrôle de qualité
 ```{figure} ./morphometrie/segmentation-error-surface-fig.png
 ---
 width: 600px
