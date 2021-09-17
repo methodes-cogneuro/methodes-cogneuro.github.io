@@ -224,7 +224,7 @@ Y(t) &\quad \text{sortie : réponse hémodynamique}\\
 La fonction de réponse hémodynamique, et ses propriétés mathématiques, constituent une autre hypothèses importante pour les aspects de modélisation en IRMf. Essentiellement, la fonction ce modèle sous-tend les inférences que l'on fait sur l'organisation fonctionnelle du cerveau: nous l'employons dans le but d'estimer la réponse à une tâche ou condition donnée. 
 
 #### Propriétés mathématiques 
-La figure qui suit montre la réponse hémodynamique attendue suite à une stimulation au temps 0. Bien que simplifiée, elle permet de visualiser la fonction largement admis, décrivant relation maintenue entre l'activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps. 
+La figure qui suit montre la réponse hémodynamique attendue suite à un pic d'activation au temps 0. Bien que simplifiée, elle permet de visualiser la fonction largement admis, décrivant relation maintenue entre l'activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps. 
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -245,7 +245,7 @@ a.set_ylabel('% Signal BOLD')
 plt.axvline(x=0, marker = "o", color = "r")
 plt.title("La fonction de réponse hémodynamique")
 ```
-Dans la figure ci-haut, l'axe des $X$ représente le temps, et l'axe de $Y$, le **%** du changement du signal BOLD. La ligne verticale rouge indique le début de la stimulation. La courbe bleue, pour sa part, illustre le % du changement du signal BOLD attendu suivant la stimulation. Ci-dessous sont décrit quelques caractéristiques importantes de la fonction de réponse hémodynamique. 
+Dans la figure ci-haut, l'axe des $X$ représente le temps, et l'axe de $Y$, le **%** du changement du signal BOLD. La ligne verticale rouge indique le pic d'activation neuronale. La courbe bleue, pour sa part, illustre le % du changement du signal BOLD attendu suivant l'activation neuronale. Ci-dessous sont décrit les caractéristiques importantes de la fonction de réponse hémodynamique. 
 
 - **Résolution temporelle**: Réponse lente, durée entre **15 à 20 secondes** suivant le stimulus
 - **Temps avant l'atteinte de l'amplitude maximale** :Atteint l'amplitude maximale après **4 à 6 secondes** 
