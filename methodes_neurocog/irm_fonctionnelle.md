@@ -178,11 +178,11 @@ Quelle est l'origine du **signal BOLD**? L'hémoglobine existe sous deux états,
 - L'**oxyhémoglobine** est **diamagnétique**
 - La **déoxyhémoglobine** est **paramagnétique**
 
-Ceci implique que lorsque soumises à des séquences d'impulsions électromagnétiques, les molécules se comportent de manière caractéristique. La déoxyhémoglobine créer des inhomogénéités du champ, alors que l'oxyhémoglobine n'a pas d'effet sur ce champ. Les séquences  $T2$* sont sensibles à aux homogénéités de champ. 
+Ceci implique que lorsque soumises à des séquences d'impulsions électromagnétiques, les molécules se comportent de manière caractéristique. La déoxyhémoglobine créer des inhomogénéités du champ, alors que l'oxyhémoglobine n'a pas d'effet sur ce champ. Les séquences  $T2$*, qui sont celles employées en IRMf, sont sensibles à de telles homogénéités de champ. 
 
 > Pour un rappel sur les notions de relaxation de l'IRM, consultez le [chapitre 2: l'imagerie par résonnance magnétique fonctionnelle](https://psy3018.github.io/irm.html)
 
-La déoxyhémoglobine, donc, déforme donc le champ magnétique  $BO$ induit par l'aimant, ce qui fait en sorte que le temps de relaxation  $T2$* est plus rapide. Ceci a pour effet de réduire le signal BOLD là où le sang est déoxygéné, et à l'inverse de l'amplifier là où le sang est plutôt oxygéné.
+La déoxyhémoglobine déforme donc le champ magnétique  $BO$ induit par l'aimant, ce qui fait en sorte que le temps de relaxation  $T2$* est plus rapide. Ceci a pour effet de réduire le signal BOLD là où le sang est déoxygéné, et à l'inverse de l'amplifier là où le sang est plutôt oxygéné.
 
 |               |   `Déoxyhémoglobine`     | `Oxyhémoglobine`  |
 | ------------- |:-------------:| -----:|
