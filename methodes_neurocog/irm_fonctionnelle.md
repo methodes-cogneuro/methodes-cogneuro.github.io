@@ -327,7 +327,7 @@ Quelques exemples d'**artéfacts**:
 
 - `Le recalage`
 
-- `Le filtrage de facteurs de non-intérêts`
+- `Le filtrage de facteurs de non-intérêt`
 
 - `Lissage spatiale`
 
