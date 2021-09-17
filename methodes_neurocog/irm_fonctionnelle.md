@@ -339,7 +339,7 @@ Une image est une **matrice de nombres**, qui contient des valeurs en chaque poi
 ```
 #### Recalage
 
-Le recalage consiste à aligner une image à une image de référence. C'est une étape de prétraitement complétée avant les analyses statistiques, comme celles-ci présupposent qu'il y a une correspondance entre les voxels de différentes images. Le recalage s'assure qu'un voxel ou qu'une région d'intérêt donné(e) maintient de mêmes coordonnées à travers les images d'un même individu (analyses individuelles) ou/et à travers les images de différents individus (analyses de groupe). Plusieurs notions de cette section font un rappel de ce qui a été vu dans le cours sur les analyses morphométriques. 
+Le recalage consiste à aligner une image à une image de référence. C'est une étape de prétraitement complétée avant les analyses statistiques, comme celles-ci présupposent qu'il y a une correspondance entre les voxels de différentes images. Le recalage s'assure qu'un voxel maintient de mêmes coordonnées à travers les images d'un même individu (analyses individuelles) ou/et à travers les images de différents individus (analyses de groupe). Plusieurs notions de cette section font un rappel de ce qui a été vu dans le cours sur les analyses morphométriques. 
 
 > Pour un rappel, consultez le [Chapitre 3: Analyses morphométriques](https://psy3018.github.io/morphometrie.html)
 
