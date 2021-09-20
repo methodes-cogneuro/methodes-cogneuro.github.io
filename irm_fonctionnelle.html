@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -242,36 +244,102 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#couplage-neurovasculaire">
-   Couplage neurovasculaire
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modele-de-reponse-hemodynamique">
-   Modèle de réponse hémodynamique
+  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
+   Principes physiques et physiologiques
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#images-3d-t">
+     Images 3D+t
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#couplage-neurovasculaire">
+     Couplage neurovasculaire
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-signal-bold">
+     Le signal BOLD
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fonction-de-reponse-hemodynamique">
+   Fonction de réponse hémodynamique
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorie-des-systemes">
+     Théorie des systèmes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proprietes-mathematiques">
+     Propriétés mathématiques
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pretraitement-des-donnees-d-irmf">
      Prétraitement des données d’IRMf
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recalage">
+       Recalage
+      </a>
+     </li>
+    </ul>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-statistiques">
+   Analyse statistiques
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cartes-d-activation">
-     Cartes d’activation
+    <a class="reference internal nav-link" href="#irmf-experience-basee-sur-une-tache">
+     IRMf - Expérience basée sur une tâche
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conclusions-et-references-suggerees">
-     Conclusions et références suggérées
+    <a class="reference internal nav-link" href="#regression-univariee">
+     Régression univariée
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     Références
+    <a class="reference internal nav-link" href="#irmf-cartes-d-activation">
+     IRMf - Cartes d’activation
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#un-peu-d-histoire-gall">
+   Un peu d’histoire - Gall -
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cartes-d-activation">
+   Cartes d’activation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions-et-references-suggerees">
+   Conclusions et références suggérées
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   Références
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercices">
@@ -299,7 +367,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id23">
+    <a class="reference internal nav-link" href="#id27">
      Exercice 4
     </a>
    </li>
@@ -364,26 +432,272 @@
 </div>
 <div class="section" id="objectifs-du-cours">
 <h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle">L’imagerie par résonnance magnétique fonctionnelle</a>
+est une modalité d’imagerie qui permet de mesurer indirectement l’activité cérébrale. L’IRMf acquière des images du cerveau en action en relation avec différentes conditions expérimentales, ayant été conçues pour isoler des processus cognitifs spécifiques. L’IRMf permet donc de cartographier l’organisation fonctionnelle du cerveau, dans différents contextes cognitifs.</p>
+<div class="figure align-default" id="irmf-fig">
+<a class="reference internal image-reference" href="_images/irmf.jpg"><img alt="_images/irmf.jpg" src="_images/irmf.jpg" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Les images d’IRMf permettent d’observer l’activation cérébrale, tiré de <a class="reference external" href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle#/media/Fichier:Researcher-test.jpg">wikipedia</a>.</span><a class="headerlink" href="#irmf-fig" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="couplage-neurovasculaire">
-<h2>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-input docutils container">
+<p>Les objectifs spécifiques du cours sont:</p>
+<ul class="simple">
+<li><p>Comprendre les principes <strong>physiques</strong> et <strong>physiologiques</strong> du signal en IRMf.</p></li>
+<li><p>Comprendre le modèle de la <strong>réponse hémodynamique</strong>, invariante dans le temps, qui permet d’estimer le niveau d’activation en réponse à divers paradigmes expérimentaux.</p></li>
+<li><p>Connaître les principales étapes de <strong>pré-traitement</strong> des données IRMf, soit le <strong>recalage</strong>, le <strong>lissage spatial</strong> et le <strong>filtrage de facteurs de non-intérêt</strong>. ces étapes sont nécessaires afin de réduire le bruit dans le signal IRMf, qui ne reflète pas l’activité neuronale.</p></li>
+<li><p>Connaître le principe de génération d’une <strong>carte d’activation</strong>, qui, à l’aide de modèles statistiques, permet de tester des hypothèses sur l’organisation fonctionnelle du cerveau.</p></li>
+</ul>
+</div>
+<div class="section" id="principes-physiques-et-physiologiques">
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="images-3d-t">
+<h3>Images 3D+t<a class="headerlink" href="#images-3d-t" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">IRM</span> <span class="pre">structurelle</span></code></p></th>
+<th class="text-align:right head"><p><code class="docutils literal notranslate"><span class="pre">IRM</span> <span class="pre">fonctionnelle</span> <span class="pre">(T2*)</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Objet</span> <span class="pre">d'étude</span></code></p></td>
+<td class="text-align:center"><p><strong>Anatomie, structures et propriétés des tissus</strong></p></td>
+<td class="text-align:right"><p><strong>Organisation fonctionnelle</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Dimension</span></code></p></td>
+<td class="text-align:center"><p>1 volume - <strong>3D</strong></p></td>
+<td class="text-align:right"><p>Plusieurs volumes dans le temps - <strong>4D</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Durée</span> <span class="pre">de</span> <span class="pre">l'acquisition</span></code></p></td>
+<td class="text-align:center"><p>Plusieurs minutes</p></td>
+<td class="text-align:right"><p>Secondes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Les images d’IRMf sont un peu comme un film du cerveau en action. Elles sont composées d’une <strong>série de volumes 3D</strong> qui se succèdent à une fréquence donnée, plutôt que d’un unique volume comme c’était le cas en IRM. Nous parlons alors d’images <strong>4D</strong>, ou bien <strong>3D+t</strong> puisqu’aux dimensions spatiales (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>) s’ajoute la dimension du temps <code class="docutils literal notranslate"><span class="pre">t</span></code>. Nous pourrions, par exemple, acquérir 1 volume cérébral toutes les 2 secondes, pendant 6 minutes, ce qui résulterait en un jeu de données d’IRMf composé de 180 volumes 3D du cerveau.</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#importe les librairies nécessaires</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">nilearn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="kn">import</span> <span class="n">NiftiLabelsMasker</span><span class="p">,</span> <span class="n">NiftiMasker</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># Youtube</span>
-<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/SWOww_Ensqg&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+<span class="c1"># Extraire les séries temporelles pour un sujet d&#39;un jeu de données</span>
+<span class="n">haxby_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_haxby</span><span class="p">()</span>
+<span class="n">haxby_func_filename</span> <span class="o">=</span> <span class="n">haxby_dataset</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># initialiser le masque</span>
+<span class="n">brain_masker</span> <span class="o">=</span> <span class="n">NiftiMasker</span><span class="p">(</span>
+    <span class="n">smoothing_fwhm</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">detrend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">low_pass</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">high_pass</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">t_r</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;nilearn_cache&#39;</span><span class="p">,</span> <span class="n">memory_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># appliquer le masque</span>
+<span class="n">brain_time_series</span> <span class="o">=</span> <span class="n">brain_masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">haxby_func_filename</span><span class="p">,</span>
+                                               <span class="n">confounds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="c1"># fonctions de visualisations pour le voxel 3D</span>
+<span class="k">def</span> <span class="nf">expand_coordinates</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">indices</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">z</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+
+<span class="k">def</span> <span class="nf">explode</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">shape_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">shape_arr</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">exploded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">size</span><span class="p">,</span> <span class="n">shape_arr</span><span class="p">[</span><span class="mi">3</span><span class="p">:]]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">exploded</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">return</span> <span class="n">exploded</span>
+
+<span class="c1"># initialisation de la figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># visualiser le voxel</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="s1">&#39;#1f77b430&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">explode</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">filled</span> <span class="o">=</span> <span class="n">explode</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">expand_coordinates</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">filled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">z</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">voxels</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">filled</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">shade</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Voxel (3D)&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ajouter séries temporelles</span>
+<span class="c1"># random voxel</span>
+<span class="n">voxel</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">brain_time_series</span><span class="p">[:,</span> <span class="n">voxel</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Décours temporel d&#39;un voxel&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temps(s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Signal BOLD&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;voxel-timeseries-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="figure align-default" id="voxel-timeseries-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/SWOww_Ensqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+<img alt="_images/irm_fonctionnelle_1_1.png" src="_images/irm_fonctionnelle_1_1.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">Illustration d’un élément de volume (voxel), de taille 3 mm x 3 mm x 3 mm, et le décours temporel IRMf associé.</span><a class="headerlink" href="#voxel-timeseries-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le volume du cerveau (3D) est formé plusieurs milliers voxels, qui sont de petites unités de volumes (3D) ayant une coordonnée dans l’espace <strong>x, y, z</strong>. En IRMf, pour chaque voxel du cerveau, nous détenons plusieurs points de mesure de l’activité dans le temps, ce qui forme ce que l’on appelle une <strong>série temporelle</strong> ou <strong>décours temporel</strong>. Typiquement, quelques dizaines à centaines de points de mesures décrivent la série temporelle. Ces points de mesures sont séparées par un intervalle de temps, qui peut varier de millisecondes à secondes. Ces caractéristiques représentent un bon compromis entre résolution spatiale et temporelle. Comme nous le verrons plus loin, la série temporelle reflète de manière indirecte les changements d’activité neuronale dans le temps. Une grande partie du travail en IRM fonctionnelle consiste à analyser ces séries temporelles.</p>
+<div class="tip admonition" id="resolution">
+<p class="admonition-title">Compromis entre résolution spatiale vs temporelle en IRMf</p>
+<p>Lorsque l’on choisit une séquence d’IRMf, on est souvent amené à privilégier la résolution temporelle vs spatiale. On peut par exemple faire des images du cerveau entier en 700 ms avec une résolution spatiale de 3 x 3 x 3 mm<span class="math notranslate nohighlight">\(^3\)</span>, ou bien acquérir la même image avec une résolution spatiale de 2 x 2 x 2 mm<span class="math notranslate nohighlight">\(^3\)</span>, mais cette fois ci en 1500 ms. Il n’y a pas un choix de paramètre meilleur qu’un autre, mais la chercheuse doit décider si la résolution spatiale ou temporelle est plus importante pour ses questions de recherche.</p>
 </div>
 </div>
-<div class="section" id="modele-de-reponse-hemodynamique">
-<h2>Modèle de réponse hémodynamique<a class="headerlink" href="#modele-de-reponse-hemodynamique" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="couplage-neurovasculaire">
+<h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="neurovascular-fig">
+<a class="reference internal image-reference" href="_images/neurovascular-fig.jpg"><img alt="_images/neurovascular-fig.jpg" src="_images/neurovascular-fig.jpg" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text"><strong>Résumé de l’architecture neuro-gliale-vasculaire</strong>. (a) Les astrocytes s’enveloppent autour des synapses, et ont des projections jusqu’à la surface des micro-cappilaires. (b) Les astrocytes établissent des domaines anatomiques exclusifs, qui chevauchent de manière minimale ceux de leurs voisins astrocytes. (c) Schéma représentant la morphologie d’une cellule gliale, avec un corps connecté à une structure en arbre. (d) Micro-circuit neuronal. (e) microvascularisation cérébrale. (f) illustration de la taille des micro-circuits neuronaux et de la vascularisation. (g) pourcentage d’occupation du volume dans l’espace du circuit. Figure tirée de l’article par Zisis et coll. (2021) <span id="id1">[<a class="reference internal" href="#id25">ZKK+21</a>]</span>, sous licence CC-BY-NC-ND.</span><a class="headerlink" href="#neurovascular-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le lien entre activité neuronale et signal IRMf repose sur le phénomène du <strong>couplage neurovasculaire</strong>, et plus spécifiquement le couplage entre l’activité post-synaptique des neurones et les micro-capillaires sanguins. La production de neurotransmetteurs dans la fente synaptique entrainent une série de réactions chimiques dans les cellules gliales avoisinantes. Lorsque l’activité neuronale augmente, les réactions chimiques qui l’accompagnent entrainent une <strong>demande métabolique</strong> en nutriments et ultimement l’extraction d’oxygène dans les micro-capillaires de manière locale. Les événements suivants se produisent alors:</p>
+<ul class="simple">
+<li><p>augmentation du volume des capillaires;</p></li>
+<li><p>augmentation du flux sanguin;</p></li>
+<li><p>augmentation l’acheminement en oxygène (oxyhémoglobine) vers les populations de neurones actives.</p></li>
+</ul>
+<p>L’augmentation d’extraction d’oxygène entraine donc de manière paradoxale une augmentation locale de la concentration en d’<strong>oxyhémoglobine</strong> (sang oxygéné) par rapport à la concentration en <strong>déoxyhémoglobine</strong> (sang déoxygéné) localement, ce qui est dédectable au moyen de l’IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) <span id="id2">[<a class="reference internal" href="#id26">BWF98</a>]</span>.</p>
+</div>
+<div class="section" id="le-signal-bold">
+<h3>Le signal BOLD<a class="headerlink" href="#le-signal-bold" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="spin-fig">
+<a class="reference internal image-reference" href="_images/hemoglobine-fig.jpg"><img alt="_images/hemoglobine-fig.jpg" src="_images/hemoglobine-fig.jpg" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Illustration du transport de l’oxygène par l’hémoglobine dans le sang. Image <a class="reference external" href="https://www.shutterstock.com/image-illustration/vector-science-medical-icon-blood-hemoglobin-1472480087">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1472480087</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#spin-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Quelle est l’origine du <strong>signal BOLD</strong>? L’hémoglobine existe sous deux états, soit l’état oxygéné (porteur de l’oxygène) et déoxygéné (non-porteur d’oxygène). La présence de l’oxygène modifie les propriétés éléctromagnétiques de cette molécule:</p>
+<ul class="simple">
+<li><p>L’<strong>oxyhémoglobine</strong> est <strong>diamagnétique</strong></p></li>
+<li><p>La <strong>déoxyhémoglobine</strong> est <strong>paramagnétique</strong></p></li>
+</ul>
+<p>Ce que cela veut dire, c’est que quand elles sont soumises à des impulsions électromagnétiques, ces deux molécules se comportent de manière très différente. La déoxyhémoglobine va créer des inhomogénéités du champ magnétique, alors que l’oxyhémoglobine n’a pas d’effet sur ce même champ. Les séquences IRM pondérées <span class="math notranslate nohighlight">\(T_2^*\)</span> sont très sensibles à de telles inhomogénéités. La déoxyhémoglobine déforme donc le champ magnétique <span class="math notranslate nohighlight">\(B_O\)</span> induit par l’aimant, ce qui fait en sorte que le temps de relaxation <span class="math notranslate nohighlight">\(T_2^*\)</span> est plus rapide. Les images acquises en IRMf utilisent donc un contraste en <span class="math notranslate nohighlight">\(T_2^*\)</span>, et cela a pour effet d’amplifier le signal quand le sang devient plus oxygéné en réponse à une augmentation de l’activité neuronale. Pour cette raison, le signale utilisé en IRMf est appelé signal BOLD, pour <em>Blood oxygenation level-dependent</em>, soit signal dépendant de l’oxygénation du sang.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">Déoxyhémoglobine</span></code></p></th>
+<th class="text-align:right head"><p><code class="docutils literal notranslate"><span class="pre">Oxyhémoglobine</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Propriétés électromagnétiques</p></td>
+<td class="text-align:center"><p>Diamagnétique</p></td>
+<td class="text-align:right"><p>Paramagnétique</p></td>
+</tr>
+<tr class="row-odd"><td><p>Impact sur le signal BOLD</p></td>
+<td class="text-align:center"><p><strong>Réduit</strong> le signal BOLD</p></td>
+<td class="text-align:right"><p><strong>Augmente</strong> le signal BOLD</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(T2\)</span>*</p></td>
+<td class="text-align:center"><p>Décroît plus <strong>rapidement</strong></p></td>
+<td class="text-align:right"><p>Décroît plus <strong>lentement</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Effet sur le champ</p></td>
+<td class="text-align:center"><p><strong>Ajout d’inhomogénéités/distorsions</strong></p></td>
+<td class="text-align:right"><p><strong>Pas d’inhomogénétités</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="caution attention admonition" id="neurovascular-warning">
+<p class="admonition-title">Attention!</p>
+<p>Le signal BOLD en IRMf constitue une <strong>mesure indirecte</strong> de l’activité neuronale. En effet, cette modalité ne mesure pas directement l’activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l’activité neuronale. Cette relation est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.</p>
+</div>
+</div>
+</div>
+<div class="section" id="fonction-de-reponse-hemodynamique">
+<h2>Fonction de réponse hémodynamique<a class="headerlink" href="#fonction-de-reponse-hemodynamique" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theorie-des-systemes">
+<h3>Théorie des systèmes<a class="headerlink" href="#theorie-des-systemes" title="Permalink to this headline">¶</a></h3>
+<p>Un système comprend un ensemble d’éléments qui interagissent selon certains principes ou règles. En présence d’un système, nous pouvons décrire et de formaliser les interactions entre ses éléments au moyen de termes mathématiques. Pourquoi parlons nous de systèmes? Parce que l’activité neuronale et le signal BOLD forme un système. La <strong>fonction de réponse hémodynamique</strong> est la formule qui contient la description ou formalisation de la relation entre les éléments de ce système, soit <strong>l’activité neuronale (<span class="math notranslate nohighlight">\(X\)</span>)</strong> et <strong>le signal BOLD (<span class="math notranslate nohighlight">\(Y\)</span>)</strong> .</p>
+<p>\begin{align}
+X(t) &amp;\quad \text{intrant : activité neuronale}\
+Y(t) &amp;\quad \text{sortie : réponse hémodynamique}\
+\end{align}</p>
+<p>La fonction de réponse hémodynamique, et ses propriétés mathématiques, constituent une autre hypothèses importante pour les aspects de modélisation en IRMf. Essentiellement, la fonction ce modèle sous-tend les inférences que l’on fait sur l’organisation fonctionnelle du cerveau: nous l’employons dans le but d’estimer la réponse à une tâche ou condition donnée.</p>
+</div>
+<div class="section" id="proprietes-mathematiques">
+<h3>Propriétés mathématiques<a class="headerlink" href="#proprietes-mathematiques" title="Permalink to this headline">¶</a></h3>
+<p>La figure qui suit montre la réponse hémodynamique attendue suite à un pic d’activation au temps 0. Bien que simplifiée, elle permet de visualiser la fonction largement admis, décrivant relation maintenue entre l’activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps.</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importer les librairies</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">nipy.modalities.fmri</span> <span class="kn">import</span> <span class="n">hrf</span><span class="p">,</span> <span class="n">utils</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># visualiser la fonction hémodynamique</span>
+<span class="n">fig_BOLD</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span>
+<span class="n">hrf_func</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">lambdify_t</span><span class="p">(</span><span class="n">hrf</span><span class="o">.</span><span class="n">glover</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">hrf_func</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">a</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t(s)&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;% Signal BOLD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;La fonction de réponse hémodynamique&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dans la figure ci-haut, l’axe des <span class="math notranslate nohighlight">\(X\)</span> représente le temps, et l’axe de <span class="math notranslate nohighlight">\(Y\)</span>, le <strong>%</strong> du changement du signal BOLD. La ligne verticale rouge indique le pic d’activation neuronale. La courbe bleue, pour sa part, illustre le % du changement du signal BOLD attendu suivant l’activation neuronale. Ci-dessous sont décrit les caractéristiques importantes de la fonction de réponse hémodynamique.</p>
+<ul class="simple">
+<li><p><strong>Résolution temporelle</strong>: Réponse lente, durée entre <strong>15 à 20 secondes</strong> suivant le stimulus</p></li>
+<li><p><strong>Temps avant l’atteinte de l’amplitude maximale</strong> :Atteint l’amplitude maximale après <strong>4 à 6 secondes</strong></p></li>
+<li><p><strong>Creux post-stimulation (<em>Undershoot</em> en anglais)</strong> : Décroît à partir de l’amplitude maximale jusqu’à se retrouver sous le seuil de base</p></li>
+<li><p><strong>Retour au seuil</strong> : La fonction retrouve le niveau de base après environ <strong>15 à 20</strong> secondes</p></li>
+<li><p><strong>Amplitude maximale</strong> : L’ordre du changement relatif du signal BOLD atteint environ <strong>5%</strong> pour des stimulations d’ordre sensorielle, alors qu’elle est plutôt de <strong>0,1 à 0,5%</strong> pour d’autres paradigmes cognitifs</p></li>
+</ul>
+<div class="tip admonition" id="adequation-du-modele-tip">
+<p class="admonition-title">Attention!</p>
+<p>Le modèle de réponse hémodynamique peut s’avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est déréglé. C’est le cas de populations qui ont une vascularisation atypique, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires.</p>
+</div>
+<p>La fonction de réponse hémodynamique présentée ci-haut se rapporte à un contexte expérimentale bien simple : une simple stimulation courte isolée. En réalité, les <strong>paradigmes expérimentaux sont beaucoup plus complexes</strong> : ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d’une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu’advient-il alors de la fonction de réponse hémodynamique? Peut-on toujours modéliser la réponse hémodynamique en tant que système, c’est-à-dire définies par des règles mathématiques? Si oui, que deviennent les propriétés de ce système?</p>
+<div class="tip admonition" id="linearite-tip">
+<p class="admonition-title">Linéarité</p>
+<ul class="simple">
+<li><p>Le système est <strong>additif</strong>. Autrement dit, la réponse à plusieurs impulsions rapprochées (ou réponse longue) correspond à la somme des réponses à ces impulsions prises indépendamment.</p></li>
+<li><p>La réponse neurale <strong>mise à l’échelle</strong> selon le facteur <strong>a</strong>, change également l’échelle de la réponse BOLD selon ce même facteur. Ceci implique que lorsque l’amplitude de la réponse neuronale est le double, la réponse BOLD est également double.```</p></li>
+</ul>
+<p>!! Figure linéarité !!</p>
+</div>
+<div class="tip admonition" id="invariance-tip">
+<p class="admonition-title">Invariance au temps</p>
+<ul class="simple">
+<li><p>Si le stimulus est décalé de <span class="math notranslate nohighlight">\(t\)</span> secondes, la réponse BOLD est aussi décalé de <span class="math notranslate nohighlight">\(t\)</span> secondes.</p></li>
+</ul>
+<p>!! Figure invariance dans le temps !!</p>
+</div>
+<p>Combinant l’ensemble de ces propriétés, nous obtenons un système relativement simple à caractériser : nous pouvons alors inférer les réponses à des stimuli complexes, ayant pour connaissance de la réponse aux stimuli court, pris indépendamment.</p>
+<p>Comment les propriétés du système ont-elles été vérifiées? Une première étude conduite par <strong>Logothetis et al. Nature Neuroscience (2001)</strong> s’est intéressée à cette question, c’est-à-dire au comportement d’un système opérant dans le cadre de paradigme expérimentaux plus complexes (ici variant la durée des stimulations). Plus précisément, elle visait à tester empiriquement l’hypothèse postulant la linéarité de ce système, c’est-à-dire décrivant une relation linéaire entre activité neuronale (<span class="math notranslate nohighlight">\(X\)</span>) et BOLD (<span class="math notranslate nohighlight">\(Y\)</span>). Dans l’étude, les auteurs ont mis en place un protocole ingénieux permettant de mesurer simultanément de l’activité LFP (<strong>activité neuronale</strong>) en électrophysiologie et le signal <strong>BOLD</strong> dans le cortex visuel du singe. Ils ont fait varier les durées d’exposition à une stimulation: les singes étaient soumis à des stimulations visuelles de 3, 6, 12 et 24 secondes (de gauche à droite et de haut en bas sur la figure). Vous trouvez ci-bas la figure des résultats de cette étude qui permet de comparer l’activité LFP et la réponse BOLD mesurées.</p>
+<p>!! Figure résultats logothetis !!</p>
+<div class="figure align-default" id="resultats-logothetis-fig">
+<a class="reference internal image-reference" href=".PLACEHOLDER.png"><img alt=".PLACEHOLDER.png" src=".PLACEHOLDER.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">L’aire bleue correspond aux LFP (activité neuronale), la courbe rouge est le signal BOLD qui est mesuré, et la courbe grise est le signal BOLD prédit par la convolution des LFP avec une fonction de réponse hémodynamique supposant un système linéaire. Le premier trait vertical représente le début de la stimulation et le second, la fin de cette stimulation. À partir des résultats, nous observons que la réponse BOLD est fonction de la durée de la stimulation. Globalement, une réponse hémodynamique plus importante (plus grande amplitude) est observée pour des stimuli qui s’étalent sur une plus longue durée.</span><a class="headerlink" href="#resultats-logothetis-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Et alors, que peut-on retirer de ces résultats? Lorsque nous regardons la figure des résultats de l’étude par <em>Logothetis et al. (2001)</em> nous observons une superposition des deux courbes <strong>signal BOLD mesuré</strong> (rouge) et <strong>signal BOLD prédit</strong> (gris). Ceci nous indique l’adéquation de l’hypothèse linéaire comme décrivant ce système, et ce, même pour des paradigmes expérimentaux augmentant en complexité!</p>
+<div class="tip admonition" id="attention">
+<p class="admonition-title">Attention!</p>
+<p>Attention! Un découplage de la réponse BOLD mesurée-prédite est observable vers la fin d’une stimulation très longue (cadrant du bas à droite), ce qui est suppose que l’hypothèse linéaire est moins bien adaptée pour de très longues stimulations.</p>
+</div>
+<p>Pour résumer, l’étude par Logothetis et al. (2001) est le premier protocole ayant permis de valider empiriquement l’hypothèse du système linéaire. Aujourd’hui, cette hypothèse a été validée à plus d’une reprise dans divers paradigmes expérimentaux. La connaissance des propriétés du modèle de réponse hémodynamique rend possible la modélisation du signal BOLD, non seulement pour des stimuli simples courts et isolés, mais également pour divers paradigmes expérimentaux complexes, qui sont beaucoup plus proche de la réalité pratique expérimentale.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -395,11 +709,140 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/91JVOAwOOyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
 </div>
 <div class="section" id="pretraitement-des-donnees-d-irmf">
 <h3>Prétraitement des données d’IRMf<a class="headerlink" href="#pretraitement-des-donnees-d-irmf" title="Permalink to this headline">¶</a></h3>
+<p>Nous avons abordé dans les sections précédentes divers aspects de la modélisation de la réponse hémodynamique. Un autre point important en IRMf est la modélisation du bruit et des sources de variations qui peuvent être présentes dans les séries temporelles. Différents <strong>facteurs confondants</strong> ou <strong>artéfacts</strong> (provenant du scanner IRM ou du sujet scanné lui-même) peuvent induire des fluctuations substantielles dans le signal BOLD mesuré, et venir confondre les inférences faites sur l’activité neuronale en réponse à des tâches.</p>
+<p>Quelques exemples d’<strong>artéfacts</strong>:</p>
+<ul class="simple">
+<li><p>Fréquence cardiaque</p></li>
+<li><p>Mouvement du sujet lors de l’acquisition</p></li>
+<li><p>Décharge électrique du scanner</p></li>
+<li><p>Inhomogénéités dans le champ magnétique aux intersections air-tissu</p></li>
+</ul>
+<p>À l’issue des acquisitions, les images d’IRM fonctionnelle brutes contiennent une composition de ces artéfacts (erreurs), qui se superposent à l’image. Les images d’IRMf doivent, donc, en amont des analyses statistiques être soumises à des corrections. Pour se faire, différentes stratégies de modélisation peuvent être employées pour régresser de tels facteurs du signal. Dans cette section, nous présentons un aperçu de trois grandes étapes de prétraitement en IRMf, qui, typiquement sont appliquées séquentiellement (c.-à.d. à travers l’utilisation d’un pipeline).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Le</span> <span class="pre">recalage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Le</span> <span class="pre">filtrage</span> <span class="pre">de</span> <span class="pre">facteurs</span> <span class="pre">de</span> <span class="pre">non-intérêt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Lissage</span> <span class="pre">spatiale</span></code></p></li>
+</ul>
+<div class="tip admonition" id="image-tip">
+<p class="admonition-title">Qu’est-ce qu’une image?</p>
+<p>Une image est une <strong>matrice de nombres</strong>, qui contient des valeurs en chaque point de l’espace quantifiant une propriété donnée qui nous intéresse. Par exemple, si on prend le cas d’une photo, à chaque point de l’espace, c’est-à-dire pixel, nous avons trois valeurs qui quantifie la valeur du rouge, du vert et du bleu associée à cette localisation spatiale tout précisément. De manière analogue, l’image en IRM fonctionnelle est une matrice de nombres qui contient des valeurs en chaque points de l’espace, mais cette fois-ci décrivant l’activité BOLD. Plutôt que parler de pixels (2D), nous parlons de voxels (3D). Le prétraitement d’images sous-entend généralement que nous effectuons des opérations ou transformations mathématiques sur de telles matrices de nombre.</p>
+</div>
+<div class="section" id="recalage">
+<h4>Recalage<a class="headerlink" href="#recalage" title="Permalink to this headline">¶</a></h4>
+<p>Le recalage consiste à aligner une image à une image de référence. C’est une étape de prétraitement complétée avant les analyses statistiques, comme celles-ci présupposent qu’il y a une correspondance entre les voxels de différentes images. Le recalage s’assure qu’un voxel maintient de mêmes coordonnées à travers les images d’un même individu (analyses individuelles) ou/et à travers les images de différents individus (analyses de groupe). Plusieurs notions de cette section font un rappel de ce qui a été vu dans le cours sur les analyses morphométriques.</p>
+<blockquote>
+<div><p>Pour un rappel, consultez le <a class="reference external" href="https://psy3018.github.io/morphometrie.html">Chapitre 3: Analyses morphométriques</a></p>
+</div></blockquote>
+<p>Le recalage comprend <strong>deux</strong> étapes :</p>
+<p><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Estimation</span> <span class="pre">des</span> <span class="pre">paramètres</span> <span class="pre">de</span> <span class="pre">transformation</span></code>: Ils spécifient comment bouger l’image pour l’aligner à la référence. Ces paramètres peuvent être linéaires et/ou non-linéaire dépendamment du type de recalage.</p>
+<p><code class="docutils literal notranslate"><span class="pre">2.</span> <span class="pre">Ré-échantillonnage</span></code>: Le ré-échantillonnage consiste à appliquer les paramètres de transformation à l’image. Les coordonnées orginales sont transformées dans un nouvel espace, et la nouvelle image est créée à partir des coordonnées transformées.</p>
+<p>Le recalage fait appel à <strong>deux</strong> catégories de transformation:</p>
+<ul class="simple">
+<li><p><strong>Transformation linéaires</strong> : Les transformation linéaires appliquent des opérations/fonctions linéaires sur les coordonnées des voxels de l’image (p.e. translation, rotation, mise à l’échelle), leur assignant une nouvelle localisation. Elles transforment chaque voxels de l’image de manière équivalente : les structures changent d’emplacement, mais conserve leur forme.</p></li>
+<li><p><strong>Transformation non-linéaires</strong>: Les transformations non-linéaires comprennent des opérations/fonctions ayant un degré de complexité plus grand (p.e. fonction polynomiale, cosine) avec davantage de paramètres. Elles offrent une plus de flexibilité dans la transformation des voxels de l’image, dans la mesure où elles peuvent transformer certains voxels de l’images plus drastiquement que d’autres. Ceci permet de changer la forme des structures du cerveau.</p></li>
+</ul>
+<p>Nous verrons dans la section suivante, trois types de recalage possible en IRM fonctionnelle.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Un</span> <span class="pre">recalage</span> <span class="pre">intra-sujet</span> <span class="pre">(mouvement)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Un</span> <span class="pre">recalage</span> <span class="pre">inter-modalité</span> <span class="pre">(BOLD-T1)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Un</span> <span class="pre">recalage</span> <span class="pre">inter-sujet</span> <span class="pre">(stéréotaxique)</span></code></p></li>
+</ul>
+<div class="tip admonition" id="recalage-mouvement-tip">
+<p class="admonition-title">Recalage intra-sujet des volumes pour mouvement (avec volume de référence)</p>
+<blockquote>
+<div><p>Cette étape a été présentée dans le cadre du cours 3, <a class="reference external" href="https://psy3018.github.io/morphometrie.html">analyses morphométriques</a></p>
+</div></blockquote>
+<p>Souvent, le sujet ne maintient pas exactement la même position de la tête dans le scanner tout au long des acquisitions, qui peuvent parfois durer plus d’une heure et/ou exiger des arrêts. (p.e. baillements, fatigue musculaire, clignement de yeux, etc.). Ces mouvements ont des impacts non-négligeables sur le signal BOLD. A priori, ils peuvent entraîner des distorsions de l’intensité du signal de l’image. Dans un second temps, ils impliquent que, d’une image à l’autre, les voxels ne sont plus alignés par rapport à une référence (c.-à.-d. la boîte de l’image).</p>
+<p><code class="docutils literal notranslate"><span class="pre">1.Estimation</span> <span class="pre">des</span> <span class="pre">paramètres</span> <span class="pre">de</span> <span class="pre">transformation</span></code>: Le cerveau d’un même individu ne change pas de forme ou de taille à travers les acquisitions. Ainsi, cette étapese rapporte à l’estimation d’un sous-ensemble de transformations linéaires, la translation et la rotation. Nous pouvons obtenir l’estimation des paramètres <strong>linéaires</strong> de mouvement pour chaque volume du cerveau, pour:</p>
+<ul class="simple">
+<li><p><strong>3 translations (x, y, z)</strong></p></li>
+<li><p><strong>3 rotations (x, y, z)</strong></p></li>
+</ul>
+<p>L’évolution des paramètres de mouvement sont souvent représenter au moyen d’un graphique comme celui ci-bas, où <em>X</em> est la variable du temps et <em>y</em> la valeurs des paramètres de mouvement.</p>
+<p>!! Image montrant les paramètres de mouvement !!</p>
+<p><code class="docutils literal notranslate"><span class="pre">2.Ré-échantillonnage</span></code>: L’estimation de ces paramètres permet ensuite d’appliquer des transformations pour recaler chaque volume à un volume de référence choisi. Ce volume de référence peut être par exemple, le premier volume de la série, le dernier, ou bien la moyenne de tous les volumes.</p>
+<p>Parmis les populations étudiées, ce sont les enfants et les personnes âgés qui tendent à bouger davantage lors des acquisitions. L’endurance musculaire est le plus grand prédicteur de la quantité de mouvement d’un sujet. Certains chercheurs choisissent d’exclure les sujets ayant bougé au-delà d’un certain seuil (p.e. lorsque les paramètres de mouvement montrent d’immenses pics, par exemple). Il arrive aussi que les images soient irrécupérables: alors on jette les données.</p>
+</div>
+<div class="tip admonition" id="recalage-intermodalite-tip">
+<p class="admonition-title">Recalage inter-modalité (BOLD avec <span class="math notranslate nohighlight">\(T1\)</span> comme référence)</p>
+<p>Il est commun d’aligner l’image BOLD avec l’image anatomique T1 du sujet. Pourquoi? L’image fonctionnelle détient une moins bonne résolution spatiale que l’image structurelle <span class="math notranslate nohighlight">\(T1\)</span> : nous avons de plus courtes durées d’acquisition pour acquérir un même volume.</p>
+<p><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Estimation</span> <span class="pre">des</span> <span class="pre">paramètres</span> <span class="pre">de</span> <span class="pre">transformation</span></code>: Pour une image BOLD donnée, nous obtenons l’estimation des paramètres de transformations <strong>linéaires</strong> vers l’image <span class="math notranslate nohighlight">\(T1\)</span> pour :</p>
+<ul class="simple">
+<li><p><strong>3 transations (x,y,z)</strong></p></li>
+<li><p><strong>3 rotations (x,y,z)</strong></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">2.</span> <span class="pre">Ré-échantillonnage</span></code>: Les coordonnées sont transformées vers un nouvel espace en appliquant les transformations estimées à l’étape précédente.</p>
+<p>!! image recalage BOLD-T1 !!</p>
+</div>
+<div class="tip admonition" id="recalage-intersujet-tip">
+<p class="admonition-title">Recalage inter-sujet dans l’espace stéréotaxique (avec atlas comme référence)</p>
+<blockquote>
+<div><p>Cette étape a été présentée dans le cours 3, <a class="reference external" href="https://psy3018.github.io/morphometrie.html">Analyses morphométriques</a></p>
+</div></blockquote>
+<p>Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d’individus en individus. Le recalage dans l’espace stéréotaxique (<em>spatial normalization</em> en anglais) consiste à recaler les cerveaux dans un espace standard cible défini par l’atlas choisi, les rendant ainsi comparables. Les templates MNI (Montreal Neurological Institute) sont un exemple d’atlas largement employés comme espace standard dans la communauté.</p>
+<p><code class="docutils literal notranslate"><span class="pre">1.</span> <span class="pre">Estimation</span> <span class="pre">des</span> <span class="pre">paramètres</span> <span class="pre">de</span> <span class="pre">transformation</span></code>: Une variété d’algorithmes existent pour recaler les images individuelles à l’espace stéréotaxique. Typiquement, en plus des estimations de paramètres de transformations linéaires de <strong>translations (x,y,z)</strong> et <strong>rotations (x,y,z)</strong>, nous ajoutons les <strong>mises à l’échelle (x,y,z)</strong> (les cerveaux n’ont pas la même taille), et les transformations <strong>non-linéaires</strong> qui permettent de déformer les structures pour aligner les détails anatomiques des images d’un individu à l’autre.</p>
+<p><code class="docutils literal notranslate"><span class="pre">2.</span> <span class="pre">Ré-échantillonnage</span></code> Les coordonnées originales sont transformées vers un nouvel espace, en appliquant les transformations estimées.</p>
+<p>!! image recalage stéréotaxique !!</p>
+</div>
+<p>De manière standard, un recalage intra-sujet est toujours performé pour corriger le mouvement du sujet au cours de l’acquisition. Pour les autres types de recalage, il en dépend des objectifs scientifiques ou des analyses statistiques entrevues par les expérimentateurs (p.e. individuelles ou de groupe).</p>
+<div class="tip admonition" id="lissage-spatiale-tip">
+<p class="admonition-title">Lissage spatiale</p>
+<p>Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial.</p>
+<blockquote>
+<div><p>Pour un rappel, consultez le <a class="reference external" href="https://psy3018.github.io/morphometrie.html">Chapitre 3: Analyses morphométriques</a></p>
+</div></blockquote>
+<p>Le processus du lissage est semblable pour l’IRM fonctionnelle, mais la portée de cette étape est un peu différente comme l’image est dynamique (l’objet de ce lissage ne sont pas les valeurs de l’intensité de l’image comme en IRM structurelle, mais plutôt celles du signal BOLD). Certains artéfacts, comme le mouvement du sujet au cours de l’acquisition, peuvent entraîner des pics/fluctuations aléatoires dans le signal BOLD, et avoir un effet néfastes sur les analyses statistiques. Le lissage spatiale entre alors en jeu : il a pour effet de diminuer le bruit, en éliminant la contribution des fluctuations aléatoires ciblant des voxels spécifiques. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l’image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Mis à part l’amélioration du ratio signal-bruit, le lissage permet également d’atténuer les erreurs/imperfections de recalage inter-sujet.</p>
+<p>!! image lissage sur cerveau !!</p>
+<p>Le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> (<em>full width at half maximum</em>) contrôle l’échelle de ce lissage (plus important ou moins important). Il détermine l’étalement des voxels voisins qui participeront à la nouvelle valeur d’un voxel cible. D’un point de vue mathématique, le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d’un voxel cible de l’image. Plusieurs études choisissent <code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">mm</span></code> comme valeur pour le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code>.</p>
+</div>
+<div class="tip admonition" id="filtrage-tip">
+<p class="admonition-title">Filtrage des facteurs de non-intérêt</p>
+<p>La dernière étape de prétraitement qui sera abordé est celle du filtrage de facteurs de non-intérêt. Différents <strong>facteurs confondants</strong> ou <strong>artéfacts</strong> peuvent induire des fluctuations dans le signal BOLD. Ces artéfacts peuvent avoir différentes fréquences du spectre, soit plus lentes ou rapides. Lorsque ce bruit est systématique ou périodique, il possible de le régresser (c’est-à-dire de le retirer) en employant différentes stratégies comme des filtres. Les dérives lentes constituent un exemple commun de facteurs de non-intérêt, et elles sont assez facilement repérables dans le signal. Dans ce cas, pouvons appliquer un filtre passe-haut, qui conserve uniquement les fréquence plus haute qu’un certain seuil (p.e. 0.01 Hz).</p>
+<p>!! image filtrage passe-haut pour dérives lentes !!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="analyse-statistiques">
+<h2>Analyse statistiques<a class="headerlink" href="#analyse-statistiques" title="Permalink to this headline">¶</a></h2>
+<p>Cette section est un aperçu général du cours sur les analyses statistiques à venir. Nous laisserons certains détails de côté pour le moment, mais nous y reviendrons dans le cours 6 sur les <a class="reference external" href="https://psy3018.github.io/cartes_statistiques.html">analyses statistiques</a>. Rappelons une fois de plus nos objectifs en IRMf : nous voulons dégager de nouvelles connaissances sur le fonctionnement du cerveau. Ceci implique le recours à des analyses statistiques.</p>
+<p>Les analyses statistiques comportent généralement des <strong>analyses individuelles</strong> dans lesquelles les séries temporelles sont analysés séparément pour chacun des sujets (on analyse l’effet des manipulations expérimentales), puis des <strong>analyses de groupe</strong> (on analyse l’effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées.</p>
+<div class="section" id="irmf-experience-basee-sur-une-tache">
+<h3>IRMf - Expérience basée sur une tâche<a class="headerlink" href="#irmf-experience-basee-sur-une-tache" title="Permalink to this headline">¶</a></h3>
+<p>Pour déterminer si l’activité des voxels du cerveau changent en réponse à des manipulations expérimentales, une approche expérimentale standard consiste à manipuler la tâche que réalise le sujet dans le scanneur, par exemple en alternant différentes conditions par blocs (yeux ouverts, yeux fermés). Nous avons ensuite recours à des constrastes, aussi appelées analyse de soustraction qui procède en comparant les séries temporelles d’une condition à une autre condition, ou à un seuil de base. Ces contrastes sont répétées pour chacun des voxels du cerveau.</p>
+<div class="tip admonition" id="comparaisons-multiples-tip">
+<p class="admonition-title">Problème de comparaisons multiples</p>
+<p>Les analyses statistiques en IRMf surviennent dans un contexte particulier. Ce sont des analyses massivement univariées, c’est-à-dire que nous avons des tests statistiques répétés plusieurs milliers de fois (à chacun de nos voxels). Ceci entraîne un problème de comparaisons multiples qui requiert une correction pour l’inflation de faux positifs. Ceci sera abordé plus en détail dans le cours sur les analyses statistiques.</p>
+</div>
+<div class="tip admonition" id="paradigmes-classiques-tip">
+<p class="admonition-title">Paradigmes classiques</p>
+<p>Les premiers paradigmes expérimentaux en IRMf consistaient à répéter un tâche pendant la durée de l’acquisition, puis à contraster avec un seuil de base en utilisant des procédures statistiques comme le test-t. Inspiré par ces approches, les premières études faisait la différence entre la moyenne d’activation lors de tâche et à l’état de repos. Dans l’études par Kwong et al. (1992) par exemple, des blocs de stimulations visuels étaient suivis de blocs sans stimulation.</p>
+</div>
+</div>
+<div class="section" id="regression-univariee">
+<h3>Régression univariée<a class="headerlink" href="#regression-univariee" title="Permalink to this headline">¶</a></h3>
+<p>Il est possible de généraliser l’analyse de soustraction pour tenir compte de <strong>1) la forme de la réponse hémodynamique</strong>
+<strong>2) la présence de plusieurs conditions dans une même expérience</strong>. Tel que soulevé précédemment, une grande partie du travail en IRMf consiste à analyser/expliquer les séries temporelles. Nous pouvons utiliser nos connaissances sur la fonction de réponse hémodynamique, ainsi que celles sur les conditions du paradigme expérimental, pour estimer le niveau d’activation BOLD dans une condition (nous irons plus dans les détails ultérieurement, mais globalement celles-ci deviennent les variables explicatives dans des modèles de régressions qui tente d’expliquer les séries temporelles). Les séries temporelles sont aussi expliquer comme étant partiellement <strong>3) du bruit/erreur</strong>, que l’on suppose aléatoire. Nous ajustons les paramètres de ce modèle tenant compte <strong>1)</strong>, <strong>2)</strong> et <strong>3)</strong>. Ceux-ci sont mis à l’échelle : c’est ce qui nous permet de connaître le niveau d’activation pour une condition. Une fois ce niveau connu, il peut être contrasté entre différentes conditions ou avec un niveau de base, en calculant la différence entre les moyennes d’activation de chaque condition respectivement. En employant une distribution gaussienne, nous pouvons évaluer la probabilité d’observer une telle différence, ou n’importe quelle statistique donnée (p.e. test-t). Le formalisme décrit ci-haut s’appelle le modèle linéaire général. On en reparlera au cours 5.</p>
+</div>
+<div class="section" id="irmf-cartes-d-activation">
+<h3>IRMf - Cartes d’activation<a class="headerlink" href="#irmf-cartes-d-activation" title="Permalink to this headline">¶</a></h3>
+<p>Les cartes d’activation sont souvent ce que l’on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d’activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des <strong>sujets</strong> (p.e. effet yeux ouverts vs yeux fermés) ou des <strong>groupes</strong>, si nous combinons les données de plusieurs sujets (p.e. effet de l’âge ou d’appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l’application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d’intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d’intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: <em>Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992</em>, ayant introduit l’idée de cartographier le cerveau avec des tâches en IRMf.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>La réalisation d’une expérience d’IRMf nécessite de bien penser les conditions d’intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d’intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s’activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu’il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.</p>
+</div>
+<div class="section" id="un-peu-d-histoire-gall">
+<h2>Un peu d’histoire - Gall -<a class="headerlink" href="#un-peu-d-histoire-gall" title="Permalink to this headline">¶</a></h2>
+<div class="tip admonition" id="histoire-tip">
+<p class="admonition-title">Origines de la ségrégation fonctionnelle</p>
+<p>De nos jours, une partie importante de la littérature suppose que le cerveau est découpé en aires fonctionnelles, en d’autre mots, elle admet le principe de ségrégation fonctionnelle. L’idée de localiser les fonctions cognitives n’est pas une idée nouvelle. Dans les faits, c’était l’idée de Gall, avec la phrénologie, qui assumait un lien entre la morphologie du crâne et les fonctions cognitives. Selon la phrénologie, la forme de la boîte crânienne est informative des tendances des individus. Les aires du cerveau sont organisées selon des concepts cognitifs comme “counsciousness”, “destructiveness” et autres dimensions. Bien que peu rigoureuse, cette idée est revisitée dans le cadre de la modalité de l’IRMf, mais avec bien plus de rigueur scientifique. Son émergence légitime dans le discours scientifique remonte, notamment, aux travaux de Brodmann lequel employait des techniques de teintures pour observer la forme et variations des cellules nerveuses (cytoarchitecture) à travers le cortex. Nous admettons, aujourd’hui, arriver à accéder à certains aspects de l’organisation fonctionnelle cérébrale.</p>
+</div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -411,12 +854,10 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/-u0WCHGi8_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 </div>
 <div class="section" id="cartes-d-activation">
-<h3>Cartes d’activation<a class="headerlink" href="#cartes-d-activation" title="Permalink to this headline">¶</a></h3>
+<h2>Cartes d’activation<a class="headerlink" href="#cartes-d-activation" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -428,16 +869,22 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xFw2qPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 </div>
 <div class="section" id="conclusions-et-references-suggerees">
-<h3>Conclusions et références suggérées<a class="headerlink" href="#conclusions-et-references-suggerees" title="Permalink to this headline">¶</a></h3>
+<h2>Conclusions et références suggérées<a class="headerlink" href="#conclusions-et-references-suggerees" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="references">
-<h3>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="id1"></span></div>
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id3"><dl class="citation">
+<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id2">BWF98</a></span></dt>
+<dd><p>R B Buxton, E C Wong, and L R Frank. Dynamics of blood flow and oxygenation changes during brain activation: the balloon model. <em>Magn. Reson. Med.</em>, 39(6):855–864, June 1998.</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id1">ZKK+21</a></span></dt>
+<dd><p>E Zisis, D Keller, L Kanari, A Arnaudon, M Gevaert, T Delemontex, B Coste, A Foni, M Abdellah, C Calì, K Hess, P J Magistretti, F Schürmann, and H Markram. Architecture of the Neuro-Glia-Vascular system. <em>bioRxiv</em>, 2021.</p>
+</dd>
+</dl>
+</p>
 </div>
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
@@ -479,8 +926,8 @@
 <li><p>Une hypothèse courante, en partie confirmée expérimentalement.</p></li>
 </ol>
 </div>
-<div class="section" id="id23">
-<h3>Exercice 4<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>Exercice 4<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <p>Quel est l’événement principal à l’origine des changements de signal mesuré par le BOLD?</p>
 </div>
 <div class="section" id="exercice-5">
