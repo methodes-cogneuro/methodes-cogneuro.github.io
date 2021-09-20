@@ -258,7 +258,7 @@ La figure qui suit montre la réponse hémodynamique attendue suite à une impul
 - **Résolution temporelle**: Réponse lente, durée entre **15 à 20 secondes** suivant le stimulus
 - **Temps avant l'atteinte de l'amplitude maximale** :Atteint l'amplitude maximale après **4 à 6 secondes**
 - **Creux post-stimulation (*Undershoot* en anglais)** : Décroît à partir de l'amplitude maximale jusqu'à se retrouver sous le seuil de base
-- **Retour au seuil** : La fonction retrouve le niveau de base après environ **15 à 20** secondes
+- **Retour à la ligne de base** : La fonction retrouve le niveau de base après environ **15 à 20** secondes
 - **Amplitude maximale** : L'ordre du changement relatif du signal BOLD atteint environ **5%** pour des stimulations d'ordre sensorielle, alors qu'elle est plutôt de **0,1 à 0,5%** pour d'autres paradigmes cognitifs
 
 ```{admonition} Attention!
@@ -459,11 +459,7 @@ La dernière étape de prétraitement qui sera abordé est celle du filtrage de 
 
 ## Analyse statistiques
 
-<<<<<<< HEAD
 Cette section est un aperçu général du cours sur les analyses statistiques à venir. Nous laisserons certains détails de côté pour le moment, mais nous y reviendrons dans le cours 6 sur les [analyses statistiques](https://psy3018.github.io/cartes_statistiques.html). Rappelons une fois de plus nos objectifs en IRMf : nous voulons dégager de nouvelles connaissances sur le fonctionnement du cerveau. Ceci implique le recours à des analyses statistiques.
-=======
-Cette section est un aperçu général du cours sur les analyses statistiques à venir. Nous laisserons certains détails de côté pour le moment, mais nous y reviendrons dans le cours 6 sur les [analyses statistiques](https://psy3018.github.io/regression.html). Rappelons une fois de plus nos objectifs en IRMf : nous voulons dégager de nouvelles connaissances sur le fonctionnement du cerveau. Ceci implique le recours à des analyses statistiques.
->>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
 
 Les analyses statistiques comportent généralement des **analyses individuelles** dans lesquelles les séries temporelles sont analysés séparément pour chacun des sujets (on analyse l'effet des manipulations expérimentales), puis des **analyses de groupe** (on analyse l'effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées.
 
@@ -503,7 +499,7 @@ La réalisation d'une expérience d'IRMf nécessite de bien penser les condition
 # librairies
 from nilearn import datasets
 import pandas as pd
-from nilearn.glm import threshold_stats_img
+#from nilearn.glm import threshold_stats_img, SecondLevelModel
 from nilearn import plotting
 
 n_samples = 20
@@ -513,19 +509,19 @@ cmap_filenames = localizer_dataset.cmaps
 
 design_matrix = pd.DataFrame([1] * n_samples, columns=['intercept'])
 
-z_map = second_level_model.compute_contrast(output_type='z_score')
+#z_map = second_level_model.compute_contrast(output_type='z_score')
 
-thresholded_map1, threshold1 = threshold_stats_img(
-    z_map, alpha=.05, height_control='fdr', cluster_threshold=10)
+#thresholded_map1, threshold1 = threshold_stats_img(
+#    z_map, alpha=.05, height_control='fdr', cluster_threshold=10)
 
 # visualiser
 # sans seuil
-display = plotting.plot_stat_map(z_map, title='Carte d'activation')
+#display = plotting.plot_stat_map(z_map, title='Carte activation')
 
 # avec seuil
-plotting.plot_stat_map(
-    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,
-    title='Carte d'activation avec seuil, fdr <.05')
+#plotting.plot_stat_map(
+#    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,
+#    title='Carte activation avec seuil, fdr <.05')
 ```
 
 ### Conclusion
