@@ -189,7 +189,7 @@ Le lien entre activité neuronale et signal IRMf repose sur le phénomène du **
 width: 600px
 name: spin-fig
 ---
-Illustration du transport de l'oxygène par l'hémoglobine dans le sang. Image [shutterstock](https://www.shutterstock.com/image-illustration/vector-science-medical-icon-blood-hemoglobin-1472480087) ID `1472480087`, utilisée sous licence shutterstock standard.
+Illustration du transport de l'oxygène par l'hémoglobine dans le sang. Image par [ShadeDesign](https://www.shutterstock.com/g/ShadeDesign) disponible sur [shutterstock](https://www.shutterstock.com/image-illustration/vector-science-medical-icon-blood-hemoglobin-1472480087) ID `1472480087`, utilisée sous licence shutterstock standard.
 ```
 
 Quelle est l'origine du **signal BOLD**? L'hémoglobine existe sous deux états, soit l'état oxygéné (porteur de l'oxygène) et déoxygéné (non-porteur d'oxygène). La présence de l'oxygène modifie les propriétés éléctromagnétiques de cette molécule:
@@ -210,44 +210,50 @@ Ce que cela veut dire, c'est que quand elles sont soumises à des impulsions él
 :class: caution attention
 :name: neurovascular-warning
 
-Le signal BOLD en IRMf constitue une **mesure indirecte** de l'activité neuronale. En effet, cette modalité ne mesure pas directement l'activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l'activité neuronale. Cette relation est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.
+Le signal BOLD en IRMf constitue une **mesure indirecte** de l'activité neuronale. En effet, cette modalité ne mesure pas directement l'activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l'activité neuronale. Cette relation de **couplage neurovasculaire** est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.
 ```
 
 ## Fonction de réponse hémodynamique
 
-### Théorie des systèmes
-Un système comprend un ensemble d'éléments qui interagissent selon certains principes ou règles. En présence d'un système, nous pouvons décrire et de formaliser les interactions entre ses éléments au moyen de termes mathématiques. Pourquoi parlons nous de systèmes? Parce que l'activité neuronale et le signal BOLD forme un système. La **fonction de réponse hémodynamique** est la formule qui contient la description ou formalisation de la relation entre les éléments de ce système, soit **l'activité neuronale ($X$)** et **le signal BOLD ($Y$)** .
-
-\begin{align}
-X(t) &\quad \text{intrant : activité neuronale}\\
-Y(t) &\quad \text{sortie : réponse hémodynamique}\\
-\end{align}
-
-La fonction de réponse hémodynamique, et ses propriétés mathématiques, constituent une autre hypothèses importante pour les aspects de modélisation en IRMf. Essentiellement, la fonction ce modèle sous-tend les inférences que l'on fait sur l'organisation fonctionnelle du cerveau: nous l'employons dans le but d'estimer la réponse à une tâche ou condition donnée.
-
-### Propriétés mathématiques
-La figure qui suit montre la réponse hémodynamique attendue suite à un pic d'activation au temps 0. Bien que simplifiée, elle permet de visualiser la fonction largement admis, décrivant relation maintenue entre l'activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps.
+### Réponse à une impulsion courte
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 
-# importer les librairies
+# To get an impulse response, we simulate a single event
+# occurring at time t=0, with duration 1s.
 import numpy as np
-from nipy.modalities.fmri import hrf, utils
-import matplotlib.pyplot as plt
+frame_times = np.linspace(0, 30, 61)
+onset, amplitude, duration = 0., 1., 1.
+exp_condition = np.array((onset, duration, amplitude)).reshape(3, 1)
+stim = np.zeros_like(frame_times)
+stim[(frame_times > onset) * (frame_times <= onset + duration)] = amplitude
 
-# visualiser la fonction hémodynamique
-fig_BOLD = plt.plot
-hrf_func = utils.lambdify_t(hrf.glover(utils.T))
-t = np.linspace(0,25,200)
-plt.plot(t, hrf_func(t))
-a=plt.gca()
-a.set_xlabel('t(s)')
-a.set_ylabel('% Signal BOLD')
-plt.axvline(x=0, marker = "o", color = "r")
-plt.title("La fonction de réponse hémodynamique")
+# Now we plot the hrf
+from nilearn.glm.first_level import compute_regressor
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(6, 4))
+
+# obtain the signal of interest by convolution
+signal, name = compute_regressor(
+    exp_condition, 'glover', frame_times, con_id='main',
+    oversampling=16)
+
+# plot this
+plt.fill(frame_times, stim, 'k', alpha=.5, label='stimulus')
+plt.plot(frame_times, signal.T[0], label=name[0])
+
+# Glue the figure
+from myst_nb import glue
+glue("hrf-fig", fig, display=False)
 ```
-Dans la figure ci-haut, l'axe des $X$ représente le temps, et l'axe de $Y$, le **%** du changement du signal BOLD. La ligne verticale rouge indique le pic d'activation neuronale. La courbe bleue, pour sa part, illustre le % du changement du signal BOLD attendu suivant l'activation neuronale. Ci-dessous sont décrit les caractéristiques importantes de la fonction de réponse hémodynamique.
+
+```{glue:figure} hrf-fig
+:figwidth: 800px
+:name: "hrf-fig"
+Réponse hémodynamique à une impulsion unitaire finie, suivant le modèle proposé par Glover and coll. (XX)
+```
+La figure qui suit montre la réponse hémodynamique attendue suite à une impulsion finie d'activation au temps 0, et de durée 1 seconde. La réponse à ce type de stimulus permet de visualiser la réponse hémodynamique la plus largement utilisée, décrivant relation maintenue entre l'activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps. L'axe `x` représente le temps, en secondes, et l'axe `y` le signal cérébral, exprimé en pourcentage du changement par rapport à une ligne de base. Les caractéristiques importantes de la fonction de réponse hémodynamique sont:
 
 - **Résolution temporelle**: Réponse lente, durée entre **15 à 20 secondes** suivant le stimulus
 - **Temps avant l'atteinte de l'amplitude maximale** :Atteint l'amplitude maximale après **4 à 6 secondes**
@@ -261,6 +267,18 @@ Dans la figure ci-haut, l'axe des $X$ représente le temps, et l'axe de $Y$, le 
 
 Le modèle de réponse hémodynamique peut s'avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est déréglé. C'est le cas de populations qui ont une vascularisation atypique, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires.
 ```
+
+### Le cerveau (BOLD) comme un système
+Un système comprend un ensemble d'éléments qui interagissent selon certains principes ou règles. En présence d'un système, nous pouvons décrire et de formaliser les interactions entre ses éléments au moyen de termes mathématiques. Pourquoi parlons nous de systèmes? Parce que l'activité neuronale et le signal BOLD forme un système. La **fonction de réponse hémodynamique** est la formule qui contient la description ou formalisation de la relation entre les éléments de ce système, soit **l'activité neuronale ($X$)** et **le signal BOLD ($Y$)** .
+
+\begin{align}
+X(t) &\quad \text{intrant : activité neuronale}\\
+Y(t) &\quad \text{sortie : réponse hémodynamique}\\
+\end{align}
+
+La fonction de réponse hémodynamique, et ses propriétés mathématiques, constituent une autre hypothèses importante pour les aspects de modélisation en IRMf. Essentiellement, la fonction ce modèle sous-tend les inférences que l'on fait sur l'organisation fonctionnelle du cerveau: nous l'employons dans le but d'estimer la réponse à une tâche ou condition donnée.
+
+### Système linéaire invariant dans le temps
 
 La fonction de réponse hémodynamique présentée ci-haut se rapporte à un contexte expérimentale bien simple : une simple stimulation courte isolée. En réalité, les **paradigmes expérimentaux sont beaucoup plus complexes** : ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d'une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu'advient-il alors de la fonction de réponse hémodynamique? Peut-on toujours modéliser la réponse hémodynamique en tant que système, c'est-à-dire définies par des règles mathématiques? Si oui, que deviennent les propriétés de ce système?
 
