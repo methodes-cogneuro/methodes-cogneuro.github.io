@@ -63,6 +63,14 @@ Le cours est donné principalement par Dr Pierre Bellec, avec des contributions 
         <a title="Contenu">🤔</a>
         <a title="Révision du texte">👀</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/anproulx">
+        <img src="https://avatars.githubusercontent.com/u/65092948?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Andréanne Proulx</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
   </tr>
 </table>
 
