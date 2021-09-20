@@ -542,7 +542,8 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xF
 - Ogawa et al. PNAS 1992;
 - Kwong et al. PNAS 1992; 
 - Bandettini et al. MRM 1992.
-- Logothetis 
+- Logothetis et al., 2001
+- Sherrington et al., 1998
 
 
 
