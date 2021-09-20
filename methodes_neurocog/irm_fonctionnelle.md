@@ -441,7 +441,11 @@ La dernière étape de prétraitement qui sera abordé est celle du filtrage de 
 
 ## Analyse statistiques
 
+<<<<<<< HEAD
 Cette section est un aperçu général du cours sur les analyses statistiques à venir. Nous laisserons certains détails de côté pour le moment, mais nous y reviendrons dans le cours 6 sur les [analyses statistiques](https://psy3018.github.io/cartes_statistiques.html). Rappelons une fois de plus nos objectifs en IRMf : nous voulons dégager de nouvelles connaissances sur le fonctionnement du cerveau. Ceci implique le recours à des analyses statistiques.
+=======
+Cette section est un aperçu général du cours sur les analyses statistiques à venir. Nous laisserons certains détails de côté pour le moment, mais nous y reviendrons dans le cours 6 sur les [analyses statistiques](https://psy3018.github.io/regression.html). Rappelons une fois de plus nos objectifs en IRMf : nous voulons dégager de nouvelles connaissances sur le fonctionnement du cerveau. Ceci implique le recours à des analyses statistiques.
+>>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
 
 Les analyses statistiques comportent généralement des **analyses individuelles** dans lesquelles les séries temporelles sont analysés séparément pour chacun des sujets (on analyse l'effet des manipulations expérimentales), puis des **analyses de groupe** (on analyse l'effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées.
 
@@ -468,10 +472,47 @@ Il est possible de généraliser l'analyse de soustraction pour tenir compte de 
 ### IRMf - Cartes d'activation
 Les cartes d'activation sont souvent ce que l'on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d'activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des **sujets** (p.e. effet yeux ouverts vs yeux fermés) ou des **groupes**, si nous combinons les données de plusieurs sujets (p.e. effet de l'âge ou d'appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l'application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d'intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d'intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: *Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992*, ayant introduit l'idée de cartographier le cerveau avec des tâches en IRMf.
 
+<<<<<<< HEAD
 ## Conclusion
 La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
 
 ## Un peu d'histoire - Gall -
+=======
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+# activation related to a mental computation task, as opposed to narrative sentence reading/listening
+# librairies
+from nilearn import datasets
+import pandas as pd
+from nilearn.glm import threshold_stats_img
+from nilearn import plotting
+
+n_samples = 20
+localizer_dataset = datasets.fetch_localizer_calculation_task(
+    n_subjects=n_samples)
+cmap_filenames = localizer_dataset.cmaps
+
+design_matrix = pd.DataFrame([1] * n_samples, columns=['intercept'])
+
+z_map = second_level_model.compute_contrast(output_type='z_score')
+
+thresholded_map1, threshold1 = threshold_stats_img(
+    z_map, alpha=.05, height_control='fdr', cluster_threshold=10)
+
+# visualiser
+# sans seuil
+display = plotting.plot_stat_map(z_map, title='Carte d'activation')
+
+# avec seuil
+plotting.plot_stat_map(
+    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,
+    title='Carte d'activation avec seuil, fdr <.05')
+```
+
+### Conclusion
+La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
+>>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
 
 ```{admonition} Origines de la ségrégation fonctionnelle
 :class: tip
@@ -504,7 +545,26 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xF
 
 ## Conclusions et références suggérées
 
+<<<<<<< HEAD
 ## Références
+=======
+* note à moi-même : à formatter
+*
+- https://dartbrains.org/content/intro.html
+- Handbook of functional MRI Data Analysis
+- https://orbi.uliege.be/bitstream/2268/31382/1/2.%20GOSSERIES%20NS%2008%20Imag%20%287%29_SL.pdf
+- Imagerie cérébrale fonctionnelle, Bernard Mazoyer, p. 45. Disponible sur studium
+- Vidéo youtube (en anglais) https://www.youtube.com/watch?v=Rb_mdzgw-Jc
+- Ogawa et al. PNAS 1992;
+- Kwong et al. PNAS 1992;
+- Bandettini et al. MRM 1992.
+- Logothetis et al., 2001
+- Sherrington et al., 1998
+
+
+
+### Références
+>>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
 
 ```{bibliography}
 :filter: docname in docnames
