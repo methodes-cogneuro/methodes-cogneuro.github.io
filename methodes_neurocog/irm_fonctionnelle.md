@@ -157,7 +157,7 @@ L'IRMf s'est considérablement développé depuis ses débuts dans les années 1
 :class: tip
 :name: resolution
 
-L'IRM fonctionnelle détient une moins bonne résolution spatiale que l'IRM structurelle. En effet, pour chaque voxel, nous voulons échantillonner l'activité cérébrale (dans les faits, nous échantillons le signal BOLD, que nous verrons plus loin) assez rapidement pour capturer les variations de cette activité en réponse à des manipulations expérimentales. La réponse maximale étant 5-6 secondes après la manipulation, une résolution temporelle de 2 à 3 secondes permet d’étudier adéquatement ces variations. Ces nouvelles considérations temporelles entraînent un compromis avec la résolution spatiale qui tend à diminuer lorsqu'il s'agit de plus courtes durées d'acquisition. La résolution spatiale de l’IRMf est de l’ordre de quelques millimètres (typiquement 2 à 3 $mm^3$). 
+L'IRM fonctionnelle détient une moins bonne résolution spatiale que l'IRM structurelle. En effet, pour chaque voxel, nous voulons échantillonner l'activité cérébrale (dans les faits, nous échantillons le signal BOLD, que nous verrons plus loin) assez rapidement pour capturer les variations de cette activité en réponse à des manipulations expérimentales. La réponse maximale étant 5-6 secondes après la manipulation, une résolution temporelle de 2 à 3 secondes permet d’étudier adéquatement ces variations. Ces nouvelles considérations temporelles entraînent un compromis avec la résolution spatiale qui tend à diminuer lorsqu'il s'agit de plus courtes durées d'acquisition. La résolution spatiale de l’IRMf est de l’ordre de quelques millimètres (typiquement 1 à 3 $mm^3$). 
 ```
 
 ### Base physiques et physiologiques
@@ -498,10 +498,8 @@ plotting.plot_stat_map(
     title='Carte d'activation avec seuil, fdr <.05')
 ```
 
-#### Conclusion
+### Conclusion
 La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
-
-#### Un peu d'histoire - Gall -
 
 ```{admonition} Origines de la ségrégation fonctionnelle
 :class: tip
@@ -533,6 +531,20 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xF
 ```
 
 ### Conclusions et références suggérées
+
+* note à moi-même : à formatter
+* 
+- https://dartbrains.org/content/intro.html
+- Handbook of functional MRI Data Analysis
+- https://orbi.uliege.be/bitstream/2268/31382/1/2.%20GOSSERIES%20NS%2008%20Imag%20%287%29_SL.pdf
+- Imagerie cérébrale fonctionnelle, Bernard Mazoyer, p. 45. Disponible sur studium
+- Vidéo youtube (en anglais) https://www.youtube.com/watch?v=Rb_mdzgw-Jc
+- Ogawa et al. PNAS 1992;
+- Kwong et al. PNAS 1992; 
+- Bandettini et al. MRM 1992.
+- Logothetis 
+
+
 
 ### Références
 
