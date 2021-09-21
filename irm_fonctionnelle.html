@@ -698,6 +698,64 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </div>
 <div class="section" id="lissage-spatiale">
 <h4>Lissage spatiale<a class="headerlink" href="#lissage-spatiale" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies nécessaires</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Télécharge un scan fonctionnel (Haxby)</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="n">haxby_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_haxby</span><span class="p">()</span>
+
+<span class="c1"># calcule le volume moyen</span>
+<span class="kn">from</span> <span class="nn">nilearn.image.image</span> <span class="kn">import</span> <span class="n">mean_img</span>
+<span class="n">func_filename</span> <span class="o">=</span> <span class="n">haxby_dataset</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">mean_haxby</span> <span class="o">=</span> <span class="n">mean_img</span><span class="p">(</span><span class="n">func_filename</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_epi</span><span class="p">,</span> <span class="n">show</span>
+
+<span class="c1"># Initialise la figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_anat</span>
+<span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">math_img</span>
+<span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="kn">import</span> <span class="n">NiftiMasker</span>
+<span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">smooth_img</span>
+
+<span class="n">list_fwhm</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">n_fwhm</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_fwhm</span><span class="p">)</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">fwhm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_fwhm</span><span class="p">):</span>
+    <span class="n">ax_plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="n">n_fwhm</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">vol</span> <span class="o">=</span> <span class="n">smooth_img</span><span class="p">(</span><span class="n">mean_haxby</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">)</span>
+    <span class="n">plot_epi</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span>
+              <span class="n">cut_coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+              <span class="n">axes</span><span class="o">=</span><span class="n">ax_plot</span><span class="p">,</span>
+              <span class="n">black_bg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;FWHM=</span><span class="si">{</span><span class="n">fwhm</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+              <span class="n">vmax</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;smoothing-fmri-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="smoothing-fmri-fig" style="width: 600px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_fonctionnelle_5_0.png" src="_images/irm_fonctionnelle_5_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text">Illustration de l’impact du lissage sur un volume BOLD.
+À mesure que le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> augmente, la mesure en un voxel représente la moyenne dans un voisinage spatial de plus en plus grand.
+Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir du jeu de données <code class="docutils literal notranslate"><span class="pre">haxby</span></code> (cliquer sur + pour voir le code). La figure est sous license CC-BY.</span><a class="headerlink" href="#smoothing-fmri-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l’IRM fonctionnelle, mais la portée de cette étape est un peu différente comme l’image est dynamique (l’objet de ce lissage ne sont pas les valeurs de l’intensité de l’image comme en IRM structurelle, mais plutôt celles du signal BOLD). Certains artéfacts, comme le mouvement du sujet au cours de l’acquisition, peuvent entraîner des pics/fluctuations aléatoires dans le signal BOLD, et avoir un effet néfastes sur les analyses statistiques. Le lissage spatiale entre alors en jeu : il a pour effet de diminuer le bruit, en éliminant la contribution des fluctuations aléatoires ciblant des voxels spécifiques. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l’image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Mis à part l’amélioration du ratio signal-bruit, le lissage permet également d’atténuer les erreurs/imperfections de recalage inter-sujet.</p>
 <p>Le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> (<em>full width at half maximum</em>) contrôle l’échelle de ce lissage (plus important ou moins important). Il détermine l’étalement des voxels voisins qui participeront à la nouvelle valeur d’un voxel cible. D’un point de vue mathématique, le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d’un voxel cible de l’image. Plusieurs études choisissent <code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">mm</span></code> comme valeur pour le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code>.</p>
 </div>
