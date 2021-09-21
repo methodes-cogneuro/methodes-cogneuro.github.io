@@ -331,6 +331,60 @@ Il est commun d'aligner l'image BOLD avec l'image anatomique $T_1$ du sujet. Pou
 Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d'individus en individus. Le recalage dans l'espace stéréotaxique, aussi parfois appelée _normalisation spatiale_, consiste à recaler l'image $T_1$ dans un espace standard cible défini par l'atlas choisi, rendant ainsi comparables les cerveaux de différents individus. Cette technique a identique à ce qui est fait pour les études de morphométrie. Le template MNI152 (Montreal Neurological Institute) est largement employé comme espace standard dans la communauté. Cette transformation combine une transformation affine et une transformation non-linéaire.
 
 #### Lissage spatiale
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies nécessaires
+import matplotlib.pyplot as plt
+import numpy as np
+from myst_nb import glue
+import seaborn as sns
+
+import warnings
+warnings.filterwarnings("ignore")
+
+# Télécharge un scan fonctionnel (Haxby)
+from nilearn import datasets
+haxby_dataset = datasets.fetch_haxby()
+
+# calcule le volume moyen
+from nilearn.image.image import mean_img
+func_filename = haxby_dataset.func[0]
+mean_haxby = mean_img(func_filename)
+
+from nilearn.plotting import plot_epi, show
+
+# Initialise la figure
+fig = plt.figure(figsize=(15, 15))
+
+from nilearn.plotting import plot_anat
+from nilearn.image import math_img
+from nilearn.input_data import NiftiMasker
+from nilearn.image import smooth_img
+
+list_fwhm = (0, 5, 8, 10)
+n_fwhm = len(list_fwhm)
+coords = [-5, 5, -25]
+
+for num, fwhm in enumerate(list_fwhm):
+    ax_plot = plt.subplot2grid((n_fwhm, 1), (num, 0), colspan=1)
+    vol = smooth_img(mean_haxby, fwhm)
+    plot_epi(vol,
+              cut_coords=coords,
+              axes=ax_plot,
+              black_bg=True,
+              title=f'FWHM={fwhm}',
+              vmax=1500)
+
+from myst_nb import glue
+glue("smoothing-fmri-fig", fig, display=False)
+```
+```{glue:figure} smoothing-fmri-fig
+:figwidth: 600px
+:name: smoothing-fmri-fig
+Illustration de l'impact du lissage sur un volume BOLD.
+À mesure que le paramètre `FWHM` augmente, la mesure en un voxel représente la moyenne dans un voisinage spatial de plus en plus grand.
+Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir du jeu de données `haxby` (cliquer sur + pour voir le code). La figure est sous license CC-BY.
+```
 Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l'IRM fonctionnelle, mais la portée de cette étape est un peu différente comme l'image est dynamique (l'objet de ce lissage ne sont pas les valeurs de l'intensité de l'image comme en IRM structurelle, mais plutôt celles du signal BOLD). Certains artéfacts, comme le mouvement du sujet au cours de l'acquisition, peuvent entraîner des pics/fluctuations aléatoires dans le signal BOLD, et avoir un effet néfastes sur les analyses statistiques. Le lissage spatiale entre alors en jeu : il a pour effet de diminuer le bruit, en éliminant la contribution des fluctuations aléatoires ciblant des voxels spécifiques. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Mis à part l'amélioration du ratio signal-bruit, le lissage permet également d'atténuer les erreurs/imperfections de recalage inter-sujet.
 
 Le paramètre `FWHM` (*full width at half maximum*) contrôle l'échelle de ce lissage (plus important ou moins important). Il détermine l'étalement des voxels voisins qui participeront à la nouvelle valeur d'un voxel cible. D'un point de vue mathématique, le paramètre `FWHM` représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur `FWHM` sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d'un voxel cible de l'image. Plusieurs études choisissent `6 mm` comme valeur pour le paramètre `FWHM`.
