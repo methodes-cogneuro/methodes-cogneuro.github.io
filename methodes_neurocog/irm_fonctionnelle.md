@@ -24,6 +24,15 @@ kernelspec:
       </a>
       <br />
         <a title="Contenu">🤔</a>
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/danjgale">
+        <img src="https://avatars.githubusercontent.com/u/14634382?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Dan J Gale</b></sub>
+      </a>
+      <br />
+        <a title="Figure">🎨</a>
     </td>
     <td align="center">
       <a href="https://github.com/pbellec">
@@ -32,6 +41,7 @@ kernelspec:
       </a>
       <br />
         <a title="Contenu">🤔</a>
+        <a title="Révision du texte">👀</a>
     </td>
   </tr>
 </table>
@@ -328,6 +338,13 @@ Il est commun d'aligner l'image BOLD avec l'image anatomique $T_1$ du sujet. Pou
 
 
 #### Recalage dans l'espace stéréotaxique
+```{figure} ./irm_fonctionnelle/registration-macaque.gif
+---
+width: 500px
+name: registration-macaque-fig
+---
+Illustration du processus de recalage d'un IRM T1 sur un espace stéréotaxique (ici chez le macaque). On démarre par une transformation affine (pour corriger la position de la tête et sa taille), puis non-linéaire (pour ajuster la position des sillons et des structures sous corticales). Figure sous licence CC-BY 4.0 contribuée par [Dan J Gale](https://github.com/danjgale).
+```
 Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d'individus en individus. Le recalage dans l'espace stéréotaxique, aussi parfois appelée _normalisation spatiale_, consiste à recaler l'image $T_1$ dans un espace standard cible défini par l'atlas choisi, rendant ainsi comparables les cerveaux de différents individus. Cette technique a identique à ce qui est fait pour les études de morphométrie. Le template MNI152 (Montreal Neurological Institute) est largement employé comme espace standard dans la communauté. Cette transformation combine une transformation affine et une transformation non-linéaire.
 
 #### Lissage spatiale
@@ -385,13 +402,87 @@ Illustration de l'impact du lissage sur un volume BOLD.
 À mesure que le paramètre `FWHM` augmente, la mesure en un voxel représente la moyenne dans un voisinage spatial de plus en plus grand.
 Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir du jeu de données `haxby` (cliquer sur + pour voir le code). La figure est sous license CC-BY.
 ```
-Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l'IRM fonctionnelle, mais la portée de cette étape est un peu différente comme l'image est dynamique (l'objet de ce lissage ne sont pas les valeurs de l'intensité de l'image comme en IRM structurelle, mais plutôt celles du signal BOLD). Certains artéfacts, comme le mouvement du sujet au cours de l'acquisition, peuvent entraîner des pics/fluctuations aléatoires dans le signal BOLD, et avoir un effet néfastes sur les analyses statistiques. Le lissage spatiale entre alors en jeu : il a pour effet de diminuer le bruit, en éliminant la contribution des fluctuations aléatoires ciblant des voxels spécifiques. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Mis à part l'amélioration du ratio signal-bruit, le lissage permet également d'atténuer les erreurs/imperfections de recalage inter-sujet.
+Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l'IRM fonctionnelle, mais l'objectif de cette étape est un peu différente. Le bruit thermique aléatoire joue un plus grand rôle dans le signal BOLD, et peut avoir un effet néfaste sur les analyses statistiques. Le lissage spatiale permet de diminuer ce bruit aléatoire. Mis à part l'amélioration du rapport signal sur bruit, le lissage permet également d'atténuer les imperfections de recalage entre sujets, en diffusant l'activité dans l'espace. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible.
 
-Le paramètre `FWHM` (*full width at half maximum*) contrôle l'échelle de ce lissage (plus important ou moins important). Il détermine l'étalement des voxels voisins qui participeront à la nouvelle valeur d'un voxel cible. D'un point de vue mathématique, le paramètre `FWHM` représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur `FWHM` sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d'un voxel cible de l'image. Plusieurs études choisissent `6 mm` comme valeur pour le paramètre `FWHM`.
+le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins. Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement. Le paramètre `FWHM` (*full width at half maximum*) contrôle l'échelle de ce lissage (plus important ou moins important). Il détermine l'étalement des voxels voisins qui participeront à la nouvelle valeur d'un voxel cible. D'un point de vue mathématique, le paramètre `FWHM` représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur `FWHM` sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d'un voxel cible de l'image. Plusieurs études choisissent `6 mm` comme valeur pour le paramètre `FWHM`.
 
 #### Filtrage des facteurs de non-intérêt
-La dernière étape de prétraitement qui sera abordé est celle du filtrage de facteurs de non-intérêt. Différents **facteurs confondants** ou **artéfacts** peuvent induire des fluctuations dans le signal BOLD. Ces artéfacts peuvent avoir différentes fréquences du spectre, soit plus lentes ou rapides. Lorsque ce bruit est systématique ou périodique, il possible de le régresser (c'est-à-dire de le retirer) en employant différentes stratégies comme des filtres. Les dérives lentes constituent un exemple commun de facteurs de non-intérêt, et elles sont assez facilement repérables dans le signal. Dans ce cas, pouvons appliquer un filtre passe-haut, qui conserve uniquement les fréquence plus haute qu'un certain seuil (p.e. 0.01 Hz).
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies nécessaires
+import matplotlib.pyplot as plt
+import numpy as np
+from myst_nb import glue
+import seaborn as sns
 
+import warnings
+warnings.filterwarnings("ignore")
+
+# Importe un jeu de données fonctionnel (development_fmri)
+from nilearn import datasets
+dataset = datasets.fetch_development_fmri(n_subjects=1)
+func_filename = dataset.func[0]
+
+# Importe un atlas (Harvard-Oxford)
+atlas = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
+
+# Initialise la figure
+fig = plt.figure(figsize=(15, 15))
+
+# Génère les séries temporelles
+masker = NiftiLabelsMasker(atlas.maps,
+                           labels=atlas.labels,
+                           standardize=True)
+masker.fit(func_filename)
+signals = masker.transform(func_filename)
+
+# Plot the atlas
+from nilearn.plotting import plot_roi
+ax = plt.subplot2grid((2, 2), (0, 0), colspan=2)
+plot_roi(atlas.maps,
+    axes=ax,
+    title="Atlas Harvard-Oxford",
+    cut_coords=(8, -4, 9),
+    colorbar=True,
+    cmap='Paired')
+
+# Plot les séries temporelles
+import matplotlib.pyplot as plt
+ax = plt.subplot2grid((2, 2), (1, 0), colspan=1)
+for label_idx in range(3):
+    ax.plot(signals[:, label_idx],
+            linewidth=2,
+            label=atlas.labels[label_idx + 1])  # 0 is background
+ax.legend(loc=2)
+ax.set_title("Avant correction des dérives lentes")
+
+# Génère les séries temporelles après correction des dérives lentes
+masker = NiftiLabelsMasker(atlas.maps,
+                           detrend=True,
+                           labels=atlas.labels,
+                           standardize=True)
+masker.fit(func_filename)
+signals = masker.transform(func_filename)
+
+# Plot les séries temporelles
+ax = plt.subplot2grid((2, 2), (1, 1), colspan=1)
+for label_idx in range(3):
+    ax.plot(signals[:, label_idx],
+            linewidth=2,
+            label=atlas.labels[label_idx + 1])  # 0 is background
+ax.legend(loc=2)
+ax.set_title("Après correction des dérives lentes")
+
+from myst_nb import glue
+glue("detrending-fmri-fig", fig, display=False)
+```
+```{glue:figure} detrending-fmri-fig
+:figwidth: 600px
+:name: detrending-fmri-fig
+On extrait les séries temporelles associées à l'atlas Harvard-Oxford avant (à gauche) et après (à droite) régression des dérives lentes.
+Cette figure est adapté d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/06_manipulating_images/plot_nifti_labels_simple.html#sphx-glr-auto-examples-06-manipulating-images-plot-nifti-labels-simple-py) à partir du jeu de données `development_fmri` (cliquer sur + pour voir le code). La figure est sous license CC-BY.
+```
+La dernière étape de prétraitement qui sera abordé est celle du filtrage de facteurs de non-intérêt, ou facteurs confondants. Ces facteurs confondants peuvent avoir différentes sources, comme le bruit cardiaque, le bruit de respiration, ou le mouvement. Ils se caractérisent notamment par différentes fréquences du spectre, soit plus lentes ou rapides. Les dérives lentes constituent un exemple commun de facteurs de non-intérêt, et elles sont assez facilement repérables dans le signal. Dans ce cas, pouvons appliquer un filtre passe-haut, qui conserve uniquement les fréquence plus haute qu'un certain seuil (p.e. 0.01 Hz). De nombreux autres types de facteurs confondants sont couramment régressés en IRMf - par exemple les paramètres de mouvement.
 
 ## Analyses statistiques
 
