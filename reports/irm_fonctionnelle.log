@@ -17,44 +17,128 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# activation related to a mental computation task, as opposed to narrative sentence reading/listening
-# librairies
+# Importe les librairies nécessaires
+import matplotlib.pyplot as plt
+import numpy as np
+from myst_nb import glue
+import seaborn as sns
+
+import warnings
+warnings.filterwarnings("ignore")
+
+# Importe un jeu de données fonctionnel (development_fmri)
 from nilearn import datasets
-import pandas as pd
-from nilearn.glm import threshold_stats_img, SecondLevelModel
-from nilearn import plotting
+dataset = datasets.fetch_development_fmri(n_subjects=1)
+func_filename = dataset.func[0]
 
-n_samples = 20
-localizer_dataset = datasets.fetch_localizer_calculation_task(
-    n_subjects=n_samples)
-cmap_filenames = localizer_dataset.cmaps
+# Importe un atlas (Harvard-Oxford)
+atlas = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
 
-design_matrix = pd.DataFrame([1] * n_samples, columns=['intercept'])
+# Initialise la figure
+fig = plt.figure(figsize=(15, 15))
 
-#z_map = second_level_model.compute_contrast(output_type='z_score')
+# Génère les séries temporelles
+masker = NiftiLabelsMasker(atlas.maps,
+                           labels=atlas.labels,
+                           standardize=True)
+masker.fit(func_filename)
+signals = masker.transform(func_filename)
 
-#thresholded_map1, threshold1 = threshold_stats_img(
-#    z_map, alpha=.05, height_control='fdr', cluster_threshold=10)
+# Plot the atlas
+from nilearn.plotting import plot_roi
+ax = plt.subplot2grid((2, 2), (0, 0), colspan=2)
+plot_roi(atlas,
+    axes=ax,
+    title="Atlas Harvard-Oxford",
+    cut_coords=(8, -4, 9),
+    colorbar=True,
+    cmap='Paired')
 
-# visualiser
-# sans seuil
-#display = plotting.plot_stat_map(z_map, title='Carte activation')
+# Plot les séries temporelles
+import matplotlib.pyplot as plt
+ax = plt.subplot2grid((2, 2), (1, 0), colspan=1)
+for label_idx in range(3):
+    ax.plot(signals[:, label_idx],
+            linewidth=2,
+            label=atlas.labels[label_idx + 1])  # 0 is background
+ax.legend(loc=2)
+ax.set_title("Signals for first 3 regions")
+plt.show()
 
-# avec seuil
-#plotting.plot_stat_map(
-#    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,
-#    title='Carte activation avec seuil, fdr <.05')
+# Génère les séries temporelles après correction des dérives lentes
+masker = NiftiLabelsMasker(atlas.maps,
+                           detrend=True,
+                           labels=atlas.labels,
+                           standardize=True)
+masker.fit(func_filename)
+signals = masker.transform(func_filename)
+
+# Plot les séries temporelles
+import matplotlib.pyplot as plt
+ax = plt.subplot2grid((2, 2), (1, 1), colspan=1)
+for label_idx in range(3):
+    ax.plot(signals[:, label_idx],
+            linewidth=2,
+            label=atlas.labels[label_idx + 1])  # 0 is background
+ax.legend(loc=2)
+ax.set_title("Signals for first 3 regions")
+plt.show()
+
+from myst_nb import glue
+glue("detrending-fmri-fig", fig, display=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mImportError[0m                               Traceback (most recent call last)
-[0;32m<ipython-input-4-902ea1378e79>[0m in [0;36m<module>[0;34m[0m
-[1;32m      3[0m [0;32mfrom[0m [0mnilearn[0m [0;32mimport[0m [0mdatasets[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 5[0;31m [0;32mfrom[0m [0mnilearn[0m[0;34m.[0m[0mglm[0m [0;32mimport[0m [0mthreshold_stats_img[0m[0;34m,[0m [0mSecondLevelModel[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      6[0m [0;32mfrom[0m [0mnilearn[0m [0;32mimport[0m [0mplotting[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      7[0m [0;34m[0m[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m<ipython-input-4-0bcc934ad26d>[0m in [0;36m<module>[0;34m[0m
+[1;32m     29[0m [0;32mfrom[0m [0mnilearn[0m[0;34m.[0m[0mplotting[0m [0;32mimport[0m [0mplot_roi[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     30[0m [0max[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0msubplot2grid[0m[0;34m([0m[0;34m([0m[0;36m2[0m[0;34m,[0m [0;36m2[0m[0;34m)[0m[0;34m,[0m [0;34m([0m[0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m)[0m[0;34m,[0m [0mcolspan[0m[0;34m=[0m[0;36m2[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 31[0;31m plot_roi(atlas,
+[0m[1;32m     32[0m     [0maxes[0m[0;34m=[0m[0max[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     33[0m     [0mtitle[0m[0;34m=[0m[0;34m"Atlas Harvard-Oxford"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mImportError[0m: cannot import name 'SecondLevelModel' from 'nilearn.glm' (/home/pbellec/env/psy3018/lib/python3.8/site-packages/nilearn/glm/__init__.py)
-ImportError: cannot import name 'SecondLevelModel' from 'nilearn.glm' (/home/pbellec/env/psy3018/lib/python3.8/site-packages/nilearn/glm/__init__.py)
+[0;32m~/env/psy3018/lib/python3.8/site-packages/nilearn/plotting/img_plotting.py[0m in [0;36mplot_roi[0;34m(roi_img, bg_img, cut_coords, output_file, display_mode, figure, axes, title, annotate, draw_cross, black_bg, threshold, alpha, cmap, dim, vmin, vmax, resampling_interpolation, view_type, linewidths, **kwargs)[0m
+[1;32m    918[0m                                                     black_bg=black_bg)
+[1;32m    919[0m [0;34m[0m[0m
+[0;32m--> 920[0;31m     display = _plot_img_with_bg(
+[0m[1;32m    921[0m         [0mimg[0m[0;34m=[0m[0mroi_img[0m[0;34m,[0m [0mbg_img[0m[0;34m=[0m[0mbg_img[0m[0;34m,[0m [0mcut_coords[0m[0;34m=[0m[0mcut_coords[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    922[0m         [0moutput_file[0m[0;34m=[0m[0moutput_file[0m[0;34m,[0m [0mdisplay_mode[0m[0;34m=[0m[0mdisplay_mode[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/env/psy3018/lib/python3.8/site-packages/nilearn/plotting/img_plotting.py[0m in [0;36m_plot_img_with_bg[0;34m(img, bg_img, cut_coords, output_file, display_mode, colorbar, figure, axes, title, threshold, annotate, draw_cross, black_bg, vmin, vmax, bg_vmin, bg_vmax, interpolation, display_factory, cbar_vmin, cbar_vmax, brain_color, decimals, **kwargs)[0m
+[1;32m    171[0m [0;34m[0m[0m
+[1;32m    172[0m     [0;32mif[0m [0mimg[0m [0;32mis[0m [0;32mnot[0m [0;32mFalse[0m [0;32mand[0m [0mimg[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 173[0;31m         [0mimg[0m [0;34m=[0m [0m_utils[0m[0;34m.[0m[0mcheck_niimg_3d[0m[0;34m([0m[0mimg[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0;34m'auto'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    174[0m         [0mdata[0m [0;34m=[0m [0m_safe_get_data[0m[0;34m([0m[0mimg[0m[0;34m,[0m [0mensure_finite[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    175[0m         [0maffine[0m [0;34m=[0m [0mimg[0m[0;34m.[0m[0maffine[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/env/psy3018/lib/python3.8/site-packages/nilearn/_utils/niimg_conversions.py[0m in [0;36mcheck_niimg_3d[0;34m(niimg, dtype)[0m
+[1;32m    336[0m [0;34m[0m[0m
+[1;32m    337[0m     """
+[0;32m--> 338[0;31m     [0;32mreturn[0m [0mcheck_niimg[0m[0;34m([0m[0mniimg[0m[0;34m,[0m [0mensure_ndim[0m[0;34m=[0m[0;36m3[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    339[0m [0;34m[0m[0m
+[1;32m    340[0m [0;34m[0m[0m
+
+[0;32m~/env/psy3018/lib/python3.8/site-packages/nilearn/_utils/niimg_conversions.py[0m in [0;36mcheck_niimg[0;34m(niimg, ensure_ndim, atleast_4d, dtype, return_iterator, wildcards)[0m
+[1;32m    278[0m             return _iter_check_niimg(niimg, ensure_ndim=ensure_ndim,
+[1;32m    279[0m                                      dtype=dtype)
+[0;32m--> 280[0;31m         [0;32mreturn[0m [0mconcat_niimgs[0m[0;34m([0m[0mniimg[0m[0;34m,[0m [0mensure_ndim[0m[0;34m=[0m[0mensure_ndim[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    281[0m [0;34m[0m[0m
+[1;32m    282[0m     [0;31m# Otherwise, it should be a filename or a SpatialImage, we load it[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/env/psy3018/lib/python3.8/site-packages/nilearn/_utils/niimg_conversions.py[0m in [0;36mconcat_niimgs[0;34m(niimgs, dtype, ensure_ndim, memory, memory_level, auto_resample, verbose)[0m
+[1;32m    448[0m     [0miterator[0m[0;34m,[0m [0mliterator[0m [0;34m=[0m [0mitertools[0m[0;34m.[0m[0mtee[0m[0;34m([0m[0miter[0m[0;34m([0m[0mniimgs[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    449[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 450[0;31m         [0mfirst_niimg[0m [0;34m=[0m [0mcheck_niimg[0m[0;34m([0m[0mnext[0m[0;34m([0m[0mliterator[0m[0;34m)[0m[0;34m,[0m [0mensure_ndim[0m[0;34m=[0m[0mndim[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    451[0m     [0;32mexcept[0m [0mStopIteration[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    452[0m         [0;32mraise[0m [0mTypeError[0m[0;34m([0m[0;34m'Cannot concatenate empty objects'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/env/psy3018/lib/python3.8/site-packages/nilearn/_utils/niimg_conversions.py[0m in [0;36mcheck_niimg[0;34m(niimg, ensure_ndim, atleast_4d, dtype, return_iterator, wildcards)[0m
+[1;32m    269[0m                 [0;32mraise[0m [0mValueError[0m[0;34m([0m[0mmessage[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    270[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 271[0;31m                 [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"File not found: '%s'"[0m [0;34m%[0m [0mniimg[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    272[0m         [0;32melif[0m [0;32mnot[0m [0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mexists[0m[0;34m([0m[0mniimg[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    273[0m             [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"File not found: '%s'"[0m [0;34m%[0m [0mniimg[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: File not found: 'maps'
+ValueError: File not found: 'maps'
 
