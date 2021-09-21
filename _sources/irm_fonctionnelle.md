@@ -210,7 +210,7 @@ Ce que cela veut dire, c'est que quand elles sont soumises à des impulsions él
 
 |               |   `Déoxyhémoglobine`     | `Oxyhémoglobine`  |
 | ------------- |:-------------:| -----:|
-|Propriétés électromagnétiques |Diamagnétique| Paramagnétique|
+|Propriétés électromagnétiques | Paramagnétique | Diamagnétique|
 | Impact sur le signal BOLD      | **Réduit** le signal BOLD  | **Augmente** le signal BOLD|
 | $T2$*    | Décroît plus **rapidement**   |   Décroît plus **lentement** |
 | Effet sur le champ | **Ajout d'inhomogénéités/distorsions** |  **Pas d'inhomogénétités**  |
