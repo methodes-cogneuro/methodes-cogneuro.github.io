@@ -48,14 +48,14 @@ est une modalité d'imagerie qui permet de mesurer indirectement l'activité cé
 ```{figure} irm_fonctionnelle/irmf.jpg
 ---
 width: 600px
-name: irmf-fig
+name: irmf-ecran-fig
 ---
 Les images d'IRMf permettent d'observer l'activation cérébrale, tiré de [wikipedia](https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle#/media/Fichier:Researcher-test.jpg).
 ```
 Les objectifs spécifiques du cours sont:
 - Comprendre les principes **physiques** et **physiologiques** du signal en IRMf.
 - Comprendre le modèle de la **réponse hémodynamique**, invariante dans le temps, qui permet d'estimer le niveau d'activation en réponse à divers paradigmes expérimentaux.
-- Connaître les principales étapes de **pré-traitement** des données IRMf, soit le **recalage**, le **lissage spatial** et le **filtrage de facteurs de non-intérêt**. ces étapes sont nécessaires afin de réduire le bruit dans le signal IRMf, qui ne reflète pas l'activité neuronale.
+- Connaître les principales étapes de **pré-traitement** des données IRMf, soit le **recalage**, le **lissage spatial** et le **filtrage de facteurs de non-intérêt**. Ces étapes sont nécessaires afin de réduire le bruit dans le signal IRMf, qui ne reflète pas l'activité neuronale.
 - Connaître le principe de génération d'une **carte d'activation**, qui, à l'aide de modèles statistiques, permet de tester des hypothèses sur l'organisation fonctionnelle du cerveau.
 
 ## Principes physiques et physiologiques
@@ -187,9 +187,9 @@ Le lien entre activité neuronale et signal IRMf repose sur le phénomène du **
 ```{figure} ./irm_fonctionnelle/hemoglobine-fig.jpg
 ---
 width: 600px
-name: spin-fig
+name: hemoglobine-fig
 ---
-Illustration du transport de l'oxygène par l'hémoglobine dans le sang. Image [shutterstock](https://www.shutterstock.com/image-illustration/vector-science-medical-icon-blood-hemoglobin-1472480087) ID `1472480087`, utilisée sous licence shutterstock standard.
+Illustration du transport de l'oxygène par l'hémoglobine dans le sang. Image par [ShadeDesign](https://www.shutterstock.com/g/ShadeDesign) disponible sur [shutterstock](https://www.shutterstock.com/image-illustration/vector-science-medical-icon-blood-hemoglobin-1472480087) ID `1472480087`, utilisée sous licence shutterstock standard.
 ```
 
 Quelle est l'origine du **signal BOLD**? L'hémoglobine existe sous deux états, soit l'état oxygéné (porteur de l'oxygène) et déoxygéné (non-porteur d'oxygène). La présence de l'oxygène modifie les propriétés éléctromagnétiques de cette molécule:
@@ -210,109 +210,86 @@ Ce que cela veut dire, c'est que quand elles sont soumises à des impulsions él
 :class: caution attention
 :name: neurovascular-warning
 
-Le signal BOLD en IRMf constitue une **mesure indirecte** de l'activité neuronale. En effet, cette modalité ne mesure pas directement l'activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l'activité neuronale. Cette relation est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.
+Le signal BOLD en IRMf constitue une **mesure indirecte** de l'activité neuronale. En effet, cette modalité ne mesure pas directement l'activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l'activité neuronale. Cette relation de **couplage neurovasculaire** est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.
 ```
 
 ## Fonction de réponse hémodynamique
 
-### Théorie des systèmes
-Un système comprend un ensemble d'éléments qui interagissent selon certains principes ou règles. En présence d'un système, nous pouvons décrire et de formaliser les interactions entre ses éléments au moyen de termes mathématiques. Pourquoi parlons nous de systèmes? Parce que l'activité neuronale et le signal BOLD forme un système. La **fonction de réponse hémodynamique** est la formule qui contient la description ou formalisation de la relation entre les éléments de ce système, soit **l'activité neuronale ($X$)** et **le signal BOLD ($Y$)** .
-
-\begin{align}
-X(t) &\quad \text{intrant : activité neuronale}\\
-Y(t) &\quad \text{sortie : réponse hémodynamique}\\
-\end{align}
-
-La fonction de réponse hémodynamique, et ses propriétés mathématiques, constituent une autre hypothèses importante pour les aspects de modélisation en IRMf. Essentiellement, la fonction ce modèle sous-tend les inférences que l'on fait sur l'organisation fonctionnelle du cerveau: nous l'employons dans le but d'estimer la réponse à une tâche ou condition donnée.
-
-### Propriétés mathématiques
-La figure qui suit montre la réponse hémodynamique attendue suite à un pic d'activation au temps 0. Bien que simplifiée, elle permet de visualiser la fonction largement admis, décrivant relation maintenue entre l'activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps.
+### Réponse à une impulsion courte
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 
-# importer les librairies
+# To get an impulse response, we simulate a single event
+# occurring at time t=0, with duration 1s.
 import numpy as np
-from nipy.modalities.fmri import hrf, utils
+frame_times = np.linspace(0, 30, 61)
+onset, amplitude, duration = 0., 1., 1.
+exp_condition = np.array((onset, duration, amplitude)).reshape(3, 1)
+stim = np.zeros_like(frame_times)
+stim[(frame_times > onset) * (frame_times <= onset + duration)] = amplitude
+
+# Now we plot the hrf
+from nilearn.glm.first_level import compute_regressor
 import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(6, 4))
 
-# visualiser la fonction hémodynamique
-fig_BOLD = plt.plot
-hrf_func = utils.lambdify_t(hrf.glover(utils.T))
-t = np.linspace(0,25,200)
-plt.plot(t, hrf_func(t))
-a=plt.gca()
-a.set_xlabel('t(s)')
-a.set_ylabel('% Signal BOLD')
-plt.axvline(x=0, marker = "o", color = "r")
-plt.title("La fonction de réponse hémodynamique")
+# obtain the signal of interest by convolution
+signal, name = compute_regressor(
+    exp_condition, 'glover', frame_times, con_id='main',
+    oversampling=16)
+
+# plot this
+plt.fill(frame_times, stim, 'b', alpha=.5, label='stimulus')
+plt.plot(frame_times, signal.T[0], 'r', label=name[0])
+
+# Glue the figure
+from myst_nb import glue
+glue("hrf-fig", fig, display=False)
 ```
-Dans la figure ci-haut, l'axe des $X$ représente le temps, et l'axe de $Y$, le **%** du changement du signal BOLD. La ligne verticale rouge indique le pic d'activation neuronale. La courbe bleue, pour sa part, illustre le % du changement du signal BOLD attendu suivant l'activation neuronale. Ci-dessous sont décrit les caractéristiques importantes de la fonction de réponse hémodynamique.
 
-- **Résolution temporelle**: Réponse lente, durée entre **15 à 20 secondes** suivant le stimulus
-- **Temps avant l'atteinte de l'amplitude maximale** :Atteint l'amplitude maximale après **4 à 6 secondes**
-- **Creux post-stimulation (*Undershoot* en anglais)** : Décroît à partir de l'amplitude maximale jusqu'à se retrouver sous le seuil de base
-- **Retour au seuil** : La fonction retrouve le niveau de base après environ **15 à 20** secondes
-- **Amplitude maximale** : L'ordre du changement relatif du signal BOLD atteint environ **5%** pour des stimulations d'ordre sensorielle, alors qu'elle est plutôt de **0,1 à 0,5%** pour d'autres paradigmes cognitifs
+```{glue:figure} hrf-fig
+:figwidth: 800px
+:name: "hrf-fig"
+Réponse hémodynamique à une impulsion unitaire d'une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) {cite:p}`Glover1999-cb`. Le code pour générer cette figure est adaptée d'un [tutoriel](https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py) Nilearn, et la figure est sous licence CC-BY.
+```
+La figure qui suit montre la réponse hémodynamique attendue suite à une impulsion finie d'activation au temps 0, et de durée 1 seconde. La réponse à ce type de stimulus permet de visualiser la réponse hémodynamique la plus largement utilisée, décrivant relation maintenue entre l'activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps. L'axe `x` représente le temps, en secondes, et l'axe `y` le signal cérébral, exprimé en pourcentage du changement par rapport à une ligne de base. Les caractéristiques importantes de la fonction de réponse hémodynamique sont:
+
+- **la résolution temporelle**: il s'agit d'une réponse lente, qui dure entre **15 à 20 secondes** suivant le stimulus
+- **le temps avant l'atteinte de l'amplitude maximale**: de **4 à 6 secondes**
+- **Creux post-stimulation (*Undershoot* en anglais)**: décroît à partir de l'amplitude maximale jusqu'à se retrouver sous la ligne de base.
+- **Retour à la ligne de base**: La fonction retrouve le niveau précédant la stimulation après environ **15 à 20** secondes
+- **Amplitude maximale**: L'ordre du changement relatif du signal BOLD atteint environ **5%** pour des stimulations d'ordre sensorielle, alors qu'elle est plutôt de **0,1 à 0,5%** pour d'autres paradigmes cognitifs
 
 ```{admonition} Attention!
 :class: tip
 :name: adéquation du modèle-tip
 
-Le modèle de réponse hémodynamique peut s'avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est déréglé. C'est le cas de populations qui ont une vascularisation atypique, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires.
+Le modèle de réponse hémodynamique ci dessus est très rigide et peut s'avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est différent de l'étude originale de Glover and coll. (1999) {cite:p}`Glover1999-cb`. C'est probablement le cas, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires. La fonction de réponse hémodynamique peut également varier d'une région du cerveau à l'autre. Il est possible d'utiliser des modèles de la réponse hémodynamique qui sont plus flexibles et permettent, par exemple, de modifier le temps du pic de la réponse.
 ```
 
-La fonction de réponse hémodynamique présentée ci-haut se rapporte à un contexte expérimentale bien simple : une simple stimulation courte isolée. En réalité, les **paradigmes expérimentaux sont beaucoup plus complexes** : ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d'une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu'advient-il alors de la fonction de réponse hémodynamique? Peut-on toujours modéliser la réponse hémodynamique en tant que système, c'est-à-dire définies par des règles mathématiques? Si oui, que deviennent les propriétés de ce système?
-
-```{admonition} Linéarité
-:class: tip
-:name: linéarité-tip
-
-- Le système est **additif**. Autrement dit, la réponse à plusieurs impulsions rapprochées (ou réponse longue) correspond à la somme des réponses à ces impulsions prises indépendamment.
-- La réponse neurale **mise à l'échelle** selon le facteur **a**, change également l'échelle de la réponse BOLD selon ce même facteur. Ceci implique que lorsque l'amplitude de la réponse neuronale est le double, la réponse BOLD est également double.```
-
-!! Figure linéarité !!
-```
-```{admonition} Invariance au temps
-:class: tip
-:name: invariance-tip
-
-- Si le stimulus est décalé de $t$ secondes, la réponse BOLD est aussi décalé de $t$ secondes.
-
-!! Figure invariance dans le temps !!
- ```
-
-Combinant l'ensemble de ces propriétés, nous obtenons un système relativement simple à caractériser : nous pouvons alors inférer les réponses à des stimuli complexes, ayant pour connaissance de la réponse aux stimuli court, pris indépendamment.
-
-Comment les propriétés du système ont-elles été vérifiées? Une première étude conduite par **Logothetis et al. Nature Neuroscience (2001)** s'est intéressée à cette question, c'est-à-dire au comportement d'un système opérant dans le cadre de paradigme expérimentaux plus complexes (ici variant la durée des stimulations). Plus précisément, elle visait à tester empiriquement l'hypothèse postulant la linéarité de ce système, c'est-à-dire décrivant une relation linéaire entre activité neuronale ($X$) et BOLD ($Y$). Dans l'étude, les auteurs ont mis en place un protocole ingénieux permettant de mesurer simultanément de l'activité LFP (**activité neuronale**) en électrophysiologie et le signal **BOLD** dans le cortex visuel du singe. Ils ont fait varier les durées d'exposition à une stimulation: les singes étaient soumis à des stimulations visuelles de 3, 6, 12 et 24 secondes (de gauche à droite et de haut en bas sur la figure). Vous trouvez ci-bas la figure des résultats de cette étude qui permet de comparer l'activité LFP et la réponse BOLD mesurées.
-
-!! Figure résultats logothetis !!
-
-```{figure} .PLACEHOLDER.png
+### Le cerveau (BOLD) comme un système
+```{figure} ./irm_fonctionnelle/systeme-fig.png
 ---
-width: 600px
-name: résultats-logothetis-fig
+width: 400px
+name: systeme-fig
 ---
-L'aire bleue correspond aux LFP (activité neuronale), la courbe rouge est le signal BOLD qui est mesuré, et la courbe grise est le signal BOLD prédit par la convolution des LFP avec une fonction de réponse hémodynamique supposant un système linéaire. Le premier trait vertical représente le début de la stimulation et le second, la fin de cette stimulation. À partir des résultats, nous observons que la réponse BOLD est fonction de la durée de la stimulation. Globalement, une réponse hémodynamique plus importante (plus grande amplitude) est observée pour des stimuli qui s'étalent sur une plus longue durée.
+Un système prend un décours temporel d'entrée et lui associe un décours temporel de sortie. Figure sous licence CC-BY.
 ```
-Et alors, que peut-on retirer de ces résultats? Lorsque nous regardons la figure des résultats de l'étude par *Logothetis et al. (2001)* nous observons une superposition des deux courbes **signal BOLD mesuré** (rouge) et **signal BOLD prédit** (gris). Ceci nous indique l'adéquation de l'hypothèse linéaire comme décrivant ce système, et ce, même pour des paradigmes expérimentaux augmentant en complexité!
 
-```{admonition} Attention!
+Le processus qui transforme l'activité neuronale en un signal BOLD peut se formaliser dans le cadre général de la théorie des systèmes. Plus spécifiquement, la fonction de réponse hémodynamique de la {numref}`hrf-fig` est généralement approximée comme un système linéaire et invariant dans le temps. Cette approximation sous-tend les inférences que l'on fait sur l'organisation fonctionnelle du cerveau: nous l'employons dans le but d'estimer la réponse à une tâche ou condition donnée. La fonction de réponse hémodynamique de la {numref}`hrf-fig` se rapporte à un contexte expérimentale simple: une stimulation courte et isolée. En réalité, les **paradigmes expérimentaux sont beaucoup plus complexes**: ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d'une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu'advient-il alors de la fonction de réponse hémodynamique? Une propriété clé d'un système linéaire est d'être additif, c'est à dire que la réponse à une stimulation longue peut être décomposée comme la superposition de réponses à des stimulations plus courtes. Une autre hypothèse clé est l'**invariance dans le temps**, qui nous dit que la réponse du système ne va pas varier si on effectue la même stimulation courte à différents instants. Quand on **combine** l'hypothèse de linéarité avec l'invariance dans le temps, il est possible de prédire la réponse à n'importe quelle série de stimuli complexe à partir de la réponse à une unique stimulation courte, comme présentée en {numref}`hrf-fig`. L'étude de Logothetis et al. (2001) {cite:p}`Logothetis2001-lt` a été la première à démontrer chez le singe que cette hypothèse de linéarité et d'invariance semble être assez bien respectée, au moins dans le cortex visuel pour des stimuli visuels simples (contexte de l'étude).
+
+```{admonition} Additivité
 :class: tip
-:name: attention
-Attention! Un découplage de la réponse BOLD mesurée-prédite est observable vers la fin d'une stimulation très longue (cadrant du bas à droite), ce qui est suppose que l'hypothèse linéaire est moins bien adaptée pour de très longues stimulations.
-```
-Pour résumer, l'étude par Logothetis et al. (2001) est le premier protocole ayant permis de valider empiriquement l'hypothèse du système linéaire. Aujourd'hui, cette hypothèse a été validée à plus d'une reprise dans divers paradigmes expérimentaux. La connaissance des propriétés du modèle de réponse hémodynamique rend possible la modélisation du signal BOLD, non seulement pour des stimuli simples courts et isolés, mais également pour divers paradigmes expérimentaux complexes, qui sont beaucoup plus proche de la réalité pratique expérimentale.   
+:name: additivité-tip
+Un système est dit **additif** si la réponse à plusieurs impulsions correspond à la somme des réponses à ces impulsions prises indépendamment. Ce comportement est illustré ci-dessous.
 
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/91JVOAwOOyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```{figure} ./irm_fonctionnelle/systeme-additif-fig.png
+---
+width: 400px
+name: systeme-additif-fig
+---
+Figure sous licence CC-BY.
 ```
 
 ### Prétraitement des données d'IRMf
@@ -468,10 +445,47 @@ Il est possible de généraliser l'analyse de soustraction pour tenir compte de 
 ### IRMf - Cartes d'activation
 Les cartes d'activation sont souvent ce que l'on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d'activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des **sujets** (p.e. effet yeux ouverts vs yeux fermés) ou des **groupes**, si nous combinons les données de plusieurs sujets (p.e. effet de l'âge ou d'appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l'application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d'intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d'intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: *Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992*, ayant introduit l'idée de cartographier le cerveau avec des tâches en IRMf.
 
+<<<<<<< HEAD
 ## Conclusion
 La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
 
 ## Un peu d'histoire - Gall -
+=======
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+# activation related to a mental computation task, as opposed to narrative sentence reading/listening
+# librairies
+from nilearn import datasets
+import pandas as pd
+#from nilearn.glm import threshold_stats_img, SecondLevelModel
+from nilearn import plotting
+
+n_samples = 20
+localizer_dataset = datasets.fetch_localizer_calculation_task(
+    n_subjects=n_samples)
+cmap_filenames = localizer_dataset.cmaps
+
+design_matrix = pd.DataFrame([1] * n_samples, columns=['intercept'])
+
+#z_map = second_level_model.compute_contrast(output_type='z_score')
+
+#thresholded_map1, threshold1 = threshold_stats_img(
+#    z_map, alpha=.05, height_control='fdr', cluster_threshold=10)
+
+# visualiser
+# sans seuil
+#display = plotting.plot_stat_map(z_map, title='Carte activation')
+
+# avec seuil
+#plotting.plot_stat_map(
+#    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,
+#    title='Carte activation avec seuil, fdr <.05')
+```
+
+### Conclusion
+La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
+>>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
 
 ```{admonition} Origines de la ségrégation fonctionnelle
 :class: tip
@@ -504,7 +518,26 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xF
 
 ## Conclusions et références suggérées
 
+<<<<<<< HEAD
 ## Références
+=======
+* note à moi-même : à formatter
+*
+- https://dartbrains.org/content/intro.html
+- Handbook of functional MRI Data Analysis
+- https://orbi.uliege.be/bitstream/2268/31382/1/2.%20GOSSERIES%20NS%2008%20Imag%20%287%29_SL.pdf
+- Imagerie cérébrale fonctionnelle, Bernard Mazoyer, p. 45. Disponible sur studium
+- Vidéo youtube (en anglais) https://www.youtube.com/watch?v=Rb_mdzgw-Jc
+- Ogawa et al. PNAS 1992;
+- Kwong et al. PNAS 1992;
+- Bandettini et al. MRM 1992.
+- Logothetis et al., 2001
+- Sherrington et al., 1998
+
+
+
+### Références
+>>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
 
 ```{bibliography}
 :filter: docname in docnames

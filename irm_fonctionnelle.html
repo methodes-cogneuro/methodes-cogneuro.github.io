@@ -271,13 +271,13 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#theorie-des-systemes">
-     Théorie des systèmes
+    <a class="reference internal nav-link" href="#reponse-a-une-impulsion-courte">
+     Réponse à une impulsion courte
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#proprietes-mathematiques">
-     Propriétés mathématiques
+    <a class="reference internal nav-link" href="#le-cerveau-bold-comme-un-systeme">
+     Le cerveau (BOLD) comme un système
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -325,6 +325,13 @@
   <a class="reference internal nav-link" href="#un-peu-d-histoire-gall">
    Un peu d’histoire - Gall -
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Conclusion
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cartes-d-activation">
@@ -340,6 +347,13 @@
   <a class="reference internal nav-link" href="#references">
    Références
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Références
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercices">
@@ -367,7 +381,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id27">
+    <a class="reference internal nav-link" href="#id34">
      Exercice 4
     </a>
    </li>
@@ -434,15 +448,15 @@
 <h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle">L’imagerie par résonnance magnétique fonctionnelle</a>
 est une modalité d’imagerie qui permet de mesurer indirectement l’activité cérébrale. L’IRMf acquière des images du cerveau en action en relation avec différentes conditions expérimentales, ayant été conçues pour isoler des processus cognitifs spécifiques. L’IRMf permet donc de cartographier l’organisation fonctionnelle du cerveau, dans différents contextes cognitifs.</p>
-<div class="figure align-default" id="irmf-fig">
+<div class="figure align-default" id="irmf-ecran-fig">
 <a class="reference internal image-reference" href="_images/irmf.jpg"><img alt="_images/irmf.jpg" src="_images/irmf.jpg" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Les images d’IRMf permettent d’observer l’activation cérébrale, tiré de <a class="reference external" href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle#/media/Fichier:Researcher-test.jpg">wikipedia</a>.</span><a class="headerlink" href="#irmf-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Les images d’IRMf permettent d’observer l’activation cérébrale, tiré de <a class="reference external" href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle#/media/Fichier:Researcher-test.jpg">wikipedia</a>.</span><a class="headerlink" href="#irmf-ecran-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Les objectifs spécifiques du cours sont:</p>
 <ul class="simple">
 <li><p>Comprendre les principes <strong>physiques</strong> et <strong>physiologiques</strong> du signal en IRMf.</p></li>
 <li><p>Comprendre le modèle de la <strong>réponse hémodynamique</strong>, invariante dans le temps, qui permet d’estimer le niveau d’activation en réponse à divers paradigmes expérimentaux.</p></li>
-<li><p>Connaître les principales étapes de <strong>pré-traitement</strong> des données IRMf, soit le <strong>recalage</strong>, le <strong>lissage spatial</strong> et le <strong>filtrage de facteurs de non-intérêt</strong>. ces étapes sont nécessaires afin de réduire le bruit dans le signal IRMf, qui ne reflète pas l’activité neuronale.</p></li>
+<li><p>Connaître les principales étapes de <strong>pré-traitement</strong> des données IRMf, soit le <strong>recalage</strong>, le <strong>lissage spatial</strong> et le <strong>filtrage de facteurs de non-intérêt</strong>. Ces étapes sont nécessaires afin de réduire le bruit dans le signal IRMf, qui ne reflète pas l’activité neuronale.</p></li>
 <li><p>Connaître le principe de génération d’une <strong>carte d’activation</strong>, qui, à l’aide de modèles statistiques, permet de tester des hypothèses sur l’organisation fonctionnelle du cerveau.</p></li>
 </ul>
 </div>
@@ -568,7 +582,7 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 <h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="neurovascular-fig">
 <a class="reference internal image-reference" href="_images/neurovascular-fig.jpg"><img alt="_images/neurovascular-fig.jpg" src="_images/neurovascular-fig.jpg" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text"><strong>Résumé de l’architecture neuro-gliale-vasculaire</strong>. (a) Les astrocytes s’enveloppent autour des synapses, et ont des projections jusqu’à la surface des micro-cappilaires. (b) Les astrocytes établissent des domaines anatomiques exclusifs, qui chevauchent de manière minimale ceux de leurs voisins astrocytes. (c) Schéma représentant la morphologie d’une cellule gliale, avec un corps connecté à une structure en arbre. (d) Micro-circuit neuronal. (e) microvascularisation cérébrale. (f) illustration de la taille des micro-circuits neuronaux et de la vascularisation. (g) pourcentage d’occupation du volume dans l’espace du circuit. Figure tirée de l’article par Zisis et coll. (2021) <span id="id1">[<a class="reference internal" href="#id25">ZKK+21</a>]</span>, sous licence CC-BY-NC-ND.</span><a class="headerlink" href="#neurovascular-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text"><strong>Résumé de l’architecture neuro-gliale-vasculaire</strong>. (a) Les astrocytes s’enveloppent autour des synapses, et ont des projections jusqu’à la surface des micro-cappilaires. (b) Les astrocytes établissent des domaines anatomiques exclusifs, qui chevauchent de manière minimale ceux de leurs voisins astrocytes. (c) Schéma représentant la morphologie d’une cellule gliale, avec un corps connecté à une structure en arbre. (d) Micro-circuit neuronal. (e) microvascularisation cérébrale. (f) illustration de la taille des micro-circuits neuronaux et de la vascularisation. (g) pourcentage d’occupation du volume dans l’espace du circuit. Figure tirée de l’article par Zisis et coll. (2021) <span id="id1">[<a class="reference internal" href="#id30">ZKK+21</a>]</span>, sous licence CC-BY-NC-ND.</span><a class="headerlink" href="#neurovascular-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Le lien entre activité neuronale et signal IRMf repose sur le phénomène du <strong>couplage neurovasculaire</strong>, et plus spécifiquement le couplage entre l’activité post-synaptique des neurones et les micro-capillaires sanguins. La production de neurotransmetteurs dans la fente synaptique entrainent une série de réactions chimiques dans les cellules gliales avoisinantes. Lorsque l’activité neuronale augmente, les réactions chimiques qui l’accompagnent entrainent une <strong>demande métabolique</strong> en nutriments et ultimement l’extraction d’oxygène dans les micro-capillaires de manière locale. Les événements suivants se produisent alors:</p>
 <ul class="simple">
@@ -576,13 +590,13 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 <li><p>augmentation du flux sanguin;</p></li>
 <li><p>augmentation l’acheminement en oxygène (oxyhémoglobine) vers les populations de neurones actives.</p></li>
 </ul>
-<p>L’augmentation d’extraction d’oxygène entraine donc de manière paradoxale une augmentation locale de la concentration en d’<strong>oxyhémoglobine</strong> (sang oxygéné) par rapport à la concentration en <strong>déoxyhémoglobine</strong> (sang déoxygéné) localement, ce qui est dédectable au moyen de l’IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) <span id="id2">[<a class="reference internal" href="#id26">BWF98</a>]</span>.</p>
+<p>L’augmentation d’extraction d’oxygène entraine donc de manière paradoxale une augmentation locale de la concentration en d’<strong>oxyhémoglobine</strong> (sang oxygéné) par rapport à la concentration en <strong>déoxyhémoglobine</strong> (sang déoxygéné) localement, ce qui est dédectable au moyen de l’IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) <span id="id2">[<a class="reference internal" href="#id31">BWF98</a>]</span>.</p>
 </div>
 <div class="section" id="le-signal-bold">
 <h3>Le signal BOLD<a class="headerlink" href="#le-signal-bold" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="spin-fig">
+<div class="figure align-default" id="hemoglobine-fig">
 <a class="reference internal image-reference" href="_images/hemoglobine-fig.jpg"><img alt="_images/hemoglobine-fig.jpg" src="_images/hemoglobine-fig.jpg" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Illustration du transport de l’oxygène par l’hémoglobine dans le sang. Image <a class="reference external" href="https://www.shutterstock.com/image-illustration/vector-science-medical-icon-blood-hemoglobin-1472480087">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1472480087</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#spin-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Illustration du transport de l’oxygène par l’hémoglobine dans le sang. Image par <a class="reference external" href="https://www.shutterstock.com/g/ShadeDesign">ShadeDesign</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-illustration/vector-science-medical-icon-blood-hemoglobin-1472480087">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1472480087</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#hemoglobine-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Quelle est l’origine du <strong>signal BOLD</strong>? L’hémoglobine existe sous deux états, soit l’état oxygéné (porteur de l’oxygène) et déoxygéné (non-porteur d’oxygène). La présence de l’oxygène modifie les propriétés éléctromagnétiques de cette molécule:</p>
 <ul class="simple">
@@ -618,96 +632,78 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </table>
 <div class="caution attention admonition" id="neurovascular-warning">
 <p class="admonition-title">Attention!</p>
-<p>Le signal BOLD en IRMf constitue une <strong>mesure indirecte</strong> de l’activité neuronale. En effet, cette modalité ne mesure pas directement l’activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l’activité neuronale. Cette relation est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.</p>
+<p>Le signal BOLD en IRMf constitue une <strong>mesure indirecte</strong> de l’activité neuronale. En effet, cette modalité ne mesure pas directement l’activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l’activité neuronale. Cette relation de <strong>couplage neurovasculaire</strong> est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.</p>
 </div>
 </div>
 </div>
 <div class="section" id="fonction-de-reponse-hemodynamique">
 <h2>Fonction de réponse hémodynamique<a class="headerlink" href="#fonction-de-reponse-hemodynamique" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="theorie-des-systemes">
-<h3>Théorie des systèmes<a class="headerlink" href="#theorie-des-systemes" title="Permalink to this headline">¶</a></h3>
-<p>Un système comprend un ensemble d’éléments qui interagissent selon certains principes ou règles. En présence d’un système, nous pouvons décrire et de formaliser les interactions entre ses éléments au moyen de termes mathématiques. Pourquoi parlons nous de systèmes? Parce que l’activité neuronale et le signal BOLD forme un système. La <strong>fonction de réponse hémodynamique</strong> est la formule qui contient la description ou formalisation de la relation entre les éléments de ce système, soit <strong>l’activité neuronale (<span class="math notranslate nohighlight">\(X\)</span>)</strong> et <strong>le signal BOLD (<span class="math notranslate nohighlight">\(Y\)</span>)</strong> .</p>
-<p>\begin{align}
-X(t) &amp;\quad \text{intrant : activité neuronale}\
-Y(t) &amp;\quad \text{sortie : réponse hémodynamique}\
-\end{align}</p>
-<p>La fonction de réponse hémodynamique, et ses propriétés mathématiques, constituent une autre hypothèses importante pour les aspects de modélisation en IRMf. Essentiellement, la fonction ce modèle sous-tend les inférences que l’on fait sur l’organisation fonctionnelle du cerveau: nous l’employons dans le but d’estimer la réponse à une tâche ou condition donnée.</p>
-</div>
-<div class="section" id="proprietes-mathematiques">
-<h3>Propriétés mathématiques<a class="headerlink" href="#proprietes-mathematiques" title="Permalink to this headline">¶</a></h3>
-<p>La figure qui suit montre la réponse hémodynamique attendue suite à un pic d’activation au temps 0. Bien que simplifiée, elle permet de visualiser la fonction largement admis, décrivant relation maintenue entre l’activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps.</p>
+<div class="section" id="reponse-a-une-impulsion-courte">
+<h3>Réponse à une impulsion courte<a class="headerlink" href="#reponse-a-une-impulsion-courte" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importer les librairies</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To get an impulse response, we simulate a single event</span>
+<span class="c1"># occurring at time t=0, with duration 1s.</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">nipy.modalities.fmri</span> <span class="kn">import</span> <span class="n">hrf</span><span class="p">,</span> <span class="n">utils</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">frame_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">61</span><span class="p">)</span>
+<span class="n">onset</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span>
+<span class="n">exp_condition</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">onset</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">frame_times</span><span class="p">)</span>
+<span class="n">stim</span><span class="p">[(</span><span class="n">frame_times</span> <span class="o">&gt;</span> <span class="n">onset</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">frame_times</span> <span class="o">&lt;=</span> <span class="n">onset</span> <span class="o">+</span> <span class="n">duration</span><span class="p">)]</span> <span class="o">=</span> <span class="n">amplitude</span>
 
-<span class="c1"># visualiser la fonction hémodynamique</span>
-<span class="n">fig_BOLD</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span>
-<span class="n">hrf_func</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">lambdify_t</span><span class="p">(</span><span class="n">hrf</span><span class="o">.</span><span class="n">glover</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">hrf_func</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
-<span class="n">a</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="n">a</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t(s)&#39;</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;% Signal BOLD&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;La fonction de réponse hémodynamique&quot;</span><span class="p">)</span>
+<span class="c1"># Now we plot the hrf</span>
+<span class="kn">from</span> <span class="nn">nilearn.glm.first_level</span> <span class="kn">import</span> <span class="n">compute_regressor</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># obtain the signal of interest by convolution</span>
+<span class="n">signal</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">compute_regressor</span><span class="p">(</span>
+    <span class="n">exp_condition</span><span class="p">,</span> <span class="s1">&#39;glover&#39;</span><span class="p">,</span> <span class="n">frame_times</span><span class="p">,</span> <span class="n">con_id</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">,</span>
+    <span class="n">oversampling</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># plot this</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">frame_times</span><span class="p">,</span> <span class="n">stim</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;stimulus&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frame_times</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;hrf-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Dans la figure ci-haut, l’axe des <span class="math notranslate nohighlight">\(X\)</span> représente le temps, et l’axe de <span class="math notranslate nohighlight">\(Y\)</span>, le <strong>%</strong> du changement du signal BOLD. La ligne verticale rouge indique le pic d’activation neuronale. La courbe bleue, pour sa part, illustre le % du changement du signal BOLD attendu suivant l’activation neuronale. Ci-dessous sont décrit les caractéristiques importantes de la fonction de réponse hémodynamique.</p>
+<div class="figure align-default" id="hrf-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_fonctionnelle_3_1.png" src="_images/irm_fonctionnelle_3_1.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Réponse hémodynamique à une impulsion unitaire d’une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) <span id="id3">[<a class="reference internal" href="#id32">Glo99</a>]</span>. Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>La figure qui suit montre la réponse hémodynamique attendue suite à une impulsion finie d’activation au temps 0, et de durée 1 seconde. La réponse à ce type de stimulus permet de visualiser la réponse hémodynamique la plus largement utilisée, décrivant relation maintenue entre l’activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps. L’axe <code class="docutils literal notranslate"><span class="pre">x</span></code> représente le temps, en secondes, et l’axe <code class="docutils literal notranslate"><span class="pre">y</span></code> le signal cérébral, exprimé en pourcentage du changement par rapport à une ligne de base. Les caractéristiques importantes de la fonction de réponse hémodynamique sont:</p>
 <ul class="simple">
-<li><p><strong>Résolution temporelle</strong>: Réponse lente, durée entre <strong>15 à 20 secondes</strong> suivant le stimulus</p></li>
-<li><p><strong>Temps avant l’atteinte de l’amplitude maximale</strong> :Atteint l’amplitude maximale après <strong>4 à 6 secondes</strong></p></li>
-<li><p><strong>Creux post-stimulation (<em>Undershoot</em> en anglais)</strong> : Décroît à partir de l’amplitude maximale jusqu’à se retrouver sous le seuil de base</p></li>
-<li><p><strong>Retour au seuil</strong> : La fonction retrouve le niveau de base après environ <strong>15 à 20</strong> secondes</p></li>
-<li><p><strong>Amplitude maximale</strong> : L’ordre du changement relatif du signal BOLD atteint environ <strong>5%</strong> pour des stimulations d’ordre sensorielle, alors qu’elle est plutôt de <strong>0,1 à 0,5%</strong> pour d’autres paradigmes cognitifs</p></li>
+<li><p><strong>la résolution temporelle</strong>: il s’agit d’une réponse lente, qui dure entre <strong>15 à 20 secondes</strong> suivant le stimulus</p></li>
+<li><p><strong>le temps avant l’atteinte de l’amplitude maximale</strong>: de <strong>4 à 6 secondes</strong></p></li>
+<li><p><strong>Creux post-stimulation (<em>Undershoot</em> en anglais)</strong>: décroît à partir de l’amplitude maximale jusqu’à se retrouver sous la ligne de base.</p></li>
+<li><p><strong>Retour à la ligne de base</strong>: La fonction retrouve le niveau précédant la stimulation après environ <strong>15 à 20</strong> secondes</p></li>
+<li><p><strong>Amplitude maximale</strong>: L’ordre du changement relatif du signal BOLD atteint environ <strong>5%</strong> pour des stimulations d’ordre sensorielle, alors qu’elle est plutôt de <strong>0,1 à 0,5%</strong> pour d’autres paradigmes cognitifs</p></li>
 </ul>
 <div class="tip admonition" id="adequation-du-modele-tip">
 <p class="admonition-title">Attention!</p>
-<p>Le modèle de réponse hémodynamique peut s’avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est déréglé. C’est le cas de populations qui ont une vascularisation atypique, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires.</p>
+<p>Le modèle de réponse hémodynamique ci dessus est très rigide et peut s’avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est différent de l’étude originale de Glover and coll. (1999) <span id="id4">[<a class="reference internal" href="#id32">Glo99</a>]</span>. C’est probablement le cas, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires. La fonction de réponse hémodynamique peut également varier d’une région du cerveau à l’autre. Il est possible d’utiliser des modèles de la réponse hémodynamique qui sont plus flexibles et permettent, par exemple, de modifier le temps du pic de la réponse.</p>
 </div>
-<p>La fonction de réponse hémodynamique présentée ci-haut se rapporte à un contexte expérimentale bien simple : une simple stimulation courte isolée. En réalité, les <strong>paradigmes expérimentaux sont beaucoup plus complexes</strong> : ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d’une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu’advient-il alors de la fonction de réponse hémodynamique? Peut-on toujours modéliser la réponse hémodynamique en tant que système, c’est-à-dire définies par des règles mathématiques? Si oui, que deviennent les propriétés de ce système?</p>
-<div class="tip admonition" id="linearite-tip">
-<p class="admonition-title">Linéarité</p>
-<ul class="simple">
-<li><p>Le système est <strong>additif</strong>. Autrement dit, la réponse à plusieurs impulsions rapprochées (ou réponse longue) correspond à la somme des réponses à ces impulsions prises indépendamment.</p></li>
-<li><p>La réponse neurale <strong>mise à l’échelle</strong> selon le facteur <strong>a</strong>, change également l’échelle de la réponse BOLD selon ce même facteur. Ceci implique que lorsque l’amplitude de la réponse neuronale est le double, la réponse BOLD est également double.```</p></li>
-</ul>
-<p>!! Figure linéarité !!</p>
 </div>
-<div class="tip admonition" id="invariance-tip">
-<p class="admonition-title">Invariance au temps</p>
-<ul class="simple">
-<li><p>Si le stimulus est décalé de <span class="math notranslate nohighlight">\(t\)</span> secondes, la réponse BOLD est aussi décalé de <span class="math notranslate nohighlight">\(t\)</span> secondes.</p></li>
-</ul>
-<p>!! Figure invariance dans le temps !!</p>
+<div class="section" id="le-cerveau-bold-comme-un-systeme">
+<h3>Le cerveau (BOLD) comme un système<a class="headerlink" href="#le-cerveau-bold-comme-un-systeme" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="systeme-fig">
+<a class="reference internal image-reference" href="_images/systeme-fig.png"><img alt="_images/systeme-fig.png" src="_images/systeme-fig.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Un système prend un décours temporel d’entrée et lui associe un décours temporel de sortie. Figure sous licence CC-BY.</span><a class="headerlink" href="#systeme-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Combinant l’ensemble de ces propriétés, nous obtenons un système relativement simple à caractériser : nous pouvons alors inférer les réponses à des stimuli complexes, ayant pour connaissance de la réponse aux stimuli court, pris indépendamment.</p>
-<p>Comment les propriétés du système ont-elles été vérifiées? Une première étude conduite par <strong>Logothetis et al. Nature Neuroscience (2001)</strong> s’est intéressée à cette question, c’est-à-dire au comportement d’un système opérant dans le cadre de paradigme expérimentaux plus complexes (ici variant la durée des stimulations). Plus précisément, elle visait à tester empiriquement l’hypothèse postulant la linéarité de ce système, c’est-à-dire décrivant une relation linéaire entre activité neuronale (<span class="math notranslate nohighlight">\(X\)</span>) et BOLD (<span class="math notranslate nohighlight">\(Y\)</span>). Dans l’étude, les auteurs ont mis en place un protocole ingénieux permettant de mesurer simultanément de l’activité LFP (<strong>activité neuronale</strong>) en électrophysiologie et le signal <strong>BOLD</strong> dans le cortex visuel du singe. Ils ont fait varier les durées d’exposition à une stimulation: les singes étaient soumis à des stimulations visuelles de 3, 6, 12 et 24 secondes (de gauche à droite et de haut en bas sur la figure). Vous trouvez ci-bas la figure des résultats de cette étude qui permet de comparer l’activité LFP et la réponse BOLD mesurées.</p>
-<p>!! Figure résultats logothetis !!</p>
-<div class="figure align-default" id="resultats-logothetis-fig">
-<a class="reference internal image-reference" href=".PLACEHOLDER.png"><img alt=".PLACEHOLDER.png" src=".PLACEHOLDER.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">L’aire bleue correspond aux LFP (activité neuronale), la courbe rouge est le signal BOLD qui est mesuré, et la courbe grise est le signal BOLD prédit par la convolution des LFP avec une fonction de réponse hémodynamique supposant un système linéaire. Le premier trait vertical représente le début de la stimulation et le second, la fin de cette stimulation. À partir des résultats, nous observons que la réponse BOLD est fonction de la durée de la stimulation. Globalement, une réponse hémodynamique plus importante (plus grande amplitude) est observée pour des stimuli qui s’étalent sur une plus longue durée.</span><a class="headerlink" href="#resultats-logothetis-fig" title="Permalink to this image">¶</a></p>
-</div>
-<p>Et alors, que peut-on retirer de ces résultats? Lorsque nous regardons la figure des résultats de l’étude par <em>Logothetis et al. (2001)</em> nous observons une superposition des deux courbes <strong>signal BOLD mesuré</strong> (rouge) et <strong>signal BOLD prédit</strong> (gris). Ceci nous indique l’adéquation de l’hypothèse linéaire comme décrivant ce système, et ce, même pour des paradigmes expérimentaux augmentant en complexité!</p>
-<div class="tip admonition" id="attention">
-<p class="admonition-title">Attention!</p>
-<p>Attention! Un découplage de la réponse BOLD mesurée-prédite est observable vers la fin d’une stimulation très longue (cadrant du bas à droite), ce qui est suppose que l’hypothèse linéaire est moins bien adaptée pour de très longues stimulations.</p>
-</div>
-<p>Pour résumer, l’étude par Logothetis et al. (2001) est le premier protocole ayant permis de valider empiriquement l’hypothèse du système linéaire. Aujourd’hui, cette hypothèse a été validée à plus d’une reprise dans divers paradigmes expérimentaux. La connaissance des propriétés du modèle de réponse hémodynamique rend possible la modélisation du signal BOLD, non seulement pour des stimuli simples courts et isolés, mais également pour divers paradigmes expérimentaux complexes, qui sont beaucoup plus proche de la réalité pratique expérimentale.</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-
-<span class="c1"># Youtube</span>
-<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/91JVOAwOOyE&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Le processus qui transforme l’activité neuronale en un signal BOLD peut se formaliser dans le cadre général de la théorie des systèmes. Plus spécifiquement, la fonction de réponse hémodynamique de la <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 42</span></a> est généralement approximée comme un système linéaire et invariant dans le temps. Cette approximation sous-tend les inférences que l’on fait sur l’organisation fonctionnelle du cerveau: nous l’employons dans le but d’estimer la réponse à une tâche ou condition donnée. La fonction de réponse hémodynamique de la <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 42</span></a> se rapporte à un contexte expérimentale simple: une stimulation courte et isolée. En réalité, les <strong>paradigmes expérimentaux sont beaucoup plus complexes</strong>: ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d’une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu’advient-il alors de la fonction de réponse hémodynamique? Une propriété clé d’un système linéaire est d’être additif, c’est à dire que la réponse à une stimulation longue peut être décomposée comme la superposition de réponses à des stimulations plus courtes. Une autre hypothèse clé est l’<strong>invariance dans le temps</strong>, qui nous dit que la réponse du système ne va pas varier si on effectue la même stimulation courte à différents instants. Quand on <strong>combine</strong> l’hypothèse de linéarité avec l’invariance dans le temps, il est possible de prédire la réponse à n’importe quelle série de stimuli complexe à partir de la réponse à une unique stimulation courte, comme présentée en <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 42</span></a>. L’étude de Logothetis et al. (2001) <span id="id5">[<a class="reference internal" href="#id33">LPA+01</a>]</span> a été la première à démontrer chez le singe que cette hypothèse de linéarité et d’invariance semble être assez bien respectée, au moins dans le cortex visuel pour des stimuli visuels simples (contexte de l’étude).</p>
+<div class="tip admonition" id="additivite-tip">
+<p class="admonition-title">Additivité</p>
+<p>Un système est dit <strong>additif</strong> si la réponse à plusieurs impulsions correspond à la somme des réponses à ces impulsions prises indépendamment. Ce comportement est illustré ci-dessous.</p>
+<div class="figure align-default" id="systeme-additif-fig">
+<a class="reference internal image-reference" href="_images/systeme-additif-fig.png"><img alt="_images/systeme-additif-fig.png" src="_images/systeme-additif-fig.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Figure sous licence CC-BY.</span><a class="headerlink" href="#systeme-additif-fig" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -831,6 +827,7 @@ Y(t) &amp;\quad \text{sortie : réponse hémodynamique}\
 <div class="section" id="irmf-cartes-d-activation">
 <h3>IRMf - Cartes d’activation<a class="headerlink" href="#irmf-cartes-d-activation" title="Permalink to this headline">¶</a></h3>
 <p>Les cartes d’activation sont souvent ce que l’on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d’activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des <strong>sujets</strong> (p.e. effet yeux ouverts vs yeux fermés) ou des <strong>groupes</strong>, si nous combinons les données de plusieurs sujets (p.e. effet de l’âge ou d’appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l’application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d’intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d’intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: <em>Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992</em>, ayant introduit l’idée de cartographier le cerveau avec des tâches en IRMf.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 </div>
 </div>
 <div class="section" id="conclusion">
@@ -839,6 +836,58 @@ Y(t) &amp;\quad \text{sortie : réponse hémodynamique}\
 </div>
 <div class="section" id="un-peu-d-histoire-gall">
 <h2>Un peu d’histoire - Gall -<a class="headerlink" href="#un-peu-d-histoire-gall" title="Permalink to this headline">¶</a></h2>
+<p>=======</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># activation related to a mental computation task, as opposed to narrative sentence reading/listening</span>
+<span class="c1"># librairies</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1">#from nilearn.glm import threshold_stats_img, SecondLevelModel</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">localizer_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_localizer_calculation_task</span><span class="p">(</span>
+    <span class="n">n_subjects</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">cmap_filenames</span> <span class="o">=</span> <span class="n">localizer_dataset</span><span class="o">.</span><span class="n">cmaps</span>
+
+<span class="n">design_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;intercept&#39;</span><span class="p">])</span>
+
+<span class="c1">#z_map = second_level_model.compute_contrast(output_type=&#39;z_score&#39;)</span>
+
+<span class="c1">#thresholded_map1, threshold1 = threshold_stats_img(</span>
+<span class="c1">#    z_map, alpha=.05, height_control=&#39;fdr&#39;, cluster_threshold=10)</span>
+
+<span class="c1"># visualiser</span>
+<span class="c1"># sans seuil</span>
+<span class="c1">#display = plotting.plot_stat_map(z_map, title=&#39;Carte activation&#39;)</span>
+
+<span class="c1"># avec seuil</span>
+<span class="c1">#plotting.plot_stat_map(</span>
+<span class="c1">#    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,</span>
+<span class="c1">#    title=&#39;Carte activation avec seuil, fdr &lt;.05&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Conclusion<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>La réalisation d’une expérience d’IRMf nécessite de bien penser les conditions d’intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d’intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s’activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu’il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <div class="tip admonition" id="histoire-tip">
 <p class="admonition-title">Origines de la ségrégation fonctionnelle</p>
 <p>De nos jours, une partie importante de la littérature suppose que le cerveau est découpé en aires fonctionnelles, en d’autre mots, elle admet le principe de ségrégation fonctionnelle. L’idée de localiser les fonctions cognitives n’est pas une idée nouvelle. Dans les faits, c’était l’idée de Gall, avec la phrénologie, qui assumait un lien entre la morphologie du crâne et les fonctions cognitives. Selon la phrénologie, la forme de la boîte crânienne est informative des tendances des individus. Les aires du cerveau sont organisées selon des concepts cognitifs comme “counsciousness”, “destructiveness” et autres dimensions. Bien que peu rigoureuse, cette idée est revisitée dans le cadre de la modalité de l’IRMf, mais avec bien plus de rigueur scientifique. Son émergence légitime dans le discours scientifique remonte, notamment, aux travaux de Brodmann lequel employait des techniques de teintures pour observer la forme et variations des cellules nerveuses (cytoarchitecture) à travers le cortex. Nous admettons, aujourd’hui, arriver à accéder à certains aspects de l’organisation fonctionnelle cérébrale.</p>
@@ -853,6 +902,9 @@ Y(t) &amp;\quad \text{sortie : réponse hémodynamique}\
 <span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/-u0WCHGi8_A&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/-u0WCHGi8_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 </div>
 </div>
@@ -869,22 +921,66 @@ Y(t) &amp;\quad \text{sortie : réponse hémodynamique}\
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xFw2qPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 </div>
 <div class="section" id="conclusions-et-references-suggerees">
 <h2>Conclusions et références suggérées<a class="headerlink" href="#conclusions-et-references-suggerees" title="Permalink to this headline">¶</a></h2>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 </div>
 <div class="section" id="references">
 <h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id3"><dl class="citation">
-<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id2">BWF98</a></span></dt>
+<p>=======</p>
+<ul class="simple">
+<li><p>note à moi-même : à formatter</p></li>
+<li></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dartbrains.org/content/intro.html">https://dartbrains.org/content/intro.html</a></p></li>
+<li><p>Handbook of functional MRI Data Analysis</p></li>
+<li><p><a class="reference external" href="https://orbi.uliege.be/bitstream/2268/31382/1/2.%20GOSSERIES%20NS%2008%20Imag%20%287%29_SL.pdf">https://orbi.uliege.be/bitstream/2268/31382/1/2. GOSSERIES NS 08 Imag (7)_SL.pdf</a></p></li>
+<li><p>Imagerie cérébrale fonctionnelle, Bernard Mazoyer, p. 45. Disponible sur studium</p></li>
+<li><p>Vidéo youtube (en anglais) <a class="reference external" href="https://www.youtube.com/watch?v=Rb_mdzgw-Jc">https://www.youtube.com/watch?v=Rb_mdzgw-Jc</a></p></li>
+<li><p>Ogawa et al. PNAS 1992;</p></li>
+<li><p>Kwong et al. PNAS 1992;</p></li>
+<li><p>Bandettini et al. MRM 1992.</p></li>
+<li><p>Logothetis et al., 2001</p></li>
+<li><p>Sherrington et al., 1998</p></li>
+</ul>
+<div class="section" id="id7">
+<h3>Références<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p id="id8"><dl class="citation">
+<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id2">BWF98</a></span></dt>
 <dd><p>R B Buxton, E C Wong, and L R Frank. Dynamics of blood flow and oxygenation changes during brain activation: the balloon model. <em>Magn. Reson. Med.</em>, 39(6):855–864, June 1998.</p>
 </dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id1">ZKK+21</a></span></dt>
+<dt class="label" id="id32"><span class="brackets">Glo99</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><p>G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. <em>Neuroimage</em>, 9(4):416–429, April 1999.</p>
+</dd>
+<dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id5">LPA+01</a></span></dt>
+<dd><p>N K Logothetis, J Pauls, M Augath, T Trinath, and A Oeltermann. Neurophysiological investigation of the basis of the fMRI signal. <em>Nature</em>, 412(6843):150–157, July 2001.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets"><a class="fn-backref" href="#id1">ZKK+21</a></span></dt>
 <dd><p>E Zisis, D Keller, L Kanari, A Arnaudon, M Gevaert, T Delemontex, B Coste, A Foni, M Abdellah, C Calì, K Hess, P J Magistretti, F Schürmann, and H Markram. Architecture of the Neuro-Glia-Vascular system. <em>bioRxiv</em>, 2021.</p>
 </dd>
 </dl>
 </p>
+</div>
 </div>
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
@@ -926,8 +1022,8 @@ Y(t) &amp;\quad \text{sortie : réponse hémodynamique}\
 <li><p>Une hypothèse courante, en partie confirmée expérimentalement.</p></li>
 </ol>
 </div>
-<div class="section" id="id27">
-<h3>Exercice 4<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>Exercice 4<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <p>Quel est l’événement principal à l’origine des changements de signal mesuré par le BOLD?</p>
 </div>
 <div class="section" id="exercice-5">
