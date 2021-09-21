@@ -213,9 +213,9 @@ Ce que cela veut dire, c'est que quand elles sont soumises à des impulsions él
 Le signal BOLD en IRMf constitue une **mesure indirecte** de l'activité neuronale. En effet, cette modalité ne mesure pas directement l'activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l'activité neuronale. Cette relation de **couplage neurovasculaire** est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.
 ```
 
-## Fonction de réponse hémodynamique
+### Fonction de réponse hémodynamique
 
-### Réponse à une impulsion courte
+#### Réponse à une impulsion courte
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -268,7 +268,7 @@ La figure qui suit montre la réponse hémodynamique attendue suite à une impul
 Le modèle de réponse hémodynamique ci dessus est très rigide et peut s'avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est différent de l'étude originale de Glover and coll. (1999) {cite:p}`Glover1999-cb`. C'est probablement le cas, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires. La fonction de réponse hémodynamique peut également varier d'une région du cerveau à l'autre. Il est possible d'utiliser des modèles de la réponse hémodynamique qui sont plus flexibles et permettent, par exemple, de modifier le temps du pic de la réponse.
 ```
 
-### Le cerveau (BOLD) comme un système
+#### Le cerveau (BOLD) comme un système
 ```{figure} ./irm_fonctionnelle/systeme-fig.png
 ---
 width: 400px
@@ -292,131 +292,54 @@ name: systeme-additif-fig
 Figure sous licence CC-BY.
 ```
 
-### Prétraitement des données d'IRMf
-Nous avons abordé dans les sections précédentes divers aspects de la modélisation de la réponse hémodynamique. Un autre point important en IRMf est la modélisation du bruit et des sources de variations qui peuvent être présentes dans les séries temporelles. Différents **facteurs confondants** ou **artéfacts** (provenant du scanner IRM ou du sujet scanné lui-même) peuvent induire des fluctuations substantielles dans le signal BOLD mesuré, et venir confondre les inférences faites sur l'activité neuronale en réponse à des tâches.
+## Prétraitement des données d'IRMf
+Nous avons abordé dans les sections précédentes divers aspects de la modélisation de la réponse hémodynamique. Un autre point important en IRMf est la modélisation du bruit et des sources de variations qui peuvent être présentes dans les séries temporelles. Différents **facteurs confondants** et **artéfacts** (provenant du scanner IRM ou du sujet scanné lui-même) peuvent induire des fluctuations substantielles dans le signal BOLD mesuré, et venir confondre les inférences faites sur l'activité neuronale en réponse à des tâches:
 
-Quelques exemples d'**artéfacts**:
+- bruit cardiaque,
+- artéfact lié au mouvement du sujet lors de l'acquisition,
+- défaut dans l'antenne,
+- inhomogénéités dans le champ magnétique, notamment aux intersections air-tissu,
+- différences entre l'anatomie des sujets.
 
-- Fréquence cardiaque
-- Mouvement du sujet lors de l'acquisition
-- Décharge électrique du scanner
-- Inhomogénéités dans le champ magnétique aux intersections air-tissu
+Différentes stratégies de modélisation peuvent être employées pour réduire l'influence des facteurs confondants et des artéfacts. Dans cette section, nous présentons un aperçu de trois grandes étapes de prétraitement en IRMf, qui, typiquement sont appliquées séquentiellement. On parle de _chaine de traitements_, ou encore _pipeline_ ou _worflow_ en anglais.
 
-À l'issue des acquisitions, les images d'IRM fonctionnelle brutes contiennent une composition de ces artéfacts (erreurs), qui se superposent à l'image. Les images d'IRMf doivent, donc, en amont des analyses statistiques être soumises à des corrections. Pour se faire, différentes stratégies de modélisation peuvent être employées pour régresser de tels facteurs du signal. Dans cette section, nous présentons un aperçu de trois grandes étapes de prétraitement en IRMf, qui, typiquement sont appliquées séquentiellement (c.-à.d. à travers l'utilisation d'un pipeline).
+### Recalage
 
-- `Le recalage`
+Le recalage consiste à aligner une image à une image de référence. C'est une étape de prétraitement complétée avant les analyses statistiques de groupe, comme celles-ci présupposent qu'il y a une correspondance entre les voxels des images provenant de différents sujets. Nous avons déjà discuté du {ref}`recalage <registration-tip>` dans la section sur la [morphometrie](morphometrie). Nous allons voir que trois types de recalage sont utilisés en IRM fonctionnelle.
 
-- `Le filtrage de facteurs de non-intérêt`
-
-- `Lissage spatiale`
-
-```{admonition} Qu'est-ce qu'une image?
-:class: tip
-:name: image-tip
-
-Une image est une **matrice de nombres**, qui contient des valeurs en chaque point de l'espace quantifiant une propriété donnée qui nous intéresse. Par exemple, si on prend le cas d'une photo, à chaque point de l'espace, c'est-à-dire pixel, nous avons trois valeurs qui quantifie la valeur du rouge, du vert et du bleu associée à cette localisation spatiale tout précisément. De manière analogue, l'image en IRM fonctionnelle est une matrice de nombres qui contient des valeurs en chaque points de l'espace, mais cette fois-ci décrivant l'activité BOLD. Plutôt que parler de pixels (2D), nous parlons de voxels (3D). Le prétraitement d'images sous-entend généralement que nous effectuons des opérations ou transformations mathématiques sur de telles matrices de nombre.
+#### Recalage du mouvement
+```{figure} ./irm_fonctionnelle/mouvement-fig.png
+---
+width: 500px
+name: mouvement-fig
+---
+Illustration du processus de recalage du mouvement au cours d'un examen d'IRMf. Figure sous licence CC-BY.
 ```
-#### Recalage
+Souvent, le sujet ne maintient pas exactement la même position de la tête dans le scanner tout au long des acquisitions, qui peuvent parfois durer plus d'une heure et/ou exiger des arrêts. (p.e. baillements, fatigue musculaire, clignement de yeux, etc.). Ces mouvements ont des impacts non-négligeables sur le signal BOLD. Ils peuvent entraîner des distorsions de l'intensité du signal de l'image. Ils impliquent que, d'une image à l'autre, un même voxel ne correspond pas nécessairement à la même structure cérébrale. Comme le cerveau d'un même individu ne change pas de forme ou de taille à travers les acquisitions, cette étape utilise un cas particulier de transformation affine, appelée transformation rigide, ne comportant que trois translations (selon `x`, `y` et `z`) et trois rotations (selon `x`, `y` et `z`). On utilise un volume de référence comme cible pour le recalage, par exemple le premier volume de la série, le dernier, ou bien la moyenne de tous les volumes. Différents paramètres de mouvement sont estimés pour chaque volume, et peuvent être représentés au cours du temps comme sur le graphique ci dessus.
 
-Le recalage consiste à aligner une image à une image de référence. C'est une étape de prétraitement complétée avant les analyses statistiques, comme celles-ci présupposent qu'il y a une correspondance entre les voxels de différentes images. Le recalage s'assure qu'un voxel maintient de mêmes coordonnées à travers les images d'un même individu (analyses individuelles) ou/et à travers les images de différents individus (analyses de groupe). Plusieurs notions de cette section font un rappel de ce qui a été vu dans le cours sur les analyses morphométriques.
-
-> Pour un rappel, consultez le [Chapitre 3: Analyses morphométriques](https://psy3018.github.io/morphometrie.html)
-
-Le recalage comprend **deux** étapes :
-
-`1. Estimation des paramètres de transformation`: Ils spécifient comment bouger l'image pour l'aligner à la référence. Ces paramètres peuvent être linéaires et/ou non-linéaire dépendamment du type de recalage.
-
-`2. Ré-échantillonnage`: Le ré-échantillonnage consiste à appliquer les paramètres de transformation à l'image. Les coordonnées orginales sont transformées dans un nouvel espace, et la nouvelle image est créée à partir des coordonnées transformées.
-
-Le recalage fait appel à **deux** catégories de transformation:
-
-- **Transformation linéaires** : Les transformation linéaires appliquent des opérations/fonctions linéaires sur les coordonnées des voxels de l'image (p.e. translation, rotation, mise à l'échelle), leur assignant une nouvelle localisation. Elles transforment chaque voxels de l'image de manière équivalente : les structures changent d'emplacement, mais conserve leur forme.
-
-- **Transformation non-linéaires**: Les transformations non-linéaires comprennent des opérations/fonctions ayant un degré de complexité plus grand (p.e. fonction polynomiale, cosine) avec davantage de paramètres. Elles offrent une plus de flexibilité dans la transformation des voxels de l'image, dans la mesure où elles peuvent transformer certains voxels de l'images plus drastiquement que d'autres. Ceci permet de changer la forme des structures du cerveau.
-
-Nous verrons dans la section suivante, trois types de recalage possible en IRM fonctionnelle.
-
-- `Un recalage intra-sujet (mouvement)`
-- `Un recalage inter-modalité (BOLD-T1)`
-- `Un recalage inter-sujet (stéréotaxique)`
-
-```{admonition} Recalage intra-sujet des volumes pour mouvement (avec volume de référence)
+```{admonition} Mouvements excessifs
 :class: tip
-:name: recalage mouvement-tip
-
-> Cette étape a été présentée dans le cadre du cours 3, [analyses morphométriques](https://psy3018.github.io/morphometrie.html)
-
-Souvent, le sujet ne maintient pas exactement la même position de la tête dans le scanner tout au long des acquisitions, qui peuvent parfois durer plus d'une heure et/ou exiger des arrêts. (p.e. baillements, fatigue musculaire, clignement de yeux, etc.). Ces mouvements ont des impacts non-négligeables sur le signal BOLD. A priori, ils peuvent entraîner des distorsions de l'intensité du signal de l'image. Dans un second temps, ils impliquent que, d'une image à l'autre, les voxels ne sont plus alignés par rapport à une référence (c.-à.-d. la boîte de l'image).
-
-`1.Estimation des paramètres de transformation`: Le cerveau d'un même individu ne change pas de forme ou de taille à travers les acquisitions. Ainsi, cette étapese rapporte à l'estimation d'un sous-ensemble de transformations linéaires, la translation et la rotation. Nous pouvons obtenir l'estimation des paramètres **linéaires** de mouvement pour chaque volume du cerveau, pour:
-
-- **3 translations (x, y, z)**
-- **3 rotations (x, y, z)**
-
-L'évolution des paramètres de mouvement sont souvent représenter au moyen d'un graphique comme celui ci-bas, où *X* est la variable du temps et *y* la valeurs des paramètres de mouvement.
-
-!! Image montrant les paramètres de mouvement !!
-
-`2.Ré-échantillonnage`: L'estimation de ces paramètres permet ensuite d'appliquer des transformations pour recaler chaque volume à un volume de référence choisi. Ce volume de référence peut être par exemple, le premier volume de la série, le dernier, ou bien la moyenne de tous les volumes.
-
-Parmis les populations étudiées, ce sont les enfants et les personnes âgés qui tendent à bouger davantage lors des acquisitions. L'endurance musculaire est le plus grand prédicteur de la quantité de mouvement d'un sujet. Certains chercheurs choisissent d'exclure les sujets ayant bougé au-delà d'un certain seuil (p.e. lorsque les paramètres de mouvement montrent d'immenses pics, par exemple). Il arrive aussi que les images soient irrécupérables: alors on jette les données.
+:name: motion-tip
+Le niveau de mouvement varie en fonction de la population étudiée. Les enfants et les personnes âgés ont tendance à bouger davantage que les jeunes adultes. Certains chercheurs choisissent d'exclure les sujets ayant bougé au-delà d'un certain seuil
 ```
 
-```{admonition} Recalage inter-modalité (BOLD avec $T1$ comme référence)
-:class: tip
-:name: recalage intermodalité-tip
-Il est commun d'aligner l'image BOLD avec l'image anatomique T1 du sujet. Pourquoi? L'image fonctionnelle détient une moins bonne résolution spatiale que l'image structurelle $T1$ : nous avons de plus courtes durées d'acquisition pour acquérir un même volume.
+#### Recalage BOLD avec $T_1$
+Il est commun d'aligner l'image BOLD avec l'image anatomique $T_1$ du sujet. Pourquoi? L'image fonctionnelle détient une moins bonne résolution spatiale que l'image structurelle $T_1$: nous avons de plus courtes durées d'acquisition pour acquérir un même volume. Le contraste entre structures anatomiques est aussi bien meilleur en $T_1$. Il est donc utile de superposer les deux images pour localiser les activations BOLD. Cette transformation est estimée de manière rigide, comme le mouvement. Notez qu'il existe aussi des déformations
 
-`1. Estimation des paramètres de transformation`: Pour une image BOLD donnée, nous obtenons l'estimation des paramètres de transformations **linéaires** vers l'image $T1$ pour :
-- **3 transations (x,y,z)**
-- **3 rotations (x,y,z)**
 
-`2. Ré-échantillonnage`: Les coordonnées sont transformées vers un nouvel espace en appliquant les transformations estimées à l'étape précédente.
+#### Recalage dans l'espace stéréotaxique
+Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d'individus en individus. Le recalage dans l'espace stéréotaxique, aussi parfois appelée _normalisation spatiale_, consiste à recaler l'image $T_1$ dans un espace standard cible défini par l'atlas choisi, rendant ainsi comparables les cerveaux de différents individus. Cette technique a identique à ce qui est fait pour les études de morphométrie. Le template MNI152 (Montreal Neurological Institute) est largement employé comme espace standard dans la communauté. Cette transformation combine une transformation affine et une transformation non-linéaire.
 
-!! image recalage BOLD-T1 !!
-```
-
-```{admonition} Recalage inter-sujet dans l'espace stéréotaxique (avec atlas comme référence)
-:class: tip
-:name: recalage intersujet-tip
-
-> Cette étape a été présentée dans le cours 3, [Analyses morphométriques](https://psy3018.github.io/morphometrie.html)
-
-Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d'individus en individus. Le recalage dans l'espace stéréotaxique (*spatial normalization* en anglais) consiste à recaler les cerveaux dans un espace standard cible défini par l'atlas choisi, les rendant ainsi comparables. Les templates MNI (Montreal Neurological Institute) sont un exemple d'atlas largement employés comme espace standard dans la communauté.
-
-`1. Estimation des paramètres de transformation`: Une variété d'algorithmes existent pour recaler les images individuelles à l'espace stéréotaxique. Typiquement, en plus des estimations de paramètres de transformations linéaires de **translations (x,y,z)** et **rotations (x,y,z)**, nous ajoutons les **mises à l'échelle (x,y,z)** (les cerveaux n'ont pas la même taille), et les transformations **non-linéaires** qui permettent de déformer les structures pour aligner les détails anatomiques des images d'un individu à l'autre.
-
-`2. Ré-échantillonnage` Les coordonnées originales sont transformées vers un nouvel espace, en appliquant les transformations estimées.
-
-!! image recalage stéréotaxique !!
-```
-
-De manière standard, un recalage intra-sujet est toujours performé pour corriger le mouvement du sujet au cours de l'acquisition. Pour les autres types de recalage, il en dépend des objectifs scientifiques ou des analyses statistiques entrevues par les expérimentateurs (p.e. individuelles ou de groupe).
-
-```{admonition} Lissage spatiale
-:class: tip
-:name: lissage spatiale-tip
-Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial.  
-
-> Pour un rappel, consultez le [Chapitre 3: Analyses morphométriques](https://psy3018.github.io/morphometrie.html)
-
- Le processus du lissage est semblable pour l'IRM fonctionnelle, mais la portée de cette étape est un peu différente comme l'image est dynamique (l'objet de ce lissage ne sont pas les valeurs de l'intensité de l'image comme en IRM structurelle, mais plutôt celles du signal BOLD). Certains artéfacts, comme le mouvement du sujet au cours de l'acquisition, peuvent entraîner des pics/fluctuations aléatoires dans le signal BOLD, et avoir un effet néfastes sur les analyses statistiques. Le lissage spatiale entre alors en jeu : il a pour effet de diminuer le bruit, en éliminant la contribution des fluctuations aléatoires ciblant des voxels spécifiques. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Mis à part l'amélioration du ratio signal-bruit, le lissage permet également d'atténuer les erreurs/imperfections de recalage inter-sujet.
-
-!! image lissage sur cerveau !!
+#### Lissage spatiale
+Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l'IRM fonctionnelle, mais la portée de cette étape est un peu différente comme l'image est dynamique (l'objet de ce lissage ne sont pas les valeurs de l'intensité de l'image comme en IRM structurelle, mais plutôt celles du signal BOLD). Certains artéfacts, comme le mouvement du sujet au cours de l'acquisition, peuvent entraîner des pics/fluctuations aléatoires dans le signal BOLD, et avoir un effet néfastes sur les analyses statistiques. Le lissage spatiale entre alors en jeu : il a pour effet de diminuer le bruit, en éliminant la contribution des fluctuations aléatoires ciblant des voxels spécifiques. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Mis à part l'amélioration du ratio signal-bruit, le lissage permet également d'atténuer les erreurs/imperfections de recalage inter-sujet.
 
 Le paramètre `FWHM` (*full width at half maximum*) contrôle l'échelle de ce lissage (plus important ou moins important). Il détermine l'étalement des voxels voisins qui participeront à la nouvelle valeur d'un voxel cible. D'un point de vue mathématique, le paramètre `FWHM` représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur `FWHM` sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d'un voxel cible de l'image. Plusieurs études choisissent `6 mm` comme valeur pour le paramètre `FWHM`.
-```
 
-```{admonition} Filtrage des facteurs de non-intérêt
-:class: tip
-:name: filtrage-tip
-
+#### Filtrage des facteurs de non-intérêt
 La dernière étape de prétraitement qui sera abordé est celle du filtrage de facteurs de non-intérêt. Différents **facteurs confondants** ou **artéfacts** peuvent induire des fluctuations dans le signal BOLD. Ces artéfacts peuvent avoir différentes fréquences du spectre, soit plus lentes ou rapides. Lorsque ce bruit est systématique ou périodique, il possible de le régresser (c'est-à-dire de le retirer) en employant différentes stratégies comme des filtres. Les dérives lentes constituent un exemple commun de facteurs de non-intérêt, et elles sont assez facilement repérables dans le signal. Dans ce cas, pouvons appliquer un filtre passe-haut, qui conserve uniquement les fréquence plus haute qu'un certain seuil (p.e. 0.01 Hz).
 
-!! image filtrage passe-haut pour dérives lentes !!
-```
 
-## Analyse statistiques
+## Analyses statistiques
 
 Cette section est un aperçu général du cours sur les analyses statistiques à venir. Nous laisserons certains détails de côté pour le moment, mais nous y reviendrons dans le cours 6 sur les [analyses statistiques](https://psy3018.github.io/cartes_statistiques.html). Rappelons une fois de plus nos objectifs en IRMf : nous voulons dégager de nouvelles connaissances sur le fonctionnement du cerveau. Ceci implique le recours à des analyses statistiques.
 
@@ -443,14 +366,6 @@ Il est possible de généraliser l'analyse de soustraction pour tenir compte de 
 **2) la présence de plusieurs conditions dans une même expérience**. Tel que soulevé précédemment, une grande partie du travail en IRMf consiste à analyser/expliquer les séries temporelles. Nous pouvons utiliser nos connaissances sur la fonction de réponse hémodynamique, ainsi que celles sur les conditions du paradigme expérimental, pour estimer le niveau d'activation BOLD dans une condition (nous irons plus dans les détails ultérieurement, mais globalement celles-ci deviennent les variables explicatives dans des modèles de régressions qui tente d'expliquer les séries temporelles). Les séries temporelles sont aussi expliquer comme étant partiellement **3) du bruit/erreur**, que l'on suppose aléatoire. Nous ajustons les paramètres de ce modèle tenant compte **1)**, **2)** et **3)**. Ceux-ci sont mis à l'échelle : c'est ce qui nous permet de connaître le niveau d'activation pour une condition. Une fois ce niveau connu, il peut être contrasté entre différentes conditions ou avec un niveau de base, en calculant la différence entre les moyennes d'activation de chaque condition respectivement. En employant une distribution gaussienne, nous pouvons évaluer la probabilité d'observer une telle différence, ou n'importe quelle statistique donnée (p.e. test-t). Le formalisme décrit ci-haut s'appelle le modèle linéaire général. On en reparlera au cours 5.
 
 ### IRMf - Cartes d'activation
-Les cartes d'activation sont souvent ce que l'on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d'activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des **sujets** (p.e. effet yeux ouverts vs yeux fermés) ou des **groupes**, si nous combinons les données de plusieurs sujets (p.e. effet de l'âge ou d'appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l'application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d'intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d'intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: *Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992*, ayant introduit l'idée de cartographier le cerveau avec des tâches en IRMf.
-
-<<<<<<< HEAD
-## Conclusion
-La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
-
-## Un peu d'histoire - Gall -
-=======
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 
@@ -483,9 +398,7 @@ design_matrix = pd.DataFrame([1] * n_samples, columns=['intercept'])
 #    title='Carte activation avec seuil, fdr <.05')
 ```
 
-### Conclusion
-La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
->>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
+Les cartes d'activation sont souvent ce que l'on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d'activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des **sujets** (p.e. effet yeux ouverts vs yeux fermés) ou des **groupes**, si nous combinons les données de plusieurs sujets (p.e. effet de l'âge ou d'appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l'application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d'intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d'intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: *Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992*, ayant introduit l'idée de cartographier le cerveau avec des tâches en IRMf.
 
 ```{admonition} Origines de la ségrégation fonctionnelle
 :class: tip
@@ -493,103 +406,78 @@ La réalisation d'une expérience d'IRMf nécessite de bien penser les condition
 De nos jours, une partie importante de la littérature suppose que le cerveau est découpé en aires fonctionnelles, en d'autre mots, elle admet le principe de ségrégation fonctionnelle. L'idée de localiser les fonctions cognitives n'est pas une idée nouvelle. Dans les faits, c'était l'idée de Gall, avec la phrénologie, qui assumait un lien entre la morphologie du crâne et les fonctions cognitives. Selon la phrénologie, la forme de la boîte crânienne est informative des tendances des individus. Les aires du cerveau sont organisées selon des concepts cognitifs comme "counsciousness", "destructiveness" et autres dimensions. Bien que peu rigoureuse, cette idée est revisitée dans le cadre de la modalité de l'IRMf, mais avec bien plus de rigueur scientifique. Son émergence légitime dans le discours scientifique remonte, notamment, aux travaux de Brodmann lequel employait des techniques de teintures pour observer la forme et variations des cellules nerveuses (cytoarchitecture) à travers le cortex. Nous admettons, aujourd'hui, arriver à accéder à certains aspects de l'organisation fonctionnelle cérébrale.
 ```
 
-```{code-cell} ipython 3
-:tags: ["hide-input"]
+## Conclusions
+La réalisation d'une expérience d'IRMf nécessite de bien penser les conditions d'intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d'intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s'activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu'il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.
 
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/-u0WCHGi8_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-```
-
-## Cartes d'activation
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/ayr6xFw2qPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-```
-
-## Conclusions et références suggérées
-
-<<<<<<< HEAD
 ## Références
-=======
-* note à moi-même : à formatter
-*
-- https://dartbrains.org/content/intro.html
-- Handbook of functional MRI Data Analysis
-- https://orbi.uliege.be/bitstream/2268/31382/1/2.%20GOSSERIES%20NS%2008%20Imag%20%287%29_SL.pdf
-- Imagerie cérébrale fonctionnelle, Bernard Mazoyer, p. 45. Disponible sur studium
-- Vidéo youtube (en anglais) https://www.youtube.com/watch?v=Rb_mdzgw-Jc
-- Ogawa et al. PNAS 1992;
-- Kwong et al. PNAS 1992;
-- Bandettini et al. MRM 1992.
-- Logothetis et al., 2001
-- Sherrington et al., 1998
-
-
-
-### Références
->>>>>>> eb88d822c2d78119ed0451d4b6e8cfa562c2e0cc
-
 ```{bibliography}
 :filter: docname in docnames
 ```
 
 ## Exercices
-
-### Exercice 1
+```{admonition} Exercice 4.1
+:class: note
 Choisissez la bonne réponse. Des données d’IRMf sont en général...
  1. Une image du cerveau.
  2. Une dizaine d’images du cerveau.
  3. Des centaines d’images du cerveau.
+```
 
-### Exercice 2
+```{admonition} Exercice 4.2
+:class: note
 Qu’est ce que le signal BOLD? (vrai / faux).
  1. Un signal très courageux.
  2. Une séquence pondérée en T2*.
  3. Un type de séquence d’IRM qui mesure l’activité du cerveau.
  4. Un type de séquence d’IRM qui mesure l’oxygénation du sang.
+```
 
-### Exercice 3
+```{admonition} Exercice 4.3
+:class: note
 Choisissez la bonne réponse. Le signal BOLD dépend sur...
  1. Le flux sanguin local.
  2. Le volume sanguin local.
  3. La concentration relative en désoxyhémoglobine.
  4. Toutes les réponses ci-dessus.
+```
 
-### Exercice 4
+```{admonition} Exercice 4.4
+:class: note
 Vrai / faux. Le principe d’additivité de la réponse hémodynamique est...
  1. Un modèle mathématique.
  2. Une propriété bien connue du couplage neurovasculaire.
  3. Une hypothèse courante, en partie confirmée expérimentalement.
+```
 
-### Exercice 4
+```{admonition} Exercice 4.5
+:class: note
 Quel est l’événement principal à l’origine des changements de signal mesuré par le BOLD?
+```
 
-### Exercice 5
+```{admonition} Exercice 4.6
+:class: note
 Dans quelle portion de l’arbre vasculaire observe-t-on les changements principaux liés à l’activité neuronale locale?
+```
 
-### Exercice 6
+```{admonition} Exercice 4.7
+:class: note
 Vrai / faux?
  1. La réponse hémodynamique démarre immédiatement après l’excitation neuronale.
  2. La réponse hémodynamique est visible une seconde après l’excitation neuronale.
  3. La réponse hémodynamique est maximale 2 secondes après l’excitation neuronale.
  4. La réponse hémodynamique est toujours visible 7 secondes après l’excitation neuronale.
  5. La réponse hémodynamique est toujours visible 30 secondes après l’excitation neuronale.
+```
 
-### Exercice 7
+```{admonition} Exercice 4.8
+:class: note
 Vrai / faux / peut-être? (expliquez pourquoi)
  1. Les données IRM fonctionnelle et structurelle doivent être réalignées pour générer une carte d’activation.
  2. Les données d’IRMf “brutes” (avant prétraitement) sont inutilisables pour générer une carte d’activation.
  3. Le lissage spatial est important, même pour une analyse individuelle.
+```
 
-### Exercice 8
+```{admonition} Exercice 4.9
+:class: note
 On compare l’activation pour une tâche de mémoire dans le cortex frontal entre deux groupes de participants: des sujets sains et des sujets âgés (N=20 par groupe). Contrairement à nos hypothèses, on ne trouve aucune différence. Donnez trois raisons qui peuvent expliquer ce résultat.
+```
