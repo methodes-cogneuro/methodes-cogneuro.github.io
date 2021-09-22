@@ -456,7 +456,8 @@ ax.set_title("Avant correction des dérives lentes")
 
 # Génère les séries temporelles après correction des dérives lentes
 masker = NiftiLabelsMasker(atlas.maps,
-                           detrend=True,
+                           high_pass=0.01,
+                           t_r=4,
                            labels=atlas.labels,
                            standardize=True)
 masker.fit(func_filename)
