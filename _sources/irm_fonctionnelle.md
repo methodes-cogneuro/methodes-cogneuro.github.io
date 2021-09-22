@@ -165,7 +165,7 @@ glue("voxel-timeseries-fig", fig, display=False)
 Illustration d'un élément de volume (voxel), de taille 3 mm x 3 mm x 3 mm, et le décours temporel IRMf associé.
 ```
 
-Le volume du cerveau (3D) est formé plusieurs milliers voxels, qui sont de petites unités de volumes (3D) ayant une coordonnée dans l'espace **x, y, z**. En IRMf, pour chaque voxel du cerveau, nous détenons plusieurs points de mesure de l'activité dans le temps, ce qui forme ce que l'on appelle une **série temporelle** ou **décours temporel**. Typiquement, quelques dizaines à centaines de points de mesures décrivent la série temporelle. Ces points de mesures sont séparées par un intervalle de temps, qui peut varier de millisecondes à secondes. Ces caractéristiques représentent un bon compromis entre résolution spatiale et temporelle. Comme nous le verrons plus loin, la série temporelle reflète de manière indirecte les changements d'activité neuronale dans le temps. Une grande partie du travail en IRM fonctionnelle consiste à analyser ces séries temporelles.
+Le volume du cerveau (3D) est formé plusieurs milliers voxels, qui sont de petites unités de volumes (3D) ayant une coordonnée dans l'espace **x, y, z**. En IRMf, pour chaque voxel du cerveau, nous détenons plusieurs points de mesure de l'activité dans le temps, ce qui forme ce que l'on appelle une **série temporelle** ou **décours temporel**. Typiquement, quelques dizaines à centaines de points de mesures décrivent la série temporelle. Ces points de mesures sont séparés par un intervalle de temps, qui peut varier de millisecondes à secondes. Ces caractéristiques représentent un bon compromis entre résolution spatiale et temporelle. Comme nous le verrons plus loin, la série temporelle reflète de manière indirecte les changements d'activité neuronale dans le temps. Une grande partie du travail en IRM fonctionnelle consiste à analyser ces séries temporelles.
 
 
 ```{admonition} Compromis entre résolution spatiale vs temporelle en IRMf
@@ -190,7 +190,7 @@ Le lien entre activité neuronale et signal IRMf repose sur le phénomène du **
  * augmentation du flux sanguin;
  * augmentation l'acheminement en oxygène (oxyhémoglobine) vers les populations de neurones actives.
 
- L'augmentation d'extraction d'oxygène entraine donc de manière paradoxale une augmentation locale de la concentration en d'**oxyhémoglobine** (sang oxygéné) par rapport à la concentration en **déoxyhémoglobine** (sang déoxygéné) localement, ce qui est dédectable au moyen de l'IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) {cite:p}`Buxton1998-jy`.
+ L'augmentation d'extraction d'oxygène entraine donc de manière paradoxale une augmentation locale de la concentration d'**oxyhémoglobine** (sang oxygéné) par rapport à la concentration en **déoxyhémoglobine** (sang déoxygéné) localement, ce qui est dédectable au moyen de l'IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) {cite:p}`Buxton1998-jy`.
 
 
 ### Le signal BOLD
@@ -263,7 +263,7 @@ glue("hrf-fig", fig, display=False)
 :name: "hrf-fig"
 Réponse hémodynamique à une impulsion unitaire d'une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) {cite:p}`Glover1999-cb`. Le code pour générer cette figure est adaptée d'un [tutoriel](https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py) Nilearn, et la figure est sous licence CC-BY.
 ```
-La figure qui suit montre la réponse hémodynamique attendue suite à une impulsion finie d'activation au temps 0, et de durée 1 seconde. La réponse à ce type de stimulus permet de visualiser la réponse hémodynamique la plus largement utilisée, décrivant relation maintenue entre l'activité neuronale (rouge) et le signal BOLD (bleu), en fonction du temps. L'axe `x` représente le temps, en secondes, et l'axe `y` le signal cérébral, exprimé en pourcentage du changement par rapport à une ligne de base. Les caractéristiques importantes de la fonction de réponse hémodynamique sont:
+La figure qui suit montre la réponse hémodynamique attendue suite à une impulsion finie d'activation au temps 0, et de durée de 1 seconde. La réponse à ce type de stimulus permet de visualiser la réponse hémodynamique la plus largement utilisée, décrivant relation maintenue entre l'activité neuronale (bleu) et le signal BOLD (rouge), en fonction du temps. L'axe `x` représente le temps, en secondes, et l'axe `y` le signal cérébral, exprimé en pourcentage du changement par rapport à une ligne de base. Les caractéristiques importantes de la fonction de réponse hémodynamique sont:
 
 - **la résolution temporelle**: il s'agit d'une réponse lente, qui dure entre **15 à 20 secondes** suivant le stimulus
 - **le temps avant l'atteinte de l'amplitude maximale**: de **4 à 6 secondes**
@@ -287,7 +287,7 @@ name: systeme-fig
 Un système prend un décours temporel d'entrée et lui associe un décours temporel de sortie. Figure sous licence CC-BY.
 ```
 
-Le processus qui transforme l'activité neuronale en un signal BOLD peut se formaliser dans le cadre général de la théorie des systèmes. Plus spécifiquement, la fonction de réponse hémodynamique de la {numref}`hrf-fig` est généralement approximée comme un système linéaire et invariant dans le temps. Cette approximation sous-tend les inférences que l'on fait sur l'organisation fonctionnelle du cerveau: nous l'employons dans le but d'estimer la réponse à une tâche ou condition donnée. La fonction de réponse hémodynamique de la {numref}`hrf-fig` se rapporte à un contexte expérimentale simple: une stimulation courte et isolée. En réalité, les **paradigmes expérimentaux sont beaucoup plus complexes**: ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d'une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu'advient-il alors de la fonction de réponse hémodynamique? Une propriété clé d'un système linéaire est d'être additif, c'est à dire que la réponse à une stimulation longue peut être décomposée comme la superposition de réponses à des stimulations plus courtes. Une autre hypothèse clé est l'**invariance dans le temps**, qui nous dit que la réponse du système ne va pas varier si on effectue la même stimulation courte à différents instants. Quand on **combine** l'hypothèse de linéarité avec l'invariance dans le temps, il est possible de prédire la réponse à n'importe quelle série de stimuli complexe à partir de la réponse à une unique stimulation courte, comme présentée en {numref}`hrf-fig`. L'étude de Logothetis et al. (2001) {cite:p}`Logothetis2001-lt` a été la première à démontrer chez le singe que cette hypothèse de linéarité et d'invariance semble être assez bien respectée, au moins dans le cortex visuel pour des stimuli visuels simples (contexte de l'étude).
+Le processus qui transforme l'activité neuronale en un signal BOLD peut se formaliser dans le cadre général de la théorie des systèmes. Plus spécifiquement, la fonction de réponse hémodynamique de la {numref}`hrf-fig` est généralement approximée comme un système linéaire et invariant dans le temps. Cette approximation sous-tend les inférences que l'on fait sur l'organisation fonctionnelle du cerveau: nous l'employons dans le but d'estimer la réponse à une tâche ou condition donnée. La fonction de réponse hémodynamique de la {numref}`hrf-fig` se rapporte à un contexte expérimentale simple: une stimulation courte et isolée. En réalité, les **paradigmes expérimentaux sont beaucoup plus complexes**: ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d'une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu'advient-il alors de la fonction de réponse hémodynamique? Une propriété clé d'un système linéaire est d'être additif, c'est à dire que la réponse à une stimulation longue peut être décomposée comme la superposition de réponses à des stimulations plus courtes. Une autre hypothèse clé est l'**invariance dans le temps**, qui nous dit que la réponse du système ne va pas varier si on effectue la même stimulation courte à différents instants. Quand on **combine** l'hypothèse de linéarité avec l'invariance dans le temps, il est possible de prédire la réponse à n'importe quelle série de stimuli complexes à partir de la réponse à une unique stimulation courte, comme présentée en {numref}`hrf-fig`. L'étude de Logothetis et al. (2001) {cite:p}`Logothetis2001-lt` a été la première à démontrer chez le singe que cette hypothèse de linéarité et d'invariance semble être assez bien respectée, au moins dans le cortex visuel pour des stimuli visuels simples (contexte de l'étude).
 
 ```{admonition} Additivité
 :class: tip
@@ -330,7 +330,7 @@ Souvent, le sujet ne maintient pas exactement la même position de la tête dans
 ```{admonition} Mouvements excessifs
 :class: tip
 :name: motion-tip
-Le niveau de mouvement varie en fonction de la population étudiée. Les enfants et les personnes âgés ont tendance à bouger davantage que les jeunes adultes. Certains chercheurs choisissent d'exclure les sujets ayant bougé au-delà d'un certain seuil
+Le niveau de mouvement varie en fonction de la population étudiée. Les enfants et les personnes âgés ont tendance à bouger davantage que les jeunes adultes. Certains chercheurs choisissent d'exclure les sujets ayant bougé au-delà d'un certain seuil.
 ```
 
 #### Recalage BOLD avec $T_1$
@@ -345,7 +345,7 @@ name: registration-macaque-fig
 ---
 Illustration du processus de recalage d'un IRM T1 sur un espace stéréotaxique (ici chez le macaque). On démarre par une transformation affine (pour corriger la position de la tête et sa taille), puis non-linéaire (pour ajuster la position des sillons et des structures sous corticales). Figure sous licence CC-BY 4.0 contribuée par [Dan J Gale](https://github.com/danjgale).
 ```
-Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d'individus en individus. Le recalage dans l'espace stéréotaxique, aussi parfois appelée _normalisation spatiale_, consiste à recaler l'image $T_1$ dans un espace standard cible défini par l'atlas choisi, rendant ainsi comparables les cerveaux de différents individus. Cette technique a identique à ce qui est fait pour les études de morphométrie. Le template MNI152 (Montreal Neurological Institute) est largement employé comme espace standard dans la communauté. Cette transformation combine une transformation affine et une transformation non-linéaire.
+Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d'individus en individus. Le recalage dans l'espace stéréotaxique, aussi parfois appelée _normalisation spatiale_, consiste à recaler l'image $T_1$ dans un espace standard cible défini par l'atlas choisi, rendant ainsi comparables les cerveaux de différents individus. Cette technique est identique à ce qui est fait pour les études de morphométrie. Le template MNI152 (Montreal Neurological Institute) est largement employé comme espace standard dans la communauté. Cette transformation combine transformation affine et transformation non-linéaire.
 
 #### Lissage spatiale
 ```{code-cell} ipython 3
@@ -402,9 +402,7 @@ Illustration de l'impact du lissage sur un volume BOLD.
 À mesure que le paramètre `FWHM` augmente, la mesure en un voxel représente la moyenne dans un voisinage spatial de plus en plus grand.
 Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir du jeu de données `haxby` (cliquer sur + pour voir le code). La figure est sous license CC-BY.
 ```
-Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l'IRM fonctionnelle, mais l'objectif de cette étape est un peu différente. Le bruit thermique aléatoire joue un plus grand rôle dans le signal BOLD, et peut avoir un effet néfaste sur les analyses statistiques. Le lissage spatiale permet de diminuer ce bruit aléatoire. Mis à part l'amélioration du rapport signal sur bruit, le lissage permet également d'atténuer les imperfections de recalage entre sujets, en diffusant l'activité dans l'espace. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribué à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible.
-
-le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins. Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement. Le paramètre `FWHM` (*full width at half maximum*) contrôle l'échelle de ce lissage (plus important ou moins important). Il détermine l'étalement des voxels voisins qui participeront à la nouvelle valeur d'un voxel cible. D'un point de vue mathématique, le paramètre `FWHM` représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur `FWHM` sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d'un voxel cible de l'image. Plusieurs études choisissent `6 mm` comme valeur pour le paramètre `FWHM`.
+Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l'IRM fonctionnelle, mais l'objectif de cette étape est un peu différente. Le bruit thermique aléatoire joue un plus grand rôle dans le signal BOLD, et peut avoir un effet néfaste sur les analyses statistiques. Le lissage spatiale permet de diminuer ce bruit aléatoire. Mis à part l'amélioration du rapport signal sur bruit, le lissage permet également d'atténuer les imperfections de recalage entre sujets, en diffusant l'activité dans l'espace. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribuée à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Donc, le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins. Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement. Le paramètre `FWHM` (*full width at half maximum*) contrôle l'échelle de ce lissage (plus important ou moins important). Il détermine l'étalement des voxels voisins qui participeront à la nouvelle valeur d'un voxel cible. D'un point de vue mathématique, le paramètre `FWHM` représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur `FWHM` sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d'un voxel cible de l'image. Plusieurs études choisissent `6 mm` comme valeur pour le paramètre `FWHM`.
 
 #### Filtrage des facteurs de non-intérêt
 ```{code-cell} ipython 3
@@ -458,7 +456,8 @@ ax.set_title("Avant correction des dérives lentes")
 
 # Génère les séries temporelles après correction des dérives lentes
 masker = NiftiLabelsMasker(atlas.maps,
-                           detrend=True,
+                           high_pass=0.01,
+                           t_r=4,
                            labels=atlas.labels,
                            standardize=True)
 masker.fit(func_filename)
@@ -480,9 +479,9 @@ glue("detrending-fmri-fig", fig, display=False)
 :figwidth: 600px
 :name: detrending-fmri-fig
 On extrait les séries temporelles associées à l'atlas Harvard-Oxford avant (à gauche) et après (à droite) régression des dérives lentes.
-Cette figure est adapté d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/06_manipulating_images/plot_nifti_labels_simple.html#sphx-glr-auto-examples-06-manipulating-images-plot-nifti-labels-simple-py) à partir du jeu de données `development_fmri` (cliquer sur + pour voir le code). La figure est sous license CC-BY.
+Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/06_manipulating_images/plot_nifti_labels_simple.html#sphx-glr-auto-examples-06-manipulating-images-plot-nifti-labels-simple-py) à partir du jeu de données `development_fmri` (cliquer sur + pour voir le code). La figure est sous license CC-BY.
 ```
-La dernière étape de prétraitement qui sera abordé est celle du filtrage de facteurs de non-intérêt, ou facteurs confondants. Ces facteurs confondants peuvent avoir différentes sources, comme le bruit cardiaque, le bruit de respiration, ou le mouvement. Ils se caractérisent notamment par différentes fréquences du spectre, soit plus lentes ou rapides. Les dérives lentes constituent un exemple commun de facteurs de non-intérêt, et elles sont assez facilement repérables dans le signal. Dans ce cas, pouvons appliquer un filtre passe-haut, qui conserve uniquement les fréquence plus haute qu'un certain seuil (p.e. 0.01 Hz). De nombreux autres types de facteurs confondants sont couramment régressés en IRMf - par exemple les paramètres de mouvement.
+La dernière étape de prétraitement qui sera abordée est celle du filtrage de facteurs de non-intérêt, ou facteurs confondants. Ces facteurs confondants peuvent avoir différentes sources, comme le bruit cardiaque, le bruit de respiration, ou le mouvement. Ils se caractérisent notamment par différentes fréquences du spectre, soit plus lentes ou rapides. Les dérives lentes constituent un exemple commun de facteurs de non-intérêt, et elles sont assez facilement repérables dans le signal. Dans ce cas, pouvons appliquer un filtre passe-haut, qui conserve uniquement les fréquence plus haute qu'un certain seuil (p.e. 0.01 Hz). De nombreux autres types de facteurs confondants sont couramment régressés en IRMf - par exemple les paramètres de mouvement.
 
 ## Analyses statistiques
 
@@ -514,33 +513,85 @@ Il est possible de généraliser l'analyse de soustraction pour tenir compte de 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 
-# activation related to a mental computation task, as opposed to narrative sentence reading/listening
-# librairies
-from nilearn import datasets
+# Importe les librairies
+from nilearn.datasets import fetch_spm_auditory
+from nilearn import image
+from nilearn import masking
 import pandas as pd
-#from nilearn.glm import threshold_stats_img, SecondLevelModel
+
+# initialisation de la figure
+fig = plt.figure(figsize=(7,5))
+
+# load fMRI data
+subject_data = fetch_spm_auditory()
+fmri_img = image.concat_imgs(subject_data.func)
+
+# Make an average
+mean_img = image.mean_img(fmri_img)
+mask = masking.compute_epi_mask(mean_img)
+
+# Clean and smooth data
+fmri_img = image.clean_img(fmri_img, high_pass=0.01, t_r=7, standardize=False)
+fmri_img = image.smooth_img(fmri_img, 5.)
+
+# load events
+events = pd.read_table(subject_data['events'])
+
+# Fit model
+from nilearn.glm.first_level import FirstLevelModel
+fmri_glm = FirstLevelModel(t_r=7,
+                           drift_model='cosine',
+                           signal_scaling=False,
+                           mask_img=mask,                           
+                           minimize_memory=False)
+
+fmri_glm = fmri_glm.fit(fmri_img, events)
+
+# Extract activation clusters
+from nilearn.reporting import get_clusters_table
+from nilearn import input_data
+z_map = fmri_glm.compute_contrast('active - rest')
+table = get_clusters_table(z_map, stat_threshold=3.1,
+                           cluster_threshold=20).set_index('Cluster ID', drop=True)
+
+# get the 3 largest clusters' max x, y, and z coordinates
+coords = table.loc[range(1, 4), ['X', 'Y', 'Z']].values
+
+# extract time series from each coordinate
+masker = input_data.NiftiSpheresMasker(coords)
+real_timeseries = masker.fit_transform(fmri_img)
+predicted_timeseries = masker.fit_transform(fmri_glm.predicted[0])
+
+# Plot figure
+# colors for each of the clusters
+colors = ['blue', 'navy', 'purple', 'magenta', 'olive', 'teal']
+# plot the time series and corresponding locations
 from nilearn import plotting
+fig1, axs1 = plt.subplots(2, 3)
+for i in range(0, 3):
+    # plotting time series
+    axs1[0, i].set_title('Cluster peak {}\n'.format(coords[i]))
+    axs1[0, i].plot(real_timeseries[:, i], c=colors[i], lw=2)
+    axs1[0, i].plot(predicted_timeseries[:, i], c='r', ls='--', lw=2)
+    axs1[0, i].set_xlabel('Time')
+    axs1[0, i].set_ylabel('Signal intensity', labelpad=0)
+    # plotting image below the time series
+    roi_img = plotting.plot_stat_map(
+        z_map, cut_coords=[coords[i][2]], threshold=3.1, figure=fig1,
+        axes=axs1[1, i], display_mode='z', colorbar=False, bg_img=mean_img)
+    roi_img.add_markers([coords[i]], colors[i], 300)
 
-n_samples = 20
-localizer_dataset = datasets.fetch_localizer_calculation_task(
-    n_subjects=n_samples)
-cmap_filenames = localizer_dataset.cmaps
+fig1.set_size_inches(24, 14)
 
-design_matrix = pd.DataFrame([1] * n_samples, columns=['intercept'])
+# Glue the figure
+from myst_nb import glue
+glue("auditory-fig", fig1, display=False)
+```
 
-#z_map = second_level_model.compute_contrast(output_type='z_score')
-
-#thresholded_map1, threshold1 = threshold_stats_img(
-#    z_map, alpha=.05, height_control='fdr', cluster_threshold=10)
-
-# visualiser
-# sans seuil
-#display = plotting.plot_stat_map(z_map, title='Carte activation')
-
-# avec seuil
-#plotting.plot_stat_map(
-#    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,
-#    title='Carte activation avec seuil, fdr <.05')
+```{glue:figure} auditory-fig
+:figwidth: 800px
+:name: "auditory-fig"
+Réponse hémodynamique à une impulsion unitaire d'une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) {cite:p}`Glover1999-cb`. Le code pour générer cette figure est adaptée d'un [tutoriel](https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py) Nilearn, et la figure est sous licence CC-BY.
 ```
 
 Les cartes d'activation sont souvent ce que l'on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d'activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des **sujets** (p.e. effet yeux ouverts vs yeux fermés) ou des **groupes**, si nous combinons les données de plusieurs sujets (p.e. effet de l'âge ou d'appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l'application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d'intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d'intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: *Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992*, ayant introduit l'idée de cartographier le cerveau avec des tâches en IRMf.
