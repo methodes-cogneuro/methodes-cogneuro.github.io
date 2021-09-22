@@ -17,75 +17,40 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Importe les librairies
 from nilearn.datasets import fetch_spm_auditory
 from nilearn import image
 from nilearn import masking
+import numpy as np
 import pandas as pd
-
-# initialisation de la figure
-fig = plt.figure(figsize=(7,5))
+import matplotlib.pyplot as plt
 
 # load fMRI data
 subject_data = fetch_spm_auditory()
-fmri_img = image.concat_imgs(subject_data.func)
 
-# Make an average
-mean_img = image.mean_img(fmri_img)
-mask = masking.compute_epi_mask(mean_img)
-
-# Clean and smooth data
-fmri_img = image.clean_img(fmri_img, high_pass=0.02, t_r=7, standardize=False)
-fmri_img = image.smooth_img(fmri_img, 5.)
+fig = plt.figure(figsize=(10,5))
 
 # load events
 events = pd.read_table(subject_data['events'])
+events['amplitude'] = 1
+events = events[events['trial_type']=='active']
+events = events.loc[:,['onset', 'duration', 'amplitude']].to_numpy().transpose()
 
-# Fit model
-from nilearn.glm.first_level import FirstLevelModel
-fmri_glm = FirstLevelModel(t_r=7,
-                           drift_model='cosine',
-                           signal_scaling=False,
-                           mask_img=mask,                           
-                           minimize_memory=False)
+frame_times = np.linspace(4*7, 100*7, 100-4+1)
+from nilearn.glm.first_level import compute_regressor
 
-fmri_glm = fmri_glm.fit(fmri_img, events)
+block, name = compute_regressor(
+        events, None, frame_times, con_id='main',
+        oversampling=16)
+block = block > 0
 
-# Extract activation clusters
-from nilearn.reporting import get_clusters_table
-from nilearn import input_data
-z_map = fmri_glm.compute_contrast('active - rest')
-table = get_clusters_table(z_map, stat_threshold=3.1,
-                           cluster_threshold=20).set_index('Cluster ID', drop=True)
+response, name = compute_regressor(
+        events, 'glover', frame_times, con_id='main',
+        oversampling=16)
 
-# get the 3 largest clusters' max x, y, and z coordinates
-coords = table.loc[range(1, 4), ['X', 'Y', 'Z']].values
-
-# extract time series from each coordinate
-masker = input_data.NiftiSpheresMasker(coords)
-real_timeseries = masker.fit_transform(fmri_img)
-predicted_timeseries = masker.fit_transform(fmri_glm.predicted[0])
-
-# Plot figure
-# colors for each of the clusters
-colors = ['blue', 'navy', 'purple', 'magenta', 'olive', 'teal']
-# plot the time series and corresponding locations
-from nilearn import plotting
-fig1, axs1 = plt.subplots(2, 3)
-for i in range(0, 3):
-    # plotting time series
-    axs1[0, i].set_title('Cluster peak {}\n'.format(coords[i]))
-    axs1[0, i].plot(real_timeseries[:, i], c=colors[i], lw=2)
-    axs1[0, i].plot(predicted_timeseries[:, i], c='r', ls='--', lw=2)
-    axs1[0, i].set_xlabel('Time')
-    axs1[0, i].set_ylabel('Signal intensity', labelpad=0)
-    # plotting image below the time series
-    roi_img = plotting.plot_stat_map(
-        z_map, cut_coords=[coords[i][2]], threshold=3.1, figure=fig1,
-        axes=axs1[1, i], display_mode='z', colorbar=False, bg_img=mean_img)
-    roi_img.add_markers([coords[i]], colors[i], 300)
-
-fig1.set_size_inches(24, 14)
+plt.fill(frame_times, block, 'b', alpha=.5, label='stimulus')
+plt.plot(frame_times, response, 'r', label=name)
+plt.xlabel('temps (s)')
+plt.ylabel('BOLD signal (u.a.)')
 
 # Glue the figure
 from myst_nb import glue
@@ -93,56 +58,12 @@ glue("auditory-fig", fig1, display=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mKeyError[0m                                  Traceback (most recent call last)
-[0;32m<ipython-input-5-32ca9bad3819>[0m in [0;36m<module>[0;34m[0m
-[1;32m     41[0m [0;34m[0m[0m
-[1;32m     42[0m [0;31m# get the 3 largest clusters' max x, y, and z coordinates[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 43[0;31m [0mcoords[0m [0;34m=[0m [0mtable[0m[0;34m.[0m[0mloc[0m[0;34m[[0m[0mrange[0m[0;34m([0m[0;36m1[0m[0;34m,[0m [0;36m4[0m[0;34m)[0m[0;34m,[0m [0;34m[[0m[0;34m'X'[0m[0;34m,[0m [0;34m'Y'[0m[0;34m,[0m [0;34m'Z'[0m[0;34m][0m[0;34m][0m[0;34m.[0m[0mvalues[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     44[0m [0;34m[0m[0m
-[1;32m     45[0m [0;31m# extract time series from each coordinate[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
-[1;32m    887[0m                     [0;31m# AttributeError for IntervalTree get_value[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    888[0m                     [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_get_value[0m[0;34m([0m[0;34m*[0m[0mkey[0m[0;34m,[0m [0mtakeable[0m[0;34m=[0m[0mself[0m[0;34m.[0m[0m_takeable[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 889[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_tuple[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    890[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    891[0m             [0;31m# we by definition only have the 0th axis[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m_getitem_tuple[0;34m(self, tup)[0m
-[1;32m   1065[0m         [0;31m# ugly hack for GH #836[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1066[0m         [0;32mif[0m [0mself[0m[0;34m.[0m[0m_multi_take_opportunity[0m[0;34m([0m[0mtup[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1067[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_multi_take[0m[0;34m([0m[0mtup[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1068[0m [0;34m[0m[0m
-[1;32m   1069[0m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_tuple_same_dim[0m[0;34m([0m[0mtup[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m_multi_take[0;34m(self, tup)[0m
-[1;32m   1017[0m         """
-[1;32m   1018[0m         [0;31m# GH 836[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1019[0;31m         d = {
-[0m[1;32m   1020[0m             [0maxis[0m[0;34m:[0m [0mself[0m[0;34m.[0m[0m_get_listlike_indexer[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1021[0m             [0;32mfor[0m [0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m)[0m [0;32min[0m [0mzip[0m[0;34m([0m[0mtup[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_AXIS_ORDERS[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m<dictcomp>[0;34m(.0)[0m
-[1;32m   1018[0m         [0;31m# GH 836[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1019[0m         d = {
-[0;32m-> 1020[0;31m             [0maxis[0m[0;34m:[0m [0mself[0m[0;34m.[0m[0m_get_listlike_indexer[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1021[0m             [0;32mfor[0m [0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m)[0m [0;32min[0m [0mzip[0m[0;34m([0m[0mtup[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_AXIS_ORDERS[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1022[0m         }
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m_get_listlike_indexer[0;34m(self, key, axis, raise_missing)[0m
-[1;32m   1264[0m             [0mkeyarr[0m[0;34m,[0m [0mindexer[0m[0;34m,[0m [0mnew_indexer[0m [0;34m=[0m [0max[0m[0;34m.[0m[0m_reindex_non_unique[0m[0;34m([0m[0mkeyarr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1265[0m [0;34m[0m[0m
-[0;32m-> 1266[0;31m         [0mself[0m[0;34m.[0m[0m_validate_read_indexer[0m[0;34m([0m[0mkeyarr[0m[0;34m,[0m [0mindexer[0m[0;34m,[0m [0maxis[0m[0;34m,[0m [0mraise_missing[0m[0;34m=[0m[0mraise_missing[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1267[0m         [0;32mreturn[0m [0mkeyarr[0m[0;34m,[0m [0mindexer[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1268[0m [0;34m[0m[0m
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/pandas/core/indexing.py[0m in [0;36m_validate_read_indexer[0;34m(self, key, indexer, axis, raise_missing)[0m
-[1;32m   1306[0m             [0;32mif[0m [0mmissing[0m [0;34m==[0m [0mlen[0m[0;34m([0m[0mindexer[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1307[0m                 [0maxis_name[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_get_axis_name[0m[0;34m([0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1308[0;31m                 [0;32mraise[0m [0mKeyError[0m[0;34m([0m[0;34mf"None of [{key}] are in the [{axis_name}]"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1309[0m [0;34m[0m[0m
-[1;32m   1310[0m             [0max[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_get_axis[0m[0;34m([0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mKeyError[0m: "None of [Int64Index([1, 2, 3], dtype='int64', name='Cluster ID')] are in the [index]"
-KeyError: "None of [Int64Index([1, 2, 3], dtype='int64', name='Cluster ID')] are in the [index]"
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-5-3f6b343658df>[0m in [0;36m<module>[0;34m[0m
+[1;32m     36[0m [0;31m# Glue the figure[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     37[0m [0;32mfrom[0m [0mmyst_nb[0m [0;32mimport[0m [0mglue[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 38[0;31m [0mglue[0m[0;34m([0m[0;34m"auditory-fig"[0m[0;34m,[0m [0mfig1[0m[0;34m,[0m [0mdisplay[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mNameError[0m: name 'fig1' is not defined
+NameError: name 'fig1' is not defined
 

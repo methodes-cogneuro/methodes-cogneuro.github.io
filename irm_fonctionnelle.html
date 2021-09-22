@@ -335,8 +335,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-univariee">
-     Régression univariée
+    <a class="reference internal nav-link" href="#regression-univariee-massive">
+     Régression univariée massive
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -584,7 +584,7 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 <td class="text-align:center"><p><strong>Réduit</strong> le signal BOLD</p></td>
 <td class="text-align:right"><p><strong>Augmente</strong> le signal BOLD</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(T2\)</span>*</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(T_2^*\)</span></p></td>
 <td class="text-align:center"><p>Décroît plus <strong>rapidement</strong></p></td>
 <td class="text-align:right"><p>Décroît plus <strong>lentement</strong></p></td>
 </tr>
@@ -700,7 +700,7 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </div>
 <div class="section" id="recalage-bold-avec-t-1">
 <h4>Recalage BOLD avec <span class="math notranslate nohighlight">\(T_1\)</span><a class="headerlink" href="#recalage-bold-avec-t-1" title="Permalink to this headline">¶</a></h4>
-<p>Il est commun d’aligner l’image BOLD avec l’image anatomique <span class="math notranslate nohighlight">\(T_1\)</span> du sujet. Pourquoi? L’image fonctionnelle détient une moins bonne résolution spatiale que l’image structurelle <span class="math notranslate nohighlight">\(T_1\)</span>: nous avons de plus courtes durées d’acquisition pour acquérir un même volume. Le contraste entre structures anatomiques est aussi bien meilleur en <span class="math notranslate nohighlight">\(T_1\)</span>. Il est donc utile de superposer les deux images pour localiser les activations BOLD. Cette transformation est estimée de manière rigide, comme le mouvement. Notez qu’il existe aussi des déformations</p>
+<p>Il est commun d’aligner l’image BOLD avec l’image anatomique <span class="math notranslate nohighlight">\(T_1\)</span> du sujet. Pourquoi? L’image fonctionnelle détient une moins bonne résolution spatiale que l’image structurelle <span class="math notranslate nohighlight">\(T_1\)</span>: nous avons de plus courtes durées d’acquisition pour acquérir un même volume. Le contraste entre structures anatomiques est aussi bien meilleur en <span class="math notranslate nohighlight">\(T_1\)</span>. Il est donc utile de superposer les deux images pour localiser les activations BOLD. Cette transformation est estimée de manière rigide, comme le mouvement. Notez qu’il existe aussi des déformations non-rigides causées par les non-uniformités du champ, et qui peuvent être corrigées de manière additionnelle.</p>
 </div>
 <div class="section" id="recalage-dans-l-espace-stereotaxique">
 <h4>Recalage dans l’espace stéréotaxique<a class="headerlink" href="#recalage-dans-l-espace-stereotaxique" title="Permalink to this headline">¶</a></h4>
@@ -860,24 +860,65 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </div>
 <div class="section" id="analyses-statistiques">
 <h2>Analyses statistiques<a class="headerlink" href="#analyses-statistiques" title="Permalink to this headline">¶</a></h2>
-<p>Cette section est un aperçu général du cours sur les analyses statistiques à venir. Nous laisserons certains détails de côté pour le moment, mais nous y reviendrons dans le cours 6 sur les <a class="reference external" href="https://psy3018.github.io/cartes_statistiques.html">analyses statistiques</a>. Rappelons une fois de plus nos objectifs en IRMf : nous voulons dégager de nouvelles connaissances sur le fonctionnement du cerveau. Ceci implique le recours à des analyses statistiques.</p>
-<p>Les analyses statistiques comportent généralement des <strong>analyses individuelles</strong> dans lesquelles les séries temporelles sont analysés séparément pour chacun des sujets (on analyse l’effet des manipulations expérimentales), puis des <strong>analyses de groupe</strong> (on analyse l’effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées.</p>
+<p>Les analyses statistiques comportent généralement des <strong>analyses individuelles</strong> dans lesquelles les séries temporelles sont analysés séparément pour chacun des sujets (on analyse l’effet des manipulations expérimentales), puis des <strong>analyses de groupe</strong> (on analyse l’effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées. Dans cette section nous allons discuter brièvement de la génération de cartes statistiques individuelles. Nous reviendrons sur les analyses de groupe, et les modèles statistiques utilisées dans le chapitre sur les <a class="reference internal" href="cartes_statistiques.html"><span class="doc std std-doc">cartes statistiques cérébrales</span></a>.</p>
 <div class="section" id="irmf-experience-basee-sur-une-tache">
 <h3>IRMf - Expérience basée sur une tâche<a class="headerlink" href="#irmf-experience-basee-sur-une-tache" title="Permalink to this headline">¶</a></h3>
-<p>Pour déterminer si l’activité des voxels du cerveau changent en réponse à des manipulations expérimentales, une approche expérimentale standard consiste à manipuler la tâche que réalise le sujet dans le scanneur, par exemple en alternant différentes conditions par blocs (yeux ouverts, yeux fermés). Nous avons ensuite recours à des constrastes, aussi appelées analyse de soustraction qui procède en comparant les séries temporelles d’une condition à une autre condition, ou à un seuil de base. Ces contrastes sont répétées pour chacun des voxels du cerveau.</p>
-<div class="tip admonition" id="comparaisons-multiples-tip">
-<p class="admonition-title">Problème de comparaisons multiples</p>
-<p>Les analyses statistiques en IRMf surviennent dans un contexte particulier. Ce sont des analyses massivement univariées, c’est-à-dire que nous avons des tests statistiques répétés plusieurs milliers de fois (à chacun de nos voxels). Ceci entraîne un problème de comparaisons multiples qui requiert une correction pour l’inflation de faux positifs. Ceci sera abordé plus en détail dans le cours sur les analyses statistiques.</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_spm_auditory</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">masking</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># load fMRI data</span>
+<span class="n">subject_data</span> <span class="o">=</span> <span class="n">fetch_spm_auditory</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># load events</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">subject_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">])</span>
+<span class="n">events</span><span class="p">[</span><span class="s1">&#39;amplitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="n">events</span><span class="p">[</span><span class="s1">&#39;trial_type&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;active&#39;</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="n">frame_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="o">-</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nilearn.glm.first_level</span> <span class="kn">import</span> <span class="n">compute_regressor</span>
+
+<span class="n">block</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">compute_regressor</span><span class="p">(</span>
+        <span class="n">events</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">frame_times</span><span class="p">,</span> <span class="n">con_id</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">,</span>
+        <span class="n">oversampling</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">block</span> <span class="o">=</span> <span class="n">block</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="n">response</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">compute_regressor</span><span class="p">(</span>
+        <span class="n">events</span><span class="p">,</span> <span class="s1">&#39;glover&#39;</span><span class="p">,</span> <span class="n">frame_times</span><span class="p">,</span> <span class="n">con_id</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">,</span>
+        <span class="n">oversampling</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">frame_times</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;stimulus&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frame_times</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;temps (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;BOLD signal (u.a.)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;hrf-auditory-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="tip admonition" id="paradigmes-classiques-tip">
-<p class="admonition-title">Paradigmes classiques</p>
-<p>Les premiers paradigmes expérimentaux en IRMf consistaient à répéter un tâche pendant la durée de l’acquisition, puis à contraster avec un seuil de base en utilisant des procédures statistiques comme le test-t. Inspiré par ces approches, les premières études faisait la différence entre la moyenne d’activation lors de tâche et à l’état de repos. Dans l’études par Kwong et al. (1992) par exemple, des blocs de stimulations visuels étaient suivis de blocs sans stimulation.</p>
 </div>
 </div>
-<div class="section" id="regression-univariee">
-<h3>Régression univariée<a class="headerlink" href="#regression-univariee" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="hrf-auditory-fig" style="width: 500px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_fonctionnelle_9_0.png" src="_images/irm_fonctionnelle_9_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Illustration d’un paradigme auditif en blocs. En bleu: périodes de stimulations audio. En rouge: réponse cérébrale prédite avec le modèle de réponse linéaire invariante dans le temps, et une réponse unitaire suivant le modèle de Glover et al. (1999) <span id="id6">[<a class="reference internal" href="#id31">Glo99</a>]</span>. Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-auditory-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Pour déterminer si l’activité des voxels du cerveau changent en réponse à des manipulations expérimentales, une approche expérimentale standard consiste à manipuler la tâche que réalise le sujet dans le scanneur, par exemple en alternant différentes conditions par blocs (stimulations audio, silence). Nous avons ensuite recours à des constrastes, aussi appelées analyse de soustraction qui procède en comparant les séries temporelles d’une condition à une autre condition, ou à un seuil de base. De manière simplifiée, l’analyse consiste à faire la différence de moyenne entre la période de silence et la période de stimulations auditives. Ces contrastes sont répétées pour chacun des voxels du cerveau, et génère une <strong>carte statistique cérébrale</strong>.</p>
+</div>
+<div class="section" id="regression-univariee-massive">
+<h3>Régression univariée massive<a class="headerlink" href="#regression-univariee-massive" title="Permalink to this headline">¶</a></h3>
 <p>Il est possible de généraliser l’analyse de soustraction pour tenir compte de <strong>1) la forme de la réponse hémodynamique</strong>
-<strong>2) la présence de plusieurs conditions dans une même expérience</strong>. Tel que soulevé précédemment, une grande partie du travail en IRMf consiste à analyser/expliquer les séries temporelles. Nous pouvons utiliser nos connaissances sur la fonction de réponse hémodynamique, ainsi que celles sur les conditions du paradigme expérimental, pour estimer le niveau d’activation BOLD dans une condition (nous irons plus dans les détails ultérieurement, mais globalement celles-ci deviennent les variables explicatives dans des modèles de régressions qui tente d’expliquer les séries temporelles). Les séries temporelles sont aussi expliquer comme étant partiellement <strong>3) du bruit/erreur</strong>, que l’on suppose aléatoire. Nous ajustons les paramètres de ce modèle tenant compte <strong>1)</strong>, <strong>2)</strong> et <strong>3)</strong>. Ceux-ci sont mis à l’échelle : c’est ce qui nous permet de connaître le niveau d’activation pour une condition. Une fois ce niveau connu, il peut être contrasté entre différentes conditions ou avec un niveau de base, en calculant la différence entre les moyennes d’activation de chaque condition respectivement. En employant une distribution gaussienne, nous pouvons évaluer la probabilité d’observer une telle différence, ou n’importe quelle statistique donnée (p.e. test-t). Le formalisme décrit ci-haut s’appelle le modèle linéaire général. On en reparlera au cours 5.</p>
+<strong>2) la présence de plusieurs conditions dans une même expérience</strong>. En pratique, en faisant une hypothèse de système linéaire et invariant dans le temps, on génère une prédiction de la forme de la réponse à une condition expérimentale, comme dans la <a class="reference internal" href="#hrf-auditory-fig"><span class="std std-numref">Fig. 49</span></a>. Un modèle de régression linéaire est alors utilisée pour estimer l’amplitude de cette réponse, afin d’ajuster le modèle au plus près des valeurs mesurées dans un voxel. Cette régression génère un paramètre d’amplitude (et un test de significativité) pour chaque voxel. On parle de régression univariée, car chaque voxel du cerveau est analysé indépendamment. Et on parle de régression univariée massive, car on répète cette procédure pour des dizaines (ou même des centaines) de milliers de voxels!</p>
 </div>
 <div class="section" id="irmf-cartes-d-activation">
 <h3>IRMf - Cartes d’activation<a class="headerlink" href="#irmf-cartes-d-activation" title="Permalink to this headline">¶</a></h3>
@@ -962,20 +1003,22 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </div>
 <div class="figure align-default" id="auditory-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/irm_fonctionnelle_9_0.png" src="_images/irm_fonctionnelle_9_0.png" />
+<img alt="_images/irm_fonctionnelle_11_0.png" src="_images/irm_fonctionnelle_11_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Réponse hémodynamique à une impulsion unitaire d’une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) <span id="id6">[<a class="reference internal" href="#id31">Glo99</a>]</span>. Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#auditory-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Carte d’activation pour un paradigme en blocs auditif. Les trois principaux pics d’activation ont été identifiés, et le signal est présenté pour chaque pic, superposé avec l’activité prédite par le modèle basé sur les stimuli auditifs. Notez comme la forme de la réponse est identique pour les trois voxels sélectionnés, mais que l’amplitude du modèle varie (elle est estimée par la régression). Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#auditory-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Les cartes d’activation sont souvent ce que l’on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d’activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des <strong>sujets</strong> (p.e. effet yeux ouverts vs yeux fermés) ou des <strong>groupes</strong>, si nous combinons les données de plusieurs sujets (p.e. effet de l’âge ou d’appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l’application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d’intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d’intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: <em>Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992</em>, ayant introduit l’idée de cartographier le cerveau avec des tâches en IRMf.</p>
-<div class="tip admonition" id="histoire-tip">
-<p class="admonition-title">Origines de la ségrégation fonctionnelle</p>
-<p>De nos jours, une partie importante de la littérature suppose que le cerveau est découpé en aires fonctionnelles, en d’autre mots, elle admet le principe de ségrégation fonctionnelle. L’idée de localiser les fonctions cognitives n’est pas une idée nouvelle. Dans les faits, c’était l’idée de Gall, avec la phrénologie, qui assumait un lien entre la morphologie du crâne et les fonctions cognitives. Selon la phrénologie, la forme de la boîte crânienne est informative des tendances des individus. Les aires du cerveau sont organisées selon des concepts cognitifs comme “counsciousness”, “destructiveness” et autres dimensions. Bien que peu rigoureuse, cette idée est revisitée dans le cadre de la modalité de l’IRMf, mais avec bien plus de rigueur scientifique. Son émergence légitime dans le discours scientifique remonte, notamment, aux travaux de Brodmann lequel employait des techniques de teintures pour observer la forme et variations des cellules nerveuses (cytoarchitecture) à travers le cortex. Nous admettons, aujourd’hui, arriver à accéder à certains aspects de l’organisation fonctionnelle cérébrale.</p>
-</div>
+<p>Les cartes d’activation sont souvent ce que l’on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d’activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Elles sont souvent présentées suite à l’application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d’intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d’intérêt comme le QI.</p>
 </div>
 </div>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
-<p>La réalisation d’une expérience d’IRMf nécessite de bien penser les conditions d’intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes. Nous débutons généralement avec une hypothèse scientifique qui postule que certaines manipulations expérimentales vont guider des différences observables dans des régions d’intérêt. Nous poursuivons avec des hypothèses neuronales : les populations de neurones vont s’activer en réponse à nos conditions. Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu’il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps. Finalement, nous faisons des hypothèses sur la généralisabilité de nos résultats.</p>
+<p>La réalisation d’une expérience d’IRMf nécessite de bien penser les conditions d’intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes:</p>
+<ul class="simple">
+<li><p><strong>hypothèses neuronales</strong>: les populations de neurones vont s’activer en réponse à nos conditions.</p></li>
+<li><p><strong>hypothèses neurovasculaires</strong>: Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu’il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps.</p></li>
+<li><p><strong>hypothèses statistiques</strong>: Nous supposons que notre modèle de régression capture adéquatement l’activité cérébrale, et que nous tenons compte correctement des facteurs confondants et des artéfacts.</p></li>
+</ul>
+<p>Pour toutes ces raisons, il existe toujours des limitations importantes à l’interprétation que l’on peut faire de résultats en IRMf. Mais c’est aussi la technique cerveau entier non-invasive qui dispose de la meilleure résolution spatiale à ce jour.</p>
 </div>
 <div class="section" id="references">
 <h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
