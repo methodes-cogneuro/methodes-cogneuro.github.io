@@ -310,17 +310,17 @@
        Recalage dans l’espace stéréotaxique
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#lissage-spatiale">
-       Lissage spatiale
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#filtrage-des-facteurs-de-non-interet">
-       Filtrage des facteurs de non-intérêt
-      </a>
-     </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lissage-spatiale">
+     Lissage spatiale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtrage-des-facteurs-de-non-interet">
+     Filtrage des facteurs de non-intérêt
+    </a>
    </li>
   </ul>
  </li>
@@ -404,10 +404,6 @@
     </td>
   </tr>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
-</div>
 <div class="section" id="objectifs-du-cours">
 <h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle">L’imagerie par résonnance magnétique fonctionnelle</a>
@@ -710,8 +706,9 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </div>
 <p>Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d’individus en individus. Le recalage dans l’espace stéréotaxique, aussi parfois appelée <em>normalisation spatiale</em>, consiste à recaler l’image <span class="math notranslate nohighlight">\(T_1\)</span> dans un espace standard cible défini par l’atlas choisi, rendant ainsi comparables les cerveaux de différents individus. Cette technique est identique à ce qui est fait pour les études de morphométrie. Le template MNI152 (Montreal Neurological Institute) est largement employé comme espace standard dans la communauté. Cette transformation combine transformation affine et transformation non-linéaire.</p>
 </div>
+</div>
 <div class="section" id="lissage-spatiale">
-<h4>Lissage spatiale<a class="headerlink" href="#lissage-spatiale" title="Permalink to this headline">¶</a></h4>
+<h3>Lissage spatiale<a class="headerlink" href="#lissage-spatiale" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies nécessaires</span>
@@ -773,7 +770,7 @@ Cette figure est générée par du code python à l’aide de la librairie <a cl
 <p>Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l’IRM fonctionnelle, mais l’objectif de cette étape est un peu différente. Le bruit thermique aléatoire joue un plus grand rôle dans le signal BOLD, et peut avoir un effet néfaste sur les analyses statistiques. Le lissage spatiale permet de diminuer ce bruit aléatoire. Mis à part l’amélioration du rapport signal sur bruit, le lissage permet également d’atténuer les imperfections de recalage entre sujets, en diffusant l’activité dans l’espace. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l’image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribuée à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Donc, le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins. Comme c’est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l’affecter grandement. Le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> (<em>full width at half maximum</em>) contrôle l’échelle de ce lissage (plus important ou moins important). Il détermine l’étalement des voxels voisins qui participeront à la nouvelle valeur d’un voxel cible. D’un point de vue mathématique, le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d’un voxel cible de l’image. Plusieurs études choisissent <code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">mm</span></code> comme valeur pour le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code>.</p>
 </div>
 <div class="section" id="filtrage-des-facteurs-de-non-interet">
-<h4>Filtrage des facteurs de non-intérêt<a class="headerlink" href="#filtrage-des-facteurs-de-non-interet" title="Permalink to this headline">¶</a></h4>
+<h3>Filtrage des facteurs de non-intérêt<a class="headerlink" href="#filtrage-des-facteurs-de-non-interet" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies nécessaires</span>
@@ -857,10 +854,9 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <p>La dernière étape de prétraitement qui sera abordée est celle du filtrage de facteurs de non-intérêt, ou facteurs confondants. Ces facteurs confondants peuvent avoir différentes sources, comme le bruit cardiaque, le bruit de respiration, ou le mouvement. Ils se caractérisent notamment par différentes fréquences du spectre, soit plus lentes ou rapides. Les dérives lentes constituent un exemple commun de facteurs de non-intérêt, et elles sont assez facilement repérables dans le signal. Dans ce cas, pouvons appliquer un filtre passe-haut, qui conserve uniquement les fréquence plus haute qu’un certain seuil (p.e. 0.01 Hz). De nombreux autres types de facteurs confondants sont couramment régressés en IRMf - par exemple les paramètres de mouvement.</p>
 </div>
 </div>
-</div>
 <div class="section" id="analyses-statistiques">
 <h2>Analyses statistiques<a class="headerlink" href="#analyses-statistiques" title="Permalink to this headline">¶</a></h2>
-<p>Les analyses statistiques comportent généralement des <strong>analyses individuelles</strong> dans lesquelles les séries temporelles sont analysés séparément pour chacun des sujets (on analyse l’effet des manipulations expérimentales), puis des <strong>analyses de groupe</strong> (on analyse l’effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées. Dans cette section nous allons discuter brièvement de la génération de cartes statistiques individuelles. Nous reviendrons sur les analyses de groupe, et les modèles statistiques utilisées dans le chapitre sur les <a class="reference internal" href="cartes_statistiques.html"><span class="doc std std-doc">cartes statistiques cérébrales</span></a>.</p>
+<p>Les analyses statistiques comportent généralement des <strong>analyses individuelles</strong> dans lesquelles les séries temporelles sont analysées séparément pour chacun des sujets (on analyse l’effet des manipulations expérimentales), puis des <strong>analyses de groupe</strong> (on analyse l’effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées. Dans cette section nous allons discuter brièvement de la génération de cartes statistiques individuelles. Nous reviendrons sur les analyses de groupe, et les modèles statistiques utilisées dans le chapitre sur les <a class="reference internal" href="cartes_statistiques.html"><span class="doc std std-doc">cartes statistiques cérébrales</span></a>.</p>
 <div class="section" id="irmf-experience-basee-sur-une-tache">
 <h3>IRMf - Expérience basée sur une tâche<a class="headerlink" href="#irmf-experience-basee-sur-une-tache" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
@@ -911,14 +907,14 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <div class="cell_output docutils container">
 <img alt="_images/irm_fonctionnelle_9_0.png" src="_images/irm_fonctionnelle_9_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Illustration d’un paradigme auditif en blocs. En bleu: périodes de stimulations audio. En rouge: réponse cérébrale prédite avec le modèle de réponse linéaire invariante dans le temps, et une réponse unitaire suivant le modèle de Glover et al. (1999) <span id="id6">[<a class="reference internal" href="#id31">Glo99</a>]</span>. Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-auditory-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Illustration d’un paradigme auditif en blocs. En bleu: périodes de stimulations audio. En rouge: réponse cérébrale prédite avec le modèle de réponse linéaire invariante dans le temps, et une réponse unitaire suivant le modèle de Glover et al. (1999) <span id="id6">[<a class="reference internal" href="#id31">Glo99</a>]</span>. Le code pour générer cette figure est adapté d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-auditory-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Pour déterminer si l’activité des voxels du cerveau changent en réponse à des manipulations expérimentales, une approche expérimentale standard consiste à manipuler la tâche que réalise le sujet dans le scanneur, par exemple en alternant différentes conditions par blocs (stimulations audio, silence). Nous avons ensuite recours à des constrastes, aussi appelées analyse de soustraction qui procède en comparant les séries temporelles d’une condition à une autre condition, ou à un seuil de base. De manière simplifiée, l’analyse consiste à faire la différence de moyenne entre la période de silence et la période de stimulations auditives. Ces contrastes sont répétées pour chacun des voxels du cerveau, et génère une <strong>carte statistique cérébrale</strong>.</p>
+<p>Pour déterminer si l’activité des voxels du cerveau changent en réponse à des manipulations expérimentales, une approche expérimentale standard consiste à manipuler la tâche que réalise le sujet dans le scanneur, par exemple en alternant différentes conditions par blocs (stimulations audio, silence). Nous avons ensuite recours à des constrastes, aussi appelés analyse de soustraction qui procèdent en comparant les séries temporelles d’une condition à une autre condition, ou à un seuil de base. De manière simplifiée, l’analyse consiste à faire la différence de moyenne entre la période de silence et la période de stimulations auditives. Ces contrastes sont répétés pour chacun des voxels du cerveau, et génère une <strong>carte statistique cérébrale</strong>.</p>
 </div>
 <div class="section" id="regression-univariee-massive">
 <h3>Régression univariée massive<a class="headerlink" href="#regression-univariee-massive" title="Permalink to this headline">¶</a></h3>
 <p>Il est possible de généraliser l’analyse de soustraction pour tenir compte de <strong>1) la forme de la réponse hémodynamique</strong>
-<strong>2) la présence de plusieurs conditions dans une même expérience</strong>. En pratique, en faisant une hypothèse de système linéaire et invariant dans le temps, on génère une prédiction de la forme de la réponse à une condition expérimentale, comme dans la <a class="reference internal" href="#hrf-auditory-fig"><span class="std std-numref">Fig. 49</span></a>. Un modèle de régression linéaire est alors utilisée pour estimer l’amplitude de cette réponse, afin d’ajuster le modèle au plus près des valeurs mesurées dans un voxel. Cette régression génère un paramètre d’amplitude (et un test de significativité) pour chaque voxel. On parle de régression univariée, car chaque voxel du cerveau est analysé indépendamment. Et on parle de régression univariée massive, car on répète cette procédure pour des dizaines (ou même des centaines) de milliers de voxels!</p>
+<strong>2) la présence de plusieurs conditions dans une même expérience</strong>. En pratique, en faisant une hypothèse de système linéaire et invariant dans le temps, on génère une prédiction de la forme de la réponse à une condition expérimentale, comme dans la <a class="reference internal" href="#hrf-auditory-fig"><span class="std std-numref">Fig. 49</span></a>. Un modèle de régression linéaire est alors utilisé pour estimer l’amplitude de cette réponse, afin d’ajuster le modèle au plus près des valeurs mesurées dans un voxel. Cette régression génère un paramètre d’amplitude (et un test de significativité) pour chaque voxel. On parle de régression univariée, car chaque voxel du cerveau est analysé indépendamment. Et on parle de régression univariée massive, car on répète cette procédure pour des dizaines (ou même des centaines) de milliers de voxels!</p>
 </div>
 <div class="section" id="irmf-cartes-d-activation">
 <h3>IRMf - Cartes d’activation<a class="headerlink" href="#irmf-cartes-d-activation" title="Permalink to this headline">¶</a></h3>
@@ -1005,14 +1001,14 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <div class="cell_output docutils container">
 <img alt="_images/irm_fonctionnelle_11_0.png" src="_images/irm_fonctionnelle_11_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Carte d’activation pour un paradigme en blocs auditif. Les trois principaux pics d’activation ont été identifiés, et le signal est présenté pour chaque pic, superposé avec l’activité prédite par le modèle basé sur les stimuli auditifs. Notez comme la forme de la réponse est identique pour les trois voxels sélectionnés, mais que l’amplitude du modèle varie (elle est estimée par la régression). Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#auditory-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Carte d’activation pour un paradigme en blocs auditif. Les trois principaux pics d’activation ont été identifiés, et le signal est présenté pour chaque pic, superposé avec l’activité prédite par le modèle basé sur les stimuli auditifs. Notez comme la forme de la réponse est identique pour les trois voxels sélectionnés, mais que l’amplitude du modèle varie (elle est estimée par la régression). Le code pour générer cette figure est adapté d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#auditory-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Les cartes d’activation sont souvent ce que l’on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d’activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Elles sont souvent présentées suite à l’application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d’intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d’intérêt comme le QI.</p>
+<p>Les cartes d’activation sont souvent ce que l’on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d’activation, test-t, valeur p). Elles sont superposées vis-à-vis des voxels ou régions correspondant(e)s. Elles sont souvent présentées suite à l’application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d’intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d’intérêt comme le QI.</p>
 </div>
 </div>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
-<p>La réalisation d’une expérience d’IRMf nécessite de bien penser les conditions d’intérêts et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes:</p>
+<p>La réalisation d’une expérience d’IRMf nécessite de bien penser les conditions d’intérêt et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes:</p>
 <ul class="simple">
 <li><p><strong>hypothèses neuronales</strong>: les populations de neurones vont s’activer en réponse à nos conditions.</p></li>
 <li><p><strong>hypothèses neurovasculaires</strong>: Nous supposons que la réponse neuronale sera couplée à une réponse vasculaire caractéristique qu’il est possible de modéliser avec la fonction hémodynamique, laquelle est linéaire et invariante dans le temps.</p></li>
@@ -1046,7 +1042,7 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <ol class="simple">
 <li><p>Une image du cerveau.</p></li>
 <li><p>Une dizaine d’images du cerveau.</p></li>
-<li><p>Des centaines d’images du cerveau.</p></li>
+<li><p>Des dizaines d’images du cerveau.</p></li>
 </ol>
 </div>
 <div class="note admonition">
@@ -1074,13 +1070,13 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <p>Vrai / faux. Le principe d’additivité de la réponse hémodynamique est…</p>
 <ol class="simple">
 <li><p>Un modèle mathématique.</p></li>
-<li><p>Une propriété bien connue du couplage neurovasculaire.</p></li>
+<li><p>Une propriété de base du couplage neurovasculaire, toujours vérifiée.</p></li>
 <li><p>Une hypothèse courante, en partie confirmée expérimentalement.</p></li>
 </ol>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 4.5</p>
-<p>Quel est l’événement principal à l’origine des changements de signal mesuré par le BOLD?</p>
+<p>Quels phénomènes sont à l’origine d’un changement de signal mesuré par le BOLD?</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 4.6</p>
@@ -1108,7 +1104,24 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 4.9</p>
-<p>On compare l’activation pour une tâche de mémoire dans le cortex frontal entre deux groupes de participants: des sujets sains et des sujets âgés (N=20 par groupe). Contrairement à nos hypothèses, on ne trouve aucune différence. Donnez trois raisons qui peuvent expliquer ce résultat.</p>
+<p>On compare l’activation pour une tâche de mémoire dans le cortex frontal entre deux groupes de participants: des sujets sains et des sujets âgés (N=20 par groupe). Contrairement à nos hypothèses, on ne trouve aucune différence. Donnez trois raisons qui peuvent expliquer ce résultat. Pour chaque raison possible, suggérez une modification du protocole qui permettrait de découvrir une différence entre les deux groupes.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 4.10</p>
+<p>Pour répondre aux questions de cet exercice, lisez d’abord l’article <em>High-resolution functional MRI of the human amygdala at 7 T</em> de Mensen et collaborateurs (publié en 2013 dans la revue <em>European Journal of radiology</em>, volume 82, pages 728 à 733).
+Celui-ci est disponible en libre accès à cette <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3629563/">adresse</a>.
+Les questions suivantes requièrent des réponses à développement court.</p>
+<ul class="simple">
+<li><p>Quel type de participants a été recruté dans cette étude?</p></li>
+<li><p>Quel est l’objectif principal de l’étude?</p></li>
+<li><p>Quels sont les critères d’inclusion et d’exclusion?</p></li>
+<li><p>Quelle technique de neuroimagerie est utilisée? S’agit-il d’une technique structurelle ou fonctionnelle?</p></li>
+<li><p>Quelle type de séquence d’acquisition d’image est utilisé? Listez les paramètres.</p></li>
+<li><p>Quelles étapes de prétraitements ont été appliquées?</p></li>
+<li><p>Quels modèles statistiques ont été appliqués?</p></li>
+<li><p>Quelle figure (ou tableau) répond à l’objectif principal de l’étude?</p></li>
+<li><p>Quel est le résultat principal de l’étude?</p></li>
+</ul>
 </div>
 </div>
 </div>
