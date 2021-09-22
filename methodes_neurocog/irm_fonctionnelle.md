@@ -46,10 +46,6 @@ kernelspec:
   </tr>
 </table>
 
-```{warning}
-Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
-```
-
 ## Objectifs du cours
 
 [L'imagerie par résonnance magnétique fonctionnelle](https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle)
@@ -347,7 +343,7 @@ Illustration du processus de recalage d'un IRM T1 sur un espace stéréotaxique 
 ```
 Pour les comparaisons inter-individuelles ou les analyses statistiques de groupe, il doit y avoir une correspondance entre les voxels des images provenant de différents individus. Or, les cerveaux et les structures anatomiques peuvent avoir différentes tailles et formes d'individus en individus. Le recalage dans l'espace stéréotaxique, aussi parfois appelée _normalisation spatiale_, consiste à recaler l'image $T_1$ dans un espace standard cible défini par l'atlas choisi, rendant ainsi comparables les cerveaux de différents individus. Cette technique est identique à ce qui est fait pour les études de morphométrie. Le template MNI152 (Montreal Neurological Institute) est largement employé comme espace standard dans la communauté. Cette transformation combine transformation affine et transformation non-linéaire.
 
-#### Lissage spatiale
+### Lissage spatiale
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 # Importe les librairies nécessaires
@@ -404,7 +400,7 @@ Cette figure est générée par du code python à l'aide de la librairie [nilear
 ```
 Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l'IRM fonctionnelle, mais l'objectif de cette étape est un peu différente. Le bruit thermique aléatoire joue un plus grand rôle dans le signal BOLD, et peut avoir un effet néfaste sur les analyses statistiques. Le lissage spatiale permet de diminuer ce bruit aléatoire. Mis à part l'amélioration du rapport signal sur bruit, le lissage permet également d'atténuer les imperfections de recalage entre sujets, en diffusant l'activité dans l'espace. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l'image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxels voisins se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribuée à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Donc, le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins. Comme c'est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l'affecter grandement. Le paramètre `FWHM` (*full width at half maximum*) contrôle l'échelle de ce lissage (plus important ou moins important). Il détermine l'étalement des voxels voisins qui participeront à la nouvelle valeur d'un voxel cible. D'un point de vue mathématique, le paramètre `FWHM` représente la demi de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur `FWHM` sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d'un voxel cible de l'image. Plusieurs études choisissent `6 mm` comme valeur pour le paramètre `FWHM`.
 
-#### Filtrage des facteurs de non-intérêt
+### Filtrage des facteurs de non-intérêt
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 # Importe les librairies nécessaires
@@ -649,7 +645,7 @@ La réalisation d'une expérience d'IRMf nécessite de bien penser les condition
 Choisissez la bonne réponse. Des données d’IRMf sont en général...
  1. Une image du cerveau.
  2. Une dizaine d’images du cerveau.
- 3. Des centaines d’images du cerveau.
+ 3. Des dizaines d’images du cerveau.
 ```
 
 ```{admonition} Exercice 4.2
@@ -674,13 +670,13 @@ Choisissez la bonne réponse. Le signal BOLD dépend sur...
 :class: note
 Vrai / faux. Le principe d’additivité de la réponse hémodynamique est...
  1. Un modèle mathématique.
- 2. Une propriété bien connue du couplage neurovasculaire.
+ 2. Une propriété de base du couplage neurovasculaire, toujours vérifiée.
  3. Une hypothèse courante, en partie confirmée expérimentalement.
 ```
 
 ```{admonition} Exercice 4.5
 :class: note
-Quel est l’événement principal à l’origine des changements de signal mesuré par le BOLD?
+Quels phénomènes sont à l’origine d'un changement de signal mesuré par le BOLD?
 ```
 
 ```{admonition} Exercice 4.6
@@ -708,5 +704,21 @@ Vrai / faux / peut-être? (expliquez pourquoi)
 
 ```{admonition} Exercice 4.9
 :class: note
-On compare l’activation pour une tâche de mémoire dans le cortex frontal entre deux groupes de participants: des sujets sains et des sujets âgés (N=20 par groupe). Contrairement à nos hypothèses, on ne trouve aucune différence. Donnez trois raisons qui peuvent expliquer ce résultat.
+On compare l’activation pour une tâche de mémoire dans le cortex frontal entre deux groupes de participants: des sujets sains et des sujets âgés (N=20 par groupe). Contrairement à nos hypothèses, on ne trouve aucune différence. Donnez trois raisons qui peuvent expliquer ce résultat. Pour chaque raison possible, suggérez une modification du protocole qui permettrait de découvrir une différence entre les deux groupes.
+```
+
+```{admonition} Exercice 4.10
+:class: note
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *High-resolution functional MRI of the human amygdala at 7 T* de Mensen et collaborateurs (publié en 2013 dans la revue *European Journal of radiology*, volume 82, pages 728 à 733).
+Celui-ci est disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3629563/).
+Les questions suivantes requièrent des réponses à développement court.
+ - Quel type de participants a été recruté dans cette étude?
+ - Quel est l'objectif principal de l'étude?
+ - Quels sont les critères d'inclusion et d'exclusion?
+ - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
+ - Quelle type de séquence d'acquisition d'image est utilisé? Listez les paramètres.
+ - Quelles étapes de prétraitements ont été appliquées?
+ - Quels modèles statistiques ont été appliqués?
+ - Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
+ - Quel est le résultat principal de l'étude?
 ```
