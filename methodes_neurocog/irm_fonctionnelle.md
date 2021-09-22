@@ -514,33 +514,85 @@ Il est possible de généraliser l'analyse de soustraction pour tenir compte de 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 
-# activation related to a mental computation task, as opposed to narrative sentence reading/listening
-# librairies
-from nilearn import datasets
+# Importe les librairies
+from nilearn.datasets import fetch_spm_auditory
+from nilearn import image
+from nilearn import masking
 import pandas as pd
-#from nilearn.glm import threshold_stats_img, SecondLevelModel
+
+# initialisation de la figure
+fig = plt.figure(figsize=(7,5))
+
+# load fMRI data
+subject_data = fetch_spm_auditory()
+fmri_img = image.concat_imgs(subject_data.func)
+
+# Make an average
+mean_img = image.mean_img(fmri_img)
+mask = masking.compute_epi_mask(mean_img)
+
+# Clean and smooth data
+fmri_img = image.clean_img(fmri_img, high_pass=0.01, t_r=7, standardize=False)
+fmri_img = image.smooth_img(fmri_img, 5.)
+
+# load events
+events = pd.read_table(subject_data['events'])
+
+# Fit model
+from nilearn.glm.first_level import FirstLevelModel
+fmri_glm = FirstLevelModel(t_r=7,
+                           drift_model='cosine',
+                           signal_scaling=False,
+                           mask_img=mask,                           
+                           minimize_memory=False)
+
+fmri_glm = fmri_glm.fit(fmri_img, events)
+
+# Extract activation clusters
+from nilearn.reporting import get_clusters_table
+from nilearn import input_data
+z_map = fmri_glm.compute_contrast('active - rest')
+table = get_clusters_table(z_map, stat_threshold=3.1,
+                           cluster_threshold=20).set_index('Cluster ID', drop=True)
+
+# get the 3 largest clusters' max x, y, and z coordinates
+coords = table.loc[range(1, 4), ['X', 'Y', 'Z']].values
+
+# extract time series from each coordinate
+masker = input_data.NiftiSpheresMasker(coords)
+real_timeseries = masker.fit_transform(fmri_img)
+predicted_timeseries = masker.fit_transform(fmri_glm.predicted[0])
+
+# Plot figure
+# colors for each of the clusters
+colors = ['blue', 'navy', 'purple', 'magenta', 'olive', 'teal']
+# plot the time series and corresponding locations
 from nilearn import plotting
+fig1, axs1 = plt.subplots(2, 3)
+for i in range(0, 3):
+    # plotting time series
+    axs1[0, i].set_title('Cluster peak {}\n'.format(coords[i]))
+    axs1[0, i].plot(real_timeseries[:, i], c=colors[i], lw=2)
+    axs1[0, i].plot(predicted_timeseries[:, i], c='r', ls='--', lw=2)
+    axs1[0, i].set_xlabel('Time')
+    axs1[0, i].set_ylabel('Signal intensity', labelpad=0)
+    # plotting image below the time series
+    roi_img = plotting.plot_stat_map(
+        z_map, cut_coords=[coords[i][2]], threshold=3.1, figure=fig1,
+        axes=axs1[1, i], display_mode='z', colorbar=False, bg_img=mean_img)
+    roi_img.add_markers([coords[i]], colors[i], 300)
 
-n_samples = 20
-localizer_dataset = datasets.fetch_localizer_calculation_task(
-    n_subjects=n_samples)
-cmap_filenames = localizer_dataset.cmaps
+fig1.set_size_inches(24, 14)
 
-design_matrix = pd.DataFrame([1] * n_samples, columns=['intercept'])
+# Glue the figure
+from myst_nb import glue
+glue("auditory-fig", fig1, display=False)
+```
 
-#z_map = second_level_model.compute_contrast(output_type='z_score')
-
-#thresholded_map1, threshold1 = threshold_stats_img(
-#    z_map, alpha=.05, height_control='fdr', cluster_threshold=10)
-
-# visualiser
-# sans seuil
-#display = plotting.plot_stat_map(z_map, title='Carte activation')
-
-# avec seuil
-#plotting.plot_stat_map(
-#    thresholded_map1, cut_coords=display.cut_coords, threshold=threshold1,
-#    title='Carte activation avec seuil, fdr <.05')
+```{glue:figure} auditory-fig
+:figwidth: 800px
+:name: "auditory-fig"
+Réponse hémodynamique à une impulsion unitaire d'une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) {cite:p}`Glover1999-cb`. Le code pour générer cette figure est adaptée d'un [tutoriel](https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py) Nilearn, et la figure est sous licence CC-BY.
 ```
 
 Les cartes d'activation sont souvent ce que l'on retrouvent dans des articles scientifiques dans la section des résultats. Ce sont des cartes du cerveau sur lesquelles se superposent les statistiques obtenues (p.e. niveau d'activation, test-t, valeur p). Elles sont supersposées vis-à-vis des voxels ou régions correspondant(e)s. Ces cartes peuvent être construites pour des **sujets** (p.e. effet yeux ouverts vs yeux fermés) ou des **groupes**, si nous combinons les données de plusieurs sujets (p.e. effet de l'âge ou d'appartenir au groupe non-voyant vs voyant). Elles sont souvent présentées suite à l'application de seuils ou de masques, venant isoler les régions les plus actives, avec les différences moyennes entre conditions les plus importantes et/ou les plus statistiquement significatives. Via de telles cartes, nous pouvons étudier l’organisation de systèmes d'intérêt (visuel, moteur, auditif, mémoire de travail, etc), mais aussi comparer des groupes ou bien associer le niveau d’activation à des traits d'intérêt comme le QI. La faisabilité de cette approche a été démontrée simultanément par trois groupes: *Ogawa et al. PNAS 1992; Kwong et al. PNAS 1992; Bandettini et al. MRM 1992*, ayant introduit l'idée de cartographier le cerveau avec des tâches en IRMf.
