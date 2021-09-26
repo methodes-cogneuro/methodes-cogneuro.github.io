@@ -238,8 +238,8 @@ Si le recalage a bien fonctionné, comme dans le cas de l'atlas MNI152 ci-dessou
 :align: left
 Espace stéréotaxique de l'Institut Neurologique de Montréal (MNI).
 Cette espace de référence a été obtenu en faisant la moyenne des images cérébrales de 152 sujets après avoir procédé à un recalage non-linéaire itératif {cite:p}`Fonov2011-xr`.
-
 ```
+
 ### Analyses statistiques
 ```{figure} ./morphometrie/ledig2018_stats.png
 ---
@@ -536,7 +536,7 @@ Afin de pouvoir comparer les valeurs de densité de matière grise entre les suj
 Contrairement à la volumétrie manuelle, où chaque volume à l'étude est délimité de façon à représenter la même structure d'intérêt, le recalage utilisé en VBM n'est pas lié à une structure particulière.
 Une fois les cartes de densité recalées dans l'espace stéréotaxique de référence, on peut procéder à des tests statistiques à chaque voxel.
 Dans l'exemple ci-dessus, on teste l'effet de l'âge sur la matière grise.
-C'est généralement ce genre d'image qui sera par la suite inséré à l'intérieur des publications scientifiques. 
+C'est généralement ce genre d'image qui sera par la suite inséré à l'intérieur des publications scientifiques.
 
 ### Contrôle de qualité
 ```{figure} ./morphometrie/segmentation-error-volume-fig.png

@@ -47,6 +47,122 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 
 
 ## Carte de connectivité fonctionnelle
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+from nilearn.image import math_img
+from nilearn import plotting, input_data
+from nilearn.input_data import NiftiLabelsMasker
+from nilearn import datasets # Fetch data using nilearn
+from nilearn.input_data import NiftiMasker
+
+
+import warnings
+warnings.filterwarnings("ignore")
+
+# Initialise la figure
+fig = plt.figure(figsize=(13, 5), dpi=300)
+
+# Importe les données
+basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
+
+# Paramètres du pré-traitement
+num_data = 6
+fwhm = 8
+high_pass = 0.01
+high_variance_confounds = False
+
+# Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
+masker = input_data.NiftiLabelsMasker(
+                                      basc['scale122'],
+                                      resampling_target="data",
+                                      high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      memory='nilearn_cache',
+                                      memory_level=1,
+                                      smoothing_fwhm=fwhm).fit()
+tseries = masker.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
+
+# Charge les données par voxel
+masker_voxel = input_data.NiftiMasker(high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      smoothing_fwhm=fwhm
+                                     ).fit(adhd.func[num_data])
+tseries_voxel = masker_voxel.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries_voxel.shape} (# time points, # voxels))")
+
+# Montre une parcelle
+ax_plot = plt.subplot2grid((2, 5), (0, 0), colspan=2)
+num_parcel = 73
+plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+                  threshold=0.5,
+                  axes=ax_plot,
+                  vmax=1,
+                  title="région cible (M1 droit)")
+
+# plot la série temporelle d'une région
+ax_plot = plt.subplot2grid((2, 5), (0, 2), colspan=1)
+time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
+plt.plot(time, tseries[:, num_parcel]),
+plt.title('Série temporelle'),
+plt.ylabel('BOLD (u.a.)')
+
+# carte de connectivité
+ax_plot = plt.subplot2grid((2, 5), (0, 3), colspan=2)
+seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
+conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
+plotting.plot_stat_map(conn_map,
+                       threshold=0.5,
+                       vmax=1,
+                       axes=ax_plot,
+                       cut_coords=(37, -20, 59),
+                       title="fcMRI map (M1 droit)")
+
+# Montre une parcelle
+num_parcel = 17
+ax_plot = plt.subplot2grid((2, 5), (1, 0), colspan=2)
+plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+                  threshold=0.5,
+                  vmax=1,
+                  axes=ax_plot,
+                  title="région cible (PCC)")
+
+# plot la série temporelle d'une région
+ax_plot = plt.subplot2grid((2, 5), (1, 2), colspan=1)
+time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
+plt.plot(time, tseries[:, num_parcel]),
+plt.xlabel('Temps (s.)'),
+plt.ylabel('BOLD (u.a.)')
+
+# carte de connectivité
+ax_plot = plt.subplot2grid((2, 5), (1, 3), colspan=2)
+seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
+conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
+plotting.plot_stat_map(conn_map,
+                       threshold=0.5,
+                       cut_coords=(0, -52, 26),
+                       vmax=1,
+                       axes=ax_plot,
+                       title="carte de connectivité (PCC)")
+
+from myst_nb import glue
+glue("fcmri-map-fig", fig, display=False)
+```
+
+```{glue:figure} fcmri-map-fig
+:figwidth: 800px
+:name: fcmri-map-fig
+Carte de connectivité
+```
+
 Revenons ce qu'est une carte d'activation IRMf afin de nous donner une compréhension intuitive de ce qu'est une carte connectivité fonctionnelle. Une carte d'activation exploite des fluctuations BOLD évoquées par une tâche, de sorte que nous puissions les associer avec des fluctuations qui changent en fonction d'un paradigme expérimental.
 
 La carte d'activation illustre donc les voxels dont l'activité est plus ou moins reliée à une tâche (ou bloc expérimental) à comparer à l'autre. En d'autres mots, elle indique la corrélation entre l'activité attendue (soit, celle hypothétiquement associée au bloc expérimental) et l'activité mesurée (soit, le signal BOLD-IRMf de tous les voxels).
