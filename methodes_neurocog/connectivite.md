@@ -40,7 +40,7 @@ kernelspec:
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
 ## Objectifs du cours
-Dans le chapitre sur les [cartes d'activation en IRMf](irm_fonctionnelle), nous avons vu que ce type d'analyse met l'emphase sur la notion de ségrégation fonctionnelle, c'est à dire à quel point certaines régions cérébrales sont engagées spécifiquement par une certaine catégorie de processus cognitifs. Mais il est bien connu que les processus cognitifs requièrent aussi un certain degré d'**intégration fonctionnelle**, où différentes régions du cerveau interagissent dans un certain contexte cognitif. Cette notion d'intégration amène à concevoir le cerveau comme un réseau, ou encore un graphe, qui décrit la **connectivité fonctionnelle** entre régions du cerveau. Ce chapitre introduit des notions de base utilisées pour étudier la connectivité du cerveau à l'aide de l'IRMf.
+Dans le chapitre sur les [cartes d'activation en IRMf](irm_fonctionnelle), nous avons vu que ce type d'analyse met l'emphase sur la notion de ségrégation fonctionnelle, c'est à dire à quel point certaines régions cérébrales sont engagées spécifiquement par une certaine catégorie de processus cognitifs. Mais il est bien connu que les processus cognitifs requièrent aussi un certain degré d'**intégration fonctionnelle**, où différentes régions du cerveau interagissent ensemble pour effectuer une tâche. Cette notion d'intégration amène à concevoir le cerveau comme un réseau, ou encore un graphe, qui décrit la **connectivité fonctionnelle** entre régions du cerveau. Ce chapitre introduit des notions de base utilisées pour étudier la connectivité du cerveau à l'aide de l'IRMf.
 
 ```{figure} connectivite/brain-graph-fig.png
 ---
@@ -174,8 +174,9 @@ glue("fcmri-map-fig", fig, display=False)
 ```
 
 ```{glue:figure} fcmri-map-fig
-:figwidth: 800px
+:figwidth: 600px
 :name: fcmri-map-fig
+:align: center
 Cartes de connectivité au repos générées à partir des données IRMf d'un individu du jeu de données ADHD-200 {cite:p}`HD-200_Consortium2012-uv`. Pour chaque carte, la région cible utilisée ainsi que les cinq premières minutes d'activité BOLD associée à la région cible sont représentées. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
 
@@ -193,12 +194,189 @@ La ***connectivité fonctionnelle*** est un terme relativement générique utili
 
 Le concept de carte fonctionnelle a été introduit par Biswal et collègues (1995) {cite:p}`Biswal1995-lw`, en utilisant une cible dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d'activation et une tâche motrice. Biswal et collègues ont alors eu l'idée d'observer les fluctuations BOLD dans une condition de **repos**, en l'absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir {numref}`fcmri-map-fig`, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l'aire motrice supplémentaire, le cortex prémoteur et d'autres régions du cerveau connues pour leur implication dans le **réseau moteur**. Cette étude a tout d'abord engendré beaucoup de septicisme, au motif que ces patrons d'activité fonctionnelle corrélée aurait pu refléter du bruit cardiaque ou respiratoire.
 
-La crédibilité des cartes de connectivité au repos s'est renforcée quand d'autres groupes de recherche ont pu identifié d'autres réseaux en utilisant des cibles différentes, notamment le réseau visuel et auditif. Mais c'est l'étude de Greicis et collaborateurs, en 2003 {cite:p}`Greicius2003-hi`, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n'avait pas encore été identifié: le réseau du mode par défaut (voir {numref}`fcmri-map-fig`, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau, et comment il peut nous aider à comprendre ce que la connectivité au repos mesure. Il est également important de mentionner que le travail de Shmuel et collèges (2008) {cite:p}`Shmuel2008-pa` a démontré que l'activité BOLD au repos corrèle aux fluctuations spontanées d'activité neuronales dans le cortex visuel d'un macaque anésthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l'activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).
+```{admonition} Fluctuations lentes
+:class: tip
+:name: fluctuations-lentes
+Une autre observation clé de Biswal et collègues (1995) {cite:p}`Biswal1995-lw` est que le signal BOLD au repos est dominé par des fluctuations lentes, avec des bouffées d'activité d'une durée de 20 à 30 secondes, clairement visibles dans la {numref}`fcmri-map-fig`. Plus spécifiquement, le spectre du signal BOLD au repos est dominée par les fréquences inférieures à 0.08 Hz, et même 0.03-0.05 Hz.
+```
+La crédibilité des cartes de connectivité au repos s'est renforcée quand différents groupes de recherche ont pu identifié d'autres réseaux en utilisant des régions cibles différentes, notamment le réseau visuel et le réseau auditif. Mais c'est l'étude de Greicis et collaborateurs, en 2003 {cite:p}`Greicius2003-hi`, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n'avait pas encore été identifié: le **réseau du mode par défaut** (voir {numref}`fcmri-map-fig`, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau, et comment il peut nous aider à comprendre ce que mesure la connectivité au repos. Il est également important de mentionner que le travail de Shmuel et collèges (2008) {cite:p}`Shmuel2008-pa` a démontré que l'activité BOLD au repos corrèle aux fluctuations spontanées d'activité neuronales dans le cortex visuel d'un macaque anésthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l'activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).
 
-## Activité intrinsèque et activité évoquée
-La connectivité cérébrale locale (cytoarchitecture) et distribuée (fibres de matière blanche) amènent l’émergence transitoire d’assemblées neuronales fonctionnelles à différentes échelles spatiales. Différentes techniques existent pour capturer ce phénomène à partir du signal BOLD {cite:p}`Varela2001`.
+```{admonition} Variabilité intra- et inter-individuelle
+:class: caution attention
+:name: fcmri-map-warning
+La {numref}`fcmri-map-fig` peut donner l'impression que les réseaux de connectivité sont extrêmement stables. En réalité, les cartes de connectivité varient beaucoup au cours du temps, c'est à dire en regardant différentes fenêtres d'activité pour un même individu, et également entre individus. Caractériser la variabilité intra- et inter-individuelle des cartes de connectivité est un domaine de recherche actif.
+```
+## Le réseau du mode par défaut
 
-En général, les modèles de connectivité fonctionnelle tentent de répondre à ce que Varela et collègues {cite:p}`Varela2001` ont nommé le problème d'intégration à grande-échelle (ou *large-scale integration problem*). Ceci réfère à l'idée que le système nerveux coordonne une série de procesus distribuée hiérarchiquement au travers les différentes régions cérébrales afin de produire un "moment cognitif unifié". Ceci émerge d'une synchronisation de l'activité dans des régions cérébrales distantes, d'où l'intérêt de mesurer la corrélation entre un ensemble de voxels d'avec le reste.
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from nilearn import datasets
+from nilearn.image import math_img
+from nilearn import image
+from nilearn import masking
+from nilearn.glm.first_level import FirstLevelModel
+from nilearn import input_data
+from nilearn.input_data import NiftiLabelsMasker
+from nilearn.input_data import NiftiMasker
+from nilearn import plotting
+
+# initialisation de la figure
+fig = plt.figure(figsize=(8, 4))
+
+# load fMRI data
+subject_data = datasets.fetch_spm_auditory()
+fmri_img = image.concat_imgs(subject_data.func)
+
+# Make an average
+mean_img = image.mean_img(fmri_img)
+mask = masking.compute_epi_mask(mean_img)
+
+# Clean and smooth data
+fmri_img = image.clean_img(fmri_img, high_pass=0.01, t_r=7, standardize=False)
+fmri_img = image.smooth_img(fmri_img, 8.)
+
+# load events
+events = pd.read_table(subject_data['events'])
+
+# Fit model
+fmri_glm = FirstLevelModel(t_r=7,
+                           drift_model='cosine',
+                           signal_scaling=False,
+                           mask_img=mask,                           
+                           minimize_memory=False)
+
+fmri_glm = fmri_glm.fit(fmri_img, events)
+
+# Extract activation clusters
+z_map = fmri_glm.compute_contrast('active - rest')
+
+# plot activation map
+ax_plot = plt.gca()
+plotting.plot_stat_map(
+        z_map, threshold=2, vmax=5, figure=fig,
+        axes=ax_plot, colorbar=True, cut_coords=(3., -21, 45), bg_img=mean_img, title='carte d\'activation (auditif)')
+
+# Glue the figure
+from myst_nb import glue
+glue("deactivation-fig", fig, display=False)
+```
+
+```{glue:figure} deactivation-fig
+:figwidth: 600px
+:name: deactivation-fig
+:align: center
+ Carte d'activation individuelle dans un paradigme auditif (jeu de données [spm_auditory](https://www.fil.ion.ucl.ac.uk/spm/data/auditory/)). Le seuil de significativité est sélectionné de manière libérale (`|z|>2`). Une déactivation modérée est identifiée dans différentes régions du cerveau, incluant le cortex cingulaire postérieur (PCC) et le cortex préfrontal médian (mPFC). Le PCC et le mPFC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
+
+La découverte du mode par défaut a été réalisée au travers d'étude par activation, en TEP. À la fin des années 90, de nombreux chercheurs avaient remarqué que les cartes d'activation identifiaient souvent des régions plus impliquées dans la condition de contrôle, que durant la tâche. En 1997, Shulman et collègues {cite:p}`Shulman1997-fy` combinent 9 études PET qui utilisent la même condition de contrôle de "repos" (consistant à regarder des stimuli visuels de manière passive), et des tâches variées mais cognitivement demandantes. Les auteurs identifient un ensemble de régions qui sont systématiquement plus impliquées au repos que durant la tâche, incluant notamment le cortex cingulaire postérieur (PCC). En 2001, Gusnard et Raichle {cite:p}`Raichle2001-en` formulent la désormais célèbre "_hypothèse du mode par défaut_" pour expliquer ces résultats. Il existerait un certain nombre de processus cognitifs "par défaut" qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité "par défaut". Voir la revue de Buckner et DiNicola (2019) {cite:p}`Buckner2019-rc` pour une revue récente de la neuroanatomie et des rôles cognitifs du réseau du mode par défaut.
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from nilearn import datasets
+from nilearn.image import math_img
+from nilearn import image
+from nilearn import masking
+from nilearn.glm.first_level import FirstLevelModel
+from nilearn import input_data
+from nilearn.input_data import NiftiLabelsMasker
+from nilearn.input_data import NiftiMasker
+from nilearn import plotting
+
+# initialisation de la figure
+fig = plt.figure(figsize=(12,8))
+
+# Importe les données
+basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
+
+# Paramètres du pré-traitement
+num_data = 1
+fwhm = 8
+high_pass = 0.01
+high_variance_confounds = False
+time_samp = range(0, 100)
+
+# Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
+masker = input_data.NiftiLabelsMasker(
+                                      basc['scale122'],
+                                      resampling_target="data",
+                                      high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      memory='nilearn_cache',
+                                      memory_level=1,
+                                      smoothing_fwhm=fwhm).fit()
+tseries = masker.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
+
+# Charge les données par voxel
+masker_voxel = input_data.NiftiMasker(high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      smoothing_fwhm=fwhm
+                                     ).fit(adhd.func[num_data])
+tseries_voxel = masker_voxel.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries_voxel.shape} (# time points, # voxels))")
+
+# Applique une correction du signal global
+from nilearn.signal import clean as signal_clean
+gb_signal = signal_clean(
+                        tseries.mean(axis=1).reshape([tseries.shape[0], 1]),
+                        high_pass=high_pass,
+                        t_r=3,
+                        standardize=True)
+tseries = masker.transform(adhd.func[num_data], confounds=gb_signal)
+tseries_voxel = masker_voxel.transform(adhd.func[num_data], confounds=gb_signal)
+
+# Montre une parcelle
+ax_plot = plt.subplot2grid((2, 3), (0, 0), colspan=2)
+num_parcel = 113
+plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+                  threshold=0.5,
+                  axes=ax_plot,
+                  vmax=1,
+                  title="région cible (FEF)")
+
+# plot la série temporelle d'une région
+ax_plot = plt.subplot2grid((2, 3), (0, 2), colspan=1)
+time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
+plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel], 'o-'),
+plt.xlabel('Temps (s.)'),
+plt.ylabel('BOLD (u.a.)')
+plt.title('Série temporelle')
+
+# carte de connectivité
+ax_plot = plt.subplot2grid((2, 3), (1, 0), colspan=2)
+seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
+conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
+plotting.plot_stat_map(conn_map,
+                       threshold=0.2,
+                       vmax=1,
+                       axes=ax_plot,
+                       cut_coords=(-28, 2, 28),
+                       display_mode = 'x',
+                       title="carte de connectivité (FEF)")
+
+# Glue the figure
+from myst_nb import glue
+glue("negative-DMN-fig", fig, display=False)
+```
+```{glue:figure} negative-DMN-fig
+:figwidth: 600px
+:name: negative-DMN-fig
+:align: center
+  Une région cible est sélectionnée au niveau "frontal eye field" (FEF), pour générer une carte de connectivité sur un sujet du jeu de données ADHD-200 {cite:p}`HD-200_Consortium2012-uv`. Le seuil de significativité est sélectionné de manière libérale (`|r|>0.2`). En plus du réseau attentional dorsal associé au FEF, la carte de connectivité met en évidence une corrélation négative avec le PCC et le cortex cingulaire antérieure (ACC). L'ACC et le PCC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
 
 Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Nous pouvons alors créer des cartes de connectivité fonctionnelle de *l'activité intrinsèque* du cerveau. Ces cartes sont nommées ainsi, car elles capturent l'organisation fonctionnelle associée à l'état de repos, c'est-à-dire un état relativement stable où le participant est laissé seul avec ces pensées.
 
