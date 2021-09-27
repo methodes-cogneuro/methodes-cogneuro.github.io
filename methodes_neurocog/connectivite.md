@@ -189,6 +189,7 @@ Une carte de connectivité relève un peu de la même logique. Mais au lieu de n
 
 La [corrélation](https://fr.wikipedia.org/wiki/Corr%C3%A9lation_(statistiques)) entre deux séries temporelles est une mesure qui varie entre -1 et 1. Si les deux séries sont identiques (à leur moyenne et variance près), la corrélation est de 1. Si les deux séries sont statistiquement indépendantes, la corrélation est proche de zéro. Si les deux séries sont mirroirs l'une de l'autre, la corrélation est de -1.
 ```
+La ***connectivité fonctionnelle*** est un terme relativement générique utilisé pour décrire un ensemble de techniques permettant d'analyser les patterns spatiaux de l'activité cérébrale {cite:p}`Fox2007`. Fox et Raischle (2007) propose que la technique la plus simple pour mener ce genre d'analyse est effectivement d'extraire le décours temporel BOLD d'une "région noyau" et d'en déterminer la corrélation d'avec le reste des voxels. Des techniques plus sophistiquées ont été développées afin de surpasser les limites de cette modélisation.
 
 Le concept de carte fonctionnelle a été introduit par Biswal et collègues (1995) {cite:p}`Biswal1995-lw`, en utilisant une cible dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d'activation et une tâche motrice. Biswal et collègues ont alors eu l'idée d'observer les fluctuations BOLD dans une condition de **repos**, en l'absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir {numref}`fcmri-map-fig`, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l'aire motrice supplémentaire, le cortex prémoteur et d'autres régions du cerveau connues pour leur implication dans le **réseau moteur**. Cette étude a tout d'abord engendré beaucoup de septicisme, au motif que ces patrons d'activité fonctionnelle corrélée aurait pu refléter du bruit cardiaque ou respiratoire.
 
@@ -199,7 +200,9 @@ La connectivité cérébrale locale (cytoarchitecture) et distribuée (fibres de
 
 En général, les modèles de connectivité fonctionnelle tentent de répondre à ce que Varela et collègues {cite:p}`Varela2001` ont nommé le problème d'intégration à grande-échelle (ou *large-scale integration problem*). Ceci réfère à l'idée que le système nerveux coordonne une série de procesus distribuée hiérarchiquement au travers les différentes régions cérébrales afin de produire un "moment cognitif unifié". Ceci émerge d'une synchronisation de l'activité dans des régions cérébrales distantes, d'où l'intérêt de mesurer la corrélation entre un ensemble de voxels d'avec le reste.
 
-Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Dans ce cas, nous pouvons créer des cartes de connectivité fonctionnelle de *l'activité intrinsèque* du cerveau. Ou alors, nous mesurons le signal BOLD associé à la tâche en observant les régions cérébrales les plus corrélées. Dans un tel cas, nous obtenons une carte de connectivité fonctionnelle de *l'activité évoquée* par la tâche.
+Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Nous pouvons alors créer des cartes de connectivité fonctionnelle de *l'activité intrinsèque* du cerveau. Ces cartes sont nommées ainsi, car elles capturent l'organisation fonctionnelle associée à l'état de repos, c'est-à-dire un état relativement stable où le participant est laissé seul avec ces pensées.
+
+À l'inverse, si nous mesurons le signal BOLD associé à la tâche en observant les régions cérébrales les plus corrélées, nous obtiendrons une carte de connectivité fonctionnelle de *l'activité évoquée* par la tâche.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
@@ -213,11 +216,28 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/OTWDQg
 ```
 
 ## Réseaux fonctionnels
+Un ***réseau fonctionnel*** réfère à un ensemble de régions cérébrales spatialement distribuées dont l'activité fluctue de façon cohérente. Un réseau fonctionnel se distingue d'un réseau structurel au sens où on l'identifie par la modélisation de l'activité BOLD. Un réseau structurel, quant à lui, est repéré au moyen de l'identification des fibres de matière blanche connectant des régions.
+
 Une méta-analyse effectuée à partir de données TEP identifie un réseau de régions dont l’activité est plus élevée au repos que durant l’exécution d’une série de tâches {cite:p}`Shulman1997`. Dans un article de revue, Raischle et collègues {cite:p}`Raichle2001` proposent que ce réseau de régions est engagé de manière systématique dans des processus cognitifs dominant dans l’état de repos, et baptisent ce réseau “mode par défaut”.
 
-Greicius et collègues {cite:p}`Greicius2002` utilisent la méthodologie introduite par Biswal et collègues {cite:p}`Biswal1995`, en utilisant l’IRMf au repos, et une région cible dans le cortex cingulaire postérieur. Cette analyse identifie un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, identifié via les déactivations en TEP.
+Greicius et collègues {cite:p}`Greicius2002` utilisent la méthodologie introduite par Biswal et collègues {cite:p}`Biswal1995`, en utilisant l’IRMf au repos, et une région cible dans le cortex cingulaire postérieur. Cette analyse identifie un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut.
 
-Une carte de connectivité au repos associé au réseau attentionnel dorsal identifie une corrélation négative avec le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état dirigé vers l’extérieur, et un état introspectif, reflétant la compétition entre deux réseaux distribués {cite:p}`Fox2005`.
+```{figure} connectivite/fox-raischle.jpg
+---
+width: 600px
+name: connectivite-sm
+---
+Biswall et collègues  {cite:p}`Biswal1995` ont exploré la notion de connectivité fonctionnelle en mesurant la corrélation temporelle entre les voxels associés au contrôle moteur des doigts d'avec le reste des voxels.
+```
+
+```{figure} connectivite/Fox2005-anticorrelated.jpg
+---
+width: 600px
+name: connectivite-anticorrelation
+---
+Une carte de connectivité au repos identifie une corrélation négative entre le réseau attentionnel dorsal et le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état dirigé vers l’extérieur, et un état introspectif, reflétant la compétition entre deux réseaux distribués {cite:p}`Fox2005`.
+```
+Depuis l'étude de Greicius {cite:p}`Greicius2002`, les méthodes pour identifier l'organisation fonctionnelle entre les régions cérébrales se sont rafinées. Des chercheurs tentent maintenant de qualifier les relations causales de l'activité au sein d'un réseau {cite:p}`Friston2011`, tandis que d'autres tentent de décrire les caractéristiques distinctives des réseaux au sein de populations cliniques {cite:p}`Fox2010`.
 
 Yeo et collègues {cite:p}`ThomasYeo2011` identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.
 
