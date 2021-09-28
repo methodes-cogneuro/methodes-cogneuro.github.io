@@ -490,8 +490,63 @@ glue("network-fig", fig, display=False)
 ```
 Un ***réseau fonctionnel*** réfère à un ensemble de régions cérébrales spatialement distribuées dont l'activité fluctue de façon cohérente. Un réseau fonctionnel se distingue d'un réseau structurel au sens où on l'identifie par la modélisation de l'activité BOLD. Un réseau structurel, quant à lui, est repéré au moyen de l'identification des fibres de matière blanche connectant des régions.
 
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+import warnings
+warnings.filterwarnings("ignore")
 
+from nilearn import datasets # Fetch data using nilearn
+atlas_yeo = datasets.fetch_atlas_yeo_2011()        # the Yeo-Krienen atlas
 
+# initialisation de la figure
+fig = plt.figure(figsize=(24, 16), dpi=300)
+
+# Let's plot the Yeo-Krienen 7 clusters parcellation
+from nilearn import plotting
+from nilearn.image import math_img
+import matplotlib.pyplot as plt
+ax_plot = plt.subplot(4, 2, 1)
+plotting.plot_roi(atlas_yeo.thick_7, title='Yeo-Krienen atlas-7',
+                  colorbar=True, cmap='Paired', axes=ax_plot)
+
+ax_plot = plt.subplot(4, 2, 2)
+plotting.plot_roi(math_img('(img==1).astype(\'float\')', img=atlas_yeo.thick_7), title='Visuel',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 3)
+plotting.plot_roi(math_img('2 * (img==2).astype(\'float\')', img=atlas_yeo.thick_7), title='Sensorimoteur',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 4)
+plotting.plot_roi(math_img('3 * (img==3).astype(\'float\')', img=atlas_yeo.thick_7), title='Attentionnel dorsal',
+                  cut_coords=(-27, -5, 58), colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 5)
+plotting.plot_roi(math_img('4 * (img==4).astype(\'float\')', img=atlas_yeo.thick_7), title='Attentionnel ventral / salience',
+                  cut_coords=(-3, 19, 24), colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 6)
+plotting.plot_roi(math_img('5 * (img==5).astype(\'float\')', img=atlas_yeo.thick_7), title='mésolimbique',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 7)
+plotting.plot_roi(math_img('6 * (img==6).astype(\'float\')', img=atlas_yeo.thick_7), title='frontopariétal',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 8)
+plotting.plot_roi(math_img('7 * (img==7).astype(\'float\')', img=atlas_yeo.thick_7), title='mode par défaut',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+# Glue the figure
+from myst_nb import glue
+glue("yeo-krienen-fig", fig, display=False)
+```
+```{glue:figure} yeo-krienen-fig
+:figwidth: 800px
+:name: yeo-krienen-fig
+:align: center
+  Atlas de Yeo-Krienen   Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
 Yeo, Krienen et collègues {cite:p}`ThomasYeo2011` identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.
 
 
