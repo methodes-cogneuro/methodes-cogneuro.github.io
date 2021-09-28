@@ -63,6 +63,15 @@ Le cours est donné principalement par Dr Pierre Bellec, avec des contributions 
         <a title="Révision du texte">👀</a>
     </td>
     <td align="center">
+      <a href="https://github.com/sangfrois">
+        <img src="https://avatars.githubusercontent.com/u/38385719?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>François Lespinasse</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
       <a href="https://github.com/me-pic">
         <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
         <br /><sub><b>Marie-Eve Picard</b></sub>

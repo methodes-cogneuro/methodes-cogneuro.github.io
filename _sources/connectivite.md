@@ -24,6 +24,7 @@ kernelspec:
       </a>
       <br />
         <a title="Contenu">🤔</a>
+        <a title="Révision du texte">👀</a>
     </td>
     <td align="center">
       <a href="https://github.com/pbellec">
@@ -32,6 +33,9 @@ kernelspec:
       </a>
       <br />
         <a title="Contenu">🤔</a>
+        <a title="Code">💻</a>
+        <a title="Exercices">⚠️</a>
+        <a title="Révision du texte">👀</a>
     </td>
   </tr>
 </table>
@@ -588,8 +592,6 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/_Iph3W
  5. Pourquoi appeler ce film “la septième jour” (sic) ?
 ```
 
-
-
 ```{admonition} Traduction de l’extrait “Neuro-météorologie”: 4:48 - 5:30
 :class: tip
 :name: neuro-meteorologie-tip
@@ -603,6 +605,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 
 ```{admonition} Exercice 5.2.
 :class: note
+“Neuro-météorologie”: 4:48 - 5:30
 1.  De quels réseaux parle-t-on ici?
 2.  Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
 3.  Est ce qu’il manque des réseaux dans cette prévision?
@@ -629,20 +632,20 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 
 ```{admonition} Exercice 5.3.
 :class: note
+“Hardball”: 8:01 - 9:46
  1.Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
  2. Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?
  3. En quoi est-il “non psychologique” d’étudier une condition de repos?
  5. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
 ```
 
-```{admonition} Exercice 5.5.
+```{admonition} Exercice 5.4.
 :class: note
 Carte de connectivité: vrai/faux
  1. Une carte de connectivité change si on change la région cible.
  2. Pour définir une région cible, on doit faire une carte d’activation.
- 3. Une carte de connectivité peut être générée avec un modèle de régression.
- 5. Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.
- 5. Une carte de connectivité en IRMf est un outil pour identifier le réseau du mode par défaut.
+ 3. Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.
+ 4. Une carte de connectivité en IRMf est un outil pour identifier le réseau du mode par défaut.
 ```
 
 ```{admonition} Exercice 5.5.
@@ -655,7 +658,27 @@ Activité spontanée et évoquée: vrai/faux
 
 ```{admonition} Exercice 5.6.
 :class: note
-On souhaite comparer la connectivité fonctionnelle entre des personnes jeunes et âgées.
- 1. Citer un facteur de confusion potentiel, qui n’est pas lié à l’activité neuronale intrinsèque.
- 2. On souhaite contrôler l'atrophie globale du cerveau dans cette analyse. Décriver brièvement une procédure statistique permettant de tenir compte de cette atrophie dans une comparaison de groupes.
+Réseaux fonctionnels: vrai/faux
+ 1. Il y a exactement 7 réseaux fonctionnels dans le cerveau.
+ 2. Un réseau fonctionnel est composé de régions présentant une connectivité fonctionnelle forte.
+ 3. Le réseau du mode par défaut peut être identifié avec une carte d'activation.
+ 4. Les régions du réseau du mode par défaut sont corrélées négativement avec les régions du réseau sensorimoteur.
+```
+
+```{admonition} Exercice 5.7
+:class: note
+Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
+ * Quel logiciel a été utilisé pour analyser les données d'IRMf?
+ * Quelle condition expérimentale était utilisée pendant les acquisitions d'IRMf?
+ * Quelle était le paramètre de lissage spatial?
+ * Est ce que les données ont été corrigées du mouvement? Pourquoi?
+ * Est ce que l'un des deux groupes a plus bougé que l'autre?
+ * Quel filtrage et correction de bruits ont été appliquées?
+ * Dans quel espace stéréotaxique les analyses de groupe sont-elles effectuées?
+ * Quelle type de mesure de connectivité est utilisée dans l'article?
+```
+
+```{admonition} Exercice 5.8.
+:class: note
+On souhaite comparer la connectivité fonctionnelle entre des personnes jeunes et âgées. Citez trois facteurs de confusion potentiel, qui ne sont pas liés à l’activité neuronale intrinsèque.
 ```
