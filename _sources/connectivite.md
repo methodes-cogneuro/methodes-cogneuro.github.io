@@ -39,7 +39,7 @@ kernelspec:
 ```{warning}
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
-## Objectifs du cours
+## Objectifs
 Dans le chapitre sur les [cartes d'activation en IRMf](irm_fonctionnelle), nous avons vu que ce type d'analyse met l'emphase sur la notion de ségrégation fonctionnelle, c'est à dire à quel point certaines régions cérébrales sont engagées spécifiquement par une certaine catégorie de processus cognitifs. Mais il est bien connu que les processus cognitifs requièrent aussi un certain degré d'**intégration fonctionnelle**, où différentes régions du cerveau interagissent ensemble pour effectuer une tâche. Cette notion d'intégration amène à concevoir le cerveau comme un réseau, ou encore un graphe, qui décrit la **connectivité fonctionnelle** entre régions du cerveau. Ce chapitre introduit des notions de base utilisées pour étudier la connectivité du cerveau à l'aide de l'IRMf.
 
 ```{figure} connectivite/brain-graph-fig.png
@@ -486,9 +486,11 @@ glue("network-fig", fig, display=False)
 :figwidth: 800px
 :name: network-fig
 :align: center
-  Pour générer un connectome  Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+  Une parcellisation fonctionnelle du cerveau avec 122 parcelles est présentée à gauche (BASC). Au centre, on voit une matrice où chaque élément représente la corrélation entre l'activité de deux parcelles. Les parcelles ont été ordonnées de manière à mettre en évidence des carrés diagonaux: ce sont des groupes de régions dont l'activité corrèlent fortement entre elles, et peu avec le reste du cerveau. Des algorithmes de type clustering permettent de détecter automatiquement ces groupes de parcelles, appelés réseaux fonctionnels. Un exemple de réseaux fonctionnels générés avec un clustering hiérachique est présenté à droite, qui identifie notamment le réseau du mode par défaut. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
-Un ***réseau fonctionnel*** réfère à un ensemble de régions cérébrales spatialement distribuées dont l'activité fluctue de façon cohérente. Un réseau fonctionnel se distingue d'un réseau structurel au sens où on l'identifie par la modélisation de l'activité BOLD. Un réseau structurel, quant à lui, est repéré au moyen de l'identification des fibres de matière blanche connectant des régions.
+Dans la dernière section, nous avons parlé à plusieurs reprises de ***réseau fonctionnel***, mais sans vraiment définir ce que c'est. Lorsqu'on utilise une carte de connectivité, le réseau fonctionnel est l'ensemble des régions qui apparaissent dans la carte, et qui sont donc connectées à notre région cible. Mais cette approche dépend de la région cible. Pourtant, il est intuitif que toutes les cartes de connectivité utilisant des cibles dans, par exemple, le mode par défaut vont se ressembler. Pour formaliser cette intuition, nous avons besoin d'introduire la notion de connectome fonctionnel.
+
+Un **connectome fonctionnel** est une matrice qui représente toutes les connexions (fonctionnelles) du cerveau. On commence donc par sélectionner une parcellisation cérébrale, puis l'on calcule la corrélation de l'activité temporelle pour toutes les paires de parcelles dans le cerveau. Cette matrice de corrélation est de taille `#parcelles x #parcelles`. En utilisant des techniques d'apprentissage non-supervisé, de type clustering, il est possible d'identifier des groupes de parcelles qui sont fortement connectées les unes aux autres, et peu connectées au reste du cerveau. C'est la définition la plus courant d'un réseau fonctionnel. Ce type d'approche permet de découper le cerveau en réseaux, de manière automatique et guidée par les données.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -545,19 +547,19 @@ glue("yeo-krienen-fig", fig, display=False)
 :figwidth: 800px
 :name: yeo-krienen-fig
 :align: center
-  Atlas de Yeo-Krienen   Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+  Atlas de Yeo-Krienen {cite:p}`Yeo2011-sc` construit par une analyse de clustering à partir de données IRMf au repos d'un grand nombre de sujets. Les réseaux sont définis à plusieurs résolutions dans cet atlas (7 et 17). Ici, le découpage en 7 grands réseaux distribués est présenté. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
-Yeo, Krienen et collègues {cite:p}`ThomasYeo2011` identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.
+Il n'y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés. Malgré tout, de nombreux articles ont étudiés un découpage en 7 réseaux corticaux. L'atlas de Yeo, Krienen et collègues {cite:p}`Yeo2011-sc` est très utilisé, et identifient sept grands réseaux. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l'attentionnel ventral (parfois appelé salince). Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. La même étude a proposé un découpage en 17 sous-réseaux. Vous pouvez utiliser cet [outil interactif](https://simexp.github.io/multiscale_dashboard/index.html) pour explorer l'organisation multi-échelle des réseaux fonctionnels de manière interactive, à l'aide de l'atlas MIST {cite:p}`Urchs2019-xc`.
 
 
-### Conclusions et références suggérées
-*   La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité d’une région cible et l’activité du reste du cerveau.
+## Conclusions
+* La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité de deux régions (ou voxels) du cerveau.
+* Une carte de connectivité fonctionnelle permet d'étudier la connectivité entre une région cible et le reste du cerveau.
+* La connectivité fonctionnelle peut être observée au repos (activité spontanée), en l’absence de protocole expérimental. En général, on a une superposition de l’activité intrinséque (liée à l'activité spontanée) et extrinsèque (liée à l'environnement).
+* La connectivité IRMf au repos a joué un rôle clé dans la découverte du réseau du mode par défaut.
+* Un réseau fonctionnel est un groupe de régions dont l’activité spontanée présente une forte connectivité fonctionnelle intra-réseau, et une faible connectivité avec le reste du cerveau. Différents atlas des réseaux au repos existent, et à différentes échelles.
 
-*   La connectivité fonctionnelle peut être observée au repos (activité spontanée), en l’absence de protocole expérimental. En général, on a une superposition de l’activité évoquée vs spontanée.
-
-*   Un réseau fonctionnel est un groupe de régions dont l’activité spontanée prés ente une forte connectivité fonctionnelle. On distingue 7 réseaux principaux, dont le réseau du mode par défaut.
-
-### Références
+## Références
 
 ```{bibliography}
 :filter: docname in docnames
@@ -576,13 +578,13 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/_Iph3WW9UOU?start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
-```{admonition} Exercice 4.1.
+```{admonition} Exercice 5.1.
 :class: note
 “La septième jour” (sic), extrait en français: 0:54 - 4:35
  1. Qui représente le jeune homme?
  2. À quel résultat fait-il référence?
  3. Qui représente la jeune femme?
- 4. À quel résultat fait-elle référence?
+ 5. À quel résultat fait-elle référence?
  5. Pourquoi appeler ce film “la septième jour” (sic) ?
 ```
 
@@ -599,12 +601,12 @@ L’imagerie satellite nous indique des turbulences dans la région du précuné
 Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d’être de tout repos.  
 ```
 
-```{admonition} Exercice 4.2.
+```{admonition} Exercice 5.2.
 :class: note
 1.  De quels réseaux parle-t-on ici?
 2.  Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
 3.  Est ce qu’il manque des réseaux dans cette prévision?
-4.  Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
+5.  Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
 ```
 
 ```{admonition} Traduction de l’extrait “Hardball”: 8:01 - 9:46
@@ -625,25 +627,25 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
  - Pr: “La semaine prochaine, dans “cluster analysis”, nous partirons sur la route avec Michael Milham, chanteur folk légendaire. Il voyage de par le monde pour partager l’histoire des réseaux au repos, en chanson. Merci d’avoir regardé cluster analysis sur le réseau du repos,”
 ```
 
-```{admonition} Exercice 4.3.
+```{admonition} Exercice 5.3.
 :class: note
  1.Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
  2. Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?
  3. En quoi est-il “non psychologique” d’étudier une condition de repos?
- 4. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
+ 5. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
 ```
 
-```{admonition} Exercice 4.4.
+```{admonition} Exercice 5.5.
 :class: note
 Carte de connectivité: vrai/faux
  1. Une carte de connectivité change si on change la région cible.
  2. Pour définir une région cible, on doit faire une carte d’activation.
  3. Une carte de connectivité peut être générée avec un modèle de régression.
- 4. Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.
+ 5. Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.
  5. Une carte de connectivité en IRMf est un outil pour identifier le réseau du mode par défaut.
 ```
 
-```{admonition} Exercice 4.5.
+```{admonition} Exercice 5.5.
 :class: note
 Activité spontanée et évoquée: vrai/faux
  1. L’activité spontanée du cerveau ne s’observe que dans un état de repos.
@@ -651,7 +653,7 @@ Activité spontanée et évoquée: vrai/faux
  3. L’activité spontanée du cerveau est plus importante au repos que pendant une tâche visuelle dans certaines parties du cerveau.
 ```
 
-```{admonition} Exercice 4.6.
+```{admonition} Exercice 5.6.
 :class: note
 On souhaite comparer la connectivité fonctionnelle entre des personnes jeunes et âgées.
  1. Citer un facteur de confusion potentiel, qui n’est pas lié à l’activité neuronale intrinsèque.
