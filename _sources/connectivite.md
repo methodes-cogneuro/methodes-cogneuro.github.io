@@ -40,7 +40,7 @@ kernelspec:
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
 ## Objectifs du cours
-Dans le chapitre sur les [cartes d'activation en IRMf](irm_fonctionnelle), nous avons vu que ce type d'analyse met l'emphase sur la notion de ségrégation fonctionnelle, c'est à dire à quel point certaines régions cérébrales sont engagées spécifiquement par une certaine catégorie de processus cognitifs. Mais il est bien connu que les processus cognitifs requièrent aussi un certain degré d'**intégration fonctionnelle**, où différentes régions du cerveau interagissent ensemble pour effectuer une tâche. Cette notion d'intégration amène à concevoir le cerveau comme un réseau, ou encore un graphe, qui décrit la **connectivité fonctionnelle** entre régions. Ce chapitre introduit des notions de base utilisées pour étudier la connectivité du cerveau à l'aide de l'IRMf.
+Dans le chapitre sur les [cartes d'activation en IRMf](irm_fonctionnelle), nous avons vu que ce type d'analyse met l'emphase sur la notion de ségrégation fonctionnelle, c'est à dire à quel point certaines régions cérébrales sont engagées spécifiquement par une certaine catégorie de processus cognitifs. Mais il est bien connu que les processus cognitifs requièrent aussi un certain degré d'**intégration fonctionnelle**, où différentes régions du cerveau interagissent ensemble pour effectuer une tâche. Cette notion d'intégration amène à concevoir le cerveau comme un réseau, ou encore un graphe, qui décrit la **connectivité fonctionnelle** entre régions du cerveau. Ce chapitre introduit des notions de base utilisées pour étudier la connectivité du cerveau à l'aide de l'IRMf.
 
 ```{figure} connectivite/brain-graph-fig.png
 ---
@@ -190,6 +190,7 @@ Une carte de connectivité relève un peu de la même logique. Mais au lieu de n
 
 La [corrélation](https://fr.wikipedia.org/wiki/Corr%C3%A9lation_(statistiques)) entre deux séries temporelles est une mesure qui varie entre -1 et 1. Si les deux séries sont identiques (à leur moyenne et variance près), la corrélation est de 1. Si les deux séries sont statistiquement indépendantes, la corrélation est proche de zéro. Si les deux séries sont mirroirs l'une de l'autre, la corrélation est de -1.
 ```
+La ***connectivité fonctionnelle*** est un terme relativement générique utilisé pour décrire un ensemble de techniques permettant d'analyser les patterns spatiaux de l'activité cérébrale {cite:p}`Fox2007`. Fox et Raischle (2007) propose que la technique la plus simple pour mener ce genre d'analyse est effectivement d'extraire le décours temporel BOLD d'une "région noyau" et d'en déterminer la corrélation d'avec le reste des voxels. Des techniques plus sophistiquées ont été développées afin de surpasser les limites de cette modélisation.
 
 Le concept de carte fonctionnelle a été introduit par Biswal et collègues (1995) {cite:p}`Biswal1995-lw`, en utilisant une cible dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d'activation et une tâche motrice. Biswal et collègues ont alors eu l'idée d'observer les fluctuations BOLD dans une condition de **repos**, en l'absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir {numref}`fcmri-map-fig`, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l'aire motrice supplémentaire, le cortex prémoteur et d'autres régions du cerveau connues pour leur implication dans le **réseau moteur**. Cette étude a tout d'abord engendré beaucoup de septicisme, au motif que ces patrons d'activité fonctionnelle corrélée aurait pu refléter du bruit cardiaque ou respiratoire.
 
@@ -224,7 +225,7 @@ from nilearn.input_data import NiftiMasker
 from nilearn import plotting
 
 # initialisation de la figure
-fig = plt.figure(figsize=(12,12))
+fig = plt.figure(figsize=(8, 4))
 
 # load fMRI data
 subject_data = datasets.fetch_spm_auditory()
@@ -253,26 +254,44 @@ fmri_glm = fmri_glm.fit(fmri_img, events)
 # Extract activation clusters
 z_map = fmri_glm.compute_contrast('active - rest')
 
-# Extract time series
-coords = [(3., -21, 45)]
-masker = input_data.NiftiSpheresMasker(coords)
-real_timeseries = masker.fit_transform(fmri_img)
-predicted_timeseries = masker.fit_transform(fmri_glm.predicted[0])
-
 # plot activation map
-ax_plot = plt.subplot2grid((3, 3), (0, 0), colspan=2)
+ax_plot = plt.gca()
 plotting.plot_stat_map(
         z_map, threshold=2, vmax=5, figure=fig,
-        axes=ax_plot, colorbar=True, cut_coords=coords[0], bg_img=mean_img, title='carte d\'activation (auditif)')
+        axes=ax_plot, colorbar=True, cut_coords=(3., -21, 45), bg_img=mean_img, title='carte d\'activation (auditif)')
 
-# plot time series
-# this is a bit too messy
-# Commenting out but leaving code, as this may be worth revisiting
-# ax_plot = plt.subplot2grid((3, 3), (0, 2), colspan=1)
-# plt.plot(real_timeseries, c='b', lw=2)
-# plt.plot(-predicted_timeseries, c='r', ls='--', lw=2)
-# plt.xlabel('temps (TR)')
-# plt.ylabel('intensité BOLD')
+# Glue the figure
+from myst_nb import glue
+glue("deactivation-fig", fig, display=False)
+```
+
+```{glue:figure} deactivation-fig
+:figwidth: 600px
+:name: deactivation-fig
+:align: center
+ Carte d'activation individuelle dans un paradigme auditif (jeu de données [spm_auditory](https://www.fil.ion.ucl.ac.uk/spm/data/auditory/)). Le seuil de significativité est sélectionné de manière libérale (`|z|>2`). Une déactivation modérée est identifiée dans différentes régions du cerveau, incluant le cortex cingulaire postérieur (PCC) et le cortex préfrontal médian (mPFC). Le PCC et le mPFC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
+
+La découverte du mode par défaut a été réalisée au travers d'étude par activation, en TEP. En 1997, Shulman et collègues {cite:p}`Shulman1997-fy` combinent 9 études PET qui utilisent la même condition de contrôle de "repos" (consistant à regarder des stimuli visuels de manière passive), et des tâches variées mais cognitivement demandantes. Les auteurs démontrent qu'un ensemble de régions sont systématiquement plus impliquées au repos que durant la tâche, incluant notamment le cortex cingulaire postérieur (PCC). En 2001, Gusnard et Raichle {cite:p}`Raichle2001-en` s'appuyent sur l'étude de Shulman et al. pour formuler la désormais célèbre "_hypothèse du mode par défaut_". Il existerait un certain nombre de processus cognitifs d'introspection qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité "par défaut". Pour confirmer cette hypothèse, Greicius et collègues {cite:p}`Greicius2003-hi` ont utilisé une carte de connectivité au repos en IRMf avec une région cible dans le PCC, et ont identifié un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, voir {numref}`fcmri-map-fig`. Le contexte de réseau du mode par défaut a depuis évolué, voir la revue de Buckner et DiNicola (2019) {cite:p}`Buckner2019-rc` pour une revue récente de sa neuroanatomie et de ses rôles cognitifs.
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from nilearn import datasets
+from nilearn.image import math_img
+from nilearn import image
+from nilearn import masking
+from nilearn.glm.first_level import FirstLevelModel
+from nilearn import input_data
+from nilearn.input_data import NiftiLabelsMasker
+from nilearn.input_data import NiftiMasker
+from nilearn import plotting
+
+# initialisation de la figure
+fig = plt.figure(figsize=(12,8))
 
 # Importe les données
 basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
@@ -320,7 +339,7 @@ tseries = masker.transform(adhd.func[num_data], confounds=gb_signal)
 tseries_voxel = masker_voxel.transform(adhd.func[num_data], confounds=gb_signal)
 
 # Montre une parcelle
-ax_plot = plt.subplot2grid((3, 3), (1, 0), colspan=2)
+ax_plot = plt.subplot2grid((2, 3), (0, 0), colspan=2)
 num_parcel = 113
 plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
                   threshold=0.5,
@@ -329,7 +348,7 @@ plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
                   title="région cible (FEF)")
 
 # plot la série temporelle d'une région
-ax_plot = plt.subplot2grid((3, 3), (1, 2), colspan=1)
+ax_plot = plt.subplot2grid((2, 3), (0, 2), colspan=1)
 time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
 plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel], 'o-'),
 plt.xlabel('Temps (s.)'),
@@ -337,7 +356,7 @@ plt.ylabel('BOLD (u.a.)')
 plt.title('Série temporelle')
 
 # carte de connectivité
-ax_plot = plt.subplot2grid((3, 3), (2, 0), colspan=2)
+ax_plot = plt.subplot2grid((2, 3), (1, 0), colspan=2)
 seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
 conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
 plotting.plot_stat_map(conn_map,
@@ -350,50 +369,186 @@ plotting.plot_stat_map(conn_map,
 
 # Glue the figure
 from myst_nb import glue
-glue("deactivation-fig", fig, display=False)
+glue("negative-DMN-fig", fig, display=False)
 ```
-```{glue:figure} deactivation-fig
+```{glue:figure} negative-DMN-fig
 :figwidth: 600px
-:name: deactivation-fig
+:name: negative-DMN-fig
 :align: center
- Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+  Une région cible est sélectionnée au niveau "frontal eye field" (FEF), pour générer une carte de connectivité sur un sujet du jeu de données ADHD-200 {cite:p}`HD-200_Consortium2012-uv`. Le seuil de significativité est sélectionné de manière libérale (`|r|>0.2`). En plus du réseau attentional dorsal associé au FEF, la carte de connectivité met en évidence une corrélation négative avec le PCC et le cortex cingulaire antérieure (ACC). L'ACC et le PCC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
-
-Nous pouvons donc obtenir une carte de connectivité fonctionnelle nonobstant l'activité réalisée par le sujet chez qui nous mesurons le signal BOLD. Celui-ci peut donc être au repos, ce qui signifie qu'on lui instruit de fixer une croix sur l'écran devant lui. Dans ce cas, nous pouvons créer des cartes de connectivité fonctionnelle de *l'activité intrinsèque* du cerveau. Ou alors, nous mesurons le signal BOLD associé à la tâche en observant les régions cérébrales les plus corrélées. Dans un tel cas, nous obtenons une carte de connectivité fonctionnelle de *l'activité évoquée* par la tâche.
-
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/OTWDQgEVOIA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+Le réseau du mode par défaut n'est pas le seul que l'on puisse identifier au repos. On a déjà vu le réseau sensorimoteur qui a été le premier identifié par Biswal. Un autre réseau couramment examiné dans la litérature est le réseau attentionel dorsal (DAN), qui comprend notamment les sillons intra-pariétaux supérieurs (IPS) et les champs occulaires frontaux (FEF). Le DAN est souvent identifié comme activé dans les expériences utilisant une tâche cognitivement demandante en IRMf, et est parfois appelé le "task positive network" - même si il n'est pas positivement engagé par toutes les tâches. En 2005, Fox et collègues {cite:p}`Fox2005-ge` remarquent une corrélation négative entre le DAN et le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état mental dirigé vers les stimuli extérieurs, et un état introspectif, reflétant la compétition entre deux réseaux distribués.
+```{admonition} Controverses sur la régression du signal global
+:class: caution attention
+:name: negative-r-warning
+Les corrélations négatives de la {numref}`negative-DMN-fig` sont fortes uniquement quand on applique certaines étapes de débruitage des données, et notamment la _régression du signal global_. Une controverse importante est née autour des connexions négatives, car certains chercheurs pensent qu'il s'agit d'un artefact lié à cette étape de prétraitement. Malgré tout, les corrélations négatives peuvent être observées de manière robuste pour les sujets qui bougent très peu, et dont le signal est donc particulièrement propre. Leur amplitude est cependant faible en l'absence de régression du signal global.
+```
+```{admonition} Activité intrinsèque vs extrinsèque
+:class: tip
+:name: intrinseque-tip
+Les réseaux au repos peuvent être observés même en présence d'une tâche. Plutôt qu'opposer la notion de repos et de tâche, il est courant de parler d'activité intrinsèque et extrinsèque. L'**activité extrinséque** est l'activité évoquée par une tâche, et reflète la manière dont l'environnement influence l'activité cérébrale. En revanche, l'**activité intrinsèque** désigne l'activité cérébrale qui émerge spontanément, et est indépendante des stimuli extérieurs. Les deux types d'activité sont toujours présentes, en peuvent interagir l'une avec l'autre.
 ```
 
 ## Réseaux fonctionnels
-Une méta-analyse effectuée à partir de données TEP identifie un réseau de régions dont l’activité est plus élevée au repos que durant l’exécution d’une série de tâches {cite:p}`Shulman1997`. Dans un article de revue, Raischle et collègues {cite:p}`Raichle2001` proposent que ce réseau de régions est engagé de manière systématique dans des processus cognitifs dominant dans l’état de repos, et baptisent ce réseau “mode par défaut”.
-
-Greicius et collègues {cite:p}`Greicius2002` utilisent la méthodologie introduite par Biswal et collègues {cite:p}`Biswal1995`, en utilisant l’IRMf au repos, et une région cible dans le cortex cingulaire postérieur. Cette analyse identifie un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, identifié via les déactivations en TEP.
-
-Une carte de connectivité au repos associé au réseau attentionnel dorsal identifie une corrélation négative avec le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état dirigé vers l’extérieur, et un état introspectif, reflétant la compétition entre deux réseaux distribués {cite:p}`Fox2005`.
-
-Yeo et collègues {cite:p}`ThomasYeo2011` identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.
-
-Note pour plus de ressources voir cette [présentation](https://pbellec.github.io/functional_parcellation/#/) et les [notebooks correspondants](https://github.com/pbellec/functional_parcellation).
-
-## Applications
 ```{code-cell} ipython 3
-:tags: ["hide-input"]
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from nilearn import datasets
+from nilearn.image import math_img
+from nilearn import image
+from nilearn import masking
+from nilearn.glm.first_level import FirstLevelModel
+from nilearn import input_data
+from nilearn.input_data import NiftiLabelsMasker
+from nilearn.input_data import NiftiMasker
+from nilearn import plotting
 
-from IPython.display import HTML
+# initialisation de la figure
+fig = plt.figure(figsize=(12, 5), dpi=300)
+
+# Importe les données
+basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
+
+# Paramètres du pré-traitement
+num_data = 1
+fwhm = 8
+high_pass = 0.01
+high_variance_confounds = False
+time_samp = range(0, 100)
+
+# Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
+masker = input_data.NiftiLabelsMasker(
+                                      basc['scale122'],
+                                      resampling_target="data",
+                                      high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      memory='nilearn_cache',
+                                      memory_level=1,
+                                      smoothing_fwhm=fwhm).fit()
+tseries = masker.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
+
+
+# Applique une correction du signal global
+from nilearn.signal import clean as signal_clean
+gb_signal = signal_clean(
+                        tseries.mean(axis=1).reshape([tseries.shape[0], 1]),
+                        high_pass=high_pass,
+                        t_r=3,
+                        standardize=True)
+tseries = masker.transform(adhd.func[num_data], confounds=gb_signal)
+
+# Affiche le template
+ax_plot = plt.subplot2grid((2, 4), (0, 0), colspan=2)
+plotting.plot_roi(basc['scale122'], title="parcellisation", axes=ax_plot, colorbar=True, cmap="turbo")
+
+# We generate a connectome
+from nilearn.connectome import ConnectivityMeasure
+conn = np.squeeze(ConnectivityMeasure(kind='correlation').fit_transform([tseries]))
+
+# we use scipy's hierarchical clustering implementation
+from scipy.cluster.hierarchy import dendrogram, linkage, cut_tree
+# That's the hierarchical clustering step
+hier = linkage(conn, method='average', metric='euclidean') # scipy's hierarchical clustering
+# HAC proceeds by iteratively merging brain regions, which can be visualized with a tree
+res = dendrogram(hier, get_leaves=True, no_plot=True) # Generate a dendrogram from the hierarchy
+order = res.get('leaves') # Extract the order on parcels from the dendrogram
+part = np.squeeze(cut_tree(hier, n_clusters=10))
+
+# Montre le connectome
+ax_plot = plt.subplot2grid((2, 4), (0, 2), rowspan=2, colspan=2)
+ax_plot.set_xlabel('régions')
+ax_plot.set_title('connectome')
+pos = ax_plot.imshow(conn[order, :][:, order], cmap='turbo', interpolation='nearest')
+fig.colorbar(pos, ax=ax_plot)
+
+# Montre les réseaux
+ax_plot = plt.subplot2grid((2, 4), (1, 0), colspan=2)
+part_img = masker.inverse_transform(part.reshape([1, 122]) + 1) # note the sneaky shift to 1-indexing
+plotting.plot_roi(part_img,
+                  title="réseaux",
+                  colorbar=True,
+                  cmap="turbo",
+                  axes=ax_plot,
+                  cut_coords=[0, -52, 26])
+
+# Glue the figure
+from myst_nb import glue
+glue("network-fig", fig, display=False)
+```
+```{glue:figure} network-fig
+:figwidth: 800px
+:name: network-fig
+:align: center
+  Pour générer un connectome  Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
+Un ***réseau fonctionnel*** réfère à un ensemble de régions cérébrales spatialement distribuées dont l'activité fluctue de façon cohérente. Un réseau fonctionnel se distingue d'un réseau structurel au sens où on l'identifie par la modélisation de l'activité BOLD. Un réseau structurel, quant à lui, est repéré au moyen de l'identification des fibres de matière blanche connectant des régions.
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
 import warnings
 warnings.filterwarnings("ignore")
 
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/5v4nnQ_FctQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+from nilearn import datasets # Fetch data using nilearn
+atlas_yeo = datasets.fetch_atlas_yeo_2011()        # the Yeo-Krienen atlas
+
+# initialisation de la figure
+fig = plt.figure(figsize=(24, 16), dpi=300)
+
+# Let's plot the Yeo-Krienen 7 clusters parcellation
+from nilearn import plotting
+from nilearn.image import math_img
+import matplotlib.pyplot as plt
+ax_plot = plt.subplot(4, 2, 1)
+plotting.plot_roi(atlas_yeo.thick_7, title='Yeo-Krienen atlas-7',
+                  colorbar=True, cmap='Paired', axes=ax_plot)
+
+ax_plot = plt.subplot(4, 2, 2)
+plotting.plot_roi(math_img('(img==1).astype(\'float\')', img=atlas_yeo.thick_7), title='Visuel',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 3)
+plotting.plot_roi(math_img('2 * (img==2).astype(\'float\')', img=atlas_yeo.thick_7), title='Sensorimoteur',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 4)
+plotting.plot_roi(math_img('3 * (img==3).astype(\'float\')', img=atlas_yeo.thick_7), title='Attentionnel dorsal',
+                  cut_coords=(-27, -5, 58), colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 5)
+plotting.plot_roi(math_img('4 * (img==4).astype(\'float\')', img=atlas_yeo.thick_7), title='Attentionnel ventral / salience',
+                  cut_coords=(-3, 19, 24), colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 6)
+plotting.plot_roi(math_img('5 * (img==5).astype(\'float\')', img=atlas_yeo.thick_7), title='mésolimbique',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 7)
+plotting.plot_roi(math_img('6 * (img==6).astype(\'float\')', img=atlas_yeo.thick_7), title='frontopariétal',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+ax_plot = plt.subplot(4, 2, 8)
+plotting.plot_roi(math_img('7 * (img==7).astype(\'float\')', img=atlas_yeo.thick_7), title='mode par défaut',
+                  colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
+
+# Glue the figure
+from myst_nb import glue
+glue("yeo-krienen-fig", fig, display=False)
 ```
+```{glue:figure} yeo-krienen-fig
+:figwidth: 800px
+:name: yeo-krienen-fig
+:align: center
+  Atlas de Yeo-Krienen   Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
+Yeo, Krienen et collègues {cite:p}`ThomasYeo2011` identifient sept grands réseaux de régions cérébrales dont l’activité spontanée au repos est fortement corrélée. Chaque réseau est illustré via une carte de connectivité pour une région cible choisie, sauf le réseau méso-limbique. Une analyse plus fine par régions cibles permet d’identifier des décompositions en sous-réseaux, ici pour le réseau visuel.
+
 
 ### Conclusions et références suggérées
 *   La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité d’une région cible et l’activité du reste du cerveau.
@@ -421,18 +576,19 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/_Iph3WW9UOU?start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
-### Exercice 1
+```{admonition} Exercice 4.1.
+:class: note
 “La septième jour” (sic), extrait en français: 0:54 - 4:35
  1. Qui représente le jeune homme?
  2. À quel résultat fait-il référence?
  3. Qui représente la jeune femme?
  4. À quel résultat fait-elle référence?
  5. Pourquoi appeler ce film “la septième jour” (sic) ?
+```
 
-### Exercice 2
-“Neuro-météorologie”: 4:48 - 5:30
 
-```{admonition} Traduction de l’extrait
+
+```{admonition} Traduction de l’extrait “Neuro-météorologie”: 4:48 - 5:30
 :class: tip
 :name: neuro-meteorologie-tip
 Regardons quelle activité intrinsèque nous arrive pour cette fin de semaine.
@@ -442,14 +598,16 @@ Le visuel sera beau, le moteur sera beau, à moins qu’une fluctuation alcooliq
 L’imagerie satellite nous indique des turbulences dans la région du précunéus qui pourraient devenir très intéressantes en début de semaine.
 Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d’être de tout repos.  
 ```
+
+```{admonition} Exercice 4.2.
+:class: note
 1.  De quels réseaux parle-t-on ici?
 2.  Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
 3.  Est ce qu’il manque des réseaux dans cette prévision?
 4.  Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
+```
 
-### Exercice 3
-“Hardball”: 8:01 - 9:46
-```{admonition} Traduction de l’extrait
+```{admonition} Traduction de l’extrait “Hardball”: 8:01 - 9:46
 :class: tip
 :name: hardball-tip
  - Présentateur (Pr): “Bonjour, aujourd’hui nous avons avec nous deux chercheurs distingués, Dr Yann Schnizel et Dr Paul Salami. Prêt à débattre sans compromis?”
@@ -466,26 +624,36 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 (bataille entre PS et YS)
  - Pr: “La semaine prochaine, dans “cluster analysis”, nous partirons sur la route avec Michael Milham, chanteur folk légendaire. Il voyage de par le monde pour partager l’histoire des réseaux au repos, en chanson. Merci d’avoir regardé cluster analysis sur le réseau du repos,”
 ```
+
+```{admonition} Exercice 4.3.
+:class: note
  1.Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
  2. Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?
  3. En quoi est-il “non psychologique” d’étudier une condition de repos?
  4. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
+```
 
-### Exercice 4
+```{admonition} Exercice 4.4.
+:class: note
 Carte de connectivité: vrai/faux
  1. Une carte de connectivité change si on change la région cible.
  2. Pour définir une région cible, on doit faire une carte d’activation.
  3. Une carte de connectivité peut être générée avec un modèle de régression.
  4. Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.
  5. Une carte de connectivité en IRMf est un outil pour identifier le réseau du mode par défaut.
+```
 
-### Exercice 5
+```{admonition} Exercice 4.5.
+:class: note
 Activité spontanée et évoquée: vrai/faux
  1. L’activité spontanée du cerveau ne s’observe que dans un état de repos.
  2. L’activité cérébrale évoquée par une tâche peut être caractérisée par une carte d’activation IRMf.
  3. L’activité spontanée du cerveau est plus importante au repos que pendant une tâche visuelle dans certaines parties du cerveau.
+```
 
-### Exercice 6
+```{admonition} Exercice 4.6.
+:class: note
 On souhaite comparer la connectivité fonctionnelle entre des personnes jeunes et âgées.
  1. Citer un facteur de confusion potentiel, qui n’est pas lié à l’activité neuronale intrinsèque.
  2. On souhaite contrôler l'atrophie globale du cerveau dans cette analyse. Décriver brièvement une procédure statistique permettant de tenir compte de cette atrophie dans une comparaison de groupes.
+```

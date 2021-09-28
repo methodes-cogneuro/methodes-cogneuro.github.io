@@ -20,121 +20,67 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 # Importe les librairies
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+from nilearn import datasets
 from nilearn.image import math_img
-from nilearn import plotting, input_data
+from nilearn import image
+from nilearn import masking
+from nilearn.glm.first_level import FirstLevelModel
+from nilearn import input_data
 from nilearn.input_data import NiftiLabelsMasker
-from nilearn import datasets # Fetch data using nilearn
 from nilearn.input_data import NiftiMasker
+from nilearn import plotting
 
+# initialisation de la figure
+fig = plt.figure(figsize=(4,8))
 
-import warnings
-warnings.filterwarnings("ignore")
+# load fMRI data
+subject_data = datasets.fetch_spm_auditory()
+fmri_img = image.concat_imgs(subject_data.func)
 
-# Initialise la figure
-fig = plt.figure(figsize=(13, 5), dpi=300)
+# Make an average
+mean_img = image.mean_img(fmri_img)
+mask = masking.compute_epi_mask(mean_img)
 
-# Importe les données
-basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
-adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
+# Clean and smooth data
+fmri_img = image.clean_img(fmri_img, high_pass=0.01, t_r=7, standardize=False)
+fmri_img = image.smooth_img(fmri_img, 8.)
 
-# Paramètres du pré-traitement
-num_data = 6
-fwhm = 8
-high_pass = 0.01
-high_variance_confounds = False
-time_samp = range(0, 100)
+# load events
+events = pd.read_table(subject_data['events'])
 
-# Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
-masker = input_data.NiftiLabelsMasker(
-                                      basc['scale122'],
-                                      resampling_target="data",
-                                      high_pass=high_pass,
-                                      t_r=3,
-                                      high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
-                                      memory='nilearn_cache',
-                                      memory_level=1,
-                                      smoothing_fwhm=fwhm).fit()
-tseries = masker.transform(adhd.func[num_data])
-print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
+# Fit model
+fmri_glm = FirstLevelModel(t_r=7,
+                           drift_model='cosine',
+                           signal_scaling=False,
+                           mask_img=mask,                           
+                           minimize_memory=False)
 
-# Charge les données par voxel
-masker_voxel = input_data.NiftiMasker(high_pass=high_pass,
-                                      t_r=3,
-                                      high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
-                                      smoothing_fwhm=fwhm
-                                     ).fit(adhd.func[num_data])
-tseries_voxel = masker_voxel.transform(adhd.func[num_data])
-print(f"Time series with shape {tseries_voxel.shape} (# time points, # voxels))")
+fmri_glm = fmri_glm.fit(fmri_img, events)
 
-# Montre une parcelle
-ax_plot = plt.subplot2grid((2, 5), (0, 0), colspan=2)
-num_parcel = 73
-plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
-                  threshold=0.5,
-                  axes=ax_plot,
-                  vmax=1,
-                  title="région cible (M1 droit)")
+# Extract activation clusters
+z_map = fmri_glm.compute_contrast('active - rest')
 
-# plot la série temporelle d'une région
-ax_plot = plt.subplot2grid((2, 5), (0, 2), colspan=1)
-time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
-plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel]),
-plt.title('Série temporelle'),
-plt.ylabel('BOLD (u.a.)')
+# plot activation map
+ax_plot = plt.gca()
+plotting.plot_stat_map(
+        z_map, threshold=2, vmax=5, figure=fig,
+        axes=ax_plot, colorbar=True, cut_coords=coords[0], bg_img=mean_img, title='carte d\'activation (auditif)')
 
-# carte de connectivité
-ax_plot = plt.subplot2grid((2, 5), (0, 3), colspan=2)
-seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
-conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
-plotting.plot_stat_map(conn_map,
-                       threshold=0.5,
-                       vmax=1,
-                       axes=ax_plot,
-                       cut_coords=(37, -20, 59),
-                       title="carte de connectivité (M1 droit)")
-
-# Montre une parcelle
-num_parcel = 17
-ax_plot = plt.subplot2grid((2, 5), (1, 0), colspan=2)
-plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
-                  threshold=0.5,
-                  vmax=1,
-                  axes=ax_plot,
-                  title="région cible (PCC)")
-
-# plot la série temporelle d'une région
-ax_plot = plt.subplot2grid((2, 5), (1, 2), colspan=1)
-time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
-plt.plot(time[time_samp, :], tseries[time_samp, :][:, num_parcel]),
-plt.xlabel('Temps (s.)'),
-plt.ylabel('BOLD (u.a.)')
-
-# carte de connectivité
-ax_plot = plt.subplot2grid((2, 5), (1, 3), colspan=2)
-seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
-conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
-plotting.plot_stat_map(conn_map,
-                       threshold=0.5,
-                       cut_coords=(0, -52, 26),
-                       vmax=1,
-                       axes=ax_plot,
-                       title="carte de connectivité (PCC)")
-
+# Glue the figure
 from myst_nb import glue
-glue("fcmri-map-fig", fig, display=False)
+glue("deactivation-fig", fig, display=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mIndexError[0m                                Traceback (most recent call last)
-[0;32m<ipython-input-1-6e1316ff9303>[0m in [0;36m<module>[0;34m[0m
-[1;32m     89[0m [0max_plot[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0msubplot2grid[0m[0;34m([0m[0;34m([0m[0;36m2[0m[0;34m,[0m [0;36m5[0m[0;34m)[0m[0;34m,[0m [0;34m([0m[0;36m1[0m[0;34m,[0m [0;36m2[0m[0;34m)[0m[0;34m,[0m [0mcolspan[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     90[0m [0mtime[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mlinspace[0m[0;34m([0m[0;36m0[0m[0;34m,[0m [0;36m3[0m [0;34m*[0m [0;34m([0m[0mtseries[0m[0;34m.[0m[0mshape[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m-[0m[0;36m1[0m[0;34m)[0m[0;34m,[0m [0mtseries[0m[0;34m.[0m[0mshape[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 91[0;31m [0mplt[0m[0;34m.[0m[0mplot[0m[0;34m([0m[0mtime[0m[0;34m[[0m[0mtime_samp[0m[0;34m,[0m [0;34m:[0m[0;34m][0m[0;34m,[0m [0mtseries[0m[0;34m[[0m[0mtime_samp[0m[0;34m,[0m [0;34m:[0m[0;34m][0m[0;34m[[0m[0;34m:[0m[0;34m,[0m [0mnum_parcel[0m[0;34m][0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     92[0m [0mplt[0m[0;34m.[0m[0mxlabel[0m[0;34m([0m[0;34m'Temps (s.)'[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     93[0m [0mplt[0m[0;34m.[0m[0mylabel[0m[0;34m([0m[0;34m'BOLD (u.a.)'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-2-5643ef928740>[0m in [0;36m<module>[0;34m[0m
+[1;32m     47[0m plotting.plot_stat_map(
+[1;32m     48[0m         [0mz_map[0m[0;34m,[0m [0mthreshold[0m[0;34m=[0m[0;36m2[0m[0;34m,[0m [0mvmax[0m[0;34m=[0m[0;36m5[0m[0;34m,[0m [0mfigure[0m[0;34m=[0m[0mfig[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 49[0;31m         axes=ax_plot, colorbar=True, cut_coords=coords[0], bg_img=mean_img, title='carte d\'activation (auditif)')
+[0m[1;32m     50[0m [0;34m[0m[0m
+[1;32m     51[0m [0;31m# Glue the figure[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mIndexError[0m: too many indices for array: array is 1-dimensional, but 2 were indexed
-IndexError: too many indices for array: array is 1-dimensional, but 2 were indexed
+[0;31mNameError[0m: name 'coords' is not defined
+NameError: name 'coords' is not defined
 
