@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -42,7 +42,7 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -81,7 +81,7 @@
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -235,7 +235,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objectifs">
@@ -309,10 +309,6 @@
     </td>
   </tr>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
-</div>
 <div class="section" id="objectifs">
 <h2>Objectifs<a class="headerlink" href="#objectifs" title="Permalink to this headline">¶</a></h2>
 <p>Dans le chapitre sur les <a class="reference internal" href="irm_fonctionnelle.html"><span class="doc std std-doc">cartes d’activation en IRMf</span></a>, nous avons vu que ce type d’analyse met l’emphase sur la notion de ségrégation fonctionnelle, c’est à dire à quel point certaines régions cérébrales sont engagées spécifiquement par une certaine catégorie de processus cognitifs. Mais il est bien connu que les processus cognitifs requièrent aussi un certain degré d’<strong>intégration fonctionnelle</strong>, où différentes régions du cerveau interagissent ensemble pour effectuer une tâche. Cette notion d’intégration amène à concevoir le cerveau comme un réseau, ou encore un graphe, qui décrit la <strong>connectivité fonctionnelle</strong> entre régions du cerveau. Ce chapitre introduit des notions de base utilisées pour étudier la connectivité du cerveau à l’aide de l’IRMf.</p>
@@ -459,16 +455,16 @@
 <p class="admonition-title">Mesure de corrélation</p>
 <p>La <a class="reference external" href="https://fr.wikipedia.org/wiki/Corr%C3%A9lation_(statistiques)">corrélation</a> entre deux séries temporelles est une mesure qui varie entre -1 et 1. Si les deux séries sont identiques (à leur moyenne et variance près), la corrélation est de 1. Si les deux séries sont statistiquement indépendantes, la corrélation est proche de zéro. Si les deux séries sont mirroirs l’une de l’autre, la corrélation est de -1.</p>
 </div>
-<p>La <em><strong>connectivité fonctionnelle</strong></em> est un terme relativement générique utilisé pour décrire un ensemble de techniques permettant d’analyser les patterns spatiaux de l’activité cérébrale <span id="id4">[]</span>. Fox et Raischle (2007) propose que la technique la plus simple pour mener ce genre d’analyse est effectivement d’extraire le décours temporel BOLD d’une “région noyau” et d’en déterminer la corrélation d’avec le reste des voxels. Des techniques plus sophistiquées ont été développées afin de surpasser les limites de cette modélisation.</p>
+<p>La <em><strong>connectivité fonctionnelle</strong></em> est un terme relativement générique utilisé pour décrire un ensemble de techniques permettant d’analyser les patterns spatiaux de l’activité cérébrale <span id="id4">[<a class="reference internal" href="#id38">FR07</a>]</span>. Fox et Raischle (2007) propose que la technique la plus simple pour mener ce genre d’analyse est effectivement d’extraire le décours temporel BOLD d’une <strong>région cible</strong> et d’en déterminer la corrélation d’avec le reste des voxels. Des techniques plus sophistiquées ont été développées afin de surpasser les limites de cette modélisation. Elles seront discuté à la fin de ce chapitre.</p>
 <p>Le concept de carte fonctionnelle a été introduit par Biswal et collègues (1995) <span id="id5">[<a class="reference internal" href="#id37">BYHH95</a>]</span>, en utilisant une cible dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d’activation et une tâche motrice. Biswal et collègues ont alors eu l’idée d’observer les fluctuations BOLD dans une condition de <strong>repos</strong>, en l’absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a>, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l’aire motrice supplémentaire, le cortex prémoteur et d’autres régions du cerveau connues pour leur implication dans le <strong>réseau moteur</strong>. Cette étude a tout d’abord engendré beaucoup de septicisme, au motif que ces patrons d’activité fonctionnelle corrélée aurait pu refléter du bruit cardiaque ou respiratoire.</p>
 <div class="tip admonition" id="fluctuations-lentes">
 <p class="admonition-title">Fluctuations lentes</p>
 <p>Une autre observation clé de Biswal et collègues (1995) <span id="id6">[<a class="reference internal" href="#id37">BYHH95</a>]</span> est que le signal BOLD au repos est dominé par des fluctuations lentes, avec des bouffées d’activité d’une durée de 20 à 30 secondes, clairement visibles dans la <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a>. Plus spécifiquement, le spectre du signal BOLD au repos est dominée par les fréquences inférieures à 0.08 Hz, et même 0.03-0.05 Hz.</p>
 </div>
-<p>La crédibilité des cartes de connectivité au repos s’est renforcée quand différents groupes de recherche ont pu identifié d’autres réseaux en utilisant des régions cibles différentes, notamment le réseau visuel et le réseau auditif. Mais c’est l’étude de Greicis et collaborateurs, en 2003 <span id="id7">[<a class="reference internal" href="#id38">GKRM03</a>]</span>, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n’avait pas encore été identifié: le <strong>réseau du mode par défaut</strong> (voir <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a>, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau, et comment il peut nous aider à comprendre ce que mesure la connectivité au repos. Il est également important de mentionner que le travail de Shmuel et collèges (2008) <span id="id8">[<a class="reference internal" href="#id39">SL08</a>]</span> a démontré que l’activité BOLD au repos corrèle aux fluctuations spontanées d’activité neuronales dans le cortex visuel d’un macaque anésthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l’activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).</p>
+<p>La crédibilité des cartes de connectivité au repos s’est renforcée quand différents groupes de recherche ont pu identifié d’autres réseaux en utilisant des régions cibles différentes, notamment le réseau visuel et le réseau auditif. Mais c’est l’étude de Greicius et collaborateurs, en 2003 <span id="id7">[<a class="reference internal" href="#id39">GKRM03</a>]</span>, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n’avait pas encore été identifié: le <strong>réseau du mode par défaut</strong> (voir <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a>, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau, et comment il peut nous aider à comprendre ce que mesure la connectivité au repos. Il est également important de mentionner que le travail de Shmuel et collèges (2008) <span id="id8">[<a class="reference internal" href="#id40">SL08</a>]</span> a démontré que l’activité BOLD au repos corrèle aux fluctuations spontanées d’activité neuronales dans le cortex visuel d’un macaque anésthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l’activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).</p>
 <div class="caution attention admonition" id="fcmri-map-warning">
 <p class="admonition-title">Variabilité intra- et inter-individuelle</p>
-<p>La <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a> peut donner l’impression que les réseaux de connectivité sont extrêmement stables. En réalité, les cartes de connectivité varient beaucoup au cours du temps, c’est à dire en regardant différentes fenêtres d’activité pour un même individu, et également entre individus. Caractériser la variabilité intra- et inter-individuelle des cartes de connectivité est un domaine de recherche actif.</p>
+<p>La <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a> peut donner l’impression que les réseaux de connectivité sont extrêmement stables. En réalité, les cartes de connectivité varient beaucoup au cours du temps, c’est à dire en regardant différentes fenêtres d’activité pour un même individu, et également entre individus. Effectivement, les coordonnées d’une région cible peuvent être partiellement inexactes même si on procède au recalage des images. Caractériser la variabilité intra- et inter-individuelle des cartes de connectivité est un domaine de recherche actif.</p>
 </div>
 </div>
 <div class="section" id="le-reseau-du-mode-par-defaut">
@@ -538,7 +534,7 @@
 </div>
 <p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Carte d’activation individuelle dans un paradigme auditif (jeu de données <a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/data/auditory/">spm_auditory</a>). Le seuil de significativité est sélectionné de manière libérale (<code class="docutils literal notranslate"><span class="pre">|z|&gt;2</span></code>). Une déactivation modérée est identifiée dans différentes régions du cerveau, incluant le cortex cingulaire postérieur (PCC) et le cortex préfrontal médian (mPFC). Le PCC et le mPFC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#deactivation-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>La découverte du mode par défaut a été réalisée au travers d’étude par activation, en TEP. En 1997, Shulman et collègues <span id="id9">[<a class="reference internal" href="#id41">SFC+97</a>]</span> combinent 9 études PET qui utilisent la même condition de contrôle de “repos” (consistant à regarder des stimuli visuels de manière passive), et des tâches variées mais cognitivement demandantes. Les auteurs démontrent qu’un ensemble de régions sont systématiquement plus impliquées au repos que durant la tâche, incluant notamment le cortex cingulaire postérieur (PCC). En 2001, Gusnard et Raichle <span id="id10">[<a class="reference internal" href="#id42">RMS+01</a>]</span> s’appuyent sur l’étude de Shulman et al. pour formuler la désormais célèbre “<em>hypothèse du mode par défaut</em>”. Il existerait un certain nombre de processus cognitifs d’introspection qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité “par défaut”. Pour confirmer cette hypothèse, Greicius et collègues <span id="id11">[<a class="reference internal" href="#id38">GKRM03</a>]</span> ont utilisé une carte de connectivité au repos en IRMf avec une région cible dans le PCC, et ont identifié un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, voir <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a>. Le contexte de réseau du mode par défaut a depuis évolué, voir la revue de Buckner et DiNicola (2019) <span id="id12">[<a class="reference internal" href="#id40">BD19</a>]</span> pour une revue récente de sa neuroanatomie et de ses rôles cognitifs.</p>
+<p>La découverte du mode par défaut a été réalisée au travers d’étude par activation, en TEP. En 1997, Shulman et collègues <span id="id9">[<a class="reference internal" href="#id42">SFC+97</a>]</span> combinent 9 études PET qui utilisent la même condition de contrôle de “repos” (consistant à regarder des stimuli visuels de manière passive), et des tâches variées mais cognitivement demandantes. Les auteurs démontrent qu’un ensemble de régions sont systématiquement plus impliquées au repos que durant la tâche, incluant notamment le cortex cingulaire postérieur (PCC). En 2001, Gusnard et Raichle <span id="id10">[<a class="reference internal" href="#id43">RMS+01</a>]</span> s’appuyent sur l’étude de Shulman et al. pour formuler la désormais célèbre “<em>hypothèse du mode par défaut</em>”. Il existerait un certain nombre de processus cognitifs d’introspection qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité “par défaut”. Pour confirmer cette hypothèse, Greicius et collègues <span id="id11">[<a class="reference internal" href="#id39">GKRM03</a>]</span> ont utilisé une carte de connectivité au repos en IRMf avec une région cible dans le PCC, et ont identifié un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, voir <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 52</span></a>. Le contexte de réseau du mode par défaut a depuis évolué, voir la revue de Buckner et DiNicola (2019) <span id="id12">[<a class="reference internal" href="#id41">BD19</a>]</span> pour une revue récente de sa neuroanatomie et de ses rôles cognitifs.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
@@ -645,7 +641,7 @@
 </div>
 <p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text">Une région cible est sélectionnée au niveau “frontal eye field” (FEF), pour générer une carte de connectivité sur un sujet du jeu de données ADHD-200 <span id="id13">[<a class="reference internal" href="#id20">HD200Consortium12</a>]</span>. Le seuil de significativité est sélectionné de manière libérale (<code class="docutils literal notranslate"><span class="pre">|r|&gt;0.2</span></code>). En plus du réseau attentional dorsal associé au FEF, la carte de connectivité met en évidence une corrélation négative avec le PCC et le cortex cingulaire antérieure (ACC). L’ACC et le PCC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#negative-dmn-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Le réseau du mode par défaut n’est pas le seul que l’on puisse identifier au repos. On a déjà vu le réseau sensorimoteur qui a été le premier identifié par Biswal. Un autre réseau couramment examiné dans la litérature est le réseau attentionel dorsal (DAN), qui comprend notamment les sillons intra-pariétaux supérieurs (IPS) et les champs occulaires frontaux (FEF). Le DAN est souvent identifié comme activé dans les expériences utilisant une tâche cognitivement demandante en IRMf, et est parfois appelé le “task positive network” - même si il n’est pas positivement engagé par toutes les tâches. En 2005, Fox et collègues <span id="id14">[<a class="reference internal" href="#id43">FSV+05</a>]</span> remarquent une corrélation négative entre le DAN et le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état mental dirigé vers les stimuli extérieurs, et un état introspectif, reflétant la compétition entre deux réseaux distribués.</p>
+<p>Le réseau du mode par défaut n’est pas le seul que l’on puisse identifier au repos. On a déjà vu le réseau sensorimoteur qui a été le premier identifié par Biswal. Un autre réseau couramment examiné dans la litérature est le réseau attentionel dorsal (DAN), qui comprend notamment les sillons intra-pariétaux supérieurs (IPS) et les champs occulaires frontaux (FEF). Le DAN est souvent identifié comme activé dans les expériences utilisant une tâche cognitivement demandante en IRMf, et est parfois appelé le “task positive network” - même s’il n’est pas positivement engagé par toutes les tâches. En 2005, Fox et collègues <span id="id14">[<a class="reference internal" href="#id44">FSV+05</a>]</span> remarquent une corrélation négative entre le DAN et le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état mental dirigé vers les stimuli extérieurs, et un état introspectif, reflétant la compétition entre deux réseaux distribués.</p>
 <div class="caution attention admonition" id="negative-r-warning">
 <p class="admonition-title">Controverses sur la régression du signal global</p>
 <p>Les corrélations négatives de la <a class="reference internal" href="#negative-dmn-fig"><span class="std std-numref">Fig. 54</span></a> sont fortes uniquement quand on applique certaines étapes de débruitage des données, et notamment la <em>régression du signal global</em>. Une controverse importante est née autour des connexions négatives, car certains chercheurs pensent qu’il s’agit d’un artefact lié à cette étape de prétraitement. Malgré tout, les corrélations négatives peuvent être observées de manière robuste pour les sujets qui bougent très peu, et dont le signal est donc particulièrement propre. Leur amplitude est cependant faible en l’absence de régression du signal global.</p>
@@ -818,9 +814,9 @@
 <div class="cell_output docutils container">
 <img alt="_images/connectivite_9_0.png" src="_images/connectivite_9_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Atlas de Yeo-Krienen <span id="id15">[<a class="reference internal" href="#id44">YKS+11</a>]</span> construit par une analyse de clustering à partir de données IRMf au repos d’un grand nombre de sujets. Les réseaux sont définis à plusieurs résolutions dans cet atlas (7 et 17). Ici, le découpage en 7 grands réseaux distribués est présenté. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#yeo-krienen-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Atlas de Yeo-Krienen <span id="id15">[<a class="reference internal" href="#id45">YKS+11</a>]</span> construit par une analyse de clustering à partir de données IRMf au repos d’un grand nombre de sujets. Les réseaux sont définis à plusieurs résolutions dans cet atlas (7 et 17). Ici, le découpage en 7 grands réseaux distribués est présenté. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#yeo-krienen-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Il n’y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés. Malgré tout, de nombreux articles ont étudiés un découpage en 7 réseaux corticaux. L’atlas de Yeo, Krienen et collègues <span id="id16">[<a class="reference internal" href="#id44">YKS+11</a>]</span> est très utilisé, et identifient sept grands réseaux. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l’attentionnel ventral (parfois appelé salince). Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. La même étude a proposé un découpage en 17 sous-réseaux. Vous pouvez utiliser cet <a class="reference external" href="https://simexp.github.io/multiscale_dashboard/index.html">outil interactif</a> pour explorer l’organisation multi-échelle des réseaux fonctionnels de manière interactive, à l’aide de l’atlas MIST <span id="id17">[<a class="reference internal" href="#id45">UAB+19</a>]</span>.</p>
+<p>Il n’y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés. Malgré tout, de nombreux articles ont étudiés un découpage en 7 réseaux corticaux. L’atlas de Yeo, Krienen et collègues <span id="id16">[<a class="reference internal" href="#id45">YKS+11</a>]</span> est très utilisé, et identifient sept grands réseaux. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l’attentionnel ventral (parfois appelé salince). Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. La même étude a proposé un découpage en 17 sous-réseaux. Vous pouvez utiliser cet <a class="reference external" href="https://simexp.github.io/multiscale_dashboard/index.html">outil interactif</a> pour explorer l’organisation multi-échelle des réseaux fonctionnels de manière interactive, à l’aide de l’atlas MIST <span id="id17">[<a class="reference internal" href="#id46">UAB+19</a>]</span>.</p>
 </div>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
@@ -841,28 +837,31 @@
 <dt class="label" id="id37"><span class="brackets">BYHH95</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
 <dd><p>B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. <em>Magn. Reson. Med.</em>, 34(4):537–541, October 1995.</p>
 </dd>
-<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id12">BD19</a></span></dt>
+<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id12">BD19</a></span></dt>
 <dd><p>Randy L Buckner and Lauren M DiNicola. The brain's default network: updated anatomy, physiology and evolving insights. <em>Nat. Rev. Neurosci.</em>, 20(10):593–608, October 2019.</p>
 </dd>
-<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id14">FSV+05</a></span></dt>
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id14">FSV+05</a></span></dt>
 <dd><p>Michael D Fox, Abraham Z Snyder, Justin L Vincent, Maurizio Corbetta, David C Van Essen, and Marcus E Raichle. The human brain is intrinsically organized into dynamic, anticorrelated functional networks. <em>Proc. Natl. Acad. Sci. U. S. A.</em>, 102(27):9673–9678, July 2005.</p>
 </dd>
-<dt class="label" id="id38"><span class="brackets">GKRM03</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id11">2</a>)</span></dt>
+<dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id4">FR07</a></span></dt>
+<dd><p>Michael D. Fox and Marcus E. Raichle. Spontaneous fluctuations in brain activity observed with functional magnetic resonance imaging. <em>Nature Reviews Neuroscience</em>, 8(9):700–711, September 2007. URL: <a class="reference external" href="https://doi.org/10.1038/nrn2201">https://doi.org/10.1038/nrn2201</a>, <a class="reference external" href="https://doi.org/10.1038/nrn2201">doi:10.1038/nrn2201</a>.</p>
+</dd>
+<dt class="label" id="id39"><span class="brackets">GKRM03</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id11">2</a>)</span></dt>
 <dd><p>Michael D Greicius, Ben Krasnow, Allan L Reiss, and Vinod Menon. Functional connectivity in the resting brain: a network analysis of the default mode hypothesis. <em>Proc. Natl. Acad. Sci. U. S. A.</em>, 100(1):253–258, January 2003.</p>
 </dd>
-<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id10">RMS+01</a></span></dt>
+<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id10">RMS+01</a></span></dt>
 <dd><p>M E Raichle, A M MacLeod, A Z Snyder, W J Powers, D A Gusnard, and G L Shulman. A default mode of brain function. <em>Proc. Natl. Acad. Sci. U. S. A.</em>, 98(2):676–682, January 2001.</p>
 </dd>
-<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id8">SL08</a></span></dt>
+<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id8">SL08</a></span></dt>
 <dd><p>Amir Shmuel and David A Leopold. Neuronal correlates of spontaneous fluctuations in fMRI signals in monkey visual cortex: implications for functional connectivity at rest. <em>Hum. Brain Mapp.</em>, 29(7):751–761, July 2008.</p>
 </dd>
-<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id9">SFC+97</a></span></dt>
+<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id9">SFC+97</a></span></dt>
 <dd><p>G L Shulman, J A Fiez, M Corbetta, R L Buckner, F M Miezin, M E Raichle, and S E Petersen. Common blood flow changes across visual tasks: II. decreases in cerebral cortex. <em>J. Cogn. Neurosci.</em>, 9(5):648–663, 1997.</p>
 </dd>
-<dt class="label" id="id45"><span class="brackets"><a class="fn-backref" href="#id17">UAB+19</a></span></dt>
+<dt class="label" id="id46"><span class="brackets"><a class="fn-backref" href="#id17">UAB+19</a></span></dt>
 <dd><p>S Urchs, J Armoza, Y Benhajali, J St-Aubin, and others. MIST: a multi-resolution parcellation of functional brain networks [version 2; peer review: 4 approved]. <em>MNI Open Res.</em>, 2019.</p>
 </dd>
-<dt class="label" id="id44"><span class="brackets">YKS+11</span><span class="fn-backref">(<a href="#id15">1</a>,<a href="#id16">2</a>)</span></dt>
+<dt class="label" id="id45"><span class="brackets">YKS+11</span><span class="fn-backref">(<a href="#id15">1</a>,<a href="#id16">2</a>)</span></dt>
 <dd><p>B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. <em>J. Neurophysiol.</em>, 106(3):1125–1165, September 2011.</p>
 </dd>
 <dt class="label" id="id20"><span class="brackets">HD200Consortium12</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>,<a href="#id13">3</a>)</span></dt>
@@ -1017,12 +1016,32 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="irm_fonctionnelle.html" title="previous page">IRM fonctionnelle</a>
-    <a class='right-next' id="next-link" href="regression.html" title="next page">Régression linéaire</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="irm_fonctionnelle.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">IRM fonctionnelle</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="regression.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Régression linéaire</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

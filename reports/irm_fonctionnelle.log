@@ -1,0 +1,69 @@
+Traceback (most recent call last):
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/pbellec/env/psy3018/lib/python3.8/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from nilearn.datasets import fetch_spm_auditory
+from nilearn import image
+from nilearn import masking
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# load fMRI data
+subject_data = fetch_spm_auditory()
+
+fig = plt.figure(figsize=(10,5))
+
+# load events
+events = pd.read_table(subject_data['events'])
+events['amplitude'] = 1
+events = events[events['trial_type']=='active']
+events = events.loc[:,['onset', 'duration', 'amplitude']].to_numpy().transpose()
+
+frame_times = np.linspace(4*7, 100*7, 100-4+1)
+from nilearn.glm.first_level import compute_regressor
+
+block, name = compute_regressor(
+        events, None, frame_times, con_id='main',
+        oversampling=16)
+block = block > 0
+
+response, name = compute_regressor(
+        events, 'glover', frame_times, con_id='main',
+        oversampling=16)
+
+plt.fill(frame_times, block, 'b', alpha=.5, label='stimulus')
+plt.plot(frame_times, response, 'r', label=name)
+plt.xlabel('temps (s)')
+plt.ylabel('BOLD signal (u.a.)')
+
+# Glue the figure
+from myst_nb import glue
+glue("auditory-fig", fig1, display=False)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-5-3f6b343658df>[0m in [0;36m<module>[0;34m[0m
+[1;32m     36[0m [0;31m# Glue the figure[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     37[0m [0;32mfrom[0m [0mmyst_nb[0m [0;32mimport[0m [0mglue[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 38[0;31m [0mglue[0m[0;34m([0m[0;34m"auditory-fig"[0m[0;34m,[0m [0mfig1[0m[0;34m,[0m [0mdisplay[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mNameError[0m: name 'fig1' is not defined
+NameError: name 'fig1' is not defined
+
