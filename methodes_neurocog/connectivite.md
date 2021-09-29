@@ -606,7 +606,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 1.  De quels réseaux parle-t-on ici?
 2.  Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?
 3.  Est ce qu’il manque des réseaux dans cette prévision?
-5.  Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
+4.  Pourquoi est-ce que les turbulences dans le précunéus (ou plutôt le cortex cingulaire postérieur) sont intéressantes?
 ```
 
 ```{admonition} Traduction de l’extrait “Hardball”: 8:01 - 9:46
@@ -630,10 +630,10 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 ```{admonition} Exercice 5.3.
 :class: note
 “Hardball”: 8:01 - 9:46
- 1.Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
+ 1. Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?
  2. Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?
  3. En quoi est-il “non psychologique” d’étudier une condition de repos?
- 5. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
+ 4. Question ouverte: est ce que l’un d’entre eux a raison? Ou les deux?
 ```
 
 ```{admonition} Exercice 5.4.
@@ -667,12 +667,12 @@ Réseaux fonctionnels: vrai/faux
 Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
  * Quel logiciel a été utilisé pour analyser les données d'IRMf?
  * Quelle condition expérimentale était utilisée pendant les acquisitions d'IRMf?
- * Quelle était le paramètre de lissage spatial?
- * Est ce que les données ont été corrigées du mouvement? Pourquoi?
- * Est ce que l'un des deux groupes a plus bougé que l'autre?
- * Quel filtrage et correction de bruits ont été appliquées?
+ * Quel était le paramètre de lissage spatial?
+ * Est-ce que les données ont été corrigées du mouvement? Pourquoi?
+ * Est-ce que l'un des deux groupes a plus bougé que l'autre?
+ * Quelles procédures de filtrage et correction de bruits ont été appliquées?
  * Dans quel espace stéréotaxique les analyses de groupe sont-elles effectuées?
- * Quelle type de mesure de connectivité est utilisée dans l'article?
+ * Quel type de mesure de connectivité est utilisée dans l'article?
 ```
 
 ```{admonition} Exercice 5.8.
