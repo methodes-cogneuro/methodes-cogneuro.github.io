@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -53,7 +55,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tomographie par émission de positrons" href="tep.html" />
-    <link rel="prev" title="Régression linéaire" href="regression.html" />
+    <link rel="prev" title="Connectivité fonctionnelle" href="connectivite.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -114,11 +116,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="connectivite.html">
    Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="regression.html">
-   Régression linéaire
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -232,6 +229,134 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
+   Principes physiques et physiologiques
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion-de-l-eau">
+     Diffusion de l’eau
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion-isotrope-et-anisotrope">
+     Diffusion isotrope et anisotrope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion-et-fibres-de-matiere-blanche">
+     Diffusion et fibres de matière blanche
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acquisition-irmd">
+     Acquisition IRMd
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tenseur-de-diffusion">
+   Tenseur de diffusion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cartes-de-diffusion">
+     Cartes de diffusion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modele-lineaire-de-groupe">
+     Modèle linéaire de groupe
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tractographie">
+   Tractographie
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tractographie-streamline-deterministe">
+     Tractographie streamline déterministe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tractographie-probabiliste">
+     Tractographie probabiliste
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-priori-sur-l-organisation-des-fibres">
+     A priori sur l’organisation des fibres
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#croisement-de-fibres">
+   Croisement de fibres
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-sur-un-fantome">
+     Évaluation sur un fantôme
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyses">
+   Analyses
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etapes-prealables">
+     Étapes préalables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#profil-de-fa">
+     Profil de FA
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications">
+   Applications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   Références
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -242,6 +367,448 @@
                 
   <div class="section" id="irm-de-diffusion">
 <span id="irm-diffusion-chapitre"></span><h1>IRM de diffusion<a class="headerlink" href="#irm-de-diffusion" title="Permalink to this headline">¶</a></h1>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+        <a title="Exercices">⚠️</a>
+        <a title="Révision du texte">👀</a>
+    </td>
+  </tr>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ce chapitre est en cours de développement. Il se peut que l’information soit incomplète, ou sujette à changement.</p>
+</div>
+<div class="section" id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+<p>Ce cours a pour but de vous initier aux principes de l’imagerie par résonance magnétique de diffusion (IRMd). L’IRMd est une modalité de neuroimagerie qui nous permet d’étudier les <strong>fibres de matière blanche</strong>. Nous allons donc pouvoir examiner les connexions entre différentes régions, autant interhémisphériques (i.e., fibres de matière blanche voyageant d’un hémisphère à l’autre), qu’intrahémisphériques (i.e., fibres de matière blanche voyageant au sein d’un même hémisphère). Pour vous faire une idée concrète de ce à quoi ressemblent les fibres de matière blanche, vous pouvez regarder cette <a class="reference external" href="https://www.youtube.com/watch?v=PazaHElk6wc">vidéo</a> présentant des dissections cérébrales, tirée du <a class="reference external" href="http://www.neuroanatomy.ca/">cours de neuroanatomie fonctionnelle de UBC</a>.</p>
+<p>Pendant ce cours, nous allons aborder :</p>
+<ul class="simple">
+<li><p>Les principes <strong>physiques</strong> et <strong>physiologiques</strong> du signal en IRMd.</p></li>
+<li><p>Le modèle du <strong>tenseur de diffusion</strong>.</p></li>
+<li><p>Les analyses de <strong>tractographie</strong>.</p></li>
+<li><p>Les <strong>tests statistiques</strong> en IRM de diffusion.</p></li>
+</ul>
+</div>
+<div class="section" id="principes-physiques-et-physiologiques">
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="diffusion-de-l-eau">
+<h3>Diffusion de l’eau<a class="headerlink" href="#diffusion-de-l-eau" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="diffusion-water-fig">
+<a class="reference internal image-reference" href="_images/diffusion-water.jpg"><img alt="_images/diffusion-water.jpg" src="_images/diffusion-water.jpg" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Illustration de la diffusion d’une goutte d’encre dans un verre d’eau. Image par <a class="reference external" href="https://www.shutterstock.com/g/NARUDON+ATSAWALARPSAKUN">Narudon Atsawalarpsakun</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-photo/blue-food-coloring-diffuse-water-inside-736860766">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">736860766</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#diffusion-water-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>En IRM de diffusion, nous nous intéressons à la manière dont l’eau diffuse dans le cerveau. En examinant comment l’eau se diffuse, nous pouvons apprendre des informations sur le milieu de diffusion, dans notre cas, le cerveau ! Plus précisément, l’IRMd nous permet d’en apprendre davantage sur les <strong>propriétés de la microstructure</strong> des fibres de matière blanche. Pour un exemple concret de diffusion, nous pouvons imaginer ce qui se passe lorsque nous laissons tomber une goutte d’encre dans un verre d’eau, illustrée en <a class="reference internal" href="#diffusion-water-fig"><span class="std std-numref">Fig. 57</span></a>. L’encre va au cours du temps se diffuser dans l’eau colorant l’eau petit à petit, jusqu’à ce qu’elle devienne colorée de manière homogène. Les molécules d’eau et d’encre entrent en collision dans des directions aléatoires, et suivent un processus de marche aléatoire appelé <a class="reference external" href="https://fr.wikipedia.org/wiki/Mouvement_brownien">mouvement Brownien</a>, voir <a class="reference internal" href="#brownian-fig"><span class="std std-numref">Fig. 58</span></a>.</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Brownian motion</span>
+<span class="sd">code adapted from Scipy Cookbook https://scipy-cookbook.readthedocs.io/items/BrownianMotion.html</span>
+<span class="sd">under an MIT-like license https://github.com/scipy/scipy-cookbook/blob/master/LICENSE.txt</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">brownian</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate an instance of Brownian motion (i.e. the Wiener process):</span>
+
+<span class="sd">        X(t) = X(0) + N(0, delta**2 * t; 0, t)</span>
+
+<span class="sd">    where N(a,b; t0, t1) is a normally distributed random variable with mean a and</span>
+<span class="sd">    variance b.  The parameters t0 and t1 make explicit the statistical</span>
+<span class="sd">    independence of N on different time intervals; that is, if [t0, t1) and</span>
+<span class="sd">    [t2, t3) are disjoint intervals, then N(a, b; t0, t1) and N(a, b; t2, t3)</span>
+<span class="sd">    are independent.</span>
+
+<span class="sd">    Written as an iteration scheme,</span>
+
+<span class="sd">        X(t + dt) = X(t) + N(0, delta**2 * dt; t, t+dt)</span>
+
+
+<span class="sd">    If `x0` is an array (or array-like), each value in `x0` is treated as</span>
+<span class="sd">    an initial condition, and the value returned is a numpy array with one</span>
+<span class="sd">    more dimension than `x0`.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    x0 : float or numpy array (or something that can be converted to a numpy array</span>
+<span class="sd">         using numpy.asarray(x0)).</span>
+<span class="sd">        The initial condition(s) (i.e. position(s)) of the Brownian motion.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        The number of steps to take.</span>
+<span class="sd">    dt : float</span>
+<span class="sd">        The time step.</span>
+<span class="sd">    delta : float</span>
+<span class="sd">        delta determines the &quot;speed&quot; of the Brownian motion.  The random variable</span>
+<span class="sd">        of the position at time t, X(t), has a normal distribution whose mean is</span>
+<span class="sd">        the position at time t=0 and whose variance is delta**2*t.</span>
+<span class="sd">    out : numpy array or None</span>
+<span class="sd">        If `out` is not None, it specifies the array in which to put the</span>
+<span class="sd">        result.  If `out` is None, a new numpy array is created and returned.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A numpy array of floats with shape `x0.shape + (n,)`.</span>
+
+<span class="sd">    Note that the initial value `x0` is not included in the returned array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+    <span class="c1"># For each element of x0, generate a sample of n numbers from a</span>
+    <span class="c1"># normal distribution.</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">x0</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span><span class="p">,))</span>
+        <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,),</span> <span class="n">scale</span><span class="o">=</span><span class="n">delta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+        <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,),</span> <span class="n">scale</span><span class="o">=</span><span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+        <span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,),</span> <span class="n">scale</span><span class="o">=</span><span class="n">delta</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">x0</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span><span class="p">,),</span> <span class="n">scale</span><span class="o">=</span><span class="n">delta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+
+    <span class="c1"># If `out` was not given, create an output array.</span>
+    <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="c1"># This computes the Brownian motion by forming the cumulative sum of</span>
+    <span class="c1"># the random samples.</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="c1"># Add the initial condition.</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="c1"># The Wiener process parameter.</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">]</span>
+<span class="c1"># Total time.</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="c1"># Number of steps.</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="c1"># Time step size</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">T</span><span class="o">/</span><span class="n">N</span>
+<span class="c1"># Initial values of x.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">n_samp</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_samp</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">samp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samp</span><span class="p">):</span>
+    <span class="n">brownian</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:])</span>
+
+    <span class="c1"># Plot the 2D trajectory.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="n">points</span><span class="p">[:,</span> <span class="n">samp</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Mark the start and end points.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">samp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samp</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">samp</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">samp</span><span class="p">],</span><span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># More plot decorations.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;2D Brownian Motion&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X axis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y axis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;brownian-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="brownian-fig" style="width: 500px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_diffusion_1_0.png" src="_images/irm_diffusion_1_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Illustration de mouvement Brownien d’une molécule. Le point de départ est indiqué par un cercle rouge. Les trajectoires de couleurs correspondent à des marches aléatoires simulées suivant un mouvement Brownien. Les points bleus indiquent le point d’arrivée de chaque marche. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.  Le code de simulation de mouvement Brownien est adapté du <a class="reference external" href="https://scipy-cookbook.readthedocs.io/items/BrownianMotion.html">Scipy Cookbook</a> sous une <a class="reference external" href="https://github.com/scipy/scipy-cookbook/blob/master/LICENSE.txt">licence</a> proche de MIT.</span><a class="headerlink" href="#brownian-fig" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="diffusion-isotrope-et-anisotrope">
+<h3>Diffusion isotrope et anisotrope<a class="headerlink" href="#diffusion-isotrope-et-anisotrope" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_speed</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+<span class="c1"># Initial values of x.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">speed</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_speed</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_speed</span><span class="p">),</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">n_samp</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">delta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">speed</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
+    <span class="n">bounds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_samp</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">samp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samp</span><span class="p">):</span>
+        <span class="n">brownian</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="n">points</span><span class="p">[:,</span> <span class="n">samp</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+                       <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+                       <span class="n">ax</span><span class="o">.</span><span class="n">get_zlim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_zlim</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+                    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x speed = </span><span class="si">{</span><span class="n">speed</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;anisotropic-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="anisotropic-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_diffusion_3_0.png" src="_images/irm_diffusion_3_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Diffusion isotrope vs anisotrope. Chaque rond bleu représente le point d’arrivée d’une molécule d’eau selon une simulation de marche aléatoire avec un processus Brownien en 3D. Sur le graphe de gauche, la vitesse de diffusion des molécules d’eau est identique dans toutes les directions. Sur les graphes du milieu et de droite, la vitesse de diffusion est supérieure selon l’axe <code class="docutils literal notranslate"><span class="pre">x</span></code> que selon <code class="docutils literal notranslate"><span class="pre">y</span></code> et <code class="docutils literal notranslate"><span class="pre">z</span></code>. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#anisotropic-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le déplacement des molécules d’eau dans un milieu suit un mouvement Brownien. Si le milieu a des caractéristiques similaires dans toutes les directions, on parle de milieu <strong>isotrope</strong>. Le graphe de gauche de la <a class="reference internal" href="#anisotropic-fig"><span class="std std-numref">Fig. 59</span></a> représente l’ensemble des points d’arrivée de marches aléatoire dans un tel milieu isotrope. On remarque que les molécules se répartissent approximativement dans une sphère. Que se passe-t-il si la diffusion est plus rapide dans une direction donnée, par exemple l’axe <code class="docutils literal notranslate"><span class="pre">x</span></code>? On parle alors de milieu <strong>anisotropie</strong>. Sur le graphe du milieu, on voit que la forme remplie par les molécules s’allongue, et ressemble plus à un ballon de football américain qu’à une sphère (ou, en termes mathématiques, une ellipse). Plus la différence de vitesse de diffusion sur <code class="docutils literal notranslate"><span class="pre">x</span></code> grandit par rapport aux directions <code class="docutils literal notranslate"><span class="pre">y</span></code> et <code class="docutils literal notranslate"><span class="pre">z</span></code>, et plus la forme s’allonge (graphe de droite).</p>
+</div>
+<div class="section" id="diffusion-et-fibres-de-matiere-blanche">
+<h3>Diffusion et fibres de matière blanche<a class="headerlink" href="#diffusion-et-fibres-de-matiere-blanche" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="dissection-fig">
+<a class="reference internal image-reference" href="_images/dissection.png"><img alt="_images/dissection.png" src="_images/dissection.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Dissection cérébrale illustrant l’organisation de la matière blanche cérébrale en faisceaux de fibre. Bas droite: schéma illustrant la diffusion de l’eau, contrainte par les fibres. Le point rouge correspond à l’origine de marches aléatoires, dont les terminaisons sont indiquées par les points bleus. Images de cerveau tirées de <span id="id1">[<a class="reference internal" href="#id31">BFH+20</a>]</span>, sous licence CC-BY 4.0. Le reste de la figure par P Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspiré par la thèse de C. Poupon, 1999.</span><a class="headerlink" href="#dissection-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Les axones des neurones viennent contraindre la diffusion de l’eau, les molécules d’eau ne peuvent donc pas se déplacer librement dans toutes les directions. Le profil de diffusion des molécules d’eau suit alors une forme anisotrope, comme on vient de le voir en <a class="reference internal" href="#anisotropic-fig"><span class="std std-numref">Fig. 59</span></a>. L’eau diffuse plus facilement dans la direction parallèle aux fibres. La diffusion est donc anisotrope et le coefficient de diffusion sera alors plus élevé dans cette direction parallèle, voir <a class="reference internal" href="#dissection-fig"><span class="std std-numref">Fig. 60</span></a>.
+Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configuration des axones. Le phénomène de diffusion dépend de la structure du tissu! C’est le principe physiologique à l’origine des mesures en IRMd.</p>
+</div>
+<div class="section" id="acquisition-irmd">
+<h3>Acquisition IRMd<a class="headerlink" href="#acquisition-irmd" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">dipy.data</span> <span class="kn">import</span> <span class="n">get_fnames</span>
+<span class="kn">from</span> <span class="nn">dipy.io.image</span> <span class="kn">import</span> <span class="n">load_nifti</span><span class="p">,</span> <span class="n">save_nifti</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">hardi_fname</span><span class="p">,</span> <span class="n">hardi_bval_fname</span><span class="p">,</span> <span class="n">hardi_bvec_fname</span> <span class="o">=</span> <span class="n">get_fnames</span><span class="p">(</span><span class="s1">&#39;stanford_hardi&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">affine</span> <span class="o">=</span> <span class="n">load_nifti</span><span class="p">(</span><span class="n">hardi_fname</span><span class="p">)</span>
+
+<span class="n">sli</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="n">list_vol</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>  <span class="c1"># pick out random volumes and gradient directions</span>
+
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xticks&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;yticks&#39;</span><span class="p">:</span> <span class="p">[]})</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">vol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_vol</span><span class="p">):</span>
+    <span class="n">vol_slice</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">sli</span><span class="p">,</span> <span class="n">vol</span><span class="p">]</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">num</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">vol_slice</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+                  <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">num</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;direction </span><span class="si">{</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;diffusion-direction-fig&quot;</span><span class="p">,</span> <span class="n">fig1</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="diffusion-direction-fig" style="width: 600px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_diffusion_5_0.png" src="_images/irm_diffusion_5_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Volumes IRM pondérées en diffusion. Chaque coupe axiale représente un volume T2* pondérée en diffusion pour une direction différente. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Le code est adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/denoise_patch2self/#example-denoise-patch2self">tutorial</a> de la librairie <a class="reference external" href="https://dipy.org/">Dipy</a>, distribuée sous licence <a class="reference external" href="https://github.com/dipy/dipy/blob/master/LICENSE">BSD 3-Clause</a>.</span><a class="headerlink" href="#diffusion-direction-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>En IRM de diffusion, nous allons prendre des images selon plusieurs orientations. Ce sont des images pondérées en T2* que nous acquirons en IRMd. La séquence appliquée rend l’image sensible à la diffusion de l’eau, dans une direction donnée. Pour un voxel donnée, nous allons prendre des mesures dans différentes directions, qui vont nous dire si l’eau a beaucoup diffusée dans cette direction là, un peu comme les points bleus de la <a class="reference internal" href="#dissection-fig"><span class="std std-numref">Fig. 60</span></a>. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, pour une direction que l’on a sélectionné, voir <a class="reference internal" href="#diffusion-direction-fig"><span class="std std-numref">Fig. 61</span></a></p>
+</div>
+</div>
+<div class="section" id="tenseur-de-diffusion">
+<h2>Tenseur de diffusion<a class="headerlink" href="#tenseur-de-diffusion" title="Permalink to this headline">¶</a></h2>
+<p>Nous pouvons imaginer un tenseur comme un ballon. Un tenseur de diffusion tient compte du <strong>modèle Gaussien</strong> de la diffusion de l’eau dans les fibres de matière blanche. Nous pouvons estimer la forme de notre ballon dans chaque voxel selon les différentes valeurs de diffusion obtenues pour chaque direction d’acquistion. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d’acquisition, nous obtiendrons plutôt un ballon de soccer.</p>
+<div class="admonition-tenseur-de-diffusion-sous-forme-mathematique admonition">
+<p class="admonition-title">Tenseur de diffusion sous forme mathématique</p>
+<p>Une diffusion anisotropique possède un coefficient de diffusion qui est présenté sous la forme d’un <a class="reference external" href="https://fr.wikipedia.org/wiki/Tenseur">tenseur</a>:
+┌               ┐
+│Dxx   Dxy   Dxz│
+D = │Dyx   Dyy   Dyz│
+│Dzx   Dzy   Dzz│
+└               ┘
+où x, y et z représente les trois axes perpendiculaires de diffusion.</p>
+</div>
+<p>L’imagerie par tenseurs de diffusion (<em>diffusion tensor imaging</em>, DTI) est l’une des premières techniques d’analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d’au moins six directions d’acquisition: xy, xz, yz, -xy, -xz, y-z. C’est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon).</p>
+<div class="admonition-anisotropie-fractionnelle-fa admonition">
+<p class="admonition-title">Anisotropie fractionnelle (FA)</p>
+<p>L’<a class="reference external" href="https://en.wikipedia.org/wiki/Fractional_anisotropy">anisotropie fractionnelle</a> permet de mesurer le degré d’anisotropie d’un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d’anisotropie fractionnelle de 0 indique une diffusion isotropique (ballon de soccer), alors qu’une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). À noter que l’anisotropie fractionnelle de l’eau est 0, à moins que la diffusion soit contrainte par une structure.</p>
+</div>
+<p>Nous pouvons aussi mesurer la diffusivité moyenne selon l’équation suivante:</p>
+<div class="math notranslate nohighlight">
+\[\overline{\lambda} = \frac{\lambda_{1}+\lambda_{2}+\lambda_{3}}{3}\]</div>
+<p>La diffusivité moyenne nous indique à quel point il y a de la diffusion à l’intérieur d’un voxel. En pratique, la mesure d’anisotropie fractionnelle (FA) est favorisée par rapport à la diffusivité moyenne, puisque la FA nous permet en plus de savoir si la diffusion dans un voxel est principalement dans une direction ou si elle est dans plusieurs directions.</p>
+<div class="section" id="cartes-de-diffusion">
+<h3>Cartes de diffusion<a class="headerlink" href="#cartes-de-diffusion" title="Permalink to this headline">¶</a></h3>
+<p>À partir des cartes de FA (i.e., valeur de FA pour chacun de nos voxels), nous allons pouvoir reconstruire les différents faisceaux de matière blanche. Nous pouvons également calculer des statistiques à partes des cartes de FA.</p>
+<p>Nous pouvons observer que la diffusion varie selon où nous nous situons dans le cerveau. Ces variations peuvent être exprimées selon:</p>
+<ul class="simple">
+<li><p>niveau absolu de diffusion</p></li>
+<li><p>niveau d’anisotropie</p></li>
+<li><p>direction principale d’anisotropie</p></li>
+</ul>
+</div>
+<div class="section" id="modele-lineaire-de-groupe">
+<h3>Modèle linéaire de groupe<a class="headerlink" href="#modele-lineaire-de-groupe" title="Permalink to this headline">¶</a></h3>
+<p>Nous pouvons effectuer un <strong>modèle linéaire de groupe</strong> sur les cartes de FA, similairement à ce que nous avons vu pour l’IRM structurelle et fonctionnelle. Par contre, en IRM de diffusion, nous allons effectuer un recalage au niveau des fibres de matière blanche puisque c’est ce qui nous intéresse, et non au niveau du cerveau en entier. Si nous nous intéressons particulièrement au corps calleux, il est important que cette structure soit alignée à travers les individus pour étudier l’anisotropie fractionnelle dans cette structure.</p>
+</div>
+</div>
+<div class="section" id="tractographie">
+<h2>Tractographie<a class="headerlink" href="#tractographie" title="Permalink to this headline">¶</a></h2>
+<p>La <a class="reference external" href="https://fr.wikipedia.org/wiki/Tractographie">tractographie</a> permet de tracer le chemin des fibres de matière blanche in vivo. Il existe plusieurs approches de tractographie. Nous allons aborder la <strong>tractographie <em>Streamline</em> déterministe</strong> et la <strong>tractographie probabiliste</strong>.</p>
+<div class="section" id="tractographie-streamline-deterministe">
+<h3>Tractographie streamline déterministe<a class="headerlink" href="#tractographie-streamline-deterministe" title="Permalink to this headline">¶</a></h3>
+<p>La tractographie <em>streamline</em> déterministe permet de reconstruire les fibres de matière blanche en partant d’un point donné dans la matière grise et en se déplaçant de manière itérative selon la direction principale de diffusion. Le chemin va se terminer lorsque nous arrivons dans la matière grise. Ce chemin va être tracé grâce à un logiciel.</p>
+<p>Que se passe-t-il s’il existe plusieurs direction à un point donné sur notre tracé ? Dans ce cas, l’algorithme choisira la direction qui est la plus alignée avec le point d’arrêt.</p>
+</div>
+<div class="section" id="tractographie-probabiliste">
+<h3>Tractographie probabiliste<a class="headerlink" href="#tractographie-probabiliste" title="Permalink to this headline">¶</a></h3>
+<p>La tractographie probabilitste est similaire à la tractographie déterministe, mais considère en plus une incertitude sur la direction des fibres de matière blanche.</p>
+<div class="admonition-tractes admonition">
+<p class="admonition-title">Tractes</p>
+<p>À partir des algorithmes de tractographie nous pouvons produire des tractes, c’est-à-dire des courbes en 3D. Ces tractes connectent deux voxels. Nous appelons l’ensemble des tractes <em>tractogramme</em>.</p>
+</div>
+</div>
+<div class="section" id="a-priori-sur-l-organisation-des-fibres">
+<h3>A priori sur l’organisation des fibres<a class="headerlink" href="#a-priori-sur-l-organisation-des-fibres" title="Permalink to this headline">¶</a></h3>
+<p>Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons. Dans une <strong>reconstruction systématique</strong> des fibres, tout va être tracé, alors que dans une <strong>dissection virtuelle</strong>, que certains paquets de fibres vont être tracés.</p>
+</div>
+</div>
+<div class="section" id="croisement-de-fibres">
+<h2>Croisement de fibres<a class="headerlink" href="#croisement-de-fibres" title="Permalink to this headline">¶</a></h2>
+<p>Une limitation que nous rencontrons avec l’imagerie en tenseur de diffusion est le croisement de fibres. Lorsqu’il y a beaucoup de fibres qui se croisent comme dans la figure ci-dessous, les fibres vont s’annuler…</p>
+<p>[Insérer image croisement de fibres]</p>
+<p>Une des technique utilisée pour résoudre ce problème est l’<strong>imagerie de diffusion à haute résolution</strong>, qui nous permet d’estimer les tenseurs. Cette technique consiste à effectuer l’acquisition des données sur encore plus de directions (une trentaine à une soixantainne de directions) en utilisant une <strong>séquence HARDI</strong> (<em>High Angular Resolution Diffusion Imaging</em>). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.</p>
+<p>Avec la séquence HARDI, nous pouvons estimer une fonction de distribution des orientations (<em>Orientation Distribution Function</em>, ODF) de diffusion lorsqu’il y a des croisements de fibres perpendiculaires. Ceci nous permet d’estimer plusieurs tenseurs à l’intérieur d’un voxel et de surpasser certaines limites du tenseur de diffusion (DTI).</p>
+<div class="admonition-fonction-de-distribution-des-orientations-odf-vs-fonction-de-distribution-des-orientation-de-fibres-fodf admonition">
+<p class="admonition-title">Fonction de distribution des orientations (ODF) vs fonction de distribution des orientation de fibres (fODF)</p>
+<p>La fonction de distribution des orientations de diffusion correspond à la probabilité de diffusion de l’eau dans les tissus dans un voxel. La fonction de distribution des orientations des fibres correspond à la probabilité qu’une fibre soit présente pour chaque orientation localement.</p>
+</div>
+<p>[Insérer images ODF]</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>ODF et angle entre les fibres
+L’ODF de diffusion n’est pas complètement robuste aux croisements de fibres. En effet, plus l’angle de croisement entre les fibres est petit, plus l’ODF de diffusion sera limité dans la détection de ces croisements.</p>
+</div>
+<p>Nous pouvons calculer les fODF (<em>fibers ODF</em>) à partir de l’ODF. Les pics fODF peuvent être observés dans les différents tissus grâce à des logiciels. Dans les ventricules nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principal dans le corps calleux, par exemple.</p>
+<div class="section" id="evaluation-sur-un-fantome">
+<h3>Évaluation sur un fantôme<a class="headerlink" href="#evaluation-sur-un-fantome" title="Permalink to this headline">¶</a></h3>
+<p>Nous pouvons évaluer l’adéquation de nos modèles grâce à un fantôme. Nous pouvons schématiser plusieurs cas de configuration de fibres (voir figure XX) pour ensuite regarder comment performe différents algorithmes.</p>
+<p>[Insérer figure avec les différents croisements de fibre et fibres en U]</p>
+<p>Nous pouvons avoir confiance qu’un algorithme qui performe bien sur un fantôme performera également bien sur un vrai cerveau !</p>
+</div>
+</div>
+<div class="section" id="analyses">
+<h2>Analyses<a class="headerlink" href="#analyses" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="etapes-prealables">
+<h3>Étapes préalables<a class="headerlink" href="#etapes-prealables" title="Permalink to this headline">¶</a></h3>
+<p>Quelques étapes sont nécessaires avant d’effectuer le profil de d’anisotropie fractionnelle (FA).</p>
+<ol class="simple">
+<li><p>Reconstruction des fibres</p></li>
+<li><p>Nettoyage des fibres:</p></li>
+<li><p>Extraction des centroïdes</p></li>
+<li><p>Segmentation en différentes régions</p></li>
+</ol>
+<p>[Insérer figure avec les différentes étapes]</p>
+</div>
+<div class="section" id="profil-de-fa">
+<h3>Profil de FA<a class="headerlink" href="#profil-de-fa" title="Permalink to this headline">¶</a></h3>
+<p>Pour avoir des valeurs précises le long des fibres, nous allons calculer les carte de FA, tel que discuté précédemment. En pratique, nous pouvons par exemple comparer les profils de FA entre différentes populations le long de différents faisceaux.</p>
+</div>
+</div>
+<div class="section" id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<p>Maintenant que nous avons vu plusieurs principles de l’IRM de diffusion et différentes approches d’analyse, voyons ses applications possibles.</p>
+<ul class="simple">
+<li><p>Maladies neurodégénératives: nous pouvons étudier l’impact du vieillissement et des démences sur l’intégrité de la matière blanche grâce à l’IRM de diffusion.</p></li>
+<li><p>Développement du cerveau: nous pouvons étudier le développement de la matière blanche dans les différentes régions du cerveau au cours du développement de l’enfant. En effet, la matière blanche se développe à différents rythmes selon les différentes régions du cerveau.</p></li>
+<li><p>Planification de chirurgie: il est important de savoir comment sont organisés les fibres de matière blanche avant une chirurgie, par exemple avant de retirer une tumeur cérébrale pour ne pas endommager les fibres qui ne sont pas touchées par la tumeur.</p></li>
+<li><p>Découvertes anatomiques dans la matière blanche: l’IRM de diffusion nous permet d’obtenir des informations supplémentaires à des études de dissection. En IRM de diffusion, les algorithmes utilisés permettent de découvrir des chemins de matière blanche qui ne seraient potentiellement pas visible à l’oeil.</p></li>
+<li><p>Comprendre les liens entre les structures et les fonctions du cerveau: nous pouvons examiner les liens structurels entre différentes régions qui sont fonctionnellement reliées.</p></li>
+<li><p>Traumatismes crâniens et accidents vasculaires cérébraux: nous qualifions souvent les traumatismes crâniens comme étant une maladie de la matière blanche, puisqu’ils entrainent des altérations de la microstructure de matière blanche. Nous pouvons également observer des altérations de la microstructure suite à des accidents vasculaires cérébraux.</p></li>
+</ul>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Dans ce cours, nous avons vu les principes de l’IRM de diffusion. Plus précisément, nous avons vu:</p>
+<ul class="simple">
+<li><p>Comment obtenir des images en IRMd grâce à la diffusion de l’eau dans différentes directions</p></li>
+<li><p>Comment estimer le processus de diffusion à l’aide de tenseurs et d’en mesurer différentes métriques (diffusivité moyenne, FA)</p></li>
+<li><p>Comment estimer les croisements de fibres</p></li>
+<li><p>Quelques méthodes d’analyse que nous pouvons effectuer en IRMd</p></li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id1">BFH+20</a></span></dt>
+<dd><p>Mudathir Bakhit, Masazumi Fujii, Ryo Hiruta, Masayuki Yamada, Kenichiro Iwami, Taku Sato, and Kiyoshi Saito. The superior frontal longitudinal tract: a connection between the dorsal premotor and the dorsolateral prefrontal cortices. <em>Sci. Rep.</em>, 10(1):15855, September 2020.</p>
+</dd>
+</dl>
+</p>
+</div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Exercice 6.1</p>
+<p>Des données d’IRM de diffusion sont… (vrai/faux, expliquez vos réponses)</p>
+<ol class="simple">
+<li><p>Une image avec un tenseur à chaque voxel.</p></li>
+<li><p>Une image avec un ou plusieurs tenseurs à chaque voxel.</p></li>
+<li><p>Une série d’images sensibles à la diffusion de l’eau dans différentes directions.</p></li>
+<li><p>Des images où l’on voit les fibres de matière blanche du cerveau en 3D.</p></li>
+<li><p>L’équivalent moderne d’une dissection cérébrale, mais non invasif.</p></li>
+</ol>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 6.2</p>
+<p>Est-ce qu’il est possible d’avoir… (si oui, donnez un exemple, si non, expliquez pourquoi):</p>
+<ol class="simple">
+<li><p>Une faible anisotropie fractionnelle, avec une forte diffusivité moyenne?</p></li>
+<li><p>Une faible diffusivité moyenne, avec une forte anisotropie fractionnelle?</p></li>
+<li><p>Une forte anisotropie fractionnelle, avec une forte diffusivité moyenne?</p></li>
+<li><p>Une faible anisotropie fractionnelle, avec une faible diffusivité moyenne?</p></li>
+</ol>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 6.3</p>
+<p>On observe un voxel dont l’anisotropie fractionnelle est basse. Donnez deux interprétations de cette observation.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 6.4</p>
+<p>Citez trois exemples de faisceaux de fibres.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 6.5</p>
+<p>Citez deux exemples de problèmes qui peuvent faire échouer un processus de tractographie “streamline” déterministe.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 6.6</p>
+<p>Quel est l’avantage de réaliser des statistiques du groupe sur un faisceau de fibres, plutôt que voxel par voxel avec un recalage anatomique traditionnel, comme en IRMf?</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -274,11 +841,11 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="regression.html" title="previous page">
+        <a class="left-prev" href="connectivite.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Régression linéaire</p>
+                <p class="prevnext-title">Connectivité fonctionnelle</p>
             </div>
         </a>
     </div>
