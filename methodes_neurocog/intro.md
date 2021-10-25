@@ -93,7 +93,8 @@ Le cours est donné principalement par Dr Pierre Bellec, avec des contributions 
 
 Ces notes de cours sont possibles grâce aux projets suivants:
  * [jupyter book](https://jupyterbook.org) est l'outil utilisé pour générer les notes de cours en utilisant plusieurs formats. Ce projet repose lui-même sur l'outil de documentation [sphynx](https://www.sphinx-doc.org).
- * La librairie [nilearn](https://nilearn.github.io/) en [python](https://www.python.org/) offre tous les outils de visualisation utilisés dans le cours.
+ * La librairie [nilearn](https://nilearn.github.io/) en [python](https://www.python.org/), notamment pour la partie sur l'IRM structurelle, l'IRM fonctionnelle et les modèles statistiques.
+ * La librairie [Dipy](https://dipy.org), notamment pour la partie sur l'IRM de diffusion.
  * Les visualisations d'images cérébrales utilisées dans le cours proviennent en partie de jeux de données publiques.
  * Le logo provient du site <a href="https://www.vecteezy.com/free-vector/brain">Brain Vectors by Vecteezy</a>
  * Certaines images du livre ont été obtenues sous droits illimités pour diffusion web et limités pour impression (500k copies) via [shutterstock](https://www.shutterstock.com) par P. Bellec.
