@@ -272,13 +272,18 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cartes-de-diffusion">
-     Cartes de diffusion
+    <a class="reference internal nav-link" href="#le-modele-du-tenseur">
+     Le modèle du tenseur
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modele-lineaire-de-groupe">
-     Modèle linéaire de groupe
+    <a class="reference internal nav-link" href="#imagerie-par-tenseurs-de-diffusion">
+     Imagerie par tenseurs de diffusion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caracteristiques-des-tenseurs">
+     Caractéristiques des tenseurs
     </a>
    </li>
   </ul>
@@ -318,10 +323,15 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyses">
-   Analyses
+  <a class="reference internal nav-link" href="#analyses-statistique">
+   Analyses statistique
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modele-lineaire-de-groupe">
+     Modèle linéaire de groupe
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#etapes-prealables">
      Étapes préalables
@@ -524,7 +534,7 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">samp</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">samp</span><span class="p">],</span><span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># More plot decorations.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;2D Brownian Motion&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mouvement Brownien 2D&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X axis&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y axis&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
@@ -568,7 +578,7 @@
                        <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
                        <span class="n">ax</span><span class="o">.</span><span class="n">get_zlim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_zlim</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
                     <span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;x speed = </span><span class="si">{</span><span class="n">speed</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;vitesse x = </span><span class="si">{</span><span class="n">speed</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -635,44 +645,155 @@ Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configura
 </div>
 <p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Volumes IRM pondérées en diffusion. Chaque coupe axiale représente un volume T2* pondérée en diffusion pour une direction différente. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Le code est adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/denoise_patch2self/#example-denoise-patch2self">tutorial</a> de la librairie <a class="reference external" href="https://dipy.org/">Dipy</a>, distribuée sous licence <a class="reference external" href="https://github.com/dipy/dipy/blob/master/LICENSE">BSD 3-Clause</a>.</span><a class="headerlink" href="#diffusion-direction-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>En IRM de diffusion, nous allons prendre des images selon plusieurs orientations. Ce sont des images pondérées en T2* que nous acquirons en IRMd. La séquence appliquée rend l’image sensible à la diffusion de l’eau, dans une direction donnée. Pour un voxel donnée, nous allons prendre des mesures dans différentes directions, qui vont nous dire si l’eau a beaucoup diffusée dans cette direction là, un peu comme les points bleus de la <a class="reference internal" href="#dissection-fig"><span class="std std-numref">Fig. 60</span></a>. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, pour une direction que l’on a sélectionné, voir <a class="reference internal" href="#diffusion-direction-fig"><span class="std std-numref">Fig. 61</span></a></p>
+<p>En IRM de diffusion, nous allons prendre des images selon plusieurs orientations. Ce sont des images pondérées en T2* que nous acquirons en IRMd. La séquence appliquée rend l’image sensible à la diffusion de l’eau, dans une direction donnée. Pour un voxel donnée, nous allons prendre des mesures dans différentes directions, qui vont nous dire si l’eau a beaucoup diffusée dans cette direction là, un peu comme les points bleus de la <a class="reference internal" href="#dissection-fig"><span class="std std-numref">Fig. 60</span></a>. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, en moyenne pour une direction que l’on a sélectionné, voir <a class="reference internal" href="#diffusion-direction-fig"><span class="std std-numref">Fig. 61</span></a></p>
 </div>
 </div>
 <div class="section" id="tenseur-de-diffusion">
 <h2>Tenseur de diffusion<a class="headerlink" href="#tenseur-de-diffusion" title="Permalink to this headline">¶</a></h2>
-<p>Nous pouvons imaginer un tenseur comme un ballon. Un tenseur de diffusion tient compte du <strong>modèle Gaussien</strong> de la diffusion de l’eau dans les fibres de matière blanche. Nous pouvons estimer la forme de notre ballon dans chaque voxel selon les différentes valeurs de diffusion obtenues pour chaque direction d’acquistion. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d’acquisition, nous obtiendrons plutôt un ballon de soccer.</p>
-<div class="admonition-tenseur-de-diffusion-sous-forme-mathematique admonition">
-<p class="admonition-title">Tenseur de diffusion sous forme mathématique</p>
-<p>Une diffusion anisotropique possède un coefficient de diffusion qui est présenté sous la forme d’un <a class="reference external" href="https://fr.wikipedia.org/wiki/Tenseur">tenseur</a>:
-┌               ┐
-│Dxx   Dxy   Dxz│
-D = │Dyx   Dyy   Dyz│
-│Dzx   Dzy   Dzz│
-└               ┘
-où x, y et z représente les trois axes perpendiculaires de diffusion.</p>
+<div class="section" id="le-modele-du-tenseur">
+<h3>Le modèle du tenseur<a class="headerlink" href="#le-modele-du-tenseur" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="tensor-schematic-fig">
+<a class="reference internal image-reference" href="_images/tensor-schematic.png"><img alt="_images/tensor-schematic.png" src="_images/tensor-schematic.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">La diffusion des molécules d’eau au cours du temps peut se visualiser comme un nuage de points. À cause des contraintes de l’environnement, notamment les axones, ce nuage prend la forme d’un ballon de rugby (haut, gauche). La forme du nuage peut être approximée avec un modèle de tenseur (bas à gauche). Les paramètres principaux de ce modèle sont les directions principales de diffusion <span class="math notranslate nohighlight">\(e_1\)</span>, <span class="math notranslate nohighlight">\(e_2\)</span>, <span class="math notranslate nohighlight">\(e_3\)</span>, ainsi que les valeurs de diffusion associées à ces directions <span class="math notranslate nohighlight">\(\lambda_1 \geq \lambda_2 \geq \lambda_3\)</span>. Figure par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspirée par M. Descoteaux et C. Poupon,</span><a class="headerlink" href="#tensor-schematic-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>L’imagerie par tenseurs de diffusion (<em>diffusion tensor imaging</em>, DTI) est l’une des premières techniques d’analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d’au moins six directions d’acquisition: xy, xz, yz, -xy, -xz, y-z. C’est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon).</p>
-<div class="admonition-anisotropie-fractionnelle-fa admonition">
-<p class="admonition-title">Anisotropie fractionnelle (FA)</p>
-<p>L’<a class="reference external" href="https://en.wikipedia.org/wiki/Fractional_anisotropy">anisotropie fractionnelle</a> permet de mesurer le degré d’anisotropie d’un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d’anisotropie fractionnelle de 0 indique une diffusion isotropique (ballon de soccer), alors qu’une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). À noter que l’anisotropie fractionnelle de l’eau est 0, à moins que la diffusion soit contrainte par une structure.</p>
+<p>À partir des simulations ci-dessus, il est intuitif d’imaginer la diffusion de l’eau comme un ballon, plus ou moins allongé. Mathématiquement, cela se formule avec un tenseur de diffusion, ou <strong>modèle Gaussien</strong>, voir <a class="reference internal" href="#tensor-schematic-fig"><span class="std std-numref">Fig. 62</span></a>. Pour estimer la forme de notre ballon dans chaque voxel, nous utilisons les différentes valeurs de diffusion obtenues pour chaque direction d’acquistion. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d’acquisition, nous obtiendrons plutôt un ballon de soccer.</p>
 </div>
-<p>Nous pouvons aussi mesurer la diffusivité moyenne selon l’équation suivante:</p>
-<div class="math notranslate nohighlight">
-\[\overline{\lambda} = \frac{\lambda_{1}+\lambda_{2}+\lambda_{3}}{3}\]</div>
-<p>La diffusivité moyenne nous indique à quel point il y a de la diffusion à l’intérieur d’un voxel. En pratique, la mesure d’anisotropie fractionnelle (FA) est favorisée par rapport à la diffusivité moyenne, puisque la FA nous permet en plus de savoir si la diffusion dans un voxel est principalement dans une direction ou si elle est dans plusieurs directions.</p>
-<div class="section" id="cartes-de-diffusion">
-<h3>Cartes de diffusion<a class="headerlink" href="#cartes-de-diffusion" title="Permalink to this headline">¶</a></h3>
-<p>À partir des cartes de FA (i.e., valeur de FA pour chacun de nos voxels), nous allons pouvoir reconstruire les différents faisceaux de matière blanche. Nous pouvons également calculer des statistiques à partes des cartes de FA.</p>
-<p>Nous pouvons observer que la diffusion varie selon où nous nous situons dans le cerveau. Ces variations peuvent être exprimées selon:</p>
-<ul class="simple">
-<li><p>niveau absolu de diffusion</p></li>
-<li><p>niveau d’anisotropie</p></li>
-<li><p>direction principale d’anisotropie</p></li>
-</ul>
+<div class="section" id="imagerie-par-tenseurs-de-diffusion">
+<h3>Imagerie par tenseurs de diffusion<a class="headerlink" href="#imagerie-par-tenseurs-de-diffusion" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import des modules</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">dipy.io.image</span> <span class="kn">import</span> <span class="n">load_nifti</span><span class="p">,</span> <span class="n">save_nifti</span>
+<span class="kn">from</span> <span class="nn">dipy.io.gradients</span> <span class="kn">import</span> <span class="n">read_bvals_bvecs</span>
+<span class="kn">from</span> <span class="nn">dipy.core.gradients</span> <span class="kn">import</span> <span class="n">gradient_table</span>
+<span class="kn">import</span> <span class="nn">dipy.reconst.dti</span> <span class="k">as</span> <span class="nn">dti</span>
+<span class="kn">from</span> <span class="nn">dipy.data</span> <span class="kn">import</span> <span class="n">get_fnames</span>
+
+<span class="c1"># Télécharge des données HARDI</span>
+<span class="n">hardi_fname</span><span class="p">,</span> <span class="n">hardi_bval_fname</span><span class="p">,</span> <span class="n">hardi_bvec_fname</span> <span class="o">=</span> <span class="n">get_fnames</span><span class="p">(</span><span class="s1">&#39;stanford_hardi&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">affine</span> <span class="o">=</span> <span class="n">load_nifti</span><span class="p">(</span><span class="n">hardi_fname</span><span class="p">)</span>
+<span class="n">bvals</span><span class="p">,</span> <span class="n">bvecs</span> <span class="o">=</span> <span class="n">read_bvals_bvecs</span><span class="p">(</span><span class="n">hardi_bval_fname</span><span class="p">,</span> <span class="n">hardi_bvec_fname</span><span class="p">)</span>
+<span class="n">gtab</span> <span class="o">=</span> <span class="n">gradient_table</span><span class="p">(</span><span class="n">bvals</span><span class="p">,</span> <span class="n">bvecs</span><span class="p">)</span>
+
+<span class="c1"># Masque les données et estime les tenseurs</span>
+<span class="kn">from</span> <span class="nn">dipy.segment.mask</span> <span class="kn">import</span> <span class="n">median_otsu</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">28</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">maskdata</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">median_otsu</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">vol_idx</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">median_radius</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                             <span class="n">numpass</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">autocrop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dilate</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tenmodel</span> <span class="o">=</span> <span class="n">dti</span><span class="o">.</span><span class="n">TensorModel</span><span class="p">(</span><span class="n">gtab</span><span class="p">)</span>
+<span class="n">tenfit</span> <span class="o">=</span> <span class="n">tenmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">maskdata</span><span class="p">)</span>
+
+<span class="c1"># Génère métriques dérivées (FA etc)</span>
+<span class="kn">from</span> <span class="nn">dipy.reconst.dti</span> <span class="kn">import</span> <span class="n">fractional_anisotropy</span><span class="p">,</span> <span class="n">color_fa</span>
+<span class="n">FA</span> <span class="o">=</span> <span class="n">fractional_anisotropy</span><span class="p">(</span><span class="n">tenfit</span><span class="o">.</span><span class="n">evals</span><span class="p">)</span>
+<span class="n">FA</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">FA</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">FA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">FA</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">RGB</span> <span class="o">=</span> <span class="n">color_fa</span><span class="p">(</span><span class="n">FA</span><span class="p">,</span> <span class="n">tenfit</span><span class="o">.</span><span class="n">evecs</span><span class="p">)</span>
+<span class="n">MD1</span> <span class="o">=</span> <span class="n">dti</span><span class="o">.</span><span class="n">mean_diffusivity</span><span class="p">(</span><span class="n">tenfit</span><span class="o">.</span><span class="n">evals</span><span class="p">)</span>
+
+<span class="c1"># Figure</span>
+<span class="kn">from</span> <span class="nn">dipy.data</span> <span class="kn">import</span> <span class="n">get_sphere</span>
+<span class="n">sphere</span> <span class="o">=</span> <span class="n">get_sphere</span><span class="p">(</span><span class="s1">&#39;repulsion724&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">window</span><span class="p">,</span> <span class="n">actor</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+<span class="c1"># evals = tenfit.evals</span>
+<span class="c1"># evecs = tenfit.evecs</span>
+<span class="c1"># cfa = RGB</span>
+<span class="c1"># # boost the colors</span>
+<span class="c1"># cfa *= 2</span>
+<span class="c1"># cfa[cfa &gt; 1] = 1</span>
+<span class="c1"># scene.set_camera(</span>
+<span class="c1">#                  position=(-100, 60, 75),</span>
+<span class="c1">#                  focal_point=(0, 0, -75),</span>
+<span class="c1">#                  view_up=(0, 0, 1)</span>
+<span class="c1">#                 )</span>
+<span class="c1"># scene.add(actor.tensor_slicer(evals, evecs, scalar_colors=cfa, sphere=sphere,</span>
+<span class="c1">#                               scale=0.3))</span>
+<span class="c1"># window.record(scene, n_frames=1, out_path=&#39;irm_diffusion/tensor-slice.png&#39;,</span>
+<span class="c1">#               size=(800, 800))</span>
+
+<span class="c1"># Figure zoom</span>
+<span class="c1"># scene.clear()</span>
+<span class="n">evals</span> <span class="o">=</span> <span class="n">tenfit</span><span class="o">.</span><span class="n">evals</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span> <span class="mi">54</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">evecs</span> <span class="o">=</span> <span class="n">tenfit</span><span class="o">.</span><span class="n">evecs</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span> <span class="mi">54</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="c1"># boost the colors</span>
+<span class="n">RGB</span> <span class="o">*=</span> <span class="mi">2</span>
+<span class="n">RGB</span><span class="p">[</span><span class="n">RGB</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">cfa</span> <span class="o">=</span> <span class="n">RGB</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span> <span class="mi">54</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">176.42</span><span class="p">,</span> <span class="mf">118.52</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span>
+                 <span class="n">focal_point</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span>
+                 <span class="n">view_up</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">actor</span><span class="o">.</span><span class="n">tensor_slicer</span><span class="p">(</span><span class="n">evals</span><span class="p">,</span> <span class="n">evecs</span><span class="p">,</span> <span class="n">scalar_colors</span><span class="o">=</span><span class="n">cfa</span><span class="p">,</span> <span class="n">sphere</span><span class="o">=</span><span class="n">sphere</span><span class="p">,</span>
+                              <span class="n">scale</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving illustration as tensor_ellipsoids.png&#39;</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">n_frames</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="s1">&#39;irm_diffusion/tensor-zoom.png&#39;</span><span class="p">,</span>
+              <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+</pre></div>
 </div>
-<div class="section" id="modele-lineaire-de-groupe">
-<h3>Modèle linéaire de groupe<a class="headerlink" href="#modele-lineaire-de-groupe" title="Permalink to this headline">¶</a></h3>
-<p>Nous pouvons effectuer un <strong>modèle linéaire de groupe</strong> sur les cartes de FA, similairement à ce que nous avons vu pour l’IRM structurelle et fonctionnelle. Par contre, en IRM de diffusion, nous allons effectuer un recalage au niveau des fibres de matière blanche puisque c’est ce qui nous intéresse, et non au niveau du cerveau en entier. Si nous nous intéressons particulièrement au corps calleux, il est important que cette structure soit alignée à travers les individus pour étudier l’anisotropie fractionnelle dans cette structure.</p>
+</div>
+</div>
+<div class="figure align-default" id="tensor-zoom-fig">
+<a class="reference internal image-reference" href="_images/tensor-zoom.png"><img alt="_images/tensor-zoom.png" src="_images/tensor-zoom.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Tenseurs de diffusion estimés sur une grille régulière de voxels. Zoom sur une portion de coupe axiale. La couleur de chaque tenseur code pour la direction principale de diffusion, ainsi que l’anisotropie franctionnelle de chaque tenseur. Les tenseurs les plus brillants sont fortement anisotropes, c’est à dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure généré par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_dti/#example-reconst-dti">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#tensor-zoom-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>L’imagerie par tenseurs de diffusion (<em>diffusion tensor imaging</em>, DTI) est l’une des premières techniques d’analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d’au moins six directions d’acquisition: <code class="docutils literal notranslate"><span class="pre">xy</span></code>, <code class="docutils literal notranslate"><span class="pre">xz</span></code>, <code class="docutils literal notranslate"><span class="pre">yz</span></code>, <code class="docutils literal notranslate"><span class="pre">-xy</span></code>, <code class="docutils literal notranslate"><span class="pre">-xz</span></code>, <code class="docutils literal notranslate"><span class="pre">y-z</span></code>. C’est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon). Comme on a ces mesures pour chacun des voxels, on peut créer un volume cérébral où la valeur de chaque voxel est un tenseur (ballon), voir <a class="reference internal" href="#tensor-zoom-fig"><span class="std std-numref">Fig. 63</span></a>.</p>
+</div>
+<div class="section" id="caracteristiques-des-tenseurs">
+<h3>Caractéristiques des tenseurs<a class="headerlink" href="#caracteristiques-des-tenseurs" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">RGB2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">RGB</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">RGB</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">RGB</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">MD</span> <span class="o">=</span> <span class="n">MD1</span>
+<span class="n">MD</span><span class="p">[</span><span class="n">mask</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">RGB2</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">RGB</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">num</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xticks&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;yticks&#39;</span><span class="p">:</span> <span class="p">[]})</span>
+
+<span class="n">fig1</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">FA</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+                  <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;carte de FA&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">MD</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+                  <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;carte de MD&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">RGB2</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;direction principale&#39;</span><span class="p">)</span>
+
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fa-md-rgb-fig&quot;</span><span class="p">,</span> <span class="n">fig1</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="fa-md-rgb-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/irm_diffusion_9_0.png" src="_images/irm_diffusion_9_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Cartes dérivées de tenseurs en IRM de diffusion: anisotropie fractionnelle (gauche), diffusivité moyenne (milieu) et direction principale du tenseur (droite). Pour la direction principale, l’axe médial-latérale (<code class="docutils literal notranslate"><span class="pre">x</span></code>) est codé en rouge, l’axe antérieur-postérieur (<code class="docutils literal notranslate"><span class="pre">y</span></code>) est codée en vert, et l’axe ventral-dorsal (<code class="docutils literal notranslate"><span class="pre">z</span></code>) est codée en bleu. Figure générée à l’aide de code Python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_fwdti/#example-reconst-fwdti">tutoriel Dipy</a> par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fa-md-rgb-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Il est possible de résumer certaines caractéristiques importantes des tenseurs de diffusion à l’aide d’une unique mesure, comme l’anisotropie fractionnelle et la diffusivité moyenne (voir définitions ci dessous). On extrait donc une mesure par voxel, ce qui peut se représenter avec une carte cérébrale, de manière similaire à ce que l’on a vu avec les images pondérées en T1 ou en T2, voir <a class="reference internal" href="#fa-md-rgb-fig"><span class="std std-numref">Fig. 64</span></a>. Il est aussi possible de créer une image en couleurs, qui code pour la direction principale de diffusion.</p>
+<div class="admonition-anisotropie-fractionnelle admonition">
+<p class="admonition-title">Anisotropie fractionnelle</p>
+<p>Une mesure populaire est l’<a class="reference external" href="https://en.wikipedia.org/wiki/Fractional_anisotropy">anisotropie fractionnelle</a> (FA en anglais), qui permet de mesurer le degré d’anisotropie d’un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d’anisotropie fractionnelle de 0 indique une diffusion isotropique (ballon de soccer), alors qu’une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). À noter que l’anisotropie fractionnelle de l’eau est 0, à moins que la diffusion soit contrainte par une structure. Les valeurs fortes de FA se retrouvent généralement dans la matière blanche.</p>
+</div>
+<div class="admonition-diffusivite-moyenne admonition">
+<p class="admonition-title">Diffusivité moyenne</p>
+<p>Nous pouvons aussi mesurer la <strong>diffusivité moyenne</strong> selon l’équation suivante (voir <a class="reference internal" href="#tensor-schematic-fig"><span class="std std-numref">Fig. 62</span></a> pour les notations):
+<span class="math notranslate nohighlight">\(\overline{\lambda} = \frac{\lambda_{1}+\lambda_{2}+\lambda_{3}}{3}\)</span>
+La diffusivité moyenne nous indique à quel point il y a de la diffusion à l’intérieur d’un voxel. La diffusivité moyenne est très forte dans le liquide céphalo-rachidien, où les molécules d’eau sont très peu contraintes.</p>
+</div>
+<div class="admonition-direction-principale-de-diffusion admonition">
+<p class="admonition-title">Direction principale de diffusion</p>
+<p>Afin de visualiser dans quelle direction principale pointe les tenseurs, une approche populaire consiste à coder chaque axe <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> et <code class="docutils literal notranslate"><span class="pre">z</span></code> avec une couleur (rouge, vert, bleu, respectivement). Pour une direction donnée, on mélange les trois couleurs dans une proportion correspondant aux contributions des trois axes.</p>
+</div>
 </div>
 </div>
 <div class="section" id="tractographie">
@@ -720,8 +841,12 @@ L’ODF de diffusion n’est pas complètement robuste aux croisements de fibres
 <p>Nous pouvons avoir confiance qu’un algorithme qui performe bien sur un fantôme performera également bien sur un vrai cerveau !</p>
 </div>
 </div>
-<div class="section" id="analyses">
-<h2>Analyses<a class="headerlink" href="#analyses" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="analyses-statistique">
+<h2>Analyses statistique<a class="headerlink" href="#analyses-statistique" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modele-lineaire-de-groupe">
+<h3>Modèle linéaire de groupe<a class="headerlink" href="#modele-lineaire-de-groupe" title="Permalink to this headline">¶</a></h3>
+<p>Nous pouvons effectuer un <strong>modèle linéaire de groupe</strong> sur les cartes de FA, similairement à ce que nous avons vu pour l’IRM structurelle et fonctionnelle. Par contre, en IRM de diffusion, nous allons effectuer un recalage au niveau des fibres de matière blanche puisque c’est ce qui nous intéresse, et non au niveau du cerveau en entier. Si nous nous intéressons particulièrement au corps calleux, il est important que cette structure soit alignée à travers les individus pour étudier l’anisotropie fractionnelle dans cette structure.</p>
+</div>
 <div class="section" id="etapes-prealables">
 <h3>Étapes préalables<a class="headerlink" href="#etapes-prealables" title="Permalink to this headline">¶</a></h3>
 <p>Quelques étapes sont nécessaires avant d’effectuer le profil de d’anisotropie fractionnelle (FA).</p>
