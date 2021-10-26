@@ -175,7 +175,7 @@ for samp in range(n_samp):
     ax.plot(points[0, samp], points[1, samp],'bo', markersize=12, alpha=0.5)
 
 # More plot decorations.
-plt.title('2D Brownian Motion')
+plt.title('Mouvement Brownien 2D')
 ax.set_xlabel('X axis')
 ax.set_ylabel('Y axis')
 ax.set_xlim([-2.5, 2.5])
@@ -214,7 +214,7 @@ for num, speed in enumerate(list_speed):
                        ax.get_ylim()[1] - ax.get_ylim()[0],
                        ax.get_zlim()[1] - ax.get_zlim()[0]]
                     )
-    ax.set_title(f'x speed = {speed}')
+    ax.set_title(f'vitesse x = {speed}')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
