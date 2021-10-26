@@ -175,7 +175,7 @@ for samp in range(n_samp):
     ax.plot(points[0, samp], points[1, samp],'bo', markersize=12, alpha=0.5)
 
 # More plot decorations.
-plt.title('2D Brownian Motion')
+plt.title('Mouvement Brownien 2D')
 ax.set_xlabel('X axis')
 ax.set_ylabel('Y axis')
 ax.set_xlim([-2.5, 2.5])
@@ -190,6 +190,7 @@ glue("brownian-fig", fig, display=False)
 :name: "brownian-fig"
 Illustration de mouvement Brownien d'une molécule. Le point de départ est indiqué par un cercle rouge. Les trajectoires de couleurs correspondent à des marches aléatoires simulées suivant un mouvement Brownien. Les points bleus indiquent le point d'arrivée de chaque marche. Figure générée à l'aide de code Python par P. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).  Le code de simulation de mouvement Brownien est adapté du [Scipy Cookbook](https://scipy-cookbook.readthedocs.io/items/BrownianMotion.html) sous une [licence](https://github.com/scipy/scipy-cookbook/blob/master/LICENSE.txt) proche de MIT.
 ```
+
 ### Diffusion isotrope et anisotrope
 
 ```{code-cell} ipython 3
@@ -214,7 +215,7 @@ for num, speed in enumerate(list_speed):
                        ax.get_ylim()[1] - ax.get_ylim()[0],
                        ax.get_zlim()[1] - ax.get_zlim()[0]]
                     )
-    ax.set_title(f'x speed = {speed}')
+    ax.set_title(f'vitesse x = {speed}')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
@@ -276,50 +277,155 @@ glue("diffusion-direction-fig", fig1, display=False)
 :name: "diffusion-direction-fig"
 Volumes IRM pondérées en diffusion. Chaque coupe axiale représente un volume T2* pondérée en diffusion pour une direction différente. Figure générée à l'aide de code Python par P. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Le code est adapté d'un [tutorial](https://dipy.org/documentation/1.4.1./examples_built/denoise_patch2self/#example-denoise-patch2self) de la librairie [Dipy](https://dipy.org/), distribuée sous licence [BSD 3-Clause](https://github.com/dipy/dipy/blob/master/LICENSE).
 ```
-En IRM de diffusion, nous allons prendre des images selon plusieurs orientations. Ce sont des images pondérées en T2* que nous acquirons en IRMd. La séquence appliquée rend l'image sensible à la diffusion de l'eau, dans une direction donnée. Pour un voxel donnée, nous allons prendre des mesures dans différentes directions, qui vont nous dire si l'eau a beaucoup diffusée dans cette direction là, un peu comme les points bleus de la {numref}`dissection-fig`. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, pour une direction que l'on a sélectionné, voir {numref}`diffusion-direction-fig`
+En IRM de diffusion, nous allons prendre des images selon plusieurs orientations. Ce sont des images pondérées en T2* que nous acquirons en IRMd. La séquence appliquée rend l'image sensible à la diffusion de l'eau, dans une direction donnée. Pour un voxel donnée, nous allons prendre des mesures dans différentes directions, qui vont nous dire si l'eau a beaucoup diffusée dans cette direction là, un peu comme les points bleus de la {numref}`dissection-fig`. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, en moyenne pour une direction que l'on a sélectionné, voir {numref}`diffusion-direction-fig`
 
 ## Tenseur de diffusion
 
-Nous pouvons imaginer un tenseur comme un ballon. Un tenseur de diffusion tient compte du **modèle Gaussien** de la diffusion de l'eau dans les fibres de matière blanche. Nous pouvons estimer la forme de notre ballon dans chaque voxel selon les différentes valeurs de diffusion obtenues pour chaque direction d'acquistion. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d'acquisition, nous obtiendrons plutôt un ballon de soccer.
+### Le modèle du tenseur
 
-```{admonition} Tenseur de diffusion sous forme mathématique
-Une diffusion anisotropique possède un coefficient de diffusion qui est présenté sous la forme d'un [tenseur](https://fr.wikipedia.org/wiki/Tenseur):
-    ┌               ┐
-    │Dxx   Dxy   Dxz│
-D = │Dyx   Dyy   Dyz│
-    │Dzx   Dzy   Dzz│
-    └               ┘
-où x, y et z représente les trois axes perpendiculaires de diffusion.
+```{figure} irm_diffusion/tensor-schematic.png
+---
+width: 600px
+name: tensor-schematic-fig
+---
+La diffusion des molécules d'eau au cours du temps peut se visualiser comme un nuage de points. À cause des contraintes de l'environnement, notamment les axones, ce nuage prend la forme d'un ballon de rugby (haut, gauche). La forme du nuage peut être approximée avec un modèle de tenseur (bas à gauche). Les paramètres principaux de ce modèle sont les directions principales de diffusion $e_1$, $e_2$, $e_3$, ainsi que les valeurs de diffusion associées à ces directions $\lambda_1 \geq \lambda_2 \geq \lambda_3$. Figure par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), inspirée par M. Descoteaux et C. Poupon,
 ```
 
-```{admonition} Modèle Gaussien de diffusion de l'eau
+À partir des simulations ci-dessus, il est intuitif d'imaginer la diffusion de l'eau comme un ballon, plus ou moins allongé. Mathématiquement, cela se formule avec un tenseur de diffusion, ou **modèle Gaussien**, voir {numref}`tensor-schematic-fig`. Pour estimer la forme de notre ballon dans chaque voxel, nous utilisons les différentes valeurs de diffusion obtenues pour chaque direction d'acquistion. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d'acquisition, nous obtiendrons plutôt un ballon de soccer.
 
+### Imagerie par tenseurs de diffusion
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+# Import des modules
+import numpy as np
+from dipy.io.image import load_nifti, save_nifti
+from dipy.io.gradients import read_bvals_bvecs
+from dipy.core.gradients import gradient_table
+import dipy.reconst.dti as dti
+from dipy.data import get_fnames
+
+# Télécharge des données HARDI
+hardi_fname, hardi_bval_fname, hardi_bvec_fname = get_fnames('stanford_hardi')
+data, affine = load_nifti(hardi_fname)
+bvals, bvecs = read_bvals_bvecs(hardi_bval_fname, hardi_bvec_fname)
+gtab = gradient_table(bvals, bvecs)
+
+# Masque les données et estime les tenseurs
+from dipy.segment.mask import median_otsu
+data = data[:, :, 28:29, :]
+maskdata, mask = median_otsu(data, vol_idx=range(10, 50), median_radius=3,
+                             numpass=1, autocrop=True, dilate=2)
+tenmodel = dti.TensorModel(gtab)
+tenfit = tenmodel.fit(maskdata)
+
+# Génère métriques dérivées (FA etc)
+from dipy.reconst.dti import fractional_anisotropy, color_fa
+FA = fractional_anisotropy(tenfit.evals)
+FA[np.isnan(FA)] = 0
+FA = np.clip(FA, 0, 1)
+RGB = color_fa(FA, tenfit.evecs)
+MD1 = dti.mean_diffusivity(tenfit.evals)
+
+# Figure
+from dipy.data import get_sphere
+sphere = get_sphere('repulsion724')
+from dipy.viz import window, actor
+scene = window.Scene()
+# evals = tenfit.evals
+# evecs = tenfit.evecs
+# cfa = RGB
+# # boost the colors
+# cfa *= 2
+# cfa[cfa > 1] = 1
+# scene.set_camera(
+#                  position=(-100, 60, 75),
+#                  focal_point=(0, 0, -75),
+#                  view_up=(0, 0, 1)
+#                 )
+# scene.add(actor.tensor_slicer(evals, evecs, scalar_colors=cfa, sphere=sphere,
+#                               scale=0.3))
+# window.record(scene, n_frames=1, out_path='irm_diffusion/tensor-slice.png',
+#               size=(800, 800))
+
+# Figure zoom
+# scene.clear()
+evals = tenfit.evals[16:26, 54:64, :]
+evecs = tenfit.evecs[16:26, 54:64, :]
+
+# boost the colors
+RGB *= 2
+RGB[RGB>1] = 1
+cfa = RGB[16:26, 54:64, :]
+scene.set_camera(position=(-176.42, 118.52, 150),
+                 focal_point=(0, 0, 75),
+                 view_up=(0, 0, 1))
+scene.add(actor.tensor_slicer(evals, evecs, scalar_colors=cfa, sphere=sphere,
+                              scale=0.3))
+
+print('Saving illustration as tensor_ellipsoids.png')
+window.record(scene, n_frames=1, out_path='irm_diffusion/tensor-zoom.png',
+              size=(600, 600))
 ```
 
-L'imagerie par tenseurs de diffusion (*diffusion tensor imaging*, DTI) est l'une des premières techniques d'analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d'au moins six directions d'acquisition: xy, xz, yz, -xy, -xz, y-z. C'est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon).
-
-```{admonition} Anisotropie fractionnelle (FA)
-L'[anisotropie fractionnelle](https://en.wikipedia.org/wiki/Fractional_anisotropy) permet de mesurer le degré d'anisotropie d'un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d'anisotropie fractionnelle de 0 indique une diffusion isotropique (ballon de soccer), alors qu'une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). À noter que l'anisotropie fractionnelle de l'eau est 0, à moins que la diffusion soit contrainte par une structure.
+```{figure} irm_diffusion/tensor-zoom.png
+---
+width: 600px
+name: tensor-zoom-fig
+---
+Tenseurs de diffusion estimés sur une grille régulière de voxels. Zoom sur une portion de coupe axiale. La couleur de chaque tenseur code pour la direction principale de diffusion, ainsi que l'anisotropie franctionnelle de chaque tenseur. Les tenseurs les plus brillants sont fortement anisotropes, c'est à dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure généré par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_dti/#example-reconst-dti) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-Nous pouvons aussi mesurer la diffusivité moyenne selon l'équation suivante:
+L'imagerie par tenseurs de diffusion (*diffusion tensor imaging*, DTI) est l'une des premières techniques d'analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d'au moins six directions d'acquisition: `xy`, `xz`, `yz`, `-xy`, `-xz`, `y-z`. C'est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon). Comme on a ces mesures pour chacun des voxels, on peut créer un volume cérébral où la valeur de chaque voxel est un tenseur (ballon), voir {numref}`tensor-zoom-fig`.
 
-$$\overline{\lambda} = \frac{\lambda_{1}+\lambda_{2}+\lambda_{3}}{3}$$
+### Caractéristiques des tenseurs
 
-La diffusivité moyenne nous indique à quel point il y a de la diffusion à l'intérieur d'un voxel. En pratique, la mesure d'anisotropie fractionnelle (FA) est favorisée par rapport à la diffusivité moyenne, puisque la FA nous permet en plus de savoir si la diffusion dans un voxel est principalement dans une direction ou si elle est dans plusieurs directions.
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+import matplotlib.pyplot as plt
+RGB2 = np.empty([RGB.shape[1], RGB.shape[0], RGB.shape[3]])
+MD = MD1
+MD[mask==0] = 0
 
-### Cartes de diffusion
+for num in range(3):
+    RGB2[:, :, num] = np.squeeze(RGB[:, :, :, num]).T
 
-À partir des cartes de FA (i.e., valeur de FA pour chacun de nos voxels), nous allons pouvoir reconstruire les différents faisceaux de matière blanche. Nous pouvons également calculer des statistiques à partes des cartes de FA.
+fig1, ax = plt.subplots(1, 3, figsize=(12, 6),
+                        subplot_kw={'xticks': [], 'yticks': []})
 
-Nous pouvons observer que la diffusion varie selon où nous nous situons dans le cerveau. Ces variations peuvent être exprimées selon:
-- niveau absolu de diffusion
-- niveau d'anisotropie
-- direction principale d'anisotropie
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+ax.flat[0].imshow(np.squeeze(FA).T, origin='lower',
+                  cmap='gray', vmin=0, vmax=1)
+ax.flat[0].set_title('carte de FA')
+ax.flat[1].imshow(np.squeeze(MD).T, origin='lower',
+                  cmap='gray')
+ax.flat[1].set_title('carte de MD')
+ax.flat[2].imshow(RGB2, origin='lower')
+ax.flat[2].set_title('direction principale')
 
-### Modèle linéaire de groupe
+# Glue the figure
+from myst_nb import glue
+glue("fa-md-rgb-fig", fig1, display=False)
+```
+```{glue:figure} fa-md-rgb-fig
+:figwidth: 800px
+:name: "fa-md-rgb-fig"
+ Cartes dérivées de tenseurs en IRM de diffusion: anisotropie fractionnelle (gauche), diffusivité moyenne (milieu) et direction principale du tenseur (droite). Pour la direction principale, l'axe médial-latérale (`x`) est codé en rouge, l'axe antérieur-postérieur (`y`) est codée en vert, et l'axe ventral-dorsal (`z`) est codée en bleu. Figure générée à l'aide de code Python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_fwdti/#example-reconst-fwdti) par P. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Il est possible de résumer certaines caractéristiques importantes des tenseurs de diffusion à l'aide d'une unique mesure, comme l'anisotropie fractionnelle et la diffusivité moyenne (voir définitions ci dessous). On extrait donc une mesure par voxel, ce qui peut se représenter avec une carte cérébrale, de manière similaire à ce que l'on a vu avec les images pondérées en T1 ou en T2, voir {numref}`fa-md-rgb-fig`. Il est aussi possible de créer une image en couleurs, qui code pour la direction principale de diffusion.
 
-Nous pouvons effectuer un **modèle linéaire de groupe** sur les cartes de FA, similairement à ce que nous avons vu pour l'IRM structurelle et fonctionnelle. Par contre, en IRM de diffusion, nous allons effectuer un recalage au niveau des fibres de matière blanche puisque c'est ce qui nous intéresse, et non au niveau du cerveau en entier. Si nous nous intéressons particulièrement au corps calleux, il est important que cette structure soit alignée à travers les individus pour étudier l'anisotropie fractionnelle dans cette structure.
+```{admonition} Anisotropie fractionnelle
+Une mesure populaire est l'[anisotropie fractionnelle](https://en.wikipedia.org/wiki/Fractional_anisotropy) (FA en anglais), qui permet de mesurer le degré d'anisotropie d'un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d'anisotropie fractionnelle de 0 indique une diffusion isotropique (ballon de soccer), alors qu'une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). À noter que l'anisotropie fractionnelle de l'eau est 0, à moins que la diffusion soit contrainte par une structure. Les valeurs fortes de FA se retrouvent généralement dans la matière blanche.
+```
+```{admonition} Diffusivité moyenne
+Nous pouvons aussi mesurer la **diffusivité moyenne** selon l'équation suivante (voir {numref}`tensor-schematic-fig` pour les notations):
+$\overline{\lambda} = \frac{\lambda_{1}+\lambda_{2}+\lambda_{3}}{3}$
+La diffusivité moyenne nous indique à quel point il y a de la diffusion à l'intérieur d'un voxel. La diffusivité moyenne est très forte dans le liquide céphalo-rachidien, où les molécules d'eau sont très peu contraintes.
+```
+
+```{admonition} Direction principale de diffusion
+Afin de visualiser dans quelle direction principale pointe les tenseurs, une approche populaire consiste à coder chaque axe `x`, `y` et `z` avec une couleur (rouge, vert, bleu, respectivement). Pour une direction donnée, on mélange les trois couleurs dans une proportion correspondant aux contributions des trois axes.
+```
 
 ## Tractographie
 
@@ -373,7 +479,11 @@ Nous pouvons évaluer l'adéquation de nos modèles grâce à un fantôme. Nous 
 
 Nous pouvons avoir confiance qu'un algorithme qui performe bien sur un fantôme performera également bien sur un vrai cerveau !
 
-## Analyses
+## Analyses statistique
+### Modèle linéaire de groupe
+
+Nous pouvons effectuer un **modèle linéaire de groupe** sur les cartes de FA, similairement à ce que nous avons vu pour l'IRM structurelle et fonctionnelle. Par contre, en IRM de diffusion, nous allons effectuer un recalage au niveau des fibres de matière blanche puisque c'est ce qui nous intéresse, et non au niveau du cerveau en entier. Si nous nous intéressons particulièrement au corps calleux, il est important que cette structure soit alignée à travers les individus pour étudier l'anisotropie fractionnelle dans cette structure.
+
 
 ### Étapes préalables
 
