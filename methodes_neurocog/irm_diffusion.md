@@ -533,7 +533,7 @@ Dans ce cours, nous avons vu les principes de l'IRM de diffusion. Plus précisé
 
 ```{admonition} Exercice 6.1
 :class: note
-Des données d’IRM de diffusion sont… (vrai/faux, expliquez vos réponses)
+Des données d’IRM de diffusion sont... (vrai/faux, expliquez vos réponses)
  1. Une image avec un tenseur à chaque voxel.
  2. Une image avec un ou plusieurs tenseurs à chaque voxel.
  3. Une série d’images sensibles à la diffusion de l’eau dans différentes directions.
@@ -568,4 +568,19 @@ Citez deux exemples de problèmes qui peuvent faire échouer un processus de tra
 ```{admonition} Exercice 6.6
 :class: note
 Quel est l’avantage de réaliser des statistiques du groupe sur un faisceau de fibres, plutôt que voxel par voxel avec un recalage anatomique traditionnel, comme en IRMf?
+```
+
+```{admonition} Exercice 6.7
+:class: note
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Quantification of apparent axon density and orientation dispersion in the white matter of youth born with congenital heart disease* de Easson et collaborateurs (publié en 2020 dans la revue *Neuroimage*, volume 205, ID 116255).
+Celui-ci est disponible en libre accès à cette [adresse](https://doi.org/10.1016/j.neuroimage.2019.116255).
+Les questions suivantes requièrent des réponses à développement court.
+ - Quel type de participants a été recruté dans cette étude?
+ - Quel est l'objectif principal de l'étude?
+ - Quels sont les critères d'inclusion et d'exclusion?
+ - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
+ - Quelle type de séquence d'acquisition d'image est utilisé? Listez les paramètres.
+ - Quelles types d'analyses ont été appliqués?
+ - Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
+ - Quel est le résultat principal de l'étude?
 ```
