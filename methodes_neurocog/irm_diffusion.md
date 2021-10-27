@@ -37,10 +37,6 @@ kernelspec:
   </tr>
 </table>
 
-```{warning}
-Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
-```
-
 ## Objectifs du cours
 
 Ce cours a pour but de vous initier aux principes de l'imagerie par résonance magnétique de diffusion (IRMd). L'IRMd est une modalité de neuroimagerie qui nous permet d'étudier les **fibres de matière blanche**. Nous allons donc pouvoir examiner les connexions entre différentes régions, autant interhémisphériques (i.e., fibres de matière blanche voyageant d'un hémisphère à l'autre), qu'intrahémisphériques (i.e., fibres de matière blanche voyageant au sein d'un même hémisphère). Pour vous faire une idée concrète de ce à quoi ressemblent les fibres de matière blanche, vous pouvez regarder cette [vidéo](https://www.youtube.com/watch?v=PazaHElk6wc) présentant des dissections cérébrales, tirée du [cours de neuroanatomie fonctionnelle de UBC](http://www.neuroanatomy.ca/).
@@ -50,7 +46,6 @@ Pendant ce cours, nous allons aborder :
    - Les principes **physiques** et **physiologiques** du signal en IRMd.
    - Le modèle du **tenseur de diffusion**.
    - Les analyses de **tractographie**.
-   - Les **tests statistiques** en IRM de diffusion.   
 
 ## Principes physiques et physiologiques
 
@@ -296,7 +291,6 @@ La diffusion des molécules d'eau au cours du temps peut se visualiser comme un 
 ### Imagerie par tenseurs de diffusion
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
-
 # Import des modules
 import numpy as np
 from dipy.io.image import load_nifti, save_nifti
@@ -305,15 +299,26 @@ from dipy.core.gradients import gradient_table
 import dipy.reconst.dti as dti
 from dipy.data import get_fnames
 
+# Select patch
+minx = 1
+maxx = 81
+miny = 1
+maxy = 106
+minz = 28
+maxz = 32
+
 # Télécharge des données HARDI
 hardi_fname, hardi_bval_fname, hardi_bvec_fname = get_fnames('stanford_hardi')
 data, affine = load_nifti(hardi_fname)
 bvals, bvecs = read_bvals_bvecs(hardi_bval_fname, hardi_bvec_fname)
 gtab = gradient_table(bvals, bvecs)
 
+# Force affine to something simple to make it easier to extract patches
+affine = np.eye(4)
+
 # Masque les données et estime les tenseurs
 from dipy.segment.mask import median_otsu
-data = data[:, :, 28:29, :]
+data = data[:, :, minz:maxz, :]
 maskdata, mask = median_otsu(data, vol_idx=range(10, 50), median_radius=3,
                              numpass=1, autocrop=True, dilate=2)
 tenmodel = dti.TensorModel(gtab)
@@ -332,51 +337,51 @@ from dipy.data import get_sphere
 sphere = get_sphere('repulsion724')
 from dipy.viz import window, actor
 scene = window.Scene()
-# evals = tenfit.evals
-# evecs = tenfit.evecs
-# cfa = RGB
-# # boost the colors
-# cfa *= 2
-# cfa[cfa > 1] = 1
-# scene.set_camera(
-#                  position=(-100, 60, 75),
-#                  focal_point=(0, 0, -75),
-#                  view_up=(0, 0, 1)
-#                 )
-# scene.add(actor.tensor_slicer(evals, evecs, scalar_colors=cfa, sphere=sphere,
-#                               scale=0.3))
-# window.record(scene, n_frames=1, out_path='irm_diffusion/tensor-slice.png',
-#               size=(800, 800))
-
-# Figure zoom
-# scene.clear()
-evals = tenfit.evals[16:26, 54:64, :]
-evecs = tenfit.evecs[16:26, 54:64, :]
+evals = tenfit.evals[minx:maxx, miny:maxy, :]
+evecs = tenfit.evecs[minx:maxx, miny:maxy, :]
 
 # boost the colors
 RGB *= 2
 RGB[RGB>1] = 1
-cfa = RGB[16:26, 54:64, :]
-scene.set_camera(position=(-176.42, 118.52, 150),
-                 focal_point=(0, 0, 75),
-                 view_up=(0, 0, 1))
+cfa = RGB[minx:maxx, miny:maxy, :]
 scene.add(actor.tensor_slicer(evals, evecs, scalar_colors=cfa, sphere=sphere,
                               scale=0.3))
+scene.set_camera(position=(14.87946710578175, 25.770232149765413, 173.54578028650144),
+                 focal_point=(33.43851200470716, 40.67356830562871, 15.545914873824975),
+                 view_up=(0.003256400517440014, 0.9955397521536979, 0.09428678453221151))
+window.record(scene, n_frames=1, out_path='tensor-slice.png',
+              size=(1000, 1000), reset_camera=False)
+scene.set_camera(position=(6.398539759431944, 36.122368120824724, 21.074961978614017),
+                 focal_point=(17.02336666201742, 55.39317316617157, 7.230217513090364),
+                 view_up=(0.10205867972271891, 0.5426923506538308, 0.8337080055001721))
+window.record(scene, n_frames=1, out_path='tensor-zoom.png',
+              size=(600, 600), reset_camera=False)             
 
-print('Saving illustration as tensor_ellipsoids.png')
-window.record(scene, n_frames=1, out_path='irm_diffusion/tensor-zoom.png',
-              size=(600, 600))
+# Make figure
+from matplotlib import pyplot as plt
+import imageio
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
+                        subplot_kw={'xticks': [], 'yticks': []})
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+im = imageio.imread('tensor-slice.png')
+ax.flat[0].imshow(im, interpolation='antialiased')
+ax.flat[0].set_title('full slice')
+im = imageio.imread('tensor-zoom.png')
+ax.flat[1].imshow(im, interpolation='none')
+ax.flat[1].set_title('zoom')
+
+# Glue the figure
+from myst_nb import glue
+glue("tensor-fig", fig1, display=False)
 ```
 
-```{figure} irm_diffusion/tensor-zoom.png
----
-width: 600px
-name: tensor-zoom-fig
----
-Tenseurs de diffusion estimés sur une grille régulière de voxels. Zoom sur une portion de coupe axiale. La couleur de chaque tenseur code pour la direction principale de diffusion, ainsi que l'anisotropie fractionnelle de chaque tenseur. Les tenseurs les plus brillants sont fortement anisotropes, c'est-à-dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_dti/#example-reconst-dti) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```{glue:figure} tensor-fig
+:figwidth: 800px
+:name: "tensor-fig"
+Tenseurs de diffusion estimés sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque tenseur code pour la direction principale de diffusion, ainsi que l'anisotropie fractionnelle de chaque tenseur. Les tenseurs les plus brillants sont fortement anisotropes, c'est-à-dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_dti/#example-reconst-dti) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-L'imagerie par tenseurs de diffusion (*diffusion tensor imaging*, DTI) est l'une des premières techniques d'analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d'au moins six directions d'acquisition: `xy`, `xz`, `yz`, `-xy`, `-xz`, `y-z`. C'est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon). Comme nous avons ces mesures pour chacun des voxels, nous pouvons créer un volume cérébral où la valeur de chaque voxel est un tenseur (ballon), voir {numref}`tensor-zoom-fig`.
+L'imagerie par tenseurs de diffusion (*diffusion tensor imaging*, DTI) est l'une des premières techniques d'analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d'au moins six directions d'acquisition: `xy`, `xz`, `yz`, `-xy`, `-xz`, `y-z`. C'est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon). Comme nous avons ces mesures pour chacun des voxels, nous pouvons créer un volume cérébral où la valeur de chaque voxel est un tenseur (ballon), voir {numref}`tensor-fig`.
 
 ### Caractéristiques des tenseurs
 
@@ -388,16 +393,16 @@ MD = MD1
 MD[mask==0] = 0
 
 for num in range(3):
-    RGB2[:, :, num] = np.squeeze(RGB[:, :, :, num]).T
+    RGB2[:, :, num] = np.squeeze(RGB[:, :, 0, num]).T
 
 fig1, ax = plt.subplots(1, 3, figsize=(12, 6),
                         subplot_kw={'xticks': [], 'yticks': []})
 
 fig1.subplots_adjust(hspace=0.3, wspace=0.05)
-ax.flat[0].imshow(np.squeeze(FA).T, origin='lower',
+ax.flat[0].imshow(np.squeeze(FA[:, :, 0]).T, origin='lower',
                   cmap='gray', vmin=0, vmax=1)
 ax.flat[0].set_title('carte de FA')
-ax.flat[1].imshow(np.squeeze(MD).T, origin='lower',
+ax.flat[1].imshow(np.squeeze(MD[:, :, 0]).T, origin='lower',
                   cmap='gray')
 ax.flat[1].set_title('carte de MD')
 ax.flat[2].imshow(RGB2, origin='lower')
@@ -429,100 +434,254 @@ Afin de visualiser dans quelle direction principale pointe les tenseurs, une app
 
 ## Tractographie
 
-La [tractographie](https://fr.wikipedia.org/wiki/Tractographie) permet de tracer le chemin des fibres de matière blanche in vivo. Il existe plusieurs approches de tractographie. Nous allons aborder la **tractographie *Streamline* déterministe** et la **tractographie probabiliste**.
+### Tractographie streamline
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+from matplotlib import pyplot as plt
+MD = MD1
+MD[mask==0] = 0
+threshold_fa = 0.3
+mask_wm = FA > threshold_fa
 
-### Tractographie streamline déterministe
 
-La tractographie *streamline* déterministe permet de reconstruire les fibres de matière blanche en partant d'un point donné dans la matière grise et en se déplaçant de manière itérative selon la direction principale de diffusion. Le chemin va se terminer lorsque nous arrivons dans la matière grise. Ce chemin va être tracé grâce à un logiciel.
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6),
+                        subplot_kw={'xticks': [], 'yticks': []})
 
-Que se passe-t-il s'il existe plusieurs direction à un point donné sur notre tracé ? Dans ce cas, l'algorithme choisira la direction qui est la plus alignée avec le point d'arrêt.
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+ax.flat[0].imshow(np.squeeze(FA[:, :, 0]).T, origin='lower',
+                  cmap='gray', vmin=0, vmax=1)
+ax.flat[0].set_title('carte d\'anisotropie fractionnelle')
+ax.flat[1].imshow(np.squeeze(mask_wm[:, :, 0]).T, origin='lower',
+                  cmap='gray')
+ax.flat[1].set_title('masque de la matière blanche')
 
-### Tractographie probabiliste
-
-La tractographie probabilitste est similaire à la tractographie déterministe, mais considère en plus une incertitude sur la direction des fibres de matière blanche.
-
-```{admonition} Tractes
-À partir des algorithmes de tractographie nous pouvons produire des tractes, c'est-à-dire des courbes en 3D. Ces tractes connectent deux voxels. Nous appelons l'ensemble des tractes *tractogramme*.
+# Glue the figure
+from myst_nb import glue
+glue("mask-wm-fig", fig1, display=False)
 ```
 
-### A priori sur l'organisation des fibres
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+from dipy.tracking import utils
 
-Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons. Dans une **reconstruction systématique** des fibres, tout va être tracé, alors que dans une **dissection virtuelle**, que certains paquets de fibres vont être tracés.
+seeds = utils.seeds_from_mask(mask_wm[minx:maxx, miny:maxy, :], affine, density=[1, 1, 1])
 
-## Croisement de fibres
+from dipy.tracking.stopping_criterion import ThresholdStoppingCriterion
 
-Une limitation que nous rencontrons avec l'imagerie en tenseur de diffusion est le croisement de fibres. Lorsqu'il y a beaucoup de fibres qui se croisent comme dans la figure ci-dessous, les fibres vont s'annuler...
+stopping_criterion = ThresholdStoppingCriterion(FA, 0.1)
 
-[Insérer image croisement de fibres]
+from dipy.direction import peaks_from_model
+csa_peaks = peaks_from_model(tenmodel, maskdata[minx:maxx, miny:maxy, :, :], sphere,
+                             relative_peak_threshold=.8,
+                             min_separation_angle=45,
+                             mask=mask_wm[minx:maxx, miny:maxy, :])
 
-Une des technique utilisée pour résoudre ce problème est l'**imagerie de diffusion à haute résolution**, qui nous permet d'estimer les tenseurs. Cette technique consiste à effectuer l'acquisition des données sur encore plus de directions (une trentaine à une soixantainne de directions) en utilisant une **séquence HARDI** (*High Angular Resolution Diffusion Imaging*). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.
+from dipy.tracking.local_tracking import LocalTracking
+from dipy.tracking.streamline import Streamlines
 
-Avec la séquence HARDI, nous pouvons estimer une fonction de distribution des orientations (*Orientation Distribution Function*, ODF) de diffusion lorsqu'il y a des croisements de fibres perpendiculaires. Ceci nous permet d'estimer plusieurs tenseurs à l'intérieur d'un voxel et de surpasser certaines limites du tenseur de diffusion (DTI).
+# Initialization of LocalTracking. The computation happens in the next step.
+streamlines_generator = LocalTracking(csa_peaks, stopping_criterion, seeds,
+                                      affine=affine, step_size=0.2, max_cross=2)
+# Generate streamlines object
+streamlines = Streamlines(streamlines_generator)
 
-```{admonition} Fonction de distribution des orientations (ODF) vs fonction de distribution des orientation de fibres (fODF)
-La fonction de distribution des orientations de diffusion correspond à la probabilité de diffusion de l'eau dans les tissus dans un voxel. La fonction de distribution des orientations des fibres correspond à la probabilité qu'une fibre soit présente pour chaque orientation localement.
+from dipy.viz import colormap
+color = colormap.line_colors(streamlines)
+streamlines_actor = actor.line(streamlines,
+                               colormap.line_colors(streamlines))
+
+# Create the 3D display.
+scene = window.Scene()
+scene.add(streamlines_actor)
+scene.add(actor.tensor_slicer(evals, evecs, scalar_colors=cfa, sphere=sphere,
+                              scale=0.3))
+scene.set_camera(position=(14.87946710578175, 25.770232149765413, 173.54578028650144),
+                 focal_point=(33.43851200470716, 40.67356830562871, 15.545914873824975),
+                 view_up=(0.003256400517440014, 0.9955397521536979, 0.09428678453221151))
+window.record(scene, n_frames=1, out_path='irm_diffusion/fibers-slice.png',
+              size=(1000, 1000), reset_camera=False)
+scene.set_camera(position=(6.398539759431944, 36.122368120824724, 21.074961978614017),
+                 focal_point=(17.02336666201742, 55.39317316617157, 7.230217513090364),
+                 view_up=(0.10205867972271891, 0.5426923506538308, 0.8337080055001721))
+window.record(scene, n_frames=1, out_path='irm_diffusion/fibers-zoom.png',
+              size=(1000, 1000), reset_camera=False)
+
+# Make figure
+from matplotlib import pyplot as plt
+import imageio
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=300,
+                        subplot_kw={'xticks': [], 'yticks': []})
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+im = imageio.imread('irm_diffusion/fibers-slice.png')
+ax.flat[0].imshow(im, interpolation='antialiased')
+ax.flat[0].set_title('full slice')
+im = imageio.imread('irm_diffusion/fibers-zoom.png')
+ax.flat[1].imshow(im, interpolation='antialiased')
+ax.flat[1].set_title('zoom')
+
+# Glue the figure
+from myst_nb import glue
+glue("fibers-fig", fig1, display=False)
+```
+```{glue:figure} fibers-fig
+:figwidth: 800px
+:name: "fibers-fig"
+Fibres reconstruites par une approche streamline déterministe, qui consiste à tracer une fibre en suivant la direction principale de chaque tenseur de manière itérative, à partir de l'ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque fibre code pour la direction principale de diffusion le long de la fibre. Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-[Insérer images ODF]
+La [tractographie](https://fr.wikipedia.org/wiki/Tractographie) permet de tracer le chemin des fibres de matière blanche in vivo. Il existe plusieurs approches de tractographie. La tractographie *streamline* déterministe permet de reconstruire les fibres de matière blanche en partant d'un point donné dans la matière grise et en se déplaçant de manière itérative selon la direction principale de diffusion. Le chemin va se terminer lorsque nous arrivons dans la matière grise. Ce chemin va être tracé grâce à un logiciel. La tractographie probabilitste est similaire à la tractographie déterministe, mais considère en plus une incertitude sur la direction des fibres de matière blanche. Donc au lieu de reconstruire une seule fibre associée à un point de la matière blanche, la tractographie probabiliste va en reconstruire plusieurs qui seront toutes légèrement différentes.
+
+```{admonition} Étapes de prétraitement
+Tout comme l'IRMf des étapes de recalage et de débruitage sont nécessaires pour préparer les données avant d'estimer les tenseurs et effectuer la tractographie. De nombreux paramètres sont à sélectionner pour la tractographie elle-même, qui peuvent influencer les résultats. Il est aussi nécessaire de sélectionner un masque de la matière blanche qui contient les points de départ pour la reconstruction de fibres, obtenu ici par seuillage d'une carte de FA.
+```{glue:figure} mask-wm-fig
+:figwidth: 500px
+:name: "fibers-fig"
+Carte d'anisotropite fractionnelle (gauche) et masque de la matière blanche obtenue par seuillage (droite). Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+
+### Croisement de fibres
+```{figure} irm_diffusion/crossing-fibers.png
+---
+width: 800px
+name: crossing-fibers
+---
+Illustration du problème de croisement de fibres, illustré à gauche. La diffusion de l'eau dans chaque fibre est associée à un tenseur qui pointe dans une direction différente (milieu). Lorsqu'on essaye d'approximer la diffusion dans le croisement avec un seul tenseur, on observe un tenseur isotrope (droite). Figure par P Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), inspiré par la thèse de C. Poupon, 1999.
+```
+Une limitation que nous rencontrons avec l'imagerie en tenseur de diffusion est le croisement de fibres. Il est très courant dans la matière blanche d'avoir plusieurs faisceaux de fibres qui se croisent. Lorsque  beaucoup de fibres se croisent comme dans la figure ci-dessous, le tenseur de diffusion apparait isotrope, même s'il y a effectivement des fibres présentes dans le voxel. Dans ce cas, l'algorithme de reconstruction de fibres ne saura pas quelle direction suivre. Une des technique utilisée pour résoudre ce problème est l'**imagerie de diffusion à haute résolution**, qui nous permet d'estimer plusieurs tenseurs pour un même voxel. Cette technique consiste à effectuer l'acquisition des données sur de nombreuses directions (une trentaine à une soixantaine de directions) en utilisant une **séquence HARDI** (*High Angular Resolution Diffusion Imaging*). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+from matplotlib import pyplot as plt
+from dipy.reconst.csdeconv import auto_response_ssst
+from dipy.reconst.csdeconv import ConstrainedSphericalDeconvModel
+from dipy.data import default_sphere
+response, ratio = auto_response_ssst(gtab, maskdata, roi_radii=10, fa_thr=0.7)
+csd_model = ConstrainedSphericalDeconvModel(gtab, response)
+csd_fit = csd_model.fit(maskdata)
+csd_odf = csd_fit.odf(default_sphere)
+from dipy.data import default_sphere
+fodf_spheres = actor.odf_slicer(csd_odf, sphere=default_sphere, scale=0.9,
+                                norm=False, colormap='plasma')
+
+# Create the 3D display.
+scene = window.Scene()
+scene.add(fodf_spheres)
+scene.set_camera(position=(14.87946710578175, 25.770232149765413, 173.54578028650144),
+                 focal_point=(33.43851200470716, 40.67356830562871, 15.545914873824975),
+                 view_up=(0.003256400517440014, 0.9955397521536979, 0.09428678453221151))
+window.record(scene, n_frames=1, out_path='irm_diffusion/fodf-slice.png',
+              size=(1000, 1000), reset_camera=False)
+scene.set_camera(position=(6.398539759431944, 36.122368120824724, 21.074961978614017),
+                 focal_point=(17.02336666201742, 55.39317316617157, 7.230217513090364),
+                 view_up=(0.10205867972271891, 0.5426923506538308, 0.8337080055001721))
+window.record(scene, n_frames=1, out_path='irm_diffusion/fodf-zoom.png',
+              size=(600, 600), reset_camera=False)   
+
+# Make figure
+from matplotlib import pyplot as plt
+import imageio
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
+                        subplot_kw={'xticks': [], 'yticks': []})
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+im = imageio.imread('irm_diffusion/fodf-slice.png')
+ax.flat[0].imshow(im, interpolation='antialiased')
+ax.flat[0].set_title('full slice')
+im = imageio.imread('irm_diffusion/fodf-zoom.png')
+ax.flat[1].imshow(im, interpolation='none')
+ax.flat[1].set_title('zoom')
+
+# Glue the figure
+from myst_nb import glue
+glue("fodf-fig", fig1, display=False)
+```
+```{glue:figure} fodf-fig
+:figwidth: 800px
+:name: "fodf-fig"
+Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_csd/#example-reconst-csd) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Avec une séquence HARDI, nous pouvons estimer une fonction de distribution des orientations de fibres (*fiber Orientation Distribution Function*, fODF) lorsqu'il y a des croisements de fibres perpendiculaires. Ceci nous permet d'estimer plusieurs tenseurs à l'intérieur d'un voxel et de surpasser certaines limites du tenseur de diffusion (DTI). Dans les zones à faible anisotropie nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principale dans les fibres les plus importantes.
 
 ```{warning} ODF et angle entre les fibres
 L'ODF de diffusion n'est pas complètement robuste aux croisements de fibres. En effet, plus l'angle de croisement entre les fibres est petit, plus l'ODF de diffusion sera limité dans la détection de ces croisements.
 ```
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+csa_peaks = peaks_from_model(csd_model, maskdata[minx:maxx, miny:maxy, :, :], default_sphere,
+                             relative_peak_threshold=.5,
+                             min_separation_angle=15,
+                             mask=mask_wm[minx:maxx, miny:maxy, :])
 
-Nous pouvons calculer les fODF (*fibers ODF*) à partir de l'ODF. Les pics fODF peuvent être observés dans les différents tissus grâce à des logiciels. Dans les ventricules nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principal dans le corps calleux, par exemple.
+# Initialization of LocalTracking. The computation happens in the next step.
+streamlines_generator = LocalTracking(csa_peaks, stopping_criterion, seeds,
+                                      affine=affine, step_size=0.2, max_cross=5)
+# Generate streamlines object
+streamlines = Streamlines(streamlines_generator)
 
-### Évaluation sur un fantôme
+from dipy.viz import colormap
+color = colormap.line_colors(streamlines)
+streamlines_actor = actor.line(streamlines,
+                               colormap.line_colors(streamlines))
 
-Nous pouvons évaluer l'adéquation de nos modèles grâce à un fantôme. Nous pouvons schématiser plusieurs cas de configuration de fibres (voir figure XX) pour ensuite regarder comment performe différents algorithmes.
+# Create the 3D display.
+scene = window.Scene()
+scene.add(streamlines_actor)
+scene.add(fodf_spheres)
+scene.set_camera(position=(14.87946710578175, 25.770232149765413, 173.54578028650144),
+                 focal_point=(33.43851200470716, 40.67356830562871, 15.545914873824975),
+                 view_up=(0.003256400517440014, 0.9955397521536979, 0.09428678453221151))
+window.record(scene, n_frames=1, out_path='fibers-slice.png',
+              size=(1000, 1000), reset_camera=False)
+scene.set_camera(position=(6.398539759431944, 36.122368120824724, 21.074961978614017),
+                 focal_point=(17.02336666201742, 55.39317316617157, 7.230217513090364),
+                 view_up=(0.10205867972271891, 0.5426923506538308, 0.8337080055001721))
+window.record(scene, n_frames=1, out_path='fibers-zoom.png',
+              size=(1000, 1000), reset_camera=False)
 
-[Insérer figure avec les différents croisements de fibre et fibres en U]
+# Make figure
+from matplotlib import pyplot as plt
+import imageio
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=300,
+                        subplot_kw={'xticks': [], 'yticks': []})
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+im = imageio.imread('fibers-slice.png')
+ax.flat[0].imshow(im, interpolation='antialiased')
+ax.flat[0].set_title('full slice')
+im = imageio.imread('fibers-zoom.png')
+ax.flat[1].imshow(im, interpolation='antialiased')
+ax.flat[1].set_title('zoom')
 
-Nous pouvons avoir confiance qu'un algorithme qui performe bien sur un fantôme performera également bien sur un vrai cerveau !
+# Glue the figure
+from myst_nb import glue
+glue("fodf-tracts-fig", fig1, display=False)
+```
+```{glue:figure} fodf-tracts-fig
+:figwidth: 800px
+:name: "fodf-tracts-fig"
+Fibres reconstruites par une approche streamline déterministe avec une approche multi-tenseurs, qui permet de suivre plusieurs pics de diffusion à chaque voxel, à partir de l'ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Cette approche permet d'être plus robuste à la présence de croisement de fibres. Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+La capacité de fODF de représenter plusieurs tenseurs à chaque voxel permet de reconstruire des fibres qui se croisent, comme il est apparent dans le zoom de la {numref}`fodf-tracts-fig`. Il est important de réaliser que les données utilisées pour générer {numref}`fibers-fig` et {numref}`fodf-tracts-fig` sont les mêmes, mais les fibres reconstruites sont très différentes! Les paramètres que l'on choisit pour la méthode de reconstruction vont aussi changer la forme et le nombre de fibres. La tractographie en IRMd n'est donc pas une science exacte, et les faux positifs (une fibre reconstruite qui n'existe pas vraiment) ainsi que les faux négatifs (une fibre que l'on ne reconstruit pas mais qui existe pourtant) sont très courants.
 
-## Analyses statistique
-### Modèle linéaire de groupe
+### Faisceaux de fibres
 
-Nous pouvons effectuer un **modèle linéaire de groupe** sur les cartes de FA, similairement à ce que nous avons vu pour l'IRM structurelle et fonctionnelle. Par contre, en IRM de diffusion, nous allons effectuer un recalage au niveau des fibres de matière blanche puisque c'est ce qui nous intéresse, et non au niveau du cerveau en entier. Si nous nous intéressons particulièrement au corps calleux, il est important que cette structure soit alignée à travers les individus pour étudier l'anisotropie fractionnelle dans cette structure.
+```{figure} irm_diffusion/faisceaux.png
+---
+width: 800px
+name: faisceaux-fig
+---
+ Illustration de trois faisceaux de fibres: les radiations optiques (OR), le faisceau arquée (AF) et le faisceau occipital vertical (VOF). Les faisceaux sont présentés sur différentes vues d'une dissection (A, B, D), ainsi qu'à l'aide d'une dissection virtuelle (C). Figure tirées de {cite:p}`Jitsuishi2020-cd`, sous licence CC-BY 4.0.
+```
+Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons à partir des études de dissection. Dans une **reconstruction systématique** des fibres, tout va être tracé, alors que dans une **dissection virtuelle**, seuls certains paquets de fibres vont être sélectionnés. Ces a priori permettent de limiter les faux positifs, et l'utilisation d'algorithmes de tractographie performants permet de limiter les faux positifs. Il existe un certain nombre de faisceaux de fibres classiques avec des schémas de dissection bien établis, comme le corps calleux, le faisceau arqué, ou bien le fascicule longitudinale supérieur.
 
-
-### Étapes préalables
-
-Quelques étapes sont nécessaires avant d'effectuer le profil de d'anisotropie fractionnelle (FA).
-
-1. Reconstruction des fibres
-2. Nettoyage des fibres:
-3. Extraction des centroïdes
-4. Segmentation en différentes régions
-
-[Insérer figure avec les différentes étapes]
-
-### Profil de FA
-
-Pour avoir des valeurs précises le long des fibres, nous allons calculer les carte de FA, tel que discuté précédemment. En pratique, nous pouvons par exemple comparer les profils de FA entre différentes populations le long de différents faisceaux.
-
-## Applications
-
-Maintenant que nous avons vu plusieurs principles de l'IRM de diffusion et différentes approches d'analyse, voyons ses applications possibles.
-
-- Maladies neurodégénératives: nous pouvons étudier l'impact du vieillissement et des démences sur l'intégrité de la matière blanche grâce à l'IRM de diffusion.
-
-- Développement du cerveau: nous pouvons étudier le développement de la matière blanche dans les différentes régions du cerveau au cours du développement de l'enfant. En effet, la matière blanche se développe à différents rythmes selon les différentes régions du cerveau.
-
-- Planification de chirurgie: il est important de savoir comment sont organisés les fibres de matière blanche avant une chirurgie, par exemple avant de retirer une tumeur cérébrale pour ne pas endommager les fibres qui ne sont pas touchées par la tumeur.
-
-- Découvertes anatomiques dans la matière blanche: l'IRM de diffusion nous permet d'obtenir des informations supplémentaires à des études de dissection. En IRM de diffusion, les algorithmes utilisés permettent de découvrir des chemins de matière blanche qui ne seraient potentiellement pas visible à l'oeil.
-
-- Comprendre les liens entre les structures et les fonctions du cerveau: nous pouvons examiner les liens structurels entre différentes régions qui sont fonctionnellement reliées.
-
-- Traumatismes crâniens et accidents vasculaires cérébraux: nous qualifions souvent les traumatismes crâniens comme étant une maladie de la matière blanche, puisqu'ils entrainent des altérations de la microstructure de matière blanche. Nous pouvons également observer des altérations de la microstructure suite à des accidents vasculaires cérébraux.
+Il est possible de calculer la valeur moyenne de l'anisotropie fractionnelle, ou tout autre métrique, le long d'une fibre, et ensuite de comparer cette valeur moyenne entre différents individus pour faire des tests statistiques. Dans ce cas, le recalage entre individus se fait via l'identification de faisceaux de fibres, plutôt que par une méthode de déformation non-linéaire.
 
 ## Conclusion
 
 Dans ce cours, nous avons vu les principes de l'IRM de diffusion. Plus précisément, nous avons vu:
 - Comment obtenir des images en IRMd grâce à la diffusion de l'eau dans différentes directions
-- Comment estimer le processus de diffusion à l'aide de tenseurs et d'en mesurer différentes métriques (diffusivité moyenne, FA)
-- Comment estimer les croisements de fibres
-- Quelques méthodes d'analyse que nous pouvons effectuer en IRMd
+- Comment estimer le processus de diffusion à l'aide de tenseurs et d'en mesurer différentes métriques (diffusivité moyenne, anisotropie fractionnelle)
+- Le principe des méthodes de tractographie.
+- Comment estimer les croisements de fibres.
+- Comment l'IRMd peut être utilisée pour effectuer une dissection virtuelle.
 
 ## Références
 ```{bibliography}
@@ -533,21 +692,19 @@ Dans ce cours, nous avons vu les principes de l'IRM de diffusion. Plus précisé
 
 ```{admonition} Exercice 6.1
 :class: note
-Des données d’IRM de diffusion sont... (vrai/faux, expliquez vos réponses)
+L’IRM de diffusion permettent de mesurer... (vrai/faux, expliquez vos réponses)
  1. Une image avec un tenseur à chaque voxel.
  2. Une image avec un ou plusieurs tenseurs à chaque voxel.
  3. Une série d’images sensibles à la diffusion de l’eau dans différentes directions.
  4. Des images où l’on voit les fibres de matière blanche du cerveau en 3D.
- 5. L’équivalent moderne d’une dissection cérébrale, mais non invasif.
 ```
 
 ```{admonition} Exercice 6.2
 :class: note
-Est-ce qu’il est possible d’avoir… (si oui, donnez un exemple, si non, expliquez pourquoi):
+Donnez un exemple de région avec...
  1. Une faible anisotropie fractionnelle, avec une forte diffusivité moyenne?
- 2. Une faible diffusivité moyenne, avec une forte anisotropie fractionnelle?
- 3. Une forte anisotropie fractionnelle, avec une forte diffusivité moyenne?
- 4. Une faible anisotropie fractionnelle, avec une faible diffusivité moyenne?
+ 2. Une forte anisotropie fractionnelle, avec une faible diffusivité moyenne?
+ 3. Une faible anisotropie fractionnelle, avec une faible diffusivité moyenne?
 ```
 
 ```{admonition} Exercice 6.3
