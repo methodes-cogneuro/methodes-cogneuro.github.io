@@ -945,11 +945,6 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 <p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_csd/#example-reconst-csd">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fodf-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Avec une séquence HARDI, nous pouvons estimer une fonction de distribution des orientations de fibres (<em>fiber Orientation Distribution Function</em>, fODF) lorsqu’il y a des croisements de fibres perpendiculaires. Ceci nous permet d’estimer plusieurs tenseurs à l’intérieur d’un voxel et de surpasser certaines limites du tenseur de diffusion (DTI). Dans les zones à faible anisotropie nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principale dans les fibres les plus importantes.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>ODF et angle entre les fibres
-L’ODF de diffusion n’est pas complètement robuste aux croisements de fibres. En effet, plus l’angle de croisement entre les fibres est petit, plus l’ODF de diffusion sera limité dans la détection de ces croisements.</p>
-</div>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">csa_peaks</span> <span class="o">=</span> <span class="n">peaks_from_model</span><span class="p">(</span><span class="n">csd_model</span><span class="p">,</span> <span class="n">maskdata</span><span class="p">[</span><span class="n">minx</span><span class="p">:</span><span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">:</span><span class="n">maxy</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">default_sphere</span><span class="p">,</span>

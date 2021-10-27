@@ -602,9 +602,6 @@ Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la c
 ```
 Avec une séquence HARDI, nous pouvons estimer une fonction de distribution des orientations de fibres (*fiber Orientation Distribution Function*, fODF) lorsqu'il y a des croisements de fibres perpendiculaires. Ceci nous permet d'estimer plusieurs tenseurs à l'intérieur d'un voxel et de surpasser certaines limites du tenseur de diffusion (DTI). Dans les zones à faible anisotropie nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principale dans les fibres les plus importantes.
 
-```{warning} ODF et angle entre les fibres
-L'ODF de diffusion n'est pas complètement robuste aux croisements de fibres. En effet, plus l'angle de croisement entre les fibres est petit, plus l'ODF de diffusion sera limité dans la détection de ces croisements.
-```
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 csa_peaks = peaks_from_model(csd_model, maskdata[minx:maxx, miny:maxy, :, :], default_sphere,
