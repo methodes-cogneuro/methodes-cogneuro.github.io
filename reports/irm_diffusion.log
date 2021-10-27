@@ -17,45 +17,58 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-list_speed = (0.25, 0.5, 0.75)
-# Initial values of x.
-x = numpy.empty((3,N+1))
-x[:, 0] = 0.0
-fig = plt.figure(figsize=(13, 5), dpi=100)
-for num, speed in enumerate(list_speed):
-    fig.add_subplot(1, len(list_speed), num + 1, projection='3d')
-    ax = plt.gca()
-    n_samp = 1000
-    delta=np.array([speed, 0.25, 0.25])
-    bounds = [8, 8, 8]
-    points = np.empty((3, n_samp))
-    for samp in range(n_samp):
-        brownian(x[:,0], N, dt, delta, out=x[:,1:])
-        points[:, samp] = x[:, -1]
-    ax.scatter(points[0, :], points[1, :], points[2, :], 'o', alpha=0.2)
-    ax.set_box_aspect([ax.get_xlim()[1] - ax.get_xlim()[0],
-                       ax.get_ylim()[1] - ax.get_ylim()[0],
-                       ax.get_zlim()[1] - ax.get_zlim()[0]]
-                    )
-    ax.set_title(f'x speed = {speed}')
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
-    ax.set_zlabel('z')
+from matplotlib import pyplot as plt
+from dipy.reconst.csdeconv import auto_response_ssst
+from dipy.reconst.csdeconv import ConstrainedSphericalDeconvModel
+response, ratio = auto_response_ssst(gtab, maskdata, roi_radii=10, fa_thr=0.7)
+csd_model = ConstrainedSphericalDeconvModel(gtab, response)
+csd_fit = csd_model.fit(maskdata)
+csd_odf = csd_fit.odf(default_sphere)
+from dipy.data import default_sphere
+fodf_spheres = actor.odf_slicer(csd_odf, sphere=default_sphere, scale=0.9,
+                                norm=False, colormap='plasma')
+
+# Create the 3D display.
+scene = window.Scene()
+scene.add(fodf_spheres)
+scene.set_camera(position=(14.87946710578175, 25.770232149765413, 173.54578028650144),
+                 focal_point=(33.43851200470716, 40.67356830562871, 15.545914873824975),
+                 view_up=(0.003256400517440014, 0.9955397521536979, 0.09428678453221151))
+window.record(scene, n_frames=1, out_path='fodf-slice.png',
+              size=(1000, 1000), reset_camera=False)
+scene.set_camera(position=(6.398539759431944, 36.122368120824724, 21.074961978614017),
+                 focal_point=(17.02336666201742, 55.39317316617157, 7.230217513090364),
+                 view_up=(0.10205867972271891, 0.5426923506538308, 0.8337080055001721))
+window.record(scene, n_frames=1, out_path='fodf-zoom.png',
+              size=(600, 600), reset_camera=False)   
+
+# Make figure
+from matplotlib import pyplot as plt
+import imageio
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
+                        subplot_kw={'xticks': [], 'yticks': []})
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+im = imageio.imread('fodf-slice.png')
+ax.flat[0].imshow(im, interpolation='antialiased')
+ax.flat[0].set_title('full slice')
+im = imageio.imread('fodf-zoom.png')
+ax.flat[1].imshow(im, interpolation='none')
+ax.flat[1].set_title('zoom')
 
 # Glue the figure
 from myst_nb import glue
-glue("brownian-fig", fig, display=False)  
+glue("fodf-fig", fig1, display=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-3-1b73a9ba00d4>[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0mlist_speed[0m [0;34m=[0m [0;34m([0m[0;36m0.25[0m[0;34m,[0m [0;36m0.5[0m[0;34m,[0m [0;36m0.75[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      2[0m [0;31m# Initial values of x.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 3[0;31m [0mx[0m [0;34m=[0m [0mnumpy[0m[0;34m.[0m[0mempty[0m[0;34m([0m[0;34m([0m[0;36m3[0m[0;34m,[0m[0mN[0m[0;34m+[0m[0;36m1[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      4[0m [0mx[0m[0;34m[[0m[0;34m:[0m[0;34m,[0m [0;36m0[0m[0;34m][0m [0;34m=[0m [0;36m0.0[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0mfig[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0mfigure[0m[0;34m([0m[0mfigsize[0m[0;34m=[0m[0;34m([0m[0;36m13[0m[0;34m,[0m [0;36m5[0m[0;34m)[0m[0;34m,[0m [0mdpi[0m[0;34m=[0m[0;36m100[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-8-b4fc31f1fa02>[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m [0mcsd_model[0m [0;34m=[0m [0mConstrainedSphericalDeconvModel[0m[0;34m([0m[0mgtab[0m[0;34m,[0m [0mresponse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mcsd_fit[0m [0;34m=[0m [0mcsd_model[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mmaskdata[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mcsd_odf[0m [0;34m=[0m [0mcsd_fit[0m[0;34m.[0m[0modf[0m[0;34m([0m[0mdefault_sphere[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0;32mfrom[0m [0mdipy[0m[0;34m.[0m[0mdata[0m [0;32mimport[0m [0mdefault_sphere[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m fodf_spheres = actor.odf_slicer(csd_odf, sphere=default_sphere, scale=0.9,
 
-[0;31mNameError[0m: name 'numpy' is not defined
-NameError: name 'numpy' is not defined
+[0;31mNameError[0m: name 'default_sphere' is not defined
+NameError: name 'default_sphere' is not defined
 
