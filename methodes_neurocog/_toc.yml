@@ -9,7 +9,6 @@ chapters:
 - file: morphometrie
 - file: irm_fonctionnelle
 - file: connectivite
-- file: regression
 - file: irm_diffusion
 - file: tep
 - file: imagerie_optique
