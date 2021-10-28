@@ -75,14 +75,20 @@ L'affinité du précurseur d'avec la cible est connue a priori, ce qui nous perm
 ```{admonition} Spécificité et sélectivité de l'arrimage
 :class: tip
 :name: hardball-tip
-
+On veut que le radiotraceur s'arrime uniquement à la cible pour laquelle il a été conçu. On considère un arrimage sélectif lorsque notre traceur se fixe à une cible d'intérêt bien précise (un type de récepteur précis), et il est non-sélectif lorsque notre traceur se fixe à une cible générique (une famille de récepteurs similaires). La spécificité de l'arrimage réfère à sa capacité à refléter un phénomène fidèlement. Un traceur plus ou moins sélectif peut être spécifique aux récepteurs sérotoninergiques, par exemple. Autrement, un traceur non-spécifique est, en ce sens, un traceur de rien.
 ```
 ## Les isotopes et l'émission de positrons
+Nous avons vu que l'imagerie par TEP était possible grâce à l'accumulation d'isotope radioactif dans l'organisme. Il s'agit maintenant de préciser comment cette accumulation peut refléter les processus métaboliques associés à l'activité neuronale et la production de protéines tels que les neurotransmetteurs.
 
+Il faut d'abord préciser ce qu'est l'émission de positron, et la procédure adoptée pour la capter et la traduire en images. Pour cela, nous avons besoin de deux pièces d'infrastructure importante, soient le cyclotron ainsi que le scanner TEP.
+
+Le cyclotron nous permet de concevoir les isotopes radioactif. Globalement, il nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l'imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d'un proton en un neutron ayant pour effet l'émission d'un positron. En d'autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité.
+
+La TEP  
 ```{admonition} Stabilité des isotopes
 :class: tip
 :name: hardball-tip
-
+Un noyau atomique stable est constitué d'un nombre de protons et de neutrons spatialement distribués également. Un noyau instable aura soit trop de proton, trop de neutron, ou encore, aura une distribution non-uniforme de ceux-ci. Le cyclotron conçoit des isotopes qui sont instables d'une façon précise.
 ```
 Faire un tableau avec les isotopes
 
@@ -90,7 +96,7 @@ Faire un tableau avec les isotopes
 
 ## Utilisation de la TEP en neurosciences cognitives
 
-Faire une figure de contraste TEP ici
+Faire une figure de contraste TEP ici avec ces [données](https://openneuro.org/datasets/ds001421/versions/1.2.0)
 
 ## Méthodes permettant d'étudier les troubles neurodégénératifs
 
