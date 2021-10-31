@@ -40,25 +40,41 @@ kernelspec:
   </tr>
 </table>
 
-## Objectifs
-*   Comprendre les principes de base d'un radiotraceur.
-*   Comprendre le principe de l'émission de rayons gamma et de la tomographie.
-*   Connaître les principaux isotopes.
-*   Connaître des exemples des principaux types d'images en TEP pour les neurosciences cognitives: imagerie du métabolisme, des récepteurs, et des protéines pathologiques.
+## Objectifs du cours
+La [tomographie par émission de positrons](https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons) est une technique d'imagerie qui permet de cibler de nombreuses caractéristiques du cerveau, aussi bien au niveau structurel que fonctionnel. Couplée avec un radiotraceur de Fluorodésoxyglucose (FDG), la TEP est couramment utilisée pour cartographier l'activité du cerveau au travers de différentes conditions expérimentales. Avec d'autres traceurs, elle permet de cartographier les dépôts de protéines anormales, ou bien encore la présence de différents récepteurs de neurotransmetteurs.
 
-## Radiotraceurs
-La conception d'un radiotraceur consiste à fabriquer *radioisotope médical* qui sera lié à un composé non-radioactif nommé *précurseur*. Ces deux composés sur une *cible* connue pour son interaction avec le *précurseur*.<
+```{figure} tep/tep.jpg
+---
+width: 600px
+name: tep-scanner-fig
+---
+Scanneur TEP. Image par [Jejecam](https://commons.wikimedia.org/wiki/User:Jejecam) tirée de [wikipedia](https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons#/media/Fichier:TEP-CT_2009.jpg) sous licence [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
+```
+
+Les objectifs spécifiques du cours sont:
+* Principes physiques et physiologiques de l'imagerie TEP.
+* Génération d'images en TEP.
+* Principaux types d'images en TEP pour les neurosciences cognitives.
+
+## Principes physiques et physiologiques
+
+### Radiotraceurs
+La conception d'un radiotraceur consiste à fabriquer *radioisotope médical* qui sera lié à un composé non-radioactif nommé *précurseur*. Ces deux composés sur une *cible* connue pour son interaction avec le *précurseur*.
 
 L'affinité du précurseur d'avec la cible est connue a priori, ce qui nous permet de capturer le métabolisme associé à l'activité neuronale. Par exemple, nous savons que la production de neurotransmetteurs dans la fente synaptique induit une augmentation de la consommation de glucose et d'oxygène {cite:p}`Heeger2002`. Il est donc possible d'utiliser soit l'oxygène ou le glucose comme précurseur afin de mesurer l'activité métabolique impliquée dans le couplage neurovasculaire. Nous verrons plus loin comment l'accumulation d'isotope est détectée par le scanner TEP.  
 
-### Définitions
-*   **Radioisotope médical** : Un atome qui suit un processus de désintégration radioactive en *émettant des radiations détectables* en dehors du corps.
+```{admonition} Mini-glossaire
+:class: tip
+:name: resolution
+
+*   **Isotope (ou radioisotope)** : Un atome qui suit un processus de désintégration radioactif en *émettant des radiations détectables* en dehors du corps.
 
 *   **Précurseur** : Un composant *non-radioactif* qui contient un segment actif se liant à la cible, et pouvant être facilement fusionné au radioisotope.
 
 *   **Biomarqueur** : La *cible* est un biomarqueur du phénomène qu'on cherche à mesurer. Il peut notamment s'agir d'une molécule endogène (déjà présente dans l'organisme, soit l'oxygène ou le glucose) dont la concentration est altérée en présence d'une pathologie, ou bien d'un type spécifique d'activité cérébrale.
 
 *   **Radiotraceur** : Une molécule marquée *délivrant le radioisotope* jusqu'au *biomarqueur cible*; tout ça *in vivo*. Autrement dit, c'est la combinaison de l'isotope et du précurseur.
+```
 
 ### Qualités d'un radiotraceur
 
@@ -74,10 +90,11 @@ L'affinité du précurseur d'avec la cible est connue a priori, ce qui nous perm
 
 ```{admonition} Spécificité et sélectivité de l'arrimage
 :class: tip
-:name: hardball-tip
+:name: tep-spec-sel-tip
 On veut que le radiotraceur s'arrime uniquement à la cible pour laquelle il a été conçu. On considère un arrimage sélectif lorsque notre traceur se fixe à une cible d'intérêt bien précise (un type de récepteur précis), et il est non-sélectif lorsque notre traceur se fixe à une cible générique (une famille de récepteurs similaires). La spécificité de l'arrimage réfère à sa capacité à refléter un phénomène fidèlement. Un traceur plus ou moins sélectif peut être spécifique aux récepteurs sérotoninergiques, par exemple. Autrement, un traceur non-spécifique est, en ce sens, un traceur de rien.
 ```
-## Les isotopes et l'émission de positrons
+
+### Isotopes et radioactivité
 Nous avons vu que l'imagerie par TEP était possible grâce à l'accumulation d'isotope radioactif dans l'organisme. Il s'agit maintenant de préciser comment cette accumulation peut refléter les processus métaboliques associés à l'activité neuronale et la production de protéines tels que les neurotransmetteurs.
 
 Il faut d'abord préciser ce qu'est l'émission de positron, et la procédure adoptée pour la capter et la traduire en images. Pour cela, nous avons besoin de deux pièces d'infrastructure importante, soient le cyclotron ainsi que le scanner TEP.
@@ -92,9 +109,15 @@ Un noyau atomique stable est constitué d'un nombre de protons et de neutrons sp
 ```
 Faire un tableau avec les isotopes
 
-## Détection de coincidences et imagerie TEP
+## Génération d'images en TEP
 
-## Utilisation de la TEP en neurosciences cognitives
+### Cyclotron
+
+### Détection de coincidences
+
+### Tomographie
+
+## TEP en neurosciences cognitives
 
 Faire une figure de contraste TEP ici avec ces [données](https://openneuro.org/datasets/ds001421/versions/1.2.0)
 
