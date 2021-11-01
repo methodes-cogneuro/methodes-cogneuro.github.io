@@ -52,9 +52,9 @@ Scanneur TEP. Image par [Jejecam](https://commons.wikimedia.org/wiki/User:Jejeca
 ```
 
 Les objectifs spécifiques du cours sont:
-* Principes physiques et physiologiques de l'imagerie TEP.
-* Génération d'images en TEP.
-* Principaux types d'images en TEP pour les neurosciences cognitives.
+*   Principes physiques et physiologiques de l'imagerie TEP.
+*   Génération d'images en TEP.
+*   Principaux types d'images en TEP pour les neurosciences cognitives.
 
 ## Principes physiques et physiologiques
 
@@ -72,7 +72,7 @@ L'idée de base de la TEP est d'injecter un produit radioactif, appelé radiotra
 :class: tip
 :name: resolution
 
-*   **Isotope (ou radioisotope)** : Un atome qui suit un processus de désintégration radioactif en *émettant des radiations détectables* en dehors du corps.
+*   **Isotope (ou radioisotope)** : Un atome qui suit un processus de désintégration radioactif en émettant des radiations détectables* en dehors du corps.
 
 *   **Précurseur (ou ligand)** : Un composant *non-radioactif* qui contient un segment actif se liant à la cible, et pouvant être facilement fusionné au radioisotope.
 
@@ -82,19 +82,35 @@ L'idée de base de la TEP est d'injecter un produit radioactif, appelé radiotra
 ```
 
 ### Isotopes et radioactivité
-Nous avons vu que l'imagerie par TEP était possible grâce à l'accumulation d'isotope radioactif dans l'organisme. Il s'agit maintenant de préciser comment cette accumulation peut refléter les processus métaboliques associés à l'activité neuronale et la production de protéines tels que les neurotransmetteurs.
-
-Il faut d'abord préciser ce qu'est l'émission de positron, et la procédure adoptée pour la capter et la traduire en images. Pour cela, nous avons besoin de deux pièces d'infrastructure importante, soient le cyclotron ainsi que le scanner TEP.
-
-Le cyclotron nous permet de concevoir les isotopes radioactif. Globalement, il nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l'imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d'un proton en un neutron ayant pour effet l'émission d'un positron. En d'autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité.
-
-La TEP  
-```{admonition} Stabilité des isotopes
-:class: tip
-:name: hardball-tip
-Un noyau atomique stable est constitué d'un nombre de protons et de neutrons spatialement distribués également. Un noyau instable aura soit trop de proton, trop de neutron, ou encore, aura une distribution non-uniforme de ceux-ci. Le cyclotron conçoit des isotopes qui sont instables d'une façon précise.
+```{figure} tep/isotope.png
+---
+width: 800px
+name: isotope-fig
+---
+Un isotope radioactif est un atome dont le ratio entre nombre de positons et nombre de neutrons est instable (**a**). Cette structure instable amène à l'émission d'un positron, qui s'annihile en percutant un électron, ce qui produit l'émission de rayons gamma opposés (**b**). Les rayons gamma sont des photons à très haute énergie, qui peuvent traverser les tissus biologiques, mais sont arrêtés par le plomb (**c**). Image **a** par et **b** adaptés d'une image de [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/beta-decay-nuclear-energy-diagram-showing-1509181103) ID `1509181103`, utilisée sous licence shutterstock standard. Image **c** par [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/types-radiation-penetrating-power-through-paper-1169023357) ID `1169023357`, utilisée sous licence shutterstock standard.
 ```
-Faire un tableau avec les isotopes
+
+L'imagerie par TEP était possible grâce à l'accumulation d'isotopes radioactifs dans l'organisme, qui sont détectés par l'appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu'ils se déintègrent dans le corps, c'est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d'un nombre de positons et de neutrons équilibrées. Un noyau instable aura soit trop de positons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positon. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés *rayons gamma*.
+
+La **période radioactive** du noyau durant laquelle s'opère la désintégration, et donc l'émission de positrons capturé à l'aide rayons gamma, correspond à la **demi-vie** du radiotraceur. Référons nous au tableau d'isotopes pour comprendre de combien de temps nous disposons pour effectuer un scan TEP en fonction du processus métabolique ciblé.
+
+```{admonition} Tableau d'isotopes TEP
+:class: tip
+:name: isotopes-table
+| **Radioisotopes**       | **Demi-vie** | **$E_{max} ({\beta^+}) $, KeV** |
+| ---------------------- | ------------ | ------------------------------- |
+| $^{18}$**F**           | 110 min      | 634                             |
+| $^{11}$**C**           | 20.3 min     | 961                             |
+| $^{13}$**N**           | 9.97 min     | 1190                            |
+| $^{15}$**O**           | 2.1 min      | 1732                            |
+| $^{89}$**Zr**          | 78.4 h       | 897                             |
+| $^{124}$**I**          | 4.17 j       | 2100                            |
+| $^{64}$**Cu**          | 12.8 h       | 656                             |
+| $^{68}$**Ga**          | 67.6 min     | 1899                            |
+
+L'imagerie TEP utilise un certain nombre d'isotopes bien connus. Certains, comme celui fabriqué à partir de fluor (ou $^{18}$**F**), ont une demi-vie assez longue. Cela nous permet de les produire sur un site spécialisé, puis de les transporter sur le lieu de l'étude. D'autres radioisotopes, comme celui fabriqué à partir d'oxygène (ou ^{15}$**O**) ont une demi-vie très courte. Au niveau logistique, ceci nécessite que le cyclotron se trouve à proximité du site ou l'expérimentation se déroule, car le radiotraceur doit immédiatement être utilisé après sa production.
+```
+
 
 ### Précurseurs et biomarqueurs
 
@@ -117,20 +133,57 @@ On veut que le radiotraceur s'arrime uniquement à la cible pour laquelle il a �
 ```
 
 ## Génération d'images en TEP
+Nous avons couvert les principes physiologiques et physiques nous permettant de traduire l'activité métabolique du cerveau en image. Maintenant, il s'agit de préciser comment cette traduction est opérée.
 
+Il faut d'abord préciser ce qu'est l'émission de positron, et la procédure adoptée pour la capter et la traduire en images. Pour cela, nous avons besoin de deux pièces d'infrastructure importantes, soient le cyclotron ainsi que le scanner TEP.
+
+En termes grossiers, le cyclotron nous permet de concevoir les isotopes radioactif qui seront injectés au participant, et le scanner TEP nous permet de capter les *produits* de la désintégration d'isotopes dans le corps.
 ### Cyclotron
+Comme nous l'avons vu, le cyclotron nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l'imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d'un proton en un neutron ayant pour effet l'émission d'un positron. En d'autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité. Nous avons vu cette désintgration ${\beta^+}$ se réalise dans un cadre temporel précis (et relativement court), et qu'elle se mesure par les rayons gamma qui traversent les tissus et sortent de la boîte crânienne dans des directions diamétralement opposées. C'est le processus de captation et la modélisation 3D de ces rayons gamma issus de la désintégration qu'on nomme tomographie.
 
 ### Détection de coincidences
+Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant. Chaque capteur est couplé à un autre du côté opposé du cercle (la distance entre chaque couple de caméra correspond donc exactement au diamètre du cercle). Cette disposition des capteurs permet de détecter l'arrivée simultanée de deux photons. Ce comptage précis de photons est effectué en même temps par cette série de capteurs disposée en cercle.
+
+L'image produite par le scanner TEP est obtenue au travers une projection de la densité de radiotraceurs dans chaque direction, soit chaque couple de caméras. Cette image ne correspond donc pas (encore) à une image du cerveau.
 
 ### Tomographie
+
+La tomographie correspond à la combination des mesures prises par l'ensemble des caméras afin de reconstituer une représentation 3D du cerveau. Ce processus correspond à une opération mathématique connue sous le nom de tomographie. On comprend qu'il est nécessaire de disposer d'un nombre important de caméras afin de procéder à une reconstruction précise de l'espace 3D.
 
 ## TEP en neurosciences cognitives
 
 Faire une figure de contraste TEP ici avec ces [données](https://openneuro.org/datasets/ds001421/versions/1.2.0)
 
+À ce stade de l'exposé, il s'agit de se demander le genre d'hypothèses que la TEP nous permet de tester. Revenons sur les notions principales :
+
+1.  Nous fabriquons un isotope radioactif (*e.g.* du fluor radioactif) et nous l'injectons au participant.
+2.  L'isotope se fixe à un précurseur (*e.g.* du glucose), et cela forme un radiotraceur conçu pour se fixer sur une *cible* précise.
+3.  Le participant s'installe dans le scanner, et à partir de ce moment, il est possible de capter la désintégration ${\beta^+}$ du radiotraceur sous forme de rayons gamma
+4.  La concentration relative du radiotraceur reconstituée par tomographie nous indique la position des cibles et/où leur densité.
+
+Nous pouvons remarquer que la concentration relative du radiotraceur peuvent dépendre tant de la physiologie de la condition expérimentatale. Supposons que que nous voulons imager la consommation de glucose au repos d'un participant à l'aide du radiotraceur Fluorodésoxyglucose ([$^{18}$**F**]FDG). Nous pourrions effectuer un contraste simple entre deux conditions expériementales. Il serait possible de constater que l'accumulation captée au repos et celle captée pendant la réalisation d'une tâche est différente. Par exemple, le cortex cingulaire postérieur (noyau du réseau du mode par défaut) pourrait consommer plus de glucose au repos. Autrement, si nous nous attardons aux différences physiologiques de nos participants, il serait possible de constater des différences de métabolisation du glucose en fonction de l'âge des participants.
+
 ## Méthodes permettant d'étudier les troubles neurodégénératifs
+Nous savons que les troubles neurodégénératifs sont associées au dysfonctionnement de différents systèmes de neurotransmission. Les méthodes en TEP sont particulièrement importantes pour l'investigation de ces troubles, car elles permettent notamment de cartographier la densité des récepteurs de ces neurotransmetteurs, ou toutes autres protéines pathologiques connues pour leur implications dans ces troubles.
+
+### Imagerie des récepteurs
+Un **récepteur** est une protéine recevant un signal à l'extérieur de la cellule neuronale, c'est-à-dire qu'elle reconnaît et répond à des messagers chimiques endogènes (ou exogènes comme des médicaments). Ce récepteur agit comme biomarqueur, ou alors, comme cible d'arrimage d'un radioisotope et de son précurseur. Dans ce contexte, l'expression **ligand** est préférée pour dénommer la molécule qui s'accroche aux récepteurs d'intérêt puisque ceux-ci ont été développé spécifiquement pour s'arrimer à des récepteurs de systèmes de neurotransmission. Par exemple, des ligands ont été conçus spécifiquement pour les récepteur dopaminergiques tels que D2 et D3. Ces ligands s'associent aux isotopes [$^{11}$**C**] pour former des radioligands.
+
+### Radioligands pour les plaques Béta amyloïde (A${\beta}$)
+L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amyloïde beta peut s'agréger en plaques, notamment dans la maladie d'Alzheimer. Ces plaques bloquent les communication inter-neurones, puis elles déclenchent une réaction inflammatoire neuro-toxique qui accélère la dégénération des tissues cérébraux et contribuent au déclin des fonctions cognitives. Les plaques A${\beta}$ sont considérées comme un biomarqueur de la maladie d'Alzheimer. Des ligands ont été développé pour s'arrimer aux plaques A${\beta}$ tel que le composé [$^{11}$**C**] PIB.
+
+Précisons, cependant, que les plaques peuvent être présentes sans les symptômes des troubles neurodégénératifs (*e.g.* ou de démence). La mesure de densité de plaques comme biomarqueur est constestée.
+
+### Tau
+Ajoutons nous cette section ?
 
 ## Conclusion et résumé
+
+*   Un radiotraceur est composé d'un précurseur, qui s'accroche à une cible, puis un isotope, qui se désintègre en émettant des rayons gamma.
+*   En enregistrant les coincidences d'arrivée de photons, on peut reconstruire une représentation 3D de la concentration du radiotraceur à l'aide d'une opération dite de Tomographie
+*   La FDG TEP est utilisée pour étudier le métabolisme du glucose. La métabolisation du glucose nous indique la consommation d'énergie relative des différentes régions cérébrale. Ceci nous permet d'effectuer des contraste de consommation de glucose entre conditions expérimentales.
+*   On peut imager la densité de récepteur de différents neurotransmetteurs à l'aide de **radioligands**. Par exemple, ceux de la dopamine.
+*   Des radioligands ont été conçus spécifiquement pour imager la densité des plaques A${\beta}$.
 
 ## Références
 
