@@ -76,7 +76,7 @@ L'idée de base de la TEP est d'injecter un produit radioactif, appelé radiotra
 
 *   **Précurseur (ou ligand)** : Un composant *non-radioactif* qui contient un segment actif se liant à la cible, et pouvant être facilement fusionné au radioisotope.
 
-*   **cible (ou biomarqueur)** : La *cible* est un biomarqueur du phénomène qu'on cherche à mesurer. Il peut notamment s'agir d'une molécule endogène (déjà présente dans l'organisme, soit l'oxygène ou le glucose) dont la concentration est altérée en présence d'une pathologie, ou bien d'une molécule qui va s'accrocher à une partie spécifique du cerveau (par exemple les récepteurs d'un certain neurotransmetteur).
+*   **cible (ou biomarqueur)** : La *cible* est un biomarqueur du phénomène qu'on cherche à mesurer.
 
 *   **Radiotraceur (ou radioligand)** : Une molécule marquée *délivrant le radioisotope* jusqu'au *biomarqueur cible*; tout ça *in vivo*. Autrement dit, c'est la combinaison de l'isotope et du précurseur.
 ```
@@ -90,9 +90,9 @@ name: isotope-fig
 Un isotope radioactif est un atome dont le ratio entre nombre de positons et nombre de neutrons est instable (**a**). Cette structure instable amène à l'émission d'un positron, qui s'annihile en percutant un électron, ce qui produit l'émission de rayons gamma opposés (**b**). Les rayons gamma sont des photons à très haute énergie, qui peuvent traverser les tissus biologiques, mais sont arrêtés par le plomb (**c**). Image **a** par et **b** adaptés d'une image de [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/beta-decay-nuclear-energy-diagram-showing-1509181103) ID `1509181103`, utilisée sous licence shutterstock standard. Image **c** par [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/types-radiation-penetrating-power-through-paper-1169023357) ID `1169023357`, utilisée sous licence shutterstock standard.
 ```
 
-L'imagerie par TEP était possible grâce à l'accumulation d'isotopes radioactifs dans l'organisme, qui sont détectés par l'appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu'ils se déintègrent dans le corps, c'est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d'un nombre de positons et de neutrons équilibrées. Un noyau instable aura soit trop de positons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positon. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés *rayons gamma*.
+L'imagerie par TEP était possible grâce à l'accumulation d'isotopes radioactifs dans l'organisme, qui sont détectés par l'appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu'ils se désintègrent dans le corps, c'est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d'un nombre de positons et de neutrons équilibrées. Un noyau instable aura soit trop de positons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positon. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés *rayons gamma*.
 
-La **période radioactive** du noyau durant laquelle s'opère la désintégration, et donc l'émission de positrons capturé à l'aide rayons gamma, correspond à la **demi-vie** du radiotraceur. Référons nous au tableau d'isotopes pour comprendre de combien de temps nous disposons pour effectuer un scan TEP en fonction du processus métabolique ciblé.
+Les radioisotopes sont produits dans un cyclotron, et vont commencer à se désintégrer immédiatement. La **demi-vie** du radiotraceur correspond au temps nécessaire pour que la moitié des atomes radioactifs contenus dans le traceur se soient transformés en atomes stables. Chaque désintégration atomique est aléatoire, mais à cause du grand nombre d'atomes contenus dans une dose de radiotraceurs, la demi-vie est un phénomène très stable. L'imagerie TEP utilise un certain nombre d'isotopes bien connus. Certains, comme celui fabriqué à partir de fluor (ou $^{18}$**F**), ont une demi-vie assez longue. Cela nous permet de les produire sur un site spécialisé, puis de les transporter sur le lieu de l'étude. D'autres radioisotopes, comme celui fabriqué à partir d'oxygène (ou $^{15}$**O**) ont une demi-vie très courte. Au niveau logistique, ceci nécessite que le cyclotron se trouve à proximité du site ou l'expérimentation se déroule, car le radiotraceur doit immédiatement être utilisé après sa production. Référons nous au tableau d'isotopes pour comprendre de combien de temps nous disposons pour effectuer un scan TEP en fonction de l'isotope utilisé.
 
 ```{admonition} Tableau d'isotopes TEP
 :class: tip
@@ -108,29 +108,24 @@ La **période radioactive** du noyau durant laquelle s'opère la désintégratio
 | $^{64}$**Cu**          | 12.8 h       | 656                             |
 | $^{68}$**Ga**          | 67.6 min     | 1899                            |
 
-L'imagerie TEP utilise un certain nombre d'isotopes bien connus. Certains, comme celui fabriqué à partir de fluor (ou $^{18}$**F**), ont une demi-vie assez longue. Cela nous permet de les produire sur un site spécialisé, puis de les transporter sur le lieu de l'étude. D'autres radioisotopes, comme celui fabriqué à partir d'oxygène (ou ^{15}$**O**) ont une demi-vie très courte. Au niveau logistique, ceci nécessite que le cyclotron se trouve à proximité du site ou l'expérimentation se déroule, car le radiotraceur doit immédiatement être utilisé après sa production.
 ```
-
-
 ### Précurseurs et biomarqueurs
+```{figure} tep/fdg.jpg
+---
+width: 500px
+name: fdg-fig
+---
+Molécule de Fluorodeoxyglucose. Chaque sphère représente un atome (noir: carbone, rouge: oxygène, blanc: hydrogène, vert: $^{18}$**F**). Image par [StudioMolekuul](https://www.shutterstock.com/g/molekuul) disponible sur [shutterstock](https://www.shutterstock.com/image-illustration/fludeoxyglucose-18f-fluorodeoxyglucose-fdg-cancer-imaging-149603819) ID `149603819`, utilisée sous licence shutterstock standard.
+```
+Le précurseur peut être une molécule endogène (déjà présente dans l'organisme, soit l'oxygène ou le glucose) dont la concentration est altérée en présence de l'activité cérébrale ou bien d'une pathologie. Le précurseur peut aussi être une molécule qui va s'accrocher à une partie spécifique du cerveau (par exemple les récepteurs d'un certain neurotransmetteur). Une réaction chimique est utilisée pour synthétiser une molécule qui regroupe le radioisotope et le précurseur. Dans l'exemple du FDG, une molécule de glucose standard va perdre un oxygène et un hydrogène, qui vont être remplacés par du $^{18}$**F** synthétisé par un cyclotron, voir {numref}`fdg-fig`. Comme nous le verrons plus tard dans ce chapitre, le glucose va s'accumuler dans les parties du cerveau où les neurones sont les plus actifs. La FDG va ainsi agir comme un biomarqueur de l'activité cérébrale.
 
 ### Qualités d'un radiotraceur
-
-*   **Perméabilité à la barrière hémato-encéphalique** : le traceur doit pénétrer les membranes cellulaires neuronales.
-
-*   **Arrimage** ***spécifique*** **et** ***sélectif*** : le traceur doit se fixer sur la bonne cible.
-
-*   **Affinité d'arrimage** : même avec une basse concentration de la cible, le traceur doit pouvoir s'y arrimer.
-
-*   **Rapidité d'arrimage** : la désintégration de l'isotope contraint temporellement le processus d'arrimage. La désintégration doit nécessairement être plus lente que le processus métabolique d'arrimage.
-
-*   **Stabilité métabolique** : le traceur ne doit pas se désagréger avant d'atteindre sa cible. Ici, on ne parle pas de la désintégration de l'isotope, mais plutôt du processus métabolisation du précurseur.
-
-```{admonition} Spécificité et sélectivité de l'arrimage
-:class: tip
-:name: tep-spec-sel-tip
-On veut que le radiotraceur s'arrime uniquement à la cible pour laquelle il a été conçu. On considère un arrimage sélectif lorsque notre traceur se fixe à une cible d'intérêt bien précise (un type de récepteur précis), et il est non-sélectif lorsque notre traceur se fixe à une cible générique (une famille de récepteurs similaires). La spécificité de l'arrimage réfère à sa capacité à refléter un phénomène fidèlement. Un traceur plus ou moins sélectif peut être spécifique aux récepteurs sérotoninergiques, par exemple. Autrement, un traceur non-spécifique est, en ce sens, un traceur de rien.
-```
+Pour être utile en neuroimagerie, un radiotraceur doit posséder les qualités suivantes:
+ * **Perméabilité à la barrière hémato-encéphalique** : le traceur injecté dans le sang doit pouvoir se rendre au cerveau.
+ * **Spécificité d'arrimage**: le traceur doit se fixer seulement sur la bonne cible.
+ * **Affinité d'arrimage** : même avec une basse concentration de la cible, le traceur doit pouvoir s'y arrimer.
+ * **Rapidité d'arrimage** : la désintégration de l'isotope contraint temporellement le processus d'arrimage. La désintégration doit nécessairement être plus lente que le processus métabolique d'arrimage.
+ * **Stabilité métabolique** : le traceur ne doit pas se désagréger avant d'atteindre sa cible. Ici, on ne parle pas de la désintégration de l'isotope, mais plutôt du processus de métabolisation du précurseur. Par exemple la consommation du glucose par l'organisme, en dehors de l'activité cérébrale.
 
 ## Génération d'images en TEP
 Nous avons couvert les principes physiologiques et physiques nous permettant de traduire l'activité métabolique du cerveau en image. Maintenant, il s'agit de préciser comment cette traduction est opérée.
