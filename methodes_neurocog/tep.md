@@ -87,10 +87,10 @@ L'idée de base de la TEP est d'injecter un produit radioactif, appelé radiotra
 width: 800px
 name: isotope-fig
 ---
-Un isotope radioactif est un atome dont le ratio entre nombre de positons et nombre de neutrons est instable (**a**). Cette structure instable amène à l'émission d'un positron, qui s'annihile en percutant un électron, ce qui produit l'émission de rayons gamma opposés (**b**). Les rayons gamma sont des photons à très haute énergie, qui peuvent traverser les tissus biologiques, mais sont arrêtés par le plomb (**c**). Image **a** par et **b** adaptés d'une image de [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/beta-decay-nuclear-energy-diagram-showing-1509181103) ID `1509181103`, utilisée sous licence shutterstock standard. Image **c** par [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/types-radiation-penetrating-power-through-paper-1169023357) ID `1169023357`, utilisée sous licence shutterstock standard.
+Un isotope radioactif est un atome dont le ratio entre le nombre de protons et de neutrons est instable (**a**). Cette structure instable amène à l'émission d'un positron, qui s'annihile en percutant un électron, ce qui produit l'émission de rayons gamma opposés (**b**). Les rayons gamma sont des photons à très haute énergie, qui peuvent traverser les tissus biologiques, mais sont arrêtés par le plomb (**c**). Image **a** par et **b** adaptés d'une image de [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/beta-decay-nuclear-energy-diagram-showing-1509181103) ID `1509181103`, utilisée sous licence shutterstock standard. Image **c** par [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/types-radiation-penetrating-power-through-paper-1169023357) ID `1169023357`, utilisée sous licence shutterstock standard.
 ```
 
-L'imagerie par TEP était possible grâce à l'accumulation d'isotopes radioactifs dans l'organisme, qui sont détectés par l'appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu'ils se désintègrent dans le corps, c'est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d'un nombre de positons et de neutrons équilibrées. Un noyau instable aura soit trop de positons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positon. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés *rayons gamma*.
+L'imagerie par TEP était possible grâce à l'accumulation d'isotopes radioactifs dans l'organisme, qui sont détectés par l'appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu'ils se désintègrent dans le corps, c'est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d'un nombre de protons et de neutrons équilibrées. Un noyau instable aura soit trop de protons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positron et un neutrino électronique. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés *rayons gamma*.
 
 Les radioisotopes sont produits dans un cyclotron, et vont commencer à se désintégrer immédiatement. La **demi-vie** du radiotraceur correspond au temps nécessaire pour que la moitié des atomes radioactifs contenus dans le traceur se soient transformés en atomes stables. Chaque désintégration atomique est aléatoire, mais à cause du grand nombre d'atomes contenus dans une dose de radiotraceurs, la demi-vie est un phénomène très stable. L'imagerie TEP utilise un certain nombre d'isotopes bien connus. Certains, comme celui fabriqué à partir de fluor (ou $^{18}$**F**), ont une demi-vie assez longue. Cela nous permet de les produire sur un site spécialisé, puis de les transporter sur le lieu de l'étude. D'autres radioisotopes, comme celui fabriqué à partir d'oxygène (ou $^{15}$**O**) ont une demi-vie très courte. Au niveau logistique, ceci nécessite que le cyclotron se trouve à proximité du site ou l'expérimentation se déroule, car le radiotraceur doit immédiatement être utilisé après sa production. Référons nous au tableau d'isotopes pour comprendre de combien de temps nous disposons pour effectuer un scan TEP en fonction de l'isotope utilisé.
 
@@ -128,13 +128,36 @@ Pour être utile en neuroimagerie, un radiotraceur doit posséder les qualités 
  * **Stabilité métabolique** : le traceur ne doit pas se désagréger avant d'atteindre sa cible. Ici, on ne parle pas de la désintégration de l'isotope, mais plutôt du processus de métabolisation du précurseur. Par exemple la consommation du glucose par l'organisme, en dehors de l'activité cérébrale.
 
 ## Génération d'images en TEP
-Nous avons couvert les principes physiologiques et physiques nous permettant de traduire l'activité métabolique du cerveau en image. Maintenant, il s'agit de préciser comment cette traduction est opérée.
+Nous avons couvert les principes physiologiques et physiques des radiotraceurs. nous permettant de traduire l'activité métabolique du cerveau en image. Maintenant, il s'agit de préciser comment l'activité des radiotraceurs peut être utilisée pour générer une image. Pour cela, nous avons besoin de deux pièces d'infrastructure: le cyclotron et le scanner TEP. Nous aurons aussi besoin de méthodes d'analyses d'image.
 
-Il faut d'abord préciser ce qu'est l'émission de positron, et la procédure adoptée pour la capter et la traduire en images. Pour cela, nous avons besoin de deux pièces d'infrastructure importantes, soient le cyclotron ainsi que le scanner TEP.
-
-En termes grossiers, le cyclotron nous permet de concevoir les isotopes radioactif qui seront injectés au participant, et le scanner TEP nous permet de capter les *produits* de la désintégration d'isotopes dans le corps.
 ### Cyclotron
-Comme nous l'avons vu, le cyclotron nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l'imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d'un proton en un neutron ayant pour effet l'émission d'un positron. En d'autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité. Nous avons vu cette désintgration ${\beta^+}$ se réalise dans un cadre temporel précis (et relativement court), et qu'elle se mesure par les rayons gamma qui traversent les tissus et sortent de la boîte crânienne dans des directions diamétralement opposées. C'est le processus de captation et la modélisation 3D de ces rayons gamma issus de la désintégration qu'on nomme tomographie.
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+
+from IPython.display import HTML
+import warnings
+warnings.filterwarnings("ignore")
+
+# Youtube
+HTML('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6BxyqFK2KRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```
+
+Comme nous l'avons vu, le cyclotron nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. Cette production fait partie du processus de génération d'images TEP, car les radioisotopes sont instables et doivent être préparés dans un temps court avant l'expérience. La vidéo ci dessus présente le fonctionnement d'un cyclotron. Brièvement, un cyclotron est un accélérateur de particules compact, qui permet de bombarder des molécules avec des protons à haute énergie pour générer des isotopes radioactifs.
+
+```{figure} tep/radiochemistry.jpg
+---
+width: 600px
+name: radiochemistry-fig
+---
+Module de synthèse radiochimique automatisé. Image par [Bork](https://www.shutterstock.com/g/stratum) disponible sur [shutterstock](https://www.shutterstock.com/image-photo/manipulation-cell-43798612) ID `43798612`, utilisée sous licence shutterstock standard.
+```
+
+Une fois l'isotope produit, il peut être nécessaire d'effectuer des réactions chimiques pour fusionner l'isotope avec le précurseur, et synthétiser le radiotraceur. C'est le cas par exemple pour le FDG, où le $^{18}$**F**) va être intégré à une molécule de glucose. Comme les réactions chimiques font intervenir des composés radioactifs, cette étape est réalisée dans un laboratoire automatisée qui protège les opérateurs des radiations.
+
+
+
+
+En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l'imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d'un proton en un neutron ayant pour effet l'émission d'un positron. En d'autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité. Nous avons vu cette désintgration ${\beta^+}$ se réalise dans un cadre temporel précis (et relativement court), et qu'elle se mesure par les rayons gamma qui traversent les tissus et sortent de la boîte crânienne dans des directions diamétralement opposées. C'est le processus de captation et la modélisation 3D de ces rayons gamma issus de la désintégration qu'on nomme tomographie.
 
 ### Détection de coincidences
 Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant. Chaque capteur est couplé à un autre du côté opposé du cercle (la distance entre chaque couple de caméra correspond donc exactement au diamètre du cercle). Cette disposition des capteurs permet de détecter l'arrivée simultanée de deux photons. Ce comptage précis de photons est effectué en même temps par cette série de capteurs disposée en cercle.

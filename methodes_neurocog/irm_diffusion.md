@@ -536,7 +536,7 @@ La [tractographie](https://fr.wikipedia.org/wiki/Tractographie) permet de tracer
 Tout comme l'IRMf des étapes de recalage et de débruitage sont nécessaires pour préparer les données avant d'estimer les tenseurs et effectuer la tractographie. De nombreux paramètres sont à sélectionner pour la tractographie elle-même, qui peuvent influencer les résultats. Il est aussi nécessaire de sélectionner un masque de la matière blanche qui contient les points de départ pour la reconstruction de fibres, obtenu ici par seuillage d'une carte de FA.
 ```{glue:figure} mask-wm-fig
 :figwidth: 500px
-:name: "fibers-fig"
+:name: "mask-wm-fig"
 Carte d'anisotropite fractionnelle (gauche) et masque de la matière blanche obtenue par seuillage (droite). Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
