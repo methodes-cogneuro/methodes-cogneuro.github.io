@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -227,6 +229,114 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
+   Principes physiques et physiologiques
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#radiotraceurs">
+     Radiotraceurs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#isotopes-et-radioactivite">
+     Isotopes et radioactivité
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precurseurs-et-biomarqueurs">
+     Précurseurs et biomarqueurs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qualites-d-un-radiotraceur">
+     Qualités d’un radiotraceur
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generation-d-images-en-tep">
+   Génération d’images en TEP
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cyclotron">
+     Cyclotron
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detection-de-coincidences">
+     Détection de coincidences
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tomographie">
+     Tomographie
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tep-en-neurosciences-cognitives">
+   TEP en neurosciences cognitives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodes-permettant-d-etudier-les-troubles-neurodegeneratifs">
+   Méthodes permettant d’étudier les troubles neurodégénératifs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#imagerie-des-recepteurs">
+     Imagerie des récepteurs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta">
+     Radioligands pour les plaques Béta amyloïde (A
+     <span class="math notranslate nohighlight">
+      \({\beta}\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tau">
+     Tau
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion-et-resume">
+   Conclusion et résumé
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   Références
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -237,6 +347,218 @@
                 
   <div class="section" id="tomographie-par-emission-de-positrons">
 <span id="tep-chapitre"></span><h1>Tomographie par émission de positrons<a class="headerlink" href="#tomographie-par-emission-de-positrons" title="Permalink to this headline">¶</a></h1>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/sangfrois">
+        <img src="https://avatars.githubusercontent.com/u/38385719?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>François Lespinasse</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+        <a title="Code">💻</a>
+        <a title="Exercices">⚠️</a>
+        <a title="Révision du texte">👀</a>
+    </td>
+  </tr>
+</table>
+<div class="section" id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+<p>La <a class="reference external" href="https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons">tomographie par émission de positrons</a> est une technique d’imagerie qui permet de cibler de nombreuses caractéristiques du cerveau, aussi bien au niveau structurel que fonctionnel. Couplée avec un radiotraceur de Fluorodésoxyglucose (FDG), la TEP est couramment utilisée pour cartographier l’activité du cerveau au travers de différentes conditions expérimentales. Avec d’autres traceurs, elle permet de cartographier les dépôts de protéines anormales, ou bien encore la présence de différents récepteurs de neurotransmetteurs.</p>
+<div class="figure align-default" id="tep-scanner-fig">
+<a class="reference internal image-reference" href="_images/tep.jpg"><img alt="_images/tep.jpg" src="_images/tep.jpg" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 71 </span><span class="caption-text">Scanneur TEP. Image par <a class="reference external" href="https://commons.wikimedia.org/wiki/User:Jejecam">Jejecam</a> tirée de <a class="reference external" href="https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons#/media/Fichier:TEP-CT_2009.jpg">wikipedia</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA 3.0</a>.</span><a class="headerlink" href="#tep-scanner-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Les objectifs spécifiques du cours sont:</p>
+<ul class="simple">
+<li><p>Principes physiques et physiologiques de l’imagerie TEP.</p></li>
+<li><p>Génération d’images en TEP.</p></li>
+<li><p>Principaux types d’images en TEP pour les neurosciences cognitives.</p></li>
+</ul>
+</div>
+<div class="section" id="principes-physiques-et-physiologiques">
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="radiotraceurs">
+<h3>Radiotraceurs<a class="headerlink" href="#radiotraceurs" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="radiotraceur-fig">
+<a class="reference internal image-reference" href="_images/radiotraceur.png"><img alt="_images/radiotraceur.png" src="_images/radiotraceur.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 72 </span><span class="caption-text">Un radiotraceur est un produit radioactif qui est injecté au participant de recherche (<strong>a</strong>). Les molécules de ce traceur comportent deux parties: un isotope qui émet des rayons radioactifs, et un précurseur qui va s’accrocher à une cible dans le cerveau (<strong>b</strong>). Cette cible peut être par exemple les récepteurs dopaminergiques (<strong>c</strong>). Image <strong>a</strong> par <a class="reference external" href="https://www.shutterstock.com/g/rumruay">rumruay</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-vector/spect-scan-radiologist-single-computed-image-1329727577">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1329727577</span></code>, utilisée sous licence shutterstock standard. Image <strong>b</strong> par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Image <strong>c</strong> par <a class="reference external" href="https://www.shutterstock.com/g/simurggdesign">simurggdesign</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-vector/vector-illustration-synapse-neurotransmitter-diagram-synapses-2050315106">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">2050315106</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#radiotraceur-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>L’idée de base de la TEP est d’injecter un produit radioactif, appelé radiotraceur, qui va s’accumuler dans une partie bien définie du cerveau, comme par exemple les <a class="reference external" href="https://fr.wikipedia.org/wiki/R%C3%A9cepteur_dopaminergique">récepteurs dopaminergiques</a> de type D2. On réalise une image des parties du cerveau qui émettent de la radioactivité, et cela nous permet de quantifier la concentration de la cible du radiotraceur, soit par exemple la présence de récepteurs D2. Le radiotraceur est composé de deux parties: un <em>radioisotope médical</em>, qui est un atome radioactif, qui est lié à un composé non-radioactif nommé <em>précurseur</em> (ou <a class="reference external" href="https://fr.wikipedia.org/wiki/Ligand_(chimie)"><em>ligand</em></a>), qui va s’accrocher ou s’accumuler dans une <em>cible</em> (comme les récepteurs D2). Le <em>précurseur</em> est sélectionné pour son affinité avec la <em>cible</em>, et représente un choix clé de la conception d’un radiotraceur, et nous permet de capturer une caractéristique particulière du cerveau. Nous verrons dans la prochaine section comment l’accumulation d’isotopes est détectée par le scanner TEP. Nous allons discuté maintenant plus en détails des différents radioisotopes, précurseurs, et ce qui fait un bon radiotraceur.</p>
+<div class="tip admonition" id="resolution">
+<p class="admonition-title">Mini-glossaire</p>
+<ul class="simple">
+<li><p><strong>Isotope (ou radioisotope)</strong> : Un atome qui suit un processus de désintégration radioactif en émettant des radiations détectables* en dehors du corps.</p></li>
+<li><p><strong>Précurseur (ou ligand)</strong> : Un composant <em>non-radioactif</em> qui contient un segment actif se liant à la cible, et pouvant être facilement fusionné au radioisotope.</p></li>
+<li><p><strong>cible (ou biomarqueur)</strong> : La <em>cible</em> est un biomarqueur du phénomène qu’on cherche à mesurer.</p></li>
+<li><p><strong>Radiotraceur (ou radioligand)</strong> : Une molécule marquée <em>délivrant le radioisotope</em> jusqu’au <em>biomarqueur cible</em>; tout ça <em>in vivo</em>. Autrement dit, c’est la combinaison de l’isotope et du précurseur.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="isotopes-et-radioactivite">
+<h3>Isotopes et radioactivité<a class="headerlink" href="#isotopes-et-radioactivite" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="isotope-fig">
+<a class="reference internal image-reference" href="_images/isotope.png"><img alt="_images/isotope.png" src="_images/isotope.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text">Un isotope radioactif est un atome dont le ratio entre nombre de positons et nombre de neutrons est instable (<strong>a</strong>). Cette structure instable amène à l’émission d’un positron, qui s’annihile en percutant un électron, ce qui produit l’émission de rayons gamma opposés (<strong>b</strong>). Les rayons gamma sont des photons à très haute énergie, qui peuvent traverser les tissus biologiques, mais sont arrêtés par le plomb (<strong>c</strong>). Image <strong>a</strong> par et <strong>b</strong> adaptés d’une image de <a class="reference external" href="https://www.shutterstock.com/g/OSweetNature">OSweetNature</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-vector/beta-decay-nuclear-energy-diagram-showing-1509181103">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1509181103</span></code>, utilisée sous licence shutterstock standard. Image <strong>c</strong> par <a class="reference external" href="https://www.shutterstock.com/g/OSweetNature">OSweetNature</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-vector/types-radiation-penetrating-power-through-paper-1169023357">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">1169023357</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#isotope-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>L’imagerie par TEP était possible grâce à l’accumulation d’isotopes radioactifs dans l’organisme, qui sont détectés par l’appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu’ils se désintègrent dans le corps, c’est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d’un nombre de positons et de neutrons équilibrées. Un noyau instable aura soit trop de positons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positon. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés <em>rayons gamma</em>.</p>
+<p>Les radioisotopes sont produits dans un cyclotron, et vont commencer à se désintégrer immédiatement. La <strong>demi-vie</strong> du radiotraceur correspond au temps nécessaire pour que la moitié des atomes radioactifs contenus dans le traceur se soient transformés en atomes stables. Chaque désintégration atomique est aléatoire, mais à cause du grand nombre d’atomes contenus dans une dose de radiotraceurs, la demi-vie est un phénomène très stable. L’imagerie TEP utilise un certain nombre d’isotopes bien connus. Certains, comme celui fabriqué à partir de fluor (ou <span class="math notranslate nohighlight">\(^{18}\)</span><strong>F</strong>), ont une demi-vie assez longue. Cela nous permet de les produire sur un site spécialisé, puis de les transporter sur le lieu de l’étude. D’autres radioisotopes, comme celui fabriqué à partir d’oxygène (ou <span class="math notranslate nohighlight">\(^{15}\)</span><strong>O</strong>) ont une demi-vie très courte. Au niveau logistique, ceci nécessite que le cyclotron se trouve à proximité du site ou l’expérimentation se déroule, car le radiotraceur doit immédiatement être utilisé après sa production. Référons nous au tableau d’isotopes pour comprendre de combien de temps nous disposons pour effectuer un scan TEP en fonction de l’isotope utilisé.</p>
+<div class="tip admonition" id="isotopes-table">
+<p class="admonition-title">Tableau d’isotopes TEP</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Radioisotopes</strong></p></th>
+<th class="head"><p><strong>Demi-vie</strong></p></th>
+<th class="head"><p><strong><span class="math notranslate nohighlight">\(E_{max} ({\beta^+}) \)</span>, KeV</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(^{18}\)</span><strong>F</strong></p></td>
+<td><p>110 min</p></td>
+<td><p>634</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(^{11}\)</span><strong>C</strong></p></td>
+<td><p>20.3 min</p></td>
+<td><p>961</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(^{13}\)</span><strong>N</strong></p></td>
+<td><p>9.97 min</p></td>
+<td><p>1190</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(^{15}\)</span><strong>O</strong></p></td>
+<td><p>2.1 min</p></td>
+<td><p>1732</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(^{89}\)</span><strong>Zr</strong></p></td>
+<td><p>78.4 h</p></td>
+<td><p>897</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(^{124}\)</span><strong>I</strong></p></td>
+<td><p>4.17 j</p></td>
+<td><p>2100</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(^{64}\)</span><strong>Cu</strong></p></td>
+<td><p>12.8 h</p></td>
+<td><p>656</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(^{68}\)</span><strong>Ga</strong></p></td>
+<td><p>67.6 min</p></td>
+<td><p>1899</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="precurseurs-et-biomarqueurs">
+<h3>Précurseurs et biomarqueurs<a class="headerlink" href="#precurseurs-et-biomarqueurs" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="fdg-fig">
+<a class="reference internal image-reference" href="_images/fdg.jpg"><img alt="_images/fdg.jpg" src="_images/fdg.jpg" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 74 </span><span class="caption-text">Molécule de Fluorodeoxyglucose. Chaque sphère représente un atome (noir: carbone, rouge: oxygène, blanc: hydrogène, vert: <span class="math notranslate nohighlight">\(^{18}\)</span><strong>F</strong>). Image par <a class="reference external" href="https://www.shutterstock.com/g/molekuul">StudioMolekuul</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-illustration/fludeoxyglucose-18f-fluorodeoxyglucose-fdg-cancer-imaging-149603819">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">149603819</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#fdg-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le précurseur peut être une molécule endogène (déjà présente dans l’organisme, soit l’oxygène ou le glucose) dont la concentration est altérée en présence de l’activité cérébrale ou bien d’une pathologie. Le précurseur peut aussi être une molécule qui va s’accrocher à une partie spécifique du cerveau (par exemple les récepteurs d’un certain neurotransmetteur). Une réaction chimique est utilisée pour synthétiser une molécule qui regroupe le radioisotope et le précurseur. Dans l’exemple du FDG, une molécule de glucose standard va perdre un oxygène et un hydrogène, qui vont être remplacés par du <span class="math notranslate nohighlight">\(^{18}\)</span><strong>F</strong> synthétisé par un cyclotron, voir <a class="reference internal" href="#fdg-fig"><span class="std std-numref">Fig. 74</span></a>. Comme nous le verrons plus tard dans ce chapitre, le glucose va s’accumuler dans les parties du cerveau où les neurones sont les plus actifs. La FDG va ainsi agir comme un biomarqueur de l’activité cérébrale.</p>
+</div>
+<div class="section" id="qualites-d-un-radiotraceur">
+<h3>Qualités d’un radiotraceur<a class="headerlink" href="#qualites-d-un-radiotraceur" title="Permalink to this headline">¶</a></h3>
+<p>Pour être utile en neuroimagerie, un radiotraceur doit posséder les qualités suivantes:</p>
+<ul class="simple">
+<li><p><strong>Perméabilité à la barrière hémato-encéphalique</strong> : le traceur injecté dans le sang doit pouvoir se rendre au cerveau.</p></li>
+<li><p><strong>Spécificité d’arrimage</strong>: le traceur doit se fixer seulement sur la bonne cible.</p></li>
+<li><p><strong>Affinité d’arrimage</strong> : même avec une basse concentration de la cible, le traceur doit pouvoir s’y arrimer.</p></li>
+<li><p><strong>Rapidité d’arrimage</strong> : la désintégration de l’isotope contraint temporellement le processus d’arrimage. La désintégration doit nécessairement être plus lente que le processus métabolique d’arrimage.</p></li>
+<li><p><strong>Stabilité métabolique</strong> : le traceur ne doit pas se désagréger avant d’atteindre sa cible. Ici, on ne parle pas de la désintégration de l’isotope, mais plutôt du processus de métabolisation du précurseur. Par exemple la consommation du glucose par l’organisme, en dehors de l’activité cérébrale.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="generation-d-images-en-tep">
+<h2>Génération d’images en TEP<a class="headerlink" href="#generation-d-images-en-tep" title="Permalink to this headline">¶</a></h2>
+<p>Nous avons couvert les principes physiologiques et physiques nous permettant de traduire l’activité métabolique du cerveau en image. Maintenant, il s’agit de préciser comment cette traduction est opérée.</p>
+<p>Il faut d’abord préciser ce qu’est l’émission de positron, et la procédure adoptée pour la capter et la traduire en images. Pour cela, nous avons besoin de deux pièces d’infrastructure importantes, soient le cyclotron ainsi que le scanner TEP.</p>
+<p>En termes grossiers, le cyclotron nous permet de concevoir les isotopes radioactif qui seront injectés au participant, et le scanner TEP nous permet de capter les <em>produits</em> de la désintégration d’isotopes dans le corps.</p>
+<div class="section" id="cyclotron">
+<h3>Cyclotron<a class="headerlink" href="#cyclotron" title="Permalink to this headline">¶</a></h3>
+<p>Comme nous l’avons vu, le cyclotron nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l’imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d’un proton en un neutron ayant pour effet l’émission d’un positron. En d’autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité. Nous avons vu cette désintgration <span class="math notranslate nohighlight">\({\beta^+}\)</span> se réalise dans un cadre temporel précis (et relativement court), et qu’elle se mesure par les rayons gamma qui traversent les tissus et sortent de la boîte crânienne dans des directions diamétralement opposées. C’est le processus de captation et la modélisation 3D de ces rayons gamma issus de la désintégration qu’on nomme tomographie.</p>
+</div>
+<div class="section" id="detection-de-coincidences">
+<h3>Détection de coincidences<a class="headerlink" href="#detection-de-coincidences" title="Permalink to this headline">¶</a></h3>
+<p>Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant. Chaque capteur est couplé à un autre du côté opposé du cercle (la distance entre chaque couple de caméra correspond donc exactement au diamètre du cercle). Cette disposition des capteurs permet de détecter l’arrivée simultanée de deux photons. Ce comptage précis de photons est effectué en même temps par cette série de capteurs disposée en cercle.</p>
+<p>L’image produite par le scanner TEP est obtenue au travers une projection de la densité de radiotraceurs dans chaque direction, soit chaque couple de caméras. Cette image ne correspond donc pas (encore) à une image du cerveau.</p>
+</div>
+<div class="section" id="tomographie">
+<h3>Tomographie<a class="headerlink" href="#tomographie" title="Permalink to this headline">¶</a></h3>
+<p>La tomographie correspond à la combination des mesures prises par l’ensemble des caméras afin de reconstituer une représentation 3D du cerveau. Ce processus correspond à une opération mathématique connue sous le nom de tomographie. On comprend qu’il est nécessaire de disposer d’un nombre important de caméras afin de procéder à une reconstruction précise de l’espace 3D.</p>
+</div>
+</div>
+<div class="section" id="tep-en-neurosciences-cognitives">
+<h2>TEP en neurosciences cognitives<a class="headerlink" href="#tep-en-neurosciences-cognitives" title="Permalink to this headline">¶</a></h2>
+<p>Faire une figure de contraste TEP ici avec ces <a class="reference external" href="https://openneuro.org/datasets/ds001421/versions/1.2.0">données</a></p>
+<p>À ce stade de l’exposé, il s’agit de se demander le genre d’hypothèses que la TEP nous permet de tester. Revenons sur les notions principales :</p>
+<ol class="simple">
+<li><p>Nous fabriquons un isotope radioactif (<em>e.g.</em> du fluor radioactif) et nous l’injectons au participant.</p></li>
+<li><p>L’isotope se fixe à un précurseur (<em>e.g.</em> du glucose), et cela forme un radiotraceur conçu pour se fixer sur une <em>cible</em> précise.</p></li>
+<li><p>Le participant s’installe dans le scanner, et à partir de ce moment, il est possible de capter la désintégration <span class="math notranslate nohighlight">\({\beta^+}\)</span> du radiotraceur sous forme de rayons gamma</p></li>
+<li><p>La concentration relative du radiotraceur reconstituée par tomographie nous indique la position des cibles et/où leur densité.</p></li>
+</ol>
+<p>Nous pouvons remarquer que la concentration relative du radiotraceur peuvent dépendre tant de la physiologie de la condition expérimentatale. Supposons que que nous voulons imager la consommation de glucose au repos d’un participant à l’aide du radiotraceur Fluorodésoxyglucose ([<span class="math notranslate nohighlight">\(^{18}\)</span><strong>F</strong>]FDG). Nous pourrions effectuer un contraste simple entre deux conditions expériementales. Il serait possible de constater que l’accumulation captée au repos et celle captée pendant la réalisation d’une tâche est différente. Par exemple, le cortex cingulaire postérieur (noyau du réseau du mode par défaut) pourrait consommer plus de glucose au repos. Autrement, si nous nous attardons aux différences physiologiques de nos participants, il serait possible de constater des différences de métabolisation du glucose en fonction de l’âge des participants.</p>
+</div>
+<div class="section" id="methodes-permettant-d-etudier-les-troubles-neurodegeneratifs">
+<h2>Méthodes permettant d’étudier les troubles neurodégénératifs<a class="headerlink" href="#methodes-permettant-d-etudier-les-troubles-neurodegeneratifs" title="Permalink to this headline">¶</a></h2>
+<p>Nous savons que les troubles neurodégénératifs sont associées au dysfonctionnement de différents systèmes de neurotransmission. Les méthodes en TEP sont particulièrement importantes pour l’investigation de ces troubles, car elles permettent notamment de cartographier la densité des récepteurs de ces neurotransmetteurs, ou toutes autres protéines pathologiques connues pour leur implications dans ces troubles.</p>
+<div class="section" id="imagerie-des-recepteurs">
+<h3>Imagerie des récepteurs<a class="headerlink" href="#imagerie-des-recepteurs" title="Permalink to this headline">¶</a></h3>
+<p>Un <strong>récepteur</strong> est une protéine recevant un signal à l’extérieur de la cellule neuronale, c’est-à-dire qu’elle reconnaît et répond à des messagers chimiques endogènes (ou exogènes comme des médicaments). Ce récepteur agit comme biomarqueur, ou alors, comme cible d’arrimage d’un radioisotope et de son précurseur. Dans ce contexte, l’expression <strong>ligand</strong> est préférée pour dénommer la molécule qui s’accroche aux récepteurs d’intérêt puisque ceux-ci ont été développé spécifiquement pour s’arrimer à des récepteurs de systèmes de neurotransmission. Par exemple, des ligands ont été conçus spécifiquement pour les récepteur dopaminergiques tels que D2 et D3. Ces ligands s’associent aux isotopes [<span class="math notranslate nohighlight">\(^{11}\)</span><strong>C</strong>] pour former des radioligands.</p>
+</div>
+<div class="section" id="radioligands-pour-les-plaques-beta-amyloide-a-beta">
+<h3>Radioligands pour les plaques Béta amyloïde (A<span class="math notranslate nohighlight">\({\beta}\)</span>)<a class="headerlink" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta" title="Permalink to this headline">¶</a></h3>
+<p>L’amyloïde beta vient d’une protéine précurseur de l’amyloïde (APP). L’amyloïde beta peut s’agréger en plaques, notamment dans la maladie d’Alzheimer. Ces plaques bloquent les communication inter-neurones, puis elles déclenchent une réaction inflammatoire neuro-toxique qui accélère la dégénération des tissues cérébraux et contribuent au déclin des fonctions cognitives. Les plaques A<span class="math notranslate nohighlight">\({\beta}\)</span> sont considérées comme un biomarqueur de la maladie d’Alzheimer. Des ligands ont été développé pour s’arrimer aux plaques A<span class="math notranslate nohighlight">\({\beta}\)</span> tel que le composé [<span class="math notranslate nohighlight">\(^{11}\)</span><strong>C</strong>] PIB.</p>
+<p>Précisons, cependant, que les plaques peuvent être présentes sans les symptômes des troubles neurodégénératifs (<em>e.g.</em> ou de démence). La mesure de densité de plaques comme biomarqueur est constestée.</p>
+</div>
+<div class="section" id="tau">
+<h3>Tau<a class="headerlink" href="#tau" title="Permalink to this headline">¶</a></h3>
+<p>Ajoutons nous cette section ?</p>
+</div>
+</div>
+<div class="section" id="conclusion-et-resume">
+<h2>Conclusion et résumé<a class="headerlink" href="#conclusion-et-resume" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Un radiotraceur est composé d’un précurseur, qui s’accroche à une cible, puis un isotope, qui se désintègre en émettant des rayons gamma.</p></li>
+<li><p>En enregistrant les coincidences d’arrivée de photons, on peut reconstruire une représentation 3D de la concentration du radiotraceur à l’aide d’une opération dite de Tomographie</p></li>
+<li><p>La FDG TEP est utilisée pour étudier le métabolisme du glucose. La métabolisation du glucose nous indique la consommation d’énergie relative des différentes régions cérébrale. Ceci nous permet d’effectuer des contraste de consommation de glucose entre conditions expérimentales.</p></li>
+<li><p>On peut imager la densité de récepteur de différents neurotransmetteurs à l’aide de <strong>radioligands</strong>. Par exemple, ceux de la dopamine.</p></li>
+<li><p>Des radioligands ont été conçus spécifiquement pour imager la densité des plaques A<span class="math notranslate nohighlight">\({\beta}\)</span>.</p></li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="id1"></span></div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Les données de tomographie par émission de positrons sont (vrai/faux)</p>
+<p>a. Des données avec une meilleure résolution spatiale que l’IRMf.</p>
+<p>b. Des données avec une meilleure résolution spatiale que l’imagerie optique.</p>
+<p>c. Des données avec une meilleure résolution temporelle que l’imagerie optique.</p>
+<p>d. Des données moins chères à recueillir que l’IRMf.</p>
+<p>e. Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.</p>
+<p>f. Des données qui peuvent capturer le métabolisme du glucose.</p>
+</li>
+<li><p>On effectue une imagerie TEP des plaques de beta amyloide chez un patient jeune en santé, et l’on observe un dépôt substantiel dans la matière blanche. Proposer deux explications à cette observation.</p></li>
+<li><p>On souhaite mesurer le niveau d’activité au repos dans le cerveau d’une personne âgée à l’aide du FDG TEP. Citez un avantage et une limitation de cette technique par rapport à l’IRMf, ainsi qu’une considération éthique pertinente pour ce projet.</p></li>
+<li><p>Dans un radiotraceur, est-ce l’isotope ou bien le précurseur qui détermine la demi-vie? et en ce qui concerne la stabilité métabolique?</p></li>
+<li><p>Est ce que la résolution spatiale de la TEP est identique pour tous les scanners?</p></li>
+<li><p>Est ce que la TEP est un appareil d’imagerie fonctionnelle, structurelle, ou bien les deux? Pourquoi?</p></li>
+<li><p>Quel est l’avantage de disposer d’un cyclotron à proximité d’un centre d’imagerie TEP?</p></li>
+<li><p>Donnez un exemple de projet de recherche qui nécessite absolument d’utiliser la TEP par rapport à une autre technique de neuroimagerie.</p></li>
+</ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
