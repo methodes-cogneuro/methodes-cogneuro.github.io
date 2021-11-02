@@ -87,26 +87,26 @@ L'idée de base de la TEP est d'injecter un produit radioactif, appelé radiotra
 width: 800px
 name: isotope-fig
 ---
-Un isotope radioactif est un atome dont le ratio entre nombre de positons et nombre de neutrons est instable (**a**). Cette structure instable amène à l'émission d'un positron, qui s'annihile en percutant un électron, ce qui produit l'émission de rayons gamma opposés (**b**). Les rayons gamma sont des photons à très haute énergie, qui peuvent traverser les tissus biologiques, mais sont arrêtés par le plomb (**c**). Image **a** par et **b** adaptés d'une image de [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/beta-decay-nuclear-energy-diagram-showing-1509181103) ID `1509181103`, utilisée sous licence shutterstock standard. Image **c** par [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/types-radiation-penetrating-power-through-paper-1169023357) ID `1169023357`, utilisée sous licence shutterstock standard.
+Un isotope radioactif est un atome dont le ratio entre le nombre de protons et de neutrons est instable (**a**). Cette structure instable amène à l'émission d'un positron, qui s'annihile en percutant un électron, ce qui produit l'émission de rayons gamma opposés (**b**). Les rayons gamma sont des photons à très haute énergie, qui peuvent traverser les tissus biologiques, mais sont arrêtés par le plomb (**c**). Image **a** par et **b** adaptés d'une image de [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/beta-decay-nuclear-energy-diagram-showing-1509181103) ID `1509181103`, utilisée sous licence shutterstock standard. Image **c** par [OSweetNature](https://www.shutterstock.com/g/OSweetNature) disponible sur [shutterstock](https://www.shutterstock.com/image-vector/types-radiation-penetrating-power-through-paper-1169023357) ID `1169023357`, utilisée sous licence shutterstock standard.
 ```
 
-L'imagerie par TEP était possible grâce à l'accumulation d'isotopes radioactifs dans l'organisme, qui sont détectés par l'appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu'ils se désintègrent dans le corps, c'est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d'un nombre de positons et de neutrons équilibrées. Un noyau instable aura soit trop de positons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positon. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés *rayons gamma*.
+L'imagerie par TEP était possible grâce à l'accumulation d'isotopes radioactifs dans l'organisme, qui sont détectés par l'appareil TEP et permettent de construire une image. Mais comment cette accumulation peut-elle être mesuré? Les isotopes sont conçus spécifiquement pour qu'ils se désintègrent dans le corps, c'est-à-dire pour que le noyau atomique soit instable. Un isotope stable a un noyau constitué d'un nombre de protons et de neutrons équilibrées. Un noyau instable aura soit trop de protons, soit trop de neutrons. À un moment, cette structure instable va se stabiliser en émettant un positron et un neutrino électronique. Lorsque le positron émis en dehors du noyau rencontre un électron, les deux se désintègrent, ce qui génère deux photons partant en direction diamétralement opposée. Ces photons à haute énergie sont appelés *rayons gamma*.
 
 Les radioisotopes sont produits dans un cyclotron, et vont commencer à se désintégrer immédiatement. La **demi-vie** du radiotraceur correspond au temps nécessaire pour que la moitié des atomes radioactifs contenus dans le traceur se soient transformés en atomes stables. Chaque désintégration atomique est aléatoire, mais à cause du grand nombre d'atomes contenus dans une dose de radiotraceurs, la demi-vie est un phénomène très stable. L'imagerie TEP utilise un certain nombre d'isotopes bien connus. Certains, comme celui fabriqué à partir de fluor (ou $^{18}$**F**), ont une demi-vie assez longue. Cela nous permet de les produire sur un site spécialisé, puis de les transporter sur le lieu de l'étude. D'autres radioisotopes, comme celui fabriqué à partir d'oxygène (ou $^{15}$**O**) ont une demi-vie très courte. Au niveau logistique, ceci nécessite que le cyclotron se trouve à proximité du site ou l'expérimentation se déroule, car le radiotraceur doit immédiatement être utilisé après sa production. Référons nous au tableau d'isotopes pour comprendre de combien de temps nous disposons pour effectuer un scan TEP en fonction de l'isotope utilisé.
 
 ```{admonition} Tableau d'isotopes TEP
 :class: tip
 :name: isotopes-table
-| **Radioisotopes**       | **Demi-vie** | **$E_{max} ({\beta^+}) $, KeV** |
-| ---------------------- | ------------ | ------------------------------- |
-| $^{18}$**F**           | 110 min      | 634                             |
-| $^{11}$**C**           | 20.3 min     | 961                             |
-| $^{13}$**N**           | 9.97 min     | 1190                            |
-| $^{15}$**O**           | 2.1 min      | 1732                            |
-| $^{89}$**Zr**          | 78.4 h       | 897                             |
-| $^{124}$**I**          | 4.17 j       | 2100                            |
-| $^{64}$**Cu**          | 12.8 h       | 656                             |
-| $^{68}$**Ga**          | 67.6 min     | 1899                            |
+| **Radioisotopes**      | **Demi-vie** |
+| ---------------------- | ------------ |
+| $^{18}$**F**           | 110 min      |
+| $^{11}$**C**           | 20.3 min     |
+| $^{13}$**N**           | 9.97 min     |
+| $^{15}$**O**           | 2.1 min      |
+| $^{89}$**Zr**          | 78.4 h       |
+| $^{124}$**I**          | 4.17 j       |
+| $^{64}$**Cu**          | 12.8 h       |
+| $^{68}$**Ga**          | 67.6 min     |
 
 ```
 ### Précurseurs et biomarqueurs
@@ -128,23 +128,110 @@ Pour être utile en neuroimagerie, un radiotraceur doit posséder les qualités 
  * **Stabilité métabolique** : le traceur ne doit pas se désagréger avant d'atteindre sa cible. Ici, on ne parle pas de la désintégration de l'isotope, mais plutôt du processus de métabolisation du précurseur. Par exemple la consommation du glucose par l'organisme, en dehors de l'activité cérébrale.
 
 ## Génération d'images en TEP
-Nous avons couvert les principes physiologiques et physiques nous permettant de traduire l'activité métabolique du cerveau en image. Maintenant, il s'agit de préciser comment cette traduction est opérée.
+Nous avons couvert les principes physiologiques et physiques des radiotraceurs. nous permettant de traduire l'activité métabolique du cerveau en image. Maintenant, il s'agit de préciser comment l'activité des radiotraceurs peut être utilisée pour générer une image. Pour cela, nous avons besoin de deux pièces d'infrastructure: le cyclotron et le scanner TEP. Nous aurons aussi besoin de méthodes d'analyses d'image.
 
-Il faut d'abord préciser ce qu'est l'émission de positron, et la procédure adoptée pour la capter et la traduire en images. Pour cela, nous avons besoin de deux pièces d'infrastructure importantes, soient le cyclotron ainsi que le scanner TEP.
-
-En termes grossiers, le cyclotron nous permet de concevoir les isotopes radioactif qui seront injectés au participant, et le scanner TEP nous permet de capter les *produits* de la désintégration d'isotopes dans le corps.
 ### Cyclotron
-Comme nous l'avons vu, le cyclotron nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l'imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d'un proton en un neutron ayant pour effet l'émission d'un positron. En d'autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité. Nous avons vu cette désintgration ${\beta^+}$ se réalise dans un cadre temporel précis (et relativement court), et qu'elle se mesure par les rayons gamma qui traversent les tissus et sortent de la boîte crânienne dans des directions diamétralement opposées. C'est le processus de captation et la modélisation 3D de ces rayons gamma issus de la désintégration qu'on nomme tomographie.
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+
+from IPython.display import HTML
+import warnings
+warnings.filterwarnings("ignore")
+
+# Youtube
+HTML('<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6BxyqFK2KRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```
+
+Comme nous l'avons vu, le cyclotron nous permet de fabriquer des noyaux atomiques instables de façon contrôlée. Cette production fait partie du processus de génération d'images TEP, car les radioisotopes sont instables et doivent être préparés dans un temps court avant l'expérience. La vidéo ci dessus présente le fonctionnement d'un cyclotron. Brièvement, un cyclotron est un accélérateur de particules compact, qui permet de bombarder des molécules avec des protons à haute énergie pour générer des isotopes radioactifs.
+
+```{figure} tep/radiochemistry.jpg
+---
+width: 600px
+name: radiochemistry-fig
+---
+Module de synthèse radiochimique automatisé. Image par [Bork](https://www.shutterstock.com/g/stratum) disponible sur [shutterstock](https://www.shutterstock.com/image-photo/manipulation-cell-43798612) ID `43798612`, utilisée sous licence shutterstock standard.
+```
+
+Une fois l'isotope produit, il peut être nécessaire d'effectuer des réactions chimiques pour fusionner l'isotope avec le précurseur, et synthétiser le radiotraceur. C'est le cas par exemple pour le FDG, où le $^{18}$**F**) va être intégré à une molécule de glucose. Comme les réactions chimiques font intervenir des composés radioactifs, cette étape est réalisée dans un laboratoire automatisée qui protège les opérateurs des radiations ({numref}`radiochemistry-fig`).
+
+```{figure} tep/injection_tep.jpg
+---
+width: 500px
+name: injection-tep-fig
+---
+Injecteur plombé permettant de protéger l'opérateur TEP des radiations émises par le radiotraceur. Image par [JeJecam](https://commons.wikimedia.org/wiki/User:Jejecam) tirée de [wikipedia](https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons#/media/Fichier:Injecteur_plombe.jpg) sous licence [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
+```
+Une fois produite, la dose de radiotraceur doit être acheminée rapidement pour être injectée au participant de recherche. La demi-vie du FDG est d'environ deux heures, ce qui permet de produire le radiotraceur et de l'utiliser sur des sites différents, si nécessaire. Durant le transport, la dose de radiotraceurs émet continuellement des radiations, et il est nécessaire d'utiliser des équipements de protection ({numref}`injection-tep-fig`).
 
 ### Détection de coincidences
-Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant. Chaque capteur est couplé à un autre du côté opposé du cercle (la distance entre chaque couple de caméra correspond donc exactement au diamètre du cercle). Cette disposition des capteurs permet de détecter l'arrivée simultanée de deux photons. Ce comptage précis de photons est effectué en même temps par cette série de capteurs disposée en cercle.
-
-L'image produite par le scanner TEP est obtenue au travers une projection de la densité de radiotraceurs dans chaque direction, soit chaque couple de caméras. Cette image ne correspond donc pas (encore) à une image du cerveau.
+```{figure} tep/coincidence_tep.png
+---
+width: 800px
+name: coincidence-fig
+---
+Injecteur plombé permettant de protéger l'opérateur TEP des radiations émises par le radiotraceur. Image par [Jens Maus](https://github.com/jens-maus) tirée de [wikipedia](https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons#/media/Fichier:PET-schema.png) sous licence [domaine public](https://fr.wikipedia.org/wiki/Domaine_public_(propri%C3%A9t%C3%A9_intellectuelle)).
+```
+Une fois le radiotraceur injecté et accumulé sur la cible, la radioactivité est émise par les parties du cerveau que l'on souhaite étudier. Pour chaque évènement radiactif, les deux rayons gamma sortent de la boîte crânienne dans des directions diamétralement opposées. Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant ({numref}`coincidence-fig`). Comme les rayons gamma se déplacent à grande vitesse, ils viennent frapper deux caméras pratiquement au même moment (à quelques nanosecondes près). Cette arrivée simultanée, appelée **coincidence**, est détectée par le scanneur TEP. Il est possible possible de savoir qu'un événement radioactif a eu lieu sur la droite reliant les capteurs, et il est possible de calculer l'activité accumulée au cours du temps selon l'ensemble des droites possibles. Pour le FDG, il existe plusieurs millions d'événements radioactifs par minutes, et on effectue une mesure accumulée sur plusieurs dizaines de minutes. Mais ces mesures, appelées **projections**, ne correspondent pas (encore) à une image du cerveau.
 
 ### Tomographie
+```{figure} tep/projection.gif
+---
+width: 800px
+name: projection-fig
+---
+Illustration de la construction de projections multiples d'une image 2D. Image par [Lucas VB](https://commons.wikimedia.org/wiki/User:LucasVB) tirée de [wikipedia](https://en.wikipedia.org/wiki/Radon_transform#/media/File:Radon_transform_sinogram.gif) sous licence [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
+```
+La figure {numref}`projection-fig` illustre comment un object 2D peut être convertie en un série de projections. La tomographie est une opération qui consiste à reconstruire une image 3D du cerveau à partir de la combinaison des mesures prises par l'ensemble des caméras. Si l'on disposait de l'ensemble des projections possibles, on pourrait en théorie faire une reconstruction parfaite. En pratique, on est limité par la taille et le nombre des caméras du scaneur TEP. La figure ci dessous illustre une image simplifiée de coupe 2D du cerveau, le processus de projections multiples, et une reconstruction de l'image à partir des projections. Pour un appareil TEP humain, la résolution spatiale est de l'ordre de 4-7 mm.
 
-La tomographie correspond à la combination des mesures prises par l'ensemble des caméras afin de reconstituer une représentation 3D du cerveau. Ce processus correspond à une opération mathématique connue sous le nom de tomographie. On comprend qu'il est nécessaire de disposer d'un nombre important de caméras afin de procéder à une reconstruction précise de l'espace 3D.
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+from skimage.data import shepp_logan_phantom
+from skimage.transform import radon, rescale
 
+# Télécharge données fantôme
+image = shepp_logan_phantom()
+image = rescale(image, scale=0.4, mode='reflect')
+
+# Prépare la figure
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4.5))
+
+# Image originale
+ax1.set_title("Image originale")
+ax1.imshow(image, cmap=plt.cm.Greys_r)
+
+# Projections
+theta = np.linspace(0., 180., max(image.shape), endpoint=False)
+sinogram = radon(image, theta=theta)
+dx, dy = 0.5 * 180.0 / max(image.shape), 0.5 / sinogram.shape[0]
+ax2.set_title("projections")
+ax2.set_xlabel("Angle projection (deg)")
+ax2.set_ylabel("Position projection(pixels)")
+ax2.imshow(sinogram, cmap=plt.cm.Greys_r,
+           extent=(-dx, 180.0 + dx, -dy, sinogram.shape[0] + dy),
+           aspect='auto')
+
+# Reconstruction
+from skimage.transform import iradon
+
+reconstruction_fbp = iradon(sinogram, theta=theta, filter_name='ramp')
+imkwargs = dict(vmin=-0.2, vmax=0.2)
+ax3.set_title("Image reconstruite")
+ax3.imshow(reconstruction_fbp, cmap=plt.cm.Greys_r)
+fig.tight_layout()
+
+from myst_nb import glue
+glue("radon-fig", fig, display=False)
+```
+
+```{glue:figure} radon-fig
+:figwidth: 800px
+:name: radon-fig
+:align: center
+ Une image 2D ressemblant à une coupe de cerveau (image de gauche). Représentation de la même image avec une série de projections correspondant à différentes positions dans l'espace et différents angles de projection (image du centre). Image reconstruite à partir des projections (image de droite). Cette figure est générée par du code python à l'aide de la librairie [scikit-image](https://scikit-image.org/docs/dev/auto_examples/transform/plot_radon_transform.html) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
 ## TEP en neurosciences cognitives
 
 Faire une figure de contraste TEP ici avec ces [données](https://openneuro.org/datasets/ds001421/versions/1.2.0)
