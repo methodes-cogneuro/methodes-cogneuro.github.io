@@ -152,17 +152,26 @@ name: radiochemistry-fig
 Module de synthèse radiochimique automatisé. Image par [Bork](https://www.shutterstock.com/g/stratum) disponible sur [shutterstock](https://www.shutterstock.com/image-photo/manipulation-cell-43798612) ID `43798612`, utilisée sous licence shutterstock standard.
 ```
 
-Une fois l'isotope produit, il peut être nécessaire d'effectuer des réactions chimiques pour fusionner l'isotope avec le précurseur, et synthétiser le radiotraceur. C'est le cas par exemple pour le FDG, où le $^{18}$**F**) va être intégré à une molécule de glucose. Comme les réactions chimiques font intervenir des composés radioactifs, cette étape est réalisée dans un laboratoire automatisée qui protège les opérateurs des radiations.
+Une fois l'isotope produit, il peut être nécessaire d'effectuer des réactions chimiques pour fusionner l'isotope avec le précurseur, et synthétiser le radiotraceur. C'est le cas par exemple pour le FDG, où le $^{18}$**F**) va être intégré à une molécule de glucose. Comme les réactions chimiques font intervenir des composés radioactifs, cette étape est réalisée dans un laboratoire automatisée qui protège les opérateurs des radiations ({numref}`radiochemistry-fig`).
 
-
-
-
-En bref, si la tension est trop forte dans la structure atomique, différents mécanismes de désintégration peuvent se produire afin que le noyau se stabilise. Un de ces mécanismes est exploité dans l'imagerie TEP, soit la désintégration Béta+. Cette désintégration correspond à la transformation d'un proton en un neutron ayant pour effet l'émission d'un positron. En d'autres mots, un positron est éjecté de la structure atomique pour que le noyau retrouve sa stabilité. Nous avons vu cette désintgration ${\beta^+}$ se réalise dans un cadre temporel précis (et relativement court), et qu'elle se mesure par les rayons gamma qui traversent les tissus et sortent de la boîte crânienne dans des directions diamétralement opposées. C'est le processus de captation et la modélisation 3D de ces rayons gamma issus de la désintégration qu'on nomme tomographie.
+```{figure} tep/injection_tep.jpg
+---
+width: 500px
+name: injection-tep-fig
+---
+Injecteur plombé permettant de protéger l'opérateur TEP des radiations émises par le radiotraceur. Image par [JeJecam](https://commons.wikimedia.org/wiki/User:Jejecam) tirée de [wikipedia](https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons#/media/Fichier:Injecteur_plombe.jpg) sous licence [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
+```
+Une fois produite, la dose de radiotraceur doit être acheminée rapidement pour être injectée au participant de recherche. La demi-vie du FDG est d'environ deux heures, ce qui permet de produire le radiotraceur et de l'utiliser sur des sites différents, si nécessaire. Durant le transport, la dose de radiotraceurs émet continuellement des radiations, et il est nécessaire d'utiliser des équipements de protection ({numref}`injection-tep-fig`).
 
 ### Détection de coincidences
-Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant. Chaque capteur est couplé à un autre du côté opposé du cercle (la distance entre chaque couple de caméra correspond donc exactement au diamètre du cercle). Cette disposition des capteurs permet de détecter l'arrivée simultanée de deux photons. Ce comptage précis de photons est effectué en même temps par cette série de capteurs disposée en cercle.
-
-L'image produite par le scanner TEP est obtenue au travers une projection de la densité de radiotraceurs dans chaque direction, soit chaque couple de caméras. Cette image ne correspond donc pas (encore) à une image du cerveau.
+```{figure} tep/coincidence_tep.jpg
+---
+width: 800px
+name: coincidence-fig
+---
+Injecteur plombé permettant de protéger l'opérateur TEP des radiations émises par le radiotraceur. Image par [Jens Maus](https://github.com/jens-maus) tirée de [wikipedia](https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons#/media/Fichier:PET-schema.png) sous licence [domaine public](https://fr.wikipedia.org/wiki/Domaine_public_(propri%C3%A9t%C3%A9_intellectuelle)).
+```
+Une fois le radiotraceur injecté et accumulé sur la cible, la radioactivité est émise par les parties du cerveau que l'on souhaite étudier. Pour chaque évènement radiactif, les deux rayons gamma sortent de la boîte crânienne dans des directions diamétralement opposées. Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant ({numref}`coincidence-fig`). Comme les rayons gamma se déplacent à grande vitesse, ils viennent frapper deux caméras pratiquement au même moment (à quelques nanosecondes près). Cette arrivée simultanée, appelée **coincidence**, est détectée par le scanneur TEP. Il est possible possible de savoir qu'un événement radioactif a eu lieu sur la droite reliant les capteurs, et il est possible de calculer l'activité accumulée au cours du temps (jusqu'à plusieurs dizaines de minutes) selon l'ensemble des droites possibles. Mais ces mesures, appelées sinograme, ne correspondent pas (encore) à une image du cerveau.
 
 ### Tomographie
 
