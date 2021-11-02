@@ -70,7 +70,7 @@ L'idée de base de la TEP est d'injecter un produit radioactif, appelé radiotra
 
 ```{admonition} Mini-glossaire
 :class: tip
-:name: resolution
+:name: glossaire-tep
 
 *   **Isotope (ou radioisotope)** : Un atome qui suit un processus de désintégration radioactif en émettant des radiations détectables* en dehors du corps.
 
@@ -222,6 +222,7 @@ ax3.set_title("Image reconstruite")
 ax3.imshow(reconstruction_fbp, cmap=plt.cm.Greys_r)
 fig.tight_layout()
 
+# Glue figure
 from myst_nb import glue
 glue("radon-fig", fig, display=False)
 ```
@@ -233,17 +234,41 @@ glue("radon-fig", fig, display=False)
  Une image 2D ressemblant à une coupe de cerveau (image de gauche). Représentation de la même image avec une série de projections correspondant à différentes positions dans l'espace et différents angles de projection (image du centre). Image reconstruite à partir des projections (image de droite). Cette figure est générée par du code python à l'aide de la librairie [scikit-image](https://scikit-image.org/docs/dev/auto_examples/transform/plot_radon_transform.html) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
 ## TEP en neurosciences cognitives
+Nous allons maintenant discuter de quelques radiotraceurs en TEP et de leur utilisation en neuroscience cognitive
 
+### FDG TEP et métabolisme du glucose
+```{figure} ./cartes_cerebrales/fig_tep.jpg
+---
+width: 800px
+name: tep2-fig
+---
+Montage de coupes axiales d'un scanner TEP avec un radiotraceur FDG, illustrant le niveau d'activité métabolique du glucose durant la durée du scan. Image [shutterstock](https://www.shutterstock.com) ID `1342194254`.
+```
+Le [$^{18}$**F**]FDG se comporte comme du glucose normal. Nous avons vu que le couplage neurovasculaire permet de suivre l'activité neuronale au travers des changements d'activité métaboliques et vasculaires, notamment l'extraction d'oxygène locale dans l'hémoglobine. Un autre aspect clé du couplage neurovasculaire est l'extraction de glucose dans le sang. Lorsque l'activité neuronale augmente, une plus grande quantité de FDG est extraite, et le [$^{18}$**F**] va s'accumuler dans les cellules gliales. Éventuellement, ce [$^{18}$**F**] va se désintégrer et être nettoyé par l'organisme, mais durant l'examen la radiactivité va refléter le niveau de métabolisme du glucose, et donc l'activité neuronale. L'acquisition d'un scan FDG prend plusieurs dizaines de minutes, et on peut contraster deux conditions (par exemple repos et une tâche visuelle). Il serait aussi possible de mesurer des différences de métabolisation du glucose en fonction de l'âge des participants, ou leur santé cognitive.
 
-Nous pouvons remarquer que la concentration relative du radiotraceur peuvent dépendre tant de la physiologie de la condition expérimentatale. Supposons que que nous voulons imager la consommation de glucose au repos d'un participant à l'aide du radiotraceur Fluorodésoxyglucose ([$^{18}$**F**]FDG). Nous pourrions effectuer un contraste simple entre deux conditions expériementales. Il serait possible de constater que l'accumulation captée au repos et celle captée pendant la réalisation d'une tâche est différente. Par exemple, le cortex cingulaire postérieur (noyau du réseau du mode par défaut) pourrait consommer plus de glucose au repos. Autrement, si nous nous attardons aux différences physiologiques de nos participants, il serait possible de constater des différences de métabolisation du glucose en fonction de l'âge des participants.
-
-## Méthodes permettant d'étudier les troubles neurodégénératifs
-Nous savons que les troubles neurodégénératifs sont associées au dysfonctionnement de différents systèmes de neurotransmission. Les méthodes en TEP sont particulièrement importantes pour l'investigation de ces troubles, car elles permettent notamment de cartographier la densité des récepteurs de ces neurotransmetteurs, ou toutes autres protéines pathologiques connues pour leur implications dans ces troubles.
-
+```{admonition} Traitement des images PET
+:class: tip
+:name: traitement-fdg
+Les données TEP doivent être prétraitées avant analyses statistiques. Il est courant de normaliser la carte par rapport aux valeurs observées dans une région contrôle, qui ne contient pas de radiotraceur. Certaines corrections peuvent aussi être appliquées sur les images, commu une correction des volumes partiels. Enfin, il est possible de recaler l'image PET sur une IRM structurelle de chaque sujet, pour visualiser la localisation des activations, et aussi appliquer un recalage dans un espace stéréotaxique pour effectuer des analyses statistiques de groupe similaires à l'IRMf.
+```
 ### Imagerie des récepteurs
-Un **récepteur** est une protéine recevant un signal à l'extérieur de la cellule neuronale, c'est-à-dire qu'elle reconnaît et répond à des messagers chimiques endogènes (ou exogènes comme des médicaments). Ce récepteur agit comme biomarqueur, ou alors, comme cible d'arrimage d'un radioisotope et de son précurseur. Des ligands ont été conçus spécifiquement pour les récepteurs dopaminergiques tels que D2 et D3. Ces ligands s'associent aux isotopes [$^{11}$**C**] pour former des radioligands.
+```{figure} ./tep/receptors-tep.jpeg
+---
+width: 800px
+name: receptors-fig
+---
+Images de traceurs TEP pour 18 récepteurs et transporteurs de neurotransmetteurs différents, au travers de 9 systèmes de neurotransmetteurs et 1200 participants en santé. Tiré de [Hansen et al. (2021)](https://www.biorxiv.org/content/10.1101/2021.10.28.466336v1) sous licence CC-BY 4.0.
+```
+Il existe de nombreux types de neurotransmetteurs dans le cerveau, qui joue un rôle clé dans la communication neuronale, au niveau des synapses, et sont associés à des **récepteurs** spécifiques. Certains de ces neurotransmetteurs sont particulièrement impliqués dans certains processus coginitifs, comme la dopamine et les récopmenses. Il est donc utile de comprendre la distribution spatial des récepteurs pour différents neurotransmetteurs. Ce récepteur agit comme biomarqueur, ou alors, comme cible d'arrimage d'un radioisotope et de son précurseur. Des ligands ont été conçus spécifiquement pour des récepteurs spécifiques, par exepmle les récepteurs dopaminergiques de type D2 et D3.
 
 ### Radioligands pour les plaques Béta amyloïde (A${\beta}$)
+```{figure} ./tep/pib.jpg
+---
+width: 500px
+name: pib-fig
+---
+Comparaison d'un scan TEP [$^{11}$**C**] PIB entre un sujet présentant une démence de type Alzheimer et un participant cognitivement sain. Les aires jaunes et rouge suggèrent l'accumulation de plaques A${\beta}$. Tiré de [wikipedia](https://en.wikipedia.org/wiki/Pittsburgh_compound_B#/media/File:PiB_PET_Images_AD.jpg) sous licence [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
+```
 L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amyloïde beta peut s'agréger en plaques, notamment dans la maladie d'Alzheimer. Ces plaques bloquent les communication inter-neurones, puis elles déclenchent une réaction inflammatoire neuro-toxique qui accélère la dégénération des tissues cérébraux et contribuent au déclin des fonctions cognitives. Les plaques A${\beta}$ sont considérées comme un biomarqueur de la maladie d'Alzheimer. Des ligands ont été développé pour s'arrimer aux plaques A${\beta}$ tel que le composé [$^{11}$**C**] PIB. Précisons, cependant, que les plaques peuvent être présentes sans les symptômes cognitifs des troubles neurodégénératifs.
 
 ## Conclusion et résumé
@@ -251,7 +276,7 @@ L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amylo
 *   Un radiotraceur est composé d'un précurseur, qui s'accroche à une cible, puis un isotope, qui se désintègre en émettant des rayons gamma.
 *   En enregistrant les coincidences d'arrivée de photons, on peut reconstruire une représentation 3D de la concentration du radiotraceur à l'aide d'une opération dite de Tomographie
 *   La FDG TEP est utilisée pour étudier le métabolisme du glucose. La métabolisation du glucose nous indique la consommation d'énergie relative des différentes régions cérébrale. Ceci nous permet d'effectuer des contraste de consommation de glucose entre conditions expérimentales.
-*   On peut imager la densité de récepteur de différents neurotransmetteurs à l'aide de **radioligands**. Par exemple, ceux de la dopamine.
+*   On peut imager la densité des récepteurs de différents neurotransmetteurs, par exemple, ceux de la dopamine.
 *   Des radioligands ont été conçus spécifiquement pour imager la densité des plaques A${\beta}$.
 
 ## Références
