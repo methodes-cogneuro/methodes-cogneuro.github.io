@@ -97,16 +97,16 @@ Les radioisotopes sont produits dans un cyclotron, et vont commencer à se dési
 ```{admonition} Tableau d'isotopes TEP
 :class: tip
 :name: isotopes-table
-| **Radioisotopes**       | **Demi-vie** | **$E_{max} ({\beta^+}) $, KeV** |
-| ---------------------- | ------------ | ------------------------------- |
-| $^{18}$**F**           | 110 min      | 634                             |
-| $^{11}$**C**           | 20.3 min     | 961                             |
-| $^{13}$**N**           | 9.97 min     | 1190                            |
-| $^{15}$**O**           | 2.1 min      | 1732                            |
-| $^{89}$**Zr**          | 78.4 h       | 897                             |
-| $^{124}$**I**          | 4.17 j       | 2100                            |
-| $^{64}$**Cu**          | 12.8 h       | 656                             |
-| $^{68}$**Ga**          | 67.6 min     | 1899                            |
+| **Radioisotopes**      | **Demi-vie** |
+| ---------------------- | ------------ |
+| $^{18}$**F**           | 110 min      |
+| $^{11}$**C**           | 20.3 min     |
+| $^{13}$**N**           | 9.97 min     |
+| $^{15}$**O**           | 2.1 min      |
+| $^{89}$**Zr**          | 78.4 h       |
+| $^{124}$**I**          | 4.17 j       |
+| $^{64}$**Cu**          | 12.8 h       |
+| $^{68}$**Ga**          | 67.6 min     |
 
 ```
 ### Précurseurs et biomarqueurs
@@ -164,19 +164,74 @@ Injecteur plombé permettant de protéger l'opérateur TEP des radiations émise
 Une fois produite, la dose de radiotraceur doit être acheminée rapidement pour être injectée au participant de recherche. La demi-vie du FDG est d'environ deux heures, ce qui permet de produire le radiotraceur et de l'utiliser sur des sites différents, si nécessaire. Durant le transport, la dose de radiotraceurs émet continuellement des radiations, et il est nécessaire d'utiliser des équipements de protection ({numref}`injection-tep-fig`).
 
 ### Détection de coincidences
-```{figure} tep/coincidence_tep.jpg
+```{figure} tep/coincidence_tep.png
 ---
 width: 800px
 name: coincidence-fig
 ---
 Injecteur plombé permettant de protéger l'opérateur TEP des radiations émises par le radiotraceur. Image par [Jens Maus](https://github.com/jens-maus) tirée de [wikipedia](https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons#/media/Fichier:PET-schema.png) sous licence [domaine public](https://fr.wikipedia.org/wiki/Domaine_public_(propri%C3%A9t%C3%A9_intellectuelle)).
 ```
-Une fois le radiotraceur injecté et accumulé sur la cible, la radioactivité est émise par les parties du cerveau que l'on souhaite étudier. Pour chaque évènement radiactif, les deux rayons gamma sortent de la boîte crânienne dans des directions diamétralement opposées. Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant ({numref}`coincidence-fig`). Comme les rayons gamma se déplacent à grande vitesse, ils viennent frapper deux caméras pratiquement au même moment (à quelques nanosecondes près). Cette arrivée simultanée, appelée **coincidence**, est détectée par le scanneur TEP. Il est possible possible de savoir qu'un événement radioactif a eu lieu sur la droite reliant les capteurs, et il est possible de calculer l'activité accumulée au cours du temps (jusqu'à plusieurs dizaines de minutes) selon l'ensemble des droites possibles. Mais ces mesures, appelées sinograme, ne correspondent pas (encore) à une image du cerveau.
+Une fois le radiotraceur injecté et accumulé sur la cible, la radioactivité est émise par les parties du cerveau que l'on souhaite étudier. Pour chaque évènement radiactif, les deux rayons gamma sortent de la boîte crânienne dans des directions diamétralement opposées. Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant ({numref}`coincidence-fig`). Comme les rayons gamma se déplacent à grande vitesse, ils viennent frapper deux caméras pratiquement au même moment (à quelques nanosecondes près). Cette arrivée simultanée, appelée **coincidence**, est détectée par le scanneur TEP. Il est possible possible de savoir qu'un événement radioactif a eu lieu sur la droite reliant les capteurs, et il est possible de calculer l'activité accumulée au cours du temps selon l'ensemble des droites possibles. Pour le FDG, il existe plusieurs millions d'événements radioactifs par minutes, et on effectue une mesure accumulée sur plusieurs dizaines de minutes. Mais ces mesures, appelées **projections**, ne correspondent pas (encore) à une image du cerveau.
 
 ### Tomographie
+```{figure} tep/projection.gif
+---
+width: 800px
+name: projection-fig
+---
+Illustration de la construction de projections multiples d'une image 2D. Image par [Lucas VB](https://commons.wikimedia.org/wiki/User:LucasVB) tirée de [wikipedia](https://en.wikipedia.org/wiki/Radon_transform#/media/File:Radon_transform_sinogram.gif) sous licence [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
+```
+La figure {numref}`projection-fig` illustre comment un object 2D peut être convertie en un série de projections. La tomographie est une opération qui consiste à reconstruire une image 3D du cerveau à partir de la combinaison des mesures prises par l'ensemble des caméras. Si l'on disposait de l'ensemble des projections possibles, on pourrait en théorie faire une reconstruction parfaite. En pratique, on est limité par la taille et le nombre des caméras du scaneur TEP. La figure ci dessous illustre une image simplifiée de coupe 2D du cerveau, le processus de projections multiples, et une reconstruction de l'image à partir des projections. Pour un appareil TEP humain, la résolution spatiale est de l'ordre de 4-7 mm.
 
-La tomographie correspond à la combination des mesures prises par l'ensemble des caméras afin de reconstituer une représentation 3D du cerveau. Ce processus correspond à une opération mathématique connue sous le nom de tomographie. On comprend qu'il est nécessaire de disposer d'un nombre important de caméras afin de procéder à une reconstruction précise de l'espace 3D.
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+from skimage.data import shepp_logan_phantom
+from skimage.transform import radon, rescale
 
+# Télécharge données fantôme
+image = shepp_logan_phantom()
+image = rescale(image, scale=0.4, mode='reflect')
+
+# Prépare la figure
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4.5))
+
+# Image originale
+ax1.set_title("Image originale")
+ax1.imshow(image, cmap=plt.cm.Greys_r)
+
+# Projections
+theta = np.linspace(0., 180., max(image.shape), endpoint=False)
+sinogram = radon(image, theta=theta)
+dx, dy = 0.5 * 180.0 / max(image.shape), 0.5 / sinogram.shape[0]
+ax2.set_title("projections")
+ax2.set_xlabel("Angle projection (deg)")
+ax2.set_ylabel("Position projection(pixels)")
+ax2.imshow(sinogram, cmap=plt.cm.Greys_r,
+           extent=(-dx, 180.0 + dx, -dy, sinogram.shape[0] + dy),
+           aspect='auto')
+
+# Reconstruction
+from skimage.transform import iradon
+
+reconstruction_fbp = iradon(sinogram, theta=theta, filter_name='ramp')
+imkwargs = dict(vmin=-0.2, vmax=0.2)
+ax3.set_title("Image reconstruite")
+ax3.imshow(reconstruction_fbp, cmap=plt.cm.Greys_r)
+fig.tight_layout()
+
+from myst_nb import glue
+glue("radon-fig", fig, display=False)
+```
+
+```{glue:figure} radon-fig
+:figwidth: 800px
+:name: radon-fig
+:align: center
+ Une image 2D ressemblant à une coupe de cerveau (image de gauche). Représentation de la même image avec une série de projections correspondant à différentes positions dans l'espace et différents angles de projection (image du centre). Image reconstruite à partir des projections (image de droite). Cette figure est générée par du code python à l'aide de la librairie [scikit-image](https://scikit-image.org/docs/dev/auto_examples/transform/plot_radon_transform.html) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
 ## TEP en neurosciences cognitives
 
 Faire une figure de contraste TEP ici avec ces [données](https://openneuro.org/datasets/ds001421/versions/1.2.0)
