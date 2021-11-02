@@ -152,7 +152,7 @@ name: radiochemistry-fig
 Module de synthèse radiochimique automatisé. Image par [Bork](https://www.shutterstock.com/g/stratum) disponible sur [shutterstock](https://www.shutterstock.com/image-photo/manipulation-cell-43798612) ID `43798612`, utilisée sous licence shutterstock standard.
 ```
 
-Une fois l'isotope produit, il peut être nécessaire d'effectuer des réactions chimiques pour fusionner l'isotope avec le précurseur, et synthétiser le radiotraceur. C'est le cas par exemple pour le FDG, où le $^{18}$**F**) va être intégré à une molécule de glucose. Comme les réactions chimiques font intervenir des composés radioactifs, cette étape est réalisée dans un laboratoire automatisée qui protège les opérateurs des radiations ({numref}`radiochemistry-fig`).
+Une fois l'isotope produit, il peut être nécessaire d'effectuer des réactions chimiques pour fusionner l'isotope avec le précurseur, et synthétiser le radiotraceur. C'est le cas par exemple pour le FDG, où le $^{18}$**F** va être intégré à une molécule de glucose. Comme les réactions chimiques font intervenir des composés radioactifs, cette étape est réalisée dans un laboratoire automatisée qui protège les opérateurs des radiations ({numref}`radiochemistry-fig`).
 
 ```{figure} tep/injection_tep.jpg
 ---
