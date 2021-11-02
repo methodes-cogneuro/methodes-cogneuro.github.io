@@ -170,14 +170,6 @@ La tomographie correspond à la combination des mesures prises par l'ensemble de
 
 ## TEP en neurosciences cognitives
 
-Faire une figure de contraste TEP ici avec ces [données](https://openneuro.org/datasets/ds001421/versions/1.2.0)
-
-À ce stade de l'exposé, il s'agit de se demander le genre d'hypothèses que la TEP nous permet de tester. Revenons sur les notions principales :
-
-1.  Nous fabriquons un isotope radioactif (*e.g.* du fluor radioactif) et nous l'injectons au participant.
-2.  L'isotope se fixe à un précurseur (*e.g.* du glucose), et cela forme un radiotraceur conçu pour se fixer sur une *cible* précise.
-3.  Le participant s'installe dans le scanner, et à partir de ce moment, il est possible de capter la désintégration ${\beta^+}$ du radiotraceur sous forme de rayons gamma
-4.  La concentration relative du radiotraceur reconstituée par tomographie nous indique la position des cibles et/où leur densité.
 
 Nous pouvons remarquer que la concentration relative du radiotraceur peuvent dépendre tant de la physiologie de la condition expérimentatale. Supposons que que nous voulons imager la consommation de glucose au repos d'un participant à l'aide du radiotraceur Fluorodésoxyglucose ([$^{18}$**F**]FDG). Nous pourrions effectuer un contraste simple entre deux conditions expériementales. Il serait possible de constater que l'accumulation captée au repos et celle captée pendant la réalisation d'une tâche est différente. Par exemple, le cortex cingulaire postérieur (noyau du réseau du mode par défaut) pourrait consommer plus de glucose au repos. Autrement, si nous nous attardons aux différences physiologiques de nos participants, il serait possible de constater des différences de métabolisation du glucose en fonction de l'âge des participants.
 
@@ -185,15 +177,10 @@ Nous pouvons remarquer que la concentration relative du radiotraceur peuvent dé
 Nous savons que les troubles neurodégénératifs sont associées au dysfonctionnement de différents systèmes de neurotransmission. Les méthodes en TEP sont particulièrement importantes pour l'investigation de ces troubles, car elles permettent notamment de cartographier la densité des récepteurs de ces neurotransmetteurs, ou toutes autres protéines pathologiques connues pour leur implications dans ces troubles.
 
 ### Imagerie des récepteurs
-Un **récepteur** est une protéine recevant un signal à l'extérieur de la cellule neuronale, c'est-à-dire qu'elle reconnaît et répond à des messagers chimiques endogènes (ou exogènes comme des médicaments). Ce récepteur agit comme biomarqueur, ou alors, comme cible d'arrimage d'un radioisotope et de son précurseur. Dans ce contexte, l'expression **ligand** est préférée pour dénommer la molécule qui s'accroche aux récepteurs d'intérêt puisque ceux-ci ont été développé spécifiquement pour s'arrimer à des récepteurs de systèmes de neurotransmission. Par exemple, des ligands ont été conçus spécifiquement pour les récepteur dopaminergiques tels que D2 et D3. Ces ligands s'associent aux isotopes [$^{11}$**C**] pour former des radioligands.
+Un **récepteur** est une protéine recevant un signal à l'extérieur de la cellule neuronale, c'est-à-dire qu'elle reconnaît et répond à des messagers chimiques endogènes (ou exogènes comme des médicaments). Ce récepteur agit comme biomarqueur, ou alors, comme cible d'arrimage d'un radioisotope et de son précurseur. Des ligands ont été conçus spécifiquement pour les récepteurs dopaminergiques tels que D2 et D3. Ces ligands s'associent aux isotopes [$^{11}$**C**] pour former des radioligands.
 
 ### Radioligands pour les plaques Béta amyloïde (A${\beta}$)
-L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amyloïde beta peut s'agréger en plaques, notamment dans la maladie d'Alzheimer. Ces plaques bloquent les communication inter-neurones, puis elles déclenchent une réaction inflammatoire neuro-toxique qui accélère la dégénération des tissues cérébraux et contribuent au déclin des fonctions cognitives. Les plaques A${\beta}$ sont considérées comme un biomarqueur de la maladie d'Alzheimer. Des ligands ont été développé pour s'arrimer aux plaques A${\beta}$ tel que le composé [$^{11}$**C**] PIB.
-
-Précisons, cependant, que les plaques peuvent être présentes sans les symptômes des troubles neurodégénératifs (*e.g.* ou de démence). La mesure de densité de plaques comme biomarqueur est constestée.
-
-### Tau
-Ajoutons nous cette section ?
+L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amyloïde beta peut s'agréger en plaques, notamment dans la maladie d'Alzheimer. Ces plaques bloquent les communication inter-neurones, puis elles déclenchent une réaction inflammatoire neuro-toxique qui accélère la dégénération des tissues cérébraux et contribuent au déclin des fonctions cognitives. Les plaques A${\beta}$ sont considérées comme un biomarqueur de la maladie d'Alzheimer. Des ligands ont été développé pour s'arrimer aux plaques A${\beta}$ tel que le composé [$^{11}$**C**] PIB. Précisons, cependant, que les plaques peuvent être présentes sans les symptômes cognitifs des troubles neurodégénératifs.
 
 ## Conclusion et résumé
 
