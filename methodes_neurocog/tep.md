@@ -269,7 +269,7 @@ name: pib-fig
 ---
 Comparaison d'un scan TEP [$^{11}$**C**] PIB entre un sujet présentant une démence de type Alzheimer et un participant cognitivement sain. Les aires jaunes et rouge suggèrent l'accumulation de plaques A${\beta}$. Tiré de [wikipedia](https://en.wikipedia.org/wiki/Pittsburgh_compound_B#/media/File:PiB_PET_Images_AD.jpg) sous licence [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
 ```
-L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amyloïde beta peut s'agréger en plaques, notamment dans la maladie d'Alzheimer. Ces plaques bloquent les communication inter-neurones, puis elles déclenchent une réaction inflammatoire neuro-toxique qui accélère la dégénération des tissues cérébraux et contribuent au déclin des fonctions cognitives. Les plaques A${\beta}$ sont considérées comme un biomarqueur de la maladie d'Alzheimer. Des ligands ont été développé pour s'arrimer aux plaques A${\beta}$ tel que le composé [$^{11}$**C**] PIB. Précisons, cependant, que les plaques peuvent être présentes sans les symptômes cognitifs des troubles neurodégénératifs.
+L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amyloïde beta peut s'agréger en plaques, notamment dans la maladie d'Alzheimer. Ces plaques bloquent les communication inter-neurones, puis elles déclenchent une réaction inflammatoire neuro-toxique qui accélère la dégénération des tissues cérébraux et contribuent au déclin des fonctions cognitives. Les plaques A${\beta}$ sont considérées comme un biomarqueur de la maladie d'Alzheimer. Des ligands ont été développés pour s'arrimer aux plaques A${\beta}$ tel que le composé [$^{11}$**C**] PIB. Précisons, cependant, que les plaques peuvent être présentes sans les symptômes cognitifs des troubles neurodégénératifs.
 
 ## Conclusion et résumé
 
@@ -290,12 +290,18 @@ L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amylo
 ```{admonition} Exercice 7.1
 :class: note
 Les données de tomographie par émission de positrons sont (vrai/faux)
-    a. Des données avec une meilleure résolution spatiale que l’IRMf.
-    b. Des données avec une meilleure résolution spatiale que l’imagerie optique.
-    c. Des données avec une meilleure résolution temporelle que l’imagerie optique.
-    d. Des données moins chères à recueillir que l’IRMf.
-    e. Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.
-    f. Des données qui peuvent capturer le métabolisme du glucose.
+
+ a. Des données avec une meilleure résolution spatiale que l’IRMf.
+
+ b. Des données avec une meilleure résolution spatiale que l’imagerie optique.
+
+ c. Des données avec une meilleure résolution temporelle que l’imagerie optique.
+
+ d. Des données moins chères à recueillir que l’IRMf.
+
+ e. Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.
+
+ f. Des données qui peuvent capturer le métabolisme du glucose.
 ```
 
 ```{admonition} Exercice 7.2
