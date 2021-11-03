@@ -287,30 +287,50 @@ L'amyloïde beta vient d'une protéine précurseur de l'amyloïde (APP). L'amylo
 
 ## Exercices
 
-1.  Les données de tomographie par émission de positrons sont (vrai/faux)
-
+```{admonition} Exercice 7.1
+:class: note
+Les données de tomographie par émission de positrons sont (vrai/faux)
     a. Des données avec une meilleure résolution spatiale que l’IRMf.
-
     b. Des données avec une meilleure résolution spatiale que l’imagerie optique.
-
     c. Des données avec une meilleure résolution temporelle que l’imagerie optique.
-
     d. Des données moins chères à recueillir que l’IRMf.
-
     e. Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.
-
     f. Des données qui peuvent capturer le métabolisme du glucose.
+```
 
-2.  On effectue une imagerie TEP des plaques de beta amyloide chez un patient jeune en santé, et l’on observe un dépôt substantiel dans la matière blanche. Proposer deux explications à cette observation.
+```{admonition} Exercice 7.2
+:class: note
+On effectue une imagerie TEP des plaques de beta amyloide chez un patient jeune en santé, et l’on observe un dépôt substantiel dans la matière blanche. Proposer deux explications à cette observation.
+```
 
-3.  On souhaite mesurer le niveau d’activité au repos dans le cerveau d’une personne âgée à l’aide du FDG TEP. Citez un avantage et une limitation de cette technique par rapport à l’IRMf, ainsi qu’une considération éthique pertinente pour ce projet.
+```{admonition} Exercice 7.3
+On souhaite mesurer le niveau d’activité au repos dans le cerveau d’une personne âgée à l’aide du FDG TEP. Citez un avantage et une limitation de cette technique par rapport à l’IRMf, ainsi qu’une considération éthique pertinente pour ce projet.
+```  
 
-4.  Dans un radiotraceur, est-ce l’isotope ou bien le précurseur qui détermine la demi-vie? et en ce qui concerne la stabilité métabolique?
+```{admonition} Exercice 7.4
+Dans un radiotraceur, est-ce l’isotope ou bien le précurseur qui détermine la demi-vie?
+```
 
-5.  Est ce que la résolution spatiale de la TEP est identique pour tous les scanners?  
+```{admonition} Exercice 7.5
+Est ce que la TEP est un appareil d’imagerie fonctionnelle, structurelle, ou bien les deux? Pourquoi?
+```
 
-6.  Est ce que la TEP est un appareil d’imagerie fonctionnelle, structurelle, ou bien les deux? Pourquoi?
+```{admonition} Exercice 7.6
+Quel est l’avantage de disposer d’un cyclotron à proximité d’un centre d’imagerie TEP?
+```
 
-7.  Quel est l’avantage de disposer d’un cyclotron à proximité d’un centre d’imagerie TEP?
+```{admonition} Exercice 7.7
+Donnez un exemple de projet de recherche qui nécessite absolument d’utiliser la TEP par rapport à une autre technique de neuroimagerie.
+```
 
-8.  Donnez un exemple de projet de recherche qui nécessite absolument d’utiliser la TEP par rapport à une autre technique de neuroimagerie.
+```{admonition} Exercice 7.8
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://doi.org/10.1101/611186 ) sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring [doi](https://doi.org/10.1016/j.dadm.2019.07.007). Les questions suivantes requièrent des réponses à développement court.
+- Quel type de participants a été recruté dans cette étude?
+- Quel est l'objectif principal de l'étude?
+- Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
+- Quelle type de radiotraceurs est utilisé?
+- Quelle normalisation est appliquée aux cartes?
+- Quelles régions sont utilisées pour les analyses statistiques?
+- Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
+- Quel est le résultat principal de l'étude?
+```

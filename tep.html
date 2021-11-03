@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -83,7 +83,7 @@
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -232,7 +232,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objectifs-du-cours">
@@ -611,23 +611,54 @@
 <span class="target" id="id1"></span></div>
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Les données de tomographie par émission de positrons sont (vrai/faux)</p>
-<p>a. Des données avec une meilleure résolution spatiale que l’IRMf.</p>
-<p>b. Des données avec une meilleure résolution spatiale que l’imagerie optique.</p>
-<p>c. Des données avec une meilleure résolution temporelle que l’imagerie optique.</p>
-<p>d. Des données moins chères à recueillir que l’IRMf.</p>
-<p>e. Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.</p>
-<p>f. Des données qui peuvent capturer le métabolisme du glucose.</p>
-</li>
-<li><p>On effectue une imagerie TEP des plaques de beta amyloide chez un patient jeune en santé, et l’on observe un dépôt substantiel dans la matière blanche. Proposer deux explications à cette observation.</p></li>
-<li><p>On souhaite mesurer le niveau d’activité au repos dans le cerveau d’une personne âgée à l’aide du FDG TEP. Citez un avantage et une limitation de cette technique par rapport à l’IRMf, ainsi qu’une considération éthique pertinente pour ce projet.</p></li>
-<li><p>Dans un radiotraceur, est-ce l’isotope ou bien le précurseur qui détermine la demi-vie? et en ce qui concerne la stabilité métabolique?</p></li>
-<li><p>Est ce que la résolution spatiale de la TEP est identique pour tous les scanners?</p></li>
-<li><p>Est ce que la TEP est un appareil d’imagerie fonctionnelle, structurelle, ou bien les deux? Pourquoi?</p></li>
-<li><p>Quel est l’avantage de disposer d’un cyclotron à proximité d’un centre d’imagerie TEP?</p></li>
-<li><p>Donnez un exemple de projet de recherche qui nécessite absolument d’utiliser la TEP par rapport à une autre technique de neuroimagerie.</p></li>
-</ol>
+<div class="note admonition">
+<p class="admonition-title">Exercice 7.1</p>
+<p>Les données de tomographie par émission de positrons sont (vrai/faux)
+a. Des données avec une meilleure résolution spatiale que l’IRMf.
+b. Des données avec une meilleure résolution spatiale que l’imagerie optique.
+c. Des données avec une meilleure résolution temporelle que l’imagerie optique.
+d. Des données moins chères à recueillir que l’IRMf.
+e. Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.
+f. Des données qui peuvent capturer le métabolisme du glucose.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 7.2</p>
+<p>On effectue une imagerie TEP des plaques de beta amyloide chez un patient jeune en santé, et l’on observe un dépôt substantiel dans la matière blanche. Proposer deux explications à cette observation.</p>
+</div>
+<div class="admonition-exercice-7-3 admonition">
+<p class="admonition-title">Exercice 7.3</p>
+<p>On souhaite mesurer le niveau d’activité au repos dans le cerveau d’une personne âgée à l’aide du FDG TEP. Citez un avantage et une limitation de cette technique par rapport à l’IRMf, ainsi qu’une considération éthique pertinente pour ce projet.</p>
+</div>
+<div class="admonition-exercice-7-4 admonition">
+<p class="admonition-title">Exercice 7.4</p>
+<p>Dans un radiotraceur, est-ce l’isotope ou bien le précurseur qui détermine la demi-vie?</p>
+</div>
+<div class="admonition-exercice-7-5 admonition">
+<p class="admonition-title">Exercice 7.5</p>
+<p>Est ce que la TEP est un appareil d’imagerie fonctionnelle, structurelle, ou bien les deux? Pourquoi?</p>
+</div>
+<div class="admonition-exercice-7-6 admonition">
+<p class="admonition-title">Exercice 7.6</p>
+<p>Quel est l’avantage de disposer d’un cyclotron à proximité d’un centre d’imagerie TEP?</p>
+</div>
+<div class="admonition-exercice-7-7 admonition">
+<p class="admonition-title">Exercice 7.7</p>
+<p>Donnez un exemple de projet de recherche qui nécessite absolument d’utiliser la TEP par rapport à une autre technique de neuroimagerie.</p>
+</div>
+<div class="admonition-exercice-7-8 admonition">
+<p class="admonition-title">Exercice 7.8</p>
+<p>Pour répondre aux questions de cet exercice, lisez d’abord l’article <em>Tau pathology in cognitively normal older adults</em> de Ziontz et collaborateurs (disponible comme <a class="reference external" href="https://doi.org/10.1101/611186">preprint</a> sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer’s &amp; Dementia: Diagnosis, Assessment &amp; Disease Monitoring <a class="reference external" href="https://doi.org/10.1016/j.dadm.2019.07.007">doi</a>. Les questions suivantes requièrent des réponses à développement court.</p>
+<ul class="simple">
+<li><p>Quel type de participants a été recruté dans cette étude?</p></li>
+<li><p>Quel est l’objectif principal de l’étude?</p></li>
+<li><p>Quelle technique de neuroimagerie est utilisée? S’agit-il d’une technique structurelle ou fonctionnelle?</p></li>
+<li><p>Quelle type de radiotraceurs est utilisé?</p></li>
+<li><p>Quelle normalisation est appliquée aux cartes?</p></li>
+<li><p>Quelles régions sont utilisées pour les analyses statistiques?</p></li>
+<li><p>Quelle figure (ou tableau) répond à l’objectif principal de l’étude?</p></li>
+<li><p>Quel est le résultat principal de l’étude?</p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -654,12 +685,32 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="irm_diffusion.html" title="previous page">IRM de diffusion</a>
-    <a class='right-next' id="next-link" href="imagerie_optique.html" title="next page">Imagerie optique</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="irm_diffusion.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">IRM de diffusion</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="imagerie_optique.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Imagerie optique</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
