@@ -170,7 +170,7 @@ Le volume du cerveau (3D) est formé plusieurs milliers voxels, qui sont de peti
 
 Lorsque l'on choisit une séquence d'IRMf, on est souvent amené à privilégier la résolution temporelle vs spatiale. On peut par exemple faire des images du cerveau entier en 700 ms avec une résolution spatiale de 3 x 3 x 3 mm$^3$, ou bien acquérir la même image avec une résolution spatiale de 2 x 2 x 2 mm$^3$, mais cette fois ci en 1500 ms. Il n'y a pas un choix de paramètre meilleur qu'un autre, mais la chercheuse doit décider si la résolution spatiale ou temporelle est plus importante pour ses questions de recherche.
 ```
-
+(couplage-neurovasculaire-irmf-section)=
 ### Couplage neurovasculaire
 
 ```{figure} irm_fonctionnelle/neurovascular-fig.jpg
