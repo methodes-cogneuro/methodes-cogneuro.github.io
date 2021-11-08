@@ -105,10 +105,60 @@ On a maintenant vu principe physique qui nous permet de mesurer la concentration
 ## Acquisitions en imagerie optique
 
 ### Montage
-Ici, c'est vraiment la diffusion de la lumière qui va compter donc ici à gauche vous avez une IRM T1, à droite vous avez un T1 segmentée donc en violet on a on a une segmentation de matière grise, en vert l'extérieur du cerveau et en bleu on a la matière blanche. On peut essayer de modéliser les caractéristiques biophysiques de ces tissus-là alors comment elles reflètent la lumière et à partir de ça on peut prédire comment la lumière va diffuser dépendamment d’où on va mettre notre émetteur. Ça va aussi dépendre de la longueur d’onde. Donc à droite, vous avez une simulation d’où positionner votre émetteur et le récepteur pour augmenter la sensibilité. Évidemment, on ne peut pas prendre des mesures profondes puisque la lumière va diffuser dans tout les sens et on n’aura pas des mesures spécifiques du tissu. Les mesures d’imagerie optique sont très localisées spatialement, mais ce sont des mesures superficielles du cortex. Il y a beaucoup de procédures d’optimisation sur comment bien placer nos sources et récepteurs. Bien sûr, ça dépend de l’anatomie de chaque participant mais aussi des règles générales connues.
-Ici, ça représente un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur) de façon dynamique. Ça crée un maillage sur la tête comme avec un EEG et à partir des mesures qu'on a sur les différents canaux, on peut aller interpoler. Donc, calculer une moyenne de ces récepteurs en donnant plus d'importance aux récepteurs qui sont plus proche des canaux (proches d'un point donné du scan) Avec ça, on peut faire une image de l'activité au niveau du scalp.  Par la suite, on va essayer de reconstruire l'image au niveau du cortex individuel, en prenant en compte l’IRM T1. Ce n’est pas fait de manière standard du tout en imagerie optique. Donc, on parle de tomographie optique diffuse.
-Tomographie : reconstruire une image à partir de différentes projections, ici les productions sont au niveau du scalp. Ici, le principe physique qu'on cherche à inverser, c'est la diffusion de la lumière. Donc c'est pour ça qu'on parle de ta de tomographie optique diffuse. C’est aussi une étape qui va jouer un rôle dans la chaîne de traitement de données.
-Ici, c'est le même montage présenté ci-desus. Alors, on a disposé un certain nombre de canaux sur le cortex et on vient stimuler la main droite des participants. On sait que ça va venir activer principalement le cortex sensorimoteur gauche (controlatéral). L'essentiel de l'activation qu’on va observer, que ce soit le contrôle moteur ou les réponses à des stimulations sensorielles, c'est plutôt au niveau du cortex sensorimoteur gauche. C’est un paradigme de blocs de 10 secondes. En termes d'analyse, ils ont fait de la moyenne mobile, ce qu’on ne doit pas faire. Beaucoup de biais statistiques ne s'appliquent pas à l'imagerie optique.
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import os.path as op
+import numpy as np
+import matplotlib.pyplot as plt
+from itertools import compress
+import mne
+
+# Charge les données
+fnirs_data_folder = mne.datasets.fnirs_motor.data_path()
+fnirs_cw_amplitude_dir = op.join(fnirs_data_folder, 'Participant-1')
+raw_intensity = mne.io.read_raw_nirx(fnirs_cw_amplitude_dir, verbose=True)
+raw_intensity.load_data()
+subjects_dir = op.join(mne.datasets.sample.data_path(), 'subjects')
+
+# Améliore les annotations du jeu de données
+raw_intensity.annotations.set_durations(5)
+raw_intensity.annotations.rename({'1.0': 'Control',
+                                  '2.0': 'Tapping/Left',
+                                  '3.0': 'Tapping/Right'})
+unwanted = np.nonzero(raw_intensity.annotations.description == '15.0')
+raw_intensity.annotations.delete(unwanted)
+
+# Visualize le montage
+fig = plt.figure(figsize=(10, 10), dpi=300)
+
+brain = mne.viz.Brain(
+    'fsaverage', subjects_dir=subjects_dir, background='w', cortex='0.5')
+brain.add_sensors(
+    raw_intensity.info, trans='fsaverage',
+    fnirs=['channels', 'pairs', 'sources', 'detectors'])
+brain.show_view(azimuth=20, elevation=60, distance=400)
+brain.save_image('imagerie_optique/fnirs-montage.png')
+```
+
+```{figure} imagerie_optique/fnirs-montage.png
+---
+width: 600px
+name: fnirs-montage-fig
+---
+Un montage d'émetteurs/récepteurs en imagerie optique cérébrale. La position des sources de lumière est indiquée en rouge, la position des récepteurs est indiquée en noir. La position des sources, qui correspond aux tissus cérébraux entre la source et l'émetteur, est indiquée par des points oranges, et la trajectoire de la lumière est indiquée par des traits blancs. Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+
+On voit ici un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur) de façon dynamique. Ça crée un maillage sur la tête comme avec un EEG et à partir des mesures qu'on a sur les différents canaux, on peut aller interpoler. Donc, calculer une moyenne de ces récepteurs en donnant plus d'importance aux récepteurs qui sont plus proche des canaux (proches d'un point donné du scan) Avec ça, on peut faire une image de l'activité au niveau du scalp.
+
+### Recalage avec l'anatomie
+```{figure} imagerie_optique/fiducials.png
+---
+width: 800px
+name: fiducials-fig
+---
+Figure tirée de [LLoyd-Fox et al. (2014)](https://doi.org/10.1117/1.nph.1.2.025006) sous licence [CC Attribution unported 3.0](https://creativecommons.org/licenses/by/3.0/).
+```
 
 ## Application en neuroscience cognitive
 

@@ -7,3 +7,7 @@ dipy>=1.4.1
 fury>=0.7.1
 image-io
 scikit-image>=0.18.3
+mne>=0.24.0
+pooch>=1.5.2
+pyvistaqt>=0.5.0
+pyqt5-tools>=5.15.4.3.2
