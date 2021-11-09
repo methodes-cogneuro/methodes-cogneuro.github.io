@@ -260,13 +260,28 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#acquisitions-en-imagerie-optique">
-   Acquisitions en imagerie optique
+  <a class="reference internal nav-link" href="#acquisitions-et-traitements">
+   Acquisitions et traitements
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recalage-avec-l-anatomie">
+     Recalage avec l’anatomie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#montage">
      Montage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#artefact-de-mouvement">
+     Artefact de mouvement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtrage">
+     Filtrage
     </a>
    </li>
   </ul>
@@ -328,7 +343,7 @@
 <p>Les objectifs spécifiques de ce chapitre sont :</p>
 <ul class="simple">
 <li><p>Principes physiques et physiologiques de l’imagerie optique.</p></li>
-<li><p>Génération d’images en imagerie optique.</p></li>
+<li><p>Acquisitions et traitements d’images en imagerie optique.</p></li>
 <li><p>Application de l’imagerie optique en neuroscience cognitive.</p></li>
 </ul>
 <div class="section" id="principes-physiques-et-physiologiques">
@@ -374,17 +389,156 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </div>
 <div class="section" id="couplage-neurovasculaire">
 <h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">¶</a></h3>
-<p>On a maintenant vu principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l’imagerie optique est le même que pour l’IRMf, c’est à dire le <strong>couplage neurovasculaire</strong>. Vous pouvez vous référez à la <a class="reference internal" href="irm_fonctionnelle.html#couplage-neurovasculaire-section"><span class="std std-ref">section</span></a> du chapitre sur l’IRMf pour plus de détails. Brièvement, l’activité neuronale, notamment post-synaptique, requiert une consommation d’oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d’oxygène va entrainer une augmentation d’HbO2 et une diminution relative d’HB à proximité des populations de neurones activés. C’est ce phénomène de couplage neurovasculaire qu’on mesure à la fois en IRMf et en imagerie optique.</p>
+<p>On a maintenant vu principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l’imagerie optique est le même que pour l’IRMf, c’est à dire le <strong>couplage neurovasculaire</strong>. Vous pouvez vous référez à la <a class="reference internal" href="irm_fonctionnelle.html#couplage-neurovasculaire-irmf-section"><span class="std std-ref">section</span></a> du chapitre sur l’IRMf pour plus de détails. Brièvement, l’activité neuronale, notamment post-synaptique, requiert une consommation d’oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d’oxygène va entrainer une augmentation d’HbO2 et une diminution relative d’HB à proximité des populations de neurones activés. C’est ce phénomène de couplage neurovasculaire qu’on mesure à la fois en IRMf et en imagerie optique.</p>
 </div>
 </div>
-<div class="section" id="acquisitions-en-imagerie-optique">
-<h2>Acquisitions en imagerie optique<a class="headerlink" href="#acquisitions-en-imagerie-optique" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="acquisitions-et-traitements">
+<h2>Acquisitions et traitements<a class="headerlink" href="#acquisitions-et-traitements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="recalage-avec-l-anatomie">
+<h3>Recalage avec l’anatomie<a class="headerlink" href="#recalage-avec-l-anatomie" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="fiducials-fig">
+<a class="reference internal image-reference" href="_images/fiducials.png"><img alt="_images/fiducials.png" src="_images/fiducials.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 86 </span><span class="caption-text">Points de repères sur la tête et alignement imagerie optique / IRM. Haut à gauche: installation d’un montage d’imagerie optique sur un jeune participant. Haut à droite: différents points de repères standards sont identifiés sur la tête du participant. Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM. Ces points de repères sont utilisés pour recaler la position des émetteurs / récepteurs d’imagerie optique avec l’IRM structurelle du participant. Figure tirée de <a class="reference external" href="https://doi.org/10.1117/1.nph.1.2.025006">LLoyd-Fox et al. (2014)</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/3.0/">CC Attribution unported 3.0</a>.</span><a class="headerlink" href="#fiducials-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Afin de localiser l’activité cérébrale mesurée, il est courant d’utiliser une IRM structurelle du participant de recherche. Il est alors important de pouvoir situer les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau. Deux techniques principales sont utilisées. La première technique consiste à utiliser certais points de repères anatomiques sur la tête du participant, tel qu’illustré dans la <a class="reference internal" href="#fiducials-fig"><span class="std std-numref">Fig. 86</span></a>. Ces points de repère sont aussi visibles dans l’IRM structurelle, et permettent de mettre en correspondence les deux types de mesure. La deuxième approche consiste à utiliser un système de <strong>neuronavigation</strong>, comme par exemple ce <a class="reference external" href="https://www.neurocaregroup.com/brainsight-nirs">système</a> qui utilise des caméras pour mettre en correspondence la position des émetteurs et récepteurs de lumière proche infrarouge avec l’IRM structurelle.</p>
+</div>
 <div class="section" id="montage">
 <h3>Montage<a class="headerlink" href="#montage" title="Permalink to this headline">¶</a></h3>
-<p>Ici, c’est vraiment la diffusion de la lumière qui va compter donc ici à gauche vous avez une IRM T1, à droite vous avez un T1 segmentée donc en violet on a on a une segmentation de matière grise, en vert l’extérieur du cerveau et en bleu on a la matière blanche. On peut essayer de modéliser les caractéristiques biophysiques de ces tissus-là alors comment elles reflètent la lumière et à partir de ça on peut prédire comment la lumière va diffuser dépendamment d’où on va mettre notre émetteur. Ça va aussi dépendre de la longueur d’onde. Donc à droite, vous avez une simulation d’où positionner votre émetteur et le récepteur pour augmenter la sensibilité. Évidemment, on ne peut pas prendre des mesures profondes puisque la lumière va diffuser dans tout les sens et on n’aura pas des mesures spécifiques du tissu. Les mesures d’imagerie optique sont très localisées spatialement, mais ce sont des mesures superficielles du cortex. Il y a beaucoup de procédures d’optimisation sur comment bien placer nos sources et récepteurs. Bien sûr, ça dépend de l’anatomie de chaque participant mais aussi des règles générales connues.
-Ici, ça représente un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur) de façon dynamique. Ça crée un maillage sur la tête comme avec un EEG et à partir des mesures qu’on a sur les différents canaux, on peut aller interpoler. Donc, calculer une moyenne de ces récepteurs en donnant plus d’importance aux récepteurs qui sont plus proche des canaux (proches d’un point donné du scan) Avec ça, on peut faire une image de l’activité au niveau du scalp.  Par la suite, on va essayer de reconstruire l’image au niveau du cortex individuel, en prenant en compte l’IRM T1. Ce n’est pas fait de manière standard du tout en imagerie optique. Donc, on parle de tomographie optique diffuse.
-Tomographie : reconstruire une image à partir de différentes projections, ici les productions sont au niveau du scalp. Ici, le principe physique qu’on cherche à inverser, c’est la diffusion de la lumière. Donc c’est pour ça qu’on parle de ta de tomographie optique diffuse. C’est aussi une étape qui va jouer un rôle dans la chaîne de traitement de données.
-Ici, c’est le même montage présenté ci-desus. Alors, on a disposé un certain nombre de canaux sur le cortex et on vient stimuler la main droite des participants. On sait que ça va venir activer principalement le cortex sensorimoteur gauche (controlatéral). L’essentiel de l’activation qu’on va observer, que ce soit le contrôle moteur ou les réponses à des stimulations sensorielles, c’est plutôt au niveau du cortex sensorimoteur gauche. C’est un paradigme de blocs de 10 secondes. En termes d’analyse, ils ont fait de la moyenne mobile, ce qu’on ne doit pas faire. Beaucoup de biais statistiques ne s’appliquent pas à l’imagerie optique.</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
+<span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">op</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">compress</span>
+<span class="kn">import</span> <span class="nn">mne</span>
+
+<span class="c1"># Charge les données</span>
+<span class="n">fnirs_data_folder</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fnirs_motor</span><span class="o">.</span><span class="n">data_path</span><span class="p">()</span>
+<span class="n">fnirs_cw_amplitude_dir</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fnirs_data_folder</span><span class="p">,</span> <span class="s1">&#39;Participant-1&#39;</span><span class="p">)</span>
+<span class="n">raw_intensity</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_nirx</span><span class="p">(</span><span class="n">fnirs_cw_amplitude_dir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">raw_intensity</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">subjects_dir</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mne</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">sample</span><span class="o">.</span><span class="n">data_path</span><span class="p">(),</span> <span class="s1">&#39;subjects&#39;</span><span class="p">)</span>
+
+<span class="c1"># Améliore les annotations du jeu de données</span>
+<span class="n">raw_intensity</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">set_durations</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">raw_intensity</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;1.0&#39;</span><span class="p">:</span> <span class="s1">&#39;CTL&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;2.0&#39;</span><span class="p">:</span> <span class="s1">&#39;Gauche&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;3.0&#39;</span><span class="p">:</span> <span class="s1">&#39;Droite&#39;</span><span class="p">})</span>
+<span class="n">unwanted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">raw_intensity</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">description</span> <span class="o">==</span> <span class="s1">&#39;15.0&#39;</span><span class="p">)</span>
+<span class="n">raw_intensity</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">unwanted</span><span class="p">)</span>
+
+<span class="c1"># Visualize le montage</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">brain</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">Brain</span><span class="p">(</span>
+    <span class="s1">&#39;fsaverage&#39;</span><span class="p">,</span> <span class="n">subjects_dir</span><span class="o">=</span><span class="n">subjects_dir</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">cortex</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span>
+<span class="n">brain</span><span class="o">.</span><span class="n">add_sensors</span><span class="p">(</span>
+    <span class="n">raw_intensity</span><span class="o">.</span><span class="n">info</span><span class="p">,</span> <span class="n">trans</span><span class="o">=</span><span class="s1">&#39;fsaverage&#39;</span><span class="p">,</span>
+    <span class="n">fnirs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">,</span> <span class="s1">&#39;pairs&#39;</span><span class="p">,</span> <span class="s1">&#39;sources&#39;</span><span class="p">,</span> <span class="s1">&#39;detectors&#39;</span><span class="p">])</span>
+<span class="n">brain</span><span class="o">.</span><span class="n">show_view</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">brain</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s1">&#39;imagerie_optique/fnirs-montage.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="fnirs-montage-fig">
+<a class="reference internal image-reference" href="_images/fnirs-montage.png"><img alt="_images/fnirs-montage.png" src="_images/fnirs-montage.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 87 </span><span class="caption-text">Un montage d’émetteurs/récepteurs en imagerie optique cérébrale. La position des sources de lumière est indiquée en rouge, la position des récepteurs est indiquée en noir. La position des sources, qui correspond aux tissus cérébraux entre la source et l’émetteur, est indiquée par des points oranges, et la trajectoire de la lumière est indiquée par des traits blancs. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-montage-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>On voit dans la figure <a class="reference internal" href="#fnirs-montage-fig"><span class="std std-numref">Fig. 87</span></a> un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur). Chaque mesure est faite selon un ligne qui rejoint le récepteur à l’émetteur, et le point milieu (la <em>source</em>) est indiquée en orange. Différents montages existent, qui varient aussi bien par le nombre d’émetteurs et de récepteurs que leur disposition. Ces montages vont donner plus ou moins de résolution spatiale et d’accès aux sources profondes, et seront aussi plus ou moins dispendieux et complexes à installer selon le nombre des capteurs utilisés.</p>
+</div>
+<div class="section" id="artefact-de-mouvement">
+<h3>Artefact de mouvement<a class="headerlink" href="#artefact-de-mouvement" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne.preprocessing.nirs</span> <span class="kn">import</span> <span class="p">(</span><span class="n">optical_density</span><span class="p">,</span>
+                                    <span class="n">temporal_derivative_distribution_repair</span><span class="p">)</span>
+<span class="n">raw_od</span> <span class="o">=</span> <span class="n">optical_density</span><span class="p">(</span><span class="n">raw_intensity</span><span class="p">)</span>
+<span class="n">new_annotations</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Annotations</span><span class="p">([</span><span class="mi">31</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">317</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+                                  <span class="p">[</span><span class="s2">&quot;Movement&quot;</span><span class="p">,</span> <span class="s2">&quot;Movement&quot;</span><span class="p">,</span> <span class="s2">&quot;Movement&quot;</span><span class="p">])</span>
+<span class="n">raw_od</span><span class="o">.</span><span class="n">set_annotations</span><span class="p">(</span><span class="n">new_annotations</span><span class="p">)</span>
+<span class="n">plt_od</span> <span class="o">=</span> <span class="n">raw_od</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_channels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">show_scrollbars</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt_od</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;imagerie_optique/fnirs-od.png&quot;</span><span class="p">)</span>
+
+<span class="n">raw_tddr</span> <span class="o">=</span> <span class="n">temporal_derivative_distribution_repair</span><span class="p">(</span><span class="n">raw_od</span><span class="p">)</span>
+<span class="n">plot_tddr</span> <span class="o">=</span> <span class="n">raw_tddr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_channels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">show_scrollbars</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plot_tddr</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;imagerie_optique/fnirs-tddr.png&quot;</span><span class="p">)</span>
+
+<span class="c1"># Make figure</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">imageio</span>
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xticks&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;yticks&#39;</span><span class="p">:</span> <span class="p">[]})</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;imagerie_optique/fnirs-od.png&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;antialiased&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Signal brut&#39;</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;imagerie_optique/fnirs-tddr.png&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Après correction de mouvement&#39;</span><span class="p">)</span>
+
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fnirs-motion-fig&quot;</span><span class="p">,</span> <span class="n">fig1</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="fnirs-motion-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/imagerie_optique_5_3.png" src="_images/imagerie_optique_5_3.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 88 </span><span class="caption-text">Corrections des artefacts de mouvement dans une acquisition d’imagerie optique. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-motion-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Tout comme les données d’IRMf, les données d’imagerie optique sont sensibles au mouvement. Il est possible de tirer partie de l’excellente résolution d’acquisition de l’imagerie optique pour identifier des changements brusques dans le signal, indicateurs de mouvement. Ces changments brusques peuvent alors être corrigés, tel qu’illustré dans la <a class="reference internal" href="#fnirs-motion-fig"><span class="std std-numref">Fig. 88</span></a>.</p>
+</div>
+<div class="section" id="filtrage">
+<h3>Filtrage<a class="headerlink" href="#filtrage" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reconstruction des données d&#39;hémoglobine</span>
+<span class="n">raw_od</span> <span class="o">=</span> <span class="n">optical_density</span><span class="p">(</span><span class="n">raw_intensity</span><span class="p">)</span>
+<span class="n">raw_tddr</span> <span class="o">=</span> <span class="n">temporal_derivative_distribution_repair</span><span class="p">(</span><span class="n">raw_od</span><span class="p">)</span>
+<span class="n">raw_haemo</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">nirs</span><span class="o">.</span><span class="n">beer_lambert_law</span><span class="p">(</span><span class="n">raw_tddr</span><span class="p">,</span> <span class="n">ppf</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plot_hemo</span> <span class="o">=</span> <span class="n">raw_haemo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_channels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">scalings</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+              <span class="n">duration</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">show_scrollbars</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plot_hemo</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;imagerie_optique/fnirs-hbo2.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># filtrage des données</span>
+<span class="n">raw_haemo</span> <span class="o">=</span> <span class="n">raw_haemo</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">h_trans_bandwidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                             <span class="n">l_trans_bandwidth</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<span class="n">plot_hemo</span> <span class="o">=</span> <span class="n">raw_haemo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_channels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">scalings</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+              <span class="n">duration</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">show_scrollbars</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plot_hemo</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;imagerie_optique/fnirs-filtered.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make figure</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">imageio</span>
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xticks&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;yticks&#39;</span><span class="p">:</span> <span class="p">[]})</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;imagerie_optique/fnirs-hbo2.png&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;antialiased&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Signal hémodynamique&#39;</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;imagerie_optique/fnirs-filtered.png&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Après filtrage&#39;</span><span class="p">)</span>
+
+<span class="c1"># Glue the figure</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fnirs-filtrage-fig&quot;</span><span class="p">,</span> <span class="n">fig1</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="fnirs-filtrage-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/imagerie_optique_7_16.png" src="_images/imagerie_optique_7_16.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 89 </span><span class="caption-text">Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-filtrage-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Un autre point commun avec l’IRMf est la présence de différentes sources de bruit, qui peuvent être réduites par des techniques de filtrage. Ces techniques sont plus efficaces en imagerie optique qu’en IRMf, car on dispose d’une meilleure résolution d’acquisition. Il est possible de supprimer les dérives lentes, comme on l’avait vu en IRMf, mais aussi d’éliminer les fréquences cardiaques, ce qui est difficile de faire en IRMf où le TR est généralement supérieur à 1 seconde.</p>
 </div>
 </div>
 <div class="section" id="application-en-neuroscience-cognitive">
