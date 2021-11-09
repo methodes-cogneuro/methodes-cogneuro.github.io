@@ -65,7 +65,8 @@ On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces
 width: 600px
 name: morphometrie-durer-fig
 ---
-Étude de Dürer sur les proportions du visage. Image appartenent au domaine public, tirée de [wikimedia](https://commons.wikimedia.org/wiki/File:Morpho_durer.JPG).
+Étude de Dürer sur les proportions du visage.
+Image appartenant au domaine public, tirée de [wikimedia](https://commons.wikimedia.org/wiki/File:Morpho_durer.JPG).
 ```
 
 En neurosciences, la [morphométrie](https://fr.wikipedia.org/wiki/Morphom%C3%A9trie) est l'étude de la forme du cerveau et de ses structures.
