@@ -312,13 +312,6 @@ Ces techniques sont plus efficaces en imagerie optique qu'en IRMf car on dispose
 Il est possible de supprimer les dérives lentes, comme on l'avait vu en IRMf, mais aussi d'éliminer les fréquences cardiaques, ce qui est difficile à faire en IRMf où le TR est généralement supérieur à 1 seconde.
 
 ## Application en neuroscience cognitive
-<<<<<<< HEAD
-Ici, ce que l'on fait, c'est exactement ce que nous ne devions pas faire.
-On a mis une source infrarouge d'un côté et un système de détection de l'autre.
-Donc, on va vraiment s'intéresser à la vascularisation de l'ensemble du cerveau et non pas pour une zone en particulier.
-C’est donc nul pour faire de l'imagerie fonctionnelle.
-Par contre, on est en 1977, c’est encore nouveau donc on le fait quand même. Jobsis et ses collaborateurs avaient l’idée de faire de l’hypercapnie. Ce qui veut dire qu’on va se forcer à respirer très très vite donc en fait on augmente la concentration en oxygène dans le sang et ça cause un peu l'effet inverse de l'activité neuronale. Quand l’activité neuronale monte il y a plus de désoxyhémoglobine localement à ce moment-là et le vaisseau tout seul se dilate mais si on augmente la quantité d'oxygène dans le sang les capillaires, ce qu’ils ont tendance à faire spontanément c’est de se contracter. C’est un processus d’homéostasie de base : quand il y a trop d’oxygène, les capillaires se dilatent et quand il n’y a pas assez de désoxygène, les capillaires se contractent. Alors, quand on fait de l’hypercapnie, on augmente évidemment l'oxygénation du sang mais ça fait que la quantité de sang dans le cerveau va diminuer parce que les capillaires se contractent. Donc, la concentration en oxyhémoglobine va diminuer aussi, même s'il y a plus d’oxyhémoglobine à cause de la contraction il y en a moins ! Ce sont des mécanismes de contrôle, d’homéostasie.
-=======
 
 ### Réponse hémodynamique
 ```{code-cell} ipython 3
@@ -337,7 +330,7 @@ evoked_dict = {'Droite/HbO': epochs['Droite'].average(picks='hbo'),
                'Droite/HbR': epochs['Droite'].average(picks='hbr'),
               }
 
-# Rename channels until the encoding of frequency in ch_name is fixed
+# Renomme les canaux pour corriger la fréquence dans ch_name
 for condition in evoked_dict:
     evoked_dict[condition].rename_channels(lambda x: x[:-4])
 
@@ -353,20 +346,57 @@ plot_hrf[0].savefig('imagerie_optique/fnirs-evoked.png')
 width: 600px
 name: fnirs-evoked-fig
 ---
-Activité HbO2 et Hb évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l'ensemble des sources. Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Activité HbO2 et Hb évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l'ensemble des sources.
+Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code) et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-L'imagerie optique permet de réaliser des expériences cognitives de manière similaire à l'IRMf. Dans la {numref}`fnirs-filtrage-fig` on voit une série d'**événements** qui ont été annotés. Ces événements sont de trois types: mouvement du doigt à `gauche`, mouvement du doigt à `droite`, et condition de `controle`. La figure ci dessus présente les résultats d'un analyse par **potentiel évoqué** pour la condition `droite`: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées. Les données de l'ensemble des sources ont été moyennées pour les mouvements à `droite`. Les mesures HbO2 et Hb ont en revanche été séparées. On voit un profil caractéristique de réponse hémodynamique en HbO2. Comme attendu, le Hb suit un profil inversé, avec un pic plus tardif et beaucoup plus petit (en valeur absolue).
+L'imagerie optique permet de réaliser des expériences cognitives similaires à ce que l'on peut faire en IRMf.
+Dans la {numref}`fnirs-filtrage-fig`, on voit une série d'**évènements** qui ont été annotés.
+Ces évènements sont de trois types: mouvement du doigt à `gauche`, mouvement du doigt à `droite` et condition de `contrôle`.
+La figure ci-dessus présente les résultats d'une analyse par **potentiel évoqué** pour la condition `droite`: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées.
+Les données de l'ensemble des sources ont été moyennées pour les mouvements à `droite`.
+Les mesures HbO2 et Hb ont en revanche été séparées.
+On voit un profil caractéristique de réponse hémodynamique en HbO2.
+Comme attendu, le Hb suit un profil inversé avec un pic plus tardif et beaucoup plus petit (en valeur absolue).
 
 ### Carte d'activation
 
 ### Systèmes mobiles
 
 ### Comparaison avec l'IRMf et la TEP
-Ici, ce qu'on fait, c'est vraiment ce que je vous ai dit qu'on ne devrait pas faire. C'est qu'on a mis une source infrarouge d'un côté et un système de détection de l'autre. Donc, en fait, on va vraiment s'intéresser à la vascularisation de l'ensemble du cerveau pas une zone en particulier. C’est donc nul pour faire de l'imagerie fonctionnelle. Par contre, on est en 1977, c’est encore nouveau donc on le fait quand même. Jobsis et ses collaborateurs avaient l’idée de faire de l’hypercapnie. Ce qui veut dire qu’on va se forcer à respirer très très vite donc en fait on augmente la concentration en oxygène dans le sang et ça cause un peu l'effet inverse de l'activité neuronale. Quand l’activité neuronale monte il y a plus de désoxyhémoglobine localement à ce moment-là et le vaisseau tout seul se dilate mais si on augmente la quantité d'oxygène dans le sang les capillaires, ce qu’ils ont tendance à faire spontanément c’est de se contracter. C’est un processus d’homéostasie de base : quand il y a trop d’oxygène, les capillaires se dilatent et quand il n’y a pas assez de désoxygène, les capillaires se contractent. Alors, quand on fait de l’hypercapnie, on augmente évidemment l'oxygénation du sang mais ça fait que la quantité de sang dans le cerveau va diminuer parce que les capillaires se contractent. Donc, la concentration en oxyhémoglobine va diminuer aussi, même s'il y a plus d’oxyhémoglobine à cause de la contraction il y en a moins ! Ce sont des mécanismes de contrôle, d’homéostasie.
->>>>>>> 5ea86d61ac311ca40000df254d40d97f9368c567
-Dans le graphique, l’axe des x représente le temps, le temps qui s’écoule après qu’on a fait l’hypercapnie et sur l’axe des y, c’est la quantité de photons qu’on récupère par rapport à la quantité envoyé. Si on récupère plus de photons à la sortie, ça veut dire qu’il y en a moins qui ont été absorbé. Ça veut dire qu’il y avait moins d’hémoglobine globalement, le volume sanguin était donc plus faible. C’est ce qu’on observe au cours du temps (axe x). L’augmentation de la courbe indique qu’il y a plus de lumière qui traverse, donc il y avait moins de sang dans le cerveau à la suite d’une hyperventilation.
+Ici, ce que l'on fait, c'est vraiment ce que je vous avais dit qu'on ne devrait pas faire.
+Nous avons mis une source infrarouge d'un côté et un système de détection de l'autre.
+Donc, nous allons vraiment nous intéresser à la vascularisation de l'ensemble du cerveau et non pas d'une zone en particulier.
+C’est donc nul pour faire de l'imagerie fonctionnelle.
+Par contre, on est en 1977.
+C’est encore nouveau, donc on le fait quand même.
+Jobsis et ses collaborateurs ont eu l’idée de faire de l’hypercapnie.
+Cette procédure consiste à se forcer à respirer très très vite.
+On va donc augmenter la concentration en oxygène dans le sang et entrainer ce qui ressemblerait un peu à l'effet inverse de l'activité neuronale.
+Quand l’activité neuronale monte, il y a plus de désoxyhémoglobine localement, à ce moment-là, et le vaisseau se dilate.
+Par contre, si on augmente la quantité d'oxygène dans le sang, les capillaires, ce qu’ils ont tendance à faire spontanément, c’est de se contracter.
+C’est un processus d’homéostasie de base: quand il y a trop d’oxygène, les capillaires se dilatent et quand il n’y a pas assez de désoxygène, les capillaires se contractent.
+Alors, quand on fait de l’hypercapnie, on augmente évidemment l'oxygénation du sang, mais ça entraine aussi une diminution de la quantité de sang dans le cerveau parce que les capillaires se contractent.
+Donc, la concentration en oxyhémoglobine va diminuer aussi.
+En effet, même s'il y a plus d’oxyhémoglobine à cause de la contraction, il y en a moins!
+Ce sont des mécanismes de contrôle, d’homéostasie.
 
-Sur l’axe des X vous avec le temps (s) donc c'est une expérience d'à peu près 5 min, sur l’axe des y c’est le changement en concentration. Donc ici on va avoir des mesures de volume cérébral total donc est ce que ça absorber beaucoup ou pas et après en travaillant avec les différentes longueurs d'onde on peut essayer de différencier la concentration en oxyhémoglobine de la concentration en désoxyhémoglobine. Quelque chose qu’on ne peut pas faire avec l’IRMf. Ici, on peut vraiment séparer le total vs l’oxygène et désoxygène. Avec l’IRMf ce sont seulement des changements relatifs qu’on est capable de détecter. Donc, dans le graphique on peut voir que suivant la stimulation, le volume augmente. Ça ce sont nos petits capillaires qui se dilatent en réponse à l'augmentation de l’extraction d'oxygène à cause des cellules gliales (ou astrocytes). On peut voir que ça corrèle énormément à la concentration en oxy, ça anti-corrèle avec la concentration de déoxy relative et puis sinon en bas comme mesure contrôle. Le flux sanguin au niveau de la peau est complètement indépendant de ce qui se passe au niveau du cerveau. Ils auraient pu utiliser une région contrôle dans le cerveau aussi. Cette modulation vasculaire est extrêmement fine au niveau spatial non seulement elle se passe Au niveau du cortex en fait elle se passe au niveau des régions exacts impliqués dans la tâche au niveau du cortex frontal et même si on avait la résolution comme on ira fonctionnelle on pourrait distinguer ce qui se passe au niveau dernières différentes couches du cortex certain que ça cette modulation vasculaire spatialement elle est organisée de manière très fine. Oui,  il y a des gros canaux, des grosses veines, dans lequel on va avoir une accumulation des faits, mais au niveau des capillaires et des microcapillaires, le contrôle se passe de manière très très fin. C’est la fameuse réponse hémodynamique qu’on connait très bien. On a un principe physique : diffusion de la lumière + absorption sélective de lumière par différents composés chimiques. Principe physiologique : couplage neurovasculaire. C’est deux choses ensemble sont l’imagerie optique.
+Dans le graphique, l’axe des x représente le temps qui s’écoule après qu’on a fait l’hypercapnie et sur l’axe des y, c’est la quantité de photons qu’on récupère par rapport à la quantité envoyé.
+Si on récupère plus de photons à la sortie, ça veut dire qu’il y en a moins qui ont été absorbé.
+Ça veut aussi dire qu’il y avait moins d’hémoglobine globalement: le volume sanguin était donc plus faible.
+C’est ce qu’on observe au cours du temps (axe x).
+L’augmentation de la courbe indique qu’il y a plus de lumière qui traverse.
+Donc, il y a moins de sang dans le cerveau à la suite d’une hyperventilation.
+
+Sur l’axe des x, vous avez le temps (s): c'est donc une expérience durant environ 5 min.
+Sur l’axe des y, c’est le changement en concentration.
+Donc, ici on va avoir des mesures de volume cérébral total: est-ce que ça a absorbé beaucoup ou pas.
+Il est par la suite possible de travailler avec les différentes longueurs d'onde pour essayer de différencier la concentration en oxyhémoglobine de la concentration en désoxyhémoglobine.
+C'est quelque chose qu’on ne peut pas faire avec l’IRMf.
+Ici, on peut vraiment séparer la réponse totale de l’impact de l'oxygène et du dioxyde de carbone.
+Avec l’IRMf, il n'est seulement possible de détecter des changements relatifs.
+Pourtant, dans le graphique, on peut voir que suivant la stimulation, le volume augmente.
+Ça, ce sont nos petits capillaires qui se dilatent en réponse à l'augmentation de l’extraction d'oxygène du sang par les cellules gliales (ou astrocytes).
+On peut voir qu'il y a une corrélation positive avec la concentration en oxy, ça anti-corrèle avec la concentration de déoxy relative et puis sinon en bas comme mesure contrôle. Le flux sanguin au niveau de la peau est complètement indépendant de ce qui se passe au niveau du cerveau. Ils auraient pu utiliser une région contrôle dans le cerveau aussi. Cette modulation vasculaire est extrêmement fine au niveau spatial non seulement elle se passe Au niveau du cortex en fait elle se passe au niveau des régions exacts impliqués dans la tâche au niveau du cortex frontal et même si on avait la résolution comme on ira fonctionnelle on pourrait distinguer ce qui se passe au niveau dernières différentes couches du cortex certain que ça cette modulation vasculaire spatialement elle est organisée de manière très fine. Oui,  il y a des gros canaux, des grosses veines, dans lequel on va avoir une accumulation des faits, mais au niveau des capillaires et des microcapillaires, le contrôle se passe de manière très très fin. C’est la fameuse réponse hémodynamique qu’on connait très bien. On a un principe physique : diffusion de la lumière + absorption sélective de lumière par différents composés chimiques. Principe physiologique : couplage neurovasculaire. C’est deux choses ensemble sont l’imagerie optique.
 Ici, on peut voir des fluctuations périodiques qui vont suivre la respiration. Donc, on a le temps en secondes et si on regarde comme 20 secondes de signal étant donné que c’est de l'optique, on peut prendre plein de points de mesure et vraiment suivre notre signal de manière très fine. Tandis qu'en IRMf, pour prendre un point de mesure, vu qu’on fait la totalité du cerveau, ça peut nous prendre 1, 2 ou 3 secondes. Ici, on peut prendre un point de mesure toutes les millisecondes et on peut voir ces variations très rapides et notamment ses variations systématiques liées à la respiration. Donc, évidemment c'est des choses qu’en corrigeant, on les enlèverait. Dans quelques diapositives on va parler de paradigme fonctionnel où typiquement on va regarder des blocs d'activité, comme en IRMf, avec des durées similaires, parce qu'on regarde une réponse vasculaire. Donc, on s'intéresse à peu près au même phénomène temporel avec des blocs qui vont durer 10-20 secondes. Alors, ces fluctuations-là sont quasiment négligeables, mais reste qu'elles sont présentes. Ici, on peut facilement les voir et on peut facilement les enlever/les modéliser avec du filtrage. De plus, l'imagerie optique c'est très portable et très flexible de ce point de vue-là, mais malgré tout, ça reste sensible au mouvement. Ça ne veut pas dire qu'on ne peut pas avoir des artefacts de mouvement, il y a des gens qui utilisent l'imagerie optique dans le cadre de de l'exercice physique! Ce qui faut savoir c’est quand on bouge la tête de façon importante, ça va créer des artefacts de mouvement. C’est représenté ici, on voit une grande modification du signal (Motion Artifact) parce que le capteur et le récepteur se sont un petit peu déplacé. Alors, on ne mesure plus exactement la même zone du cerveau et ça crée des grands changements dans les mesures qu'on obtient.   
 On va faire de la régression du filtrage et de la régression de facteurs de confusion sur les séries temporelles très similaires à ce qu’on fait en IRMf. On va aller essayer de détecter les pics de mouvement et les retirer.
 
