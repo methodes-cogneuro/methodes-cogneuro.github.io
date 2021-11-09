@@ -90,9 +90,18 @@ Ainsi, l'imagerie optique cérébrale repose sur des phénomènes déjà abordé
 width: 600px
 name: spectre-hemoglobine-fig
 ---
-Niveau d'absorption de la lumière par l'oxy- et la déoxy-hémoglobine, en fonction de la longueur d'onde. La région proche infrarouge (NIR, near infra-red) est indiquée. Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
+Niveau d'absorption de la lumière par l'oxy- et la déoxyhémoglobine en fonction de la longueur d'onde.
+La région proche infrarouge (NIR, near infra-red) est indiquée.
+Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
 ```
-Ce diagramme représente quelles longueurs d'ondes de la lumière sont absorbées par l'oxy- et la déoxy-hémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et Hb (hémoglobine non oxygénée en bleu). On peut voir qu'il y a des longueurs d'onde pour lesquelles le niveau d'absorption HbO2 vs Hb est très différent. Par exemple, à 700 nanomètres la lumière est plus absorbée par Hb, alors qu'à 900 nanomètres la lumière est plus absorbée par HbO2. Si on peut mesurer le niveau d'absorption dans le sang pour ces deux couleurs, en les comparant, on va pouvoir essayer de dissocier les concentrations en HbO2 et Hb. Un autre point important: ces longueurs d'onde sont très peu absorbées par l'eau, et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques. Donc, juste en étudiant la quantité d'absorption de deux longueurs d'onde proche infrarouge dans le cerveau, on va pouvoir quantifier le contenu en HbO2 et HB! Mais reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.
+
+Ce diagramme présente les longueurs d'ondes de la lumière qui sont absorbées par l'oxy- et la déoxyhémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et Hb (hémoglobine non oxygénée en bleu).
+On peut voir qu'il y a des longueurs d'onde pour lesquelles les niveaux d'absorption de HbO2 et de Hb sont très différents.
+Par exemple, à 700 nanomètres la lumière est plus absorbée par Hb, alors qu'à 900 nanomètres, la lumière est plus absorbée par HbO2.
+Si on peut mesurer les niveaux d'absorption dans le sang pour ces deux couleurs, on va pouvoir les comparer et essayer de dissocier les concentrations en HbO2 et Hb.
+Autre point important: ces longueurs d'onde sont très peu absorbées par l'eau et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques.
+Donc, juste en étudiant la quantité d'absorption de deux longueurs d'onde proche infrarouge dans le cerveau, on va pouvoir y quantifier le contenu en HbO2 et HB!
+Maintenant, il reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.
 
 ### Diffusion de la lumière
 ```{figure} imagerie_optique/nir-diffusion.png
@@ -100,15 +109,28 @@ Ce diagramme représente quelles longueurs d'ondes de la lumière sont absorbée
 width: 300px
 name: nir-diffusion-fig
 ---
-Mesure localisée dans le cerveau en imagerie optique. Un *émetteur* de lumière proche infrarouge est appliquée sur le scalp. Cette lumière est diffusée dans le cerveau. Après avoir traversé une petite portion de tissus cérébraux, elle va être émise de nouveau à la surface du scalp, et mesurée par un *récepteur* Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
+Mesure localisée dans le cerveau en imagerie optique.
+Un *émetteur* de lumière proche infrarouge est appliqué sur le scalp.
+Cette lumière est diffusée dans le cerveau.
+Après avoir traversé une petite portion de tissus cérébraux, elle va être émise de nouveau à la surface du scalp et mesurée par un *récepteur*.
+Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
 ```
-Dans le premier exemple que l'on a vu, avec une lampe qui illumine la main, la lumière traverse notre main en ligne droite depuis la lampe, jusqu'à notre oeil. Si l'on applique le même principe au cerveau, la lumière va traverser l'ensemble des tissus, et on ne pourra pas identifier quelle région du cerveau a absorbé la lumière. On ne pourra jamais faire des images avec cette méthode.
-Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière va se diffuser, selon un principe de marche aléatoire. Si on regarde le scalp autour de l'émetteur de lumière, la lumière diffusée va pouvoir être mesurée. Plus on va loin de l’émetteur, et plus cette lumière a traversé loin dans le cerveau. Si on va trop loin, de nombreux tissus seront mélangés. Si on va trop près, la lumière diffusée n'aura pas pénétré jusqu'au cerveau. Mais si on met notre détecteur à la bonne distance de l’émetteur (quelques cms), cette lumière aura traversé une région spécifique du cerveau, qui aura une forme en "U".
+Dans le premier exemple que l'on a vu, avec une lampe qui illumine la main, la lumière traverse notre main en ligne droite depuis la lampe, jusqu'à notre oeil.
+Si l'on applique le même principe au cerveau, la lumière va traverser l'ensemble des tissus et on ne pourra pas identifier quelle région du cerveau a absorbé la lumière.
+On ne pourra jamais reconstruire des images utilisables de cette façon.
+Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière va se diffuser dans les tissus en suivant le principe de marche aléatoire.
+Si on regarde le scalp autour de l'émetteur de lumière, la lumière diffusée va pouvoir être mesurée.
+Plus on s'éloigne de l’émetteur et plus cette lumière a traversé de tissus dans le cerveau.
+Si on va trop loin, de nombreux tissus seront mélangés.
+Si on reste trop près, la lumière diffusée n'aura pas pénétré jusqu'au cerveau.
+Mais si on met notre détecteur à la bonne distance de l’émetteur (quelques centimètres), cette lumière aura traversé un espace 3D spécifique du cerveau.
+Celui-ci aura une forme en "U".
 
 ```{admonition} Attention!
 :class: caution attention
 :name: nirs-warning
-Seules les régions cérébrales proches du scalp pourront être mesurées précisément avec l'imagerie optique. Pour mesurer de la lumière qui a pénétré très profondément dans le cerveau, il faudra que celle ci traverse de nombreux tissus, et on n'aura pas une mesure spécifique des tissus profonds.
+Seules les régions cérébrales proches du scalp pourront fournir des mesures précises avec l'imagerie optique.
+Pour mesurer de la lumière qui a pénétré très profondément dans le cerveau, il faudra que celle-ci traverse de nombreux tissus et on n'aura pas une mesure spécifique des tissus profonds.
 ```
 
 ### Couplage neurovasculaire
