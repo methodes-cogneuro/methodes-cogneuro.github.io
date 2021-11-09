@@ -23,6 +23,7 @@ kernelspec:
       </a>
       <br />
         <a title="Contenu">🤔</a>
+        <a title="Révision du texte">👀</a>
     </td>
     <td align="center">
       <a href="https://github.com/pbellec">
@@ -535,7 +536,7 @@ La [tractographie](https://fr.wikipedia.org/wiki/Tractographie) permet de tracer
 Tout comme l'IRMf des étapes de recalage et de débruitage sont nécessaires pour préparer les données avant d'estimer les tenseurs et effectuer la tractographie. De nombreux paramètres sont à sélectionner pour la tractographie elle-même, qui peuvent influencer les résultats. Il est aussi nécessaire de sélectionner un masque de la matière blanche qui contient les points de départ pour la reconstruction de fibres, obtenu ici par seuillage d'une carte de FA.
 ```{glue:figure} mask-wm-fig
 :figwidth: 500px
-:name: "fibers-fig"
+:name: "mask-wm-fig"
 Carte d'anisotropite fractionnelle (gauche) et masque de la matière blanche obtenue par seuillage (droite). Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
@@ -601,9 +602,6 @@ Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la c
 ```
 Avec une séquence HARDI, nous pouvons estimer une fonction de distribution des orientations de fibres (*fiber Orientation Distribution Function*, fODF) lorsqu'il y a des croisements de fibres perpendiculaires. Ceci nous permet d'estimer plusieurs tenseurs à l'intérieur d'un voxel et de surpasser certaines limites du tenseur de diffusion (DTI). Dans les zones à faible anisotropie nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principale dans les fibres les plus importantes.
 
-```{warning} ODF et angle entre les fibres
-L'ODF de diffusion n'est pas complètement robuste aux croisements de fibres. En effet, plus l'angle de croisement entre les fibres est petit, plus l'ODF de diffusion sera limité dans la détection de ces croisements.
-```
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 csa_peaks = peaks_from_model(csd_model, maskdata[minx:maxx, miny:maxy, :, :], default_sphere,

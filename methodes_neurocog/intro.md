@@ -62,6 +62,17 @@ Le cours est donné principalement par Dr Pierre Bellec, avec des contributions 
       <br />
         <a title="Révision du texte">👀</a>
     </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Xanthylajoie">
+        <img src="https://avatars.githubusercontent.com/u/90349544?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Xanthy Lajoie</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+        <a title="Révision du texte">👀</a>
+    </td>
     <td align="center">
       <a href="https://github.com/sangfrois">
         <img src="https://avatars.githubusercontent.com/u/38385719?v=4?s=100" width="100px;" alt=""/>
