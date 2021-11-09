@@ -134,7 +134,12 @@ Pour mesurer de la lumière qui a pénétré très profondément dans le cerveau
 ```
 
 ### Couplage neurovasculaire
-On a maintenant vu principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est à dire le **couplage neurovasculaire**. Vous pouvez vous référez à la [section](couplage-neurovasculaire-irmf-section) du chapitre sur l'IRMf pour plus de détails. Brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HB à proximité des populations de neurones activés. C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
+On a maintenant vu le principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau.
+Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est à dire le **couplage neurovasculaire**.
+Vous pouvez vous référez à la [section](couplage-neurovasculaire-irmf-section) du chapitre sur l'IRMf pour plus de détails.
+Mais brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales situées immédiatement à proximité des neurones concernés.
+Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HB à proximité des populations de neurones activées.
+C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
 
 ## Acquisitions et traitements
 
@@ -145,9 +150,19 @@ On a maintenant vu principe physique qui nous permet de mesurer la concentration
 width: 800px
 name: fiducials-fig
 ---
-Points de repères sur la tête et alignement imagerie optique / IRM. Haut à gauche: installation d'un montage d'imagerie optique sur un jeune participant. Haut à droite: différents points de repères standards sont identifiés sur la tête du participant. Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM. Ces points de repères sont utilisés pour recaler la position des émetteurs / récepteurs d'imagerie optique avec l'IRM structurelle du participant. Figure tirée de [LLoyd-Fox et al. (2014)](https://doi.org/10.1117/1.nph.1.2.025006) sous licence [CC Attribution unported 3.0](https://creativecommons.org/licenses/by/3.0/).
+Points de repères sur la tête et alignement imagerie optique / IRM.
+Haut à gauche: installation d'un montage d'imagerie optique sur un jeune participant.
+Haut à droite: différents points de repère standards sont identifiés sur la tête du participant.
+Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM.
+Ces points de repère sont utilisés pour recaler la position des émetteurs / récepteurs d'imagerie optique avec l'IRM structurelle du participant.
+Figure tirée de [LLoyd-Fox et al. (2014)](https://doi.org/10.1117/1.nph.1.2.025006) sous licence [CC Attribution unported 3.0](https://creativecommons.org/licenses/by/3.0/).
 ```
-Afin de localiser l'activité cérébrale mesurée, il est courant d'utiliser une IRM structurelle du participant de recherche. Il est alors important de pouvoir situer les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau. Deux techniques principales sont utilisées. La première technique consiste à utiliser certais points de repères anatomiques sur la tête du participant, tel qu'illustré dans la {numref}`fiducials-fig`. Ces points de repère sont aussi visibles dans l'IRM structurelle, et permettent de mettre en correspondence les deux types de mesure. La deuxième approche consiste à utiliser un système de **neuronavigation**, comme par exemple ce [système](https://www.neurocaregroup.com/brainsight-nirs) qui utilise des caméras pour mettre en correspondence la position des émetteurs et récepteurs de lumière proche infrarouge avec l'IRM structurelle.
+Afin de localiser l'activité cérébrale mesurée, il est courant d'utiliser une IRM structurelle du participant de recherche.
+Il est alors important de pouvoir situer le plus précisément possible les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau.
+Deux techniques principales sont utilisées.
+La première technique consiste à utiliser certains points de repère anatomiques sur la tête du participant, tel qu'illustré dans la {numref}`fiducials-fig`.
+Ces points de repère sont aussi visibles dans l'IRM structurelle et permettent de mettre en correspondence les deux types de mesure.
+La deuxième approche consiste à utiliser un système de **neuronavigation**, comme par exemple ce [système](https://www.neurocaregroup.com/brainsight-nirs) qui utilise des caméras pour mettre en correspondence la position des émetteurs et récepteurs de lumière proche infrarouge avec l'IRM structurelle.
 
 ### Montage
 ```{code-cell} ipython 3
@@ -174,7 +189,7 @@ raw_intensity.annotations.rename({'1.0': 'CTL',
 unwanted = np.nonzero(raw_intensity.annotations.description == '15.0')
 raw_intensity.annotations.delete(unwanted)
 
-# Visualize le montage
+# Visualise le montage
 fig = plt.figure(figsize=(10, 10), dpi=300)
 
 brain = mne.viz.Brain(
@@ -191,10 +206,18 @@ brain.save_image('imagerie_optique/fnirs-montage.png')
 width: 600px
 name: fnirs-montage-fig
 ---
-Un montage d'émetteurs/récepteurs en imagerie optique cérébrale. La position des sources de lumière est indiquée en rouge, la position des récepteurs est indiquée en noir. La position des sources, qui correspond aux tissus cérébraux entre la source et l'émetteur, est indiquée par des points oranges, et la trajectoire de la lumière est indiquée par des traits blancs. Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Un montage d'émetteurs/récepteurs en imagerie optique cérébrale.
+La position des sources de lumière est indiquée en rouge alors que la position des récepteurs est indiquée en noir.
+La position des sources, qui correspond aux tissus cérébraux entre la source et l'émetteur, est indiquée par des points oranges et la trajectoire de la lumière est indiquée par des traits blancs.
+Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code) et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-On voit dans la figure {numref}`fnirs-montage-fig` un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur). Chaque mesure est faite selon un ligne qui rejoint le récepteur à l'émetteur, et le point milieu (la _source_) est indiquée en orange. Différents montages existent, qui varient aussi bien par le nombre d'émetteurs et de récepteurs que leur disposition. Ces montages vont donner plus ou moins de résolution spatiale et d'accès aux sources profondes, et seront aussi plus ou moins dispendieux et complexes à installer selon le nombre des capteurs utilisés.
+On peut voir dans la figure {numref}`fnirs-montage-fig` un montage contenant différents canaux qui peuvent être activés en pairs (récepteur + émetteur).
+Chaque mesure est faite selon une ligne qui rejoint le récepteur à l'émetteur, et le point milieu (la _source_) est indiquée en orange.
+Différents montages existent.
+Ceux-ci peuvent aussi bien varier le nombre d'émetteurs et de récepteurs que leur disposition.
+Ces montages vont donner plus ou moins de résolution spatiale et d'accès aux sources profondes.
+Ils seront aussi plus ou moins dispendieux et complexes à installer selon le nombre de capteurs utilisés.
 
 ### Artefact de mouvement
 
