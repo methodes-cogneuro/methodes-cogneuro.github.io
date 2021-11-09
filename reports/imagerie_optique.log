@@ -17,63 +17,38 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from mne.preprocessing.nirs import (optical_density,
-                                    temporal_derivative_distribution_repair)
-raw_od = optical_density(raw_intensity)
-raw_haemo = mne.preprocessing.nirs.beer_lambert_law(raw_od, ppf=6)
-new_annotations = mne.Annotations([31, 187, 317], [8, 8, 8],
-                                  ["Movement", "Movement", "Movement"])
-raw_haemo.set_annotations(new_annotations)
-plt_haemo = raw_haemo.plot(n_channels=15, duration=400, show_scrollbars=False, scalings='auto')
-plt_haemo.savefig("imagerie_optique/fnirs-od.png")
+reject_criteria = dict(hbo=80e-6)
+tmin, tmax = -5, 15
+events, event_dict = mne.events_from_annotations(raw_haemo)
 
-raw_tddr = temporal_derivative_distribution_repair(raw_haemo)
-plot_tddr = raw_tddr.plot(n_channels=15, duration=400, show_scrollbars=False, scalings='auto')
-plot_tddr.savefig("imagerie_optique/fnirs-tddr.png")
+epochs = mne.Epochs(raw_haemo, events, event_id=event_dict,
+                    tmin=tmin, tmax=tmax,
+                    reject=reject_criteria, reject_by_annotation=True,
+                    proj=True, baseline=(None, 0), preload=True,
+                    detrend=None, verbose=True)
 
-# Make figure
-from matplotlib import pyplot as plt
-import imageio
-fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
-                        subplot_kw={'xticks': [], 'yticks': []})
-fig1.subplots_adjust(hspace=0.3, wspace=0.05)
-im = imageio.imread("imagerie_optique/fnirs-od.png")
-ax.flat[0].imshow(im, interpolation='antialiased')
-ax.flat[0].set_title('Signal brut')
-im = imageio.imread("imagerie_optique/fnirs-tddr.png")
-ax.flat[1].imshow(im, interpolation='none')
-ax.flat[1].set_title('Après correction de mouvement')
+evoked_dict = {'Droite/HbO': epochs['Droite'].average(picks='hbo'),
+               'Droite/HbR': epochs['Droite'].average(picks='hbr'),
+              }
 
-# Glue the figure
-from myst_nb import glue
-glue("fnirs-motion-fig", fig1, display=False)
+# Rename channels until the encoding of frequency in ch_name is fixed
+for condition in evoked_dict:
+    evoked_dict[condition].rename_channels(lambda x: x[:-4])
+
+color_dict = dict(HbO='#AA3377', HbR='b')
+
+plot_hrf = mne.viz.plot_compare_evokeds(evoked_dict, combine="mean", ci=0.95,
+                             colors=color_dict)
+plot_hrf.savefig('imagerie_optique/fnris-evoked.png')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mIndexError[0m                                Traceback (most recent call last)
-[0;32m<ipython-input-3-ca7fc62546b8>[0m in [0;36m<module>[0;34m[0m
-[1;32m      9[0m [0mplt_haemo[0m[0;34m.[0m[0msavefig[0m[0;34m([0m[0;34m"imagerie_optique/fnirs-od.png"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     10[0m [0;34m[0m[0m
-[0;32m---> 11[0;31m [0mraw_tddr[0m [0;34m=[0m [0mtemporal_derivative_distribution_repair[0m[0;34m([0m[0mraw_haemo[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     12[0m [0mplot_tddr[0m [0;34m=[0m [0mraw_tddr[0m[0;34m.[0m[0mplot[0m[0;34m([0m[0mn_channels[0m[0;34m=[0m[0;36m15[0m[0;34m,[0m [0mduration[0m[0;34m=[0m[0;36m400[0m[0;34m,[0m [0mshow_scrollbars[0m[0;34m=[0m[0;32mFalse[0m[0;34m,[0m [0mscalings[0m[0;34m=[0m[0;34m'auto'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     13[0m [0mplot_tddr[0m[0;34m.[0m[0msavefig[0m[0;34m([0m[0;34m"imagerie_optique/fnirs-tddr.png"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m<decorator-gen-430>[0m in [0;36mtemporal_derivative_distribution_repair[0;34m(raw, verbose)[0m
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/mne/preprocessing/nirs/_tddr.py[0m in [0;36mtemporal_derivative_distribution_repair[0;34m(raw, verbose)[0m
-[1;32m     44[0m     [0mraw[0m [0;34m=[0m [0mraw[0m[0;34m.[0m[0mcopy[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mload_data[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     45[0m     [0m_validate_type[0m[0;34m([0m[0mraw[0m[0;34m,[0m [0mBaseRaw[0m[0;34m,[0m [0;34m'raw'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 46[0;31m     _check_channels_ordered(
-[0m[1;32m     47[0m         raw.info, np.unique(_channel_frequencies(raw.info, nominal=True)))
-[1;32m     48[0m [0;34m[0m[0m
-
-[0;32m~/env/psy3018/lib/python3.8/site-packages/mne/preprocessing/nirs/nirs.py[0m in [0;36m_check_channels_ordered[0;34m(info, pair_vals)[0m
-[1;32m    154[0m         [0;32mif[0m [0;34m([0m[0mch1_name_info[0m[0;34m.[0m[0mgroups[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m0[0m[0;34m][0m [0;34m!=[0m [0mch2_name_info[0m[0;34m.[0m[0mgroups[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m [0;32mor[0m[0;31m [0m[0;31m\[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    155[0m            [0;34m([0m[0mch1_name_info[0m[0;34m.[0m[0mgroups[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m1[0m[0;34m][0m [0;34m!=[0m [0mch2_name_info[0m[0;34m.[0m[0mgroups[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m)[0m [0;32mor[0m[0;31m [0m[0;31m\[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 156[0;31m            [0;34m([0m[0mfirst_value[0m [0;34m!=[0m [0mpair_vals[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m [0;32mor[0m[0;31m [0m[0;31m\[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    157[0m            [0;34m([0m[0msecond_value[0m [0;34m!=[0m [0mpair_vals[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    158[0m             raise ValueError(
-
-[0;31mIndexError[0m: index 0 is out of bounds for axis 0 with size 0
-IndexError: index 0 is out of bounds for axis 0 with size 0
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;32m<ipython-input-5-cb37cfe6ae57>[0m in [0;36m<module>[0;34m[0m
+[1;32m     21[0m plot_hrf = mne.viz.plot_compare_evokeds(evoked_dict, combine="mean", ci=0.95,
+[1;32m     22[0m                              colors=color_dict)
+[0;32m---> 23[0;31m [0mplot_hrf[0m[0;34m.[0m[0msavefig[0m[0;34m([0m[0;34m'imagerie_optique/fnris-evoked.png'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mAttributeError[0m: 'list' object has no attribute 'savefig'
+AttributeError: 'list' object has no attribute 'savefig'
 
