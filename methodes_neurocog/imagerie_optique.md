@@ -41,20 +41,23 @@ kernelspec:
 ```{warning}
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
-L'imagerie optique cérébrale, encore appelée spectroscopie proche infrarouge fonctionnelle, est une technique qui permet de mesurer les corrélats vasculaires de l'activité cérébrale, de manière assez similaire à l'IRMf. En revanche elle repose sur un principe physique très différent: la diffusion et l'absorption de la lumière dans les tissus cérébraux. Ses limites et faiblesses sont aussi bien distinctes de l'IRMf.
+L'imagerie optique cérébrale, aussi appelée spectroscopie proche infrarouge fonctionnelle, est une technique qui permet de mesurer les corrélats vasculaires de l'activité cérébrale d'une manière assez similaire à l'IRMf.
+En revanche, elle repose sur un principe physique très différent: la diffusion et l'absorption de la lumière dans les tissus cérébraux.
+Ses limites et faiblesses sont aussi bien distinctes de l'IRMf.
 
 ```{figure} imagerie_optique/fnirs.jpg
 ---
 width: 600px
 name: fnirs-fig
 ---
-Système d'imagerie optique [NTS gowerlabs](https://www.gowerlabs.co.uk/nts-main). Image tirée de [wikipedia](https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy#/media/File:Blonde_fNIRS_lady.jpg) sous licence [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+Système d'imagerie optique [NTS gowerlabs](https://www.gowerlabs.co.uk/nts-main).
+Image tirée de [wikipedia](https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy#/media/File:Blonde_fNIRS_lady.jpg) sous licence [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
 ```
 
-Les objectifs spécifiques de ce chapitre sont :
- * Principes physiques et physiologiques de l'imagerie optique.
- * Acquisitions et traitements d'images en imagerie optique.
- * Application de l'imagerie optique en neuroscience cognitive.
+Les objectifs spécifiques de ce chapitre sont d'étudier:
+ * les principes physiques et physiologiques de l'imagerie optique,
+ * les techniques d'acquisition et de traitement d'image en imagerie optique,
+ * les applications de l'imagerie optique en neuroscience cognitive.
 
 ## Principes physiques et physiologiques
 
@@ -70,7 +73,16 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/61rWjVkpgh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
-La lumière pénètre et diffuse au travers des tissus biologiques. Cela peut être observé facilement, par exemple en plaçant une lampe de poche derrière votre main. Votre main est en partie transparente et la lumière peut la pénétrer. Certains tissus vont plus absorber la lumière que d'autres, et permettre de voir le genre de tissus présent à l’intérieur de notre main. Mais quel genre de tissus exactement? cela va dépendre du genre de lumière... La lumière proche infra-rouge est intéressante de ce point de vue, car elle est particulièrement absorbée par l'hémoglobine. La vidéo ci-dessus permet ainsi d'observer assez clairement la vascularisation de la main avec de la lumière (et une caméra) proche-infrarouge. Karl von Vierordt en 1876 avait déjà pu observer qu'il était possible d'observer la diminution d'oxyhémoglobine dans la main avec cette technique, en limitant l'arrivée de sang dans la main au moyen d'une ligature. L'imagerie optique cérébrale repose aussi sur les propriétés physiques de la lumière proche infra-rouge dans les tissus biologiques.
+La lumière pénètre et diffuse au travers des tissus biologiques.
+Cela peut être observé facilement, par exemple en plaçant une lampe de poche derrière votre main.
+Votre main est en partie transparente et la lumière peut la pénétrer.
+Certains tissus vont plus absorber la lumière que d'autres et ainsi permettre de voir les différents genres de tissu présents à l’intérieur de la main.
+Mais quel types de tissu peut-on voir exactement?
+Cela va dépendre du type de lumière utilisé...
+C'est pourquoi la lumière dans le spectre proche infra-rouge est plutôt intéressante: elle est particulièrement absorbée par l'hémoglobine.
+La vidéo ci-dessus permet ainsi d'observer assez clairement la vascularisation de la main avec de la lumière (et une caméra) proche-infrarouge.
+Déjà en 1876, Karl von Vierordt avait pu observer qu'il était possible d'observer la diminution de l'oxyhémoglobine dans la main avec cette technique lorsque l'arrivée de sang de celle-ci était limitée au moyen d'une ligature.
+Ainsi, l'imagerie optique cérébrale repose sur des phénomènes déjà abordés durant ce cours, mais aussi sur les propriétés physiques de la lumière proche infra-rouge dans les tissus biologiques.
 
 ### Spectre d'absorption des tissus
 ```{figure} imagerie_optique/spectre_hemoglobine.png
