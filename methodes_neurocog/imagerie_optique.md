@@ -41,20 +41,24 @@ kernelspec:
 ```{warning}
 Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
 ```
-L'imagerie optique cérébrale, encore appelée spectroscopie proche infrarouge fonctionnelle, est une technique qui permet de mesurer les corrélats vasculaires de l'activité cérébrale, de manière assez similaire à l'IRMf. En revanche, elle repose sur un principe physique très différent: la diffusion et l'absorption de la lumière dans les tissus cérébraux. Ses limites et faiblesses sont aussi bien distinctes de l'IRMf.
+
+L'imagerie optique cérébrale, aussi appelée spectroscopie proche infrarouge fonctionnelle, est une technique qui permet de mesurer les corrélats vasculaires de l'activité cérébrale d'une manière assez similaire à l'IRMf.
+En revanche, elle repose sur un principe physique très différent: la diffusion et l'absorption de la lumière dans les tissus cérébraux.
+Ses limites et faiblesses sont aussi bien distinctes celles de l'IRMf.
 
 ```{figure} imagerie_optique/fnirs.jpg
 ---
 width: 600px
 name: fnirs-fig
 ---
-Système d'imagerie optique [NTS gowerlabs](https://www.gowerlabs.co.uk/nts-main). Image tirée de [wikipedia](https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy#/media/File:Blonde_fNIRS_lady.jpg) sous licence [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+Système d'imagerie optique [NTS gowerlabs](https://www.gowerlabs.co.uk/nts-main).
+Image tirée de [wikipedia](https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy#/media/File:Blonde_fNIRS_lady.jpg) sous licence [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
 ```
 
-Les objectifs spécifiques de ce chapitre sont :
- * Principes physiques et physiologiques de l'imagerie optique.
- * Acquisition et traitement d'images en imagerie optique.
- * Applications de l'imagerie optique en neuroscience cognitive.
+Les objectifs spécifiques de ce chapitre sont d'étudier:
+ * les principes physiques et physiologiques de l'imagerie optique,
+ * les techniques d'acquisition et de traitement d'image en imagerie optique,
+ * les applications de l'imagerie optique en neuroscience cognitive.
 
 ## Principes physiques et physiologiques
 
@@ -70,7 +74,16 @@ warnings.filterwarnings("ignore")
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/61rWjVkpgh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 ```
 
-La lumière pénètre et diffuse au travers des tissus biologiques. Cela peut être observé facilement, par exemple en plaçant une lampe de poche derrière votre main. Votre main est en partie transparente et la lumière peut la pénétrer. Certains tissus vont plus absorber la lumière que d'autres, et permettre de voir le genre de tissus présent à l’intérieur de notre main. Mais quel genre de tissus exactement? cela va dépendre du genre de lumière... La lumière proche infra-rouge est intéressante de ce point de vue, car elle est particulièrement absorbée par l'hémoglobine. La vidéo ci-dessus permet ainsi d'observer assez clairement la vascularisation de la main avec de la lumière (et une caméra) proche-infrarouge. Karl von Vierordt en 1876 avait déjà pu remarquer qu'il était possible d'observer la diminution d'oxyhémoglobine dans la main avec cette technique, en limitant l'arrivée de sang dans la main au moyen d'une ligature. L'imagerie optique cérébrale repose aussi sur les propriétés physiques de la lumière proche infra-rouge dans les tissus biologiques.
+La lumière pénètre et diffuse au travers des tissus biologiques.
+Cela peut être observé facilement, par exemple en plaçant une lampe de poche derrière votre main.
+Votre main est en partie transparente et la lumière peut la pénétrer.
+Certains tissus vont plus absorber la lumière que d'autres et ainsi permettre de voir les différents genres de tissu présents à l’intérieur de la main.
+Mais quel types de tissu peut-on voir exactement?
+Cela va dépendre du type de lumière utilisé...
+C'est pourquoi la lumière dans le spectre proche infra-rouge est plutôt intéressante: elle est particulièrement absorbée par l'hémoglobine.
+La vidéo ci-dessus permet ainsi d'observer assez clairement la vascularisation de la main avec de la lumière (et une caméra) proche-infrarouge.
+Déjà en 1876, Karl von Vierordt avait pu observer qu'il était possible d'observer la diminution de l'oxyhémoglobine dans la main avec cette technique lorsque l'arrivée de sang de celle-ci était limitée au moyen d'une ligature.
+Ainsi, l'imagerie optique cérébrale repose sur des phénomènes déjà abordés durant ce cours, mais aussi sur les propriétés physiques de la lumière proche infra-rouge dans les tissus biologiques.
 
 ### Spectre d'absorption des tissus
 ```{figure} imagerie_optique/spectre_hemoglobine.png
@@ -78,9 +91,18 @@ La lumière pénètre et diffuse au travers des tissus biologiques. Cela peut ê
 width: 600px
 name: spectre-hemoglobine-fig
 ---
-Niveau d'absorption de la lumière par l'oxy- et la déoxy-hémoglobine, en fonction de la longueur d'onde. La région proche infrarouge (NIR, near infra-red) est indiquée. Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
+Niveau d'absorption de la lumière par l'oxy- et la déoxyhémoglobine en fonction de la longueur d'onde.
+La région proche infrarouge (NIR, near infra-red) est indiquée.
+Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
 ```
-Ce diagramme représente quelles longueurs d'ondes de la lumière sont absorbées par l'oxy- et la déoxy-hémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et Hb (hémoglobine non oxygénée en bleu). On peut voir qu'il y a des longueurs d'onde pour lesquelles le niveau d'absorption HbO2 vs Hb est très différent. Par exemple, à 700 nanomètres la lumière est plus absorbée par Hb, alors qu'à 900 nanomètres la lumière est plus absorbée par HbO2. Si on peut mesurer le niveau d'absorption dans le sang pour ces deux couleurs, en les comparant, on va pouvoir essayer de dissocier les concentrations en HbO2 et Hb. Un autre point important: ces longueurs d'onde sont très peu absorbées par l'eau, et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques. Donc, juste en étudiant la quantité d'absorption de deux longueurs d'onde proche infrarouge dans le cerveau, on va pouvoir quantifier le contenu en HbO2 et HB! Mais reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.
+
+Ce diagramme présente les longueurs d'ondes de la lumière qui sont absorbées par l'oxy- et la déoxyhémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et Hb (hémoglobine non oxygénée en bleu).
+On peut voir qu'il y a des longueurs d'onde pour lesquelles les niveaux d'absorption de HbO2 et de Hb sont très différents.
+Par exemple, à 700 nanomètres la lumière est plus absorbée par Hb, alors qu'à 900 nanomètres, la lumière est plus absorbée par HbO2.
+Si on peut mesurer les niveaux d'absorption dans le sang pour ces deux couleurs, on va pouvoir les comparer et essayer de dissocier les concentrations en HbO2 et Hb.
+Autre point important: ces longueurs d'onde sont très peu absorbées par l'eau et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques.
+Donc, juste en étudiant la quantité d'absorption de deux longueurs d'onde proche infrarouge dans le cerveau, on va pouvoir y quantifier le contenu en HbO2 et HB!
+Maintenant, il reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.
 
 ### Diffusion de la lumière
 ```{figure} imagerie_optique/nir-diffusion.png
@@ -88,22 +110,39 @@ Ce diagramme représente quelles longueurs d'ondes de la lumière sont absorbée
 width: 300px
 name: nir-diffusion-fig
 ---
-Mesure localisée dans le cerveau en imagerie optique. Un *émetteur* de lumière proche infrarouge est appliqué sur le scalp. Cette lumière est diffusée dans le cerveau. Après avoir traversé une petite portion de tissus cérébraux, elle va être émise de nouveau à la surface du scalp, et mesurée par un *récepteur* Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
+Mesure localisée dans le cerveau en imagerie optique.
+Un *émetteur* de lumière proche infrarouge est appliqué sur le scalp.
+Cette lumière est diffusée dans le cerveau.
+Après avoir traversé une petite portion de tissus cérébraux, elle va être émise de nouveau à la surface du scalp et mesurée par un *récepteur*.
+Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
 ```
-Dans le premier exemple que l'on a vu, avec une lampe qui illumine la main, la lumière traverse notre main en ligne droite depuis la lampe, jusqu'à notre oeil. Si l'on applique le même principe au cerveau, la lumière va traverser l'ensemble des tissus, et on ne pourra pas identifier quelle région du cerveau a absorbé la lumière. On ne pourra jamais faire des images avec cette méthode.
-Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière va se diffuser, selon un principe de marche aléatoire. Si on regarde le scalp autour de l'émetteur de lumière, la lumière diffusée va pouvoir être mesurée. Plus on va loin de l’émetteur, et plus cette lumière a traversé loin dans le cerveau. Si on va trop loin, de nombreux tissus seront mélangés. Si on va trop près, la lumière diffusée n'aura pas pénétré jusqu'au cerveau. Mais si on met notre détecteur à la bonne distance de l’émetteur (quelques cms), cette lumière aura traversé une région spécifique du cerveau, qui aura une forme en "U".
+Dans le premier exemple que l'on a vu, avec une lampe qui illumine la main, la lumière traverse notre main en ligne droite depuis la lampe, jusqu'à notre oeil.
+Si l'on applique le même principe au cerveau, la lumière va traverser l'ensemble des tissus et on ne pourra pas identifier quelle région du cerveau a absorbé la lumière.
+On ne pourra jamais reconstruire des images utilisables de cette façon.
+Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière va se diffuser dans les tissus en suivant le principe de marche aléatoire.
+Si on regarde le scalp autour de l'émetteur de lumière, la lumière diffusée va pouvoir être mesurée.
+Plus on s'éloigne de l’émetteur et plus cette lumière a traversé de tissus dans le cerveau.
+Si on va trop loin, de nombreux tissus seront mélangés.
+Si on reste trop près, la lumière diffusée n'aura pas pénétré jusqu'au cerveau.
+Mais si on met notre détecteur à la bonne distance de l’émetteur (quelques centimètres), cette lumière aura traversé un espace 3D spécifique du cerveau.
+Celui-ci aura une forme en "U".
 
 ```{admonition} Attention!
 :class: caution attention
 :name: nirs-warning
-Seules les régions cérébrales proches du scalp pourront être mesurées précisément avec l'imagerie optique. Pour mesurer de la lumière qui a pénétré très profondément dans le cerveau, il faudra que celle ci traverse de nombreux tissus, et on n'aura pas une mesure spécifique des tissus profonds.
+Seules les régions cérébrales proches du scalp pourront fournir des mesures précises avec l'imagerie optique.
+Pour mesurer de la lumière qui a pénétré très profondément dans le cerveau, il faudra que celle-ci traverse de nombreux tissus et on n'aura pas une mesure spécifique des tissus profonds.
 ```
 
 ### Couplage neurovasculaire
-On a maintenant vu le principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est-à-dire le **couplage neurovasculaire**. Vous pouvez vous référez à la [section](couplage-neurovasculaire-irmf-section) du chapitre sur l'IRMf pour plus de détails. Brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HB à proximité des populations de neurones activés. C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
+On a maintenant vu le principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau.
+Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est à dire le **couplage neurovasculaire**.
+Vous pouvez vous référez à la [section](couplage-neurovasculaire-irmf-section) du chapitre sur l'IRMf pour plus de détails.
+Mais brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales situées immédiatement à proximité des neurones concernés.
+Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HB à proximité des populations de neurones activées.
+C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
 
 ## Acquisition et traitement
-
 
 ### Recalage avec l'anatomie
 ```{figure} imagerie_optique/fiducials.png
@@ -111,9 +150,19 @@ On a maintenant vu le principe physique qui nous permet de mesurer la concentrat
 width: 800px
 name: fiducials-fig
 ---
-Points de repères sur la tête et alignement imagerie optique / IRM. Haut à gauche: installation d'un montage d'imagerie optique sur un jeune participant. Haut à droite: différents points de repères standards sont identifiés sur la tête du participant. Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM. Ces points de repères sont utilisés pour recaler la position des émetteurs / récepteurs d'imagerie optique avec l'IRM structurelle du participant. Figure tirée de [LLoyd-Fox et al. (2014)](https://doi.org/10.1117/1.nph.1.2.025006) sous licence [CC Attribution unported 3.0](https://creativecommons.org/licenses/by/3.0/).
+Points de repères sur la tête et alignement imagerie optique / IRM.
+Haut à gauche: installation d'un montage d'imagerie optique sur un jeune participant.
+Haut à droite: différents points de repère standards sont identifiés sur la tête du participant.
+Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM.
+Ces points de repère sont utilisés pour recaler la position des émetteurs / récepteurs d'imagerie optique avec l'IRM structurelle du participant.
+Figure tirée de [LLoyd-Fox et al. (2014)](https://doi.org/10.1117/1.nph.1.2.025006) sous licence [CC Attribution unported 3.0](https://creativecommons.org/licenses/by/3.0/).
 ```
-Afin de localiser l'activité cérébrale mesurée, il est courant d'utiliser une IRM structurelle du participant de recherche. Il est alors important de pouvoir situer les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau. Deux techniques principales sont utilisées. La première technique consiste à utiliser certais points de repères anatomiques sur la tête du participant, tel qu'illustré dans la {numref}`fiducials-fig`. Ces points de repère sont aussi visibles dans l'IRM structurelle, et permettent de mettre en correspondence les deux types de mesure. La deuxième approche consiste à utiliser un système de **neuronavigation**, comme par exemple ce [système](https://www.neurocaregroup.com/brainsight-nirs) qui utilise des caméras pour mettre en correspondence la position des émetteurs et récepteurs de lumière proche infrarouge avec l'IRM structurelle.
+Afin de localiser l'activité cérébrale mesurée, il est courant d'utiliser une IRM structurelle du participant de recherche.
+Il est alors important de pouvoir situer le plus précisément possible les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau.
+Deux techniques principales sont utilisées.
+La première technique consiste à utiliser certains points de repère anatomiques sur la tête du participant, tel qu'illustré dans la {numref}`fiducials-fig`.
+Ces points de repère sont aussi visibles dans l'IRM structurelle et permettent de mettre en correspondence les deux types de mesure.
+La deuxième approche consiste à utiliser un système de **neuronavigation**, comme par exemple ce [système](https://www.neurocaregroup.com/brainsight-nirs) qui utilise des caméras pour mettre en correspondence la position des émetteurs et récepteurs de lumière proche infrarouge avec l'IRM structurelle.
 
 ### Montage
 ```{code-cell} ipython 3
@@ -140,7 +189,7 @@ raw_intensity.annotations.rename({'1.0': 'CTL',
 unwanted = np.nonzero(raw_intensity.annotations.description == '15.0')
 raw_intensity.annotations.delete(unwanted)
 
-# Visualize le montage
+# Visualise le montage
 fig = plt.figure(figsize=(10, 10), dpi=300)
 
 brain = mne.viz.Brain(
@@ -157,10 +206,18 @@ brain.save_image('imagerie_optique/fnirs-montage.png')
 width: 600px
 name: fnirs-montage-fig
 ---
-Un montage d'émetteurs/récepteurs en imagerie optique cérébrale. La position des sources de lumière est indiquée en rouge, la position des récepteurs est indiquée en noir. La position des sources, qui correspond aux tissus cérébraux entre la source et l'émetteur, est indiquée par des points oranges, et la trajectoire de la lumière est indiquée par des traits blancs. Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Un montage d'émetteurs/récepteurs en imagerie optique cérébrale.
+La position des sources de lumière est indiquée en rouge alors que la position des récepteurs est indiquée en noir.
+La position des sources, qui correspond aux tissus cérébraux entre la source et l'émetteur, est indiquée par des points oranges et la trajectoire de la lumière est indiquée par des traits blancs.
+Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code) et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-On voit dans la figure {numref}`fnirs-montage-fig` un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur). Chaque mesure est faite selon un ligne qui rejoint le récepteur à l'émetteur, et le point milieu (la _source_) est indiquée en orange. Différents montages existent, qui varient aussi bien par le nombre d'émetteurs et de récepteurs que leur disposition. Ces montages vont donner plus ou moins de résolution spatiale et d'accès aux sources profondes, et seront aussi plus ou moins dispendieux et complexes à installer selon le nombre des capteurs utilisés.
+On peut voir dans la figure {numref}`fnirs-montage-fig` un montage contenant différents canaux qui peuvent être activés en pairs (récepteur + émetteur).
+Chaque mesure est faite selon une ligne qui rejoint le récepteur à l'émetteur, et le point milieu (la _source_) est indiquée en orange.
+Différents montages existent.
+Ceux-ci peuvent aussi bien varier le nombre d'émetteurs et de récepteurs que leur disposition.
+Ces montages vont donner plus ou moins de résolution spatiale et d'accès aux sources profondes.
+Ils seront aussi plus ou moins dispendieux et complexes à installer selon le nombre de capteurs utilisés.
 
 ### Artefact de mouvement
 
@@ -179,7 +236,7 @@ raw_tddr = temporal_derivative_distribution_repair(raw_od)
 plot_tddr = raw_tddr.plot(n_channels=15, duration=400, show_scrollbars=False)
 plot_tddr.savefig("imagerie_optique/fnirs-tddr.png")
 
-# Make figure
+# Construit la figure
 from matplotlib import pyplot as plt
 import imageio
 fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
@@ -190,9 +247,9 @@ ax.flat[0].imshow(im, interpolation='antialiased')
 ax.flat[0].set_title('Signal brut')
 im = imageio.imread("imagerie_optique/fnirs-tddr.png")
 ax.flat[1].imshow(im, interpolation='none')
-ax.flat[1].set_title('Après correction de mouvement')
+ax.flat[1].set_title('Après correction du mouvement')
 
-# Glue the figure
+# Colle la figure
 from myst_nb import glue
 glue("fnirs-motion-fig", fig1, display=False)
 ```
@@ -200,9 +257,12 @@ glue("fnirs-motion-fig", fig1, display=False)
 ```{glue:figure} fnirs-motion-fig
 :figwidth: 800px
 :name: "fnirs-motion-fig"
- Corrections des artefacts de mouvement dans une acquisition d'imagerie optique. Figure générée par du code python adapté d'un [tutoriel MNE python](https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Correction des artefacts de mouvement dans une acquisition en imagerie optique.
+Figure générée par du code python adapté d'un [tutoriel MNE python](https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-Tout comme les données d'IRMf, les données d'imagerie optique sont sensibles au mouvement. Il est possible de tirer partie de l'excellente résolution d'acquisition de l'imagerie optique pour identifier des changements brusques dans le signal, indicateurs de mouvement. Ces changments brusques peuvent alors être corrigés, tel qu'illustré dans la {numref}`fnirs-motion-fig`.
+Tout comme les données d'IRMf, les données d'imagerie optique sont sensibles au mouvement.
+Il est possible de tirer partie de l'excellente fréquence d'échantillonnage de l'imagerie optique pour identifier des changements brusques dans le signal qui peuvent être des indicateurs de mouvement.
+Ces changments brusques peuvent alors être corrigés, tel qu'illustré dans la {numref}`fnirs-motion-fig`.
 
 ### Filtrage
 ```{code-cell} ipython 3
@@ -216,14 +276,14 @@ plot_hemo = raw_haemo.plot(n_channels=15, scalings="auto",
               duration=400, show_scrollbars=False)
 plot_hemo.savefig('imagerie_optique/fnirs-hbo2.png')
 
-# filtrage des données
+# Filtrage des données
 raw_haemo = raw_haemo.filter(0.05, 0.7, h_trans_bandwidth=0.2,
                              l_trans_bandwidth=0.02)
 plot_hemo = raw_haemo.plot(n_channels=15, scalings="auto",
               duration=400, show_scrollbars=False)
 plot_hemo.savefig('imagerie_optique/fnirs-filtered.png')
 
-# Make figure
+# Construit la figure
 from matplotlib import pyplot as plt
 import imageio
 fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
@@ -236,7 +296,7 @@ im = imageio.imread("imagerie_optique/fnirs-filtered.png")
 ax.flat[1].imshow(im, interpolation='none')
 ax.flat[1].set_title('Après filtrage')
 
-# Glue the figure
+# Colle la figure
 from myst_nb import glue
 glue("fnirs-filtrage-fig", fig1, display=False)
 ```
@@ -244,9 +304,13 @@ glue("fnirs-filtrage-fig", fig1, display=False)
 ```{glue:figure} fnirs-filtrage-fig
 :figwidth: 800px
 :name: "fnirs-filtrage-fig"
- Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques. Figure générée par du code python adapté d'un [tutoriel MNE python](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques.
+Figure générée par du code python adapté d'un [tutoriel MNE python](https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-Un autre point commun avec l'IRMf est la présence de différentes sources de bruit, qui peuvent être réduites par des techniques de filtrage. Ces techniques sont plus efficaces en imagerie optique qu'en IRMf, car on dispose d'une meilleure résolution d'acquisition. Il est possible de supprimer les dérives lentes, comme on l'avait vu en IRMf, mais aussi d'éliminer les fréquences cardiaques, ce qui est difficile de faire en IRMf où le TR est généralement supérieur à 1 seconde.
+Un autre point commun avec l'IRMf est la présence de différentes sources de bruit qui peuvent être réduites par des techniques de filtrage.
+Ces techniques sont plus efficaces en imagerie optique qu'en IRMf car on dispose d'une meilleure résolution d'acquisition (fréquence d'échantillonnage).
+Il est possible de supprimer les dérives lentes, comme on l'avait vu en IRMf, mais aussi d'éliminer les fréquences cardiaques, ce qui est difficile à faire en IRMf où le TR est généralement supérieur à 1 seconde.
+
 ## Application en neuroscience cognitive
 
 ### Réponse hémodynamique
