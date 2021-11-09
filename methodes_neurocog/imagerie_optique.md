@@ -91,12 +91,12 @@ Ainsi, l'imagerie optique cérébrale repose sur des phénomènes déjà abordé
 width: 600px
 name: spectre-hemoglobine-fig
 ---
-Niveau d'absorption de la lumière par l'oxy- et la déoxyhémoglobine en fonction de la longueur d'onde.
+Niveau d'absorption de la lumière par l'oxy- et la désoxyhémoglobine en fonction de la longueur d'onde.
 La région proche infrarouge (NIR, near infra-red) est indiquée.
 Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
 ```
 
-Ce diagramme présente les longueurs d'ondes de la lumière qui sont absorbées par l'oxy- et la déoxyhémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et Hb (hémoglobine non oxygénée en bleu).
+Ce diagramme présente les longueurs d'ondes de la lumière qui sont absorbées par l'oxy- et la désoxyhémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et Hb (hémoglobine non oxygénée en bleu).
 On peut voir qu'il y a des longueurs d'onde pour lesquelles les niveaux d'absorption de HbO2 et de Hb sont très différents.
 Par exemple, à 700 nanomètres la lumière est plus absorbée par Hb, alors qu'à 900 nanomètres, la lumière est plus absorbée par HbO2.
 Si on peut mesurer les niveaux d'absorption dans le sang pour ces deux couleurs, on va pouvoir les comparer et essayer de dissocier les concentrations en HbO2 et Hb.
@@ -363,6 +363,7 @@ Comme attendu, le Hb suit un profil inversé avec un pic plus tardif et beaucoup
 ### Systèmes mobiles
 
 ### Comparaison avec l'IRMf et la TEP
+
 Ici, ce que l'on fait, c'est vraiment ce que je vous avais dit qu'on ne devrait pas faire.
 Nous avons mis une source infrarouge d'un côté et un système de détection de l'autre.
 Donc, nous allons vraiment nous intéresser à la vascularisation de l'ensemble du cerveau et non pas d'une zone en particulier.
@@ -397,6 +398,7 @@ Avec l’IRMf, il n'est seulement possible de détecter des changements relatifs
 Pourtant, dans le graphique, on peut voir que suivant la stimulation, le volume augmente.
 Ça, ce sont nos petits capillaires qui se dilatent en réponse à l'augmentation de l’extraction d'oxygène du sang par les cellules gliales (ou astrocytes).
 On peut voir qu'il y a une corrélation positive avec la concentration en oxy, ça anti-corrèle avec la concentration de déoxy relative et puis sinon en bas comme mesure contrôle. Le flux sanguin au niveau de la peau est complètement indépendant de ce qui se passe au niveau du cerveau. Ils auraient pu utiliser une région contrôle dans le cerveau aussi. Cette modulation vasculaire est extrêmement fine au niveau spatial non seulement elle se passe Au niveau du cortex en fait elle se passe au niveau des régions exacts impliqués dans la tâche au niveau du cortex frontal et même si on avait la résolution comme on ira fonctionnelle on pourrait distinguer ce qui se passe au niveau dernières différentes couches du cortex certain que ça cette modulation vasculaire spatialement elle est organisée de manière très fine. Oui,  il y a des gros canaux, des grosses veines, dans lequel on va avoir une accumulation des faits, mais au niveau des capillaires et des microcapillaires, le contrôle se passe de manière très très fin. C’est la fameuse réponse hémodynamique qu’on connait très bien. On a un principe physique : diffusion de la lumière + absorption sélective de lumière par différents composés chimiques. Principe physiologique : couplage neurovasculaire. C’est deux choses ensemble sont l’imagerie optique.
+
 Ici, on peut voir des fluctuations périodiques qui vont suivre la respiration. Donc, on a le temps en secondes et si on regarde comme 20 secondes de signal étant donné que c’est de l'optique, on peut prendre plein de points de mesure et vraiment suivre notre signal de manière très fine. Tandis qu'en IRMf, pour prendre un point de mesure, vu qu’on fait la totalité du cerveau, ça peut nous prendre 1, 2 ou 3 secondes. Ici, on peut prendre un point de mesure toutes les millisecondes et on peut voir ces variations très rapides et notamment ses variations systématiques liées à la respiration. Donc, évidemment c'est des choses qu’en corrigeant, on les enlèverait. Dans quelques diapositives on va parler de paradigme fonctionnel où typiquement on va regarder des blocs d'activité, comme en IRMf, avec des durées similaires, parce qu'on regarde une réponse vasculaire. Donc, on s'intéresse à peu près au même phénomène temporel avec des blocs qui vont durer 10-20 secondes. Alors, ces fluctuations-là sont quasiment négligeables, mais reste qu'elles sont présentes. Ici, on peut facilement les voir et on peut facilement les enlever/les modéliser avec du filtrage. De plus, l'imagerie optique c'est très portable et très flexible de ce point de vue-là, mais malgré tout, ça reste sensible au mouvement. Ça ne veut pas dire qu'on ne peut pas avoir des artefacts de mouvement, il y a des gens qui utilisent l'imagerie optique dans le cadre de de l'exercice physique! Ce qui faut savoir c’est quand on bouge la tête de façon importante, ça va créer des artefacts de mouvement. C’est représenté ici, on voit une grande modification du signal (Motion Artifact) parce que le capteur et le récepteur se sont un petit peu déplacé. Alors, on ne mesure plus exactement la même zone du cerveau et ça crée des grands changements dans les mesures qu'on obtient.   
 On va faire de la régression du filtrage et de la régression de facteurs de confusion sur les séries temporelles très similaires à ce qu’on fait en IRMf. On va aller essayer de détecter les pics de mouvement et les retirer.
 
