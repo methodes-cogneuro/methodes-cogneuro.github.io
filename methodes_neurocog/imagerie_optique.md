@@ -284,7 +284,7 @@ name: fnirs-evoked-fig
 ---
 Activité HbO2 et Hb évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l'ensemble des sources. Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-L'imagerie optique permet de réaliser des expériences cognitives de manière similaire à l'IRMf. Dans la {numref}`fnirs-filtrage-fig` on voit une série d'**événements** qui ont été annotés. Ces événements sont de trois types: mouvement du doigt à `gauche`, mouvement du doigt à `droite`, et condition de `controle`. La figure ci dessus présente les résultats d'un analyse par **potentiel évoqué** pour la condition `droite`: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées. Les données de l'ensemble des sources ont été moyennées pour les mouvements à `droite`. Les mesures HbO2 et Hb ont en revanche été séparées. On voit un profil caractéristique de réponse hémodynamique en HbO2. Comme attendu, le Hb suit un profil inversé, avec un pic plus tardif et beaucoup plus petit (en valeur absolue). 
+L'imagerie optique permet de réaliser des expériences cognitives de manière similaire à l'IRMf. Dans la {numref}`fnirs-filtrage-fig` on voit une série d'**événements** qui ont été annotés. Ces événements sont de trois types: mouvement du doigt à `gauche`, mouvement du doigt à `droite`, et condition de `controle`. La figure ci dessus présente les résultats d'un analyse par **potentiel évoqué** pour la condition `droite`: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées. Les données de l'ensemble des sources ont été moyennées pour les mouvements à `droite`. Les mesures HbO2 et Hb ont en revanche été séparées. On voit un profil caractéristique de réponse hémodynamique en HbO2. Comme attendu, le Hb suit un profil inversé, avec un pic plus tardif et beaucoup plus petit (en valeur absolue).
 
 ### Carte d'activation
 
@@ -306,6 +306,7 @@ Un avantage de l’imagerie optique c’est le fait d’avoir beaucoup de points
 
 ## Conclusions
 La flexibilité expérimentale du dispositif.
-    1. On combine l’imagerie optique à l’EEG
-    2. Montage conçu pour les bébés, aucun risque pour la santé du bébé.
-    3. Le système de contrôle est sur batterie et le participant peut bouger comme il le souhaite.
+
+1.  On combine l’imagerie optique à l’EEG
+2.  Montage conçu pour les bébés, aucun risque pour la santé du bébé.
+3.  Le système de contrôle est sur batterie et le participant peut bouger comme il le souhaite.
