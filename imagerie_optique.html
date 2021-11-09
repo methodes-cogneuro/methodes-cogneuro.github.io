@@ -306,13 +306,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#systemes-mobiles">
-     Systèmes mobiles
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparaison-avec-l-irmf-et-la-tep">
-     Comparaison avec l’IRMf et la TEP
+    <a class="reference internal nav-link" href="#flexibilite-experimentale">
+     Flexibilité expérimentale
     </a>
    </li>
   </ul>
@@ -320,6 +315,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusions">
    Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
   </a>
  </li>
 </ul>
@@ -604,34 +604,95 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 <a class="reference internal image-reference" href="_images/fnirs-evoked.png"><img alt="_images/fnirs-evoked.png" src="_images/fnirs-evoked.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 90 </span><span class="caption-text">Activité HbO2 et Hb évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l’ensemble des sources. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-evoked-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>L’imagerie optique permet de réaliser des expériences cognitives de manière similaire à l’IRMf. Dans la <a class="reference internal" href="#fnirs-filtrage-fig"><span class="std std-numref">Fig. 89</span></a> on voit une série d’<strong>événements</strong> qui ont été annotés. Ces événements sont de trois types: mouvement du doigt <code class="docutils literal notranslate"><span class="pre">gauche</span></code>, mouvement du doigt <code class="docutils literal notranslate"><span class="pre">droit</span></code>, et condition de <code class="docutils literal notranslate"><span class="pre">controle</span></code>. La figure ci dessus présente les résultats d’un analyse par <strong>potentiel évoqué</strong>: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées. Les données de l’ensemble des sources ont été moyennées, ainsi que les mouvements <code class="docutils literal notranslate"><span class="pre">gauche</span></code> et <code class="docutils literal notranslate"><span class="pre">droit</span></code>. Les mesure HbO2 et Hb ont en revanche été séparées. On voit un profil caractéristique de réponse hémodynamique en HbO2. Comme attendu, le Hb suit un profil inversé, avec un pic plus tardif et beaucoup plus petit (en valeur absolue). Pour cette raison, certaines études ne considèrent que HbO2. Enfin les conditions de contrôle ne démontrent aucune réponse évoquée substantielle, comme attendu.</p>
+<p>L’imagerie optique permet de réaliser des expériences cognitives de manière similaire à l’IRMf. Dans la <a class="reference internal" href="#fnirs-filtrage-fig"><span class="std std-numref">Fig. 89</span></a> on voit une série d’<strong>événements</strong> qui ont été annotés. Ces événements sont de trois types: mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">gauche</span></code>, mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code>, et condition de <code class="docutils literal notranslate"><span class="pre">controle</span></code>. La figure ci dessus présente les résultats d’un analyse par <strong>potentiel évoqué</strong> pour la condition <code class="docutils literal notranslate"><span class="pre">droite</span></code>: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées. Les données de l’ensemble des sources ont été moyennées pour les mouvements à <code class="docutils literal notranslate"><span class="pre">droite</span></code>. Les mesures HbO2 et Hb ont en revanche été séparées. On voit un profil caractéristique de réponse hémodynamique en HbO2. Comme attendu, le Hb suit un profil inversé, avec un pic plus tardif et beaucoup plus petit (en valeur absolue).</p>
 </div>
 <div class="section" id="carte-d-activation">
 <h3>Carte d’activation<a class="headerlink" href="#carte-d-activation" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="n">topomap_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">extrapolate</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plot_epochs</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;Droite&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">picks</span><span class="o">=</span><span class="s1">&#39;hbo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span>
+    <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span> <span class="n">topomap_args</span><span class="o">=</span><span class="n">topomap_args</span><span class="p">)</span>
+<span class="n">plot_epochs</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fnirs-activation-fig&quot;</span><span class="p">,</span> <span class="n">plot_epochs</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="systemes-mobiles">
-<h3>Systèmes mobiles<a class="headerlink" href="#systemes-mobiles" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="comparaison-avec-l-irmf-et-la-tep">
-<h3>Comparaison avec l’IRMf et la TEP<a class="headerlink" href="#comparaison-avec-l-irmf-et-la-tep" title="Permalink to this headline">¶</a></h3>
-<p>Ici, ce qu’on fait, c’est vraiment ce que je vous ai dit qu’on ne devrait pas faire. C’est qu’on a mis une source infrarouge d’un côté et un système de détection de l’autre. Donc, en fait, on va vraiment s’intéresser à la vascularisation de l’ensemble du cerveau pas une zone en particulier. C’est donc nul pour faire de l’imagerie fonctionnelle. Par contre, on est en 1977, c’est encore nouveau donc on le fait quand même. Jobsis et ses collaborateurs avaient l’idée de faire de l’hypercapnie. Ce qui veut dire qu’on va se forcer à respirer très très vite donc en fait on augmente la concentration en oxygène dans le sang et ça cause un peu l’effet inverse de l’activité neuronale. Quand l’activité neuronale monte il y a plus de désoxyhémoglobine localement à ce moment-là et le vaisseau tout seul se dilate mais si on augmente la quantité d’oxygène dans le sang les capillaires, ce qu’ils ont tendance à faire spontanément c’est de se contracter. C’est un processus d’homéostasie de base : quand il y a trop d’oxygène, les capillaires se dilatent et quand il n’y a pas assez de désoxygène, les capillaires se contractent. Alors, quand on fait de l’hypercapnie, on augmente évidemment l’oxygénation du sang mais ça fait que la quantité de sang dans le cerveau va diminuer parce que les capillaires se contractent. Donc, la concentration en oxyhémoglobine va diminuer aussi, même s’il y a plus d’oxyhémoglobine à cause de la contraction il y en a moins ! Ce sont des mécanismes de contrôle, d’homéostasie.
-Dans le graphique, l’axe des x représente le temps, le temps qui s’écoule après qu’on a fait l’hypercapnie et sur l’axe des y, c’est la quantité de photons qu’on récupère par rapport à la quantité envoyé. Si on récupère plus de photons à la sortie, ça veut dire qu’il y en a moins qui ont été absorbé. Ça veut dire qu’il y avait moins d’hémoglobine globalement, le volume sanguin était donc plus faible. C’est ce qu’on observe au cours du temps (axe x). L’augmentation de la courbe indique qu’il y a plus de lumière qui traverse, donc il y avait moins de sang dans le cerveau à la suite d’une hyperventilation.</p>
-<p>Sur l’axe des X vous avec le temps (s) donc c’est une expérience d’à peu près 5 min, sur l’axe des y c’est le changement en concentration. Donc ici on va avoir des mesures de volume cérébral total donc est ce que ça absorber beaucoup ou pas et après en travaillant avec les différentes longueurs d’onde on peut essayer de différencier la concentration en oxyhémoglobine de la concentration en désoxyhémoglobine. Quelque chose qu’on ne peut pas faire avec l’IRMf. Ici, on peut vraiment séparer le total vs l’oxygène et désoxygène. Avec l’IRMf ce sont seulement des changements relatifs qu’on est capable de détecter. Donc, dans le graphique on peut voir que suivant la stimulation, le volume augmente. Ça ce sont nos petits capillaires qui se dilatent en réponse à l’augmentation de l’extraction d’oxygène à cause des cellules gliales (ou astrocytes). On peut voir que ça corrèle énormément à la concentration en oxy, ça anti-corrèle avec la concentration de déoxy relative et puis sinon en bas comme mesure contrôle. Le flux sanguin au niveau de la peau est complètement indépendant de ce qui se passe au niveau du cerveau. Ils auraient pu utiliser une région contrôle dans le cerveau aussi. Cette modulation vasculaire est extrêmement fine au niveau spatial non seulement elle se passe Au niveau du cortex en fait elle se passe au niveau des régions exacts impliqués dans la tâche au niveau du cortex frontal et même si on avait la résolution comme on ira fonctionnelle on pourrait distinguer ce qui se passe au niveau dernières différentes couches du cortex certain que ça cette modulation vasculaire spatialement elle est organisée de manière très fine. Oui,  il y a des gros canaux, des grosses veines, dans lequel on va avoir une accumulation des faits, mais au niveau des capillaires et des microcapillaires, le contrôle se passe de manière très très fin. C’est la fameuse réponse hémodynamique qu’on connait très bien. On a un principe physique : diffusion de la lumière + absorption sélective de lumière par différents composés chimiques. Principe physiologique : couplage neurovasculaire. C’est deux choses ensemble sont l’imagerie optique.
-Ici, on peut voir des fluctuations périodiques qui vont suivre la respiration. Donc, on a le temps en secondes et si on regarde comme 20 secondes de signal étant donné que c’est de l’optique, on peut prendre plein de points de mesure et vraiment suivre notre signal de manière très fine. Tandis qu’en IRMf, pour prendre un point de mesure, vu qu’on fait la totalité du cerveau, ça peut nous prendre 1, 2 ou 3 secondes. Ici, on peut prendre un point de mesure toutes les millisecondes et on peut voir ces variations très rapides et notamment ses variations systématiques liées à la respiration. Donc, évidemment c’est des choses qu’en corrigeant, on les enlèverait. Dans quelques diapositives on va parler de paradigme fonctionnel où typiquement on va regarder des blocs d’activité, comme en IRMf, avec des durées similaires, parce qu’on regarde une réponse vasculaire. Donc, on s’intéresse à peu près au même phénomène temporel avec des blocs qui vont durer 10-20 secondes. Alors, ces fluctuations-là sont quasiment négligeables, mais reste qu’elles sont présentes. Ici, on peut facilement les voir et on peut facilement les enlever/les modéliser avec du filtrage. De plus, l’imagerie optique c’est très portable et très flexible de ce point de vue-là, mais malgré tout, ça reste sensible au mouvement. Ça ne veut pas dire qu’on ne peut pas avoir des artefacts de mouvement, il y a des gens qui utilisent l’imagerie optique dans le cadre de de l’exercice physique! Ce qui faut savoir c’est quand on bouge la tête de façon importante, ça va créer des artefacts de mouvement. C’est représenté ici, on voit une grande modification du signal (Motion Artifact) parce que le capteur et le récepteur se sont un petit peu déplacé. Alors, on ne mesure plus exactement la même zone du cerveau et ça crée des grands changements dans les mesures qu’on obtient.<br />
-On va faire de la régression du filtrage et de la régression de facteurs de confusion sur les séries temporelles très similaires à ce qu’on fait en IRMf. On va aller essayer de détecter les pics de mouvement et les retirer.</p>
-<p>Les 3 colonnes correspondent à des tâches différentes. La première colonne est une tâche d’opposition de doigts, donc c’est du contrôle moteur, ça va venir directement activer la région motrice primaire. Quand on bouge la main droite, on s’attends à une grosse activation à gauche. C’est effectivement ça qui se passe (blob rouge), une augmentation du sang oxygéné. Augmentation de l’activité neuronale -&gt; augmentation du flux sanguin-&gt; augmentation du volume sanguin-&gt; augmentation concentration relative en oxyhémoglobine. Si on regarde du côté ipsilatéral, on s’attends à une activation beaucoup moins forte. Dans la 2ème colonne, c’est une tâche sensorielle. On va toucher la main droite du participant et au lieu d’activer de façon antérieur le cortex sensorimoteur, on vient activer postérieur au sillon central, dans le cortex sensoriel primaire. Dernière colonne, on vient stimuler le nerf médian au niveau du poignet. L’activation est moins forte mais observe le même phénomène que dans les 2 autres conditions. C’est une belle démonstration de la spécificité spatiale de la réponse. Le patron spatial est très similaire, mais moins fort au niveau sensoriel que moteur. Elles sont de part et d’autre du sillon centrale, ce ne sont vraiment pas les mêmes cortex. Cependant, en IRMf, on va très facilement distinguer ces deux cortex. Ici, on le voit moins, on voit la réponse, mais c’est sûr que la banane de diffusion de la lumière va passer à travers les 2 cortex et ça va être difficile de distinguer ce qui est en avant et en arrière du sillon central. Donc, voilà une limitation quant à la résolution spatiale de l’appareil. Pour ce qui est de la désoxyhémoglobine, c’est la même chose sauf dans le négatif.
-Un avantage d’utiliser l’imagerie optique par rapport à l’IRMf, c’est qu’on peut distinguer les contributions de l’oxy et de la désoxyhémoglobine. Tandis qu’on voit un mélange des 2 dans l’IRMf.
-Sur l’axe des X on a le temps et le bloc orange nous indique la durée de la stimulation et 4 courbes séparent l’hémoglobine (oxygénée, désoxygénée, controlatéral, ipsilatéral).
-Pour la main droite et gauche, on a exactement les mêmes réponses, les courbes sont très similaires.
-Un avantage de l’imagerie optique c’est le fait d’avoir beaucoup de points de mesure répétées et on a beaucoup de détails. On a une excellente résolution de mesure mais en termes de courbes, on observe quelque chose de très similaire avec l’IRMf, mais avec plus de points. La résolution temporelle intrinsèque de la méthode capture le même type de phénomène que l’IRMf, l’activité neuronale.</p>
+</div>
+<div class="figure align-center" id="fnirs-activation-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/imagerie_optique_11_2.png" src="_images/imagerie_optique_11_2.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 91 </span><span class="caption-text">Potentiel évoqué par un mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code>, pour l’ensemble des capteurs. La mosaique de couleurs à gauche du graphe indique la localisation spatiale correspondant à chaque courbe. Pour différents points temps, une carte topographique d’activation indique le niveau d’activité évoquée pour chaque source spatiale, et pour chaque instant. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-activation-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le profil de réponse évoquée par un mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code> peut aussi être estimé indépendamment pour chacune des sources spatiales mesurées. Il est ainsi possible de reconstruire une carte d’activité évoquée, au cours du temps. En IRMf, ce type de carte est généralement résumée avec un seul paramètre d’amplitude de la réponse, mais la vitesse d’échantillonnage supérieure de l’imagerie optique permet d’étudier la dynamique de la réponse vasculaire de manière plus fine. Dans ce cas, dans la mesure où les paires d’émetteurs/capteurs ont été disposées autour du cortex sensorimoteur, l’ensemble des sources présentent une réponse évoquée forte en HbO2.</p>
+</div>
+<div class="section" id="flexibilite-experimentale">
+<h3>Flexibilité expérimentale<a class="headerlink" href="#flexibilite-experimentale" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>On combine l’imagerie optique à l’EEG</p></li>
+<li><p>Montage conçu pour les bébés, aucun risque pour la santé du bébé.</p></li>
+<li><p>Le système de contrôle est sur batterie et le participant peut bouger comme il le souhaite.</p></li>
+</ol>
 </div>
 </div>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
-<p>La flexibilité expérimentale du dispositif.
-1. On combine l’imagerie optique à l’EEG
-2. Montage conçu pour les bébés, aucun risque pour la santé du bébé.
-3. Le système de contrôle est sur batterie et le participant peut bouger comme il le souhaite.</p>
+</div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-exercice-8-1 admonition">
+<p class="admonition-title">Exercice 8.1</p>
+<p>Les données d’imagerie optique sont (vrai/faux, expliquez vos réponses)</p>
+<ol class="simple">
+<li><p>Des données avec une meilleure résolution temporelle que l’IRMf.</p></li>
+<li><p>Des données plus interprétables que l’IRMf.</p></li>
+<li><p>Des données plus faciles à recueillir que l’IRMf.</p></li>
+<li><p>Des données moins chères à recueillir que l’IRMf.</p></li>
+<li><p>Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.</p></li>
+</ol>
+</div>
+<div class="admonition-exercice-8-2 admonition">
+<p class="admonition-title">Exercice 8.2</p>
+<p>Quel est l’avantage de travailler avec des données d’imagerie optique reconstruite sur la surface du cortex, plutôt que directement avec les données de capteurs sur le scalp?</p>
+</div>
+<div class="admonition-exercice-8-3 admonition">
+<p class="admonition-title">Exercice 8.3</p>
+<p>On enregistre l’activité cérébrale d’un patient en imagerie optique au niveau du cortex sensorimoteur.
+Peut-on positionner précisément l’activité au niveau du scalp du participant?
+Et au niveau cérébral?
+Si l’on dispose d’une IRM T1 individuelle du sujet, est ce que cela peut améliorer la localisation de l’activité dans le cerveau?</p>
+</div>
+<div class="admonition-exercice-8-4 admonition">
+<p class="admonition-title">Exercice 8.4</p>
+<p>On souhaite mesurer l’activité du cortex moteur durant la vie quotidienne d’une personne âgée. Citez un avantage, une limitation et une considération éthique pertinents pour l’utilisation de l’imagerie optique pour ce projet.</p>
+<p>Citez deux exemples de problèmes qui peuvent faire échouer un enregistrement en imagerie optique.</p>
+</div>
+<div class="admonition-exercice-8-5 admonition">
+<p class="admonition-title">Exercice 8.5</p>
+<p>Est ce que la résolution spatiale de l’imagerie optique est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition?</p>
+</div>
+<div class="admonition-exercice-8-6 admonition">
+<p class="admonition-title">Exercice 8.6</p>
+<p>On a disposé un émetteur de lumière au niveau de l’hémisphère gauche, et un capteur en face de l’émetteur, au niveau de l’hémisphère droit. Peut on associer le signal à une aire particulière du cerveau? Quel type d’expérience permettrait de modifier l’amplitude du signal mesuré avec un tel dispositif expérimental?</p>
+</div>
+<div class="admonition-exercice-8-7 admonition">
+<p class="admonition-title">Exercice 8.7</p>
+<p>Pour répondre aux questions de cet exercice, lisez d’abord l’article <em>Distinct hemispheric specializations for native and non-native languages in one-day-old newborns identified by fNIRS</em> de Vannasing et collaborateurs (disponible en <a class="reference external" href="https://doi.org/10.1016/j.neuropsychologia.2016.01.038">accès libre</a> sous licence CC-BY-NC-ND et publié dans le journal Neuropsychologia en 2016. Les questions suivantes requièrent des réponses à développement court.</p>
+<ul class="simple">
+<li><p>Quel type de participants a été recruté dans cette étude?</p></li>
+<li><p>Quel est l’objectif principal de l’étude?</p></li>
+<li><p>Quelle technique de neuroimagerie est utilisée? S’agit-il d’une technique structurelle ou fonctionnelle?</p></li>
+<li><p>Quelle type de radiotraceurs est utilisé?</p></li>
+<li><p>Quelle normalisation est appliquée aux cartes?</p></li>
+<li><p>Quelles régions sont utilisées pour les analyses statistiques?</p></li>
+<li><p>Quelle figure (ou tableau) répond à l’objectif principal de l’étude?</p></li>
+<li><p>Quel est le résultat principal de l’étude?</p></li>
+</ul>
+</div>
 </div>
 </div>
 
