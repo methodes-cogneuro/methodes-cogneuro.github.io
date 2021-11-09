@@ -53,7 +53,7 @@ Système d'imagerie optique [NTS gowerlabs](https://www.gowerlabs.co.uk/nts-main
 
 Les objectifs spécifiques de ce chapitre sont :
  * Principes physiques et physiologiques de l'imagerie optique.
- * Génération d'images en imagerie optique.
+ * Acquisitions et traitements d'images en imagerie optique.
  * Application de l'imagerie optique en neuroscience cognitive.
 
 ## Principes physiques et physiologiques
@@ -100,9 +100,20 @@ Seules les régions cérébrales proches du scalp pourront être mesurées préc
 ```
 
 ### Couplage neurovasculaire
-On a maintenant vu principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est à dire le **couplage neurovasculaire**. Vous pouvez vous référez à la [section](couplage-neurovasculaire-section) du chapitre sur l'IRMf pour plus de détails. Brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HB à proximité des populations de neurones activés. C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
+On a maintenant vu principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est à dire le **couplage neurovasculaire**. Vous pouvez vous référez à la [section](couplage-neurovasculaire-irmf-section) du chapitre sur l'IRMf pour plus de détails. Brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HB à proximité des populations de neurones activés. C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
 
-## Acquisitions en imagerie optique
+## Acquisitions et traitements
+
+
+### Recalage avec l'anatomie
+```{figure} imagerie_optique/fiducials.png
+---
+width: 800px
+name: fiducials-fig
+---
+Points de repères sur la tête et alignement imagerie optique / IRM. Haut à gauche: installation d'un montage d'imagerie optique sur un jeune participant. Haut à droite: différents points de repères standards sont identifiés sur la tête du participant. Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM. Ces points de repères sont utilisés pour recaler la position des émetteurs / récepteurs d'imagerie optique avec l'IRM structurelle du participant. Figure tirée de [LLoyd-Fox et al. (2014)](https://doi.org/10.1117/1.nph.1.2.025006) sous licence [CC Attribution unported 3.0](https://creativecommons.org/licenses/by/3.0/).
+```
+Afin de localiser l'activité cérébrale mesurée, il est courant d'utiliser une IRM structurelle du participant de recherche. Il est alors important de pouvoir situer les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau. Deux techniques principales sont utilisées. La première technique consiste à utiliser certais points de repères anatomiques sur la tête du participant, tel qu'illustré dans la {numref}`fiducials-fig`. Ces points de repère sont aussi visibles dans l'IRM structurelle, et permettent de mettre en correspondence les deux types de mesure. La deuxième approche consiste à utiliser un système de **neuronavigation**, comme par exemple ce [système](https://www.neurocaregroup.com/brainsight-nirs) qui utilise des caméras pour mettre en correspondence la position des émetteurs et récepteurs de lumière proche infrarouge avec l'IRM structurelle.
 
 ### Montage
 ```{code-cell} ipython 3
@@ -123,9 +134,9 @@ subjects_dir = op.join(mne.datasets.sample.data_path(), 'subjects')
 
 # Améliore les annotations du jeu de données
 raw_intensity.annotations.set_durations(5)
-raw_intensity.annotations.rename({'1.0': 'Control',
-                                  '2.0': 'Tapping/Left',
-                                  '3.0': 'Tapping/Right'})
+raw_intensity.annotations.rename({'1.0': 'CTL',
+                                  '2.0': 'Gauche',
+                                  '3.0': 'Droite'})
 unwanted = np.nonzero(raw_intensity.annotations.description == '15.0')
 raw_intensity.annotations.delete(unwanted)
 
@@ -149,19 +160,94 @@ name: fnirs-montage-fig
 Un montage d'émetteurs/récepteurs en imagerie optique cérébrale. La position des sources de lumière est indiquée en rouge, la position des récepteurs est indiquée en noir. La position des sources, qui correspond aux tissus cérébraux entre la source et l'émetteur, est indiquée par des points oranges, et la trajectoire de la lumière est indiquée par des traits blancs. Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-On voit ici un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur) de façon dynamique. Ça crée un maillage sur la tête comme avec un EEG et à partir des mesures qu'on a sur les différents canaux, on peut aller interpoler. Donc, calculer une moyenne de ces récepteurs en donnant plus d'importance aux récepteurs qui sont plus proche des canaux (proches d'un point donné du scan) Avec ça, on peut faire une image de l'activité au niveau du scalp.
+On voit dans la figure {numref}`fnirs-montage-fig` un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur). Chaque mesure est faite selon un ligne qui rejoint le récepteur à l'émetteur, et le point milieu (la _source_) est indiquée en orange. Différents montages existent, qui varient aussi bien par le nombre d'émetteurs et de récepteurs que leur disposition. Ces montages vont donner plus ou moins de résolution spatiale et d'accès aux sources profondes, et seront aussi plus ou moins dispendieux et complexes à installer selon le nombre des capteurs utilisés.
 
-### Recalage avec l'anatomie
-```{figure} imagerie_optique/fiducials.png
----
-width: 800px
-name: fiducials-fig
----
-Figure tirée de [LLoyd-Fox et al. (2014)](https://doi.org/10.1117/1.nph.1.2.025006) sous licence [CC Attribution unported 3.0](https://creativecommons.org/licenses/by/3.0/).
+### Artefact de mouvement
+
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+from mne.preprocessing.nirs import (optical_density,
+                                    temporal_derivative_distribution_repair)
+raw_od = optical_density(raw_intensity)
+new_annotations = mne.Annotations([31, 187, 317], [8, 8, 8],
+                                  ["Movement", "Movement", "Movement"])
+raw_od.set_annotations(new_annotations)
+plt_od = raw_od.plot(n_channels=15, duration=400, show_scrollbars=False)
+plt_od.savefig("imagerie_optique/fnirs-od.png")
+
+raw_tddr = temporal_derivative_distribution_repair(raw_od)
+plot_tddr = raw_tddr.plot(n_channels=15, duration=400, show_scrollbars=False)
+plot_tddr.savefig("imagerie_optique/fnirs-tddr.png")
+
+# Make figure
+from matplotlib import pyplot as plt
+import imageio
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
+                        subplot_kw={'xticks': [], 'yticks': []})
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+im = imageio.imread("imagerie_optique/fnirs-od.png")
+ax.flat[0].imshow(im, interpolation='antialiased')
+ax.flat[0].set_title('Signal brut')
+im = imageio.imread("imagerie_optique/fnirs-tddr.png")
+ax.flat[1].imshow(im, interpolation='none')
+ax.flat[1].set_title('Après correction de mouvement')
+
+# Glue the figure
+from myst_nb import glue
+glue("fnirs-motion-fig", fig1, display=False)
 ```
 
-## Application en neuroscience cognitive
+```{glue:figure} fnirs-motion-fig
+:figwidth: 800px
+:name: "fnirs-motion-fig"
+ Corrections des artefacts de mouvement dans une acquisition d'imagerie optique. Figure générée par du code python adapté d'un [tutoriel MNE python](https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Tout comme les données d'IRMf, les données d'imagerie optique sont sensibles au mouvement. Il est possible de tirer partie de l'excellente résolution d'acquisition de l'imagerie optique pour identifier des changements brusques dans le signal, indicateurs de mouvement. Ces changments brusques peuvent alors être corrigés, tel qu'illustré dans la {numref}`fnirs-motion-fig`.
 
+### Filtrage
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+# Reconstruction des données d'hémoglobine
+raw_od = optical_density(raw_intensity)
+raw_tddr = temporal_derivative_distribution_repair(raw_od)
+raw_haemo = mne.preprocessing.nirs.beer_lambert_law(raw_tddr, ppf=6)
+plot_hemo = raw_haemo.plot(n_channels=15, scalings="auto",
+              duration=400, show_scrollbars=False)
+plot_hemo.savefig('imagerie_optique/fnirs-hbo2.png')
+
+# filtrage des données
+raw_haemo = raw_haemo.filter(0.05, 0.7, h_trans_bandwidth=0.2,
+                             l_trans_bandwidth=0.02)
+plot_hemo = raw_haemo.plot(n_channels=15, scalings="auto",
+              duration=400, show_scrollbars=False)
+plot_hemo.savefig('imagerie_optique/fnirs-filtered.png')
+
+# Make figure
+from matplotlib import pyplot as plt
+import imageio
+fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
+                        subplot_kw={'xticks': [], 'yticks': []})
+fig1.subplots_adjust(hspace=0.3, wspace=0.05)
+im = imageio.imread("imagerie_optique/fnirs-hbo2.png")
+ax.flat[0].imshow(im, interpolation='antialiased')
+ax.flat[0].set_title('Signal hémodynamique')
+im = imageio.imread("imagerie_optique/fnirs-filtered.png")
+ax.flat[1].imshow(im, interpolation='none')
+ax.flat[1].set_title('Après filtrage')
+
+# Glue the figure
+from myst_nb import glue
+glue("fnirs-filtrage-fig", fig1, display=False)
+```
+
+```{glue:figure} fnirs-filtrage-fig
+:figwidth: 800px
+:name: "fnirs-filtrage-fig"
+ Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques. Figure générée par du code python adapté d'un [tutoriel MNE python](https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py) par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Un autre point commun avec l'IRMf est la présence de différentes sources de bruit, qui peuvent être réduites par des techniques de filtrage. Ces techniques sont plus efficaces en imagerie optique qu'en IRMf, car on dispose d'une meilleure résolution d'acquisition. Il est possible de supprimer les dérives lentes, comme on l'avait vu en IRMf, mais aussi d'éliminer les fréquences cardiaques, ce qui est difficile de faire en IRMf où le TR est généralement supérieur à 1 seconde.
+## Application en neuroscience cognitive
 Ici, ce qu'on fait, c'est vraiment ce que je vous ai dit qu'on ne devrait pas faire. C'est qu'on a mis une source infrarouge d'un côté et un système de détection de l'autre. Donc, en fait, on va vraiment s'intéresser à la vascularisation de l'ensemble du cerveau pas une zone en particulier. C’est donc nul pour faire de l'imagerie fonctionnelle. Par contre, on est en 1977, c’est encore nouveau donc on le fait quand même. Jobsis et ses collaborateurs avaient l’idée de faire de l’hypercapnie. Ce qui veut dire qu’on va se forcer à respirer très très vite donc en fait on augmente la concentration en oxygène dans le sang et ça cause un peu l'effet inverse de l'activité neuronale. Quand l’activité neuronale monte il y a plus de désoxyhémoglobine localement à ce moment-là et le vaisseau tout seul se dilate mais si on augmente la quantité d'oxygène dans le sang les capillaires, ce qu’ils ont tendance à faire spontanément c’est de se contracter. C’est un processus d’homéostasie de base : quand il y a trop d’oxygène, les capillaires se dilatent et quand il n’y a pas assez de désoxygène, les capillaires se contractent. Alors, quand on fait de l’hypercapnie, on augmente évidemment l'oxygénation du sang mais ça fait que la quantité de sang dans le cerveau va diminuer parce que les capillaires se contractent. Donc, la concentration en oxyhémoglobine va diminuer aussi, même s'il y a plus d’oxyhémoglobine à cause de la contraction il y en a moins ! Ce sont des mécanismes de contrôle, d’homéostasie.
 Dans le graphique, l’axe des x représente le temps, le temps qui s’écoule après qu’on a fait l’hypercapnie et sur l’axe des y, c’est la quantité de photons qu’on récupère par rapport à la quantité envoyé. Si on récupère plus de photons à la sortie, ça veut dire qu’il y en a moins qui ont été absorbé. Ça veut dire qu’il y avait moins d’hémoglobine globalement, le volume sanguin était donc plus faible. C’est ce qu’on observe au cours du temps (axe x). L’augmentation de la courbe indique qu’il y a plus de lumière qui traverse, donc il y avait moins de sang dans le cerveau à la suite d’une hyperventilation.
 
