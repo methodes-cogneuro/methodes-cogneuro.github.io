@@ -35,12 +35,41 @@ kernelspec:
         <a title="Contenu">🤔</a>
         <a title="Révision du texte">👀</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/eddyfortier">
+        <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Eddy Fortier</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/sangfrois">
+        <img src="https://avatars.githubusercontent.com/u/38385719?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>François Lespinasse</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/anproulx">
+        <img src="https://avatars.githubusercontent.com/u/65092948?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Andréanne Proulx</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>    
   </tr>
 </table>
 
-```{warning}
-Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
-```
 L'imagerie optique cérébrale, encore appelée spectroscopie proche infrarouge fonctionnelle, est une technique qui permet de mesurer les corrélats vasculaires de l'activité cérébrale, de manière assez similaire à l'IRMf. En revanche, elle repose sur un principe physique très différent: la diffusion et l'absorption de la lumière dans les tissus cérébraux. Ses limites et faiblesses sont aussi bien distinctes de l'IRMf.
 
 ```{figure} imagerie_optique/fnirs.jpg
@@ -80,7 +109,7 @@ name: spectre-hemoglobine-fig
 ---
 Niveau d'absorption de la lumière par l'oxy- et la déoxy-hémoglobine, en fonction de la longueur d'onde. La région proche infrarouge (NIR, near infra-red) est indiquée. Image tirée de [Abtahi et al. (2017)](https://doi.org/10.3390/healthcare5020020) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0).
 ```
-Ce diagramme représente quelles longueurs d'ondes de la lumière sont absorbées par l'oxy- et la déoxy-hémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et Hb (hémoglobine non oxygénée en bleu). On peut voir qu'il y a des longueurs d'onde pour lesquelles le niveau d'absorption HbO2 vs Hb est très différent. Par exemple, à 700 nanomètres la lumière est plus absorbée par Hb, alors qu'à 900 nanomètres la lumière est plus absorbée par HbO2. Si on peut mesurer le niveau d'absorption dans le sang pour ces deux couleurs, en les comparant, on va pouvoir essayer de dissocier les concentrations en HbO2 et Hb. Un autre point important: ces longueurs d'onde sont très peu absorbées par l'eau, et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques. Donc, juste en étudiant la quantité d'absorption de deux longueurs d'onde proche infrarouge dans le cerveau, on va pouvoir quantifier le contenu en HbO2 et HB! Mais reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.
+Ce diagramme représente quelles longueurs d'ondes de la lumière sont absorbées par l'oxy- et la déoxy-hémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et HbR (hémoglobine non oxygénée en bleu). On peut voir qu'il y a des longueurs d'onde pour lesquelles le niveau d'absorption HbO2 vs HbRest très différent. Par exemple, à 700 nanomètres la lumière est plus absorbée par HbR, alors qu'à 900 nanomètres la lumière est plus absorbée par HbO2. Si on peut mesurer le niveau d'absorption dans le sang pour ces deux couleurs, en les comparant, on va pouvoir essayer de dissocier les concentrations en HbO2 et HbR.  Un autre point important: ces longueurs d'onde sont très peu absorbées par l'eau, et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques. Donc, juste en étudiant la quantité d'absorption de deux longueurs d'onde proche infrarouge dans le cerveau, on va pouvoir quantifier le contenu en HbO2 et HB! Mais reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.
 
 ### Diffusion de la lumière
 ```{figure} imagerie_optique/nir-diffusion.png
@@ -100,7 +129,7 @@ Seules les régions cérébrales proches du scalp pourront être mesurées préc
 ```
 
 ### Couplage neurovasculaire
-On a maintenant vu le principe physique qui nous permet de mesurer la concentration en HbO2 et Hb dans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est-à-dire le **couplage neurovasculaire**. Vous pouvez vous référez à la [section](couplage-neurovasculaire-irmf-section) du chapitre sur l'IRMf pour plus de détails. Brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HB à proximité des populations de neurones activés. C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
+On a maintenant vu le principe physique qui nous permet de mesurer la concentration en HbO2 et HbRdans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l'imagerie optique est le même que pour l'IRMf, c'est-à-dire le **couplage neurovasculaire**. Vous pouvez vous référez à la [section](couplage-neurovasculaire-irmf-section) du chapitre sur l'IRMf pour plus de détails. Brièvement, l'activité neuronale, notamment post-synaptique, requiert une consommation d'oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d'oxygène va entrainer une augmentation d'HbO2 et une diminution relative d'HbRà proximité des populations de neurones activés. C'est ce phénomène de couplage neurovasculaire qu'on mesure à la fois en IRMf et en imagerie optique.
 
 ## Acquisition et traitement
 
@@ -266,7 +295,7 @@ evoked_dict = {'Droite/HbO': epochs['Droite'].average(picks='hbo'),
                'Droite/HbR': epochs['Droite'].average(picks='hbr'),
               }
 
-# Rename channels until the encoding of frequency in ch_name is fixed
+# Renomme les canaux pour corriger la fréquence dans ch_name
 for condition in evoked_dict:
     evoked_dict[condition].rename_channels(lambda x: x[:-4])
 
@@ -282,9 +311,17 @@ plot_hrf[0].savefig('imagerie_optique/fnirs-evoked.png')
 width: 600px
 name: fnirs-evoked-fig
 ---
-Activité HbO2 et Hb évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l'ensemble des sources. Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Activité HbO2 et HbR évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l'ensemble des sources.
+Cette figure est générée par du code python adapté d'un [tutoriel](https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py) de la librairie [MNE python](https://mne.tools) (cliquer sur + pour voir le code) et est distribuée par P. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-L'imagerie optique permet de réaliser des expériences cognitives de manière similaire à l'IRMf. Dans la {numref}`fnirs-filtrage-fig` on voit une série d'**événements** qui ont été annotés. Ces événements sont de trois types: mouvement du doigt à `gauche`, mouvement du doigt à `droite`, et condition de `controle`. La figure ci dessus présente les résultats d'un analyse par **potentiel évoqué** pour la condition `droite`: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées. Les données de l'ensemble des sources ont été moyennées pour les mouvements à `droite`. Les mesures HbO2 et Hb ont en revanche été séparées. On voit un profil caractéristique de réponse hémodynamique en HbO2. Comme attendu, le Hb suit un profil inversé, avec un pic plus tardif et beaucoup plus petit (en valeur absolue).
+L'imagerie optique permet de réaliser des expériences cognitives similaires à ce que l'on peut faire en IRMf.
+Dans la {numref}`fnirs-filtrage-fig`, on voit une série d'**évènements** qui ont été annotés.
+Ces évènements sont de trois types: mouvement du doigt à `gauche`, mouvement du doigt à `droite` et condition de `contrôle`.
+La figure ci-dessus présente les résultats d'une analyse par **potentiel évoqué** pour la condition `droite`: de petites fenêtres de signal allant de 5 secondes avant chaque événement à 15 secondes après chaque événement ont été extraites et moyennées.
+Les données de l'ensemble des sources ont été moyennées pour les mouvements à `droite`.
+Les mesures HbO2 et HbR ont en revanche été séparées.
+On voit un profil caractéristique de réponse hémodynamique en HbO2.
+Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup plus petit (en valeur absolue).
 
 ### Carte d'activation
 ```{code-cell} ipython 3
@@ -309,12 +346,23 @@ Potentiel évoqué par un mouvement du doigt à `droite`, pour l'ensemble des ca
 
 Le profil de réponse évoquée par un mouvement du doigt à `droite` peut aussi être estimé indépendamment pour chacune des sources spatiales mesurées. Il est ainsi possible de reconstruire une carte d'activité évoquée, au cours du temps. En IRMf, ce type de carte est généralement résumée avec un seul paramètre d'amplitude de la réponse, mais la vitesse d'échantillonnage supérieure de l'imagerie optique permet d'étudier la dynamique de la réponse vasculaire de manière plus fine. Dans ce cas, dans la mesure où les paires d'émetteurs/capteurs ont été disposées autour du cortex sensorimoteur, l'ensemble des sources présentent une réponse évoquée forte en HbO2.
 
+
 ### Flexibilité expérimentale
-1. On combine l’imagerie optique à l’EEG
-2. Montage conçu pour les bébés, aucun risque pour la santé du bébé.
-3. Le système de contrôle est sur batterie et le participant peut bouger comme il le souhaite.
+```{figure} imagerie_optique/fnirs-high-altitude.jpg
+---
+width: 300px
+name: fnirs-high-altitude-fig
+---
+Mesure de l'oxygénation cérébrale à haute altitude avec un système d'imagerie optique portatif (PortaLite, Artinis Medical Systems). Image tirée de [wikipédia](https://upload.wikimedia.org/wikipedia/commons/5/5b/Picture_of_NIRS_measurement_at_high_alltitude.jpg) sous licence [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+```
+Une des grandes forces de l'imagerie optique par rapport au FDG TEP ou bien à l'IRMf est la flexibilité expérimentale. Même si les artefacts de mouvement peuvent être un problème, il est possible d'enregistrer l'activité d'un athlète en mouvement ({numref}`fnirs-high-altitude-fig`). Il est aussi possible d'enregistre l'activité du cerveau d'un [musicien qui pratique son instrument](https://upload.wikimedia.org/wikipedia/commons/transcoded/3/33/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video2.ogv/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video2.ogv.480p.vp9.webm), ou bien encore de [deux musiciens qui jouent ensemble](https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bd/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video3.ogv/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video3.ogv.360p.vp9.webm) (une technique appelée hyper-scanning). Même s'il est possible de [jouer du violoncelle dans un IRM](https://ieeexplore.ieee.org/document/6688614), ce type d'expérience est bien plus facile de mise en oeuvre avec l'imagerie optique. Cette technique est aussi plus simple à mettre en oeuvre chez des sujets qui ont des difficultés à rester immobiles, comme les très jeunes enfants ({numref}`fiducials-fig`).
 
 ## Conclusions
+Dans ce cours, nous avons vu les principes de l'imagerie optique. Plus précisément, nous avons vu:
+- Comment la lumière proche infrarouge permet de mesurer le couplage neurovasculaire.
+- Comment l'utilisation d'un montage d'émetteurs et de récepteurs sur le scalp permet d'acquérir des signaux couvrant une portion du cerveau.
+- Comment les signaux d'imagerie optique sont nettoyés pour améliorer la qualité.
+- Comment on peut générer une carte d'activation en réponse à une série d'événements.
 
 ## Exercices
 ```{admonition} Exercice 8.1
@@ -355,8 +403,9 @@ Pour répondre aux questions de cet exercice, lisez d'abord l'article *Distinct 
 - Quel type de participants a été recruté dans cette étude?
 - Quel est l'objectif principal de l'étude?
 - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
-- Quelle type de radiotraceurs est utilisé?
-- Quelle normalisation est appliquée aux cartes?
-- Quelles régions sont utilisées pour les analyses statistiques?
+- Dans quelle figure est décrit le montage d'imagerie optique?
+- Quels types de stimuli ont été utilisés?
+- Comment est générée l'activité évoquée?
 - Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
 - Quel est le résultat principal de l'étude?
+```

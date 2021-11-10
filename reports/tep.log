@@ -25,13 +25,13 @@ from skimage.transform import radon, rescale
 
 # Télécharge données fantôme
 image = shepp_logan_phantom()
-image = rescale(image, scale=0.4, mode='reflect')
+image = rescale(image, scale=0.4, mode='reflect', channel_axis=None)
 
 # Prépare la figure
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4.5))
 
 # Image originale
-ax1.set_title("Image originale")
+ax1.set_title("Original")
 ax1.imshow(image, cmap=plt.cm.Greys_r)
 
 # Projections
@@ -50,23 +50,23 @@ from skimage.transform import iradon
 
 reconstruction_fbp = iradon(sinogram, theta=theta, filter_name='ramp')
 imkwargs = dict(vmin=-0.2, vmax=0.2)
-ax3.set_title("Image reconstruite")
+ax3.set_title("Reconstruction")
 ax3.imshow(reconstruction_fbp, cmap=plt.cm.Greys_r)
 fig.tight_layout()
 
 from myst_nb import glue
-glue("radon-fig", fig, display=False)
+glue("projection-fig", fig, display=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-2-19efa79413a3>[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 4[0;31m [0;32mfrom[0m [0mskimage[0m[0;34m.[0m[0mdata[0m [0;32mimport[0m [0mshepp_logan_phantom[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      5[0m [0;32mfrom[0m [0mskimage[0m[0;34m.[0m[0mtransform[0m [0;32mimport[0m [0mradon[0m[0;34m,[0m [0mrescale[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;34m[0m[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-2-782d19e90e91>[0m in [0;36m<module>[0;34m[0m
+[1;32m      7[0m [0;31m# Télécharge données fantôme[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m [0mimage[0m [0;34m=[0m [0mshepp_logan_phantom[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 9[0;31m [0mimage[0m [0;34m=[0m [0mrescale[0m[0;34m([0m[0mimage[0m[0;34m,[0m [0mscale[0m[0;34m=[0m[0;36m0.4[0m[0;34m,[0m [0mmode[0m[0;34m=[0m[0;34m'reflect'[0m[0;34m,[0m [0mchannel_axis[0m[0;34m=[0m[0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     10[0m [0;34m[0m[0m
+[1;32m     11[0m [0;31m# Prépare la figure[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'skimage'
-ModuleNotFoundError: No module named 'skimage'
+[0;31mTypeError[0m: rescale() got an unexpected keyword argument 'channel_axis'
+TypeError: rescale() got an unexpected keyword argument 'channel_axis'
 
