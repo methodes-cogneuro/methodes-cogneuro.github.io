@@ -35,12 +35,41 @@ kernelspec:
         <a title="Contenu">🤔</a>
         <a title="Révision du texte">👀</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/eddyfortier">
+        <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Eddy Fortier</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/sangfrois">
+        <img src="https://avatars.githubusercontent.com/u/38385719?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>François Lespinasse</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/anproulx">
+        <img src="https://avatars.githubusercontent.com/u/65092948?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Andréanne Proulx</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>    
   </tr>
 </table>
 
-```{warning}
-Ce chapitre est en cours de développement. Il se peut que l'information soit incomplète, ou sujette à changement.
-```
 L'imagerie optique cérébrale, encore appelée spectroscopie proche infrarouge fonctionnelle, est une technique qui permet de mesurer les corrélats vasculaires de l'activité cérébrale, de manière assez similaire à l'IRMf. En revanche, elle repose sur un principe physique très différent: la diffusion et l'absorption de la lumière dans les tissus cérébraux. Ses limites et faiblesses sont aussi bien distinctes de l'IRMf.
 
 ```{figure} imagerie_optique/fnirs.jpg
@@ -319,11 +348,21 @@ Le profil de réponse évoquée par un mouvement du doigt à `droite` peut aussi
 
 
 ### Flexibilité expérimentale
-1. On combine l’imagerie optique à l’EEG
-2. Montage conçu pour les bébés, aucun risque pour la santé du bébé.
-3. Le système de contrôle est sur batterie et le participant peut bouger comme il le souhaite.
+```{figure} imagerie_optique/fnirs-high-altitude.jpg
+---
+width: 300px
+name: fnirs-high-altitude-fig
+---
+Mesure de l'oxygénation cérébrale à haute altitude avec un système d'imagerie optique portatif (PortaLite, Artinis Medical Systems). Image tirée de [wikipédia](https://upload.wikimedia.org/wikipedia/commons/5/5b/Picture_of_NIRS_measurement_at_high_alltitude.jpg) sous licence [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+```
+Une des grandes forces de l'imagerie optique par rapport au FDG TEP ou bien à l'IRMf est la flexibilité expérimentale. Même si les artefacts de mouvement peuvent être un problème, il est possible d'enregistrer l'activité d'un athlète en mouvement ({numref}`fnirs-high-altitude-fig`). Il est aussi possible d'enregistre l'activité du cerveau d'un [musicien qui pratique son instrument](https://upload.wikimedia.org/wikipedia/commons/transcoded/3/33/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video2.ogv/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video2.ogv.480p.vp9.webm), ou bien encore de [deux musiciens qui jouent ensemble](https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bd/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video3.ogv/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video3.ogv.360p.vp9.webm) (une technique appelée hyper-scanning). Même s'il est possible de [jouer du violoncelle dans un IRM](https://ieeexplore.ieee.org/document/6688614), ce type d'expérience est bien plus facile de mise en oeuvre avec l'imagerie optique. Cette technique est aussi plus simple à mettre en oeuvre chez des sujets qui ont des difficultés à rester immobiles, comme les très jeunes enfants ({numref}`fiducials-fig`).
 
 ## Conclusions
+Dans ce cours, nous avons vu les principes de l'imagerie optique. Plus précisément, nous avons vu:
+- Comment la lumière proche infrarouge permet de mesurer le couplage neurovasculaire.
+- Comment l'utilisation d'un montage d'émetteurs et de récepteurs sur le scalp permet d'acquérir des signaux couvrant une portion du cerveau.
+- Comment les signaux d'imagerie optique sont nettoyés pour améliorer la qualité.
+- Comment on peut générer une carte d'activation en réponse à une série d'événements.
 
 ## Exercices
 ```{admonition} Exercice 8.1
@@ -364,8 +403,9 @@ Pour répondre aux questions de cet exercice, lisez d'abord l'article *Distinct 
 - Quel type de participants a été recruté dans cette étude?
 - Quel est l'objectif principal de l'étude?
 - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
-- Quelle type de radiotraceurs est utilisé?
-- Quelle normalisation est appliquée aux cartes?
-- Quelles régions sont utilisées pour les analyses statistiques?
+- Dans quelle figure est décrit le montage d'imagerie optique?
+- Quels types de stimuli ont été utilisés?
+- Comment est générée l'activité évoquée?
 - Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
 - Quel est le résultat principal de l'étude?
+```
