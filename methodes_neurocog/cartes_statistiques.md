@@ -115,11 +115,11 @@ glue("vbm-distribution-fig", fig, display=False)
 ```{glue:figure} vbm-distribution-fig
 :figwidth: 800px
 :name: vbm-distribution-fig
-La position de deux voxels est illustrée avec un cercle bleu (haut) et vert (bas), de manière superposée avec des cartes de densité de matière grise pour différents sujets du jeu de données OASIS ([Marcus et al., 2010](https://dx.doi.org/10.1162%2Fjocn.2009.21407)). À droite, un histograme représente la distribution de la densité de matière grise pour le voxel correspondant, au travers de 100 sujets. Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+La position de deux voxels est illustrée avec un cercle bleu (haut) et olive (bas), de manière superposée avec des cartes de densité de matière grise pour différents sujets du jeu de données OASIS ([Marcus et al., 2010](https://dx.doi.org/10.1162%2Fjocn.2009.21407)). À droite, un histograme représente la distribution de la densité de matière grise pour le voxel correspondant, au travers de 100 sujets. Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-Les concepts présentés dans ce chapitre s’appliquent à la plupart des modalités d'imagerie vues dans le cours de façon plus ou moins identique. Mais afin de rendre les choses plus concrètes, nous allons nous intéresser à une analyse en morphométrie VBM à l'aide de l'IRM structurelle. Cette analyse utilise le jeu de données OASIS ([Marcus et al., 2010](https://dx.doi.org/10.1162%2Fjocn.2009.21407)). Des cartes de densité de matière grise pour les données OASIS sont disponibles via la librairie [nilearn](https://nilearn.github.io/modules/generated/nilearn.datasets.fetch_oasis_vbm.html). Pour chaque voxel, on dispose d'une mesure locale de densité de matière grise, qui varie entre 0 et 1. Comme toutes les images des 100 participants OASIS utilisés dans cet exemple ont été recalées dans un même espace stéréotaxique, on a donc pour chaque voxel une série de 100 mesures. Il s'agit de notre **variable dépendante**, car on va chercher à expliquer les variations de cette mesure au travers des sujets à l'aide d'autres variables, dites **variables indépendantes**, et on va démarrer avec l'âge des participants qui varie de 20 ans à 90 ans.
+Les concepts présentés dans ce chapitre s’appliquent à la plupart des modalités d'imagerie vues dans le cours de façon plus ou moins identique. Mais afin de rendre les choses plus concrètes, nous allons nous intéresser à une analyse en morphométrie VBM à l'aide de l'IRM structurelle. Cette analyse utilise le jeu de données OASIS ([Marcus et al., 2010](https://dx.doi.org/10.1162%2Fjocn.2009.21407)). Des cartes de densité de matière grise pour les données OASIS sont disponibles via la librairie [nilearn](https://nilearn.github.io/modules/generated/nilearn.datasets.fetch_oasis_vbm.html). Pour chaque voxel, on dispose d'une mesure locale de densité de matière grise, qui varie entre 0 et 1. Comme toutes les images des 100 participants OASIS utilisés dans cet exemple ont été recalées dans un même espace stéréotaxique, on a donc pour chaque voxel une série de 100 mesures. Il s'agit de notre **variable dépendante**, car on va chercher à expliquer les variations de cette mesure au travers des sujets à l'aide d'autres variables, dites **prédicteurs**, et on va démarrer avec l'âge des participants qui varie de 20 ans à 90 ans.
 
-### Régression
+### Modèle linéaire
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 # On réorganise de DataFrame pour utiliser seaborn
@@ -134,8 +134,23 @@ glue("regression-vbm-fig", fig.fig, display=False)
 ```{glue:figure} regression-vbm-fig
 :figwidth: 800px
 :name: regression-vbm-fig
- Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+ Régression linéaire, où la variable dépendante est la densité de matière grise pour un voxel, et le prédicteur est l'âge. Les valeurs de densité de matière grise proviennent de 100 sujets de la base de données OASIS ([Marcus et al., 2010](https://dx.doi.org/10.1162%2Fjocn.2009.21407)), et les deux voxels sont présentés dans la {numref}`vbm-distribution-fig` (voxel bleu à gauche, voxel olive à droite). La régression linéaire est réalisée à l'aide de la libraire [seaborn](https://seaborn.pydata.org) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
+L'idée sous-jacente au modèle de régression est une équation, ou une sorte de loi, qui va prédire la variable dépendante, ici la densité de matière grise, à partir des prédicteurs, disons l'age. Mais, contrairement à une loi physique qui représente une dépendance exacte (dans un certain régime), cette loi ne capture qu'une fraction de la variance de notre mesure. La loi va donc incorporer un bruit, qui représente toutes les sources de variabilité que l'on ne peut pas capturer avec notre relation. La relation mathématique va prendre la forme suivante:
+
+`densite_matiere_grise = b0 + b1 * age + e`
+
+ * `densite_matiere_grise` est la densité de matière grise mesurée pour un voxel.
+ * `age` est l'âge du participant de recherche.
+ * `b0` est une valeur constante, appelée en anglais "intercept". Cette valeur est identique pour tous les sujets. Dans ce cas, elle représentrait la densité de matière grise observée à la naissance (`age=0`), en moyenne sur la population.
+ * `b1` est une autre constante, qui dans ce cas mesure la réduction de matière grise par année de vie (en moyenne sur la population).
+ * `e` est un bruit de mesure, qui capture toutes les variations de `densite_matiere_grise` que l'on ne peut pas expliquer avec `age`. Typiquement on suppose que la moyenne de `e` dans la population est `0`, et que la variance de `e` est identique pour tous les sujets, égale à $\sigma^2$.
+
+ On ne connait évidemment pas les coefficients `b0` et `b1`, et on doit utiliser une procédure statistique pour les `estimer`, c'est à dire deviner (au mieux) leurs valeurs à partir des données dont on dispose. Par exemple, pour la région de couleur `olive` (graphe de droite dans {numref}`regression-vbm-fig`), on voit que l'on perd environ 25% de densité entre 20 ans et 90 ans, voir {numref}`regression-vbm-fig`. On perd donc environ 0.35% de densité de matière grise par an, soit `b1 ~ -0.0035`. En utilisant cette valeur et en remarquant que la densité de matière grise est d'à peu près `0.85` à `20` ans, on en déduit que la densité à la naissance devrait être `b0=0.92`. En pratique la procédure statistique va choisir les valeurs `b0` et `b1` pour minimiser l'amplitude des résidus de la régression:
+
+ `residus = densite_matiere_grise - b0 - b1 * age`
+
+ Une fois les coefficients `b0` et `b1` estimés, on peut tracer une droite qui représente les valeurs de densité de matière grise prédites à partir de l'âge des sujets, voir {numref}`regression-vbm-fig`. Si le modèle explique beaucoup de la variabilité de la variable dépendante, les points mesurés seront proches de la droite de prédiction.
 
 ### Analyse massivement univariée
 
