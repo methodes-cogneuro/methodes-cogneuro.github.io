@@ -41,83 +41,106 @@ Ce chapitre est en cours de développement. Il se peut que l'information soit in
 ```
 ## Objectifs du cours
 
-On va parler du modèle de régression dans le contexte de l’IRM fonctionnelle, ainsi que pour générer des cartes statistiques individuelles et de groupe sur l’activité cérébrale. Les statistiques de groupe permettent de combiner l’activation de plusieurs individus et ainsi de contraster des groupes (ex. groupe de personnes jeunes et groupe de personnes âgées).
+On va parler du modèle de régression pour générer des cartes statistiques cérébrales de groupe. Les statistiques de groupe permettent de combiner les mesures du cerveau de plusieurs individus et ainsi de contraster des groupes (ex. groupe de personnes jeunes et groupe de personnes âgées) ou bien de tester l'association avec une variable continue (ex. l'âge).
 
+Les objectifs spécifiques du cours sont les suivants :
+ * Régression linéaire.
+ * Le modèle linéaire général.
+ * Comparaisons multiples.
 
-Nous allons l’appliquer à l’IRMf aujourd’hui car c’est la modalité où on va avoir les modèles les plus complexes puisqu’on va devoir faire un modèle individuel et un modèle de groupe, mais la mécanique de ce qui sera vu dans ce cours s’applique à la plupart des modalités de façon plus ou moins identique.
+## Régression linéaire
 
-Les objectifs du cours sont les suivants :
-On va détailler les étapes de génération d’une carte paramétrique cérébrale :
- * Carte IRMf : fonction de réponse hémodynamique, dessin expérimental
- * Régression linéaire sur des séries temporelles, contraste individuel
- * Régression linéaire sur des paramètres d’activation, contraste de groupe
-
-## Dessin expérimental, contraste
-
-Ce schéma représente la réponse aux émotions de l’amygdale lors de la présentation de stimuli. Les stimuli présentent 3 visages, un en haut et deux en bas, et le participant doit mettre les visages identiques en correspondance et donner sa réponse via un bouton. Il y a plusieurs processus mentaux qui vont se passer, incluant l’identification des émotions que présentent les visages. C’est pour cela qu’entre la présentation des visages, on a la présentation d’un stimulus contrôle avec des formes (ellipses) avec différentes orientations à la place des visages. La même tâche de mise en correspondance est faite avec les formes.
-On va présenter ces stimuli pour des durées relativement brèves de 4 secondes et on va alterner la condition des visages et la condition contrôle. La discrimination visuelle est présente dans les deux conditions de cette tâche, les visages ont un contenu émotionnel qui n’est pas présent pour les formes.
-
-Lorsque nous allons faire le contraste entre l’activité hémodynamique des deux conditions, nous allons capturer des régions qui sont spécifiquement activées lors de la présentation de visages avec un contenu émotionnel. Ici, on identifie l’amygdale. Par ailleurs, faire ces contrastes n’est pas de toute simplicité.
-
-## Contraste et réponse hémodynamique
-
-Le premier schéma en haut représente ce qui se passerait au niveau neuronal dans un monde idéal. Dans ce schéma, une activation maximale est atteinte lors de la présentation du stimulus de la condition 1 et, lors de la condition 2 (e.g. condition contrôle), l’activation tombe immédiatement à 0. En faisant la valeur moyenne lors des blocs rouge (1) moins la valeur moyenne pendant les blocs bleus (0), nous obtiendrions un contraste de 1 entre les deux conditions. Or, nous n’avons accès à des données comme celles-ci que si nous ouvrons la boite crânienne de notre participant.
-
-Lors de l’IRM, nous mesurons un phénomène vasculaire qui est lent, et donc, qui met quelques secondes à venir et quelques secondes à partir. En fait, on dit que ça prend environ 5 secondes. Puisque ces blocs ne sont pas des blocs de 30 secondes, la réponse hémodynamique mesurée par l’IRMf sera décalée par rapport à la présentation réelle des blocs de conditions. Ici, puisque les blocs sont environ du même temps que le temps nécessaire pour observer une réponse hémodynamique lors de la présentation des visages, le pic d’activation est atteint à la fin de la présentation du stimulus. Ensuite, lors de la présentation des formes, cela prendra l’entièreté du bloc afin que l’activation revienne à la ligne de base. Si nous ne faisons que la moyenne d’activation des blocs rouges et la moyenne des blocs bleus, nous obtiendrions 0.5 pour les deux.  En effet, sur la moitié de chaque bloc, l’activation est proche du minimum et sur l’autre moitié elle est près du maximum. Ainsi, nous trouverions une valeur de 0 pour la différence entre les deux conditions, signifiant qu’il n’y a aucun contraste.
-
-Pour remédier à la situation, on peut décaler le bloc de mesure fonction du décalage de la réponse hémodynamique. Dans le 3e graphique, nous avons décalé les blocs de mesure pour les deux conditions d’environ 2.5 secondes. Ainsi, le pic se situera au centre du bloc rouge, et le retour aux valeurs de base se situera au centre des blocs bleus. Les moyennes seront ainsi de 0.75 et 0.25 respectivement, ce qui est plus représentatif de la différence d’activation que l’on retrouve réellement entre les deux conditions. Le contraste sera ainsi de 0.5, ce qui n’est toujours par optimal considèrent qu’il y a théoriquement une différence de 100% entre les deux conditions.
-
-La solution est de rétrécir le bloc de mesure pour les deux conditions. Cela permet de concentrer les données utilisées pour chaque bloc autour du pic, ce qui fait que notre moyenne se rapproche de la véritable amplitude pour les deux conditions. Nous pouvons imaginer que la moyenne pour les blocs rouges se situera autour de 0.9 puisqu’elle n’est pas parfaitement à 1 et que l’inverse se produira pour les blocs bleus avec une moyenne autour de 0.1, ce qui nous donnera un contraste résultant de 0.8.
-
-On va se donner un modèle mathématique comportant deux fonctions Gammas. Ces modèles peuvent être plus ou moins complexes. Nous pourrions faire un modèle pour un événement unitaire (unique) dont le seul paramètre est l’amplitude du pic, apparaissant à un moment fixe à la suite de la présentation du stimulus.  
-
-Ensuite, nous pouvons complexifier le modèle pour qu’il soit plus près de ce qu’il se passe réellement au niveau neuronal. Nous pouvons ajouter un paramètre de plongée initiale ou initial dip, qui représente le moment ou la glie tire de l’oxygène des capillaires avant l’augmentation du flux et du volume sanguin. Il y a ainsi une augmentation de la concentration relative en déoxyhémoglobine et donc, une diminution initiale du signal BOLD.
-Nous pouvons aussi ajouter la plongée post-stimulus ou post-stimulus dip comme paramètre du modèle. Ceci représente une surcontraction des capillaires à la suite de la réponse hémodynamique ou une inhibition neuronale, son origine n’est pas encore claire. Un dernier paramètre peut être ajouté au modèle, soit la vitesse à laquelle l’activation augmente et diminue, ou bien la largeur du pic.
-
-Trois postulats permettent la prédiction de la réponse à n’importe quel train de stimulation.
-
-*	Additivité : Lorsque nous avons plusieurs événements, la réponse sera la somme des activations des événements simples.
-*	Proportionnalité : Si nous avons des événements qui ont des amplitudes différentes, la réponse observée sera proportionnelle à la stimulation.
-*	Invariance dans le temps
-
-Dans cette image, les réponses sont très séparées dans le temps donc elles n’interagissent pas ensemble. Si elles étaient collées, nous aurions vu une superposition des réponses.
-
-Ici, en bleu, nous voyons les données expérimentales et en rouge, le modèle de réponse. Nous pouvons ajuster le modèle en fonction de différents paramètres tels que vus plus tôt, mais un premier paramètre important est la localisation du pic d’activation. En fait, la courbe en entier doit passer près des points expérimentaux. Ce processus se nomme l’ajustement ou le goodness of fit. Donc, en estimant le modèle qui est le plus près des données expérimentales, nous trouvons une amplitude du pic qui se situe près de 0.5 (en y).
-
-Finalement, quand on parle de régressions linéaires pour des séries temporelles en IRMf, c’est de ce qu’on parle. La partie linéaire est en fait le pic d’activation.
-
-On peut avoir différents stimuli, qui peuvent être de longueur et d’amplitude variable, ce qui va nous donner une fonction en « escalier ». Ensuite, nous appliquons notre modèle mathématique de réponse, ce qui nous donne notre réponse prédite qui est représentée par la courbe rouge dans ce graphique. Cependant, nous ne connaissons pas son amplitude. C’est ensuite que nous faisons la technique d’ajustement, où nous ne regardons pas seulement le max, nous combinons tous nos événements. Cette méthode est très puissante et elle nous permet de tirer intégralité de toutes nos données.
-
-## Modéle linéaire et cartes statistiques individuelles
+### Variables
 ```{code-cell} ipython 3
-:tags: ["hide-input"]
+:tags: ["hide-input", "remove-output"]
+# Importer les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+from nilearn import datasets
+from nilearn.input_data import NiftiMasker
+from nilearn.image import get_data
 
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
+# Charge les données
+n_subjects = 100  
+oasis_dataset = datasets.fetch_oasis_vbm(n_subjects=n_subjects)
+gray_matter_map_filenames = oasis_dataset.gray_matter_maps
+age = oasis_dataset.ext_vars['age'].astype(float)
+sex = oasis_dataset.ext_vars['mf'] == b'F'
 
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/WIvMt3r7AVU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+# On convertit les données en pandas dataframe
+# Deux voxels intéressants ont été sélectionnés
+import pandas as pd
+coords = np.array([[ 29.,  10.,   4.], [-19.,   8., -11.]])
+colors = ['blue', 'olive']
+
+from nilearn import input_data
+masker = input_data.NiftiSpheresMasker(coords)
+gm = masker.fit_transform(gray_matter_map_filenames)
+
+df = pd.DataFrame({
+    "age": age,
+    "sexe": oasis_dataset.ext_vars['mf'],
+    "MG1": gm[:, 0],
+    "MG2": gm[:, 1]
+    })
+
+df["sexe"] = df["sexe"].replace([b'F', b'M'], value=['femelle', 'male'])
+
+# On génère la Figure
+from nilearn import plotting
+import seaborn as sns
+fig = plt.figure(figsize=(24, 14))
+
+for i in range(0, 6):        
+    nx = np.floor_divide(i, 3)
+    ny = np.remainder(i, 3)
+    ax = plt.subplot2grid((2, 5), (nx, ny), colspan=1)
+    roi_img = plotting.plot_anat(
+        gray_matter_map_filenames[i], cut_coords=[coords[nx][2]], figure=fig,
+        axes=ax, display_mode='z', colorbar=False)
+    roi_img.add_markers([coords[nx]], colors[nx], 100)
+
+sns.set_theme(style="darkgrid")
+ax = plt.subplot2grid((2, 5), (0, 3), colspan=2)
+sns.histplot(
+    df["MG1"], ax=ax, binwidth=0.05, binrange=[0, 1], stat='frequency')
+
+ax = plt.subplot2grid((2, 5), (1, 3), colspan=2)
+sns.histplot(
+    df["MG2"], ax=ax, binwidth=0.05, binrange=[0, 1], stat='frequency')
+
+from myst_nb import glue
+glue("vbm-distribution-fig", fig, display=False)
 ```
-Ici, à gauche, nous avons le signal enregistré. Nous avons une ligne de base qui est plutôt arbitraire. Le signal n’est jamais à 0. Nous allons essayer de décomposer ce signal en la combinaison de 3 choses : (1) la ligne de base, (2) l’activation BOLD liée à la tâche et (3) les résidus qui représentent tout ce qui ne s’explique pas par notre modèle. Ce que nous ne connaissons pas lorsque nous faisons une régression linéaire ce sont les coefficients ou l’amplitude de chaque composante de notre signal (e.g. 100x pour la ligne de base, 10x opur le signal BOLD et x2 pour les résidus). Ces valeurs sont en fait un modèle mathématique que l’on appelle l’estimation des moindres carrés, qui nous donne des paramètres permettant l’amplitude des résidus la plus petite possible. En appliquant les coefficients aux 3 graphiques de décomposition et en additionnant les valeurs pour chaque point donné, nous obtenons une courbe qui est très près de notre signal.
+```{glue:figure} vbm-distribution-fig
+:figwidth: 800px
+:name: vbm-distribution-fig
+La position de deux voxels est illustrée avec un cercle bleu (haut) et vert (bas), de manière superposée avec des cartes de densité de matière grise pour différents sujets du jeu de données OASIS ([Marcus et al., 2010](https://dx.doi.org/10.1162%2Fjocn.2009.21407)). À droite, un histograme représente la distribution de la densité de matière grise pour le voxel correspondant, au travers de 100 sujets. Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Les concepts présentés dans ce chapitre s’appliquent à la plupart des modalités d'imagerie vues dans le cours de façon plus ou moins identique. Mais afin de rendre les choses plus concrètes, nous allons nous intéresser à une analyse en morphométrie VBM à l'aide de l'IRM structurelle. Cette analyse utilise le jeu de données OASIS ([Marcus et al., 2010](https://dx.doi.org/10.1162%2Fjocn.2009.21407)). Des cartes de densité de matière grise pour les données OASIS sont disponibles via la librairie [nilearn](https://nilearn.github.io/modules/generated/nilearn.datasets.fetch_oasis_vbm.html). Pour chaque voxel, on dispose d'une mesure locale de densité de matière grise, qui varie entre 0 et 1. Comme toutes les images des 100 participants OASIS utilisés dans cet exemple ont été recalées dans un même espace stéréotaxique, on a donc pour chaque voxel une série de 100 mesures. Il s'agit de notre **variable dépendante**, car on va chercher à expliquer les variations de cette mesure au travers des sujets à l'aide d'autres variables, dites **variables indépendantes**, et on va démarrer avec l'âge des participants.
 
-Les noms communs pour ces coefficients sont le ß0 (bêta 0) pour la ligne de base et le ß1 (bêta 1) pour l’activation BOLD. À priori, nous ne connaissons pas ces valeurs. Ce que nous connaissons, c’est la courbe noire, la courbe rouge et la courbe bleue, qui elle a été mesurée.
-
-Le coefficient ß1 nous indique la taille de la réponse à notre tâche en faisait une mise à l’échelle de celle-ci. Il est possible que nous ayons plus d’une condition d’intérêt et que nous voulions comparer ces deux réponses. À ce moment-là, nous pouvons faire le contraste entre les bêtas associés aux deux conditions en soustrayant ß2 à ß1. L’étape suivante est de faire un test statistique sur ß1 pour savoir si l’activation est significativement plus élevée que l’activation de base ou sur ß1 – ß2 pour savoir s’il y a une différence significative entre l’activation aux deux conditions.
-
-Ce qui vient d’être expliqué peut être fait à chaque voxel. En ce sens, chaque voxel possède une activation différente, et donc, a un ß0 et un ß1 différent. Ainsi, il est possible de faire des cartes statistiques à l’aide de cette méthode. Ici, nous remarquons que nous avons des valeurs fortes dans le cortex frontal et des valeurs négatives en périphérie du cortex occipital. Le terme exact pour ce type de carte est un modèle linéaire massivement univarié, car on va aller regarder un voxel à la fois plutôt que de regarder des regroupements de voxels.
-
-## Cartes statistiques de groupe
+### Régression
 ```{code-cell} ipython 3
-:tags: ["hide-input"]
+:tags: ["hide-input", "remove-output"]
+# On réorganise de DataFrame pour utiliser seaborn
+df2 = df.melt(id_vars=["age", "sexe"], value_vars=["MG1", "MG2"], value_name="MG")
+fig = sns.lmplot(x="age", y="MG", data=df2, col='variable',
+           ci=None, scatter_kws={"s": 50, "alpha": 1})
 
-from IPython.display import HTML
-import warnings
-warnings.filterwarnings("ignore")
-
-# Youtube
-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/mQtO_RwUIaE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("regression-vbm-fig", fig.fig, display=False)           
 ```
+```{glue:figure} regression-vbm-fig
+:figwidth: 800px
+:name: regression-vbm-fig
+ Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+
+### Analyse massivement univariée
+
+## Modèle linéaire général
+
 Ici, on a une représentation différente. Cette représentation a l’avantage de permettre de voir plusieurs « courbes » simultanément de manière claire. En mathématique, on appel ce type de représentation des « matrices ».
 
 On a plusieurs tableaux dans cette représentation. Dans le premier, on a une seule colonne avec plein de lignes, ensuite on a un tableau qui a le même nombre de lignes que le premier mais avec 4 colonnes et un dernier tableau avec seulement 3 lignes et une colonne. Dans les deux premiers tableaux, chaque ligne correspond à un sujet et chaque colonne correspond à un type de variable. Il faut préciser que l’on n’a pas pris le scan cérébral complet pour le premier tableau. En fait, on a pris le même voxel chez tous les participants (à l’aide d’un recalage).
