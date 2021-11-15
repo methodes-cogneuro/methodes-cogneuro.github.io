@@ -76,8 +76,9 @@ colors = ['blue', 'olive']
 from nilearn import input_data
 masker = input_data.NiftiSpheresMasker(coords)
 gm = masker.fit_transform(gray_matter_map_filenames)
-
+subject_label = [f'sub-{num}' for num in range(n_subjects)]
 df = pd.DataFrame({
+    "subject_label": subject_label,
     "age": age,
     "sexe": oasis_dataset.ext_vars['mf'],
     "MG1": gm[:, 0],
@@ -153,9 +154,53 @@ L'idée sous-jacente au modèle de régression est une équation, ou une sorte d
  Une fois les coefficients `b0` et `b1` estimés, on peut tracer une droite qui représente les valeurs de densité de matière grise prédites à partir de l'âge des sujets, voir {numref}`regression-vbm-fig`. Si le modèle explique beaucoup de la variabilité de la variable dépendante, les points mesurés seront proches de la droite de prédiction.
 
 ### Analyse massivement univariée
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+from nilearn.glm.second_level import make_second_level_design_matrix
+design_df = df[["subject_label", "age"]].replace(['femelle', 'male'], value=[0, 1])
+design_matrix = make_second_level_design_matrix(
+    subject_label,
+    design_df
+    )
+from nilearn.glm.second_level import SecondLevelModel
+second_level_model = SecondLevelModel(smoothing_fwhm=5.0)
+second_level_model = second_level_model.fit(gray_matter_map_filenames,
+                                            design_matrix=design_matrix)
+beta0 = second_level_model.compute_contrast(second_level_contrast="intercept", output_type="effect_size")
+beta1 = second_level_model.compute_contrast(second_level_contrast="age", output_type="effect_size")
 
+# On génère la Figure
+from nilearn import plotting
+import seaborn as sns
+fig = plt.figure(figsize=(24, 14))
+
+ax = plt.subplot2grid((2, 4), (0, 0), colspan=3)
+roi_img = plotting.plot_stat_map(
+    beta0, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True)
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((2, 4), (1, 0), colspan=3)
+roi_img = plotting.plot_stat_map(
+    beta1, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True)
+roi_img.add_markers([coords[1]], colors[1], 100)
+plt.show()
+
+```                                                
+
+https://nilearn.github.io/auto_examples/05_glm_second_level/plot_second_level_one_sample_test.html#sphx-glr-auto-examples-05-glm-second-level-plot-second-level-one-sample-test-py
 ## Modèle linéaire général
-
+```{code-cell} ipython 3
+:tags: ["hide-input"]
+from nilearn.plotting import plot_design_matrix
+ax = plot_design_matrix(design_matrix)
+ax.set_title('Second level design matrix', fontsize=12)
+ax.set_ylabel('maps')
+plt.tight_layout()
+plt.show()                                                
+```    
+### Variables
 Ici, on a une représentation différente. Cette représentation a l’avantage de permettre de voir plusieurs « courbes » simultanément de manière claire. En mathématique, on appel ce type de représentation des « matrices ».
 
 On a plusieurs tableaux dans cette représentation. Dans le premier, on a une seule colonne avec plein de lignes, ensuite on a un tableau qui a le même nombre de lignes que le premier mais avec 4 colonnes et un dernier tableau avec seulement 3 lignes et une colonne. Dans les deux premiers tableaux, chaque ligne correspond à un sujet et chaque colonne correspond à un type de variable. Il faut préciser que l’on n’a pas pris le scan cérébral complet pour le premier tableau. En fait, on a pris le même voxel chez tous les participants (à l’aide d’un recalage).
