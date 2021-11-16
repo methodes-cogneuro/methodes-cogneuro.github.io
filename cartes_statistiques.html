@@ -271,6 +271,16 @@
      Variables
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-multiple">
+     Régression multiple
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Cartes statistiques
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -493,36 +503,131 @@
 </div>
 <div class="section" id="modele-lineaire-general">
 <h2>Modèle linéaire général<a class="headerlink" href="#modele-lineaire-general" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-input docutils container">
+<div class="section" id="id1">
+<h3>Variables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_design_matrix</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_design_matrix</span><span class="p">(</span><span class="n">design_matrix</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Second level design matrix&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;maps&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                                
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show the joint distribution using kernel density estimation</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;MG1&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sexe&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># On colle la figure dans le jupyter book</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;age-sexe-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>           
 </pre></div>
 </div>
 </div>
+</div>
+<div class="figure align-default" id="age-sexe-fig" style="width: 600px">
 <div class="cell_output docutils container">
 <img alt="_images/cartes_statistiques_7_0.png" src="_images/cartes_statistiques_7_0.png" />
 </div>
+<p class="caption"><span class="caption-number">Fig. 96 </span><span class="caption-text">Relation entre âge, sexe et densité de matière grise pour un voxel (le voxel de couleur bleu dans <a class="reference internal" href="#vbm-distribution-fig"><span class="std std-numref">Fig. 93</span></a>). Le graphique est réalisé à l’aide de la libraire <a class="reference external" href="https://seaborn.pydata.org">seaborn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#age-sexe-fig" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="id1">
-<h3>Variables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Ici, on a une représentation différente. Cette représentation a l’avantage de permettre de voir plusieurs « courbes » simultanément de manière claire. En mathématique, on appel ce type de représentation des « matrices ».</p>
-<p>On a plusieurs tableaux dans cette représentation. Dans le premier, on a une seule colonne avec plein de lignes, ensuite on a un tableau qui a le même nombre de lignes que le premier mais avec 4 colonnes et un dernier tableau avec seulement 3 lignes et une colonne. Dans les deux premiers tableaux, chaque ligne correspond à un sujet et chaque colonne correspond à un type de variable. Il faut préciser que l’on n’a pas pris le scan cérébral complet pour le premier tableau. En fait, on a pris le même voxel chez tous les participants (à l’aide d’un recalage).</p>
-<p>Les tons de gris représentent en fait des valeurs numériques. Or, pour aider à la visualisation, nous avons utilisé une échelle de couleurs qui représente ces valeurs.</p>
-<p>Le premier tableau représente les valeurs des cartes cérébrales, qui sont les valeurs que l’on cherche à expliquer. Les tableaux à droite du « = » représentent les valeurs qui permettent d’expliquer les valeurs des cartes cérébrales.
-Ici, on a deux vecteurs qui cotent pour le sexe de nos participants et un autre qui représente le score de dépression pour chacune de nos observations (dans le premier tableau).</p>
-<p>Cette représentation est plutôt simple, nous avons une formule ressemblant à y = mx+b, donnant une relation linéaire. À gauche on a le y, c’est ce qu’on cherche à modéliser. Le tableau à droite, on a les paramètres explicatifs. Pour le sexe, on a mis un 1 quand le sexe correspondait au sujet et un 0 lorsqu’il ne correspondait pas. Ainsi, on remarque que, ici, la moitié des sujets étaient des hommes et l’autre moitié étaient des femmes. La variable de dépression est mesurée à l’aide de questionnaires et le score est représenté ici dans la 3e colonne du 2e tableau. Le 3e tableau représente l’amplitude des différentes facteurs explicatifs que l’on peut changer afin de mieux expliquer nos valeurs IRMf. Ceci revient à la même chose qui a été vue dans les graphiques présentés plus tôt. Ainsi, le score que l’on tente d’expliquer pour un sujet (une ligne) sera obtenu à l’aide de la formule suivante : le score « homme » du sujet x le coefficient « homme » + le score « femme » du sujet x le coefficient « femme » + le score « dépression » du sujet x le coefficient « dépression ». Ce qui reste et qui n,est pas expliqué par cette formule correspondra aux résidus. Tel que vu plus tôt, la formule avec les coefficients auront comme but de minimiser les résidus le plus possible.</p>
-<p>Ici, on a un exemple un peu plus complexe. À gauche, on a ce qu’on vient de voir et au centre, on a séparé le score de dépression pour les femmes et celui pour les hommes.</p>
-<p>Dans l’exemple précédent, le coefficient de dépression était le même pour les hommes et les femmes. On prétendait alors que le niveau d’influence de la dépression sur le cerveau des femmes et celui des hommes était pareil. Dans le tableau du centre, nous attribuions un coefficient différent aux scores de dépression des hommes et celui des femmes, prétendant alors que l’influence de la dépression sur le cerveau pourrait différer en fonction du sexe. Ici, on test alors le principe d’interaction. En statistiques classiques, on pourrait comparer ce modèle a une ANOVA.</p>
-<p>En réalité, ce modèle se nomme le modèle linéaire général car on peut pas mal tout tester. Si on veut faire un test-t, on peut le faire à l’aide de ce modèle.</p>
-<p>Si on prend deux coefficients de notre modèle, on peut regarder la différence entre ces deux coefficients. Par exemple, on peut regarder si l’influence de la dépression sur le cerveau chez les femmes (ß1) diffère de celle de la dépression sur le cerveau chez les hommes (ß2).</p>
-<p>Ca donnerait quelque chose comme ça et nous donnerait une carte de contraste statistique qui nous permet de contraster l’influence de la dépression chez les femmes et chez les hommes.
-Ce qui va changer d’un voxel à l’autre ce n’est pas les facteurs explicatifs, ce sont les y (les mesures d’activation). On n’aura ainsi pas les mêmes bêtas et les mêmes valeurs de contraste. C’est aussi appelé une approche massivement univariée.</p>
-<p>On peut parler d’une analyse de niveau 1 pour les analyses individuelles et les analyses de niveau 2 pour les analyses de groupe.</p>
+<p>L’approche de régression linéaire que l’on vient de voir est simple et puissante, mais elle est limitée à deux variables. En neurosciences humaines, on ne se trouvera généralement pas dans ce cas. On va très souvent vouloir étudier des facteurs multiples de manière conjointe. Même si la représentation du sexe des participants par une variable binaire est <a class="reference external" href="https://blogs.scientificamerican.com/sa-visual/visualizing-sex-as-a-spectrum/">très (très) simplificatrice</a> - sans compter la diversité de l’identité de genre, nous allons quand même essayer d’intégrer le sexe (male vs femelle) dans notre analyse. La figure ci dessous montre les distributions d’âge et de matière grise (pour le voxel bleu), séparées par sexe. Ce graphique suggère que la distribution de matière grise est peut-être différente entre male et femelle, mais cette différence pourrait également être liée à l’âge. Le modèle linéaire général nous permet d’intégrer toutes ces variables dans une seule analyse.</p>
+</div>
+<div class="section" id="regression-multiple">
+<h3>Régression multiple<a class="headerlink" href="#regression-multiple" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_design_matrix</span>
+<span class="n">design_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;subject_label&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;sexe&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;femelle&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">design_matrix</span> <span class="o">=</span> <span class="n">make_second_level_design_matrix</span><span class="p">(</span>
+    <span class="n">subject_label</span><span class="p">,</span>
+    <span class="n">design_df</span>
+    <span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;MG1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">design_matrix</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;# sujet&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;MG&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Âge&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sexe&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Intercept&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plot_design_matrix</span><span class="p">(</span><span class="n">design_matrix</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Matrice de dessein&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;# sujet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># On colle la figure dans le jupyter book</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;design-matrix-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>           
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="design-matrix-fig" style="width: 600px">
+<div class="cell_output docutils container">
+<img alt="_images/cartes_statistiques_9_0.png" src="_images/cartes_statistiques_9_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 97 </span><span class="caption-text">Variables pour une régression multiples. La variable dépendante est la densité de matière grise pour un voxel (GM, le voxel de couleur bleu dans <a class="reference internal" href="#vbm-distribution-fig"><span class="std std-numref">Fig. 93</span></a>). Les autres colonnes représentent les variations de l’âge, du sexe et de l’intercept au travers des sujets (variables prédictives). Les variables prédictives sent généralement représentées de manière plus compact, sous la forme d’une image où la couleur de chaque pixel représente l’inténsité du régresseur. Le graphique est adapté d’un <a class="reference external" href="https://dartbrains.org/content/GLM.html">code python</a> par l’équipe Dartbrains, ainsi que d’un <a class="reference external" href="https://nilearn.github.io/glm/first_level_model.html">tutoriel nilearn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#design-matrix-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>D’un point de vue mathématique, le modèle de régression multiple, parfois appelé modèle linéaire général, consiste simplement à incorporer plus de variables dans la “loi” qui prédit la variable dépendante à partir des régresseurs:
+<code class="docutils literal notranslate"><span class="pre">densite_matiere_grise</span> <span class="pre">=</span> <span class="pre">b0</span> <span class="pre">+</span> <span class="pre">b1</span> <span class="pre">*</span> <span class="pre">age</span> <span class="pre">+</span> <span class="pre">b2</span> <span class="pre">*</span> <span class="pre">sexe</span> <span class="pre">+</span> <span class="pre">e</span></code></p>
+<p>Le seul nouveau coefficient est <code class="docutils literal notranslate"><span class="pre">b2</span></code>, qui dans ce cas mesure la différence entre la moyenne de matière grise entre les femelles (codées avec un 0 dans le modèle) et les males (codés avec un 1 dans le modèle), <strong>après ajustement pour l’âge des sujets</strong>. Ce type de codage pour données catégorielles est appelé “dummy variable” en anglais, et permet d’intégrer des tests de différences de moyenne entre groupe dans un modèle de régression.</p>
+<div class="tip admonition" id="stats-regression">
+<p class="admonition-title">Régression multiple et statistiques classiques</p>
+<p>Le modèle de régression multiple est très flexible. Il est possible de formuler la plupart des tests classiques, tels que l’analyse de variance (ANOVA) ou bien le test d’égalité des moyennes de Student (t-test) à l’aide du modèle de régression linéaire. Voir ce <a class="reference external" href="https://lindeloev.github.io/tests-as-linear/">guide</a> pour plus de détails.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Cartes statistiques<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">second_level_model</span> <span class="o">=</span> <span class="n">SecondLevelModel</span><span class="p">(</span><span class="n">smoothing_fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">second_level_model</span> <span class="o">=</span> <span class="n">second_level_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gray_matter_map_filenames</span><span class="p">,</span>
+                                            <span class="n">design_matrix</span><span class="o">=</span><span class="n">design_matrix</span><span class="p">)</span>
+<span class="n">beta0</span> <span class="o">=</span> <span class="n">second_level_model</span><span class="o">.</span><span class="n">compute_contrast</span><span class="p">(</span><span class="n">second_level_contrast</span><span class="o">=</span><span class="s2">&quot;intercept&quot;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;effect_size&quot;</span><span class="p">)</span>
+<span class="n">beta1</span> <span class="o">=</span> <span class="n">second_level_model</span><span class="o">.</span><span class="n">compute_contrast</span><span class="p">(</span><span class="n">second_level_contrast</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;effect_size&quot;</span><span class="p">)</span>
+<span class="n">beta2</span> <span class="o">=</span> <span class="n">second_level_model</span><span class="o">.</span><span class="n">compute_contrast</span><span class="p">(</span><span class="n">second_level_contrast</span><span class="o">=</span><span class="s2">&quot;sexe&quot;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;effect_size&quot;</span><span class="p">)</span>
+
+<span class="c1"># On génère la Figure</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">roi_img</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+    <span class="n">beta0</span><span class="p">,</span> <span class="n">bg_img</span><span class="o">=</span><span class="n">gray_matter_map_filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cut_coords</span><span class="o">=</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>
+    <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;intercept (b0)&#39;</span><span class="p">)</span>
+<span class="n">roi_img</span><span class="o">.</span><span class="n">add_markers</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">roi_img</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+    <span class="n">beta1</span><span class="p">,</span> <span class="n">bg_img</span><span class="o">=</span><span class="n">gray_matter_map_filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cut_coords</span><span class="o">=</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>
+    <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;effet de l</span><span class="se">\&#39;</span><span class="s1">age (b1)&#39;</span><span class="p">)</span>
+<span class="n">roi_img</span><span class="o">.</span><span class="n">add_markers</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">roi_img</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+    <span class="n">beta2</span><span class="p">,</span> <span class="n">bg_img</span><span class="o">=</span><span class="n">gray_matter_map_filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cut_coords</span><span class="o">=</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>
+    <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;effet du sexe (b2)&#39;</span><span class="p">)</span>
+<span class="n">roi_img</span><span class="o">.</span><span class="n">add_markers</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># On colle la figure dans le jupyter book</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;multi-regression-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>           
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="multi-regression-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/cartes_statistiques_11_0.png" src="_images/cartes_statistiques_11_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 98 </span><span class="caption-text">Cartes de paramètres statistiques dans une régression linéaire multiple massivement univariée. Haut gauche: intercept <code class="docutils literal notranslate"><span class="pre">b0</span></code>, haut droite: effet linéaire de l’âge <code class="docutils literal notranslate"><span class="pre">b1</span></code>, bas gauche: effet linéaire du sexe <code class="docutils literal notranslate"><span class="pre">b2</span></code>. Cette figure est adaptée d’un tutoriel de la librairie <a class="reference external" href="https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py">nilearn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#multi-regression-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Une caractéristique un peu contre-intuitive avec la régression multiple est que la carte d’effet de l’âge est différente de la section avec la régression simple. En effet, l’effet de l’âge est maintenant évalué <em>après avoir pris en compte des différences de sexe</em>. Malgré cela, le résultat de la régression n’a pas changé de manière frappante: le cortex s’atrophie avec l’âge (en bleu), alors que le liquide céphalo-rachidien s’étend ce qui apparait comme une expansion de la matière grise à cause des effets de volume partiel (en rouge). L’analyse sur la variable de <code class="docutils literal notranslate"><span class="pre">sexe</span></code> montre que la densité de matière grise est plus élevée (en moyenne) dans le cortex chez les hommes, alors que la tendance est inversée au niveau du cervelet.</p>
 </div>
 </div>
 <div class="section" id="conclusion">
