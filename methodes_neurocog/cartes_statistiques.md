@@ -155,7 +155,7 @@ L'idée sous-jacente au modèle de régression est une équation, ou une sorte d
 
 ### Analyse massivement univariée
 ```{code-cell} ipython 3
-:tags: ["hide-input"]
+:tags: ["hide-input", "remove-output"]
 from nilearn.glm.second_level import make_second_level_design_matrix
 design_df = df[["subject_label", "age"]].replace(['femelle', 'male'], value=[0, 1])
 design_matrix = make_second_level_design_matrix(
@@ -177,19 +177,32 @@ fig = plt.figure(figsize=(24, 14))
 ax = plt.subplot2grid((2, 4), (0, 0), colspan=3)
 roi_img = plotting.plot_stat_map(
     beta0, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
-    axes=ax, display_mode='ortho', colorbar=True)
+    axes=ax, display_mode='ortho', colorbar=True, title='intercept (b0)')
 roi_img.add_markers([coords[1]], colors[1], 100)
 
 ax = plt.subplot2grid((2, 4), (1, 0), colspan=3)
 roi_img = plotting.plot_stat_map(
     beta1, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
-    axes=ax, display_mode='ortho', colorbar=True)
+    axes=ax, display_mode='ortho', colorbar=True, title='effet de l\'age (b1)')
 roi_img.add_markers([coords[1]], colors[1], 100)
-plt.show()
 
-```                                                
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("b0-b1-fig", fig, display=False)           
+```
+```{glue:figure} b0-b1-fig
+:figwidth: 600px
+:name: b0-b1-fig
+ Cartes de paramètres statistiques dans une régression linéaire massivement univariée. Première ligne: intercept `b0`, deuxième ligne: effet linéaire de l'âge `b1`. Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+On a pour l'instant présenté le modèle de régression pour deux voxels seulement. Mais une carte VBM peut inclure des centaines de milliers de voxels. Les logiciels de neuroimagerie permettent d'effectuer systématiquement une régression linéaire pour l'ensemble des voxels, simultanément. Dans ce cas, on estime deux paramètres pour chaque voxel: `b0` (l'intercept) et `b1` (l'effet de l'âge). On va donc générer deux cartes statistiques séparées, voir {numref}`b0-b1-fig`. Ces deux cartes récapitulent donc des milliers de modèles de régression différents. Comme les régressions effectuées à chaque voxel sont indépendante les unes des autres, on parle de modèle univarié, par opposition à un modèle multivarié qui cherche à combiner les valeurs obtenues à différents voxels. De plus, comme on fait un très grand nombre de régressions en même temps, on parle de régression **massivement univariée**.
 
-https://nilearn.github.io/auto_examples/05_glm_second_level/plot_second_level_one_sample_test.html#sphx-glr-auto-examples-05-glm-second-level-plot-second-level-one-sample-test-py
+```{admonition} Statistiques et multimodalité
+:class: tip
+:name: stats-multimodales
+Le modèle de régression est appliqué pour plusieurs modalités de neuroimagerie. Dans cet exemple, on s'intéresse à la VBM. Mais le même modèle fonctionne dès lors qu'on a une série de cartes pour différents sujets, et peut par exemple être utilisé en [IRMf](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) ou bien en TEP. Le même type de modèle peut aussi s'appliquer à des mesures prises sur des récepteurs en imagerie optique, ou des mesures moyennes sur un faisceau de fibres en IRMd. Le modèle de régression est partout!
+```
+
 ## Modèle linéaire général
 ```{code-cell} ipython 3
 :tags: ["hide-input"]
