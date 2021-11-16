@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -248,8 +250,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression">
-     Régression
+    <a class="reference internal nav-link" href="#modele-lineaire">
+     Modèle linéaire
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -263,6 +265,13 @@
   <a class="reference internal nav-link" href="#modele-lineaire-general">
    Modèle linéaire général
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Variables
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
@@ -345,8 +354,9 @@
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">input_data</span>
 <span class="n">masker</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">NiftiSpheresMasker</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
 <span class="n">gm</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">gray_matter_map_filenames</span><span class="p">)</span>
-
+<span class="n">subject_label</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;sub-</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">)]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;subject_label&quot;</span><span class="p">:</span> <span class="n">subject_label</span><span class="p">,</span>
     <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">age</span><span class="p">,</span>
     <span class="s2">&quot;sexe&quot;</span><span class="p">:</span> <span class="n">oasis_dataset</span><span class="o">.</span><span class="n">ext_vars</span><span class="p">[</span><span class="s1">&#39;mf&#39;</span><span class="p">],</span>
     <span class="s2">&quot;MG1&quot;</span><span class="p">:</span> <span class="n">gm</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
@@ -388,12 +398,12 @@
 <div class="cell_output docutils container">
 <img alt="_images/cartes_statistiques_1_1.png" src="_images/cartes_statistiques_1_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 93 </span><span class="caption-text">La position de deux voxels est illustrée avec un cercle bleu (haut) et vert (bas), de manière superposée avec des cartes de densité de matière grise pour différents sujets du jeu de données OASIS (<a class="reference external" href="https://dx.doi.org/10.1162%2Fjocn.2009.21407">Marcus et al., 2010</a>). À droite, un histograme représente la distribution de la densité de matière grise pour le voxel correspondant, au travers de 100 sujets. Cette figure est adaptée d’un tutoriel de la librairie <a class="reference external" href="https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py">nilearn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#vbm-distribution-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 93 </span><span class="caption-text">La position de deux voxels est illustrée avec un cercle bleu (haut) et olive (bas), de manière superposée avec des cartes de densité de matière grise pour différents sujets du jeu de données OASIS (<a class="reference external" href="https://dx.doi.org/10.1162%2Fjocn.2009.21407">Marcus et al., 2010</a>). À droite, un histograme représente la distribution de la densité de matière grise pour le voxel correspondant, au travers de 100 sujets. Cette figure est adaptée d’un tutoriel de la librairie <a class="reference external" href="https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py">nilearn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#vbm-distribution-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Les concepts présentés dans ce chapitre s’appliquent à la plupart des modalités d’imagerie vues dans le cours de façon plus ou moins identique. Mais afin de rendre les choses plus concrètes, nous allons nous intéresser à une analyse en morphométrie VBM à l’aide de l’IRM structurelle. Cette analyse utilise le jeu de données OASIS (<a class="reference external" href="https://dx.doi.org/10.1162%2Fjocn.2009.21407">Marcus et al., 2010</a>). Des cartes de densité de matière grise pour les données OASIS sont disponibles via la librairie <a class="reference external" href="https://nilearn.github.io/modules/generated/nilearn.datasets.fetch_oasis_vbm.html">nilearn</a>. Pour chaque voxel, on dispose d’une mesure locale de densité de matière grise, qui varie entre 0 et 1. Comme toutes les images des 100 participants OASIS utilisés dans cet exemple ont été recalées dans un même espace stéréotaxique, on a donc pour chaque voxel une série de 100 mesures. Il s’agit de notre <strong>variable dépendante</strong>, car on va chercher à expliquer les variations de cette mesure au travers des sujets à l’aide d’autres variables, dites <strong>variables indépendantes</strong>, et on va démarrer avec l’âge des participants.</p>
+<p>Les concepts présentés dans ce chapitre s’appliquent à la plupart des modalités d’imagerie vues dans le cours de façon plus ou moins identique. Mais afin de rendre les choses plus concrètes, nous allons nous intéresser à une analyse en morphométrie VBM à l’aide de l’IRM structurelle. Cette analyse utilise le jeu de données OASIS (<a class="reference external" href="https://dx.doi.org/10.1162%2Fjocn.2009.21407">Marcus et al., 2010</a>). Des cartes de densité de matière grise pour les données OASIS sont disponibles via la librairie <a class="reference external" href="https://nilearn.github.io/modules/generated/nilearn.datasets.fetch_oasis_vbm.html">nilearn</a>. Pour chaque voxel, on dispose d’une mesure locale de densité de matière grise, qui varie entre 0 et 1. Comme toutes les images des 100 participants OASIS utilisés dans cet exemple ont été recalées dans un même espace stéréotaxique, on a donc pour chaque voxel une série de 100 mesures. Il s’agit de notre <strong>variable dépendante</strong>, car on va chercher à expliquer les variations de cette mesure au travers des sujets à l’aide d’autres variables, dites <strong>prédicteurs</strong>, et on va démarrer avec l’âge des participants qui varie de 20 ans à 90 ans.</p>
 </div>
-<div class="section" id="regression">
-<h3>Régression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="modele-lineaire">
+<h3>Modèle linéaire<a class="headerlink" href="#modele-lineaire" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># On réorganise de DataFrame pour utiliser seaborn</span>
@@ -412,15 +422,94 @@
 <div class="cell_output docutils container">
 <img alt="_images/cartes_statistiques_3_0.png" src="_images/cartes_statistiques_3_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 94 </span><span class="caption-text">Cette figure est adaptée d’un tutoriel de la librairie <a class="reference external" href="https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py">nilearn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#regression-vbm-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 94 </span><span class="caption-text">Régression linéaire, où la variable dépendante est la densité de matière grise pour un voxel, et le prédicteur est l’âge. Les valeurs de densité de matière grise proviennent de 100 sujets de la base de données OASIS (<a class="reference external" href="https://dx.doi.org/10.1162%2Fjocn.2009.21407">Marcus et al., 2010</a>), et les deux voxels sont présentés dans la <a class="reference internal" href="#vbm-distribution-fig"><span class="std std-numref">Fig. 93</span></a> (voxel bleu à gauche, voxel olive à droite). La régression linéaire est réalisée à l’aide de la libraire <a class="reference external" href="https://seaborn.pydata.org">seaborn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#regression-vbm-fig" title="Permalink to this image">¶</a></p>
 </div>
+<p>L’idée sous-jacente au modèle de régression est une équation, ou une sorte de loi, qui va prédire la variable dépendante, ici la densité de matière grise, à partir des prédicteurs, disons l’age. Mais, contrairement à une loi physique qui représente une dépendance exacte (dans un certain régime), cette loi ne capture qu’une fraction de la variance de notre mesure. La loi va donc incorporer un bruit, qui représente toutes les sources de variabilité que l’on ne peut pas capturer avec notre relation. La relation mathématique va prendre la forme suivante:</p>
+<p><code class="docutils literal notranslate"><span class="pre">densite_matiere_grise</span> <span class="pre">=</span> <span class="pre">b0</span> <span class="pre">+</span> <span class="pre">b1</span> <span class="pre">*</span> <span class="pre">age</span> <span class="pre">+</span> <span class="pre">e</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">densite_matiere_grise</span></code> est la densité de matière grise mesurée pour un voxel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">age</span></code> est l’âge du participant de recherche.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b0</span></code> est une valeur constante, appelée en anglais “intercept”. Cette valeur est identique pour tous les sujets. Dans ce cas, elle représentrait la densité de matière grise observée à la naissance (<code class="docutils literal notranslate"><span class="pre">age=0</span></code>), en moyenne sur la population.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b1</span></code> est une autre constante, qui dans ce cas mesure la réduction de matière grise par année de vie (en moyenne sur la population).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> est un bruit de mesure, qui capture toutes les variations de <code class="docutils literal notranslate"><span class="pre">densite_matiere_grise</span></code> que l’on ne peut pas expliquer avec <code class="docutils literal notranslate"><span class="pre">age</span></code>. Typiquement on suppose que la moyenne de <code class="docutils literal notranslate"><span class="pre">e</span></code> dans la population est <code class="docutils literal notranslate"><span class="pre">0</span></code>, et que la variance de <code class="docutils literal notranslate"><span class="pre">e</span></code> est identique pour tous les sujets, égale à <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p></li>
+</ul>
+<p>On ne connait évidemment pas les coefficients <code class="docutils literal notranslate"><span class="pre">b0</span></code> et <code class="docutils literal notranslate"><span class="pre">b1</span></code>, et on doit utiliser une procédure statistique pour les <code class="docutils literal notranslate"><span class="pre">estimer</span></code>, c’est à dire deviner (au mieux) leurs valeurs à partir des données dont on dispose. Par exemple, pour la région de couleur <code class="docutils literal notranslate"><span class="pre">olive</span></code> (graphe de droite dans <a class="reference internal" href="#regression-vbm-fig"><span class="std std-numref">Fig. 94</span></a>), on voit que l’on perd environ 25% de densité entre 20 ans et 90 ans, voir <a class="reference internal" href="#regression-vbm-fig"><span class="std std-numref">Fig. 94</span></a>. On perd donc environ 0.35% de densité de matière grise par an, soit <code class="docutils literal notranslate"><span class="pre">b1</span> <span class="pre">~</span> <span class="pre">-0.0035</span></code>. En utilisant cette valeur et en remarquant que la densité de matière grise est d’à peu près <code class="docutils literal notranslate"><span class="pre">0.85</span></code> à <code class="docutils literal notranslate"><span class="pre">20</span></code> ans, on en déduit que la densité à la naissance devrait être <code class="docutils literal notranslate"><span class="pre">b0=0.92</span></code>. En pratique la procédure statistique va choisir les valeurs <code class="docutils literal notranslate"><span class="pre">b0</span></code> et <code class="docutils literal notranslate"><span class="pre">b1</span></code> pour minimiser l’amplitude des résidus de la régression:</p>
+<p><code class="docutils literal notranslate"><span class="pre">residus</span> <span class="pre">=</span> <span class="pre">densite_matiere_grise</span> <span class="pre">-</span> <span class="pre">b0</span> <span class="pre">-</span> <span class="pre">b1</span> <span class="pre">*</span> <span class="pre">age</span></code></p>
+<p>Une fois les coefficients <code class="docutils literal notranslate"><span class="pre">b0</span></code> et <code class="docutils literal notranslate"><span class="pre">b1</span></code> estimés, on peut tracer une droite qui représente les valeurs de densité de matière grise prédites à partir de l’âge des sujets, voir <a class="reference internal" href="#regression-vbm-fig"><span class="std std-numref">Fig. 94</span></a>. Si le modèle explique beaucoup de la variabilité de la variable dépendante, les points mesurés seront proches de la droite de prédiction.</p>
 </div>
 <div class="section" id="analyse-massivement-univariee">
 <h3>Analyse massivement univariée<a class="headerlink" href="#analyse-massivement-univariee" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.glm.second_level</span> <span class="kn">import</span> <span class="n">make_second_level_design_matrix</span>
+<span class="n">design_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;subject_label&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;femelle&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">design_matrix</span> <span class="o">=</span> <span class="n">make_second_level_design_matrix</span><span class="p">(</span>
+    <span class="n">subject_label</span><span class="p">,</span>
+    <span class="n">design_df</span>
+    <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nilearn.glm.second_level</span> <span class="kn">import</span> <span class="n">SecondLevelModel</span>
+<span class="n">second_level_model</span> <span class="o">=</span> <span class="n">SecondLevelModel</span><span class="p">(</span><span class="n">smoothing_fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">second_level_model</span> <span class="o">=</span> <span class="n">second_level_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gray_matter_map_filenames</span><span class="p">,</span>
+                                            <span class="n">design_matrix</span><span class="o">=</span><span class="n">design_matrix</span><span class="p">)</span>
+<span class="n">beta0</span> <span class="o">=</span> <span class="n">second_level_model</span><span class="o">.</span><span class="n">compute_contrast</span><span class="p">(</span><span class="n">second_level_contrast</span><span class="o">=</span><span class="s2">&quot;intercept&quot;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;effect_size&quot;</span><span class="p">)</span>
+<span class="n">beta1</span> <span class="o">=</span> <span class="n">second_level_model</span><span class="o">.</span><span class="n">compute_contrast</span><span class="p">(</span><span class="n">second_level_contrast</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;effect_size&quot;</span><span class="p">)</span>
+
+<span class="c1"># On génère la Figure</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">roi_img</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+    <span class="n">beta0</span><span class="p">,</span> <span class="n">bg_img</span><span class="o">=</span><span class="n">gray_matter_map_filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cut_coords</span><span class="o">=</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>
+    <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;intercept (b0)&#39;</span><span class="p">)</span>
+<span class="n">roi_img</span><span class="o">.</span><span class="n">add_markers</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">roi_img</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+    <span class="n">beta1</span><span class="p">,</span> <span class="n">bg_img</span><span class="o">=</span><span class="n">gray_matter_map_filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cut_coords</span><span class="o">=</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>
+    <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;effet de l</span><span class="se">\&#39;</span><span class="s1">age (b1)&#39;</span><span class="p">)</span>
+<span class="n">roi_img</span><span class="o">.</span><span class="n">add_markers</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># On colle la figure dans le jupyter book</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;b0-b1-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>           
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="b0-b1-fig" style="width: 600px">
+<div class="cell_output docutils container">
+<img alt="_images/cartes_statistiques_5_0.png" src="_images/cartes_statistiques_5_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 95 </span><span class="caption-text">Cartes de paramètres statistiques dans une régression linéaire massivement univariée. Première ligne: intercept <code class="docutils literal notranslate"><span class="pre">b0</span></code>, deuxième ligne: effet linéaire de l’âge <code class="docutils literal notranslate"><span class="pre">b1</span></code>. Cette figure est adaptée d’un tutoriel de la librairie <a class="reference external" href="https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py">nilearn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#b0-b1-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>On a pour l’instant présenté le modèle de régression pour deux voxels seulement. Mais une carte VBM peut inclure des centaines de milliers de voxels. Les logiciels de neuroimagerie permettent d’effectuer systématiquement une régression linéaire pour l’ensemble des voxels, simultanément. Dans ce cas, on estime deux paramètres pour chaque voxel: <code class="docutils literal notranslate"><span class="pre">b0</span></code> (l’intercept) et <code class="docutils literal notranslate"><span class="pre">b1</span></code> (l’effet de l’âge). On va donc générer deux cartes statistiques séparées, voir <a class="reference internal" href="#b0-b1-fig"><span class="std std-numref">Fig. 95</span></a>. Ces deux cartes récapitulent donc des milliers de modèles de régression différents. Comme les régressions effectuées à chaque voxel sont indépendante les unes des autres, on parle de modèle univarié, par opposition à un modèle multivarié qui cherche à combiner les valeurs obtenues à différents voxels. De plus, comme on fait un très grand nombre de régressions en même temps, on parle de régression <strong>massivement univariée</strong>.</p>
+<div class="tip admonition" id="stats-multimodales">
+<p class="admonition-title">Statistiques et multimodalité</p>
+<p>Le modèle de régression est appliqué pour plusieurs modalités de neuroimagerie. Dans cet exemple, on s’intéresse à la VBM. Mais le même modèle fonctionne dès lors qu’on a une série de cartes pour différents sujets, et peut par exemple être utilisé en <a class="reference external" href="https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py">IRMf</a> ou bien en TEP. Le même type de modèle peut aussi s’appliquer à des mesures prises sur des récepteurs en imagerie optique, ou des mesures moyennes sur un faisceau de fibres en IRMd. Le modèle de régression est partout!</p>
+</div>
 </div>
 </div>
 <div class="section" id="modele-lineaire-general">
 <h2>Modèle linéaire général<a class="headerlink" href="#modele-lineaire-general" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_design_matrix</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_design_matrix</span><span class="p">(</span><span class="n">design_matrix</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Second level design matrix&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;maps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                                
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cartes_statistiques_7_0.png" src="_images/cartes_statistiques_7_0.png" />
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Variables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Ici, on a une représentation différente. Cette représentation a l’avantage de permettre de voir plusieurs « courbes » simultanément de manière claire. En mathématique, on appel ce type de représentation des « matrices ».</p>
 <p>On a plusieurs tableaux dans cette représentation. Dans le premier, on a une seule colonne avec plein de lignes, ensuite on a un tableau qui a le même nombre de lignes que le premier mais avec 4 colonnes et un dernier tableau avec seulement 3 lignes et une colonne. Dans les deux premiers tableaux, chaque ligne correspond à un sujet et chaque colonne correspond à un type de variable. Il faut préciser que l’on n’a pas pris le scan cérébral complet pour le premier tableau. En fait, on a pris le même voxel chez tous les participants (à l’aide d’un recalage).</p>
 <p>Les tons de gris représentent en fait des valeurs numériques. Or, pour aider à la visualisation, nous avons utilisé une échelle de couleurs qui représente ces valeurs.</p>
@@ -434,6 +523,7 @@ Ici, on a deux vecteurs qui cotent pour le sexe de nos participants et un autre 
 <p>Ca donnerait quelque chose comme ça et nous donnerait une carte de contraste statistique qui nous permet de contraster l’influence de la dépression chez les femmes et chez les hommes.
 Ce qui va changer d’un voxel à l’autre ce n’est pas les facteurs explicatifs, ce sont les y (les mesures d’activation). On n’aura ainsi pas les mêmes bêtas et les mêmes valeurs de contraste. C’est aussi appelé une approche massivement univariée.</p>
 <p>On peut parler d’une analyse de niveau 1 pour les analyses individuelles et les analyses de niveau 2 pour les analyses de groupe.</p>
+</div>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>

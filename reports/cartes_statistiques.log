@@ -17,75 +17,48 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Importer les librairies
-import numpy as np
-import matplotlib.pyplot as plt
-from nilearn import datasets
-from nilearn.input_data import NiftiMasker
-from nilearn.image import get_data
-
-# Charge les données
-n_subjects = 100  
-oasis_dataset = datasets.fetch_oasis_vbm(n_subjects=n_subjects)
-gray_matter_map_filenames = oasis_dataset.gray_matter_maps
-age = oasis_dataset.ext_vars['age'].astype(float)
-sex = oasis_dataset.ext_vars['mf'] == b'F'
-
-# On convertit les données en pandas dataframe
-# Deux voxels intéressants ont été sélectionnés
-import pandas as pd
-coords = np.array([[ 29.,  10.,   4.], [-19.,   8., -11.]])
-colors = ['blue', 'olive']
-
-from nilearn import input_data
-masker = input_data.NiftiSpheresMasker(coords)
-gm = masker.fit_transform(gray_matter_map_filenames)
-
-df = pd.DataFrame({
-    "age": age,
-    "sexe": oasis_dataset.ext_vars['mf'],
-    "MG1": gm[:, 0],
-    "MG2": gm[:, 1]
-    })
-
-df["sexe"] = df["sexe"].replace([b'F', b'M'], value=['femelle', 'male'])
-
+from nilearn.glm.second_level import make_second_level_design_matrix
+design_df = df[["subject_label", "age"]].replace(['femelle', 'male'], value=[0, 1])
+design_matrix = make_second_level_design_matrix(
+    subject_label,
+    design_df
+    )
+from nilearn.glm.second_level import SecondLevelModel
+second_level_model = SecondLevelModel(smoothing_fwhm=5.0)
+second_level_model = second_level_model.fit(gray_matter_map_filenames,
+                                            design_matrix=design_matrix)
+beta0 = second_level_model.compute_contrast(second_level_contrast="intercept", output_type="effect_size")
+beta1 = second_level_model.compute_contrast(second_level_contrast="age", output_type="effect_size")
 
 # On génère la Figure
 from nilearn import plotting
+import seaborn as sns
 fig = plt.figure(figsize=(24, 14))
 
-for i in range(0, 6):        
-    nx = np.floor_divide(i, 3)
-    ny = np.remainder(i, 3)
-    ax = plt.subplot2grid((2, 5), (nx, ny), colspan=1)
-    roi_img = plotting.plot_anat(
-        gray_matter_map_filenames[i], cut_coords=[coords[nx][2]], figure=fig,
-        axes=ax, display_mode='z', colorbar=False)
-    roi_img.add_markers([coords[nx]], colors[nx], 100)
+ax = plt.subplot2grid((2, 4), (0, 0), colspan=3)
+roi_img = plotting.plot_stat_map(
+    beta0, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='intercept (b0)')
+roi_img.add_markers([coords[1]], colors[1], 100)
 
-sns.set_theme(style="darkgrid")
-ax = plt.subplot2grid((2, 5), (0, 3), colspan=2)
-sns.histplot(
-    df["MG1"], ax=ax, binwidth=0.05, binrange=[0, 1], stat='frequency')
+ax = plt.subplot2grid((2, 4), (1, 0), colspan=3)
+roi_img = plotting.plot_stat_map(
+    beta1, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='effet de l\'age (b1)')
+roi_img.add_markers([coords[1]], colors[1], 100)
 
-ax = plt.subplot2grid((2, 5), (1, 3), colspan=2)
-sns.histplot(
-    df["MG2"], ax=ax, binwidth=0.05, binrange=[0, 1], stat='frequency')
-
+# On colle la figure dans le jupyter book
 from myst_nb import glue
-glue("vbm-distribution-fig", fig, display=False)
+glue("b0-b1-fig", fig.fig, display=False)           
 ------------------
 
-[0;31m-------------------------------------------------------------------------[0m
-[0;31mNameError[0m                               Traceback (most recent call last)
-[0;32m<ipython-input-1-69c0bd5720cd>[0m in [0;36m<module>[0;34m[0m
-[1;32m     46[0m     [0mroi_img[0m[0;34m.[0m[0madd_markers[0m[0;34m([0m[0;34m[[0m[0mcoords[0m[0;34m[[0m[0mnx[0m[0;34m][0m[0;34m][0m[0;34m,[0m [0mcolors[0m[0;34m[[0m[0mnx[0m[0;34m][0m[0;34m,[0m [0;36m100[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     47[0m [0;34m[0m[0m
-[0;32m---> 48[0;31m [0msns[0m[0;34m.[0m[0mset_theme[0m[0;34m([0m[0mstyle[0m[0;34m=[0m[0;34m"darkgrid"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     49[0m [0max[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0msubplot2grid[0m[0;34m([0m[0;34m([0m[0;36m2[0m[0;34m,[0m [0;36m5[0m[0;34m)[0m[0;34m,[0m [0;34m([0m[0;36m0[0m[0;34m,[0m [0;36m3[0m[0;34m)[0m[0;34m,[0m [0mcolspan[0m[0;34m=[0m[0;36m2[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     50[0m sns.histplot(
-
-[0;31mNameError[0m: name 'sns' is not defined
-NameError: name 'sns' is not defined
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;32m<ipython-input-3-d350afc603ed>[0m in [0;36m<module>[0;34m[0m
+[1;32m     31[0m [0;31m# On colle la figure dans le jupyter book[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     32[0m [0;32mfrom[0m [0mmyst_nb[0m [0;32mimport[0m [0mglue[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 33[0;31m [0mglue[0m[0;34m([0m[0;34m"b0-b1-fig"[0m[0;34m,[0m [0mfig[0m[0;34m.[0m[0mfig[0m[0;34m,[0m [0mdisplay[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mAttributeError[0m: 'Figure' object has no attribute 'fig'
+AttributeError: 'Figure' object has no attribute 'fig'
 
