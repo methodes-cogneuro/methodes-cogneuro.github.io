@@ -200,43 +200,135 @@ On a pour l'instant présenté le modèle de régression pour deux voxels seulem
 ```{admonition} Statistiques et multimodalité
 :class: tip
 :name: stats-multimodales
-Le modèle de régression est appliqué pour plusieurs modalités de neuroimagerie. Dans cet exemple, on s'intéresse à la VBM. Mais le même modèle fonctionne dès lors qu'on a une série de cartes pour différents sujets, et peut par exemple être utilisé en [IRMf](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) ou bien en TEP. Le même type de modèle peut aussi s'appliquer à des mesures prises sur des récepteurs en imagerie optique, ou des mesures moyennes sur un faisceau de fibres en IRMd. Le modèle de régression est partout!
+Le modèle de régression est appliqué pour plusieurs modalités de neuroimagerie. Dans cet exemple, on s'intéresse à la VBM. Mais le même modèle fonctionne dès lors qu'on a une série de cartes pour différents sujets, et peut par exemple être utilisé en [IRMf](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_second_level_one_sample_test.html#sphx-glr-auto-examples-05-glm-second-level-plot-second-level-one-sample-test-py) ou bien en TEP. Le même type de modèle peut aussi s'appliquer à des mesures prises sur des récepteurs en imagerie optique, ou des mesures moyennes sur un faisceau de fibres en IRMd. Le modèle de régression est partout!
 ```
 
 ## Modèle linéaire général
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-from nilearn.plotting import plot_design_matrix
-ax = plot_design_matrix(design_matrix)
-ax.set_title('Second level design matrix', fontsize=12)
-ax.set_ylabel('maps')
-plt.tight_layout()
-plt.show()                                                
-```    
+
 ### Variables
-Ici, on a une représentation différente. Cette représentation a l’avantage de permettre de voir plusieurs « courbes » simultanément de manière claire. En mathématique, on appel ce type de représentation des « matrices ».
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+sns.set_theme(style="ticks")
 
-On a plusieurs tableaux dans cette représentation. Dans le premier, on a une seule colonne avec plein de lignes, ensuite on a un tableau qui a le même nombre de lignes que le premier mais avec 4 colonnes et un dernier tableau avec seulement 3 lignes et une colonne. Dans les deux premiers tableaux, chaque ligne correspond à un sujet et chaque colonne correspond à un type de variable. Il faut préciser que l’on n’a pas pris le scan cérébral complet pour le premier tableau. En fait, on a pris le même voxel chez tous les participants (à l’aide d’un recalage).
+# Show the joint distribution using kernel density estimation
+fig = sns.jointplot(
+    data=df,
+    x="age", y="MG1", hue="sexe",
+    kind="scatter",
+)
 
-Les tons de gris représentent en fait des valeurs numériques. Or, pour aider à la visualisation, nous avons utilisé une échelle de couleurs qui représente ces valeurs.
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("age-sexe-fig", fig.fig, display=False)           
+```
+```{glue:figure} age-sexe-fig
+:figwidth: 600px
+:name: age-sexe-fig
+ Relation entre âge, sexe et densité de matière grise pour un voxel (le voxel de couleur bleu dans {numref}`vbm-distribution-fig`). Le graphique est réalisé à l'aide de la libraire [seaborn](https://seaborn.pydata.org) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
 
-Le premier tableau représente les valeurs des cartes cérébrales, qui sont les valeurs que l’on cherche à expliquer. Les tableaux à droite du « = » représentent les valeurs qui permettent d’expliquer les valeurs des cartes cérébrales.
-Ici, on a deux vecteurs qui cotent pour le sexe de nos participants et un autre qui représente le score de dépression pour chacune de nos observations (dans le premier tableau).
+L'approche de régression linéaire que l'on vient de voir est simple et puissante, mais elle est limitée à deux variables. En neurosciences humaines, on ne se trouvera généralement pas dans ce cas. On va très souvent vouloir étudier des facteurs multiples de manière conjointe. Même si la représentation du sexe des participants par une variable binaire est [très (très) simplificatrice](https://blogs.scientificamerican.com/sa-visual/visualizing-sex-as-a-spectrum/) - sans compter la diversité de l'identité de genre, nous allons quand même essayer d'intégrer le sexe (male vs femelle) dans notre analyse. La figure ci dessous montre les distributions d'âge et de matière grise (pour le voxel bleu), séparées par sexe. Ce graphique suggère que la distribution de matière grise est peut-être différente entre male et femelle, mais cette différence pourrait également être liée à l'âge. Le modèle linéaire général nous permet d'intégrer toutes ces variables dans une seule analyse.
 
-Cette représentation est plutôt simple, nous avons une formule ressemblant à y = mx+b, donnant une relation linéaire. À gauche on a le y, c’est ce qu’on cherche à modéliser. Le tableau à droite, on a les paramètres explicatifs. Pour le sexe, on a mis un 1 quand le sexe correspondait au sujet et un 0 lorsqu’il ne correspondait pas. Ainsi, on remarque que, ici, la moitié des sujets étaient des hommes et l’autre moitié étaient des femmes. La variable de dépression est mesurée à l’aide de questionnaires et le score est représenté ici dans la 3e colonne du 2e tableau. Le 3e tableau représente l’amplitude des différentes facteurs explicatifs que l’on peut changer afin de mieux expliquer nos valeurs IRMf. Ceci revient à la même chose qui a été vue dans les graphiques présentés plus tôt. Ainsi, le score que l’on tente d’expliquer pour un sujet (une ligne) sera obtenu à l’aide de la formule suivante : le score « homme » du sujet x le coefficient « homme » + le score « femme » du sujet x le coefficient « femme » + le score « dépression » du sujet x le coefficient « dépression ». Ce qui reste et qui n,est pas expliqué par cette formule correspondra aux résidus. Tel que vu plus tôt, la formule avec les coefficients auront comme but de minimiser les résidus le plus possible.
+### Régression multiple
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+from nilearn.plotting import plot_design_matrix
+design_df = df[["subject_label", "age", "sexe"]].replace(['femelle', 'male'], value=[0, 1])
+design_matrix = make_second_level_design_matrix(
+    subject_label,
+    design_df
+    )
+fig, ax = plt.subplots(ncols=5, figsize=(6, 12), sharey=True)
+Y = df["MG1"].to_numpy()
+X = design_matrix.to_numpy()
+ax[0].plot(np.expand_dims(Y, axis=1), range(len(Y)))
+ax[1].plot(X[:,0], range(len(Y)))
+ax[2].plot(X[:,1], range(len(Y)))
+ax[3].plot(X[:,2], range(len(Y)))
+ax[0].set_ylabel('# sujet', fontsize=18)
+ax[0].set_title('MG', fontsize=20)
+ax[1].set_title('Âge', fontsize=20)
+ax[2].set_title('Sexe', fontsize=20)
+ax[3].set_title('Intercept', fontsize=20)
+plot_design_matrix(design_matrix, ax=ax[4])
+ax[4].set_title('Matrice de dessein', fontsize=12)
+ax[4].set_ylabel('# sujet')
+plt.gca().invert_yaxis()
+plt.tight_layout()
 
-Ici, on a un exemple un peu plus complexe. À gauche, on a ce qu’on vient de voir et au centre, on a séparé le score de dépression pour les femmes et celui pour les hommes.
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("design-matrix-fig", fig, display=False)           
+```
+```{glue:figure} design-matrix-fig
+:figwidth: 600px
+:name: design-matrix-fig
+ Variables pour une régression multiples. La variable dépendante est la densité de matière grise pour un voxel (GM, le voxel de couleur bleu dans {numref}`vbm-distribution-fig`). Les autres colonnes représentent les variations de l'âge, du sexe et de l'intercept au travers des sujets (variables prédictives). Les variables prédictives sent généralement représentées de manière plus compact, sous la forme d'une image où la couleur de chaque pixel représente l'inténsité du régresseur. Le graphique est adapté d'un [code python](https://dartbrains.org/content/GLM.html) par l'équipe Dartbrains, ainsi que d'un [tutoriel nilearn](https://nilearn.github.io/glm/first_level_model.html) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
 
-Dans l’exemple précédent, le coefficient de dépression était le même pour les hommes et les femmes. On prétendait alors que le niveau d’influence de la dépression sur le cerveau des femmes et celui des hommes était pareil. Dans le tableau du centre, nous attribuions un coefficient différent aux scores de dépression des hommes et celui des femmes, prétendant alors que l’influence de la dépression sur le cerveau pourrait différer en fonction du sexe. Ici, on test alors le principe d’interaction. En statistiques classiques, on pourrait comparer ce modèle a une ANOVA.
+D'un point de vue mathématique, le modèle de régression multiple, parfois appelé modèle linéaire général, consiste simplement à incorporer plus de variables dans la "loi" qui prédit la variable dépendante à partir des régresseurs:
+`densite_matiere_grise = b0 + b1 * age + b2 * sexe + e`
 
-En réalité, ce modèle se nomme le modèle linéaire général car on peut pas mal tout tester. Si on veut faire un test-t, on peut le faire à l’aide de ce modèle.
+Le seul nouveau coefficient est `b2`, qui dans ce cas mesure la différence entre la moyenne de matière grise entre les femelles (codées avec un 0 dans le modèle) et les males (codés avec un 1 dans le modèle), **après ajustement pour l'âge des sujets**. Ce type de codage pour données catégorielles est appelé "dummy variable" en anglais, et permet d'intégrer des tests de différences de moyenne entre groupe dans un modèle de régression.
 
-Si on prend deux coefficients de notre modèle, on peut regarder la différence entre ces deux coefficients. Par exemple, on peut regarder si l’influence de la dépression sur le cerveau chez les femmes (ß1) diffère de celle de la dépression sur le cerveau chez les hommes (ß2).
+```{admonition} Régression multiple et statistiques classiques
+:class: tip
+:name: stats-regression
+Le modèle de régression multiple est très flexible. Il est possible de formuler la plupart des tests classiques, tels que l'analyse de variance (ANOVA) ou bien le test d'égalité des moyennes de Student (t-test) à l'aide du modèle de régression linéaire. Voir ce [guide](https://lindeloev.github.io/tests-as-linear/) pour plus de détails.
+```
 
-Ca donnerait quelque chose comme ça et nous donnerait une carte de contraste statistique qui nous permet de contraster l’influence de la dépression chez les femmes et chez les hommes.
-Ce qui va changer d’un voxel à l’autre ce n’est pas les facteurs explicatifs, ce sont les y (les mesures d’activation). On n’aura ainsi pas les mêmes bêtas et les mêmes valeurs de contraste. C’est aussi appelé une approche massivement univariée.
+### Cartes statistiques
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+second_level_model = SecondLevelModel(smoothing_fwhm=5.0)
+second_level_model = second_level_model.fit(gray_matter_map_filenames,
+                                            design_matrix=design_matrix)
+beta0 = second_level_model.compute_contrast(second_level_contrast="intercept", output_type="effect_size")
+beta1 = second_level_model.compute_contrast(second_level_contrast="age", output_type="effect_size")
+beta2 = second_level_model.compute_contrast(second_level_contrast="sexe", output_type="effect_size")
 
-On peut parler d’une analyse de niveau 1 pour les analyses individuelles et les analyses de niveau 2 pour les analyses de groupe.
+# On génère la Figure
+from nilearn import plotting
+import seaborn as sns
+fig = plt.figure(figsize=(24, 14))
+
+ax = plt.subplot2grid((2, 4), (0, 0), colspan=2)
+roi_img = plotting.plot_stat_map(
+    beta0, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='intercept (b0)')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((2, 4), (0, 2), colspan=2)
+roi_img = plotting.plot_stat_map(
+    beta1, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='effet de l\'age (b1)')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((2, 4), (1, 0), colspan=2)
+roi_img = plotting.plot_stat_map(
+    beta2, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='effet du sexe (b2)')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("multi-regression-fig", fig, display=False)           
+```
+```{glue:figure} multi-regression-fig
+:figwidth: 800px
+:name: multi-regression-fig
+ Cartes de paramètres statistiques dans une régression linéaire multiple massivement univariée. Haut gauche: intercept `b0`, haut droite: effet linéaire de l'âge `b1`, bas gauche: effet linéaire du sexe `b2`. Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+
+Une caractéristique un peu contre-intuitive avec la régression multiple est que la carte d'effet de l'âge est différente de la section avec la régression simple. En effet, l'effet de l'âge est maintenant évalué _après avoir pris en compte des différences de sexe_. Malgré cela, le résultat de la régression n'a pas changé de manière frappante: le cortex s'atrophie avec l'âge (en bleu), alors que le liquide céphalo-rachidien s'étend ce qui apparait comme une expansion de la matière grise à cause des effets de volume partiel (en rouge). L'analyse sur la variable de `sexe` montre que la densité de matière grise est plus élevée (en moyenne) dans le cortex chez les hommes, alors que la tendance est inversée au niveau du cervelet.
+
+## Tests statistiques
+
+### Tests t et valeur p
+
+### Comparaisons multiples
+
+### Correction de Bonferroni
 
 ## Conclusion
 
