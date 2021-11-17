@@ -328,7 +328,7 @@ glue("multi-regression-fig", fig, display=False)
 Cartes de paramètres statistiques dans une régression linéaire multiple massivement univariée. Haut gauche: intercept `b0`, haut droite: effet linéaire de l'âge `b1`, bas gauche: effet linéaire du sexe `b2`. Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-Une caractéristique qui peut être légèrement contre-intuitive avec la régression multiple est que la carte présentant l'effet de l'âge ici est différente de celle présentée dans la section portant sur la régression simple. En effet, l'effet de l'âge est maintenant évalué _après avoir pris en compte des différences de sexe_. Malgré cela, le résultat de la régression n'a pas changé de manière frappante: le cortex s'atrophie avec l'âge (en bleu), alors que le liquide céphalo-rachidien s'étend ce qui apparait comme une expansion de la matière grise à cause des effets de volume partiel (en rouge). L'analyse sur la variable `sexe` montre que la densité de matière grise est plus élevée (en moyenne) dans le cortex chez les hommes, alors que la tendance est inversée au niveau du cervelet.
+Une caractéristique qui peut être légèrement contre-intuitive avec la régression multiple est que la carte présentant l'effet de l'âge ici est différente de celle présentée dans la section portant sur la régression simple. En effet, l'effet de l'âge est maintenant évalué _après avoir pris en compte des différences de sexe_. Malgré cela, le résultat de la régression n'a pas changé de manière frappante: le cortex s'atrophie avec l'âge (en bleu), alors que le liquide céphalo-rachidien s'étend (en rouge). Ce qui apparait comme une expansion de la matière grise reflète probablement des effets de volume partiel et des tissus classifiés incorrectement comme de la matière grise. L'analyse sur la variable `sexe` montre que la densité de matière grise est plus élevée (en moyenne) dans le cortex chez les hommes, alors que la tendance est inversée au niveau du cervelet.
 
 ## Tests statistiques
 
@@ -490,7 +490,7 @@ Maintenant que l'on a discuté de l'interprétation de la valeur `p`, on doit ma
 
 Si l'on abaisse le seuil à `p<0.001`, on ne détecte plus que 0.1% du cerveau (en moyenne) sous l'hypothèse nulle, et on observe en effet une réduction du nombre de voxels dans la figure de gauche, 2ième ligne {numref}`threshold-fig`.
 
-La méthode la plus simple pour corriger du problème de comparaisons multiples est d'utiliser un seuil corrigé `p<0.05/N`, où N est le nombre de comparaisons (c'est à dire de tests). Dans notre cas, on a approximativement 100,000 voxels, donc on va utiliser `p<0.0000001`! Avec cette stratégie, aucun voxel ne passe le seuil dans notre expérience sous l'hypothèse nulle, voir figure en bas à gauche {numref}`threshold-fig`. En général c'est ce qui se passera (en moyenne) 19/20 permutations.
+La méthode la plus simple pour corriger du problème de comparaisons multiples est d'utiliser un seuil corrigé `p<0.05/N`, où N est le nombre de comparaisons (c'est à dire de tests). Dans notre cas, on a approximativement 100,000 voxels, donc on va utiliser `p<0.0000001`! Avec cette stratégie, aucun voxel ne passe le seuil dans notre expérience sous l'hypothèse nulle, voir figure en bas à gauche {numref}`threshold-fig`. En général c'est ce qui se passera (en moyenne) pour 19/20 permutations.
 
 Si l'on observe maintenant l'effet de ces différentes stratégies sur les données originales, on observe que plus le seuil `p` est petit, moins on détecte d'effets significatifs. Malgré tout, même avec `p<0.05` corrigé par l'approche de Bonferroni, on détecte toujours les effets principaux de l'âge.
 
@@ -505,3 +505,62 @@ En règle général, on doit faire un compromis entre la résolution (notre capa
 * Ce modèle est appliqué indépendamment à chaque voxel (approche massivement multivariée).
 * Il est possible d'utiliser le modèle linéaire général pour tester simultanément l'effet de plusieurs variables explicatives sur la variable dépendante.
 * Quand on effectue un grand nombre de tests statistiques à chaque voxel, il faut modifier le seuil de significativité du test (problème de comparaisons multiples).
+
+## Exercices
+
+```{admonition} Exercice 9.1
+:class: note
+On souhaite comparer la connectivité entre deux groupes de sujets, jeunes vs âgés.
+Décrivez les variables prédictives à inclure dans un modèle de régression.  
+Quelles autres variables vous semblent-elles importantes à inclure dans le modèle?
+```
+
+```{admonition} Exercice 9.2
+:class: note
+Vrai/faux (expliquez pourquoi)
+Le modèle de régression peut être utilisé pour effectuer des statistiques de groupe pour les types de mesures suivantes… (vrai/faux)
+ * IRMf
+ * IRM T1 (VBM)
+ * IRM T1 (volumétrie)
+ * IRM T1 (épaisseur corticale)
+ * Données comportementales
+ * Tomographie par émission de positrons
+ * Imagerie optique
+ * Imagerie de diffusion
+```
+
+```{admonition} Exercice 9.3
+:class: note
+Vrai/faux. On observe une différence de moyenne entre deux groupes, et l’on effectue un test statistique qui nous donne une valeur p.
+ * La valeur p est la probabilité qu’il n’y ait pas de vraie différence.
+ * Une faible valeur p indique une forte probabilité qu’il y ait une vraie différence.
+ * La valeur p indique la probabilité d’observer cette différence, au moins, s’il n’existait vraiment aucune différence entre les deux groupes.
+```
+
+```{admonition} Exercice 9.4
+:class: note
+Vrai/faux. Un problème de comparaisons multiples signifie.
+ * Qu’on effectue de manière répétée des test statistiques générant une valeur p.
+ * Que l’on répète un test statistique à chaque voxel dans une image du cerveau, par exemple.
+ * Que l’on teste beaucoup d’hypothèses dans un article, par exemple.
+ * Que l’on a quatre sous-groupes, et que l’on compare chacune des trois paires possibles de sous-groupes, par exemple.
+```
+
+```{admonition} Exercice 9.5
+:class: note
+Classer les analyses suivantes du plus petit au plus grand, en fonction du nombre de comparaisons multiples impliquées. Indiquez le nombre approximatif de comparaisons.
+On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.
+On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.
+On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.
+On compare le volume de l’hippocampe entre deux groupes de sujets.
+```
+
+```{admonition} Exercice 9.6
+:class: note
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://doi.org/10.1101/611186 ) sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring [doi](https://doi.org/10.1016/j.dadm.2019.07.007). Les questions suivantes requièrent des réponses à développement court.
+Pour répondre aux questions de cet exercice, on s'intéresse à la section 2.5.1 de l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://doi.org/10.1101/611186 ) sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring [doi](https://doi.org/10.1016/j.dadm.2019.07.007). Les questions suivantes requièrent des réponses à développement court.
+- Quelle est la variable dépendante du modèle linéaire?
+- Quelles variables explicatives sont incluses dans le modèle linéaire?
+- Sait on combien de comparaisons multiples sont faites?
+- Comment est ce que les comparaisons multiples sont corrigées?
+```

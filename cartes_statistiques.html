@@ -310,6 +310,11 @@
    Conclusion
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -356,9 +361,9 @@
 <p>Dans ce chapitre, il sera question de l’utilisation du modèle de régression pour générer des cartes statistiques cérébrales de groupe. Les statistiques de groupe permettent de combiner les mesures du cerveau de plusieurs individus et ainsi de contraster des groupes (ex. groupe de personnes jeunes et groupe de personnes âgées) ou bien de tester l’association avec une variable continue (ex. l’âge).</p>
 <p>Les objectifs spécifiques du cours portent sur les concepts suivants :</p>
 <ul class="simple">
-<li><p>la régression linéaire</p></li>
-<li><p>le modèle linéaire général</p></li>
-<li><p>les comparaisons multiples</p></li>
+<li><p>la régression linéaire,</p></li>
+<li><p>le modèle linéaire général,</p></li>
+<li><p>tests statistiques.</p></li>
 </ul>
 </div>
 <div class="section" id="regression-lineaire">
@@ -654,7 +659,7 @@
 </div>
 <p class="caption"><span class="caption-number">Fig. 98 </span><span class="caption-text">Cartes de paramètres statistiques dans une régression linéaire multiple massivement univariée. Haut gauche: intercept <code class="docutils literal notranslate"><span class="pre">b0</span></code>, haut droite: effet linéaire de l’âge <code class="docutils literal notranslate"><span class="pre">b1</span></code>, bas gauche: effet linéaire du sexe <code class="docutils literal notranslate"><span class="pre">b2</span></code>. Cette figure est adaptée d’un tutoriel de la librairie <a class="reference external" href="https://nilearn.github.io/auto_examples/05_glm_second_level/plot_oasis.html#sphx-glr-auto-examples-05-glm-second-level-plot-oasis-py">nilearn</a> (cliquer sur + pour voir le code). Cette figure est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#multi-regression-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Une caractéristique qui peut être légèrement contre-intuitive avec la régression multiple est que la carte présentant l’effet de l’âge ici est différente de celle présentée dans la section portant sur la régression simple. En effet, l’effet de l’âge est maintenant évalué <em>après avoir pris en compte des différences de sexe</em>. Malgré cela, le résultat de la régression n’a pas changé de manière frappante: le cortex s’atrophie avec l’âge (en bleu), alors que le liquide céphalo-rachidien s’étend ce qui apparait comme une expansion de la matière grise à cause des effets de volume partiel (en rouge). L’analyse sur la variable <code class="docutils literal notranslate"><span class="pre">sexe</span></code> montre que la densité de matière grise est plus élevée (en moyenne) dans le cortex chez les hommes, alors que la tendance est inversée au niveau du cervelet.</p>
+<p>Une caractéristique qui peut être légèrement contre-intuitive avec la régression multiple est que la carte présentant l’effet de l’âge ici est différente de celle présentée dans la section portant sur la régression simple. En effet, l’effet de l’âge est maintenant évalué <em>après avoir pris en compte des différences de sexe</em>. Malgré cela, le résultat de la régression n’a pas changé de manière frappante: le cortex s’atrophie avec l’âge (en bleu), alors que le liquide céphalo-rachidien s’étend (en rouge). Ce qui apparait comme une expansion de la matière grise reflète probablement des effets de volume partiel et des tissus classifiés incorrectement comme de la matière grise. L’analyse sur la variable <code class="docutils literal notranslate"><span class="pre">sexe</span></code> montre que la densité de matière grise est plus élevée (en moyenne) dans le cortex chez les hommes, alors que la tendance est inversée au niveau du cervelet.</p>
 </div>
 </div>
 <div class="section" id="tests-statistiques">
@@ -842,6 +847,68 @@
 <li><p>Il est possible d’utiliser le modèle linéaire général pour tester simultanément l’effet de plusieurs variables explicatives sur la variable dépendante.</p></li>
 <li><p>Quand on effectue un grand nombre de tests statistiques à chaque voxel, il faut modifier le seuil de significativité du test (problème de comparaisons multiples).</p></li>
 </ul>
+</div>
+<div class="section" id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Exercice 9.1</p>
+<p>On souhaite comparer la connectivité entre deux groupes de sujets, jeunes vs âgés.
+Décrivez les variables prédictives à inclure dans un modèle de régression.<br />
+Quelles autres variables vous semblent-elles importantes à inclure dans le modèle?</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 9.2</p>
+<p>Vrai/faux (expliquez pourquoi)
+Le modèle de régression peut être utilisé pour effectuer des statistiques de groupe pour les types de mesures suivantes… (vrai/faux)</p>
+<ul class="simple">
+<li><p>IRMf</p></li>
+<li><p>IRM T1 (VBM)</p></li>
+<li><p>IRM T1 (volumétrie)</p></li>
+<li><p>IRM T1 (épaisseur corticale)</p></li>
+<li><p>Données comportementales</p></li>
+<li><p>Tomographie par émission de positrons</p></li>
+<li><p>Imagerie optique</p></li>
+<li><p>Imagerie de diffusion</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 9.3</p>
+<p>Vrai/faux. On observe une différence de moyenne entre deux groupes, et l’on effectue un test statistique qui nous donne une valeur p.</p>
+<ul class="simple">
+<li><p>La valeur p est la probabilité qu’il n’y ait pas de vraie différence.</p></li>
+<li><p>Une faible valeur p indique une forte probabilité qu’il y ait une vraie différence.</p></li>
+<li><p>La valeur p indique la probabilité d’observer cette différence, au moins, s’il n’existait vraiment aucune différence entre les deux groupes.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 9.4</p>
+<p>Vrai/faux. Un problème de comparaisons multiples signifie.</p>
+<ul class="simple">
+<li><p>Qu’on effectue de manière répétée des test statistiques générant une valeur p.</p></li>
+<li><p>Que l’on répète un test statistique à chaque voxel dans une image du cerveau, par exemple.</p></li>
+<li><p>Que l’on teste beaucoup d’hypothèses dans un article, par exemple.</p></li>
+<li><p>Que l’on a quatre sous-groupes, et que l’on compare chacune des trois paires possibles de sous-groupes, par exemple.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 9.5</p>
+<p>Classer les analyses suivantes du plus petit au plus grand, en fonction du nombre de comparaisons multiples impliquées. Indiquez le nombre approximatif de comparaisons.
+On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.
+On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.
+On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.
+On compare le volume de l’hippocampe entre deux groupes de sujets.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 9.6</p>
+<p>Pour répondre aux questions de cet exercice, lisez d’abord l’article <em>Tau pathology in cognitively normal older adults</em> de Ziontz et collaborateurs (disponible comme <a class="reference external" href="https://doi.org/10.1101/611186">preprint</a> sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer’s &amp; Dementia: Diagnosis, Assessment &amp; Disease Monitoring <a class="reference external" href="https://doi.org/10.1016/j.dadm.2019.07.007">doi</a>. Les questions suivantes requièrent des réponses à développement court.
+Pour répondre aux questions de cet exercice, on s’intéresse à la section 2.5.1 de l’article <em>Tau pathology in cognitively normal older adults</em> de Ziontz et collaborateurs (disponible comme <a class="reference external" href="https://doi.org/10.1101/611186">preprint</a> sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer’s &amp; Dementia: Diagnosis, Assessment &amp; Disease Monitoring <a class="reference external" href="https://doi.org/10.1016/j.dadm.2019.07.007">doi</a>. Les questions suivantes requièrent des réponses à développement court.</p>
+<ul class="simple">
+<li><p>Quelle est la variable dépendante du modèle linéaire?</p></li>
+<li><p>Quelles variables explicatives sont incluses dans le modèle linéaire?</p></li>
+<li><p>Sait on combien de comparaisons multiples sont faites?</p></li>
+<li><p>Comment est ce que les comparaisons multiples sont corrigées?</p></li>
+</ul>
+</div>
 </div>
 </div>
 
