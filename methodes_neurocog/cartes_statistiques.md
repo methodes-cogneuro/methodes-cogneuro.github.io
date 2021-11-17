@@ -325,18 +325,175 @@ Une caractéristique un peu contre-intuitive avec la régression multiple est qu
 ## Tests statistiques
 
 ### Tests t et valeur p
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+from nilearn.image import math_img
+z_score = second_level_model.compute_contrast(second_level_contrast="age", output_type="z_score")
+p_value = second_level_model.compute_contrast(second_level_contrast="age", output_type="p_value")
+neg_log_pval = math_img("-np.log10(np.minimum(1, img))", img=p_value)
+
+# On génère la Figure
+from nilearn import plotting
+import seaborn as sns
+fig = plt.figure(figsize=(24, 6))
+
+ax = plt.subplot2grid((1, 4), (0, 0), colspan=2)
+roi_img = plotting.plot_stat_map(
+    z_score, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test (âge)')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((1, 4), (0, 2), colspan=2)
+roi_img = plotting.plot_stat_map(
+    neg_log_pval, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='significativité (-log10(p))')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("tmap-pval-fig", fig, display=False)           
+```
+```{glue:figure} tmap-pval-fig
+:figwidth: 800px
+:name: tmap-pval-fig
+ Tests statistiques sur la significativité de l'association entre densité de matière grise et âge. Test t de Student (haut) et log10(p) (bas). Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_second_level_one_sample_test.html#sphx-glr-auto-examples-05-glm-second-level-plot-second-level-one-sample-test-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Une fois que l'on a estimé l'effet de certaines variables explicatives (par exemple, l'âge) sur notre variable dépendante (par exemple, la densité de matière grise), il est nécessaire de tester la **significativité** de cet effet. À cette fin, on utilise l'amplitude des résidus pour estimer la taille d'effet que l'on pourrait observer par chance, si uniquement ces résidus étaient présents. On en déduit un test `t` de Student, qui se comporte comme une [loi normale](https://fr.wikipedia.org/wiki/Loi_normale) quand le nombre de sujets est grand. Pour chaque voxel, on a donc une statistique `t` différente, et on peut calculer la probabilité `p` d'observer cette statistique sous l'**hypothèse nulle**, où l'effet de la variable explicative est exactement zéro.
+
+### Hypothèse nulle
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+from numpy.random import seed
+from numpy.random import shuffle
+# seed random number generator
+seed(1)
+design_rand_df = df[["subject_label", "age"]].replace(['femelle', 'male'], value=[0, 1])
+design_rand_matrix = make_second_level_design_matrix(
+    subject_label,
+    design_df
+    )
+shuffle(design_rand_matrix["age"].to_numpy())
+
+second_level_model_rand = SecondLevelModel(smoothing_fwhm=5.0)
+second_level_model_rand = second_level_model.fit(gray_matter_map_filenames,
+                                            design_matrix=design_rand_matrix)
+
+z_score_rand = second_level_model_rand.compute_contrast(second_level_contrast="age", output_type="z_score")
+p_value_rand = second_level_model_rand.compute_contrast(second_level_contrast="age", output_type="p_value")
+neg_log_pval_rand = math_img("-np.log10(np.minimum(1, img))", img=p_value_rand)
+
+# On génère la Figure
+from nilearn import plotting
+import seaborn as sns
+fig = plt.figure(figsize=(24, 6))
+
+ax = plt.subplot2grid((1, 4), (0, 0), colspan=2)
+roi_img = plotting.plot_stat_map(
+    z_score_rand, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test (H0)')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((1, 4), (0, 2), colspan=2)
+roi_img = plotting.plot_stat_map(
+    neg_log_pval_rand, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='significativité H0 (-log10(p))')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("null-fig", fig, display=False)           
+```
+```{glue:figure} null-fig
+:figwidth: 800px
+:name: null-fig
+ Tests statistiques sur la significativité de l'association entre densité de matière grise et âge, sous l'hypothèse nulle où il n'existe aucune association. Les données d'âge ont été permutées aléatoirement entre les sujets. Test t de Student (haut) et log10(p) (bas). Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_second_level_one_sample_test.html#sphx-glr-auto-examples-05-glm-second-level-plot-second-level-one-sample-test-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Au coeur de l'interprétation de la valeur `p`, il y a ce qu'on appelle l'**hypothèse nulle**. Pour essayer de comprendre ce que cela veut dire, faisons une expérience. Nous allons recommencer toute la procédure d'estimation de l'effet de l'âge sur la densité de matière grise. Mais cette fois ci, au lieu d'utiliser l'âge réel des sujets, nous allons mélanger ces valeurs aléatoirement (on parle de [permutations](https://fr.wikipedia.org/wiki/Permutation)). La distribution des tests `t` et des valeurs `p` est présentée dans la {numref}`null-fig`. De manière frappante, les valeurs `t` sont beaucoup plus petites avec les valeurs d'âge aléatoires que lorsqu'on a fait l'analyse avec les vraies valeurs, mais certaines valeurs restent élevées. On a réalisé une expérience sous l'hypothèse nulle, où il n'existe aucune association avec l'âge. La valeur `p` nous indique la **fréquence** avec laquelle on trouvera des valeurs d'effet de l'âge plus élevées sous l'hypothèse nulle que dans l'échantillon original. Pour estimer cela directement, il faudrait recommencer l'expérience que l'on vient de faire avec des milliers de permutations! Mais il existe aussi des méthodes approximées plus rapide.
 
 ### Comparaisons multiples
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
 
-### Correction de Bonferroni
+from nilearn.glm import threshold_stats_img
+from scipy.stats import norm
+p_val = 0.001
+p001_uncorrected = norm.isf(p_val)
+p_val = 0.05
+p05_uncorrected = norm.isf(p_val)
 
+# On génère la Figure
+from nilearn import plotting
+import seaborn as sns
+fig = plt.figure(figsize=(24, 18))
+
+ax = plt.subplot2grid((3, 4), (0, 2), colspan=2)
+roi_img = plotting.plot_stat_map(
+    z_score, threshold=p05_uncorrected, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test, p<0.05')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((3, 4), (1, 2), colspan=2)
+roi_img = plotting.plot_stat_map(
+    z_score, threshold=p001_uncorrected, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test, p<0.001')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((3, 4), (2, 2), colspan=2)
+thresholded_map, threshold = threshold_stats_img(
+    z_score, alpha=.05, height_control='bonferroni')
+roi_img = plotting.plot_stat_map(
+    z_score, threshold=threshold, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test, p<0.05 corrigé')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((3, 4), (0, 0), colspan=2)
+roi_img = plotting.plot_stat_map(
+    z_score_rand, threshold=p05_uncorrected, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test (H0), p<0.05')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((3, 4), (1, 0), colspan=2)
+roi_img = plotting.plot_stat_map(
+    z_score_rand, threshold=p001_uncorrected, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test (H0), p<0.001')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+ax = plt.subplot2grid((3, 4), (2, 0), colspan=2)
+thresholded_map_rand, threshold_rand = threshold_stats_img(
+    z_score_rand, alpha=.05, height_control='bonferroni')
+roi_img = plotting.plot_stat_map(
+    z_score_rand, threshold=threshold_rand, bg_img=gray_matter_map_filenames[0], cut_coords=coords[1], figure=fig,
+    axes=ax, display_mode='ortho', colorbar=True, title='t-test (H0), p<0.05 corrigé')
+roi_img.add_markers([coords[1]], colors[1], 100)
+
+# On colle la figure dans le jupyter book
+from myst_nb import glue
+glue("threshold-fig", fig, display=False)           
+```
+```{glue:figure} threshold-fig
+:figwidth: 800px
+:name: threshold-fig
+ Effet de différentes stratégies de seuillage sur l'association entre l'âge et la densité de matière grise. À gauche: données sous l'hypothèse nulle (valeurs d'âge permutée au travers des sujets). À droite: données originales. Ligne 1: seuil `p<0.05` non corrigé pour les comparaisons multiples; ligne 2: seuil `p<0.001` non corrigé pour les comparaisons multiples; seuil `p<0.05` corrigé pour les comparaisons multiples par l'approche de Bonferroni. Cette figure est adaptée d'un tutoriel de la librairie [nilearn](https://nilearn.github.io/auto_examples/05_glm_second_level/plot_thresholding.html#sphx-glr-auto-examples-05-glm-second-level-plot-thresholding-py) (cliquer sur + pour voir le code). Cette figure est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+
+Maintenant que l'on a discuté de l'interprétation de la valeur `p`, on doit maintenant décider d'un seuil à appliquer sur les valeurs `p`. Si l'on utilise le seuil habituel `p<0.05`, cela signifie que pour 20 permutations, on détectera une association 1 fois (en moyenne) pour un voxel donné. Mais comme on a des milliers de voxels dans le cerveau, cela veut dire que l'on va détecter 5% du cerveau (en moyenne) pour chaque permutation! C'est ce que l'on observe (et même plus) dans la figure en haut à gauche {numref}`threshold-fig`. Il s'agit du **problème de comparaisons multiples**, et plus on fait de tests, plus ce problème est important.
+
+Si l'on abaisse le seuil à `p<0.001`, on ne détecte plus que 0.1% du cerveau (en moyenne) sous l'hypothèse nulle, et on observe en effet une réduction du nombre de voxels dans la figure de gauche, 2ième ligne {numref}`threshold-fig`.
+
+La méthode la plus simple pour corriger du problème de comparaisons multiples est d'utiliser un seuil corrigé `p<0.05/N`, où N est le nombre de comparaisons (c'est à dire de tests). Dans notre cas, on a approximativement 100,000 voxels, donc on va utiliser `p<0.0000001`! Avec cette stratégie, aucun voxel ne passe le seuil dans notre expérience sous l'hypothèse nulle, voir figure en bas à gauche {numref}`threshold-fig`. En général c'est ce qui se passera (en moyenne) 19/20 permutations.
+
+Si l'on observe maintenant l'effet de ces différentes stratégies sur les données originales, on observe que plus le seuil `p` est petit, moins on détecte d'effets significatifs. Malgré tout, même avec `p<0.05` corrigé par l'approche de Bonferroni, on détecte toujours les effets principaux de l'âge.
+
+```{admonition} Compromis résolution / puissance
+:class: tip
+:name: resolution-power
+En règle général, on doit faire un compromis entre la résolution (notre capacité à détecter des effets dans de petites régions du cerveau) et la puissance statistique (notre capacité à détecter des effets de petite taille). Si l'on veut une excellente résolution, on fait des tests à tous les voxels, mais on doit corriger pour un très grand nombre de comparaisons multiples. En revanche, si l'on ne teste qu'une valeur moyenne sur une région, on n'a qu'un seul test et aucune correction à appliquer, mais on ne sait pas ce qui se passe dans le reste du cerveau, ou à l'intérieur de cette région.
+```
 ## Conclusion
 
-En générale quand on parle de l’IRMf ou même de la VBM, on trouve des blobs qui présentent des effets significatifs. Ce qui est important de se rappeler est toute la série d’étapes qui mènent à ce type de carte.
-1. La première, l’hypothèse psychologique : 	On avait commencé le cours avec ces deux tâches avec les visages qui expriment les émotions et des stimuli contrôles. Notre est hypothèse est que ce sont les visages qui expliquent le patron d’activation observé.  
-2. Ensuite, on a des hypothèses au niveau neuronal : On émet des hypothèses au sujet du type de réponse neuronale observé. En IRMf, on émet l’hypothèse que l’activation atteint son plafond quand la stimulation est débutée et qu’elle retombe à 0 une fois le bloc terminé.
-3. Finalement, on a des hypothèses hémodynamiques : On va supposer que l’activité BOLD enregistrée en IRMf va correspondre à l’activité neuronale.
-
-À la fin, on aura des étapes d’analyses d’images, de recalage, de débruitage et de modélisation statistique.
-
-Ainsi, il y a beaucoup de choses, de choix et d’hypothèses qui vont derrière ce petit blob rouge qui ressort dans des cartes statistiques.
+* Le modèle de régression simple permet de prédire les observations d'une variable dépendante à partir d'une varible explicative.
+* Ce modèle est appliqué indépendamment à chaque voxel (approche massivement multivariée).
+* Il est possible d'utiliser le modèle linéaire général pour tester simultanément l'effet de plusieurs variables explicatives sur la variable dépendante.
+* Quand on effectue un grand nombre de tests statistiques à chaque voxel, il faut modifier le seuil de significativité du test (problème de comparaisons multiples).
