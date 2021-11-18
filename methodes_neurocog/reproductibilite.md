@@ -74,15 +74,15 @@ contribuent à cette crise.
 Avant de rentrer dans les détails de la crise, on doit savoir ce qu’est générer
 des connaissances et des découvertes scientifiques.
 
-### Découvertes scientifiques
-Pour faire cela, on va se
-référer à la théorie de Popper sur la méthode scientifique. Dans la façon dont
-elle est implémentée dans la plupart des communautés de recherche, c’est
-un cercle vertueux (on l’espère).
-Nous allons commencer avec les publications. Les publications ce sont les
-connaissances qui ont été accumulées par d’autres, donc on va les lire et on
-va apprendre. Et en fonction de ça, on va commencer à essayer de
-comprendre le monde qui nous entoure et faire des hypothèses sur des
+### Le cycle des découvertes
+```{figure} ./reproductibilite/researchcycle_original.png
+---
+width: 800px
+name: researchcycel-original-fig
+---
+Cette figure illustre le cycle des découvertes scientifiques, selon l'approche de la méthode scientifique décrite par [Karl Popper](https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences). Figure adaptée d'un travail original par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807). La figure adaptée par P. Bellec est elle-même disponible sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Pour formaliser le processus de génération de connaissances en sciences, on va se référer à la théorie de [Karl Popper](https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences), et la façon dont elle est implémentée dans la plupart des communautés de recherche. Ce processus devrait être un cercle vertueux (on l’espère). Nous allons commencer avec les publications. Les publications ce sont les connaissances qui ont été accumulées par d’autres, donc on va les lire et on va apprendre. Et en fonction de ça, on va commencer à essayer de comprendre le monde qui nous entoure et faire des hypothèses sur des
 choses qu’on ne connait pas encore. On va ensuite concevoir notre étude
 (devis de recherche : nombre de participants, groupes, tests statistiques) et
 faire une prédiction quant aux résultats qu’on va obtenir. Une fois mon
