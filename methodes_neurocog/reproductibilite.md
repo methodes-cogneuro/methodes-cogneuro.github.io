@@ -14,151 +14,98 @@ kernelspec:
 ---
 (reproductibilite-controverses-chapitre)=
 # Reproductibilité et controverses
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/elisabethloranger">
+        <img src="https://avatars.githubusercontent.com/u/90270981?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Élisabeth Loranger</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/pbellec">
+        <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Pierre bellec</b></sub>
+      </a>
+      <br />
+        <a title="Contenu">🤔</a>
+    </td>
+  </tr>
+</table>
+
+Durant ce cours, on a passé en revue diverses techniques de neuroimagerie qui ouvrent une fenêtre fascinante sur la structure et la fonction du cerveau. Mais ces techniques sont régulièrement impliquées dans des articles scientifiques qui semblent peu crédibles. Dans ce cours nous allons discuter des controverses autour de la neuroimagerie, et plus généralement de la crise de reproducibilité en sciences.
 
 Les objectifs de ce cours sont les suivants :
-- Comprendre la crise de reproductibilité en neuroscience cognitive
+- Comprendre la crise de reproductibilité en sciences.
 - Comprendre certaines pratiques scientifiques douteuses qui participent
-au manque de reproductibilité en neuroscience cognitive
-- Connaître certains outils qui peuvent améliorer la reproductibilité
+au manque de reproductibilité en neurosciences cognitives.
+- Connaître certains outils qui peuvent améliorer la reproductibilité en neurosciences cognitives.
 
 ## La crise de reproductibilité
 
-### Une crise?
-Dans ces diapos, on voit des résultats d’une étude qui a été publiée dans
-Nature en 2016. Ce journal est prestigieux, on verra que ce type de prestige
-fait partie du problème. Ils ont fait un sondage dans le but de voir si, dans la
+### Une crise? Quelle crise?
+```{figure} ./reproductibilite/significant.png
+---
+width: 600px
+name: significant-fig
+---
+Cette figure illustre le processus qui amène à un résultat scientifique controversé (et le problème de comparaisons multiples). Cette figure est tirée de [xkcd webcomic](https://xkcd.com/882/), sous licence [CC-BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/).
+```
+En 2016, un sondage auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
 perception des professionnels dans la recherche, il y a une crise de
-reproductibilité et si oui, laquelle. Donc le premier graphique qui est à
-gauche c’est sur 1500 chercheurs. 52% disent qu’il y a une crise significative
-et 38% disent qu’il y a une petite crise. En tout, 90% des chercheurs pensent
-qu’il y a effectivement une crise de reproductibilité. Ainsi, on peut dire que la
-perception de la crise de reproductibilité est une perception qui est assez
-partagée, il y a vraiment une prise de conscience des difficultés reliées à la
-reproductibilité. Ce sondage ne porte pas spécifiquement sur la
-neuroimagerie, même pas sur les neurosciences, c’est sur la recherche
-scientifique en générale. Mais, le domaine de la neuroimagerie est aussi
-impacté que les autres domaines de la recherche, voire même un peu plus
-car les problèmes qui amènent cette crise de reproductibilité sont exacerbés
-en neuroimagerie.
-Le manque de reproductibilité, c’est quoi ? C’est simplement que, quand on
-lit un papier, est-ce qu’on peut vraiment faire confiance à ce qui est rapporté
-? Les résultats peuvent parfois prendre plusieurs formes si on avait accès
-aux données derrière ce papier. Est-ce qu’on serait capables de refaire les
-analyses et arriver aux mêmes conclusions ? Une autre idée de
-reproductibilité est la réplication, si je recrute de nouveaux sujets et que je
-fais exactement ce que les autres chercheurs ont fait au niveau des outils
-utilisés et les analyses effectuées, est-ce que je vais trouver les mêmes
-résultats ? Ce sont les deux grandes idées de la reproductibilité :
-1. Refaire exactement les résultats sur les données d’un papier
-2. Répliquer les résultats avec des données indépendantes  
-Donc, quand on demande aux gens c’est quoi qui amène cette crise de
-reproductibilité, les gens listent une série de problèmes. Si on regarde le
-graphique, les raisons sont listées de haut en bas par rapport à ce que les
-gens jugent comme le plus important dans la crise. En fait, on voit en haut,
-que dans les raisons les plus fréquemment mentionnées par les chercheurs
-on retrouve la pression à publier et la publication sélective (les gens publient
-seulement ce qui fonctionne bien) ainsi que la puissance statistique limitée.
-C’est notre top 3.
-Tout en bas de l’échelle, on a la raison « pas de chance ».  Tout au long du
-cours, on a parlé d’erreur statistique, d’erreur de famille, de taux de fausse
-découverte, etc. Ces techniques-là cherchent toutes à quantifier et contrôler
-des faux positifs. Intuitivement, les gens se disent qu’on contrôlant pour les
-faux positifs à l’aide de statistiques rigoureuses, j’augmente la probabilité
-d’être capable de répliquer la découverte. Et donc, si on ne réplique pas,
-c’est du a de la malchance. Dans la communauté de recherche, le fait d’avoir
-pas de chance c’est le facteur le moins important dans la crise de
-reproductibilité. Les gens pensent que le taux de faux positifs n’est pas
-quelque chose de central dans cette crise. C’est plein d’autres facteurs
-méthodologiques et dans une certaine mesure, sociologiques, qui
-contribuent à cette crise.
-Avant de rentrer dans les détails de la crise, on doit savoir ce qu’est générer
-des connaissances et des découvertes scientifiques.
+reproductibilité et si oui, laquelle ([Baker, 2016](https://www.nature.com/articles/533452a#change-history)). En tout, 90% des chercheurs dans ce sondage pensent
+qu’il y a effectivement une crise de reproductibilité (52% pour une crise significative et 38% pour une crise modérée).
 
-### Le cycle des découvertes
+La reproductibilité, c’est quoi ? Si on avait accès
+aux données derrière ce papier, est-ce qu’on serait capable de refaire les
+analyses et arriver aux mêmes conclusions ? Un autre concept proche est la réplication: en recrutant de nouveaux sujets et en faisant exactement ce que les autres chercheurs ont fait au niveau des outils utilisés et des analyses effectuées, est-ce qu'on va trouver les mêmes résultats ? Dans le sondage, 70% des personnes sondées rapportent avoir échoué à reproduire les résultats d'une autre équipe de recherche, et plus de 50% rapportent avoir échoué à reproduire leurs propres résultats.
+
+Les personnes sondées ont aussi évalué les causes probables de cette crise de
+reproductibilité. Parmi les raisons les plus fréquemment mentionnées,
+on retrouve la _pression à publier_ et la _publication sélective_ (les gens publient
+seulement ce qui fonctionne bien) ainsi que la _puissance statistique limitée_.
+Ce chapitre va expliquer certaines de ces notions plus en détails, en démarrant par formaliser le processus de génération de connaissances scientifiques.
+
+### La méthode scientifique
 ```{figure} ./reproductibilite/researchcycle_original.png
 ---
 width: 800px
-name: researchcycel-original-fig
+name: researchcycle-original-fig
 ---
 Cette figure illustre le cycle des découvertes scientifiques, selon l'approche de la méthode scientifique décrite par [Karl Popper](https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences). Figure adaptée d'un travail original par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807). La figure adaptée par P. Bellec est elle-même disponible sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-Pour formaliser le processus de génération de connaissances en sciences, on va se référer à la théorie de [Karl Popper](https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences), et la façon dont elle est implémentée dans la plupart des communautés de recherche. Ce processus devrait être un cercle vertueux (on l’espère). Nous allons commencer avec les publications. Les publications ce sont les connaissances qui ont été accumulées par d’autres, donc on va les lire et on va apprendre. Et en fonction de ça, on va commencer à essayer de comprendre le monde qui nous entoure et faire des hypothèses sur des
-choses qu’on ne connait pas encore. On va ensuite concevoir notre étude
-(devis de recherche : nombre de participants, groupes, tests statistiques) et
-faire une prédiction quant aux résultats qu’on va obtenir. Une fois mon
-protocole élaboré, il est temps d’aller recueillir les données. Ensuite, on les
-analyse et je sais ce que je vais faire car j’avais déjà déterminé les tests lors
-de l’élaboration de mon protocole. Ensuite, j’interprète les résultats. Ça, c’est
-le plan. Si les choses allaient comme ça, ça ne serait pas si pire. Comme on
-utilise des statistiques rigoureuses dans ce plan, on ne génère pas trop de
-faux positifs, et donc on fait des découvertes scientifiques avec un petit peu
-de bruit, mais dans une quantité raisonnable. Ça, c’est la théorie. En
-pratique, ce n’est pas pareil.
+La figure {numref}`researchcycle-original` présente une version simplifiée de la méthode scientifique pour la découverte de connaissances, inspirée par la théorie de [Karl Popper](https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences), telle qu'elle est généralement implémentée dans la communauté de recherche.
+ * On commence avec les publications, qui représentent les connaissances qui ont été accumulées par d’autres.
+ * En lisant cette litérature, les chercheuses/chercheurs peuvent apprendre ce qui a déjà été découvert, et faire des hypothèses sur des choses qu’on ne connait pas encore.
+ * Les chercheuses/chercheurs vont alors formuler un devis de recherche : nombre de participants, groupes, tests statistiques, etc. Elles/ils vont aussi faire des prédicitions concernant les résultats qu’elles/ils pensent obtenir.
+ * Une fois le devis de recherche élaboré, il est temps de recueillir les données.
+ * Ensuite, on analyse les données en suivant le protocole qui avait été établi dans le devis de recherche.
+ * Il faut alors interpréter les résultats, et notamment les comparer à nos prédictions pour valider ou invalider nos hypothèses.
+ * Les résultats de la recherche sont alors publiés pour permettre au reste de la communauté de recherche de continuer à formuler de nouvelles hypothèses.
 
-### Découverts scientifiques: hacked
+ Comme on utilise des statistiques rigoureuses dans cette approche, on ne génère qu'une quantité limité de faux positifs, et donc on fait des découvertes scientifiques sans faire trop d'erreurs. En pratique, cette approche peut être adaptée de nombreuses manières avec _des pratiques de recherche douteuses_ qui vont compromettre l'intégrité et la rigueur des conclusions de l'étude.
 
-#### Publication
-Donc, redémarrons depuis nos publications. À sa gauche, on voit la
-publication sélective et à sa droite, le biais de publication. La publication est
-un de problèmes les plus importants identifiés dans le sondage vu plus tôt.
-Cela signifie que l’on ne publie pas les résultats lorsqu’ils ne sont pas
-positifs. Quand on regarde ce que publie un laboratoire de recherche,
-souvent, ça représente une fraction de ce qui est essayé. On a quand même
-de plus en plus de laboratoires qui publient des résultats négatifs. Malgré
-cela, ce n’est pas tout qui se retrouve publié.
-Ensuite, quand on lit la littérature, on est rarement complètement objectifs.
-On va avoir des biais. Un de ces biais est que si l’article est publié dans
-Nature, par exemple, il sera considéré comme plus important. En réalité,
-beaucoup des articles qui vont avoir un vrai impact ne seront pas publiés
-dans des journaux de haut prestige. On a ainsi un biais cognitif par rapport
-aux articles que l’on juge comme importants en lien avec leur lieu de
-publication.
-Ensuite, on élabore nos hypothèses sur la base des papiers qu’on a lu dans
-la littérature.
-
-#### Rapport sélectif
-Ensuite, dans la conception de l’étude, on ne s’intéresse qu’aux positifs. On
-s’intéresse rarement a la taille d’effet ou quand on le fait c’est avec des
-modèles qui sont irréalistes ou trop simplistes. Cela veut dire que, même si
-on implémente notre étude et qu’il y a quelque chose à trouver, y’a une
-chance qu’on ne le trouve pas. Ça aussi, c’était dans le top 3 des problèmes
-cités par les gens.
+### La méthode scientifique: hacked
+```{figure} ./reproductibilite/researchcycle_hacked.png
+---
+width: 800px
+name: researchcycle-hacked-fig
+---
+Cette figure illustre les pratiques douteuses qui peuvent affecter négativement l'intégrité du cycle des découvertes scientifiques. Figure adaptée d'un travail original par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807). La figure intègre aussi une image [shutterstock](https://www.shutterstock.com/image-vector/computer-hacker-laptop-icon-787273936), utilisée sous licence shutterstock standard.
+```
+#### Biais de publication
+La publication sélective est un de problèmes les plus importants identifiés dans le sondage vu plus tôt. Cela signifie que les résultats d'une étude ne sont publiés que lorsqu’ils ne sont positifs, c'est à dire uniquement s'ils confirment les hypothèses de l'équipe de recherche. Si ce type de pratique est systématique dans une communauté de recherche, il se peut que plusieurs groupes rapporte un résultat, qui semble alors  robuste, alors qu'en fait un nombre plus important de groupes de recherche n'ont pas pu répliquer cet effet, mais sans publier. Cela vient déformer complètement les connaissances accumulées par la communauté scientifique, qui est à l'origine des hypothèses des études futures.
 
 ##### p-hacking
-Ensuite, une fois qu’on a fait notre conception de l’étude, si on voit que nos
-résultats ne correspondent pas à nos attentes, on pourrait se demander si on
-a commis une erreur ou peut être qu'on n'a pas choisi la manière la plus
-optimale. Cette approche qui consiste à essayer de venir revisiter la manière
-dont analyse des données qu'est-ce qu'on n'a pas trouvé ce qu'on cherchait
-ça s'appelle le p-hacking, le hacking du petit p. En neuroimagerie il y a plein
-de manières de faire du p-hacking, à peu près n'importe quoi qu'on veuille
-montrer on n'aura pas trop de problème à démontrer. Il y a 2 autres façons
-standards pour améliorer nos résultats. Le premier c'est le contrôle de
-qualité sélectif. On va éliminer des personnes de notre échantillon même si
-elles ont passées le recrutement et étaient dans le bon groupe si leur
-présence dans ce groupe a un effet négatif sur les résultats.  
-
-##### Texas sharp shooter
-Ce terme représente une image de tire à la carabine. Pour être bon tireur, ce qu’on peut faire c’est
-tirer dans un mur et dessiner la cible autour du trou de balle a posteriori.
-Ainsi, on aura tiré exactement au milieu de la cible. L’idée, c’est de redéfinir
-les groupes après avoir réalisé que nos groupes initiaux ne permettaient pas
-d’identifier l’effet désiré.
-Une autre forme de p-hacking qui relève un peu de la publication sélective
-est le biais de confirmation. On ne va que rapporter ce qui collait avec nos
-hypothèses et, si d’autres hypothèses sont infirmées, nous allons faire
-comme si nous ne les avions jamais eu.
+Si on voit que nos résultats ne correspondent pas à nos attentes, on pourrait se demander si on n'a pas commis une erreur ou peut être qu'on n'a pas choisi la technique d'analyse la plus optimale. On va alors revisiter la manière
+dont analyse les données jusqu'à ce que les résultats deviennent significatifs. Ce type d'approche a été baptisé _p-hacking_. Le p-hacking peut prendre de nombreuses formes: exclusion arbitraire de "valeurs aberrantes", sélection d'un sous-groupe qui montre l'effet attendu, changement des paramètres de prétraitements.
 
 #### HARKing
-Le dernier phénomène de hacking pour la méthode scientifique c’est le
-« HARKing ». Le terme HACK est un acronyme en anglais pour les termes
-« Hypothesis after results are known ». Dans cette forme de hacking, on
-émet nos hypothèses après avoir eu nos résultats. En fait, c’est une forme
-encore plus extrême du biais de confirmation.
-Au final, ce cercle vicieux fait en sorte qu’au final, on ne peut pas faire
-confiance aux résultats qu’on trouve dans la littérature. Cela veut dire que
-les nouveaux chercheurs partent d’une vision biaisée de ce qui se fait dans
-la littérature.
+La dernière pratique douteuse est baptisée le « HARKing ». Le terme HARK est un acronyme en anglais pour les termes « Hypothesis after results are known », ou bien "définition des hypothèses après que les résultats soient connus". On va effectuer de nombreux tests à partir des données recueillies, et on formule a posteriori des hypothèses correspondant aux résultats significatifs dans l'échantillon. Ce processus n'est pas nécessairement malicieux, mais peut émerger d'une volonté d'interpréter les données. Cette démarche n'est pas nécessairement problématique, du moment que les hypothèses sont (correctement) présentées comme exploratoires, guidées par les données, plutôt que comme une hypothèse a priori rigoureuse.
+
+Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, et d'autres facteurs qui contribuent au manque de reproductibilité. 
 
 ## Reproducibilité et neuroimagerie
 On va maintenant voir quels problèmes s’appliquent directement à la
