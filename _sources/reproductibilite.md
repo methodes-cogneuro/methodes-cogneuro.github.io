@@ -55,7 +55,7 @@ Cette figure illustre le processus qui amène à un résultat scientifique contr
 ```
 En 2016, un sondage auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
 perception des professionnels dans la recherche, il y a une crise de
-reproductibilité et si oui, laquelle ([Baker, 2016](https://www.nature.com/articles/533452a#change-history)). En tout, 90% des chercheurs dans ce sondage pensent
+reproductibilité et si oui, laquelle ([Baker, 2016](https://doi.org/10.1038/533452a)). En tout, 90% des chercheurs dans ce sondage pensent
 qu’il y a effectivement une crise de reproductibilité (52% pour une crise significative et 38% pour une crise modérée).
 
 La reproductibilité, c’est quoi ? Si on avait accès
@@ -105,102 +105,34 @@ dont analyse les données jusqu'à ce que les résultats deviennent significatif
 #### HARKing
 La dernière pratique douteuse est baptisée le « HARKing ». Le terme HARK est un acronyme en anglais pour les termes « Hypothesis after results are known », ou bien "définition des hypothèses après que les résultats soient connus". On va effectuer de nombreux tests à partir des données recueillies, et on formule a posteriori des hypothèses correspondant aux résultats significatifs dans l'échantillon. Ce processus n'est pas nécessairement malicieux, mais peut émerger d'une volonté d'interpréter les données. Cette démarche n'est pas nécessairement problématique, du moment que les hypothèses sont (correctement) présentées comme exploratoires, guidées par les données, plutôt que comme une hypothèse a priori rigoureuse.
 
-Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, et d'autres facteurs qui contribuent au manque de reproductibilité. 
-
 ## Reproducibilité et neuroimagerie
-On va maintenant voir quels problèmes s’appliquent directement à la
-neuroimagerie et comment certains problèmes de reproductibilité
-spécifiques peuvent ressortir lors de l’utilisation de logiciels en
-neuroimagerie.
+Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, et d'autres facteurs qui contribuent au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaines de traitement en neuroimagerie.
+ * Tout d'abord, il est possible de faire varier beaucoup les conclusions d'une étude juste en modifiant les choix analytiques que l'on fait dans la chaine de traitement (ce que l'on appelle les **degrés de liberté en recherche**).
+ * Ensuite, il est possible d'ajuster nos modèles de manière excessive à l'échantillon de données que l'on a acquis, sans que cela généralise à un jeu de données indépendant (un mécanisme appelé **overfitting**).
+ * Enfin, à cause de la complexité des méthodes utilisées, il est souvent difficile voir impossible de vraiment comprendre les méthodes utilisées dans un article à partir du texte de cet article (**méthodes incomplètes**).
 
 ### Degrés de liberté en recherche
-Le premier problème qui est exacerbé en neuroimagerie est le nombre
-d’Analyses qu’il faut faire ainsi que le nombre de choix qu’il faut faire en lien
-avec ces analyses. Ceci est relié au problème de p-hacking dont on a discuté
-plus tôt. Ainsi, toutes les possibilités d’analyses permettent aux chercheurs
-d’aller faire ressortir l’effet qu’ils désirent observer d’une façon ou d’une
-autre. Cette vaste sélection d’analyses est le résultat de dizaines de
-paramètres modifiables qui sont impliqués dans ces analyses. Une étude a
-tenté de systématiquement changer des choix de paramètres d’analyse pour
-savoir quels résultats ils pouvaient obtenir. En bout de ligne, ils ont obtenu
-près de 7000 chaines de traitement qui pouvaient être exécutées. Ensuite,
-l’équipe a essayé différents seuils statistiques ce qui a généré près de 35
-000 cartes d’activation. Ceci représente la variété des résultats qu’il est
-possible d’obtenir en utilisant un simple contraste d’images IRMf. On parle
-aussi de Multiverse, dans le sens ou l’histoire statistique peut changer
-complètement avec une seule petite modification dans le choix des
-paramètres d’analyse. Dans le cas des images d’IRM, on a tellement plus de
-données et tellement plus d’analyses a faire que le problème de Multiverse
-est d’autant plus prononcé comparativement aux analyses statistiques
-traditionnelles.
-On voit sur l’image ici que les régions qui présentent la plus haute moyenne
-sont aussi les régions qui ont la plus grande variabilité dans les données,
-même que l’amplitude de la variation est plus grande que l’amplitude de la
-moyenne. Cela suggère qu’il y a beaucoup de variabilité sur les cartes finales
-par les différents choix analytiques choisis. Dans ce cas, les changements de
-paramètres ont été fait plutôt systématiquement et les gens dans la vraie vie
-ne jouent pas autant avec les paramètres.
+```{figure} ./reproductibilite/multi_analyses_fmri.png
+---
+width: 800px
+name: multi-analyses-fmri-fig
+---
+Cette figure résume les cartes d'activations IRMf générées par 64 équipes indépendantes, à partir des mêmes données et pour tester la même hypothèse. Les équipes ont été séparées en trois sous groupes, sur la base de la similarité spatiale de leurs cartes d'activation à l'aide d'un algorithme automatique. Le premier groupe (cluster 1) est le plus gros, avec 50 équipes, alors que les deux autres sous-groupes incluent 7 équipes chaque. Notez les variations importantes entre les trois sous-groupes. Figure tirée de [Botvinik-Nezer et al., 2020](https://doi.org/10.1101/843193) sous licence [CC-BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/).
+```
+Pour chacune des techniques étudiées dans ces notes de cours, il est nécessaire d'implémenter une série d'étapes d'analyses, et chaque étape demande de choisir certains paramètres. Dans la mesure où l'on n'a pas de vérité de terrain auquelle se référer en neuroimagerie, il n'existe pas de consensus sur le choix optimal pour ces paramètres, et ce choix est probablement dépendant de la population d'intérêt et des questions de recherche dans une large mesure. Pour quantifier cette variabilité, une étude récente a invité 70 équipes de recherche à analyser le même jeu de données, et tester les mêmes hypothèses, sur un jeu de données par activation en IRMf [Botvinik-Nezer et al., 2020](https://doi.org/10.1101/843193). Un premier résultat frappant est que chaque équipe a utilisé une approche unique pour analyser les données, illustrant le manque criant de standardisation dans le domaine. Un autre résultat frappant est, pour une hypothèse donnée, certaines équipes ont produit des cartes très différentes, voir {numref}`multi-analyses-fmri-fig`. Bien que certains sous-groupes d'équipes ont identifié des cartes très similaires, certains choix ont amené à des différences importantes. Par ailleurs, même pour les équipes générant des cartes similaires, leur interprétation de la carte pour répondre à l'hypothèse variait substantiellement!
 
-### Logiciels d'analyse
-Maintenant, imaginons qu’on fait les analyses dans un des multiples logiciels
-ci bas. Si les résultats escomptés ne sont pas obtenus avec un des logiciels,
-on pourrait aller faire les mêmes analyses avec un autre logiciel et obtenir
-des résultats différents.
-Donc à droite on a les logos des 3 logiciels principaux, AFNI, FSL et SPM. Par
-ailleurs, il y a plein de versions de SPM. La première version utilisée de
-manière large est la version 95, après il y a eu 96, 99, SPM8 et SMP 12. En
-plus, chaque version de SPM a eu des versions mineures qui ne sont pas ici.
-En fait, ce qu’il faut retenir, c’est que ce qui a été expliqué en lien avec le
-choix des analyses s’applique aussi au choix du logiciel d’analyse utilisé en
-IRM. Même si on fait des choix comparables d’analyses dans les différents
-logiciels on va se retrouver avec des variations.
-Donc une étude de Bowring a tenté de prendre un jeu de données public et
-des cartes d’activation qui ont été générées dans un article et ils ont essayé
-de reproduire la carte d’Activation de l’article avec les 3 logiciels suivants :
-FSL, AFNI, SPM. Les colonnes qu’on voit ici c’est 3 jeux de données différents,
-en bas on a la carte d’activation qui a publiée par le groupe dans l’article
-original et ce qu’on a dans chaque ligne au-dessus c’est ce qui a été obtenu
-avec ces données à l’aide des 3 logiciels. Si on se concentre sur le premier
-jeu de données à gauche, on voit que finalement on voit des activations au
-niveau du cingulaire antérieur et de l’orbitofrontal ventral et une activation
-négative au niveau du cortex cingulaire postérieur. Avec FSL, on retrouve le
-même genre d’Activation mais avec des positions et des amplitudes
-différentes. Des nouvelles activations ressortent au niveau occipital et au
-niveau sous cortical qui ne sont pas là dans la carte d’’activation publiée.
-Pour SPM, l’amplitude et la position des activations sont variables
-comparativement a l’original. Tant au niveau qualitatif que quantitatif, la
-cohérence de ces 4 cartes d’activation est assez faible. C’est une belle
-illustration, on voit qu’il y a un impact assez important du logiciel qu’on
-utilise pour faire les cartes, ce qui en dit gros sur la reproductibilité. Même
-avec les mêmes données, seul le logiciel utilisé pour les analyses peut avoir
-un impact important sur les résultats finaux des analyses. Quand on parlait
-de p-hacking et du fait qu’on a plein d’étapes qui peuvent être modifiées, le
-logiciel utilisé s’insère dans ce problème.
+```{admonition} Degrés de liberté en recherche et p-hacking
+:class: tip
+:name: researcher-degrees-freedom-tip
 
-### Environnement de travail
-De plus, les gens ont l’habitude de tenir pour acquis que peu importe
-l’environnement ou on fait un calcul mathématique, on va obtenir le même
-résultat. En effet, si on calcul 4+6 dans Windows, sur mac os ou sur une
-calculatrice, le résultat donnera toujours 10. Or, les ordinateurs ne font pas
-vraiment des calculs, ce qui change tout. Ils font des approximations avec un
-nombre fini de chiffres après la virgule. Parfois, quand les ordinateurs font
-des calculs complexes, il y a plusieurs façons de les implémenter. En
-pratique, quand on regarde n’importe quelle méthode un peu complexe, il
-est possible qu’on ait des différences entre les logiciels et les ordinateurs. Un
-papier a regardé l’impact de la version de Mac OS sur les résultats d’une
-analyse de morphométrie faite avec Freesurfer. Il y a différentes analyses
-rapportées dans ce papier. Ce qu’on a sur ce graphique ce sont différentes
-régions générées par Freesurfer. Dans ces barres-là, on a 3 versions de iOS X
-(versions majeures et versions mineures). On voit la différence entre les
-différentes versions de Mac en utilisant le même logiciel. On voit des
-changements de 10% au niveau du cortex enthorinal seulement en fonction
-du logiciel du système d’exploitation ! Malheureusement, l’environnement de
-travail peut impacter la reproductibilité des résultats. Ce n’est pas propre à
-la neuroimagerie mais c’est particulièrement problématique car on a de
-grosses chaines de traitement et nos méthodes ne sont pas développées par
-des gens qui s’y connaissent en traitement numérique, donc les gens ne sont
-pas conscients des variations normales qui peuvent être causées par
-l’utilisation d’environnements variables.
+Le nombre de paramètres qu'un chercheur peut manipuler est appelé _degrés de liberté en recherche_. Comme la neuroimagerie a un très grand nombre de degrés de liberté, cela augmente le risque de p-hacking, car il est toujours possible de comparer plusieurs approches pour sélectionner la "meilleure", c'est à dire celle qui amène les résultats les plus conformes aux hypothèses de l'équipe de recherche.
+```
+
+```{admonition} Impact des logiciels d'analyse et de l'environnement
+:class: caution attention
+:name: softwark-warning
+Au delà des paramètres utilisés dans une analyse, des différences substantielles peuvent venir du choix du logiciel, ou de la version du logiciel utilisée ([Bowring et al., 2019](https://doi.org/10.1002/hbm.24603)). Même des changements mineurs peuvent avoir un impact sur les résultats. Et cela n'est pas limité au logiciel de neuroimagerie en tant que tel. Un changement de système d'opération peut lui aussi créer des différences, par exemple dans une analyse de morphométrie ([Gronenschild et al., 2012](https://doi.org/10.1371/journal.pone.0038234)).
+```
 
 ### Tailles d'effet
 Une autre erreur qu’on voit particulièrement en neuroimagerie c’est
