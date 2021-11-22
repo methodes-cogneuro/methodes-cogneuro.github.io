@@ -65,7 +65,8 @@ On parlera également d'étapes d'analyse d'images utiles pour l'ensemble de ces
 width: 600px
 name: morphometrie-durer-fig
 ---
-Étude de Dürer sur les proportions du visage. Image appartenent au domaine public, tirée de [wikimedia](https://commons.wikimedia.org/wiki/File:Morpho_durer.JPG).
+Étude de Dürer sur les proportions du visage.
+Image appartenant au domaine public, tirée de [wikimedia](https://commons.wikimedia.org/wiki/File:Morpho_durer.JPG).
 ```
 
 En neurosciences, la [morphométrie](https://fr.wikipedia.org/wiki/Morphom%C3%A9trie) est l'étude de la forme du cerveau et de ses structures.
@@ -289,7 +290,7 @@ Les principaux avantages de cette approche sont ses aspects automatisés et syst
 La présence d'une personne ne devient nécessaire que pour vérifier que la procédure a fonctionné correctement: c'est l'étape du contrôle de qualité (ou QC, pour "quality control").
 On va aussi tester la morphologie du cerveau à travers l'ensemble de la matière grise.
 D'un autre côté, cette technique comporte aussi un inconvénient important.
-En effet, le grand nombre de mesures générées pose un problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques (voir le [Chapitre 10: Cartes statistiques](cartes-statistiques-chapitre)).
+En effet, le grand nombre de mesures générées pose un problème de _comparaisons multiples_ lorsque vient le temps de faire les analyses statistiques (voir le [Chapitre 9: Cartes statistiques](cartes-statistiques-chapitre)).
 
 ### Segmentation
 ```{code-cell} ipython 3
