@@ -166,29 +166,14 @@ très importante car la taille de la différence a un impact sur la
 reproductibilité
 
 ### Méthodes incomplètes
-Une autre chose importante à mentionner sont les méthodes incomplètes.
-Cette image a été faite par @redpenblackpen, un artiste de McGill. Il publie
-des petits dessins sur le monde universitaire. Celui-ci est très intéressant. Le
-rez de chaussé représente le papier publié. On a une maison bien propre et
-bien rangée. On va lire le papier et tout est carré et tout est rigoureux.
-Parfois, on a du matériel supplémentaire qui est un document qui est moins
-regardé par les reviewers, contenant des vieilles affaires et du matériel qui a
-été utilisé pour le projet mais qui n’est pas essentiel dans le papier principal.
-C’est un peu plus le bazar là-dedans on voit parfois que beaucoup plus de
-choses ont été analysées que ce qui a été présenté dans le papier. Ce qui est
-intéressant c’est le 2e sous-sol, ou on voit le vrai travail avec les tentacules
-multicolore et la pagaille. En réalité, des tonnes de choses ont été essayées,
-certaines choses pas terminées et d’autres oui mais oubliées. Au final,
-l’auteur lui-même serait incapable lui-même de se souvenir de tout ce qui a
-été essayé dans le processus du projet. De plus, la complexité des étapes
-d’analyse en neuroimageries rend encore plus difficile de se souvenir et de
-comprendre ce qui a été fait. Parfois, le numéro du logiciel utilisé n’est
-même pas rapporté dans le papier et est enfoui loin dans la 2e cave. Ce que
-cela veut dire, c’est que l’article publié nous donne une idée très peu
-détaillée et très peu complète de ce qui a été fait. En fait, si les gens ne
-partagent pas leur code et peur processus complet, il sera pratiquement
-impossible de répliquer les résultats obtenus, justement en raison de la
-profondeur de la 2e cave.
+```{figure} ./reproductibilite/machine_learning.png
+---
+width: 600px
+name: machine-learning-fig
+---
+Cette figure illustre le processus parfois chaotique de développement d'une méthode optimale, et la difficulté de communiquer ce processus de manière claire et complète dans une section de méthodes d'un article. Cette figure est tirée de [xkcd webcomic](https://xkcd.com/1838/), sous licence [CC-BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/).
+```
+Le manque de détails dans la section "Méthodes" d'un article peut être nn autre obstacle majeur à la reproduction des résultats. Comme les techniques d'analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d'avoir une description complète des méthodes. Il est aussi courant d'omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l'article. Le texte d'un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l'article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l'article. Il se peut tout à fait que d'autres analyses soient omises entièrement de l'article, et que les membres de l'équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l'article.
 
 ## Des solutions
 
