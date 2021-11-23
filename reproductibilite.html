@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -70,6 +70,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -255,13 +259,11 @@
       <a class="reference internal nav-link" href="#biais-de-publication">
        Biais de publication
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#p-hacking">
-         p-hacking
-        </a>
-       </li>
-      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#p-hacking">
+       p-hacking
+      </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#harking">
@@ -283,8 +285,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tailles-d-effets">
-     Tailles d’effets
+    <a class="reference internal nav-link" href="#tailles-d-effet">
+     Tailles d’effet
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -362,7 +364,7 @@
         
               <div>
                 
-  <div class="section" id="reproductibilite-et-controverses">
+  <div class="tex2jax_ignore mathjax_ignore section" id="reproductibilite-et-controverses">
 <span id="reproductibilite-controverses-chapitre"></span><h1>Reproductibilité et controverses<a class="headerlink" href="#reproductibilite-et-controverses" title="Permalink to this headline">¶</a></h1>
 <table>
   <tr>
@@ -384,12 +386,11 @@
     </td>
   </tr>
 </table>
-<p>Durant ce cours, on a passé en revue diverses techniques de neuroimagerie qui ouvrent une fenêtre fascinante sur la structure et la fonction du cerveau. Mais ces techniques sont régulièrement impliquées dans des articles scientifiques qui semblent peu crédibles. Dans ce cours nous allons discuter des controverses autour de la neuroimagerie, et plus généralement de la crise de reproducibilité en sciences.</p>
+<p>Durant ce cours, nous avons effectué un survol de diverses techniques de neuroimagerie qui ouvrent une fenêtre fascinante sur la structure et la fonction du cerveau. Par contre, ces techniques sont régulièrement présentées dans des articles scientifiques qui semblent peu crédibles. Dans cet ultime cours, nous allons discuter des controverses entourant la neuroimagerie, et de façon plus large, de la crise de reproducibilité en sciences.</p>
 <p>Les objectifs de ce cours sont les suivants :</p>
 <ul class="simple">
 <li><p>Comprendre la crise de reproductibilité en sciences.</p></li>
-<li><p>Comprendre certaines pratiques scientifiques douteuses qui participent
-au manque de reproductibilité en neurosciences cognitives.</p></li>
+<li><p>Comprendre certaines pratiques scientifiques douteuses qui participent au manque de reproductibilité en neurosciences cognitives.</p></li>
 <li><p>Connaître certains outils qui peuvent améliorer la reproductibilité en neurosciences cognitives.</p></li>
 </ul>
 <div class="section" id="la-crise-de-reproductibilite">
@@ -398,38 +399,39 @@ au manque de reproductibilité en neurosciences cognitives.</p></li>
 <h3>Une crise? Quelle crise?<a class="headerlink" href="#une-crise-quelle-crise" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="significant-fig">
 <a class="reference internal image-reference" href="_images/significant.png"><img alt="_images/significant.png" src="_images/significant.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 102 </span><span class="caption-text">Cette figure illustre le processus qui amène à un résultat scientifique controversé (et le problème de comparaisons multiples). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/882/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#significant-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 102 </span><span class="caption-text">Cette figure illustre un exemple de processus pouvant amener à un résultat scientifique controversé (ainsi qu’un exemple de problème de comparaisons multiples). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/882/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#significant-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>En 2016, un sondage auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
-perception des professionnels dans la recherche, il y a une crise de
-reproductibilité et si oui, laquelle (<a class="reference external" href="https://doi.org/10.1038/533452a">Baker, 2016</a>). En tout, 90% des chercheurs dans ce sondage pensent
-qu’il y a effectivement une crise de reproductibilité (52% pour une crise significative et 38% pour une crise modérée).</p>
-<p>La reproductibilité, c’est quoi ? Si on avait accès
-aux données derrière ce papier, est-ce qu’on serait capable de refaire les
-analyses et arriver aux mêmes conclusions ? Un autre concept proche est la réplication: en recrutant de nouveaux sujets et en faisant exactement ce que les autres chercheurs ont fait au niveau des outils utilisés et des analyses effectuées, est-ce qu’on va trouver les mêmes résultats ? Dans le sondage, 70% des personnes sondées rapportent avoir échoué à reproduire les résultats d’une autre équipe de recherche, et plus de 50% rapportent avoir échoué à reproduire leurs propres résultats.</p>
+<p>En 2016, un sondage effectué auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
+perception des professionnels dans la recherche, il y avait une crise de
+reproductibilité, et si oui, laquelle (<a class="reference external" href="https://doi.org/10.1038/533452a">Baker, 2016</a>).
+En tout, 90% des chercheurs ont affirmé dans ce sondage qu’ils pensaient qu’il y avait effectivement une crise de reproductibilité (52% pour une crise significative et 38% pour une crise modérée).</p>
+<p>La reproductibilité, c’est quoi? Si nous avions accès
+aux données derrière ce papier, serait-on capable de refaire les
+analyses et d’arriver aux mêmes conclusions? Un autre concept proche est la réplicabilité: en recrutant de nouveaux sujets (nouvel échantillon) et en faisant exactement ce que les autres chercheurs avaient fait au niveau des outils utilisés et des analyses effectuées, est-ce que nous trouverions les mêmes résultats?
+Dans le sondage, 70% des personnes sondées rapportaient avoir échoué à reproduire les résultats d’une autre équipe de recherche et plus de 50% d’entre eux rapportaient même avoir échoué à reproduire leurs propres résultats.</p>
 <p>Les personnes sondées ont aussi évalué les causes probables de cette crise de
 reproductibilité. Parmi les raisons les plus fréquemment mentionnées,
-on retrouve la <em>pression à publier</em> et la <em>publication sélective</em> (les gens publient
-seulement ce qui fonctionne bien) ainsi que la <em>puissance statistique limitée</em>.
-Ce chapitre va expliquer certaines de ces notions plus en détails, en démarrant par formaliser le processus de génération de connaissances scientifiques.</p>
+on retrouve la <em>pression de publier</em>, la <em>publication sélective</em> (les gens ne publient
+seulement que ce qui fonctionne bien) ainsi que la <em>puissance statistique limitée</em>.
+Ce chapitre cherchera à expliquer certaines de ces notions plus en détails en commençant par formaliser le processus de génération de connaissances scientifiques.</p>
 </div>
 <div class="section" id="la-methode-scientifique">
 <h3>La méthode scientifique<a class="headerlink" href="#la-methode-scientifique" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="researchcycle-original-fig">
 <a class="reference internal image-reference" href="_images/researchcycle_original.png"><img alt="_images/researchcycle_original.png" src="_images/researchcycle_original.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 103 </span><span class="caption-text">Cette figure illustre le cycle des découvertes scientifiques, selon l’approche de la méthode scientifique décrite par <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>. Figure adaptée d’un travail original par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>. La figure adaptée par P. Bellec est elle-même disponible sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#researchcycle-original-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 103 </span><span class="caption-text">Cette figure illustre le cycle des découvertes scientifiques selon l’approche de la méthode scientifique décrite par <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>. Figure adaptée d’un travail original par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>. La figure adaptée par P. Bellec est elle-même disponible sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#researchcycle-original-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>La figure <code class="xref std std-numref docutils literal notranslate"><span class="pre">researchcycle-original</span></code> présente une version simplifiée de la méthode scientifique pour la découverte de connaissances, inspirée par la théorie de <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>, telle qu’elle est généralement implémentée dans la communauté de recherche.</p>
+<p>La <a class="reference internal" href="#researchcycle-original-fig"><span class="std std-numref">Fig. 103</span></a> présente une version simplifiée de la méthode scientifique impliquée dans la découverte de connaissances, inspirée par la théorie de <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>, telle qu’elle est généralement implémentée dans la communauté de recherche.</p>
 <ul class="simple">
-<li><p>On commence avec les publications, qui représentent les connaissances qui ont été accumulées par d’autres.</p></li>
-<li><p>En lisant cette litérature, les chercheuses/chercheurs peuvent apprendre ce qui a déjà été découvert, et faire des hypothèses sur des choses qu’on ne connait pas encore.</p></li>
-<li><p>Les chercheuses/chercheurs vont alors formuler un devis de recherche : nombre de participants, groupes, tests statistiques, etc. Elles/ils vont aussi faire des prédicitions concernant les résultats qu’elles/ils pensent obtenir.</p></li>
-<li><p>Une fois le devis de recherche élaboré, il est temps de recueillir les données.</p></li>
+<li><p>On commence avec une consultation des publications antérieures: celles-ci représentent les connaissances qui ont été accumulées par d’autres chercheurs avant nous.</p></li>
+<li><p>En lisant cette littérature, les chercheuses/chercheurs peuvent prendre connaissance de ce qui a déjà été découvert et formuler des hypothèses en lien avec ce que l’on sait déjà sur des choses qu’on ne connait pas encore.</p></li>
+<li><p>Les chercheuses/chercheurs vont alors construire un devis de recherche: nombre de participants, groupes, tests statistiques, etc. Elles/ils vont aussi faire des prédictions concernant les résultats qu’elles/ils pensent obtenir.</p></li>
+<li><p>Une fois le devis de recherche élaboré, il est maintenant temps de recueillir les données.</p></li>
 <li><p>Ensuite, on analyse les données en suivant le protocole qui avait été établi dans le devis de recherche.</p></li>
-<li><p>Il faut alors interpréter les résultats, et notamment les comparer à nos prédictions pour valider ou invalider nos hypothèses.</p></li>
+<li><p>Il faut alors interpréter les résultats et notamment les comparer à nos prédictions pour valider ou invalider nos hypothèses.</p></li>
 <li><p>Les résultats de la recherche sont alors publiés pour permettre au reste de la communauté de recherche de continuer à formuler de nouvelles hypothèses.</p></li>
 </ul>
-<p>Comme on utilise des statistiques rigoureuses dans cette approche, on ne génère qu’une quantité limité de faux positifs, et donc on fait des découvertes scientifiques sans faire trop d’erreurs. En pratique, cette approche peut être adaptée de nombreuses manières avec <em>des pratiques de recherche douteuses</em> qui vont compromettre l’intégrité et la rigueur des conclusions de l’étude.</p>
+<p>Comme on utilise des statistiques rigoureuses dans cette approche, on ne génère qu’une quantité limitée de faux positifs, et donc, on fait des découvertes scientifiques sans faire trop d’erreurs. En pratique, cette approche peut être adaptée de nombreuses manières en y incluant <em>des pratiques de recherche douteuses</em> qui vont compromettre l’intégrité et la rigueur des conclusions de l’étude.</p>
 </div>
 <div class="section" id="la-methode-scientifique-hacked">
 <h3>La méthode scientifique: hacked<a class="headerlink" href="#la-methode-scientifique-hacked" title="Permalink to this headline">¶</a></h3>
@@ -439,45 +441,46 @@ Ce chapitre va expliquer certaines de ces notions plus en détails, en démarran
 </div>
 <div class="section" id="biais-de-publication">
 <h4>Biais de publication<a class="headerlink" href="#biais-de-publication" title="Permalink to this headline">¶</a></h4>
-<p>La publication sélective est un de problèmes les plus importants identifiés dans le sondage vu plus tôt. Cela signifie que les résultats d’une étude ne sont publiés que lorsqu’ils ne sont positifs, c’est à dire uniquement s’ils confirment les hypothèses de l’équipe de recherche. Si ce type de pratique est systématique dans une communauté de recherche, il se peut que plusieurs groupes rapporte un résultat, qui semble alors  robuste, alors qu’en fait un nombre plus important de groupes de recherche n’ont pas pu répliquer cet effet, mais sans publier. Cela vient déformer complètement les connaissances accumulées par la communauté scientifique, qui est à l’origine des hypothèses des études futures.</p>
-<div class="section" id="p-hacking">
-<h5>p-hacking<a class="headerlink" href="#p-hacking" title="Permalink to this headline">¶</a></h5>
-<p>Si on voit que nos résultats ne correspondent pas à nos attentes, on pourrait se demander si on n’a pas commis une erreur ou peut être qu’on n’a pas choisi la technique d’analyse la plus optimale. On va alors revisiter la manière
-dont analyse les données jusqu’à ce que les résultats deviennent significatifs. Ce type d’approche a été baptisé <em>p-hacking</em>. Le p-hacking peut prendre de nombreuses formes: exclusion arbitraire de “valeurs aberrantes”, sélection d’un sous-groupe qui montre l’effet attendu, changement des paramètres de prétraitements.</p>
+<p>La publication sélective est un des problèmes les plus importants identifiés dans le sondage vu plus tôt. Cela signifie que les résultats d’une étude ne sont publiés que lorsqu’ils sont positifs, c’est à dire uniquement s’ils confirment les hypothèses de l’équipe de recherche. Si ce type de pratique est systématique dans une communauté de recherche, il se peut que plusieurs groupes rapportent un résultat, qui semblera alors robuste, alors qu’en fait, un nombre plus important de groupes de recherche n’ont pas pu répliquer cet effet et ne l’ont donc jamais publié. Cela vient déformer complètement la collection de connaissances accumulée par la communauté scientifique, collection qui sera elle-même à l’origine des hypothèses des études futures.</p>
 </div>
+<div class="section" id="p-hacking">
+<h4>p-hacking<a class="headerlink" href="#p-hacking" title="Permalink to this headline">¶</a></h4>
+<p>Si nous voyons que nos résultats ne correspondent pas à nos attentes, il est possible que nous nous demandions si nous avons commis une erreur ou si nous avons bien choisi la technique d’analyse optimale. Nous risquons alors de revisiter la manière
+à laquelle nous analysons les données jusqu’à ce que les résultats deviennent significatifs. Ce type d’approche a été baptisé <em>p-hacking</em>. Le p-hacking peut prendre de nombreuses formes: exclusion arbitraire de “valeurs aberrantes”, sélection d’un sous-groupe qui montre l’effet attendu, changement des paramètres de prétraitement, etc.</p>
 </div>
 <div class="section" id="harking">
 <h4>HARKing<a class="headerlink" href="#harking" title="Permalink to this headline">¶</a></h4>
-<p>La dernière pratique douteuse est baptisée le « HARKing ». Le terme HARK est un acronyme en anglais pour les termes « Hypothesis after results are known », ou bien “définition des hypothèses après que les résultats soient connus”. On va effectuer de nombreux tests à partir des données recueillies, et on formule a posteriori des hypothèses correspondant aux résultats significatifs dans l’échantillon. Ce processus n’est pas nécessairement malicieux, mais peut émerger d’une volonté d’interpréter les données. Cette démarche n’est pas nécessairement problématique, du moment que les hypothèses sont (correctement) présentées comme exploratoires, guidées par les données, plutôt que comme une hypothèse a priori rigoureuse.</p>
+<p>La dernière pratique douteuse est baptisée le « HARKing ». Le terme HARK est un acronyme originaire de l’anglais pour les termes « Hypothesis after results are known », ou bien “définition des hypothèses après que les résultats soient connus”. On va effectuer de nombreux tests à partir des données recueillies et on va formuler a posteriori des hypothèses correspondant aux résultats significatifs dans l’échantillon. Ce processus n’est pas nécessairement malicieux, mais il peut émerger d’une volonté d’interpréter les données à tout prix. Cette démarche n’est pas nécessairement problématique, du moment que les hypothèses sont (correctement) présentées comme étant de nature exploratoire, guidées par les données, plutôt que comme des hypothèses formulées a priori de façon rigoureuse.</p>
 </div>
 </div>
 </div>
 <div class="section" id="reproducibilite-et-neuroimagerie">
 <h2>Reproducibilité et neuroimagerie<a class="headerlink" href="#reproducibilite-et-neuroimagerie" title="Permalink to this headline">¶</a></h2>
-<p>Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, et d’autres facteurs qui contribuent au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaines de traitement en neuroimagerie.</p>
+<p>Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, ainsi que d’autres facteurs qui peuvent contribuer au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaines de traitement en neuroimagerie.</p>
 <ul class="simple">
-<li><p>Tout d’abord, il est possible de faire varier beaucoup les conclusions d’une étude juste en modifiant les choix analytiques que l’on fait dans la chaine de traitement (ce que l’on appelle les <strong>degrés de liberté en recherche</strong>).</p></li>
-<li><p>Ensuite, il est possible de confondre effets significatifs et effets importants (on doit considérer la <strong>taille des effets</strong>).</p></li>
-<li><p>Enfin, à cause de la complexité des méthodes utilisées, il est souvent difficile voir impossible de vraiment comprendre les méthodes utilisées dans un article à partir du texte de cet article (<strong>méthodes incomplètes</strong>).</p></li>
+<li><p>Tout d’abord, il est possible de faire varier de façon importante les conclusions d’une étude juste en modifiant les choix analytiques que l’on fait concernant la chaine de traitement (ce que l’on appelle les <strong>degrés de liberté en recherche</strong>).</p></li>
+<li><p>Ensuite, il est possible de confondre les effets significatifs et les effets importants (on doit considérer la <strong>taille des effets</strong>).</p></li>
+<li><p>Enfin, à cause de la complexité des méthodes utilisées, il est souvent difficile, voir impossible, de vraiment comprendre les méthodes utilisées dans un article seulement sur la base du texte de cet article (<strong>méthodes incomplètes</strong>).</p></li>
 </ul>
 <div class="section" id="degres-de-liberte-en-recherche">
 <h3>Degrés de liberté en recherche<a class="headerlink" href="#degres-de-liberte-en-recherche" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="multi-analyses-fmri-fig">
 <a class="reference internal image-reference" href="_images/multi_analyses_fmri.png"><img alt="_images/multi_analyses_fmri.png" src="_images/multi_analyses_fmri.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 105 </span><span class="caption-text">Cette figure résume les cartes d’activations IRMf générées par 64 équipes indépendantes, à partir des mêmes données et pour tester la même hypothèse. Les équipes ont été séparées en trois sous groupes, sur la base de la similarité spatiale de leurs cartes d’activation à l’aide d’un algorithme automatique. Le premier groupe (cluster 1) est le plus gros, avec 50 équipes, alors que les deux autres sous-groupes incluent 7 équipes chaque. Notez les variations importantes entre les trois sous-groupes. Figure tirée de <a class="reference external" href="https://doi.org/10.1101/843193">Botvinik-Nezer et al., 2020</a> sous licence <a class="reference external" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC-BY-NC-ND 4.0</a>.</span><a class="headerlink" href="#multi-analyses-fmri-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 105 </span><span class="caption-text">Cette figure résume les cartes d’activations IRMf générées par 64 équipes indépendantes à partir des mêmes données et ayant pour objectif de tester la même hypothèse. Les équipes ont été séparées en trois sous-groupes sur la base de la similarité spatiale de leurs cartes d’activation à l’aide d’un algorithme automatique. Le premier groupe (cluster 1) est le plus gros, avec 50 équipes, alors que les deux autres sous-groupes incluent 7 équipes chacun. Notez les variations importantes entre les trois sous-groupes. Figure tirée de <a class="reference external" href="https://doi.org/10.1101/843193">Botvinik-Nezer et al., 2020</a> sous licence <a class="reference external" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC-BY-NC-ND 4.0</a>.</span><a class="headerlink" href="#multi-analyses-fmri-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Pour chacune des techniques étudiées dans ces notes de cours, il est nécessaire d’implémenter une série d’étapes d’analyses, et chaque étape demande de choisir certains paramètres. Dans la mesure où l’on n’a pas de vérité de terrain auquelle se référer en neuroimagerie, il n’existe pas de consensus sur le choix optimal pour ces paramètres, et ce choix est probablement dépendant de la population d’intérêt et des questions de recherche dans une large mesure. Pour quantifier cette variabilité, une étude récente a invité 70 équipes de recherche à analyser le même jeu de données, et tester les mêmes hypothèses, sur un jeu de données par activation en IRMf <a class="reference external" href="https://doi.org/10.1101/843193">Botvinik-Nezer et al., 2020</a>. Un premier résultat frappant est que chaque équipe a utilisé une approche unique pour analyser les données, illustrant le manque criant de standardisation dans le domaine. Un autre résultat frappant est, pour une hypothèse donnée, certaines équipes ont produit des cartes très différentes, voir <a class="reference internal" href="#multi-analyses-fmri-fig"><span class="std std-numref">Fig. 105</span></a>. Bien que certains sous-groupes d’équipes ont identifié des cartes très similaires, certains choix ont amené à des différences importantes. Par ailleurs, même pour les équipes générant des cartes similaires, leur interprétation de la carte pour répondre à l’hypothèse variait substantiellement!</p>
+<p>Pour chacune des techniques étudiées dans ces notes de cours, il est nécessaire d’implémenter une série d’étapes d’analyse et de choisir certains paramètres pour chacune de ces étapes. Dans la mesure où l’on n’a pas de vérité de terrain à laquelle se référer en neuroimagerie, il n’existe pas de consensus sur le choix optimal concernant ces paramètres. De plus, ce choix est probablement dépendant de la population d’intérêt et des questions de recherche dans une large mesure. Pour quantifier cette variabilité, une étude récente a invité 70 équipes de recherche à analyser le même jeu de données par activation en IRMf <a class="reference external" href="https://doi.org/10.1101/843193">Botvinik-Nezer et al., 2020</a> et à tester les mêmes hypothèses. Un premier résultat frappant est que chaque équipe a utilisé une approche unique pour analyser les données, illustrant ainsi le manque criant de standardisation dans le domaine. Un autre résultat frappant est que, pour une hypothèse donnée, certaines équipes ont produit des cartes très différentes (voir <a class="reference internal" href="#multi-analyses-fmri-fig"><span class="std std-numref">Fig. 105</span></a>). Bien que certains sous-groupes d’équipes aient identifié des cartes très similaires, certains choix ont amené à des différences importantes. Par ailleurs, même pour les équipes générant des cartes similaires, leur interprétation de la carte pour répondre à l’hypothèse variait substantiellement!</p>
 <div class="tip admonition" id="researcher-degrees-freedom-tip">
 <p class="admonition-title">Degrés de liberté en recherche et p-hacking</p>
-<p>Le nombre de paramètres qu’un chercheur peut manipuler est appelé <em>degrés de liberté en recherche</em>. Comme la neuroimagerie a un très grand nombre de degrés de liberté, cela augmente le risque de p-hacking, car il est toujours possible de comparer plusieurs approches pour sélectionner la “meilleure”, c’est à dire celle qui amène les résultats les plus conformes aux hypothèses de l’équipe de recherche.</p>
+<p>Le nombre de paramètres qu’un chercheur peut manipuler est appelé <em>degré de liberté en recherche</em>. Comme la neuroimagerie a un très grand nombre de degrés de liberté, cela augmente le risque de p-hacking.
+En effet, il est toujours possible de comparer plusieurs approches pour sélectionner la “meilleure”, c’est-à-dire celle qui amène les résultats les plus conformes aux hypothèses de l’équipe de recherche.</p>
 </div>
-<div class="caution attention admonition" id="softwark-warning">
-<p class="admonition-title">Impact des logiciels d’analyse et de l’environnement</p>
-<p>Au delà des paramètres utilisés dans une analyse, des différences substantielles peuvent venir du choix du logiciel, ou de la version du logiciel utilisée (<a class="reference external" href="https://doi.org/10.1002/hbm.24603">Bowring et al., 2019</a>). Même des changements mineurs peuvent avoir un impact sur les résultats. Et cela n’est pas limité au logiciel de neuroimagerie en tant que tel. Un changement de système d’opération peut lui aussi créer des différences, par exemple dans une analyse de morphométrie (<a class="reference external" href="https://doi.org/10.1371/journal.pone.0038234">Gronenschild et al., 2012</a>).</p>
+<div class="caution attention admonition" id="software-warning">
+<p class="admonition-title">Impact des logiciels d’analyse et de l’environnement virtuel</p>
+<p>Au-delà des paramètres utilisés dans une analyse, des différences substantielles peuvent venir du choix du logiciel ou de la version du logiciel utilisé (<a class="reference external" href="https://doi.org/10.1002/hbm.24603">Bowring et al., 2019</a>). Même des changements mineurs peuvent avoir un impact sur les résultats. Et cela n’est pas limité au logiciel de neuroimagerie en tant que tel. Un changement de système d’opération peut lui aussi créer des différences, par exemple, dans une analyse de morphométrie (<a class="reference external" href="https://doi.org/10.1371/journal.pone.0038234">Gronenschild et al., 2012</a>).</p>
 </div>
 </div>
-<div class="section" id="tailles-d-effets">
-<h3>Tailles d’effets<a class="headerlink" href="#tailles-d-effets" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="tailles-d-effet">
+<h3>Tailles d’effet<a class="headerlink" href="#tailles-d-effet" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -491,7 +494,7 @@ dont analyse les données jusqu’à ce que les résultats deviennent significat
     <span class="k">return</span> <span class="n">samp1</span><span class="p">,</span> <span class="n">samp2</span>
 
 <span class="c1"># On génère une série de nombres aléatoires</span>
-<span class="c1"># avec différentes tailles d&#39;effets</span>
+<span class="c1"># avec différentes tailles d&#39;effet</span>
 <span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">list_d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">n_samp</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -502,13 +505,13 @@ dont analyse les données jusqu’à ce que les résultats deviennent significat
     <span class="n">df1</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">samp1</span>
     <span class="n">df2</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">samp2</span>
 
-<span class="c1"># On stocke toutes les valeurs, avec les paramètres correspondants</span>
+<span class="c1"># On stocke toutes les valeurs avec les paramètres correspondants</span>
 <span class="c1"># dans un pandas dataframe</span>
 <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
 <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
 <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># On visualise les distributions</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -534,24 +537,23 @@ dont analyse les données jusqu’à ce que les résultats deviennent significat
 <div class="cell_output docutils container">
 <img alt="_images/reproductibilite_1_0.png" src="_images/reproductibilite_1_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 106 </span><span class="caption-text">Illustration de deux distributions de groupes suivant une loi normale, pour différentes taille d’effet mesurées avec le <em>d</em> de Cohen. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#effect-size-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 106 </span><span class="caption-text">Illustration de deux distributions de groupes suivant une loi normale pour différentes tailles d’effet mesurées avec le <em>d</em> de Cohen. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#effect-size-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Une autre erreur commune en neuroimagerie est d’interpréter une différence significative comme une différence importante. Par exemple, imaginons que l’on trouve une différence significative concernant le volume de l’amygdale est réduit chez des personnes sur le spectre de l’autisme par rapport à des individus neurotypiques. Cela signifie que la différence de la moyenne des distributions est différente, mais il se peut tout à fait qu’un individu sur le spectre ait une amygdale plus grande qu’un individu neurotypique.</p>
-<p>Plutôt que la significativité, il est important de mesurer la taille de
-l’effet, c’est à dire la différence qui existe entre les deux populations. On peut par exemple considérer la différence des moyennes, divisée par l’écart type des deux populations - une mesure appelée le <em>d</em> de Cohen. Un <em>d</em> de Cohen de 0.1 ou 0.2 est courant pour des différences de groupes entre populations cliniques. Avec ce type de différence, les distributions des deux groupes se chevauchent de manière importante. Un <em>d</em> de Cohen de 2 décrirait un effet de groupe très important, ou le score de presque tous les membres d’un groupe est inférieur au score de tous les membres de l’autre
-groupe.</p>
+<p>Une autre erreur commune en neuroimagerie est d’interpréter une différence significative comme étant une différence importante. Par exemple, imaginons que l’on trouve une différence significative concernant le volume de l’amygdale entre deux groupes: celui-ci serait réduit chez des personnes sur le spectre de l’autisme par rapport à des individus neurotypiques. Cela signifierait que la différence de la moyenne des distributions est différente, mais il se peut tout à fait qu’un individu sur le spectre ait une amygdale plus grande qu’un individu neurotypique.</p>
+<p>Plutôt que de seulement se fier à la significativité, il est important de mesurer la taille de
+l’effet, c’est à dire la différence qui existe entre les deux populations. On peut par exemple considérer la différence des moyennes que l’on divise ensuite par l’écart type des deux populations - une mesure appelée le <em>d</em> de Cohen. Un <em>d</em> de Cohen de 0.1 ou 0.2 est courant pour des différences de groupes entre populations cliniques. Avec ce type de différence, les distributions des deux groupes se chevauchent de manière importante. Un <em>d</em> de Cohen de 2 décrirait pour sa part un effet de groupe très important, où le score de presque tous les membres d’un groupe est inférieur au score de tous les membres de l’autre groupe.</p>
 <div class="caution attention admonition" id="p-value-warning">
 <p class="admonition-title">Valeur <em>p</em> et taille d’effet</p>
-<p>La valeur <em>p</em> ne nous dit rien directement sur la taille de l’effet. Une valeur <em>p</em> peut être très significative, par exemple <em>p&lt;0.000001</em> simplement parce que l’on compare deux groupes avec une très grande taille d’échantillon, par exemple N=10000 par groupe. Dans ce cas, même de toutes petites différences peuvent devenir très significatives.</p>
+<p>La valeur <em>p</em> ne nous donne aucune information directe sur la taille de l’effet. Une valeur <em>p</em> peut être très significative, par exemple <em>p&lt;0.000001</em> simplement parce que l’on compare deux groupes ayant une très grande taille d’échantillon, par exemple N=10000 par groupe. Dans ce cas, même de toutes petites différences peuvent devenir très significatives.</p>
 </div>
 </div>
 <div class="section" id="methodes-incompletes">
 <h3>Méthodes incomplètes<a class="headerlink" href="#methodes-incompletes" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="machine-learning-fig">
 <a class="reference internal image-reference" href="_images/machine_learning.png"><img alt="_images/machine_learning.png" src="_images/machine_learning.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 107 </span><span class="caption-text">Cette figure illustre le processus parfois chaotique de développement d’une méthode optimale, et la difficulté de communiquer ce processus de manière claire et complète dans une section de méthodes d’un article. Cette figure est tirée de <a class="reference external" href="https://xkcd.com/1838/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#machine-learning-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 107 </span><span class="caption-text">Cette figure illustre le processus parfois chaotique de développement d’une méthode optimale et la difficulté de communiquer ce processus de manière claire et complète dans la section de méthodes d’un article. Cette figure est tirée de <a class="reference external" href="https://xkcd.com/1838/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#machine-learning-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Le manque de détails dans la section “Méthodes” d’un article peut être un autre obstacle majeur à la reproduction des résultats. Comme les techniques d’analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d’avoir une description complète des méthodes. Il est aussi courant d’omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l’article. Le texte d’un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l’article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l’article. Il se peut tout à fait que d’autres analyses soient omises entièrement de l’article, et que les membres de l’équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l’article.</p>
+<p>Le manque de détails dans la section “Méthodes” d’un article peut être un autre obstacle majeur à la reproduction des résultats. Comme les techniques d’analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d’avoir une description complète des méthodes. Il est aussi courant d’omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l’article. Le texte d’un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l’article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l’article. Il est tout à fait possible que d’autres analyses soient omises entièrement de l’article et que les membres de l’équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l’article.</p>
 </div>
 </div>
 <div class="section" id="des-solutions">
@@ -664,6 +666,55 @@ suivant : <a class="reference external" href="https://rpsychologist.com/d3/nhst/
 </div>
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Exercice 10.1</p>
+<p>Choisir la bonne réponse. Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès …</p>
+<ol class="simple">
+<li><p>aux données utilisées dans l’étude.</p></li>
+<li><p>au code utilisé pour générer les résultats de l’étude, s’il existe.</p></li>
+<li><p>à l’environnement (version des logiciels) utilisés dans l’étude.</p></li>
+<li><p>Toutes ces réponses.</p></li>
+</ol>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 10.2</p>
+<p>Vrai/faux. La significativité des résultats dans une étude de neuroimagerie peut être impactée par…</p>
+<ul class="simple">
+<li><p>Le logiciel que l’on utilise pour tester l’hypothèse de recherche.</p></li>
+<li><p>Les paramètres que l’on choisit pour analyser les données, par exemple la quantité de lissage spatial.</p></li>
+<li><p>Le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.</p></li>
+<li><p>La version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 10.3</p>
+<p>Vrai/faux. La puissance statistique …</p>
+<ul class="simple">
+<li><p>Indique la probabilité de détecter un effet avec une procédure statistique.</p></li>
+<li><p>contrôle le taux de faux positifs.</p></li>
+<li><p>dépend du nombre de sujets dans l’étude.</p></li>
+<li><p>dépend du seuil de significativité choisie pour l’étude (seuil p).</p></li>
+<li><p>dépend de la taille de l’effet testé.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 10.4</p>
+<p>Choisir la bonne réponse. Parmi les procédures suivantes, lesquelles ne sont pas statistiquement valides?</p>
+<ul class="simple">
+<li><p>Présenter comme hypothèse d’une étude une observation, seulement après que celle-ci soit observée dans les données.</p></li>
+<li><p>Redéfinir les critères d’exclusion des participants en ce qui concerne la qualité des données, après avoir effectué une première analyse des données.</p></li>
+<li><p>Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original, parce ce que ce sous-groupe est le seul qui présente des résultats significatifs.</p></li>
+<li><p>Aucune des procédures a-c n’est valide.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 10.5</p>
+<p>Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux nés. Le comité d’éthique n’a pas permis de partager les données de recherche. Proposer deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercice 10.6</p>
+<p>Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe), des sujets en santé et des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée, avec un atlas comprenant 90 régions, et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression, qui inclut l’âge et le sexe des participants. Le niveau de significativité est fixé à p&lt;0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifier trois problèmes majeurs avec cette conclusion.</p>
+</div>
 </div>
 </div>
 
@@ -710,7 +761,7 @@ suivant : <a class="reference external" href="https://rpsychologist.com/d3/nhst/
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
