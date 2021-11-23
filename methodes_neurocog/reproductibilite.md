@@ -215,28 +215,56 @@ Le manque de détails dans la section "Méthodes" d'un article peut être un aut
 ## Des solutions
 
 ### Études pré-enregistrées
-Solutions permettant de répondre à la crise de la reproductibilité
-La première idée, serait de modifier la manière dont on publie les articles. Un
-des problèmes dans le cercle présenté au départ, c’est qu’il y a un temps
-phénoménal entre l’élaboration des hypothèses et la publication en plus de
-ne pas avoir de publication des résultats négatifs. Une manière d’éliminer ça,
-c’est la publication des hypothèses et des plans d’analyse. Cela permet aux
-reviewers de critiquer la conception de l’étude avant qu’elle soit terminée,
-donc permettrait les modifications à priori si nécessaire. De plus, si les
-résultats ne collent pas aux hypothèses, ce ne serait pas grave car l’article
-serait déjà accepté. Il existe des articles préenregistrés, ou des registered
-recall. C’est comme un article normal, il manque seulement les résultats et
-la discussion. Une fois que les gens se sont mis d’accord quant a la méthode,
-l’article est accepté peu importe les résultats. Cela ne veut pas dire qu’on ne
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_theme(style="whitegrid")
+
+# données de https://psyarxiv.com/3czyt
+negative_findings = pd.DataFrame({
+    'source':['articles', 'nouvelles études pré-enregistrées', 'réplications pré-enregistrées'],
+    '%min':[5, 55, 58],
+    '%max':[20, 66, 74]
+    })
+
+# Initialise la figure
+fig, ax = plt.subplots(figsize=(6, 4))
+
+# Estimation maximale
+sns.set_color_codes("pastel")
+sns.barplot(x="%max", y="source", data=negative_findings,
+            label="%max", color="b")
+
+# Estimation minimale
+sns.set_color_codes("muted")
+sns.barplot(x="%min", y="source", data=negative_findings,
+            label="%min", color="b")
+
+# Légende
+ax.legend(ncol=2, loc="upper right", frameon=True)
+ax.set(xlim=(0, 100), ylabel="",
+       xlabel="Pourcentage de découvertes négatives dans la littérature")
+sns.despine(left=True, bottom=True)
+fig.set_dpi(300)
+
+from myst_nb import glue
+glue("registered-report-fig", fig, display=False)
+```
+```{glue:figure} registered-report-fig
+:figwidth: 600px
+:name: registered-report-fig
+Pourcentage "découvertes négatives" dans la littérature, c'est à dire d'analyses qui ne confirment pas les hypothèses de recherche. On compare des articles traditionnels avec des études pré-enregistrées pour de nouvelles hypothèses de recherche, et des études pré-enregistrées pour des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de [Allen et Mehler, 2018](https://doi.org/10.31234/osf.io/3czyt) sur 127 études pré-enregistrées. Figure générée avec du code python à l'aide de la librairie [seaborn](https://seaborn.pydata.org/) (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+
+Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l'on appelle une **étude pré-enregistrée**. Un des problèmes dans le cercle présenté en {numref}`research-cycle-original-fig`, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l'équipe de recherche décide simplement de passer au prochain projet plutôt qu'investir dans la publication d'un résultat négatif. Une manière d’éliminer ça,
+c’est de soumetre la publication avec les hypothèses et les plans d’analyse, avant de recueillir les données. Cela permet aux
+reviewers de critiquer la conception de l’étude avant qu’elle soit terminée, et permet donc de modifier le protocole de recherche si nécessaire. L'article est alors accepté, _quelque soit le résultat de l'étude_. Si les
+résultats ne correspondent pas aux hypothèses, l’article
+serait déjà accepté et publié tout de même. Cela ne veut pas dire qu’on ne
 peut pas présenter des nouvelles analyses auxquelles on n’avait pas pensé
-avant. Celles-ci seront alors présentées comme exploratoires comme il se
-devrait, plutôt que confirmatoires comme c’est souvent le cas dans les
-articles dont la méthode n’est pas acceptée et publiée d’avance., ce qu’on
-appelle le HARKing. Ce type d’approche ne colle pas avec tout ce qu’on
-souhaiterait publier. Ce ne fonctionne pas vraiment bien avec le travail
-méthodologique, non plus avec les analyses plus exploratoires. Par contre,
-pour les articles qui suivent la démarche traditionnelle, cela fonctionnerait
-bien et répondrait à beaucoup des problèmes vus au début de ce cours.
+avant. Celles-ci seront alors présentées (correctement) comme exploratoires, plutôt que confirmatoires. En d'autres termes, cette approche élimine le HARKing, et il semble en pratique que cette approche fonctionne (voir {numref}`registered-report-fig`).
 
 ### Code
 Une autre solution serait d’apprendre à coder. Automatiser les analyses
@@ -245,7 +273,6 @@ avoir des erreurs dans le code, mais elles peuvent être vues et réparées
 avec des traces. Les analyses qui ne reposent pas sur du code représente un
 obstacle majeur à la reproductibilité.
 
-### Partage de code
 Ensuite, partager ce code est un peu anxiogène. Souvent, les gens sont
 réticents a rendre public le code utilisé pour générer un article. Comme c’est
 une partie critique du travail de recherche, ça vaut la peine d’apprendre a le
