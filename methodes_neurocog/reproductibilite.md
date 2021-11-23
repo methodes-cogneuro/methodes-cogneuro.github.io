@@ -55,7 +55,7 @@ Cette figure illustre le processus qui amène à un résultat scientifique contr
 ```
 En 2016, un sondage auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
 perception des professionnels dans la recherche, il y a une crise de
-reproductibilité et si oui, laquelle ([Baker, 2016](https://www.nature.com/articles/533452a#change-history)). En tout, 90% des chercheurs dans ce sondage pensent
+reproductibilité et si oui, laquelle ([Baker, 2016](https://doi.org/10.1038/533452a)). En tout, 90% des chercheurs dans ce sondage pensent
 qu’il y a effectivement une crise de reproductibilité (52% pour une crise significative et 38% pour une crise modérée).
 
 La reproductibilité, c’est quoi ? Si on avait accès
@@ -105,21 +105,26 @@ dont analyse les données jusqu'à ce que les résultats deviennent significatif
 #### HARKing
 La dernière pratique douteuse est baptisée le « HARKing ». Le terme HARK est un acronyme en anglais pour les termes « Hypothesis after results are known », ou bien "définition des hypothèses après que les résultats soient connus". On va effectuer de nombreux tests à partir des données recueillies, et on formule a posteriori des hypothèses correspondant aux résultats significatifs dans l'échantillon. Ce processus n'est pas nécessairement malicieux, mais peut émerger d'une volonté d'interpréter les données. Cette démarche n'est pas nécessairement problématique, du moment que les hypothèses sont (correctement) présentées comme exploratoires, guidées par les données, plutôt que comme une hypothèse a priori rigoureuse.
 
+<<<<<<< HEAD
 Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, et d'autres facteurs qui contribuent au manque de reproductibilité.
 
+=======
+>>>>>>> bf283aa4e2e26e068fce2d70f9150e12431a9014
 ## Reproducibilité et neuroimagerie
-On va maintenant voir quels problèmes s’appliquent directement à la
-neuroimagerie et comment certains problèmes de reproductibilité
-spécifiques peuvent ressortir lors de l’utilisation de logiciels en
-neuroimagerie.
+Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, et d'autres facteurs qui contribuent au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaines de traitement en neuroimagerie.
+ * Tout d'abord, il est possible de faire varier beaucoup les conclusions d'une étude juste en modifiant les choix analytiques que l'on fait dans la chaine de traitement (ce que l'on appelle les **degrés de liberté en recherche**).
+ * Ensuite, il est possible d'ajuster nos modèles de manière excessive à l'échantillon de données que l'on a acquis, sans que cela généralise à un jeu de données indépendant (un mécanisme appelé **overfitting**).
+ * Enfin, à cause de la complexité des méthodes utilisées, il est souvent difficile voir impossible de vraiment comprendre les méthodes utilisées dans un article à partir du texte de cet article (**méthodes incomplètes**).
 
 ### Degrés de liberté en recherche
-Le premier problème qui est exacerbé en neuroimagerie est le nombre
-d’Analyses qu’il faut faire ainsi que le nombre de choix qu’il faut faire en lien
-avec ces analyses. Ceci est relié au problème de p-hacking dont on a discuté
-plus tôt. Ainsi, toutes les possibilités d’analyses permettent aux chercheurs
-d’aller faire ressortir l’effet qu’ils désirent observer d’une façon ou d’une
-autre. Cette vaste sélection d’analyses est le résultat de dizaines de
+```{figure} ./reproductibilite/multi_analyses_fmri.png
+---
+width: 800px
+name: multi-analyses-fmri-fig
+---
+Cette figure résume les cartes d'activations IRMf générées par 64 équipes indépendantes, à partir des mêmes données et pour tester la même hypothèse. Les équipes ont été séparées en trois sous groupes, sur la base de la similarité spatiale de leurs cartes d'activation à l'aide d'un algorithme automatique. Le premier groupe (cluster 1) est le plus gros, avec 50 équipes, alors que les deux autres sous-groupes incluent 7 équipes chaque. Figure tirée de [Botvinik-Nezer et al., 2020](https://doi.org/10.1101/843193) sous licence [CC-BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/).
+```
+Cette vaste sélection d’analyses est le résultat de dizaines de
 paramètres modifiables qui sont impliqués dans ces analyses. Une étude a
 tenté de systématiquement changer des choix de paramètres d’analyse pour
 savoir quels résultats ils pouvaient obtenir. En bout de ligne, ils ont obtenu
