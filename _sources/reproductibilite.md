@@ -108,7 +108,7 @@ La dernière pratique douteuse est baptisée le « HARKing ». Le terme HARK est
 ## Reproducibilité et neuroimagerie
 Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, et d'autres facteurs qui contribuent au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaines de traitement en neuroimagerie.
  * Tout d'abord, il est possible de faire varier beaucoup les conclusions d'une étude juste en modifiant les choix analytiques que l'on fait dans la chaine de traitement (ce que l'on appelle les **degrés de liberté en recherche**).
- * Ensuite, il est possible d'ajuster nos modèles de manière excessive à l'échantillon de données que l'on a acquis, sans que cela généralise à un jeu de données indépendant (un mécanisme appelé **overfitting**).
+ * Ensuite, il est possible de confondre effets significatifs et effets importants (on doit considérer la **taille des effets**).
  * Enfin, à cause de la complexité des méthodes utilisées, il est souvent difficile voir impossible de vraiment comprendre les méthodes utilisées dans un article à partir du texte de cet article (**méthodes incomplètes**).
 
 ### Degrés de liberté en recherche
