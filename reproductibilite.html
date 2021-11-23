@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -70,10 +70,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -287,8 +283,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tailles-d-effet">
-     Tailles d’effet
+    <a class="reference internal nav-link" href="#tailles-d-effets">
+     Tailles d’effets
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -366,7 +362,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="reproductibilite-et-controverses">
+  <div class="section" id="reproductibilite-et-controverses">
 <span id="reproductibilite-controverses-chapitre"></span><h1>Reproductibilité et controverses<a class="headerlink" href="#reproductibilite-et-controverses" title="Permalink to this headline">¶</a></h1>
 <table>
   <tr>
@@ -480,63 +476,82 @@ dont analyse les données jusqu’à ce que les résultats deviennent significat
 <p>Au delà des paramètres utilisés dans une analyse, des différences substantielles peuvent venir du choix du logiciel, ou de la version du logiciel utilisée (<a class="reference external" href="https://doi.org/10.1002/hbm.24603">Bowring et al., 2019</a>). Même des changements mineurs peuvent avoir un impact sur les résultats. Et cela n’est pas limité au logiciel de neuroimagerie en tant que tel. Un changement de système d’opération peut lui aussi créer des différences, par exemple dans une analyse de morphométrie (<a class="reference external" href="https://doi.org/10.1371/journal.pone.0038234">Gronenschild et al., 2012</a>).</p>
 </div>
 </div>
-<div class="section" id="tailles-d-effet">
-<h3>Tailles d’effet<a class="headerlink" href="#tailles-d-effet" title="Permalink to this headline">¶</a></h3>
-<p>Une autre erreur qu’on voit particulièrement en neuroimagerie c’est
-d’interpréter une différence significative comme une différence importante.
-Une différence significative signifierait que les populations étudiées sont
-complètement différentes. Par exemple, on trouve que les amygdales des
-personnes sur le spectre de l’autisme est plus petite que pour les gens
-neurotypiques. Cela signifie que la différence de la moyenne des
-distributions est différente, pas que tous les individus du groupe des gens
-ayant un TSA ont une amygdale plus petite que les gens neurotypiques.
-Malheureusement, beaucoup de chercheurs et de professionnels ont
-tendance à faire ce genre de conclusion. Une manière d’aller voir la taille de
-la différence est en regardant le d de Cohen. Un d de Cohen de 0.1 serait ce
-qu’on va trouver si on remarque une différence significative entre nos
-moyennes de groupe, tel qu’illustrer avec l’exemple tes TSA plus tôt. Un d de
-Cohen de 0.79 décrirait un effet de groupe immense, ou le score de tous les
-membres d’un groupe est inférieur au score de tous les membres de l’autre
-groupe. Or, si on a un N très grand, même avec un d de Cohen de 0.1, on va
-avoir un p de 0.000001. Il est important de comprendre que malgré la
-significativité de la différence de groupe, le p ne nous dit rien quant à
-l’importance de cette différence. Le vocabulaire est très important a
-comprendre, car beaucoup de gens vont dire qu’il y a une forte différence en
-raison du p, alors que cette valeur ne nous dit rien au sujet de la taille
-d’effet. En fait, ce qu’on doit retenir, c’est que si on score significatif n’a pas
-de taille d’effet, elle n’a pas de raison d’être répliqué. Pour répliquer un effet,
-il doit être significatif et fort. En neuroimagerie surtout, on fait beaucoup de
-tests statistiques alors on se retrouve souvent avec des p qui sont très
-faibles. La majorité des papiers ne rapportent même pas les tailles d’effet,
-alors au final, personne ne regarde si l’effet est fort. Or, cette question est
-très importante car la taille de la différence a un impact sur la
-reproductibilité</p>
+<div class="section" id="tailles-d-effets">
+<h3>Tailles d’effets<a class="headerlink" href="#tailles-d-effets" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">sample_data</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">n_samp</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">samp1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samp</span><span class="p">)</span>
+    <span class="n">samp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">samp1</span><span class="p">,</span> <span class="n">samp2</span>
+
+<span class="c1"># On génère une série de nombres aléatoires</span>
+<span class="c1"># avec différentes tailles d&#39;effets</span>
+<span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">list_d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">n_samp</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">list_d</span><span class="p">:</span>
+    <span class="n">samp1</span><span class="p">,</span> <span class="n">samp2</span> <span class="o">=</span> <span class="n">sample_data</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">n_samp</span><span class="o">=</span><span class="n">n_samp</span><span class="p">)</span>
+    <span class="n">df1</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">samp1</span>
+    <span class="n">df2</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">samp2</span>
+
+<span class="c1"># On stocke toutes les valeurs, avec les paramètres correspondants</span>
+<span class="c1"># dans un pandas dataframe</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+
+<span class="c1"># On visualise les distributions</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;darkgrid&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>     
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;effect-size-fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="effect-size-fig" style="width: 800px">
+<div class="cell_output docutils container">
+<img alt="_images/reproductibilite_1_0.png" src="_images/reproductibilite_1_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 106 </span><span class="caption-text">Illustration de deux distributions de groupes suivant une loi normale, pour différentes taille d’effet mesurées avec le <em>d</em> de Cohen. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#effect-size-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Une autre erreur commune en neuroimagerie est d’interpréter une différence significative comme une différence importante. Par exemple, imaginons que l’on trouve une différence significative concernant le volume de l’amygdale est réduit chez des personnes sur le spectre de l’autisme par rapport à des individus neurotypiques. Cela signifie que la différence de la moyenne des distributions est différente, mais il se peut tout à fait qu’un individu sur le spectre ait une amygdale plus grande qu’un individu neurotypique.</p>
+<p>Plutôt que la significativité, il est important de mesurer la taille de
+l’effet, c’est à dire la différence qui existe entre les deux populations. On peut par exemple considérer la différence des moyennes, divisée par l’écart type des deux populations - une mesure appelée le <em>d</em> de Cohen. Un <em>d</em> de Cohen de 0.1 ou 0.2 est courant pour des différences de groupes entre populations cliniques. Avec ce type de différence, les distributions des deux groupes se chevauchent de manière importante. Un <em>d</em> de Cohen de 2 décrirait un effet de groupe très important, ou le score de presque tous les membres d’un groupe est inférieur au score de tous les membres de l’autre
+groupe.</p>
+<div class="caution attention admonition" id="p-value-warning">
+<p class="admonition-title">Valeur <em>p</em> et taille d’effet</p>
+<p>La valeur <em>p</em> ne nous dit rien directement sur la taille de l’effet. Une valeur <em>p</em> peut être très significative, par exemple <em>p&lt;0.000001</em> simplement parce que l’on compare deux groupes avec une très grande taille d’échantillon, par exemple N=10000 par groupe. Dans ce cas, même de toutes petites différences peuvent devenir très significatives.</p>
+</div>
 </div>
 <div class="section" id="methodes-incompletes">
 <h3>Méthodes incomplètes<a class="headerlink" href="#methodes-incompletes" title="Permalink to this headline">¶</a></h3>
-<p>Une autre chose importante à mentionner sont les méthodes incomplètes.
-Cette image a été faite par &#64;redpenblackpen, un artiste de McGill. Il publie
-des petits dessins sur le monde universitaire. Celui-ci est très intéressant. Le
-rez de chaussé représente le papier publié. On a une maison bien propre et
-bien rangée. On va lire le papier et tout est carré et tout est rigoureux.
-Parfois, on a du matériel supplémentaire qui est un document qui est moins
-regardé par les reviewers, contenant des vieilles affaires et du matériel qui a
-été utilisé pour le projet mais qui n’est pas essentiel dans le papier principal.
-C’est un peu plus le bazar là-dedans on voit parfois que beaucoup plus de
-choses ont été analysées que ce qui a été présenté dans le papier. Ce qui est
-intéressant c’est le 2e sous-sol, ou on voit le vrai travail avec les tentacules
-multicolore et la pagaille. En réalité, des tonnes de choses ont été essayées,
-certaines choses pas terminées et d’autres oui mais oubliées. Au final,
-l’auteur lui-même serait incapable lui-même de se souvenir de tout ce qui a
-été essayé dans le processus du projet. De plus, la complexité des étapes
-d’analyse en neuroimageries rend encore plus difficile de se souvenir et de
-comprendre ce qui a été fait. Parfois, le numéro du logiciel utilisé n’est
-même pas rapporté dans le papier et est enfoui loin dans la 2e cave. Ce que
-cela veut dire, c’est que l’article publié nous donne une idée très peu
-détaillée et très peu complète de ce qui a été fait. En fait, si les gens ne
-partagent pas leur code et peur processus complet, il sera pratiquement
-impossible de répliquer les résultats obtenus, justement en raison de la
-profondeur de la 2e cave.</p>
+<div class="figure align-default" id="machine-learning-fig">
+<a class="reference internal image-reference" href="_images/machine_learning.png"><img alt="_images/machine_learning.png" src="_images/machine_learning.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 107 </span><span class="caption-text">Cette figure illustre le processus parfois chaotique de développement d’une méthode optimale, et la difficulté de communiquer ce processus de manière claire et complète dans une section de méthodes d’un article. Cette figure est tirée de <a class="reference external" href="https://xkcd.com/1838/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#machine-learning-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Le manque de détails dans la section “Méthodes” d’un article peut être un autre obstacle majeur à la reproduction des résultats. Comme les techniques d’analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d’avoir une description complète des méthodes. Il est aussi courant d’omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l’article. Le texte d’un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l’article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l’article. Il se peut tout à fait que d’autres analyses soient omises entièrement de l’article, et que les membres de l’équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l’article.</p>
 </div>
 </div>
 <div class="section" id="des-solutions">
@@ -695,7 +710,7 @@ suivant : <a class="reference external" href="https://rpsychologist.com/d3/nhst/
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         
