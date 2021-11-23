@@ -134,46 +134,83 @@ Le nombre de paramètres qu'un chercheur peut manipuler est appelé _degrés de 
 Au delà des paramètres utilisés dans une analyse, des différences substantielles peuvent venir du choix du logiciel, ou de la version du logiciel utilisée ([Bowring et al., 2019](https://doi.org/10.1002/hbm.24603)). Même des changements mineurs peuvent avoir un impact sur les résultats. Et cela n'est pas limité au logiciel de neuroimagerie en tant que tel. Un changement de système d'opération peut lui aussi créer des différences, par exemple dans une analyse de morphométrie ([Gronenschild et al., 2012](https://doi.org/10.1371/journal.pone.0038234)).
 ```
 
-### Tailles d'effet
-Une autre erreur qu’on voit particulièrement en neuroimagerie c’est
-d’interpréter une différence significative comme une différence importante.
-Une différence significative signifierait que les populations étudiées sont
-complètement différentes. Par exemple, on trouve que les amygdales des
-personnes sur le spectre de l’autisme est plus petite que pour les gens
-neurotypiques. Cela signifie que la différence de la moyenne des
-distributions est différente, pas que tous les individus du groupe des gens
-ayant un TSA ont une amygdale plus petite que les gens neurotypiques.
-Malheureusement, beaucoup de chercheurs et de professionnels ont
-tendance à faire ce genre de conclusion. Une manière d’aller voir la taille de
-la différence est en regardant le d de Cohen. Un d de Cohen de 0.1 serait ce
-qu’on va trouver si on remarque une différence significative entre nos
-moyennes de groupe, tel qu’illustrer avec l’exemple tes TSA plus tôt. Un d de
-Cohen de 0.79 décrirait un effet de groupe immense, ou le score de tous les
-membres d’un groupe est inférieur au score de tous les membres de l’autre
-groupe. Or, si on a un N très grand, même avec un d de Cohen de 0.1, on va
-avoir un p de 0.000001. Il est important de comprendre que malgré la
-significativité de la différence de groupe, le p ne nous dit rien quant à
-l’importance de cette différence. Le vocabulaire est très important a
-comprendre, car beaucoup de gens vont dire qu’il y a une forte différence en
-raison du p, alors que cette valeur ne nous dit rien au sujet de la taille
-d’effet. En fait, ce qu’on doit retenir, c’est que si on score significatif n’a pas
-de taille d’effet, elle n’a pas de raison d’être répliqué. Pour répliquer un effet,
-il doit être significatif et fort. En neuroimagerie surtout, on fait beaucoup de
-tests statistiques alors on se retrouve souvent avec des p qui sont très
-faibles. La majorité des papiers ne rapportent même pas les tailles d’effet,
-alors au final, personne ne regarde si l’effet est fort. Or, cette question est
-très importante car la taille de la différence a un impact sur la
-reproductibilité
+### Tailles d'effets
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+def sample_data(d, n_samp=1000):
+    samp1 = np.random.normal(loc=0, scale=1, size=n_samp)
+    samp2 = np.random.normal(loc=d, scale=1, size=n_samp)
+    return samp1, samp2
+
+# On génère une série de nombres aléatoires
+# avec différentes tailles d'effets
+rs = np.random.RandomState(0)
+list_d = [0, 0.3, 1, 2]
+n_samp = 10000
+df1 = pd.DataFrame()
+df2 = pd.DataFrame()
+for d in list_d:
+    samp1, samp2 = sample_data(d, n_samp=n_samp)
+    df1[f'{d}'] = samp1
+    df2[f'{d}'] = samp2
+
+# On stocke toutes les valeurs, avec les paramètres correspondants
+# dans un pandas dataframe
+df1 = df1.melt(var_name='d')
+df1['group'] = 0
+df2 = df2.melt(var_name='d')
+df2['group'] = 1
+df = df1.append(df2)
+
+# On visualise les distributions
+import seaborn as sns
+
+sns.set_theme(style='darkgrid')
+fig = sns.displot(
+    df,     
+    x='value',
+    col='d',
+    hue='group',
+    kind='kde',
+    fill=True,
+)
+fig.fig.set_dpi(300)
+
+from myst_nb import glue
+glue("effect-size-fig", fig.fig, display=False)
+```
+```{glue:figure} effect-size-fig
+:figwidth: 800px
+:name: effect-size-fig
+Illustration de deux distributions de groupes suivant une loi normale, pour différentes taille d'effet mesurées avec le _d_ de Cohen. Figure générée avec du code python à l'aide de la librairie [seaborn](https://seaborn.pydata.org/) (cliquer sur + pour voir le code). Cette figure par P. Bellec est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Une autre erreur commune en neuroimagerie est d’interpréter une différence significative comme une différence importante. Par exemple, imaginons que l'on trouve une différence significative concernant le volume de l'amygdale est réduit chez des personnes sur le spectre de l’autisme par rapport à des individus neurotypiques. Cela signifie que la différence de la moyenne des distributions est différente, mais il se peut tout à fait qu'un individu sur le spectre ait une amygdale plus grande qu'un individu neurotypique.
+
+Plutôt que la significativité, il est important de mesurer la taille de
+l'effet, c'est à dire la différence qui existe entre les deux populations. On peut par exemple considérer la différence des moyennes, divisée par l'écart type des deux populations - une mesure appelée le _d_ de Cohen. Un _d_ de Cohen de 0.1 ou 0.2 est courant pour des différences de groupes entre populations cliniques. Avec ce type de différence, les distributions des deux groupes se chevauchent de manière importante. Un _d_ de Cohen de 2 décrirait un effet de groupe très important, ou le score de presque tous les membres d’un groupe est inférieur au score de tous les membres de l’autre
+groupe.
+
+```{admonition} Valeur _p_ et taille d'effet
+:class: caution attention
+:name: p-value-warning
+
+La valeur _p_ ne nous dit rien directement sur la taille de l'effet. Une valeur _p_ peut être très significative, par exemple _p<0.000001_ simplement parce que l'on compare deux groupes avec une très grande taille d'échantillon, par exemple N=10000 par groupe. Dans ce cas, même de toutes petites différences peuvent devenir très significatives.
+```
 
 ### Méthodes incomplètes
 ```{figure} ./reproductibilite/machine_learning.png
 ---
-width: 600px
+width: 400px
 name: machine-learning-fig
 ---
 Cette figure illustre le processus parfois chaotique de développement d'une méthode optimale, et la difficulté de communiquer ce processus de manière claire et complète dans une section de méthodes d'un article. Cette figure est tirée de [xkcd webcomic](https://xkcd.com/1838/), sous licence [CC-BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/).
 ```
-Le manque de détails dans la section "Méthodes" d'un article peut être nn autre obstacle majeur à la reproduction des résultats. Comme les techniques d'analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d'avoir une description complète des méthodes. Il est aussi courant d'omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l'article. Le texte d'un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l'article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l'article. Il se peut tout à fait que d'autres analyses soient omises entièrement de l'article, et que les membres de l'équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l'article.
+Le manque de détails dans la section "Méthodes" d'un article peut être un autre obstacle majeur à la reproduction des résultats. Comme les techniques d'analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d'avoir une description complète des méthodes. Il est aussi courant d'omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l'article. Le texte d'un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l'article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l'article. Il se peut tout à fait que d'autres analyses soient omises entièrement de l'article, et que les membres de l'équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l'article.
 
 ## Des solutions
 
