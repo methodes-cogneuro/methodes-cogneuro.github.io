@@ -549,10 +549,10 @@ Vrai/faux. Un problème de comparaisons multiples signifie.
 ```{admonition} Exercice 9.5
 :class: note
 Classer les analyses suivantes du plus petit au plus grand, en fonction du nombre de comparaisons multiples impliquées. Indiquez le nombre approximatif de comparaisons.
-On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.
-On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.
-On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.
-On compare le volume de l’hippocampe entre deux groupes de sujets.
+ * On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.
+ * On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.
+ * On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.
+ * On compare le volume de l’hippocampe entre deux groupes de sujets.
 ```
 
 ```{admonition} Exercice 9.6
