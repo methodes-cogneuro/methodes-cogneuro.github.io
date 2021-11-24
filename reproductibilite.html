@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -70,10 +70,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -322,18 +318,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonnes-pratiques">
-     Bonnes pratiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#la-methode-scientifique-revisitee">
-     La méthode scientifique revisitée
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vers-une-science-generalisable">
-     Vers une science généralisable
+    <a class="reference internal nav-link" href="#puissance-statistique-et-meilleures-pratiques">
+     Puissance statistique et meilleures pratiques
     </a>
    </li>
   </ul>
@@ -359,7 +345,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="reproductibilite-et-controverses">
+  <div class="section" id="reproductibilite-et-controverses">
 <span id="reproductibilite-controverses-chapitre"></span><h1>Reproductibilité et controverses<a class="headerlink" href="#reproductibilite-et-controverses" title="Permalink to this headline">¶</a></h1>
 <table>
   <tr>
@@ -378,6 +364,22 @@
       </a>
       <br />
         <a title="Contenu">🤔</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/eddyfortier">
+        <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Eddy Fortier</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
     </td>
   </tr>
 </table>
@@ -598,9 +600,9 @@ l’effet, c’est à dire la différence qui existe entre les deux populations.
 <div class="cell_output docutils container">
 <img alt="_images/reproductibilite_3_0.png" src="_images/reproductibilite_3_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 108 </span><span class="caption-text">Pourcentage “découvertes négatives” dans la littérature, c’est à dire d’analyses qui ne confirment pas les hypothèses de recherche. On compare des articles traditionnels avec des études pré-enregistrées pour de nouvelles hypothèses de recherche, et des études pré-enregistrées pour des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de <a class="reference external" href="https://doi.org/10.31234/osf.io/3czyt">Allen et Mehler, 2018</a> sur 127 études pré-enregistrées. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#registered-report-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 108 </span><span class="caption-text">Pourcentage de “découvertes négatives” dans la littérature. Les découvertes négatives viennent d’études pour lesquelles les analyses ne confirment pas les hypothèses de recherche. On compare ici des articles traditionnels avec des études pré-enregistrées portant sur de nouvelles hypothèses de recherche, ainsi que des études pré-enregistrées portant sur des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de <a class="reference external" href="https://doi.org/10.31234/osf.io/3czyt">Allen et Mehler, 2018</a> sur 127 études pré-enregistrées. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#registered-report-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l’on appelle une <strong>étude pré-enregistrée</strong>. Un des problèmes dans le cercle présenté en <code class="xref std std-numref docutils literal notranslate"><span class="pre">research-cycle-original-fig</span></code>, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l’équipe de recherche décide simplement de passer au prochain projet plutôt qu’investir dans la publication d’un résultat négatif. Une manière d’éliminer ça,
+<p>Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l’on appelle une <strong>étude pré-enregistrée</strong>. Un des problèmes dans le cercle présenté en <a class="reference internal" href="#researchcycle-original-fig"><span class="std std-numref">Fig. 103</span></a>, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l’équipe de recherche décide simplement de passer au prochain projet plutôt qu’investir dans la publication d’un résultat négatif. Une manière d’éliminer ça,
 c’est de soumetre la publication avec les hypothèses et les plans d’analyse, avant de recueillir les données. Cela permet aux
 reviewers de critiquer la conception de l’étude avant qu’elle soit terminée, et permet donc de modifier le protocole de recherche si nécessaire. L’article est alors accepté, <em>quelque soit le résultat de l’étude</em>. Si les
 résultats ne correspondent pas aux hypothèses, l’article
@@ -610,91 +612,66 @@ avant. Celles-ci seront alors présentées (correctement) comme exploratoires, p
 </div>
 <div class="section" id="code">
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
-<p>Une autre solution serait d’apprendre à coder. Automatiser les analyses
-permet de les rendre plus facile pour quiconque de les reproduire. Il peut y
-avoir des erreurs dans le code, mais elles peuvent être vues et réparées
-avec des traces. Les analyses qui ne reposent pas sur du code représente un
-obstacle majeur à la reproductibilité.</p>
-<p>Ensuite, partager ce code est un peu anxiogène. Souvent, les gens sont
-réticents a rendre public le code utilisé pour générer un article. Comme c’est
-une partie critique du travail de recherche, ça vaut la peine d’apprendre a le
-faire comme il faut et de le partager pour aider à réduire le problème de
-reproductibilité. Beaucoup de gens qui utilisent Github, une plateforme qui
-permet de partager le code et aussi de partager les modifications qui y sont
-faites avec le temps. En fait, la principale personne qui bénéficie de la
-publicisation de son code est la personne qui le publie, car si le projet évolue
-dans le temps il y a traces de ce qui a été fait sur cette plateforme. Le
-monstre du 2e sous-sol est alors un peu moins caché et un peu moins
-inconnu pour vous et pour les personnes qui vous lisent à la suite de la
-publication. De plus en plus, on s’attend que les scripts d’analyse soient
-rendus publics lors de la publication des papiers.</p>
+<div class="figure align-default" id="python-fig">
+<a class="reference internal image-reference" href="_images/python.png"><img alt="_images/python.png" src="_images/python.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 109 </span><span class="caption-text">Cette figure illustre les avantages d’automatiser les analyses scientifiques à l’aide de code (de manière métaphorique). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/353/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#python-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Une autre solution pour rendre les analyses scientifiques en neuroimagerie plus reproductible est d’apprendre à coder. Automatiser les analyses permet de les rendre plus facile pour quiconque de les reproduire. Il peut y avoir des erreurs dans le code, mais elles peuvent être vues et réparées par d’autres. Les analyses qui ne reposent pas sur du code représentent un obstacle majeur à la reproductibilité. Pour être vraiment utile, le code d’une analyse doit être partagé de manière publique. Ce code constitue alors un artefact de recherche très important, beaucoup plus détaillé et spécifique que la section de méthodes d’un article. Beaucoup de gens utilisent la plateforme <a class="reference external" href="https://github.com/">Github</a> pour partager le code et aussi de partager les modifications qui y sont faites avec le temps. Il est aussi possible d’archiver une version du code sur une plateforme comme <a class="reference external" href="https://zenodo.org/">zenodo</a> qui fournit un identifiant unique pour ce code, comme pour un article. Si le code est de haute qualité et ré-utilisable, il est même possible de publier un article sur ce code, dans un journal comme <a class="reference external" href="https://joss.theoj.org/">Journal of Open Source Software</a>.</p>
 </div>
 <div class="section" id="partage-de-donnees">
 <h3>Partage de données<a class="headerlink" href="#partage-de-donnees" title="Permalink to this headline">¶</a></h3>
-<p>Une autre solution est de partager les données. Cela facilite la vie des
-laboratoires car 1 an et 2 ans après avoir publié un papier, il est possible
-qu’on ne se souvienne même plus ou se trouvent les données et quelle
-version des données qui a été utilisée. Le partage de celles-ci rend plus facile
-de se relire et de retrouver nos traces. Malheureusement, ce n’est pas facile
-de rendre nos données publiques. De plus en plus de gens poussent pour
-rendre le partage de données plus commun et plus facile, mais ce n’est pas
-encore fait.
-Partager ses données c’est comme un spectre qui est représenté par ce
-graphique. Sur l’axe des y on a à quel point c’est utilisable et sur l’axe des x
-c’est a quel point c’est beaucoup de données et ça prend du temps a
-préparer. En bas, on a les données ADNI ou HCP, des projets ou les gens
-publient leurs données brutes et les données prétraitées. Ensuite, on a
-d’autres personnes qui partagent uniquement leurs données brutes. Par la
-suite, on a des gens qui partagent leurs cartes statistiques. Enfin, les
-coordonnées des types d’activation est quelque chose que beaucoup de
-gens partagent dans les articles et qui est très utile, bien que beaucoup
-moins riche que les cartes elles-mêmes. Le jour ou on arrivera a partager nos
-données systématiquement avec nos articles on va avoir de grandes
-améliorations au niveau de la reproductibilité.</p>
+<div class="figure align-default" id="openneuro-downloads-fig">
+<a class="reference internal image-reference" href="_images/openneuro-downloads.jpg"><img alt="_images/openneuro-downloads.jpg" src="_images/openneuro-downloads.jpg" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 110 </span><span class="caption-text">Nombre de jeux de données ouverts en neuroimagerie et nombre de participants sur la plateforme de partage de données <a class="reference external" href="https://openneuro.org/">openneuro</a>. Figure tirée de <a class="reference external" href="https://doi.org/10.7554/eLife.71774">Markiewicz et al., 2021</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#openneuro-downloads-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Une autre solution pour améliorer la reproducibilité est de partager les données de recherche. La figure {numref}(openneuro-downloads-fig) illustre l’adoption rapide de cette pratique dans la communauté de recherche en neuroimagerie. Partager ses données permet à d’autres laboratoires de répliquer les analyses, ou essayer d’autres méthodes. Cela permet aussi au laboratoire d’origine de disposer d’une archive bien organisée pour de futurs projets. Le partage des données humaines est en revanche rendu complexe dans certaines parties du monde (comme le Québec) à cause de considérations éthiques ou bien légales. Il est en revanche toujours possible de partager des cartes statistiques de groupe, par exemple en utilisant une plateforme comme <a class="reference external" href="https://neurovault.org/">neurovault</a>.</p>
 </div>
 <div class="section" id="partage-d-environnement">
 <h3>Partage d’environnement<a class="headerlink" href="#partage-d-environnement" title="Permalink to this headline">¶</a></h3>
-<p>Ensuite, on a des outils qui permettent de partager notre environnement de
-travail. Une initiative qui est bien appréciée est neurodebian, qui est une
-version de Linux qui vient préinstaller avec un appstore pour la
-neuroimagerie. On peut installer directement les logiciels et les systèmes
-d’opération. Ainsi, quelqu’un qui veut reproduire votre environnement
-pourrait le faire. Il y a aussi les containers qui permettent de garder tout
-l’environnement de travail sur un seul fichier, cela fonctionne sur Linux et il y
-a des manières de le faire fonctionner sur Mac et sur Windows. C’est
-beaucoup utilisé pour la programmation Web, et la communauté scientifique
-a commencé à l’utiliser pour améliorer la reproductibilité.</p>
+<p>Des outils existent également pour partager un environnement de travail, ce qui est possible gratuitement grâce aux technologies libres. Il existe diverses solutions. Le language <code class="docutils literal notranslate"><span class="pre">python</span></code> permet de décrire un ensemble de dépendances (avec versions) au moyen d’un simple fichier texte <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Certaines versions de linux comme <a class="reference external" href="https://neuro.debian.net/">neurodebian</a> ont également un grand nombre d’outils de neuroimagerie prêts à l’installation, avec contrôle des versions. Les <code class="docutils literal notranslate"><span class="pre">containers</span></code> sont une autre famille de solutions qui permettent de partager un ensemble de librairies ainsi que le système d’exploitation. Des variantes de <code class="docutils literal notranslate"><span class="pre">containers</span></code> ont été spécifiquement développées pour les neurosciences cognitives, comme <a class="reference external" href="https://www.repronim.org/neurodocker/">neurodocker</a>. Un dernier exemple est <a class="reference external" href="https://mybinder.org/">mybinder</a> qui permet d’importer un <code class="docutils literal notranslate"><span class="pre">container</span></code> avec toutes les dépendances d’un projet et de ré-exécuter ce code dans un fureteur internet, sans avoir rien à installer. Pour la version en ligne de ces notes de cours, il y a une petite fusée en haut à droite qui démarre mybinder. Comme les notes de cours utilisent des données ouvertes pour beaucoup de figures, il est possible de reproduire (et modifier) les figures du cours de cette manière.</p>
 </div>
-<div class="section" id="bonnes-pratiques">
-<h3>Bonnes pratiques<a class="headerlink" href="#bonnes-pratiques" title="Permalink to this headline">¶</a></h3>
-<p>Certains articles se concentrent sur la formulation de « guides » de bonnes
-pratiques pour différentes techniques et méthodes de recherche. Cela
-permet de voir ce qui est le plus utile pour contrer la crise de reproductibilité
-en fonction des méthodes les plus convoitées en neuroscience cognitive.
-Une autre chose qui peut être faite est d’étudier la puissance statistique en
-élaborant un projet pour savoir si on doit modifier la taille de notre
-échantillon. Cela peut être fait avec différents logiciels et avec le site web
-suivant : <a class="reference external" href="https://rpsychologist.com/d3/nhst/">https://rpsychologist.com/d3/nhst/</a></p>
-</div>
-<div class="section" id="la-methode-scientifique-revisitee">
-<h3>La méthode scientifique revisitée<a class="headerlink" href="#la-methode-scientifique-revisitee" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="vers-une-science-generalisable">
-<h3>Vers une science généralisable<a class="headerlink" href="#vers-une-science-generalisable" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="puissance-statistique-et-meilleures-pratiques">
+<h3>Puissance statistique et meilleures pratiques<a class="headerlink" href="#puissance-statistique-et-meilleures-pratiques" title="Permalink to this headline">¶</a></h3>
+<p>Certains articles se concentrent sur la formulation de « guides » des meilleures
+pratiques pour différentes méthodes de recherche. Le domaine des neurosciences cognitives a par exemple un guide baptisé COBIDAS <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5685169/">(Nichols et al., 2017)</a>, qui a également une version pour la MEG <a class="reference external" href="https://osf.io/a8dhx/">(Pernet et al., 2020)</a>. Ce type de guide permet de sélectionner des méthodes qui sont non seulement reproductibles, mais idéalement aussi robustes et pourront être répliquées avec des méthodes ou des données différentes. Un point important à considérer est la <strong>puissance statistique</strong> d’une étude. Alors que la valeur <em>p</em> nous dit la fréquence de faux positifs, c’est à dire une détection faite en l’absence de signal, la puissance statistique nous informe sur la fréquence des faux négatifs, c’est à dire le signal qu’on n’arrive pas à détecter. Pour qu’un résultat soit reproductible, il est critique que la puissance statistique du test soit élevée. Avec le modèle linéaire général, la puissance statistique dépend de la taille d’effet, du nombre de participants dans l’étude ainsi que du taux de faux positifs <em>p</em> du test. Voir cette <a class="reference external" href="https://rpsychologist.com/d3/nhst/">page internet</a> pour expérimenter avec différents paramètres.</p>
 </div>
 </div>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="research-cycle-fig">
+<a class="reference internal image-reference" href="_images/research-cycle.jpg"><img alt="_images/research-cycle.jpg" src="_images/research-cycle.jpg" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 111 </span><span class="caption-text">Un cycle de découvertes en recherche qui inclut la préservation et la ré-utilisation des données. Figure par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>.</span><a class="headerlink" href="#research-cycle-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Dans ce chapitre, on a vu:</p>
+<ul class="simple">
+<li><p>Certaines pratiques de recherche douteuses qui peuvent amener à des découvertes scientifiques non reproductibles.</p></li>
+<li><p>Des aspects de la recherche en neuroimagerie qui sont particulièrement problématiques:</p>
+<ul>
+<li><p>sensibilité à de nombreux paramètres,</p></li>
+<li><p>manque de quantification des tailles d’effet,</p></li>
+<li><p>difficultés à décrire les méthodes de manière complète dans un article.</p></li>
+</ul>
+</li>
+<li><p>Des nouvelles pratiques qui permettent d’améliorer la reproducibilité de la science:</p>
+<ul>
+<li><p>études pré-enregistrées,</p></li>
+<li><p>partage de code, données, environnement,</p></li>
+<li><p>meilleures pratiques d’analyse.</p></li>
+</ul>
+</li>
+</ul>
+<p>On voit aujourd’hui émerger une nouvelle approche de découvertes scientifiques qui inclut notamment le partage et la ré-utilisation de données, ce qui va amener une science plus reproductible et fiable (<a class="reference internal" href="#research-cycle-fig"><span class="std std-numref">Fig. 111</span></a>).</p>
 </div>
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 10.1</p>
-<p>Choisir la bonne réponse. Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès …</p>
+<p>Choisissez la bonne réponse.
+Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès…</p>
 <ol class="simple">
-<li><p>aux données utilisées dans l’étude.</p></li>
-<li><p>au code utilisé pour générer les résultats de l’étude, s’il existe.</p></li>
-<li><p>à l’environnement (version des logiciels) utilisés dans l’étude.</p></li>
+<li><p>aux données utilisées dans l’étude</p></li>
+<li><p>au code utilisé pour générer les résultats de l’étude, s’il existe</p></li>
+<li><p>à l’environnement (version des logiciels) utilisé dans l’étude</p></li>
 <li><p>Toutes ces réponses.</p></li>
 </ol>
 </div>
@@ -702,40 +679,41 @@ suivant : <a class="reference external" href="https://rpsychologist.com/d3/nhst/
 <p class="admonition-title">Exercice 10.2</p>
 <p>Vrai/faux. La significativité des résultats dans une étude de neuroimagerie peut être impactée par…</p>
 <ul class="simple">
-<li><p>Le logiciel que l’on utilise pour tester l’hypothèse de recherche.</p></li>
-<li><p>Les paramètres que l’on choisit pour analyser les données, par exemple la quantité de lissage spatial.</p></li>
-<li><p>Le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.</p></li>
-<li><p>La version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.</p></li>
+<li><p>le logiciel que l’on utilise pour tester l’hypothèse de recherche.</p></li>
+<li><p>les paramètres que l’on choisit pour analyser les données, comme par exemple la quantité de lissage spatial.</p></li>
+<li><p>le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.</p></li>
+<li><p>la version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.</p></li>
 </ul>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 10.3</p>
-<p>Vrai/faux. La puissance statistique …</p>
+<p>Vrai/faux. La puissance statistique…</p>
 <ul class="simple">
-<li><p>Indique la probabilité de détecter un effet avec une procédure statistique.</p></li>
+<li><p>indique la probabilité de détecter un effet avec une procédure statistique.</p></li>
 <li><p>contrôle le taux de faux positifs.</p></li>
 <li><p>dépend du nombre de sujets dans l’étude.</p></li>
-<li><p>dépend du seuil de significativité choisie pour l’étude (seuil p).</p></li>
+<li><p>dépend du seuil de significativité choisi pour l’étude (seuil p).</p></li>
 <li><p>dépend de la taille de l’effet testé.</p></li>
 </ul>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 10.4</p>
-<p>Choisir la bonne réponse. Parmi les procédures suivantes, lesquelles ne sont pas statistiquement valides?</p>
+<p>Choisissez la bonne réponse.
+Parmi les procédures suivantes, laquelle (lesquelles) n’est (ne sont) pas statistiquement valide(s)?</p>
 <ul class="simple">
-<li><p>Présenter comme hypothèse d’une étude une observation, seulement après que celle-ci soit observée dans les données.</p></li>
-<li><p>Redéfinir les critères d’exclusion des participants en ce qui concerne la qualité des données, après avoir effectué une première analyse des données.</p></li>
-<li><p>Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original, parce ce que ce sous-groupe est le seul qui présente des résultats significatifs.</p></li>
-<li><p>Aucune des procédures a-c n’est valide.</p></li>
+<li><p>Présenter comme hypothèse d’une étude une observation faite seulement après l’obtention et l’analyse des données.</p></li>
+<li><p>Redéfinir les critères d’exclusion des participants en se basant sur la qualité des données, et ce, après avoir effectué une première analyse des données.</p></li>
+<li><p>Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original parce que ce sous-groupe est le seul qui présente des résultats significatifs.</p></li>
+<li><p>Aucune des trois procédures présentées ci-haut n’est valide.</p></li>
 </ul>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 10.5</p>
-<p>Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux nés. Le comité d’éthique n’a pas permis de partager les données de recherche. Proposer deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.</p>
+<p>Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux-nés. Le comité d’éthique n’a pas permis le partage des données de recherche. Proposez deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 10.6</p>
-<p>Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe), des sujets en santé et des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée, avec un atlas comprenant 90 régions, et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression, qui inclut l’âge et le sexe des participants. Le niveau de significativité est fixé à p&lt;0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifier trois problèmes majeurs avec cette conclusion.</p>
+<p>Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe): des sujets en santé ainsi que des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée utilisant un atlas comprenant 90 régions et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression qui inclut l’âge et le sexe des participants. Le seuil de significativité est fixé à p&lt;0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifiez trois problèmes majeurs avec cette conclusion.</p>
 </div>
 </div>
 </div>
@@ -783,7 +761,7 @@ suivant : <a class="reference external" href="https://rpsychologist.com/d3/nhst/
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         

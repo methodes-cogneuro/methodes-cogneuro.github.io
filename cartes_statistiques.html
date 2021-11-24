@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -43,7 +43,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -73,10 +73,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -330,7 +326,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cartes-statistiques">
+  <div class="section" id="cartes-statistiques">
 <span id="cartes-statistiques-chapitre"></span><h1>Cartes statistiques<a class="headerlink" href="#cartes-statistiques" title="Permalink to this headline">¶</a></h1>
 <table>
   <tr>
@@ -835,7 +831,7 @@
 </div>
 <p>Maintenant que l’on a discuté de l’interprétation de la valeur <code class="docutils literal notranslate"><span class="pre">p</span></code>, on doit maintenant décider d’un seuil à appliquer sur les valeurs <code class="docutils literal notranslate"><span class="pre">p</span></code>. Si l’on utilise le seuil habituel <code class="docutils literal notranslate"><span class="pre">p&lt;0.05</span></code>, cela signifie que pour 20 permutations, on détectera une association 1 fois (en moyenne) pour un voxel donné. Mais comme on a des milliers de voxels dans le cerveau, cela veut dire que l’on va détecter 5% du cerveau (en moyenne) pour chaque permutation! C’est ce que l’on observe (et même plus) dans la figure en haut à gauche <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>. Il s’agit du <strong>problème de comparaisons multiples</strong>, et plus on fait de tests, plus ce problème est important.</p>
 <p>Si l’on abaisse le seuil à <code class="docutils literal notranslate"><span class="pre">p&lt;0.001</span></code>, on ne détecte plus que 0.1% du cerveau (en moyenne) sous l’hypothèse nulle, et on observe en effet une réduction du nombre de voxels dans la figure de gauche, 2ième ligne <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>.</p>
-<p>La méthode la plus simple pour corriger du problème de comparaisons multiples est d’utiliser un seuil corrigé <code class="docutils literal notranslate"><span class="pre">p&lt;0.05/N</span></code>, où N est le nombre de comparaisons (c’est à dire de tests). Dans notre cas, on a approximativement 100,000 voxels, donc on va utiliser <code class="docutils literal notranslate"><span class="pre">p&lt;0.0000001</span></code>! Avec cette stratégie, aucun voxel ne passe le seuil dans notre expérience sous l’hypothèse nulle, voir figure en bas à gauche <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>. En général c’est ce qui se passera (en moyenne) pour 19/20 permutations.</p>
+<p>La méthode la plus simple pour corriger du problème de comparaisons multiples est d’utiliser un seuil corrigé <code class="docutils literal notranslate"><span class="pre">p&lt;0.05/N</span></code>, où N est le nombre de comparaisons (c’est à dire de tests). Dans notre cas, on a approximativement 100,000 voxels, donc on va utiliser <code class="docutils literal notranslate"><span class="pre">p&lt;0.0000001</span></code>! Avec cette stratégie, aucun voxel ne passe le seuil dans notre expérience sous l’hypothèse nulle, voir figure en bas à gauche <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>. En général c’est ce qui se passera (en moyenne) 19/20 permutations.</p>
 <p>Si l’on observe maintenant l’effet de ces différentes stratégies sur les données originales, on observe que plus le seuil <code class="docutils literal notranslate"><span class="pre">p</span></code> est petit, moins on détecte d’effets significatifs. Malgré tout, même avec <code class="docutils literal notranslate"><span class="pre">p&lt;0.05</span></code> corrigé par l’approche de Bonferroni, on détecte toujours les effets principaux de l’âge.</p>
 <div class="tip admonition" id="resolution-power">
 <p class="admonition-title">Compromis résolution / puissance</p>
@@ -968,7 +964,7 @@ Pour répondre aux questions de cet exercice, on s’intéresse à la section 2.
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         

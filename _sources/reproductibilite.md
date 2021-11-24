@@ -32,6 +32,22 @@ kernelspec:
       <br />
         <a title="Contenu">🤔</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/eddyfortier">
+        <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Eddy Fortier</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
   </tr>
 </table>
 
@@ -52,6 +68,7 @@ name: significant-fig
 ---
 Cette figure illustre un exemple de processus pouvant amener à un résultat scientifique controversé (ainsi qu'un exemple de problème de comparaisons multiples). Cette figure est tirée de [xkcd webcomic](https://xkcd.com/882/), sous licence [CC-BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/).
 ```
+
 En 2016, un sondage effectué auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
 perception des professionnels dans la recherche, il y avait une crise de
 reproductibilité, et si oui, laquelle ([Baker, 2016](https://doi.org/10.1038/533452a)).
@@ -255,10 +272,11 @@ glue("registered-report-fig", fig, display=False)
 ```{glue:figure} registered-report-fig
 :figwidth: 600px
 :name: registered-report-fig
-Pourcentage "découvertes négatives" dans la littérature, c'est à dire d'analyses qui ne confirment pas les hypothèses de recherche. On compare des articles traditionnels avec des études pré-enregistrées pour de nouvelles hypothèses de recherche, et des études pré-enregistrées pour des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de [Allen et Mehler, 2018](https://doi.org/10.31234/osf.io/3czyt) sur 127 études pré-enregistrées. Figure générée avec du code python à l'aide de la librairie [seaborn](https://seaborn.pydata.org/) (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Pourcentage de "découvertes négatives" dans la littérature. Les découvertes négatives viennent d'études pour lesquelles les analyses ne confirment pas les hypothèses de recherche. On compare ici des articles traditionnels avec des études pré-enregistrées portant sur de nouvelles hypothèses de recherche, ainsi que des études pré-enregistrées portant sur des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de [Allen et Mehler, 2018](https://doi.org/10.31234/osf.io/3czyt) sur 127 études pré-enregistrées. Figure générée avec du code python à l'aide de la librairie [seaborn](https://seaborn.pydata.org/) (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l'on appelle une **étude pré-enregistrée**. Un des problèmes dans le cercle présenté en {numref}`research-cycle-original-fig`, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l'équipe de recherche décide simplement de passer au prochain projet plutôt qu'investir dans la publication d'un résultat négatif. Une manière d’éliminer ça,
+
+Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l'on appelle une **étude pré-enregistrée**. Un des problèmes dans le cercle présenté en {numref}`researchcycle-original-fig`, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l'équipe de recherche décide simplement de passer au prochain projet plutôt qu'investir dans la publication d'un résultat négatif. Une manière d’éliminer ça,
 c’est de soumetre la publication avec les hypothèses et les plans d’analyse, avant de recueillir les données. Cela permet aux
 reviewers de critiquer la conception de l’étude avant qu’elle soit terminée, et permet donc de modifier le protocole de recherche si nécessaire. L'article est alors accepté, _quelque soit le résultat de l'étude_. Si les
 résultats ne correspondent pas aux hypothèses, l’article
@@ -267,121 +285,100 @@ peut pas présenter des nouvelles analyses auxquelles on n’avait pas pensé
 avant. Celles-ci seront alors présentées (correctement) comme exploratoires, plutôt que confirmatoires. En d'autres termes, cette approche élimine le HARKing, et il semble en pratique que cette approche fonctionne (voir {numref}`registered-report-fig`).
 
 ### Code
-Une autre solution serait d’apprendre à coder. Automatiser les analyses
-permet de les rendre plus facile pour quiconque de les reproduire. Il peut y
-avoir des erreurs dans le code, mais elles peuvent être vues et réparées
-avec des traces. Les analyses qui ne reposent pas sur du code représente un
-obstacle majeur à la reproductibilité.
-
-Ensuite, partager ce code est un peu anxiogène. Souvent, les gens sont
-réticents a rendre public le code utilisé pour générer un article. Comme c’est
-une partie critique du travail de recherche, ça vaut la peine d’apprendre a le
-faire comme il faut et de le partager pour aider à réduire le problème de
-reproductibilité. Beaucoup de gens qui utilisent Github, une plateforme qui
-permet de partager le code et aussi de partager les modifications qui y sont
-faites avec le temps. En fait, la principale personne qui bénéficie de la
-publicisation de son code est la personne qui le publie, car si le projet évolue
-dans le temps il y a traces de ce qui a été fait sur cette plateforme. Le
-monstre du 2e sous-sol est alors un peu moins caché et un peu moins
-inconnu pour vous et pour les personnes qui vous lisent à la suite de la
-publication. De plus en plus, on s’attend que les scripts d’analyse soient
-rendus publics lors de la publication des papiers.
+```{figure} ./reproductibilite/python.png
+---
+width: 600px
+name: python-fig
+---
+Cette figure illustre les avantages d'automatiser les analyses scientifiques à l'aide de code (de manière métaphorique). Cette figure est tirée de [xkcd webcomic](https://xkcd.com/353/), sous licence [CC-BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/).
+```
+Une autre solution pour rendre les analyses scientifiques en neuroimagerie plus reproductible est d'apprendre à coder. Automatiser les analyses permet de les rendre plus facile pour quiconque de les reproduire. Il peut y avoir des erreurs dans le code, mais elles peuvent être vues et réparées par d'autres. Les analyses qui ne reposent pas sur du code représentent un obstacle majeur à la reproductibilité. Pour être vraiment utile, le code d'une analyse doit être partagé de manière publique. Ce code constitue alors un artefact de recherche très important, beaucoup plus détaillé et spécifique que la section de méthodes d'un article. Beaucoup de gens utilisent la plateforme [Github](https://github.com/) pour partager le code et aussi de partager les modifications qui y sont faites avec le temps. Il est aussi possible d'archiver une version du code sur une plateforme comme [zenodo](https://zenodo.org/) qui fournit un identifiant unique pour ce code, comme pour un article. Si le code est de haute qualité et ré-utilisable, il est même possible de publier un article sur ce code, dans un journal comme [Journal of Open Source Software](https://joss.theoj.org/).
 
 ### Partage de données
-Une autre solution est de partager les données. Cela facilite la vie des
-laboratoires car 1 an et 2 ans après avoir publié un papier, il est possible
-qu’on ne se souvienne même plus ou se trouvent les données et quelle
-version des données qui a été utilisée. Le partage de celles-ci rend plus facile
-de se relire et de retrouver nos traces. Malheureusement, ce n’est pas facile
-de rendre nos données publiques. De plus en plus de gens poussent pour
-rendre le partage de données plus commun et plus facile, mais ce n’est pas
-encore fait.
-Partager ses données c’est comme un spectre qui est représenté par ce
-graphique. Sur l’axe des y on a à quel point c’est utilisable et sur l’axe des x
-c’est a quel point c’est beaucoup de données et ça prend du temps a
-préparer. En bas, on a les données ADNI ou HCP, des projets ou les gens
-publient leurs données brutes et les données prétraitées. Ensuite, on a
-d’autres personnes qui partagent uniquement leurs données brutes. Par la
-suite, on a des gens qui partagent leurs cartes statistiques. Enfin, les
-coordonnées des types d’activation est quelque chose que beaucoup de
-gens partagent dans les articles et qui est très utile, bien que beaucoup
-moins riche que les cartes elles-mêmes. Le jour ou on arrivera a partager nos
-données systématiquement avec nos articles on va avoir de grandes
-améliorations au niveau de la reproductibilité.
+```{figure} ./reproductibilite/openneuro-downloads.jpg
+---
+width: 600px
+name: openneuro-downloads-fig
+---
+Nombre de jeux de données ouverts en neuroimagerie et nombre de participants sur la plateforme de partage de données [openneuro](https://openneuro.org/). Figure tirée de [Markiewicz et al., 2021](https://doi.org/10.7554/eLife.71774) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+```
+Une autre solution pour améliorer la reproducibilité est de partager les données de recherche. La figure {numref}(openneuro-downloads-fig) illustre l'adoption rapide de cette pratique dans la communauté de recherche en neuroimagerie. Partager ses données permet à d'autres laboratoires de répliquer les analyses, ou essayer d'autres méthodes. Cela permet aussi au laboratoire d'origine de disposer d'une archive bien organisée pour de futurs projets. Le partage des données humaines est en revanche rendu complexe dans certaines parties du monde (comme le Québec) à cause de considérations éthiques ou bien légales. Il est en revanche toujours possible de partager des cartes statistiques de groupe, par exemple en utilisant une plateforme comme [neurovault](https://neurovault.org/).
 
 ### Partage d'environnement
-Ensuite, on a des outils qui permettent de partager notre environnement de
-travail. Une initiative qui est bien appréciée est neurodebian, qui est une
-version de Linux qui vient préinstaller avec un appstore pour la
-neuroimagerie. On peut installer directement les logiciels et les systèmes
-d’opération. Ainsi, quelqu’un qui veut reproduire votre environnement
-pourrait le faire. Il y a aussi les containers qui permettent de garder tout
-l’environnement de travail sur un seul fichier, cela fonctionne sur Linux et il y
-a des manières de le faire fonctionner sur Mac et sur Windows. C’est
-beaucoup utilisé pour la programmation Web, et la communauté scientifique
-a commencé à l’utiliser pour améliorer la reproductibilité.
+Des outils existent également pour partager un environnement de travail, ce qui est possible gratuitement grâce aux technologies libres. Il existe diverses solutions. Le language `python` permet de décrire un ensemble de dépendances (avec versions) au moyen d'un simple fichier texte `requirements.txt`. Certaines versions de linux comme [neurodebian](https://neuro.debian.net/) ont également un grand nombre d'outils de neuroimagerie prêts à l'installation, avec contrôle des versions. Les `containers` sont une autre famille de solutions qui permettent de partager un ensemble de librairies ainsi que le système d'exploitation. Des variantes de `containers` ont été spécifiquement développées pour les neurosciences cognitives, comme [neurodocker](https://www.repronim.org/neurodocker/). Un dernier exemple est [mybinder](https://mybinder.org/) qui permet d'importer un `container` avec toutes les dépendances d'un projet et de ré-exécuter ce code dans un fureteur internet, sans avoir rien à installer. Pour la version en ligne de ces notes de cours, il y a une petite fusée en haut à droite qui démarre mybinder. Comme les notes de cours utilisent des données ouvertes pour beaucoup de figures, il est possible de reproduire (et modifier) les figures du cours de cette manière.
 
-### Bonnes pratiques
-Certains articles se concentrent sur la formulation de « guides » de bonnes
-pratiques pour différentes techniques et méthodes de recherche. Cela
-permet de voir ce qui est le plus utile pour contrer la crise de reproductibilité
-en fonction des méthodes les plus convoitées en neuroscience cognitive.
-Une autre chose qui peut être faite est d’étudier la puissance statistique en
-élaborant un projet pour savoir si on doit modifier la taille de notre
-échantillon. Cela peut être fait avec différents logiciels et avec le site web
-suivant : https://rpsychologist.com/d3/nhst/
+### Puissance statistique et meilleures pratiques
 
-### La méthode scientifique revisitée
-
-### Vers une science généralisable
+Certains articles se concentrent sur la formulation de « guides » des meilleures
+pratiques pour différentes méthodes de recherche. Le domaine des neurosciences cognitives a par exemple un guide baptisé COBIDAS [(Nichols et al., 2017)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5685169/), qui a également une version pour la MEG [(Pernet et al., 2020)](https://osf.io/a8dhx/). Ce type de guide permet de sélectionner des méthodes qui sont non seulement reproductibles, mais idéalement aussi robustes et pourront être répliquées avec des méthodes ou des données différentes. Un point important à considérer est la **puissance statistique** d'une étude. Alors que la valeur _p_ nous dit la fréquence de faux positifs, c'est à dire une détection faite en l'absence de signal, la puissance statistique nous informe sur la fréquence des faux négatifs, c'est à dire le signal qu'on n'arrive pas à détecter. Pour qu'un résultat soit reproductible, il est critique que la puissance statistique du test soit élevée. Avec le modèle linéaire général, la puissance statistique dépend de la taille d'effet, du nombre de participants dans l'étude ainsi que du taux de faux positifs _p_ du test. Voir cette [page internet](https://rpsychologist.com/d3/nhst/) pour expérimenter avec différents paramètres.
 
 ## Conclusions
+```{figure} ./reproductibilite/research-cycle.jpg
+---
+width: 800px
+name: research-cycle-fig
+---
+Un cycle de découvertes en recherche qui inclut la préservation et la ré-utilisation des données. Figure par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807).
+```
+Dans ce chapitre, on a vu:
+ * Certaines pratiques de recherche douteuses qui peuvent amener à des découvertes scientifiques non reproductibles.
+ * Des aspects de la recherche en neuroimagerie qui sont particulièrement problématiques:
+   * sensibilité à de nombreux paramètres,
+   * manque de quantification des tailles d'effet,
+   * difficultés à décrire les méthodes de manière complète dans un article.
+ * Des nouvelles pratiques qui permettent d'améliorer la reproducibilité de la science:
+   * études pré-enregistrées,
+   * partage de code, données, environnement,
+   * meilleures pratiques d'analyse.
 
+ On voit aujourd'hui émerger une nouvelle approche de découvertes scientifiques qui inclut notamment le partage et la ré-utilisation de données, ce qui va amener une science plus reproductible et fiable ({numref}`research-cycle-fig`).
 ## Exercices
 
 ```{admonition} Exercice 10.1
 :class: note
-Choisir la bonne réponse. Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès …
-  1. aux données utilisées dans l’étude.
-  2. au code utilisé pour générer les résultats de l’étude, s’il existe.
-  3. à l’environnement (version des logiciels) utilisés dans l’étude.
+Choisissez la bonne réponse.
+Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès...
+  1. aux données utilisées dans l’étude
+  2. au code utilisé pour générer les résultats de l’étude, s’il existe
+  3. à l’environnement (version des logiciels) utilisé dans l’étude
   4. Toutes ces réponses.
 ```
 
 ```{admonition} Exercice 10.2
 :class: note
 Vrai/faux. La significativité des résultats dans une étude de neuroimagerie peut être impactée par...
- * Le logiciel que l’on utilise pour tester l’hypothèse de recherche.
- * Les paramètres que l’on choisit pour analyser les données, par exemple la quantité de lissage spatial.
- * Le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
- * La version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
+ * le logiciel que l’on utilise pour tester l’hypothèse de recherche.
+ * les paramètres que l’on choisit pour analyser les données, comme par exemple la quantité de lissage spatial.
+ * le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
+ * la version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
 ```
 
 ```{admonition} Exercice 10.3
 :class: note
-Vrai/faux. La puissance statistique …
- * Indique la probabilité de détecter un effet avec une procédure statistique.
+Vrai/faux. La puissance statistique...
+ * indique la probabilité de détecter un effet avec une procédure statistique.
  * contrôle le taux de faux positifs.
  * dépend du nombre de sujets dans l’étude.
- * dépend du seuil de significativité choisie pour l’étude (seuil p).
+ * dépend du seuil de significativité choisi pour l’étude (seuil p).
  * dépend de la taille de l’effet testé.
 ```
 
 ```{admonition} Exercice 10.4
 :class: note
-Choisir la bonne réponse. Parmi les procédures suivantes, lesquelles ne sont pas statistiquement valides?
- * Présenter comme hypothèse d’une étude une observation, seulement après que celle-ci soit observée dans les données.
- * Redéfinir les critères d’exclusion des participants en ce qui concerne la qualité des données, après avoir effectué une première analyse des données.
- * Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original, parce ce que ce sous-groupe est le seul qui présente des résultats significatifs.
- * Aucune des procédures a-c n’est valide.
+Choisissez la bonne réponse.
+Parmi les procédures suivantes, laquelle (lesquelles) n'est (ne sont) pas statistiquement valide(s)?
+ * Présenter comme hypothèse d’une étude une observation faite seulement après l'obtention et l'analyse des données.
+ * Redéfinir les critères d’exclusion des participants en se basant sur la qualité des données, et ce, après avoir effectué une première analyse des données.
+ * Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original parce que ce sous-groupe est le seul qui présente des résultats significatifs.
+ * Aucune des trois procédures présentées ci-haut n’est valide.
 ```
 
 ```{admonition} Exercice 10.5
 :class: note
-Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux nés. Le comité d’éthique n’a pas permis de partager les données de recherche. Proposer deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.
+Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux-nés. Le comité d’éthique n’a pas permis le partage des données de recherche. Proposez deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.
 ```
 
 ```{admonition} Exercice 10.6
 :class: note
-Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe), des sujets en santé et des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée, avec un atlas comprenant 90 régions, et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression, qui inclut l’âge et le sexe des participants. Le niveau de significativité est fixé à p<0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifier trois problèmes majeurs avec cette conclusion.    
+Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe): des sujets en santé ainsi que des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée utilisant un atlas comprenant 90 régions et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression qui inclut l’âge et le sexe des participants. Le seuil de significativité est fixé à p<0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifiez trois problèmes majeurs avec cette conclusion.    
 ```
