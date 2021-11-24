@@ -32,6 +32,22 @@ kernelspec:
       <br />
         <a title="Contenu">🤔</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/eddyfortier">
+        <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Eddy Fortier</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/me-pic">
+        <img src="https://avatars.githubusercontent.com/u/77584086?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Marie-Eve Picard</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
   </tr>
 </table>
 
@@ -289,18 +305,18 @@ Une autre solution pour améliorer la reproducibilité est de partager les donn�
 ### Partage d'environnement
 Des outils existent également pour partager un environnement de travail, ce qui est possible gratuitement grâce aux technologies libres. Il existe diverses solutions. Le language `python` permet de décrire un ensemble de dépendances (avec versions) au moyen d'un simple fichier texte `requirements.txt`. Certaines versions de linux comme [neurodebian](https://neuro.debian.net/) ont également un grand nombre d'outils de neuroimagerie prêts à l'installation, avec contrôle des versions. Les `containers` sont une autre famille de solutions qui permettent de partager un ensemble de librairies ainsi que le système d'exploitation. Des variantes de `containers` ont été spécifiquement développées pour les neurosciences cognitives, comme [neurodocker](https://www.repronim.org/neurodocker/). Un dernier exemple est [mybinder](https://mybinder.org/) qui permet d'importer un `container` avec toutes les dépendances d'un projet et de ré-exécuter ce code dans un fureteur internet, sans avoir rien à installer. Pour la version en ligne de ces notes de cours, il y a une petite fusée en haut à droite qui démarre mybinder. Comme les notes de cours utilisent des données ouvertes pour beaucoup de figures, il est possible de reproduire (et modifier) les figures du cours de cette manière.
 
-### Puissance statistique et meilleurs pratiques
+### Puissance statistique et meilleures pratiques
 
 Certains articles se concentrent sur la formulation de « guides » des meilleures
-pratiques pour différentes techniques et méthodes de recherche. Le domaine des neurosciences cognitives a par exemple un guide baptisé COBIDAS [(Nichols et al., 2017)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5685169/), qui a également une version pour la MEG [(Pernet et al., 2020)](https://osf.io/a8dhx/). Ce type de guide permet de sélectionner des méthodes qui sont non seulement reproductibles, mais idéalement aussi robustes et pourront être répliquées avec des méthodes ou des données différentes. Un point important à considérer est la **puissance statistique** d'une étude. Alors que la valeur _p_ nous dit la fréquence de faux positifs, c'est à dire une détection faite en l'absence de signal, la puissance statistique nous informe sur la fréquence des faux négatifs, c'est à dire le signal qu'on n'arrive pas à détecter. Pour qu'un résultat soit reproductible, il est critique que la puissance statistique du test soit élevée. Avec le modèle linéaire général, la puissance statistique dépend de la taille d'effet, du nombre de participants dans l'étude ainsi que du taux de faux positifs _p_ du test. Voir cette [page internet](https://rpsychologist.com/d3/nhst/) pour expérimenter avec différents paramètres.
+pratiques pour différentes méthodes de recherche. Le domaine des neurosciences cognitives a par exemple un guide baptisé COBIDAS [(Nichols et al., 2017)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5685169/), qui a également une version pour la MEG [(Pernet et al., 2020)](https://osf.io/a8dhx/). Ce type de guide permet de sélectionner des méthodes qui sont non seulement reproductibles, mais idéalement aussi robustes et pourront être répliquées avec des méthodes ou des données différentes. Un point important à considérer est la **puissance statistique** d'une étude. Alors que la valeur _p_ nous dit la fréquence de faux positifs, c'est à dire une détection faite en l'absence de signal, la puissance statistique nous informe sur la fréquence des faux négatifs, c'est à dire le signal qu'on n'arrive pas à détecter. Pour qu'un résultat soit reproductible, il est critique que la puissance statistique du test soit élevée. Avec le modèle linéaire général, la puissance statistique dépend de la taille d'effet, du nombre de participants dans l'étude ainsi que du taux de faux positifs _p_ du test. Voir cette [page internet](https://rpsychologist.com/d3/nhst/) pour expérimenter avec différents paramètres.
 
 ## Conclusions
-```{figure} ./reproductibilite/researchcycle.jpg
+```{figure} ./reproductibilite/research-cycle.jpg
 ---
 width: 800px
 name: research-cycle-fig
 ---
-Un cycle de découvertes en recherche qui inclut la préservation et la ré-utilisation des données. Figure par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807). 
+Un cycle de découvertes en recherche qui inclut la préservation et la ré-utilisation des données. Figure par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807).
 ```
 Dans ce chapitre, on a vu:
  * Certaines pratiques de recherche douteuses qui peuvent amener à des découvertes scientifiques non reproductibles.
@@ -309,9 +325,9 @@ Dans ce chapitre, on a vu:
    * manque de quantification des tailles d'effet,
    * difficultés à décrire les méthodes de manière complète dans un article.
  * Des nouvelles pratiques qui permettent d'améliorer la reproducibilité de la science:
-  * études pré-enregistrées,
-  * partage de code, données, environnement,
-  * meilleures pratiques d'analyse.
+   * études pré-enregistrées,
+   * partage de code, données, environnement,
+   * meilleures pratiques d'analyse.
 
  On voit aujourd'hui émerger une nouvelle approche de découvertes scientifiques qui inclut notamment le partage et la ré-utilisation de données, ce qui va amener une science plus reproductible et fiable ({numref}`research-cycle-fig`).
 ## Exercices
