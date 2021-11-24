@@ -831,7 +831,7 @@
 </div>
 <p>Maintenant que l’on a discuté de l’interprétation de la valeur <code class="docutils literal notranslate"><span class="pre">p</span></code>, on doit maintenant décider d’un seuil à appliquer sur les valeurs <code class="docutils literal notranslate"><span class="pre">p</span></code>. Si l’on utilise le seuil habituel <code class="docutils literal notranslate"><span class="pre">p&lt;0.05</span></code>, cela signifie que pour 20 permutations, on détectera une association 1 fois (en moyenne) pour un voxel donné. Mais comme on a des milliers de voxels dans le cerveau, cela veut dire que l’on va détecter 5% du cerveau (en moyenne) pour chaque permutation! C’est ce que l’on observe (et même plus) dans la figure en haut à gauche <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>. Il s’agit du <strong>problème de comparaisons multiples</strong>, et plus on fait de tests, plus ce problème est important.</p>
 <p>Si l’on abaisse le seuil à <code class="docutils literal notranslate"><span class="pre">p&lt;0.001</span></code>, on ne détecte plus que 0.1% du cerveau (en moyenne) sous l’hypothèse nulle, et on observe en effet une réduction du nombre de voxels dans la figure de gauche, 2ième ligne <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>.</p>
-<p>La méthode la plus simple pour corriger du problème de comparaisons multiples est d’utiliser un seuil corrigé <code class="docutils literal notranslate"><span class="pre">p&lt;0.05/N</span></code>, où N est le nombre de comparaisons (c’est à dire de tests). Dans notre cas, on a approximativement 100,000 voxels, donc on va utiliser <code class="docutils literal notranslate"><span class="pre">p&lt;0.0000001</span></code>! Avec cette stratégie, aucun voxel ne passe le seuil dans notre expérience sous l’hypothèse nulle, voir figure en bas à gauche <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>. En général c’est ce qui se passera (en moyenne) 19/20 permutations.</p>
+<p>La méthode la plus simple pour corriger du problème de comparaisons multiples est d’utiliser un seuil corrigé <code class="docutils literal notranslate"><span class="pre">p&lt;0.05/N</span></code>, où N est le nombre de comparaisons (c’est à dire de tests). Dans notre cas, on a approximativement 100,000 voxels, donc on va utiliser <code class="docutils literal notranslate"><span class="pre">p&lt;0.0000001</span></code>! Avec cette stratégie, aucun voxel ne passe le seuil dans notre expérience sous l’hypothèse nulle, voir figure en bas à gauche <a class="reference internal" href="#threshold-fig"><span class="std std-numref">Fig. 101</span></a>. En général c’est ce qui se passera (en moyenne) pour 19/20 permutations.</p>
 <p>Si l’on observe maintenant l’effet de ces différentes stratégies sur les données originales, on observe que plus le seuil <code class="docutils literal notranslate"><span class="pre">p</span></code> est petit, moins on détecte d’effets significatifs. Malgré tout, même avec <code class="docutils literal notranslate"><span class="pre">p&lt;0.05</span></code> corrigé par l’approche de Bonferroni, on détecte toujours les effets principaux de l’âge.</p>
 <div class="tip admonition" id="resolution-power">
 <p class="admonition-title">Compromis résolution / puissance</p>
@@ -892,11 +892,13 @@ Le modèle de régression peut être utilisé pour effectuer des statistiques de
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 9.5</p>
-<p>Classer les analyses suivantes du plus petit au plus grand, en fonction du nombre de comparaisons multiples impliquées. Indiquez le nombre approximatif de comparaisons.
-On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.
-On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.
-On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.
-On compare le volume de l’hippocampe entre deux groupes de sujets.</p>
+<p>Classer les analyses suivantes du plus petit au plus grand, en fonction du nombre de comparaisons multiples impliquées. Indiquez le nombre approximatif de comparaisons.</p>
+<ul class="simple">
+<li><p>On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.</p></li>
+<li><p>On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.</p></li>
+<li><p>On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.</p></li>
+<li><p>On compare le volume de l’hippocampe entre deux groupes de sujets.</p></li>
+</ul>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 9.6</p>
