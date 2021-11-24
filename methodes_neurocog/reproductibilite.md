@@ -271,8 +271,9 @@ glue("registered-report-fig", fig, display=False)
 ```{glue:figure} registered-report-fig
 :figwidth: 600px
 :name: registered-report-fig
-Pourcentage "découvertes négatives" dans la littérature, c'est à dire d'analyses qui ne confirment pas les hypothèses de recherche. On compare des articles traditionnels avec des études pré-enregistrées pour de nouvelles hypothèses de recherche, et des études pré-enregistrées pour des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de [Allen et Mehler, 2018](https://doi.org/10.31234/osf.io/3czyt) sur 127 études pré-enregistrées. Figure générée avec du code python à l'aide de la librairie [seaborn](https://seaborn.pydata.org/) (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Pourcentage de "découvertes négatives" dans la littérature. Les découvertes négatives viennent d'études pour lesquelles les analyses ne confirment pas les hypothèses de recherche. On compare ici des articles traditionnels avec des études pré-enregistrées portant sur de nouvelles hypothèses de recherche, ainsi que des études pré-enregistrées portant sur des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de [Allen et Mehler, 2018](https://doi.org/10.31234/osf.io/3czyt) sur 127 études pré-enregistrées. Figure générée avec du code python à l'aide de la librairie [seaborn](https://seaborn.pydata.org/) (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
+
 
 Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l'on appelle une **étude pré-enregistrée**. Un des problèmes dans le cercle présenté en {numref}`researchcycle-original-fig`, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l'équipe de recherche décide simplement de passer au prochain projet plutôt qu'investir dans la publication d'un résultat négatif. Une manière d’éliminer ça,
 c’est de soumetre la publication avec les hypothèses et les plans d’analyse, avant de recueillir les données. Cela permet aux
@@ -334,47 +335,49 @@ Dans ce chapitre, on a vu:
 
 ```{admonition} Exercice 10.1
 :class: note
-Choisir la bonne réponse. Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès …
-  1. aux données utilisées dans l’étude.
-  2. au code utilisé pour générer les résultats de l’étude, s’il existe.
-  3. à l’environnement (version des logiciels) utilisés dans l’étude.
+Choisissez la bonne réponse.
+Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès...
+  1. aux données utilisées dans l’étude
+  2. au code utilisé pour générer les résultats de l’étude, s’il existe
+  3. à l’environnement (version des logiciels) utilisé dans l’étude
   4. Toutes ces réponses.
 ```
 
 ```{admonition} Exercice 10.2
 :class: note
 Vrai/faux. La significativité des résultats dans une étude de neuroimagerie peut être impactée par...
- * Le logiciel que l’on utilise pour tester l’hypothèse de recherche.
- * Les paramètres que l’on choisit pour analyser les données, par exemple la quantité de lissage spatial.
- * Le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
- * La version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
+ * le logiciel que l’on utilise pour tester l’hypothèse de recherche.
+ * les paramètres que l’on choisit pour analyser les données, comme par exemple la quantité de lissage spatial.
+ * le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
+ * la version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
 ```
 
 ```{admonition} Exercice 10.3
 :class: note
-Vrai/faux. La puissance statistique …
- * Indique la probabilité de détecter un effet avec une procédure statistique.
+Vrai/faux. La puissance statistique...
+ * indique la probabilité de détecter un effet avec une procédure statistique.
  * contrôle le taux de faux positifs.
  * dépend du nombre de sujets dans l’étude.
- * dépend du seuil de significativité choisie pour l’étude (seuil p).
+ * dépend du seuil de significativité choisi pour l’étude (seuil p).
  * dépend de la taille de l’effet testé.
 ```
 
 ```{admonition} Exercice 10.4
 :class: note
-Choisir la bonne réponse. Parmi les procédures suivantes, lesquelles ne sont pas statistiquement valides?
- * Présenter comme hypothèse d’une étude une observation, seulement après que celle-ci soit observée dans les données.
- * Redéfinir les critères d’exclusion des participants en ce qui concerne la qualité des données, après avoir effectué une première analyse des données.
- * Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original, parce ce que ce sous-groupe est le seul qui présente des résultats significatifs.
- * Aucune des procédures a-c n’est valide.
+Choisissez la bonne réponse.
+Parmi les procédures suivantes, laquelle (lesquelles) n'est (ne sont) pas statistiquement valide(s)?
+ * Présenter comme hypothèse d’une étude une observation faite seulement après l'obtention et l'analyse des données.
+ * Redéfinir les critères d’exclusion des participants en se basant sur la qualité des données, et ce, après avoir effectué une première analyse des données.
+ * Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original parce que ce sous-groupe est le seul qui présente des résultats significatifs.
+ * Aucune des trois procédures présentées ci-haut n’est valide.
 ```
 
 ```{admonition} Exercice 10.5
 :class: note
-Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux nés. Le comité d’éthique n’a pas permis de partager les données de recherche. Proposer deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.
+Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux-nés. Le comité d’éthique n’a pas permis le partage des données de recherche. Proposez deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.
 ```
 
 ```{admonition} Exercice 10.6
 :class: note
-Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe), des sujets en santé et des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée, avec un atlas comprenant 90 régions, et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression, qui inclut l’âge et le sexe des participants. Le niveau de significativité est fixé à p<0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifier trois problèmes majeurs avec cette conclusion.    
+Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe): des sujets en santé ainsi que des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée utilisant un atlas comprenant 90 régions et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression qui inclut l’âge et le sexe des participants. Le seuil de significativité est fixé à p<0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifiez trois problèmes majeurs avec cette conclusion.    
 ```
