@@ -68,6 +68,7 @@ name: significant-fig
 ---
 Cette figure illustre un exemple de processus pouvant amener à un résultat scientifique controversé (ainsi qu'un exemple de problème de comparaisons multiples). Cette figure est tirée de [xkcd webcomic](https://xkcd.com/882/), sous licence [CC-BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/).
 ```
+
 En 2016, un sondage effectué auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
 perception des professionnels dans la recherche, il y avait une crise de
 reproductibilité, et si oui, laquelle ([Baker, 2016](https://doi.org/10.1038/533452a)).
