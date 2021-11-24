@@ -267,25 +267,14 @@ avant. Celles-ci seraient alors présentées (correctement) comme exploratoires 
 De plus, cette façon de faire semble bien fonctionner en pratique (voir {numref}`registered-report-fig`).
 
 ### Code
-Une autre solution serait d’apprendre à coder. Automatiser les analyses
-permet de les rendre plus facile pour quiconque de les reproduire. Il peut y
-avoir des erreurs dans le code, mais elles peuvent être vues et réparées
-avec des traces. Les analyses qui ne reposent pas sur du code représente un
-obstacle majeur à la reproductibilité.
-
-Ensuite, partager ce code est un peu anxiogène. Souvent, les gens sont
-réticents a rendre public le code utilisé pour générer un article. Comme c’est
-une partie critique du travail de recherche, ça vaut la peine d’apprendre a le
-faire comme il faut et de le partager pour aider à réduire le problème de
-reproductibilité. Beaucoup de gens qui utilisent Github, une plateforme qui
-permet de partager le code et aussi de partager les modifications qui y sont
-faites avec le temps. En fait, la principale personne qui bénéficie de la
-publicisation de son code est la personne qui le publie, car si le projet évolue
-dans le temps il y a traces de ce qui a été fait sur cette plateforme. Le
-monstre du 2e sous-sol est alors un peu moins caché et un peu moins
-inconnu pour vous et pour les personnes qui vous lisent à la suite de la
-publication. De plus en plus, on s’attend que les scripts d’analyse soient
-rendus publics lors de la publication des papiers.
+```{figure} ./reproductibilite/python.png
+---
+width: 800px
+name: python-fig
+---
+Cette figure illustre les avantages d'automatiser les analyses scientifiques à l'aide de code (de manière métaphorique). Cette figure est tirée de [xkcd webcomic](https://xkcd.com/353/), sous licence [CC-BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/).
+```
+Une autre solution pour rendre les analyses scientifiques en neuroimagerie plus reproductible est d'apprendre à coder. Automatiser les analyses permet de les rendre plus facile pour quiconque de les reproduire. Il peut y avoir des erreurs dans le code, mais elles peuvent être vues et réparées par d'autres. Les analyses qui ne reposent pas sur du code représentent un obstacle majeur à la reproductibilité. Pour être vraiment utile, le code d'une analyse doit être partagé de manière publique. Ce code constitue alors un artefact de recherche très important, beaucoup plus détaillé et spécifique que la section de méthodes d'un article. Beaucoup de gens utilisent la plateforme [Github](https://github.com/) pour partager le code et aussi de partager les modifications qui y sont faites avec le temps. Il est aussi possible d'archiver une version du code sur une plateforme comme [zenodo](https://zenodo.org/) qui fournit un identifiant unique pour ce code, comme pour un article. Si le code est de haute qualité et ré-utilisable, il est même possible de publier un article sur ce code, dans un journal comme [Journal of Open Source Software](https://joss.theoj.org/).
 
 ### Partage de données
 Une autre solution est de partager les données. Cela facilite la vie des
