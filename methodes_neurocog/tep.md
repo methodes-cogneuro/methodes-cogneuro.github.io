@@ -249,7 +249,7 @@ Le [$^{18}$**F**]FDG se comporte comme du glucose normal. Nous avons vu que le c
 ```{admonition} Traitement des images PET
 :class: tip
 :name: traitement-fdg
-Les données TEP doivent être prétraitées avant analyses statistiques. Il est courant de normaliser la carte par rapport aux valeurs observées dans une région contrôle, qui ne contient pas de radiotraceur. Certaines corrections peuvent aussi être appliquées sur les images, commu une correction des volumes partiels. Enfin, il est possible de recaler l'image PET sur une IRM structurelle de chaque sujet, pour visualiser la localisation des activations, et aussi appliquer un recalage dans un espace stéréotaxique pour effectuer des analyses statistiques de groupe similaires à l'IRMf.
+Les données TEP doivent être prétraitées avant analyses statistiques. Il est courant de normaliser la carte par rapport aux valeurs observées dans une région contrôle, qui ne contient pas de radiotraceur. Certaines corrections peuvent aussi être appliquées sur les images, comme une correction des volumes partiels. Enfin, il est possible de recaler l'image PET sur une IRM structurelle de chaque sujet, pour visualiser la localisation des activations, et aussi appliquer un recalage dans un espace stéréotaxique pour effectuer des analyses statistiques de groupe similaires à l'IRMf.
 ```
 ### Imagerie des récepteurs
 ```{figure} ./tep/receptors-tep.jpeg
