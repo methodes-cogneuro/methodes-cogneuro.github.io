@@ -20,7 +20,13 @@ Ce livre "Méthodes en neurosciences cognitives" présente les principales techn
  * tomographie par émission de positrons,
  * imagerie optique.
 
-Le texte se destine à des lecteurs qui découvrent ces méthodes pour la première fois, et souhaitent acquérir des connaissances théoriques sur les bases physiques et physiologiques de ces techniques de neuroimagerie, ainsi que les principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Chaque chapitre comporte une série d'exercices, qui incluent des exemples d'applications dans le cadre de projets de recherche en neurosciences cognitives. Plutôt qu'un ouvrage "spécialiste" qui explique tous les détails sur une technique donnée, ce livre vise à présenter l'ensemble des techniques les plus conventionnelles de manière concise, pour que les lecteurs puissent en apprécier les forces et faiblesses, et le type de recherche pour lequel chaque technique est la plus adaptée.
+Le texte se destine à des lecteurs qui découvrent ces méthodes pour la première fois, et souhaitent acquérir des connaissances théoriques sur les bases physiques et physiologiques de ces techniques de neuroimagerie, ainsi que les principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Chaque chapitre comporte une série d'exercices, qui incluent des exemples d'applications dans le cadre de projets de recherche en neurosciences cognitives.
+
+```{warning}
+Plutôt qu'un ouvrage "spécialiste" qui explique tous les détails sur une technique donnée, ce livre vise à présenter l'ensemble des techniques les plus conventionnelles en neuroscience cognitive de manière concise, pour que les lecteurs puissent en apprécier les forces et faiblesses, et le type de recherche pour lequel chaque technique est la plus adaptée.
+```
+
+## Contributeurs
 
 Ce livre a démarré comme une série de notes pour le cours PSY3018, donné au baccalauréat en neurosciences cognitives du département de psychologie de l'Université de Montréal. Le cours est donné principalement par Dr Pierre Bellec, avec des contributions par les auxiliaires d'enseignement, ainsi que de multiples intervenants supplémentaires. Ce livre bénéficie également du retour constructif des étudiants du cours PSY3018 depuis sa création en 2018. Les contributions générales sont présentées ci-dessous. Des contributions spécifiques sont listées au sein de chaque chapitre.
 
@@ -110,7 +116,8 @@ Ce livre a démarré comme une série de notes pour le cours PSY3018, donné au 
   </tr>
 </table>
 
-Ce livre est dans une large mesure "reproductible": de nombreuses figures sont générées à l'aide de données ouvertes, avec du code qui est intégré dans le libre. Cela est rendu possible grâce aux projets suivants:
+## Remerciements
+Ce livre est dans une large mesure "reproductible": de nombreuses figures sont générées à l'aide de données ouvertes, avec du code qui fait parti du livre. Cette technologie est rendue possible grâce aux projets suivants:
  * [jupyter book](https://jupyterbook.org) est l'outil utilisé pour générer le livre. Ce projet repose lui-même sur l'outil de documentation [sphynx](https://www.sphinx-doc.org).
  * La librairie [nilearn](https://nilearn.github.io/) en [python](https://www.python.org/), notamment pour la partie sur l'IRM structurelle, l'IRM fonctionnelle et les modèles statistiques.
  * La librairie [Dipy](https://dipy.org), notamment pour la partie sur l'IRM de diffusion.
@@ -119,4 +126,4 @@ Ce livre est dans une large mesure "reproductible": de nombreuses figures sont g
  * Le logo provient du site <a href="https://www.vecteezy.com/free-vector/brain">Brain Vectors by Vecteezy</a>
  * Certaines images du livre ont été obtenues sous droits illimités pour diffusion web et limités pour impression (500k copies) via [shutterstock](https://www.shutterstock.com) par P. Bellec.
 
- Les auteurs sont très reconnaissants pour l'énorme travail et la générosité des communautés qui créent et maintiennent toutes ces ressources.
+ Les auteurs sont très reconnaissants pour l'énorme travail et la générosité des communautés qui créent et maintiennent tous ces projets!
