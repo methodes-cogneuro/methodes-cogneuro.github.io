@@ -38,6 +38,11 @@ kernelspec:
   </tr>
 </table>
 
+
+```{warning}
+Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
+```
+
 ## Objectifs du cours
 
 Ce cours a pour but de vous initier aux principes de l'imagerie par résonance magnétique de diffusion (IRMd). L'IRMd est une modalité de neuroimagerie qui nous permet d'étudier les **fibres de matière blanche**. Nous allons donc pouvoir examiner les connexions entre différentes régions, autant interhémisphériques (i.e., fibres de matière blanche voyageant d'un hémisphère à l'autre), qu'intrahémisphériques (i.e., fibres de matière blanche voyageant au sein d'un même hémisphère). Pour vous faire une idée concrète de ce à quoi ressemblent les fibres de matière blanche, vous pouvez regarder cette [vidéo](https://www.youtube.com/watch?v=PazaHElk6wc) présentant des dissections cérébrales, tirée du [cours de neuroanatomie fonctionnelle de UBC](http://www.neuroanatomy.ca/).
