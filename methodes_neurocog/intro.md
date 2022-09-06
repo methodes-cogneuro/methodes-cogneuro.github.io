@@ -121,7 +121,7 @@ Ce livre est dans une large mesure "reproductible": de nombreuses figures sont g
  * [jupyter book](https://jupyterbook.org) est l'outil utilisé pour générer le livre. Ce projet repose lui-même sur l'outil de documentation [sphinx](https://www.sphinx-doc.org).
  * La librairie [nilearn](https://nilearn.github.io/) en [python](https://www.python.org/), notamment pour la partie sur l'IRM structurelle, l'IRM fonctionnelle et les modèles statistiques.
  * La librairie [Dipy](https://dipy.org), notamment pour la partie sur l'IRM de diffusion.
- * La librairie [MNE python](https://mne.tools/stable/index.html), notamment pour la partie sur l'imagerie optique.
+ * La librairie [MNE python](https://mne.tools/stable/index.html) est utilisée dans le chapitre portant sur l'imagerie optique.
  * Les visualisations d'images cérébrales utilisées dans le cours proviennent en partie de jeux de données publiques. L'origine des données est précisée pour chaque figure.
  * Le logo provient du site <a href="https://www.vecteezy.com/free-vector/brain">Brain Vectors by Vecteezy</a>
  * Certaines images du livre ont été obtenues sous droits illimités pour diffusion web et limités pour impression (500k copies) via [shutterstock](https://www.shutterstock.com) par P. Bellec.
