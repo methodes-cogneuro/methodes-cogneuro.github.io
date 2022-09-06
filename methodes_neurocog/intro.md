@@ -23,7 +23,7 @@ Ce livre, "Méthodes en neurosciences cognitives", présente les principales tec
 Ce livre est une entrée en matière et est destiné à des lecteurs qui découvrent ces méthodes pour la première fois et souhaitent acquérir des connaissances théoriques sur les bases physiques et physiologiques de ces techniques de neuroimagerie. De plus, il propose une introduction aux principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Chaque chapitre comporte une série d'exercices qui incluent des exemples d'applications dans le cadre de projets de recherche en neurosciences cognitives.
 
 ```{warning}
-Plutôt qu'un ouvrage "spécialiste" qui explique tous les détails sur une technique donnée, ce livre vise à présenter l'ensemble des techniques les plus conventionnelles en neuroscience cognitive de manière concise, pour que les lecteurs puissent en apprécier les forces et faiblesses, et le type de recherche pour lequel chaque technique est la plus adaptée.
+L'objectif de cet ouvrage n'est pas d'être un outil de référence de type "ouvrage spécialiste" qui explique tous les détails spécifiques liés à une technique donnée. Le but de ce livre est plutôt de présenter un survol de l'ensemble des techniques les plus conventionnelles en neuroscience cognitive de manière concise, pour que les lecteurs puissent en apprécier les forces et faiblesses, ainsi que comprendre comment choisir la technique la plus adaptée à un type de recherche spécifique.
 ```
 
 ## Contributeurs
