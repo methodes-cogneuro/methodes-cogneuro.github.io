@@ -20,7 +20,7 @@ Ce livre, "Méthodes en neurosciences cognitives", présente les principales tec
  * tomographie par émission de positrons,
  * imagerie optique.
 
-Le texte se destine à des lecteurs qui découvrent ces méthodes pour la première fois, et souhaitent acquérir des connaissances théoriques sur les bases physiques et physiologiques de ces techniques de neuroimagerie, ainsi que les principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Chaque chapitre comporte une série d'exercices, qui incluent des exemples d'applications dans le cadre de projets de recherche en neurosciences cognitives.
+Ce livre est une entrée en matière et est destiné à des lecteurs qui découvrent ces méthodes pour la première fois et souhaitent acquérir des connaissances théoriques sur les bases physiques et physiologiques de ces techniques de neuroimagerie. De plus, il propose une introduction aux principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Chaque chapitre comporte une série d'exercices qui incluent des exemples d'applications dans le cadre de projets de recherche en neurosciences cognitives.
 
 ```{warning}
 Plutôt qu'un ouvrage "spécialiste" qui explique tous les détails sur une technique donnée, ce livre vise à présenter l'ensemble des techniques les plus conventionnelles en neuroscience cognitive de manière concise, pour que les lecteurs puissent en apprécier les forces et faiblesses, et le type de recherche pour lequel chaque technique est la plus adaptée.
