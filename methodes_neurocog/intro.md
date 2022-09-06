@@ -15,7 +15,7 @@ kernelspec:
 
 # Introduction
 
-Ce livre "Méthodes en neurosciences cognitives" présente les principales techniques de neuroimagerie pour étudier la cognition chez l'humain (et l'animal), disposant d'une bonne résolution spatiale:
+Ce livre, "Méthodes en neurosciences cognitives", présente les principales techniques de neuroimagerie utilisées pour étudier la cognition chez l'humain (et l'animal) et disposant d'une bonne résolution spatiale:
  * résonance magnétique (anatomique, fonctionnelle, et de diffusion),
  * tomographie par émission de positrons,
  * imagerie optique.
