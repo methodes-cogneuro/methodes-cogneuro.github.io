@@ -55,7 +55,7 @@ name: cartes-cerebrales-fig
 ---
 L'arbre de la neuroimagerie. Chaque branche représente une des techniques qui seront présentées durant le cours. Figure adaptée par P. Bellec à partir d'une variété de sources non libres de droit et inspirée du livre {cite:p}`wager2015`.
 ```
-Ce premier chapitre a pour but de donner un aperçu du livre dans sa globalité. Toutes les techniques de neuroimagerie que l'on va voir ont des forces et faiblesses distinctes, ce qui les rendent mieux adaptées à différents types d'applications. Pour chaque technique, on vise à se familiariser avec quatre aspects:
+Ce premier chapitre a pour but de donner un aperçu du livre dans sa globalité. Toutes les techniques de neuroimagerie que l'on va voir ont des forces et faiblesses distinctes, ce qui les rendent mieux adaptées à différents types d'applications. Pour chaque technique, on vise ici à se familiariser avec quatre aspects:
  * Quel est le **principe physique** qui nous permet d'obtenir une mesure?
  * Quel est le **principe physiologique**, c'est-à-dire quel aspect biologique du cerveau mesure-t-on?
  * Quelles **méthodes d'analyse** sont nécessaires pour pouvoir interpréter les données?
