@@ -51,6 +51,11 @@ kernelspec:
   </tr>
 </table>
 
+
+```{warning}
+Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
+```
+
 Durant ce cours, nous avons effectué un survol de diverses techniques de neuroimagerie qui ouvrent une fenêtre fascinante sur la structure et la fonction du cerveau. Par contre, ces techniques sont régulièrement présentées dans des articles scientifiques qui semblent peu crédibles. Dans cet ultime cours, nous allons discuter des controverses entourant la neuroimagerie, et de façon plus large, de la crise de reproducibilité en sciences.
 
 Les objectifs de ce cours sont les suivants :

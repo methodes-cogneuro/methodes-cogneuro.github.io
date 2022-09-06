@@ -49,6 +49,11 @@ kernelspec:
   </tr>
 </table>
 
+
+```{warning}
+Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
+```
+
 ## Objectifs du cours
 
 Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique. Il sera question dans ce chapitre de trois grandes approches d'analyse:

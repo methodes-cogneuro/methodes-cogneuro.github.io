@@ -46,6 +46,11 @@ kernelspec:
   </tr>
 </table>
 
+
+```{warning}
+Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
+```
+
 ## Objectifs du cours
 
 [L'imagerie par résonnance magnétique fonctionnelle](https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle)

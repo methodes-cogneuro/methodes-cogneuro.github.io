@@ -20,11 +20,14 @@ Ce livre, "Méthodes en neurosciences cognitives", présente les principales tec
  * tomographie par émission de positrons,
  * imagerie optique.
 
-Ce livre est une entrée en matière et est destiné à des lecteurs qui découvrent ces méthodes pour la première fois et souhaitent acquérir des connaissances théoriques sur les bases physiques et physiologiques de ces techniques de neuroimagerie. De plus, il propose une introduction aux principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Chaque chapitre comporte une série d'exercices qui incluent des exemples d'applications dans le cadre de projets de recherche en neurosciences cognitives.
+Ce livre est une entrée en matière et est destiné à des lecteurs qui découvrent ces méthodes pour la première fois. Ce livre vous fournira des connaissances théoriques sur les bases physiques et physiologiques de ces techniques de neuroimagerie. De plus, il propose une introduction aux principales techniques de traitement d’image et d’analyse statistique qui leur sont associées. Chaque chapitre comporte une série d'exercices qui incluent des exemples d'applications dans le cadre de projets de recherche en neurosciences cognitives.
 
 ```{warning}
 L'objectif de cet ouvrage n'est pas d'être un outil de référence de type "ouvrage spécialiste" qui explique tous les détails spécifiques liés à une technique donnée. Le but de ce livre est plutôt de présenter un survol de l'ensemble des techniques les plus conventionnelles en neuroscience cognitive de manière concise, pour que les lecteurs puissent en apprécier les forces et faiblesses, ainsi que comprendre comment choisir la technique la plus adaptée à un type de recherche spécifique.
 ```
+
+## Contribuer
+Ce projet est développé de manière collaborative. Toute suggestion est la bienvenue! Vous pouvez utiliser la page "[issue](https://github.com/PSY3018/psy3018.github.io/issues)" de Github pour faire une demande à l'équipe, ou décrire un problème. Vous pouvez également proposer directement un changement en effectuant une "pull request" sur la [page Github](https://github.com/PSY3018/psy3018.github.io) du livre.
 
 ## Contributeurs
 
