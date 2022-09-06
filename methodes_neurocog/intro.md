@@ -28,7 +28,7 @@ L'objectif de cet ouvrage n'est pas d'être un outil de référence de type "ouv
 
 ## Contributeurs
 
-Ce livre a démarré comme une série de notes pour le cours PSY3018, donné au baccalauréat en neurosciences cognitives du département de psychologie de l'Université de Montréal. Le cours est donné principalement par Dr Pierre Bellec, avec des contributions par les auxiliaires d'enseignement, ainsi que de multiples intervenants supplémentaires. Ce livre bénéficie également du retour constructif des étudiants du cours PSY3018 depuis sa création en 2018. Les contributions générales sont présentées ci-dessous. Des contributions spécifiques sont listées au sein de chaque chapitre.
+Le développement de ce livre a démarré afin de servir d'outil de référence pour le cours PSY3018, donné au baccalauréat en neurosciences cognitives de l'Université de Montréal. Le cours est donné principalement par le Dr Pierre Bellec, avec la contribution des auxiliaires d'enseignement ainsi que de multiples intervenants supplémentaires. Ce livre bénéficie également du retour constructif des étudiants ayant suivi le cours PSY3018 depuis sa création en 2018. Les contributions générales sont présentées ci-dessous. Des contributions spécifiques sont listées au sein de chaque chapitre.
 
 <table>
   <tr>
