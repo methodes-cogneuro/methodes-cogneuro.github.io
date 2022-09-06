@@ -117,7 +117,7 @@ Le développement de ce livre a démarré afin de servir d'outil de référence 
 </table>
 
 ## Remerciements
-Ce livre est dans une large mesure "reproductible": de nombreuses figures sont générées à l'aide de données ouvertes, avec du code qui fait parti du livre. Cette technologie est rendue possible grâce aux projets suivants:
+Ce livre est dans une large mesure "reproductible": de nombreuses figures sont générées à l'aide de données ouvertes, avec du code accessible à même le livre. Cette technologie est rendue possible grâce aux projets suivants:
  * [jupyter book](https://jupyterbook.org) est l'outil utilisé pour générer le livre. Ce projet repose lui-même sur l'outil de documentation [sphynx](https://www.sphinx-doc.org).
  * La librairie [nilearn](https://nilearn.github.io/) en [python](https://www.python.org/), notamment pour la partie sur l'IRM structurelle, l'IRM fonctionnelle et les modèles statistiques.
  * La librairie [Dipy](https://dipy.org), notamment pour la partie sur l'IRM de diffusion.
