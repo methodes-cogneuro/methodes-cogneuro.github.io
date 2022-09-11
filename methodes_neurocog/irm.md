@@ -246,14 +246,15 @@ Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du cham
 À l'état d'équilibre, la contribution du moment magnétique selon l'axe $B_0$ est appelée $M_0$. Cette valeur dépend de la densité de protons dans les tissus, c'est-à-dire du nombre d'atomes d'hydrogène présents dans le tissu. Ainsi, d'un voxel à un autre, nous n'obtenons pas nécessairement la même valeur de $M_0$. Il est possible d'imager ce paramètre, et on parle alors d'image en densité de protons (PD en anglais, pour proton density).
 ```
 
-**Image pondérée en $T_2$**. La diminution de la composante selon $B_1$ (composante $M_{xy}$), ou _relaxation transverse_, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s'appelle le $T_2$. Le temps $T_2$ correspond au temps écoulé pour obtenir 37% de la valeur de la contribution du moment magnétique initial selon l'axe $B_1$. Pour ceux qui sont à l'aise avec les expressions mathématiques, la décroissance en $B_1$ suit l'équation $M_{xy}(t) = M_1 e^{-t / T_2}$. La constante $M_1$ va dépendre entre autres choses de la densité de protons, comme $M_0$, et va varier d'un tissu à l'autre.
+**Relaxation en $T_2$**. La diminution de la composante selon $B_1$ (composante $M_{xy}$), ou _relaxation transverse_, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s'appelle le $T_2$. Le temps $T_2$ correspond au temps écoulé pour obtenir 37% de la valeur de la contribution du moment magnétique initial selon l'axe $B_1$. Pour ceux qui sont à l'aise avec les expressions mathématiques, la décroissance en $B_1$ suit l'équation $M_{xy}(t) = M_1 e^{-t / T_2}$. La constante $M_1$ va dépendre entre autres choses de la densité de protons, comme $M_0$, et va varier d'un tissu à l'autre.
 
 ```{figure} ./irm/t2.png
 ---
 width: 800px
 name: t2-fig
 ---
-Le processus...
+Le processus de relaxation $T_2$. Pour un voxel donné, on mesure la décroissance du champ magnétique selon l'axe $B_1$. La vitesse de cette décroissance dépend du temps $T_2$. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_2$. Figure adaptée de {cite:p}`Ridgway2010-dc` sous license [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0).
+
 ```
 
 ```{code-cell} ipython 3
