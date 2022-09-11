@@ -38,11 +38,6 @@ kernelspec:
   </tr>
 </table>
 
-
-```{warning}
-Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
-```
-
 ## Objectifs du cours
 Ce cours a pour but de vous initier aux principes physiques de l'imagerie par résonance magnétique. Au courant de ce cours, nous allons aborder quatre principes fondamentaux de l'IRM:
  * La résonance magnétique
@@ -83,6 +78,12 @@ warnings.filterwarnings("ignore")
 
 # Youtube
 HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/bq6IhapfucE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+```
+
+```{admonition} IRM et sécurité
+L’IRM est non invasif: il n’existe pas d’effet adverse connu sur la santé de l’exposition à un champ magnétique fort.
+En revanche, il faut s’assurer qu’il n’y ait pas de contre-indications, telles que la présence de certains métaux dans le corps ou des équipements médicaux tels qu’un pace maker.
+Le champ magnétique peut également attirer les objets métalliques et provoquer des accidents. Pour cette raison le personnel qui opère dans une salle d’IRM doit recevoir une formation adéquate aux mesures de sécurité.
 ```
 
 ## Spin magnétique et champ B0
@@ -254,8 +255,10 @@ width: 800px
 name: t2-fig
 ---
 Le processus de relaxation $T_2$. Pour un voxel donné, on mesure la décroissance du champ magnétique selon l'axe $B_1$. La vitesse de cette décroissance dépend du temps $T_2$. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_2$. Figure adaptée de {cite:p}`Ridgway2010-dc` sous license [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0).
-
 ```
+
+**Pondération en $T_2$**. Comme vu précédemment, on ne mesure généralement qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_2$. Si le paramètre $T_2$ augmente, cela veut dire que la courbe décroit plus lentement, et le signal pondéré en $T_2$ va augmenter. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques $T_2$ différentes, ce qui permet d'obtenir des images d'IRM structurelle comme pour le $T_1$. En général, les images $T_1$ et $T_2$ sont presque mirroirs l'une de l'autre, mais comme le $T_2$ est très sensible au déphasage, l'information capturée sur les tissus est complémentaire.
+
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -346,7 +349,18 @@ name: irm-console-fig
 Connexions entre la console et les différentes parties d'un système IRM. Figure adaptée par P. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l'article par Gruber et coll. (2018) {cite:p}`Gruber2018-pq`, sous licence CC-BY-NC.
 ```
 
-L'ensemble des éléments de l'appareil IRM peuvent être contrôlés par la console (voir {numref}`irm-console-fig`). Nous avons vu ensemble les principes clés de l'IRM, mais une image réelle est acquise avec une série complexe d'excitations et de mesures, que l'on appelle une _séquence d'acquisition_. Une fois la séquence programmée, nous pouvons toujours modifier certains paramètres de la séquence, comme par exemple:
+L'ensemble des éléments de l'appareil IRM peuvent être contrôlés par la console (voir {numref}`irm-console-fig`). Nous avons vu ensemble les principes clés de l'IRM, mais une image réelle est acquise avec une série complexe d'excitations et de mesures, que l'on appelle une _séquence d'acquisition_.
+
+```{figure} ./irm/fov.png
+---
+width: 500px
+name: fov-fig
+---
+Le champ de vue est un paramètre important des séquences IRM. Il définit la position et la taille du volume cérébral acquis. On définit généralement une matrice correspondant au plan de coupes, dont la taille est définie par le nombre de voxels. On définit ensuite le nombre de coupes, et enfin la taille des voxels. En combinant ces informations, on peut en déduire la taille du champ de vue. Schéma par Pierre Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+```
+
+Une fois la séquence programmée, nous pouvons toujours modifier certains paramètres de la séquence, comme par exemple:
 * $TE$
 * $TR$
 * champ de vue (field of view, FOV)
@@ -355,8 +369,14 @@ L'ensemble des éléments de l'appareil IRM peuvent être contrôlés par la con
 * Taille des voxels.
 
 
-### Conclusions
+## Conclusions
 Ce chapitre vous a introduit aux principes physiques de l'IRM. Nous avons vu les différentes composantes d'un appareil IRM, les différents phénomènes magnétiques nous permettant d'acquérir des images, ainsi que quelques paramètres que nous pouvons modifier lors de l'acquisition de données IRM. Lors du prochain chapitre, nous parlerons de morphométrie à l'aide de l'IRM structurelle.
+
+## Ressources supplémentaires
+La physique de l'IRM est un domaine très riche, que l'on n'a fait que commencer à découvrir. Quelques ressources pour un point de vue différent ou bien pour aller plus loin:
+ * [Plus de détails](https://mriquestions.com/what-is-t2.html) sur le processus de relaxation.
+ * Une [explication en vidéo](https://www.youtube.com/watch?v=TQegSF4ZiIQ) de la résonance magnétique nucléaire.
+ * Une (longue) série de cours sur la physique de l'IRM, en [vidéos youtube](https://www.youtube.com/watch?v=35gfOtjRcic).
 
 ## Références
 

@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="t2.svg">
+   sodipodi:docname="t2.svg"
+   inkscape:export-filename="/home/pbellec/git/psy3018.github.io/methodes_neurocog/irm/t2.png"
+   inkscape:export-xdpi="136.673"
+   inkscape:export-ydpi="136.673">
   <defs
      id="defs2">
     <marker
@@ -615,9 +618,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="594.774"
-     inkscape:cy="134.19018"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="268.52451"
+     inkscape:cy="68.604888"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -657,7 +660,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -977,7 +980,7 @@
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path16564"
-         d="M 32.802794,61.491015 C 25.226309,61.388037 25.219374,113.42745 17.443876,113.20051"
+         d="m 32.802794,61.491015 c -3.788242,-0.05149 -5.684098,12.93262 -7.604829,25.901233"
          style="fill:none;stroke:#ff0000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cc"
