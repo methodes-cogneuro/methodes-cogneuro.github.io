@@ -171,7 +171,17 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/9GZvd_
 ## Contrastes $T_1$ et $T_2$
 Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radiofréquences fait basculer les spins selon l'axe $B_1$, axe perpendiculaire à $B_0$. Une fois les impulsions radiofréquences arrêtées, les spins s'alignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
 
-**Image pondérée en $T_1$**. L'augmentation de la composante selon $B_0$ (composante $M_z$), ou _relaxation longitudinale_, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le $T_1$. Le temps $T_1$ correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z ($M_0$). Pour ceux qui sont à l'aise avec les expressions mathématiques, la repousse en $B_0$ suit l'équation $M_z(t) = M_0 ( 1 - e^{-t / T_1})$.
+**Relaxation en $T_1$**. L'augmentation de la composante selon $B_0$ (composante $M_z$), ou _relaxation longitudinale_, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le $T_1$. Le temps $T_1$ correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z ($M_0$). Pour ceux qui sont à l'aise avec les expressions mathématiques, la repousse en $B_0$ suit l'équation $M_z(t) = M_0 ( 1 - e^{-t / T_1})$.
+
+```{figure} ./irm/t1.png
+---
+width: 800px
+name: t1-fig
+---
+Le processus de relaxation $T_1$. Pour un voxel donné, on mesure la repousse du champ magnétique selon l'axe $B_0$. La vitesse de cette repousse dépend de deux paramètres: la valeur d'équilibre $M_0$ et le temps $T_1$. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_1$. Figure adaptée de {cite:p}`Ridgway2010-dc` sous license [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0).
+```
+
+**Pondération en $T_1$**. Pour estimer le paramètre $T_1$, il est nécessaire d'effectuer plusieurs mesures au cours du temps pour évaluer la croissance de la courbe. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_1$. Si le paramètre $T_1$ augmente, cela veut dire que la courbe croit plus lentement, et le signal pondéré en $T_1$ va diminuer. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques $T_1$ différentes, ce qui permet d'obtenir des images d'IRM structurelle.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -218,7 +228,7 @@ data_mri = fetch_icbm152_2009()
 
 # afficher l'image pondérée en T1
 ax_plot = plt.subplot2grid((1, 3), (0, 1), colspan=2)
-plot_anat(data_mri.t1, figure=fig, title="IRM en contraste T1", axes=ax_plot,
+plot_anat(data_mri.t1, figure=fig, title="IRM pondérée en T1", axes=ax_plot,
     cut_coords=[-17, 0, 17])
 
 glue("relax-t1-fig", fig, display=False)
@@ -227,7 +237,7 @@ glue("relax-t1-fig", fig, display=False)
 ```{glue:figure} relax-t1-fig
 :figwidth: 800px
 :name: "relax-t1-fig"
-Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Cette figure est générée par du code python, cliquer sur + pour voir le code.
+Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ (pondéré en $T_1$) présente un contraste entre les différents types de tissus. Cette figure est générée par du code python, cliquer sur + pour voir le code.
 ```
 
 ```{admonition} M0
@@ -291,7 +301,7 @@ data_mri = fetch_icbm152_2009()
 
 # afficher l'image pondérée en T2
 ax_plot = plt.subplot2grid((1, 3), (0, 1), colspan=2)
-plot_anat(data_mri.t2, figure=fig, title="MRI en contraste T2", axes=ax_plot,
+plot_anat(data_mri.t2, figure=fig, title="IRM pondérée en T2", axes=ax_plot,
     cut_coords=[-17, 0, 17])
 
 glue("relax-t2-fig", fig, display=False)
