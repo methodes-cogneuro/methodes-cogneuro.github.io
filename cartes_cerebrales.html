@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -43,7 +43,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -73,10 +73,6 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -319,7 +315,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cartes-cerebrales">
+  <div class="section" id="cartes-cerebrales">
 <h1>Cartes cérébrales<a class="headerlink" href="#cartes-cerebrales" title="Permalink to this headline">¶</a></h1>
 <table>
   <tr>
@@ -459,7 +455,7 @@
 </div>
 <p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Un exemple d’IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer à travers les coupes du cerveau</span></a> pour une explication de ces termes. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé template MNI152 2009 <span id="id3">[<a class="reference internal" href="morphometrie.html#id21">FEB+11</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#t1-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Le type d’image le plus couramment acquis avec un appareil d’IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure <a class="reference internal" href="#t1-fig"><span class="std std-ref">ci-dessus</span></a>, on distingue aisément certains éléments anatomiques:</p>
+<p>Le type d’image le plus couramment acquis avec un appareil d’IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure <a class="reference internal" href="irm.html#t1-fig"><span class="std std-ref">ci-dessus</span></a>, on distingue aisément certains éléments anatomiques:</p>
 <ul class="simple">
 <li><p>La <strong>matière grise</strong>, en périphérie du cortex, apparaît en gris dans l’image. C’est là que les corps des neurones sont présents.</p></li>
 <li><p>Il est aussi possible de distinguer la <strong>matière blanche</strong> en blanc (ou plutôt gris clair) qui contient des paquets d’axones - c’est à dire les connexions entre les neurones.</p></li>
@@ -518,7 +514,7 @@ Principaux plans de coupe en imagerie cérébrale. Figure par JonRichfield sous 
 <div class="cell_output docutils container">
 <img alt="_images/cartes_cerebrales_3_0.png" src="_images/cartes_cerebrales_3_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Exemple d’un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagittal (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer à travers les coupes du cerveau</span></a> pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l’<a class="reference internal" href="#t1-fig"><span class="std std-ref">IRM anatomique</span></a>, et que l’on a beaucoup de mal à voir les détails de l’anatomie du cerveau. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé ADHD200 <span id="id4">[<a class="reference internal" href="connectivite.html#id21">BCCD+17</a>, <a class="reference internal" href="connectivite.html#id20">HD200Consortium12</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#irmf-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Exemple d’un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagittal (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer à travers les coupes du cerveau</span></a> pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l’<a class="reference internal" href="irm.html#t1-fig"><span class="std std-ref">IRM anatomique</span></a>, et que l’on a beaucoup de mal à voir les détails de l’anatomie du cerveau. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé ADHD200 <span id="id4">[<a class="reference internal" href="connectivite.html#id21">BCCD+17</a>, <a class="reference internal" href="connectivite.html#id20">HD200Consortium12</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#irmf-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Ces mesures ne reflètent pas directement l’activité des neurones, mais plutôt l’oxygénation du sang. On parle de signal dépendant du niveau d’oxygénation dans sang, ou signal BOLD (pour <em>Blood Oxygen Level Dependent</em>, en anglais). Comme on le verra dans la section <a class="reference internal" href="#couplage-neurovasculaire-section"><span class="std std-ref">Couplage neurovasculaire</span></a>, ce signal BOLD reflète malgré tout de manière indirecte l’activité des neurones et va nous permettre de faire des cartes de l’activité du cerveau. Il y a deux types majeurs de techniques d’analyse en IRMf:</p>
 <ul class="simple">
@@ -734,7 +730,7 @@ Principaux plans de coupe en imagerie cérébrale. Figure par JonRichfield sous 
         
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-5 mt-md-0">
     <div class="container">
       <p>
         
