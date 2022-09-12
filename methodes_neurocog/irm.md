@@ -386,83 +386,47 @@ La physique de l'IRM est un domaine très riche, que l'on n'a fait que commencer
 
 ## Exercices
 
-```{admonition} Exercice 2.1
+```{admonition} Exercice 1
 :class: note
-Classez les temps caractéristiques par ordre croissant, si possible.
- * TE vs TR
- * TR vs T1
- * T1 vs TE
+Vrai ou faux?
+ 1. TE < TR
+ 2. TE > T1
+ 3. La force du champ magnétique d’un IRM est liée à la taille de l’IRM.
+ 4. Les ventricules sont blancs dans une IRM pondérée en T1
 ```
 
-```{admonition} Exercice 2.2
+```{admonition} Exercice 2
 :class: note
-Vrai ou faux? la force du champ d’un IRM est liée à la taille de l’IRM.
-```
+Choisissez la bonne réponse. un proton d’hydrogène a...
 
-```{admonition} Exercice 2.3
-:class: note
-Choisissez parmi la bonne réponse parmi 1 ou 2. le spin d’un proton d’hydrogène a...
-
- 1. Une fréquence de rotation fixe, c’est la fréquence de Larmor.
- 2. Une fréquence de rotation variable.
+ 1. Une fréquence de rotation fixe durant une acquisition IRM, c’est la fréquence de Larmor.
+ 2. Une fréquence de rotation variable durant une acquisition IRM.
  3. Une fréquence de rotation qui dépend de la force du champ magnétique dans l'IRM.
+ 4. Réponses 1 et 3.
+ 5. Réponses 2 et 3.
 ```
 
-```{admonition} Exercice 2.4
+```{admonition} Exercice 3
 :class: note
-Qu’est ce qui produit le bruit dans une acquisition IRM?
- * Le champ B0.
- * La climatisation pour refroidir l’aimant.
- * Les bobines de gradient.
- * L’antenne radio-fréquence.
+On effectue une acquisition T1 avec un champ de vue de 200mm x 200mm x 150 mm, une résolution de 2 mm x 2 mm dans la coupe, et une épaisseur de coupe de 1,5 mm. Quelle est la taille du champ de vues, exprimée en nombre de voxels?
 ```
 
-```{admonition} Exercice 2.5
+```{admonition} Exercice 4
 :class: note
-Vrai ou faux? L’aimant de l’IRM consomme beaucoup d’électricité.
+On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser: T1, T2 ou les deux? Justifiez votre réponse.
 ```
 
-```{admonition} Exercice 2.6
-:class: note
-Vrai ou faux? L’IRM fonctionnelle et l’IRM de diffusion utilisent toutes les deux un contraste T2*.
-```
-
-```{admonition} Exercice 2.7
-:class: note
-Dans un image anatomique, on voit des ventricules blancs sur fond noir. S’agit-il d’une acquisition pondérée en T1 ou en T2? Expliquez pourquoi.
-```
-
-```{admonition} Exercice 2.8
+```{admonition} Exercice 5
 :class: note
 On décide de modifier une séquence IRM pour diminuer l’angle de bascule: les spins basculeront de 70 degrés, au lieu de 90 degrés. Quel sera l’effet sur le TR de cette modification?
 ```
 
-```{admonition} Exercice 2.9
-:class: note
-On effectue une acquisition T1 avec un champ de vue de 210mm x 210mm in-plane, et une résolution de 1 mm x 1 mm dans la coupe. Quelle est la taille de la coupe (nombre de pixels x nombre de pixels)?
-```
-
-```{admonition} Exercice 2.10
-:class: note
-On effectue une acquisition IRMf avec une résolution de 3 mm x 3 mm dans la coupe, une coupe de dimension 64x64, une épaisseur de coupe de 3,4 mm avec 31 coupes. On a un TR de 2 secondes, et on acquiert 150 volumes.
-Quelle est la taille du champ de vue 3D, sachant que les coupes sont acquises dans le plan axial?
-Quelle est la durée de l’acquisition?
-```
-
-```{admonition} Exercice 2.11
+```{admonition} Exercice 6
 :class: note
 Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
- * Quelle est la force de l'aimant de l'IRM?
- * Combien de canaux sont présents dans l'antenne de tête?
- * Quel est le TR de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
- * Quel est le nom de la séquence utilisée pour l'acquisition structurelle?
- * Quel est le nom de la séquence utilisée pour l'acquisition fonctionnelle?
- * Quel est le TE de l'acquisition structurelle? et de l'acquisition fonctionnelle? Comparer ces deux temps l'un avec l'autre, est il logique que l'un soit plus grand que l'autre?
- * Quelle est la taille du champ de vue de l'acquisition fonctionnelle, en cm?
- * Combien de volumes cérébraux sont acquis durant la séquence fonctionnelle?
-```
-
-```{admonition} Exercice 2.12
-:class: note
-On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contraste utiliser: T1, T2 ou les deux? Justifiez votre réponse.
+ 1. Quelle est la force de l'aimant de l'IRM?
+ 2. Quel est le TR de l'acquisition structurelle?
+ 3. Quel est le TE de l'acquisition structurelle?
+ 4. Quel est le nom de la séquence utilisée pour l'acquisition structurelle?
+ 5. Quelle est la taille du champ de vue, exprimée en mm et dans les trois dimensions?
 ```
