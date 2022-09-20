@@ -49,11 +49,6 @@ kernelspec:
   </tr>
 </table>
 
-
-```{warning}
-Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
-```
-
 ## Objectifs du cours
 
 Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l'aide des données d'imagerie par résonance magnétique anatomique. Il sera question dans ce chapitre de trois grandes approches d'analyse:
@@ -162,7 +157,7 @@ Un exemple d'atlas de régions anatomiques: l'atlas Harvard-Oxford.
 Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé fetch_atlas_harvard_oxford ([Nilearn, section 9.2.1: Basic Atlas plotting](https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html)) {cite:p}`MAKRIS2006155, Frazier2005, DESIKAN2006968, GOLDSTEIN2007935` (cliquer sur + pour voir le code).
 ```
 
-Afin d'automatiser le travail de segmentation, il est possible d'utiliser un atlas, c'est à dire une segmentation déjà effectuée par une équipe de chercheurs.
+Afin d'automatiser le travail de segmentation, il est possible d'utiliser un atlas, c'est-à-dire une segmentation déjà effectuée par une équipe de chercheurs.
 Pour ce faire, ceux-ci ont construit une carte des régions d'intérêt à l'intérieur d'un espace de référence, aussi appelé {ref}`espace stéréotaxique <stereotaxique-tip>`.
 Il existe une variété d'atlas basés sur différents critères anatomiques ou fonctionnels, il est donc important de choisir adéquatement l'atlas en fonction des structures étudiées.
 Afin d'ajuster l'atlas sur les données d'un participant, les images structurelles de ce dernier sont d'abord {ref}`recalées <registration-tip>` de manière automatisée vers l'{ref}`espace stéréotaxique <stereotaxique-tip>` de référence.
@@ -267,7 +262,7 @@ Dans l'exemple de la {numref}`ledig2018-stats-fig`, on compare le volume de l'hi
 width: 600px
 name: artefact-fig
 ---
-La présence de métal ou d'éléments défectueux dans le scanner peuvent causer des artefacts et des distortions dans les images qui ne reflètent pas la morphologie réelle de la tête.
+La présence de métal ou d'éléments défectueux dans le scanner peuvent causer des artefacts et des distorsions dans les images qui ne reflètent pas la morphologie réelle de la tête.
 Figure d'origine inconnue, possiblement sous droits réservés.
 ```
 ```{figure} ./morphometrie/qc-fail-fig.png
@@ -281,7 +276,7 @@ L'IRM individuelle recalée n'est pas du tout alignée avec les repères attendu
 Figure par P. Bellec, sous licence CC-BY.
 ```
 
-Il est possible d'obtenir des résultats aberrants en volumétrie, soit à cause de la présence d'erreurs dans les étapes de recalage linéaire et/ou non-linéaire ({numref}`qc-fail-fig`), soit à cause d'artefacts lors de l'acquisition des données (présence d'objects métalliques, etc. {numref}`artefact-fig`).
+Il est possible d'obtenir des résultats aberrants en volumétrie, soit à cause de la présence d'erreurs dans les étapes de recalage linéaire et/ou non-linéaire ({numref}`qc-fail-fig`), soit à cause d'artefacts lors de l'acquisition des données (présence d'objets métalliques, etc. {numref}`artefact-fig`). Les images peuvent également être de mauvaise qualité si le sujet de recherche bouge pendant l'acquisition.
 Il est important d'effectuer un contrồle de qualité afin d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
 Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées.
 
@@ -581,7 +576,7 @@ Figure adaptée par P. Bellec à partir de figures de l'article de Klein et al.,
 Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu'elles exploitent le ruban que la matière grise forme en s'étendant à la surface de la matière blanche.
 En plus des étapes de segmentation et de recalage que l'on a vu précédemment, on va utiliser ici un algorithme qui va détecter la *surface piale*, à la frontière entre la matière grise et le liquide céphalo-rachidien, et la *surface intérieure* (aussi appelée *surface blanche*), à la frontière entre la matière blanche et la matière grise.
 Il faudra également, comme pour la VBM, extraire un masque du cerveau en éliminant les structures n'appartenant pas au cortex (boîte crânienne, tissus adipeux, méninges, liquide céphalo-rachidien, etc.).
-Ce genre d'analyse permet de produire des surfaces pouvant être visualisées comme des objets 3D, donnant ainsi lieu à de [magnifiques visulisations interactives](https://gallantlab.org/huth2016/).
+Ce genre d'analyse permet de produire des surfaces donnant lieu à de [magnifiques visualisations interactives](https://gallantlab.org/huth2016/).
 
 ```{admonition} Croissance de ballon
 :class: tip
@@ -590,7 +585,7 @@ On modélise ensuite des contraintes physiques à la frontière entre la matièr
 On procède ensuite à "gonfler" ce ballon jusqu'à ce qu'il épouse le mieux possible la frontière de la surface interne (jusqu'à ce que le ballon soit gonflé et occupe tout l'espace dans la cavité et qu'il épouse l'ensemble des courbes de la paroi).
 Il est aussi possible de faire la procédure inverse.
 On pourrait en effet générer un ballon virtuel autour de chacun des hémisphères et les "dégonfler" jusqu'à ce qu'ils épousent les contours des frontières délimitées par les contraintes physiques.
-Lorsque l'une des frontières (surface interne ou surface piale) est délimitées, il est possible de continuer la procédure de gonflement/dégonflement afin d'obtenir la seconde surface.
+Lorsque l'une des frontières (surface interne ou surface piale) est délimitée, il est possible de continuer la procédure de gonflement/dégonflement afin d'obtenir la seconde surface.
 ```
 
 ```{admonition} Attention
@@ -663,7 +658,7 @@ Image sous licence CC Attribution, tirée de Klein et al., 2017 {cite:p}`Klein20
 ```
 La technique d'extraction de surface n'est pas robuste aux effets des volumes partiels.
 On pourrait en effet avoir une surface qui ne se rend pas jusqu'au fond d'un sulcus, ou lorsque les gyri sont très rapprochés, qui n'entre même pas à l'intérieur du sulcus.
-Le résultat de ces deux types d'erreur, qui sont possibles autant au niveau de la surface piale que de la surface interne, sera une forte surestimation localisée de l'épaisseur corticale.
+Le résultat de ces deux types d'erreur, qui sont possibles tant au niveau de la surface piale que de la surface interne, sera une forte surestimation localisée de l'épaisseur corticale.
 C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fréquemment sur l'ensemble des images et de corriger les erreurs de segmentation à la main, ou bien d'exclure les données de certains participants.
 
 ## Conclusion
@@ -679,44 +674,35 @@ On y a discuté de plusieurs techniques clés d'analyse d'image et l'on a commen
 
 ## Exercices
 
-```{admonition} Exercice 3.1
+```{admonition} Exercice 1
 :class: note
 
-Choisissez la meilleure réponse et expliquez pourquoi.
-Des données d’IRM T1 individuelle sont...
+Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse.
+ 1. Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.
+ 2. La présence de métal peut créer du bruit et des déformations dans une carte VBM.
+ 3. Un trou dans une carte cérébrale VBM signifie nécessairement qu'il y a un trou dans le cerveau du participant.
+```
+
+```{admonition} Exercice 2
+:class: note
+
+Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse.
+ 1. Les données IRM doivent être recalées dans un espace stéréotaxique pour étudier la morphologie du cerveau à l’échelle d’une population en VBM.
+ 2. Les données IRM doivent être recalées dans un espace stéréotaxique pour effectuer une segmentation manuelle de l’hippocampe.
+ 3. La VBM repose sur la segmentation automatique de la matière grise dans une IRM.
+```
+
+```{admonition} Exercice 3
+:class: note
+
+Choisissez la bonne réponse. Des données d’IRM pondérées en T1 pour un participant sont...
  1. Une image 3D d’un cerveau.
  2. Des dizaines d’images 2D sagittales d’un cerveau.
- 3. Des centaines d’images 2D axiales, coronales et sagittales d’un cerveau.
+ 3. Des dizaines d’images 2D axiales, coronales et sagittales d’un cerveau.
  4. Toutes ces réponses.
 ```
 
-```{admonition} Exercice 3.2
-:class: note
-
-On souhaite comparer le volume moyen du putamen droit entre des participants neurotypiques et des participants étant sur le spectre de l’autisme.
-On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
-Pour chacune de ces techniques, citez une force et une faiblesse en lien avec les objectifs de l'étude.
-```
-
-```{admonition} Exercice 3.3
-:class: note
-
-Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
- - Les données IRM T1 doivent être réalignées pour étudier la morphologie du cerveau à l’échelle d’une population.
- - Les données d’IRM "brutes" (avant l'étape du prétraitement) sont inutilisables pour étudier la morphométrie.
- - En VBM, le lissage spatial est important, même pour une analyse individuelle.
-```
-
-```{admonition} Exercice 3.4
-:class: note
-
-Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fausse et expliquez votre choix.
- - Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.
- - La présence de métal peut créer du bruit et des déformations dans une carte VBM.
- - Un trou dans une carte cérébrale VBM signifie nécessairement qu'il y a un trou dans le cerveau du participant.
-```
-
-```{admonition} Exercice 3.5
+```{admonition} Exercice 4
 :class: note
 
 En vérifiant ses données structurelles, une chercheuse réalise qu’un de ses participants de recherche a un volume cérébral de deux fois supérieur à la normale!
@@ -724,77 +710,29 @@ Pourtant, le crâne de ce participant semblait normal.
 Proposez une explication.
 ```
 
-```{admonition} Exercice 3.6
+```{admonition} Exercice 5
 :class: note
 
-On souhaite faire une comparaison entre la quantité de matière grise présente au niveau du sillon post-central et celle contenue dans le sillon précentral, en moyenne, sur une population.
-On considère pour cela deux méthodes alternatives: une analyse VBM ou bien une analyse de l’épaisseur corticale (analyse de surface).
+On souhaite faire une comparaison entre la quantité de matière grise présente au niveau du cortex moteur primaire et celle contenue dans le cortex sensoriel primaire, en moyenne, sur une population. Ces deux cortex sont situés très près l’un de l’autre, de part et d’autre du sillon central. On considère pour cela deux méthodes alternatives: une analyse VBM ou bien une analyse de l’épaisseur corticale (analyse de surface).
 Quelle technique choisiriez-vous et pourquoi?
 ```
 
-```{admonition} Exercice 3.7
+```{admonition} Exercice 6
 :class: note
-
-Les données d’un participant de recherche sont de qualité médiocre et la segmentation de la matière grise est imprécise.
-Pour chacune des combinaisons de choix suivantes, quelle technique choisiriez-vous et pourquoi?
- - VBM vs volumétrie manuelle?
- - VBM vs analyse de surface?
+On souhaite comparer le volume moyen de l’hippocampe droit entre des participants présentant une démence de type Alzheimer et des participants en santé. On fait l’hypothèse que c’est la partie antérieure de l’hippocampe qui présente une différence.
+On considère pour cela deux méthodes alternatives: la volumétrie manuelle et l'analyse VBM.
+Pour chacune de ces techniques, citez une force et une faiblesse en lien avec les objectifs de l'étude.
 ```
 
-```{admonition} Exercice 3.8
-:class: note
-Nous avons vu en cours quelques exemples de structures anatomiques cérébrales.
-Faisons un peu de révision...
-En utilisant la fenêtre de visualisation ci-dessous (aussi accessible sur cette [page web du cours](morphometrie.html#exercices)), donnez les coordonnées (x, y, ou z) où l'on peut voir...
- - une coupe sagittale présentant le corps calleux.
- - une coupe coronale présentant le corps calleux.
- - une coupe axiale contenant des ventricules.
- - une coupe axiale avec le sillon central.
-
-Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au {ref}`Chapitre 1: Cartes cérébrales <coupes-tip>`.
-```
-
-```{code-cell} ipython 3
-:tags: ["hide-input"]
-# Ce code récupère des données IRM T1
-# et génère une image dans trois plans de coupes
-
-# Enlève les warnings
-import warnings
-warnings.filterwarnings("ignore")
-
-# Télécharge un scan anatomique (template MNI152)
-from nilearn.datasets import fetch_icbm152_2009
-mni = fetch_icbm152_2009()
-
-# Visualise le volume cérébral
-from nilearn.plotting import view_img
-
-view_img(
-    mni.t1,
-    bg_img=None,
-    black_bg=True,
-    cut_coords=[-17, 0, 17],
-    title='IRM pondérée en T1',
-    cmap='gray',
-    symmetric_cmap=False
-)
-```
-
-```{admonition} Exercice 3.9
+```{admonition} Exercice 7
 :class: note
 
 Pour répondre aux questions de cet exercice, lisez d'abord l'article *Development of cortical thickness and surface area in autism spectrum disorder* de Mensen et collaborateurs (publié en 2017 dans la revue *Neuroimage: Clinical*, volume 13, pages 215 à 222).
 Celui-ci est disponible en libre accès à cette [adresse](https://www.sciencedirect.com/science/article/pii/S2213158216302406).
 Les questions suivantes requièrent des réponses à développement court.
- - Quel(s) type(s) de participant a(ont) été recruté(s) dans cette étude?
- - Quel est l'objectif principal de l'étude?
- - Quels sont les critères d'inclusion et d'exclusion?
  - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
- - Quelle type de séquence d'acquisition d'image est utilisé? Listez les paramètres.
  - Est ce que le traitement des images inclut une(des) étape(s) de recalage? Si oui, de quel(s) type(s)?
  - Les chercheurs ont-ils mis en place une procédure de contrôle qualité? Si oui, résumez cette procédure.
  - Les régions d'intérêt (ROI) sont-elles définies? Si oui, de quelle façon? Avec quel atlas? Combien y en a-t-il?
  - Quelles mesures morphologiques sont utilisées pour chaque région?
- - Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
 ```
