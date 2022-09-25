@@ -207,9 +207,7 @@ Quelle est l'origine du **signal BOLD**? L'hémoglobine existe sous deux états,
 - L'**oxyhémoglobine** est **diamagnétique**
 - La **désoxyhémoglobine** est **paramagnétique**
 
-Ce que cela veut dire, c'est que quand elles sont soumises à des impulsions électromagnétiques, ces deux molécules se comportent de manière très différente. La désoxyhémoglobine va créer des inhomogénéités du champ magnétique, alors que l'oxyhémoglobine n'a pas d'effet sur ce même champ. Les séquences IRM pondérées $T_2^*$ sont très sensibles à de telles inhomogénéités. La désoxyhémoglobine déforme donc le champ magnétique $B_O$ induit par l'aimant, ce qui fait en sorte que le temps de relaxation $T_2^*$ est plus rapide. Les images acquises en IRMf utilisent donc un contraste en $T_2^*$, et cela a pour effet d'amplifier le signal quand le sang devient plus oxygéné en réponse à une augmentation de l'activité neuronale. Pour cette raison, le signale utilisé en IRMf est appelé signal BOLD, pour _Blood oxygenation level-dependent_, soit signal dépendant de l'oxygénation du sang.
-
-|               |   'Désoxyhémoglobine'     | `Oxyhémoglobine`  |
+Ce que cela veut dire, c'est que quand elles sont soumises à des impulsions électromagnétiques, ces deux molécules se comportent de manière très différente. La désoxyhémoglobine va créer des inhomogénéités du champ magnétique, alors que l'oxyhémoglobine n'a pas d'effet sur ce même champ. Les séquences IRM pondérées $T_2^*$ sont très sensibles à de telles inhomogénéités. La désoxyhémoglobine déforme donc le champ magnétique $B_O$ induit par l'aimant, ce qui fait en sorte que le temps de relaxation $T_2^*$ est plus rapide. Les images acquises en IRMf utilisent donc un contraste en $T_2^*$, et cela a pour effet d'amplifier le signal quand le sang devient plus oxygéné en réponse à une augmentation de l'activité neuronale. Pour cette raison, le signale utilisé en IRMf est appelé signal BOLD, pour _Blood oxygenation level-dependent_, soit signal dépendant de l'oxygénation du sang. |               |   'Désoxyhémoglobine'     | `Oxyhémoglobine`  |
 | ------------- |:-------------:| -----:|
 |Propriétés électromagnétiques | Paramagnétique | Diamagnétique|
 | Impact sur le signal BOLD      | **Réduit** le signal BOLD  | **Augmente** le signal BOLD|
@@ -217,11 +215,12 @@ Ce que cela veut dire, c'est que quand elles sont soumises à des impulsions él
 | Effet sur le champ | **Ajout d'inhomogénéités/distorsions** |  **Pas d'inhomogénéités**  |
 
 
-```{admonition} Attention!
-:class: caution attention
-:name: neurovascular-warning
-
-Le signal BOLD en IRMf constitue une **mesure indirecte** de l'activité neuronale. En effet, cette modalité ne mesure pas directement l'activité des neurones, mais plutôt les conséquences vasculaires de la demande métabolique associée à l'activité neuronale. Cette relation de **couplage neurovasculaire** est très complexe, et fait intervenir de nombreux métabolites et mécanismes différents.
+```{figure} ./irm_fonctionnelle/t2star.png
+---
+width: 600px
+name: t2star-fig
+---
+Lorsqu'une molécule comme la désoxyhémoglobine est présente, les spins se déphasent plus rapidement. Il est possible de modifier la séquence d'IRM pour éliminer ce phénomène, et c'est ce que l'on fait pour obtenir une image pondérée en $T_2$ traditionnelle. Si l'on ne modifie pas la séquence, le paramètre de décroissance apparait plus court, et c'est ce que l'on appelle le $T_2^*$.
 ```
 
 ### Fonction de réponse hémodynamique
@@ -646,33 +645,33 @@ La réalisation d'une expérience d'IRMf nécessite de bien penser les condition
 ```
 
 ## Exercices
-```{admonition} Exercice 4.1
+
+```{admonition} Exercice 1
 :class: note
-Choisissez la bonne réponse. Des données d’IRMf sont en général...
- 1. Une image du cerveau.
- 2. Une dizaine d’images du cerveau.
- 3. Des dizaines d’images du cerveau.
+Vrai / faux?
+ 1. La réponse hémodynamique est faible une seconde après l’excitation neuronale.
+ 2. La réponse hémodynamique est maximale 2 secondes après l’excitation neuronale.
+ 3. La réponse hémodynamique est toujours visible 7 secondes après l’excitation neuronale.
+ 4. La réponse hémodynamique est toujours visible 30 secondes après l’excitation neuronale.
 ```
 
-```{admonition} Exercice 4.2
+```{admonition} Exercice 2
+:class: note
+Vrai / faux?
+ 1. Les données en IRM fonctionnelle et structurelle doivent être alignées pour générer une carte d’activation.
+ 2. Le filtrage des facteurs de non-intérêt est important pour générer une carte d’activation.
+ 3. Le lissage spatial est utile, même pour une analyse individuelle.
+```
+
+```{admonition} Exercice 3
 :class: note
 Qu’est ce que le signal BOLD? (vrai / faux).
- 1. Un signal très courageux.
- 2. Une séquence pondérée en T2*.
- 3. Un type de séquence d’IRM qui mesure l’activité du cerveau.
- 4. Un type de séquence d’IRM qui mesure l’oxygénation du sang.
+ 1. Une séquence d’IRM pondérée en T2*.
+ 2. Un type de séquence d’IRM qui mesure directement l’activité des neurones.
+ 3. Un type de séquence d’IRM qui mesure l’oxygénation du sang.
 ```
 
-```{admonition} Exercice 4.3
-:class: note
-Choisissez la bonne réponse. Le signal BOLD dépend sur...
- 1. Le flux sanguin local.
- 2. Le volume sanguin local.
- 3. La concentration relative en désoxyhémoglobine.
- 4. Toutes les réponses ci-dessus.
-```
-
-```{admonition} Exercice 4.4
+```{admonition} Exercice 4
 :class: note
 Vrai / faux. Le principe d’additivité de la réponse hémodynamique est...
  1. Un modèle mathématique.
@@ -680,51 +679,37 @@ Vrai / faux. Le principe d’additivité de la réponse hémodynamique est...
  3. Une hypothèse courante, en partie confirmée expérimentalement.
 ```
 
-```{admonition} Exercice 4.5
+```{admonition} Exercice 5
 :class: note
-Quels phénomènes sont à l’origine d'un changement de signal mesuré par le BOLD?
+Choisissez la bonne réponse. Des données d’IRMf sont en général...
+ 1. Une image du cerveau.
+ 2. Une dizaine d’images du cerveau.
+ 3. Des dizaines d’images du cerveau, ou plus.
 ```
 
-```{admonition} Exercice 4.6
+```{admonition} Exercice 6
+:class: note
+Quelle molécule dans le sang provoque un changement de signal mesuré par le BOLD? Pourquoi est-ce que l’IRM y est sensible?
+```
+
+```{admonition} Exercice 7
 :class: note
 Dans quelle portion de l’arbre vasculaire observe-t-on les changements principaux liés à l’activité neuronale locale?
 ```
 
-```{admonition} Exercice 4.7
+```{admonition} Exercice 8
 :class: note
-Vrai / faux?
- 1. La réponse hémodynamique démarre immédiatement après l’excitation neuronale.
- 2. La réponse hémodynamique est visible une seconde après l’excitation neuronale.
- 3. La réponse hémodynamique est maximale 2 secondes après l’excitation neuronale.
- 4. La réponse hémodynamique est toujours visible 7 secondes après l’excitation neuronale.
- 5. La réponse hémodynamique est toujours visible 30 secondes après l’excitation neuronale.
+On compare l’activation pour une tâche de mémoire dans le cerveau entre deux groupes de participants: des sujets sains et des sujets âgés (N=200 par groupe). Notre hypothèse est que la différence d’activité sera la plus forte dans le cortex frontal. En réalité, on trouve des différences en périphérie du cerveau, ce qui suggère des artefacts de mouvement.Suggérer deux modifications au protocole (recueil des données ou technique d’analyse) qui permettrait d’éviter ce phénomène.
 ```
 
-```{admonition} Exercice 4.8
-:class: note
-Vrai / faux / peut-être? (expliquez pourquoi)
- 1. Les données IRM fonctionnelle et structurelle doivent être réalignées pour générer une carte d’activation.
- 2. Les données d’IRMf “brutes” (avant prétraitement) sont inutilisables pour générer une carte d’activation.
- 3. Le lissage spatial est important, même pour une analyse individuelle.
-```
-
-```{admonition} Exercice 4.9
-:class: note
-On compare l’activation pour une tâche de mémoire dans le cortex frontal entre deux groupes de participants: des sujets sains et des sujets âgés (N=20 par groupe). Contrairement à nos hypothèses, on ne trouve aucune différence. Donnez trois raisons qui peuvent expliquer ce résultat. Pour chaque raison possible, suggérez une modification du protocole qui permettrait de découvrir une différence entre les deux groupes.
-```
-
-```{admonition} Exercice 4.10
+```{admonition} Exercice 9
 :class: note
 Pour répondre aux questions de cet exercice, lisez d'abord l'article *High-resolution functional MRI of the human amygdala at 7 T* de Mensen et collaborateurs (publié en 2013 dans la revue *European Journal of radiology*, volume 82, pages 728 à 733).
 Celui-ci est disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3629563/).
 Les questions suivantes requièrent des réponses à développement court.
- - Quel type de participants a été recruté dans cette étude?
- - Quel est l'objectif principal de l'étude?
- - Quels sont les critères d'inclusion et d'exclusion?
- - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
- - Quelle type de séquence d'acquisition d'image est utilisé? Listez les paramètres.
- - Quelles étapes de prétraitements ont été appliquées?
- - Quels modèles statistiques ont été appliqués?
- - Quelle figure (ou tableau) répond à l'objectif principal de l'étude?
- - Quel est le résultat principal de l'étude?
+ 1. Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
+ 2. Quelle est la force de l’IRM?
+ 3. Quel type de séquence d'acquisition d'image est utilisé? Listez les paramètres: TE et taille du champ de vue (en mm), durée de l’acquisition.
+ 4. Quel type de tâche est utilisé?
+ 5. Quelles étapes de prétraitements ont été appliquées?
 ```
