@@ -46,11 +46,6 @@ kernelspec:
   </tr>
 </table>
 
-
-```{warning}
-Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
-```
-
 ## Objectifs du cours
 
 [L'imagerie par résonnance magnétique fonctionnelle](https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle)
@@ -170,7 +165,7 @@ Le volume du cerveau (3D) est formé plusieurs milliers voxels, qui sont de peti
 
 ```{warning}
 :name: tr-irmf-warning
-Le paramètre `TR` en IRM fait référence au temps entre deux excitations radio-fréquences, qui est court. En IRMf, le paramètre `TR` est la durée d'acquisition d'un volume entier, qui comprend de nombreuses excitations radio-fréquences.
+Le paramètre `TR` en IRM fait référence au temps entre deux excitations radio-fréquences, qui est très court. En IRMf, le paramètre `TR` est la durée d'acquisition d'un volume entier, qui comprend de nombreuses excitations radio-fréquences.
 ```
 
 ```{admonition} Compromis entre résolution spatiale et temporelle en IRMf
