@@ -563,12 +563,33 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 <li><p>L’<strong>oxyhémoglobine</strong> est <strong>diamagnétique</strong></p></li>
 <li><p>La <strong>désoxyhémoglobine</strong> est <strong>paramagnétique</strong></p></li>
 </ul>
-<p>Ce que cela veut dire, c’est que quand elles sont soumises à des impulsions électromagnétiques, ces deux molécules se comportent de manière très différente. La désoxyhémoglobine va créer des inhomogénéités du champ magnétique, alors que l’oxyhémoglobine n’a pas d’effet sur ce même champ. Les séquences IRM pondérées <span class="math notranslate nohighlight">\(T_2^*\)</span> sont très sensibles à de telles inhomogénéités. La désoxyhémoglobine déforme donc le champ magnétique <span class="math notranslate nohighlight">\(B_O\)</span> induit par l’aimant, ce qui fait en sorte que le temps de relaxation <span class="math notranslate nohighlight">\(T_2^*\)</span> est plus rapide. Les images acquises en IRMf utilisent donc un contraste en <span class="math notranslate nohighlight">\(T_2^*\)</span>, et cela a pour effet d’amplifier le signal quand le sang devient plus oxygéné en réponse à une augmentation de l’activité neuronale. Pour cette raison, le signale utilisé en IRMf est appelé signal BOLD, pour <em>Blood oxygenation level-dependent</em>, soit signal dépendant de l’oxygénation du sang. |               |   ‘Désoxyhémoglobine’     | <code class="docutils literal notranslate"><span class="pre">Oxyhémoglobine</span></code>  |
-| ————- |:————-:| —–:|
-|Propriétés électromagnétiques | Paramagnétique | Diamagnétique|
-| Impact sur le signal BOLD      | <strong>Réduit</strong> le signal BOLD  | <strong>Augmente</strong> le signal BOLD|
-| <span class="math notranslate nohighlight">\(T_2^*\)</span>    | Décroît plus <strong>rapidement</strong>   |   Décroît plus <strong>lentement</strong> |
-| Effet sur le champ | <strong>Ajout d’inhomogénéités/distorsions</strong> |  <strong>Pas d’inhomogénéités</strong>  |</p>
+<p>Ce que cela veut dire, c’est que quand elles sont soumises à des impulsions électromagnétiques, ces deux molécules se comportent de manière très différente. La désoxyhémoglobine va créer des inhomogénéités du champ magnétique, alors que l’oxyhémoglobine n’a pas d’effet sur ce même champ. Les séquences IRM pondérées <span class="math notranslate nohighlight">\(T_2^*\)</span> sont très sensibles à de telles inhomogénéités. La désoxyhémoglobine déforme donc le champ magnétique <span class="math notranslate nohighlight">\(B_O\)</span> induit par l’aimant, ce qui fait en sorte que le temps de relaxation <span class="math notranslate nohighlight">\(T_2^*\)</span> est plus rapide. Les images acquises en IRMf utilisent donc un contraste en <span class="math notranslate nohighlight">\(T_2^*\)</span>, et cela a pour effet d’amplifier le signal quand le sang devient plus oxygéné en réponse à une augmentation de l’activité neuronale. Pour cette raison, le signale utilisé en IRMf est appelé signal BOLD, pour <em>Blood oxygenation level-dependent</em>, soit signal dépendant de l’oxygénation du sang.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="text-align:center head"><p>‘Désoxyhémoglobine’</p></th>
+<th class="text-align:right head"><p><code class="docutils literal notranslate"><span class="pre">Oxyhémoglobine</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Propriétés électromagnétiques</p></td>
+<td class="text-align:center"><p>Paramagnétique</p></td>
+<td class="text-align:right"><p>Diamagnétique</p></td>
+</tr>
+<tr class="row-odd"><td><p>Impact sur le signal BOLD</p></td>
+<td class="text-align:center"><p><strong>Réduit</strong> le signal BOLD</p></td>
+<td class="text-align:right"><p><strong>Augmente</strong> le signal BOLD</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(T_2^*\)</span></p></td>
+<td class="text-align:center"><p>Décroît plus <strong>rapidement</strong></p></td>
+<td class="text-align:right"><p>Décroît plus <strong>lentement</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Effet sur le champ</p></td>
+<td class="text-align:center"><p><strong>Ajout d’inhomogénéités/distorsions</strong></p></td>
+<td class="text-align:right"><p><strong>Pas d’inhomogénéités</strong></p></td>
+</tr>
+</tbody>
+</table>
 <div class="figure align-default" id="t2star-fig">
 <a class="reference internal image-reference" href="_images/t2star.png"><img alt="_images/t2star.png" src="_images/t2star.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Lorsqu’une molécule comme la désoxyhémoglobine est présente, les spins se déphasent plus rapidement. Il est possible de modifier la séquence d’IRM pour éliminer ce phénomène, et c’est ce que l’on fait pour obtenir une image pondérée en <span class="math notranslate nohighlight">\(T_2\)</span> traditionnelle. Si l’on ne modifie pas la séquence, le paramètre de décroissance apparait plus court, et c’est ce que l’on appelle le <span class="math notranslate nohighlight">\(T_2^*\)</span>.</span><a class="headerlink" href="#t2star-fig" title="Permalink to this image">¶</a></p>
