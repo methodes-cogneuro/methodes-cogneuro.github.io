@@ -57,10 +57,122 @@ Graphe de connectivité fonctionnelle moyen sur le jeu de données ADHD-200. Cha
 
 Les objectifs spécifiques du chaptire sont de:
 *   Comprendre la définition de la **connectivité fonctionnelle**.
-*   Comprendre la distinction entre activité **intrinsèque** et **évoquée**.
+*   Comprendre la notion de **carte de connectivité**.
 *   Comprendre la notion de **réseau fonctionnel**.
 *   Connaître les **principaux réseaux au repos**.
 
+## Connectivité fonctionnelle
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from nilearn.image import math_img
+from nilearn import plotting, input_data
+from nilearn.input_data import NiftiLabelsMasker
+from nilearn import datasets # Fetch data using nilearn
+from nilearn.input_data import NiftiMasker
+
+import warnings
+warnings.filterwarnings("ignore")
+
+# Initialise la figure
+fig = plt.figure(figsize=(10, 9), dpi=300)
+
+# Importe les données
+basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
+
+# Paramètres du pré-traitement
+num_data = 6
+fwhm = 8
+high_pass = 0.01
+high_variance_confounds = False
+time_samp = range(0, 100)
+
+# Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
+masker = input_data.NiftiLabelsMasker(
+                                      basc['scale122'],
+                                      resampling_target="data",
+                                      high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      memory='nilearn_cache',
+                                      memory_level=1,
+                                      smoothing_fwhm=fwhm).fit()
+tseries = masker.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
+
+# Fonction pour montrer une parcelle
+def _montre_roi(num_parcel, title, ax_plot, cmap):
+    plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+              threshold=0.5,
+              axes=ax_plot,
+              vmax=1,
+              cmap=cmap,
+              title=title)
+
+# Montre les parcelles
+ax_plot = plt.subplot2grid((3, 3), (0, 0), colspan=2)
+num_parcel1 = 73
+_montre_roi(num_parcel1, "M1 droit", ax_plot, cmap='winter')
+
+ax_plot = plt.subplot2grid((3, 3), (1, 0), colspan=2)
+num_parcel2 = 8
+_montre_roi(num_parcel2, "M1 gauche", ax_plot, cmap='autumn')
+
+ax_plot = plt.subplot2grid((3, 3), (2, 0), colspan=2)
+num_parcel3 = 17
+_montre_roi(num_parcel3, "Cingulaire Posterieur", ax_plot, cmap='summer')
+
+# Extrait les séries temporelles
+time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
+tseries1 = tseries[time_samp, :][:, num_parcel1 - 1] # -1 car python utilise le zero-index
+tseries2 = tseries[time_samp, :][:, num_parcel2 - 1] # -1 car python utilise le zero-index
+tseries3 = tseries[time_samp, :][:, num_parcel3 - 1] # -1 car python utilise le zero-index
+
+# Fonction pour montrer les séries temporelles
+def _montre_serie(y1, y2, ax_plot, color1, color2):
+    ax_plot.set_aspect('40')
+    plt.plot(time[time_samp], y1, color1)
+    plt.plot(time[time_samp], y2, color2)
+    plt.xlabel('Temps (s.)')
+    plt.ylabel('BOLD (u.a.)')
+    plt.title(f'Séries temporelles (r={np.corrcoef(y1, y2)[1, 0]:.2f})')
+
+# plot les séries temporelles
+ax_plot = plt.subplot2grid((3, 3), (0, 2), colspan=1)
+_montre_serie(tseries1, tseries2, ax_plot, 'b-', 'r-')
+ax_plot = plt.subplot2grid((3, 3), (1, 2), colspan=1)
+_montre_serie(tseries1, tseries3, ax_plot, 'b-', 'g-')
+ax_plot = plt.subplot2grid((3, 3), (2, 2), colspan=1)
+_montre_serie(tseries2, tseries3, ax_plot, 'r-', 'g-')
+
+from myst_nb import glue
+glue("connectivity-fig", fig, display=False)
+```
+
+```{glue:figure} connectivity-fig
+:figwidth: 600px
+:name: connectivity-fig
+:align: center
+Connectivité fonctionnelle entre régions cérébrales, pour un sujet du jeu de données ADHD-200 {cite:p}`HD-200_Consortium2012-uv`. Pour chaque région (à gauche), on extrait l'activité moyenne. Pour chaque paire de régions, la connectivité est mesurée par la corrélation `r` entre les séries temporelles associées (à droite). Les couleurs des régions et des séries temporelles se correspondent. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
+La ***connectivité fonctionnelle*** est un terme relativement générique utilisé pour décrire un ensemble de techniques permettant d'analyser les relations spatiales de l'activité cérébrale {cite:p}`Fox2007`. La technique la plus simple pour mener ce genre d'analyse est d'extraire les décours temporels de deux régions,  et d'en déterminer la corrélation `r`. La connectivité fonctionnelle s'interprète alors de la manière suivante dans le cadre de l'expérience:
+ * élevée (`r` proche de 1): les deux régions sont impliquées dans des processus cognitifs similaires,
+ * faible (`r` proche de zéro): les processus cognitifs sont indépendants,
+ * négatif (`r` proche de -1): les processus cognitifs sont mutuellement exclusifs.
+
+Dans l'exemple présenté en {numref}`connectivity-fig`, les régions `M1 droit` et `M1 gauche` ont une forte connectivité fonctionnelle entre elles, et une connectivité fonctionnelle modérée avec la région `cingulaire postérieur`.
+
+```{admonition} Mesure de corrélation
+:class: tip
+:name: corrélation
+
+La [corrélation](https://fr.wikipedia.org/wiki/Corr%C3%A9lation_(statistiques)) entre deux séries temporelles est une mesure qui varie entre -1 et 1. Si les deux séries sont identiques (à leur moyenne et variance près), la corrélation est de 1. Si les deux séries sont statistiquement indépendantes, la corrélation est proche de zéro. Si les deux séries sont mirroirs l'une de l'autre, la corrélation est de -1.
+```
 
 ## Carte de connectivité fonctionnelle
 ```{code-cell} ipython 3
@@ -80,7 +192,115 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Initialise la figure
-fig = plt.figure(figsize=(10, 13), dpi=300)
+fig = plt.figure(figsize=(10, 8), dpi=300)
+
+# Importe les données
+basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
+
+# Paramètres du pré-traitement
+num_data = 6
+fwhm = 8
+high_pass = 0.01
+high_variance_confounds = False
+time_samp = range(0, 100)
+
+# Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
+masker = input_data.NiftiLabelsMasker(
+                                      basc['scale122'],
+                                      resampling_target="data",
+                                      high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      memory='nilearn_cache',
+                                      memory_level=1,
+                                      smoothing_fwhm=fwhm).fit()
+tseries = masker.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
+
+# Charge les données par voxel
+masker_voxel = input_data.NiftiMasker(high_pass=high_pass,
+                                      t_r=3,
+                                      high_variance_confounds=high_variance_confounds,
+                                      standardize=True,
+                                      smoothing_fwhm=fwhm
+                                     ).fit(adhd.func[num_data])
+tseries_voxel = masker_voxel.transform(adhd.func[num_data])
+print(f"Time series with shape {tseries_voxel.shape} (# time points, # voxels))")
+
+# Montre une parcelle
+ax_plot = plt.subplot2grid((2, 3), (0, 0), colspan=2)
+num_parcel = 73
+plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+                  threshold=0.5,
+                  axes=ax_plot,
+                  vmax=1,
+                  title="région cible (M1 droit)")
+
+# plot la série temporelle d'une région
+ax_plot = plt.subplot2grid((2, 3), (0, 2), colspan=1)
+ax_plot.set_aspect('40')
+time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
+plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel - 1], '-'),
+plt.xlabel('Temps (s.)'),
+plt.ylabel('BOLD (u.a.)')
+plt.title('Série temporelle')
+
+# carte de connectivité
+ax_plot = plt.subplot2grid((2, 3), (1, 0), colspan=2)
+seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
+conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
+plotting.plot_stat_map(conn_map,
+                       threshold=0.5,
+                       vmax=1,
+                       axes=ax_plot,
+                       cut_coords=(37, -20, 59),
+                       title="carte de connectivité (M1 droit)")
+
+from myst_nb import glue
+glue("fcmri-map-fig", fig, display=False)
+```
+
+```{glue:figure} fcmri-map-fig
+:figwidth: 600px
+:name: fcmri-map-fig
+:align: center
+Cartes de connectivité au repos générées à partir des données IRMf d'un individu du jeu de données ADHD-200 {cite:p}`HD-200_Consortium2012-uv` (bas, droit). La région cible utilisée est dans le cortex sensorimoteur droit (haut, gauche) identifie le réseau sensorimoteur. Les cinq premières minutes d'activité BOLD associée à la région cible sont représentées (haut, droit). Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+```
+
+Le concept de carte fonctionnelle au repos a été introduit par Biswal et collègues (1995) {cite:p}`Biswal1995-lw`. Au lieu de regarder la connectivité fonctionnelle entre deux régions, on va comparer l'activité d'une région cible avec l'ensemble des voxels dans le cerveau. {cite:p}`Biswal1995-lw` ont utilisé une région dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d'activation et une tâche motrice. Biswal et collègues ont alors eu l'idée d'observer les fluctuations BOLD dans une condition de **repos**, en l'absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir {numref}`fcmri-map-fig`, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l'aire motrice supplémentaire, le cortex prémoteur et d'autres régions du cerveau connues pour leur implication dans le **réseau moteur**. Cette étude a tout d'abord engendré beaucoup de septicisme, au motif que ces patrons d'activité fonctionnelle corrélée aurait pu refléter du bruit cardiaque ou respiratoire.
+
+```{admonition} Fluctuations lentes
+:class: tip
+:name: fluctuations-lentes
+Une autre observation clé de Biswal et collègues (1995) {cite:p}`Biswal1995-lw` est que le signal BOLD au repos est dominé par des fluctuations lentes, avec des bouffées d'activité d'une durée de 20 à 30 secondes, clairement visibles dans la {numref}`connectivity-fig`. Plus spécifiquement, le spectre du signal BOLD au repos est dominée par les fréquences inférieures à 0.08 Hz, et même 0.03-0.05 Hz.
+```
+```{admonition} Activité au repos BOLD et électrophysiologie
+:class: tip
+:name: shmuel-bold
+le travail de Shmuel et collèges (2008) {cite:p}`Shmuel2008-pa` a démontré que l'activité BOLD au repos corrèle aux fluctuations spontanées d'activité neuronales dans le cortex visuel d'un macaque anésthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l'activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).
+```
+
+## Réseau du mode par défaut
+```{code-cell} ipython 3
+:tags: ["hide-input", "remove-output"]
+# Importe les librairies
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from nilearn.image import math_img
+from nilearn import plotting, input_data
+from nilearn.input_data import NiftiLabelsMasker
+from nilearn import datasets # Fetch data using nilearn
+from nilearn.input_data import NiftiMasker
+
+
+import warnings
+warnings.filterwarnings("ignore")
+
+# Initialise la figure
+fig = plt.figure(figsize=(10, 11), dpi=300)
 
 # Importe les données
 basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
@@ -119,17 +339,18 @@ print(f"Time series with shape {tseries_voxel.shape} (# time points, # voxels))"
 
 # Montre une parcelle
 ax_plot = plt.subplot2grid((4, 3), (0, 0), colspan=2)
-num_parcel = 73
+num_parcel = 17
 plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
                   threshold=0.5,
                   axes=ax_plot,
                   vmax=1,
-                  title="région cible (M1 droit)")
+                  title="région cible (PCC)")
 
 # plot la série temporelle d'une région
 ax_plot = plt.subplot2grid((4, 3), (0, 2), colspan=1)
+ax_plot.set_aspect('40')
 time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
-plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel], 'o-'),
+plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel - 1]),
 plt.xlabel('Temps (s.)'),
 plt.ylabel('BOLD (u.a.)')
 plt.title('Série temporelle')
@@ -142,76 +363,28 @@ plotting.plot_stat_map(conn_map,
                        threshold=0.5,
                        vmax=1,
                        axes=ax_plot,
-                       cut_coords=(37, -20, 59),
-                       title="carte de connectivité (M1 droit)")
-
-# Montre une parcelle
-num_parcel = 17
-ax_plot = plt.subplot2grid((4, 3), (2, 0), colspan=2)
-plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
-                  threshold=0.5,
-                  vmax=1,
-                  axes=ax_plot,
-                  title="région cible (PCC)")
-
-# plot la série temporelle d'une région
-ax_plot = plt.subplot2grid((4, 3), (2, 2), colspan=1)
-time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
-plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel], 'o-'),
-plt.xlabel('Temps (s.)'),
-plt.ylabel('BOLD (u.a.)')
-plt.title('Série temporelle')
-
-
-# carte de connectivité
-ax_plot = plt.subplot2grid((4, 3), (3, 0), colspan=2)
-seed_to_voxel_correlations = (np.dot(tseries_voxel.T, tseries[:, num_parcel-1]) / tseries.shape[0])# Show the connectivity map
-conn_map = masker_voxel.inverse_transform(seed_to_voxel_correlations.T)
-plotting.plot_stat_map(conn_map,
-                       threshold=0.5,
                        cut_coords=(0, -52, 26),
-                       vmax=1,
-                       axes=ax_plot,
                        title="carte de connectivité (PCC)")
 
 from myst_nb import glue
-glue("fcmri-map-fig", fig, display=False)
+glue("fcmri-dmn-fig", fig, display=False)
 ```
 
-```{glue:figure} fcmri-map-fig
+```{glue:figure} fcmri-dmn-fig
 :figwidth: 600px
-:name: fcmri-map-fig
+:name: fcmri-dmn-fig
 :align: center
-Cartes de connectivité au repos générées à partir des données IRMf d'un individu du jeu de données ADHD-200 {cite:p}`HD-200_Consortium2012-uv`. Pour chaque carte, la région cible utilisée ainsi que les cinq premières minutes d'activité BOLD associée à la région cible sont représentées. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
+Cartes de connectivité au repos générées à partir des données IRMf d'un individu du jeu de données ADHD-200 {cite:p}`HD-200_Consortium2012-uv` (bas, droit). La région cible utilisée est dans le cortex cingulaire postérieur (haut, gauche) identifie le réseau du mode par défaut. Les cinq premières minutes d'activité BOLD associée à la région cible sont représentées (haut, droit). Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
 
-Avant de parler de connectivité fonctionnelle, revisitons le concept de cartes d'activation en IRMf. Comme nous l'{ref}`avons vu <activation-section>`, on génère une carte d'activation en comparant les fluctuations BOLD dans une région donnée du cerveau avec une prédiction de la réponse cérébrale associée à une tâche. De manière simplifiée, la carte d'activation nous montre la corrélation entre l'activité attendue (sur la base du paradigme expérimentale et d'une fonction de réponse hémodynamique) et l'activité mesurée à chaque voxel.
-
-Une carte de connectivité relève un peu de la même logique. Mais au lieu de nous intéresser à la réponse attendue en réponse à une tâche, nous allons nous intéresser à l'activité d'une région particulière du cerveau, appelée **région cible**. Nous allons alors mesurer la corrélation entre le décours temporel de chaque voxel dans le cerveau et décours temporel de la région cible. Nous allons obtenir une **carte de connectivité fonctionnelle** qui nous montre quelles régions du cerveau ont une activité très corrélée (ou synchrone) avec la région cible.
-
-```{admonition} Mesure de corrélation
-:class: tip
-:name: corrélation
-
-La [corrélation](https://fr.wikipedia.org/wiki/Corr%C3%A9lation_(statistiques)) entre deux séries temporelles est une mesure qui varie entre -1 et 1. Si les deux séries sont identiques (à leur moyenne et variance près), la corrélation est de 1. Si les deux séries sont statistiquement indépendantes, la corrélation est proche de zéro. Si les deux séries sont mirroirs l'une de l'autre, la corrélation est de -1.
-```
-La ***connectivité fonctionnelle*** est un terme relativement générique utilisé pour décrire un ensemble de techniques permettant d'analyser les patterns spatiaux de l'activité cérébrale {cite:p}`Fox2007`. Fox et Raischle (2007) propose que la technique la plus simple pour mener ce genre d'analyse est effectivement d'extraire le décours temporel BOLD d'une **région cible** et d'en déterminer la corrélation d'avec le reste des voxels. Des techniques plus sophistiquées ont été développées afin de surpasser les limites de cette modélisation. Elles seront discuté à la fin de ce chapitre.
-
-Le concept de carte fonctionnelle a été introduit par Biswal et collègues (1995) {cite:p}`Biswal1995-lw`, en utilisant une cible dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d'activation et une tâche motrice. Biswal et collègues ont alors eu l'idée d'observer les fluctuations BOLD dans une condition de **repos**, en l'absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir {numref}`fcmri-map-fig`, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l'aire motrice supplémentaire, le cortex prémoteur et d'autres régions du cerveau connues pour leur implication dans le **réseau moteur**. Cette étude a tout d'abord engendré beaucoup de septicisme, au motif que ces patrons d'activité fonctionnelle corrélée aurait pu refléter du bruit cardiaque ou respiratoire.
-
-```{admonition} Fluctuations lentes
-:class: tip
-:name: fluctuations-lentes
-Une autre observation clé de Biswal et collègues (1995) {cite:p}`Biswal1995-lw` est que le signal BOLD au repos est dominé par des fluctuations lentes, avec des bouffées d'activité d'une durée de 20 à 30 secondes, clairement visibles dans la {numref}`fcmri-map-fig`. Plus spécifiquement, le spectre du signal BOLD au repos est dominée par les fréquences inférieures à 0.08 Hz, et même 0.03-0.05 Hz.
-```
-La crédibilité des cartes de connectivité au repos s'est renforcée quand différents groupes de recherche ont pu identifié d'autres réseaux en utilisant des régions cibles différentes, notamment le réseau visuel et le réseau auditif. Mais c'est l'étude de Greicius et collaborateurs, en 2003 {cite:p}`Greicius2003-hi`, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n'avait pas encore été identifié: le **réseau du mode par défaut** (voir {numref}`fcmri-map-fig`, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau, et comment il peut nous aider à comprendre ce que mesure la connectivité au repos. Il est également important de mentionner que le travail de Shmuel et collèges (2008) {cite:p}`Shmuel2008-pa` a démontré que l'activité BOLD au repos corrèle aux fluctuations spontanées d'activité neuronales dans le cortex visuel d'un macaque anésthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l'activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).
+La crédibilité des cartes de connectivité au repos s'est renforcée quand différents groupes de recherche ont pu identifié d'autres réseaux en utilisant des régions cibles différentes, notamment le réseau visuel et le réseau auditif. Mais c'est l'étude de Greicius et collaborateurs, en 2003 {cite:p}`Greicius2003-hi`, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n'avait pas encore été identifié: le **réseau du mode par défaut** (voir {numref}`fcmri-map-fig`, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau.
 
 ```{admonition} Variabilité intra- et inter-individuelle
 :class: caution attention
 :name: fcmri-map-warning
-La {numref}`fcmri-map-fig` peut donner l'impression que les réseaux de connectivité sont extrêmement stables. En réalité, les cartes de connectivité varient beaucoup au cours du temps, c'est à dire en regardant différentes fenêtres d'activité pour un même individu, et également entre individus. Effectivement, les coordonnées d'une région cible peuvent être partiellement inexactes même si on procède au recalage des images. Caractériser la variabilité intra- et inter-individuelle des cartes de connectivité est un domaine de recherche actif.
+La {numref}`fcmri-dmn-fig` peut donner l'impression que les réseaux de connectivité sont extrêmement stables. En réalité, les cartes de connectivité varient beaucoup au cours du temps, c'est à dire en regardant différentes fenêtres d'activité pour un même individu, et également entre individus. Effectivement, les coordonnées d'une région cible peuvent être partiellement inexactes même si on procède au recalage des images. Caractériser la variabilité intra- et inter-individuelle des cartes de connectivité est un domaine de recherche actif.
 ```
-## Le réseau du mode par défaut
+## Déactivations
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -277,8 +450,9 @@ glue("deactivation-fig", fig, display=False)
  Carte d'activation individuelle dans un paradigme auditif (jeu de données [spm_auditory](https://www.fil.ion.ucl.ac.uk/spm/data/auditory/)). Le seuil de significativité est sélectionné de manière libérale (`|z|>2`). Une déactivation modérée est identifiée dans différentes régions du cerveau, incluant le cortex cingulaire postérieur (PCC) et le cortex préfrontal médian (mPFC). Le PCC et le mPFC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
 
-La découverte du mode par défaut a été réalisée au travers d'étude par activation, en TEP. En 1997, Shulman et collègues {cite:p}`Shulman1997-fy` combinent 9 études PET qui utilisent la même condition de contrôle de "repos" (consistant à regarder des stimuli visuels de manière passive), et des tâches variées mais cognitivement demandantes. Les auteurs démontrent qu'un ensemble de régions sont systématiquement plus impliquées au repos que durant la tâche, incluant notamment le cortex cingulaire postérieur (PCC). En 2001, Gusnard et Raichle {cite:p}`Raichle2001-en` s'appuyent sur l'étude de Shulman et al. pour formuler la désormais célèbre "_hypothèse du mode par défaut_". Il existerait un certain nombre de processus cognitifs d'introspection qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité "par défaut". Pour confirmer cette hypothèse, Greicius et collègues {cite:p}`Greicius2003-hi` ont utilisé une carte de connectivité au repos en IRMf avec une région cible dans le PCC, et ont identifié un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, voir {numref}`fcmri-map-fig`. Le contexte de réseau du mode par défaut a depuis évolué, voir la revue de Buckner et DiNicola (2019) {cite:p}`Buckner2019-rc` pour une revue récente de sa neuroanatomie et de ses rôles cognitifs.
+La découverte du mode par défaut a été réalisée au travers d'étude par activation, en TEP. En 1997, Shulman et collègues {cite:p}`Shulman1997-fy` combinent 9 études PET qui utilisent la même condition de contrôle de "repos" (consistant à regarder des stimuli visuels de manière passive), et des tâches variées mais cognitivement demandantes. Les auteurs démontrent qu'un ensemble de régions sont systématiquement plus impliquées au repos que durant la tâche, incluant notamment le cortex cingulaire postérieur (PCC). En 2001, Gusnard et Raichle {cite:p}`Raichle2001-en` s'appuyent sur l'étude de Shulman et al. pour formuler la désormais célèbre "_hypothèse du mode par défaut_". Il existerait un certain nombre de processus cognitifs d'introspection qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité "par défaut". Pour confirmer cette hypothèse, Greicius et collègues {cite:p}`Greicius2003-hi` ont utilisé une carte de connectivité au repos en IRMf avec une région cible dans le PCC, et ont identifié un réseau d’activité spontanée au repos très similaire spatialement au réseau du mode par défaut, voir {numref}`fcmri-dmn-fig`. Le contexte de réseau du mode par défaut a depuis évolué, voir la revue de Buckner et DiNicola (2019) {cite:p}`Buckner2019-rc` pour une revue récente de sa neuroanatomie et de ses rôles cognitifs.
 
+## Corrélations négatives
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 # Importe les librairies
@@ -354,8 +528,9 @@ plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
 
 # plot la série temporelle d'une région
 ax_plot = plt.subplot2grid((2, 3), (0, 2), colspan=1)
+ax_plot.set_aspect('40')
 time = np.linspace(0, 3 * (tseries.shape[0]-1), tseries.shape[0])
-plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel], 'o-'),
+plt.plot(time[time_samp], tseries[time_samp, :][:, num_parcel - 1]),
 plt.xlabel('Temps (s.)'),
 plt.ylabel('BOLD (u.a.)')
 plt.title('Série temporelle')
@@ -388,13 +563,14 @@ Le réseau du mode par défaut n'est pas le seul que l'on puisse identifier au r
 :name: negative-r-warning
 Les corrélations négatives de la {numref}`negative-DMN-fig` sont fortes uniquement quand on applique certaines étapes de débruitage des données, et notamment la _régression du signal global_. Une controverse importante est née autour des connexions négatives, car certains chercheurs pensent qu'il s'agit d'un artefact lié à cette étape de prétraitement. Malgré tout, les corrélations négatives peuvent être observées de manière robuste pour les sujets qui bougent très peu, et dont le signal est donc particulièrement propre. Leur amplitude est cependant faible en l'absence de régression du signal global.
 ```
+
 ```{admonition} Activité intrinsèque vs extrinsèque
 :class: tip
 :name: intrinseque-tip
 Les réseaux au repos peuvent être observés même en présence d'une tâche. Plutôt qu'opposer la notion de repos et de tâche, il est courant de parler d'activité intrinsèque et extrinsèque. L'**activité extrinséque** est l'activité évoquée par une tâche, et reflète la manière dont l'environnement influence l'activité cérébrale. En revanche, l'**activité intrinsèque** désigne l'activité cérébrale qui émerge spontanément, et est indépendante des stimuli extérieurs. Les deux types d'activité sont toujours présentes, en peuvent interagir l'une avec l'autre.
 ```
 
-## Réseaux fonctionnels
+## Connectomes et réseaux
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 # Importe les librairies
@@ -493,10 +669,15 @@ glue("network-fig", fig, display=False)
 :align: center
   Une parcellisation fonctionnelle du cerveau avec 122 parcelles est présentée à gauche (BASC). Au centre, on voit une matrice où chaque élément représente la corrélation entre l'activité de deux parcelles. Les parcelles ont été ordonnées de manière à mettre en évidence des carrés diagonaux: ce sont des groupes de régions dont l'activité corrèlent fortement entre elles, et peu avec le reste du cerveau. Des algorithmes de type clustering permettent de détecter automatiquement ces groupes de parcelles, appelés réseaux fonctionnels. Un exemple de réseaux fonctionnels générés avec un clustering hiérachique est présenté à droite, qui identifie notamment le réseau du mode par défaut. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
-Dans la dernière section, nous avons parlé à plusieurs reprises de ***réseau fonctionnel***, mais sans vraiment définir ce que c'est. Lorsqu'on utilise une carte de connectivité, le réseau fonctionnel est l'ensemble des régions qui apparaissent dans la carte, et qui sont donc connectées à notre région cible. Mais cette approche dépend de la région cible. Pourtant, il est intuitif que toutes les cartes de connectivité utilisant des cibles dans, par exemple, le mode par défaut vont se ressembler. Pour formaliser cette intuition, nous avons besoin d'introduire la notion de connectome fonctionnel.
+Dans la dernière section, nous avons parlé à plusieurs reprises de ***réseau fonctionnel***, mais sans vraiment définir ce que c'est. Lorsqu'on utilise une carte de connectivité, le réseau fonctionnel est l'ensemble des régions qui apparaissent dans la carte, et qui sont donc connectées à notre région cible. Mais cette approche dépend de la région cible. Pourtant, il est intuitif que toutes les cartes de connectivité utilisant des cibles dans, par exemple, le mode par défaut vont se ressembler. Pour formaliser cette intuition, nous avons besoin d'introduire de regarder la connectivité de _toutes_ les paires de régions en même temps, une notion appelée connectome fonctionnel. En utilisant des techniques d'apprentissage non-supervisé, de type clustering, il est possible d'identifier des groupes de régions cérébrales qui sont fortement connectées les unes aux autres, et peu connectées au reste du cerveau. C'est la définition la plus courant d'un réseau fonctionnel. Ce type d'approche permet de découper le cerveau en réseaux, de manière automatique et guidée par les données, voir {numref}`network-fig` en bas à gauche.
 
-Un **connectome fonctionnel** est une matrice qui représente toutes les connexions (fonctionnelles) du cerveau. On commence donc par sélectionner une parcellisation cérébrale, puis l'on calcule la corrélation de l'activité temporelle pour toutes les paires de parcelles dans le cerveau. Cette matrice de corrélation est de taille `#parcelles x #parcelles`. En utilisant des techniques d'apprentissage non-supervisé, de type clustering, il est possible d'identifier des groupes de parcelles qui sont fortement connectées les unes aux autres, et peu connectées au reste du cerveau. C'est la définition la plus courant d'un réseau fonctionnel. Ce type d'approche permet de découper le cerveau en réseaux, de manière automatique et guidée par les données.
+```{admonition} Connectome
+:class: tip
+:name: connectome-tip
+Un **connectome fonctionnel** est une matrice qui représente toutes les connexions (fonctionnelles) du cerveau, voir {numref}`network-fig` à droite. Chaque ligne et chaque colonne représente une région du cerveau. Les valeurs `r` que l'on retrouve dans la matrice correspondent à la corrélation de l'activité temporelle des régions, comme on a vu en {numref}`connectivity-fig`. Pour générer un connectome, on commence donc par sélectionner une parcellisation cérébrale en régions ({numref}`network-fig`, haut gauche), puis l'on calcule la corrélation de l'activité temporelle pour toutes les paires de parcelles dans le cerveau.
+```
 
+## Atlas de réseaux
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 import warnings
@@ -554,8 +735,13 @@ glue("yeo-krienen-fig", fig, display=False)
 :align: center
   Atlas de Yeo-Krienen {cite:p}`Yeo2011-sc` construit par une analyse de clustering à partir de données IRMf au repos d'un grand nombre de sujets. Les réseaux sont définis à plusieurs résolutions dans cet atlas (7 et 17). Ici, le découpage en 7 grands réseaux distribués est présenté. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
-Il n'y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés. Malgré tout, de nombreux articles ont étudiés un découpage en 7 réseaux corticaux. L'atlas de Yeo, Krienen et collègues {cite:p}`Yeo2011-sc` est très utilisé, et identifient sept grands réseaux. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l'attentionnel ventral (parfois appelé salince). Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. La même étude a proposé un découpage en 17 sous-réseaux. Vous pouvez utiliser cet [outil interactif](https://simexp.github.io/multiscale_dashboard/index.html) pour explorer l'organisation multi-échelle des réseaux fonctionnels de manière interactive, à l'aide de l'atlas MIST {cite:p}`Urchs2019-xc`.
+Il existe des atlas standards des réseaux au repos, qui ont été générés sur un grand nombre de sujets. L'atlas de Yeo, Krienen et collègues {cite:p}`Yeo2011-sc` est très utilisé, et identifient sept grands réseaux, voir {numref}`yeo-krienen-fig`. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l'attentionnel ventral. Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. Notez qu'il n'y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés.
 
+```{admonition} Nombre de réseaux au repos
+:class: tip
+:name: number-networks-tip
+De nombreux articles ont étudiés un découpage en 7 réseaux corticaux. Mais l'étude de Yeo, Krienen et coll. {cite:p}`Yeo2011-sc` a également proposé un découpage en 17 sous-réseaux, et depuis plusieurs atlas ont été proposés avec des centaines de régions. Vous pouvez utiliser cet [outil interactif](https://simexp.github.io/multiscale_dashboard/index.html) pour explorer l'organisation multi-échelle des réseaux fonctionnels de manière interactive, à l'aide de l'atlas MIST {cite:p}`Urchs2019-xc`.
+```
 
 ## Conclusions
 * La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité de deux régions (ou voxels) du cerveau.
