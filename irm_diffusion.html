@@ -361,10 +361,6 @@
     </td>
   </tr>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Ce chapitre va être mis à jour à l’automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.</p>
-</div>
 <div class="section" id="objectifs-du-cours">
 <h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
 <p>Ce cours a pour but de vous initier aux principes de l’imagerie par résonance magnétique de diffusion (IRMd). L’IRMd est une modalité de neuroimagerie qui nous permet d’étudier les <strong>fibres de matière blanche</strong>. Nous allons donc pouvoir examiner les connexions entre différentes régions, autant interhémisphériques (i.e., fibres de matière blanche voyageant d’un hémisphère à l’autre), qu’intrahémisphériques (i.e., fibres de matière blanche voyageant au sein d’un même hémisphère). Pour vous faire une idée concrète de ce à quoi ressemblent les fibres de matière blanche, vous pouvez regarder cette <a class="reference external" href="https://www.youtube.com/watch?v=PazaHElk6wc">vidéo</a> présentant des dissections cérébrales, tirée du <a class="reference external" href="http://www.neuroanatomy.ca/">cours de neuroanatomie fonctionnelle de UBC</a>.</p>
@@ -617,7 +613,7 @@ Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configura
 <a class="reference internal image-reference" href="_images/tensor-schematic.png"><img alt="_images/tensor-schematic.png" src="_images/tensor-schematic.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">La diffusion des molécules d’eau au cours du temps peut se visualiser comme un nuage de points. À cause des contraintes de l’environnement, notamment les axones, ce nuage prend la forme d’un ballon de rugby (haut, gauche). La forme du nuage peut être approximée avec un modèle de tenseur (bas à gauche). Les paramètres principaux de ce modèle sont les directions principales de diffusion <span class="math notranslate nohighlight">\(e_1\)</span>, <span class="math notranslate nohighlight">\(e_2\)</span>, <span class="math notranslate nohighlight">\(e_3\)</span>, ainsi que les valeurs de diffusion associées à ces directions <span class="math notranslate nohighlight">\(\lambda_1 \geq \lambda_2 \geq \lambda_3\)</span>. Figure par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspirée par M. Descoteaux et C. Poupon,</span><a class="headerlink" href="#tensor-schematic-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>À partir des simulations ci-dessus, il est intuitif d’imaginer la diffusion de l’eau comme un ballon, plus ou moins allongé. Mathématiquement, cela se formule avec un tenseur de diffusion, ou <strong>modèle Gaussien</strong>, voir <a class="reference internal" href="#tensor-schematic-fig"><span class="std std-numref">Fig. 68</span></a>. Pour estimer la forme de notre ballon dans chaque voxel, nous utilisons les différentes valeurs de diffusion obtenues pour chaque direction d’acquistion. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d’acquisition, nous obtiendrons plutôt un ballon de soccer.</p>
+<p>À partir des simulations ci-dessus, il est intuitif d’imaginer la diffusion de l’eau comme un ballon, plus ou moins allongé. Mathématiquement, cela se formule avec un tenseur de diffusion, ou <strong>modèle Gaussien</strong>, voir <a class="reference internal" href="#tensor-schematic-fig"><span class="std std-numref">Fig. 68</span></a>. Pour estimer la forme du ballon dans chaque voxel, nous utilisons les différentes valeurs de diffusion obtenues pour chaque direction d’acquisition. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d’acquisition, nous obtiendrons plutôt un ballon de soccer.</p>
 </div>
 <div class="section" id="imagerie-par-tenseurs-de-diffusion">
 <h3>Imagerie par tenseurs de diffusion<a class="headerlink" href="#imagerie-par-tenseurs-de-diffusion" title="Permalink to this headline">¶</a></h3>
@@ -758,7 +754,7 @@ Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configura
 <p>Il est possible de résumer certaines caractéristiques importantes des tenseurs de diffusion à l’aide d’une unique mesure, comme l’anisotropie fractionnelle et la diffusivité moyenne (voir définitions ci-dessous). On extrait donc une mesure par voxel, ce qui peut se représenter avec une carte cérébrale, de manière similaire à ce que l’on a vu avec les images pondérées en T1 ou en T2, voir <a class="reference internal" href="#fa-md-rgb-fig"><span class="std std-numref">Fig. 70</span></a>. Il est aussi possible de créer une image en couleurs, qui code pour la direction principale de diffusion.</p>
 <div class="admonition-anisotropie-fractionnelle admonition">
 <p class="admonition-title">Anisotropie fractionnelle</p>
-<p>Une mesure populaire est l’<a class="reference external" href="https://en.wikipedia.org/wiki/Fractional_anisotropy">anisotropie fractionnelle</a> (FA en anglais), qui permet de mesurer le degré d’anisotropie d’un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d’anisotropie fractionnelle de 0 indique une diffusion isotropique (ballon de soccer), alors qu’une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). À noter que l’anisotropie fractionnelle de l’eau est 0, à moins que la diffusion soit contrainte par une structure. Les valeurs fortes de FA se retrouvent généralement dans la matière blanche.</p>
+<p>Une mesure populaire est l’<a class="reference external" href="https://en.wikipedia.org/wiki/Fractional_anisotropy">anisotropie fractionnelle</a> (FA en anglais), qui permet de mesurer le degré d’anisotropie d’un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d’anisotropie fractionnelle de 0 indique une diffusion isotrope (ballon de soccer), alors qu’une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). À noter que l’anisotropie fractionnelle de l’eau est 0, à moins que la diffusion soit contrainte par une structure. Les valeurs fortes de FA se retrouvent généralement dans la matière blanche.</p>
 </div>
 <div class="admonition-diffusivite-moyenne admonition">
 <p class="admonition-title">Diffusivité moyenne</p>
@@ -893,7 +889,7 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 <a class="reference internal image-reference" href="_images/crossing-fibers.png"><img alt="_images/crossing-fibers.png" src="_images/crossing-fibers.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text">Illustration du problème de croisement de fibres, illustré à gauche. La diffusion de l’eau dans chaque fibre est associée à un tenseur qui pointe dans une direction différente (milieu). Lorsqu’on essaye d’approximer la diffusion dans le croisement avec un seul tenseur, on observe un tenseur isotrope (droite). Figure par P Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspiré par la thèse de C. Poupon, 1999.</span><a class="headerlink" href="#crossing-fibers" title="Permalink to this image">¶</a></p>
 </div>
-<p>Une limitation que nous rencontrons avec l’imagerie en tenseur de diffusion est le croisement de fibres. Il est très courant dans la matière blanche d’avoir plusieurs faisceaux de fibres qui se croisent. Lorsque  beaucoup de fibres se croisent comme dans la figure ci-dessous, le tenseur de diffusion apparait isotrope, même s’il y a effectivement des fibres présentes dans le voxel. Dans ce cas, l’algorithme de reconstruction de fibres ne saura pas quelle direction suivre. Une des technique utilisée pour résoudre ce problème est l’<strong>imagerie de diffusion à haute résolution</strong>, qui nous permet d’estimer plusieurs tenseurs pour un même voxel. Cette technique consiste à effectuer l’acquisition des données sur de nombreuses directions (une trentaine à une soixantaine de directions) en utilisant une <strong>séquence HARDI</strong> (<em>High Angular Resolution Diffusion Imaging</em>). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.</p>
+<p>Une limitation que nous rencontrons avec l’imagerie en tenseur de diffusion est le croisement de fibres. Il est très courant dans la matière blanche d’avoir plusieurs faisceaux de fibres qui se croisent. Lorsque  beaucoup de fibres se croisent comme dans la figure ci-dessous, le tenseur de diffusion apparaît isotrope, même s’il y a effectivement des fibres présentes dans le voxel. Dans ce cas, l’algorithme de reconstruction de fibres ne saura pas quelle direction suivre. Une des technique utilisée pour résoudre ce problème est l’<strong>imagerie de diffusion à haute résolution</strong>, qui nous permet d’estimer plusieurs tenseurs pour un même voxel. Cette technique consiste à effectuer l’acquisition des données sur de nombreuses directions (une trentaine à une soixantaine de directions) en utilisant une <strong>séquence HARDI</strong> (<em>High Angular Resolution Diffusion Imaging</em>). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -1016,8 +1012,8 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 <a class="reference internal image-reference" href="_images/faisceaux.png"><img alt="_images/faisceaux.png" src="_images/faisceaux.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">Illustration de trois faisceaux de fibres: les radiations optiques (OR), le faisceau arquée (AF) et le faisceau occipital vertical (VOF). Les faisceaux sont présentés sur différentes vues d’une dissection (A, B, D), ainsi qu’à l’aide d’une dissection virtuelle (C). Figure tirées de <span id="id2">[<a class="reference internal" href="#id34">JHY+20</a>]</span>, sous licence CC-BY 4.0.</span><a class="headerlink" href="#faisceaux-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons à partir des études de dissection. Dans une <strong>reconstruction systématique</strong> des fibres, tout va être tracé, alors que dans une <strong>dissection virtuelle</strong>, seuls certains paquets de fibres vont être sélectionnés. Ces a priori permettent de limiter les faux positifs, et l’utilisation d’algorithmes de tractographie performants permet de limiter les faux négatifs. Il existe un certain nombre de faisceaux de fibres classiques avec des schémas de dissection bien établis, comme le corps calleux, le faisceau arqué, ou bien le fascicule longitudinale supérieur.</p>
-<p>Il est possible de calculer la valeur moyenne de l’anisotropie fractionnelle, ou tout autre métrique, le long d’une fibre, et ensuite de comparer cette valeur moyenne entre différents individus pour faire des tests statistiques. Dans ce cas, le recalage entre individus se fait via l’identification de faisceaux de fibres, plutôt que par une méthode de déformation non-linéaire.</p>
+<p>Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons à partir des études de dissection. Dans une <strong>reconstruction systématique</strong> des fibres, tout va être tracé, alors que dans une <strong>dissection virtuelle</strong>, seuls certains paquets de fibres vont être sélectionnés. Ces a priori permettent de limiter les faux positifs, et l’utilisation d’algorithmes de tractographie performants permet de limiter les faux négatifs. Il existe un certain nombre de faisceaux de fibres classiques avec des schémas de dissection bien établis, comme le corps calleux, le faisceau arqué, ou bien le fascicule longitudinal supérieur.</p>
+<p>Il est possible de calculer la valeur moyenne de l’anisotropie fractionnelle, ou tout autre métrique, le long d’une fibre. Cette approche est appellée <strong>tractométrie</strong>: on effectue une série de mesures le long d’une fibre. La fibre peut également être découpée en segments, pour améliorer la précision spatiale de la mesure. On peut ensuite comparer ces valeurs entre différents individus pour faire des tests statistiques. Dans ce cas, le recalage entre individus se fait via l’identification de faisceaux de fibres, plutôt que par une méthode de déformation non-linéaire.</p>
 </div>
 </div>
 <div class="section" id="conclusion">
@@ -1046,8 +1042,8 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 <div class="section" id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
 <div class="note admonition">
-<p class="admonition-title">Exercice 6.1</p>
-<p>L’IRM de diffusion permettent de mesurer… (vrai/faux, expliquez vos réponses)</p>
+<p class="admonition-title">Exercice 1</p>
+<p>Vrai/faux. Les images générées par le scanner en IRM de diffusion sont…</p>
 <ol class="simple">
 <li><p>Une image avec un tenseur à chaque voxel.</p></li>
 <li><p>Une image avec un ou plusieurs tenseurs à chaque voxel.</p></li>
@@ -1056,43 +1052,51 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 </ol>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Exercice 6.2</p>
-<p>Donnez un exemple de région avec…</p>
+<p class="admonition-title">Exercice 2</p>
+<p>Anisotropie fractionnelle et diffusivité moyenne: vrai-faux.</p>
 <ol class="simple">
-<li><p>Une faible anisotropie fractionnelle, avec une forte diffusivité moyenne?</p></li>
-<li><p>Une forte anisotropie fractionnelle, avec une faible diffusivité moyenne?</p></li>
-<li><p>Une faible anisotropie fractionnelle, avec une faible diffusivité moyenne?</p></li>
+<li><p>Le liquide céphalo-rachidien a une faible anisotropie fractionnelle, avec une forte diffusivité moyenne.</p></li>
+<li><p>Le corps calleux a une très forte diffusivité moyenne.</p></li>
+<li><p>Une zone avec de nombreux croisements de fibres peut avoir une faible anisotropie fractionnelle.</p></li>
+<li><p>Le corps calleux a une faible anisotropie fractionnelle.</p></li>
 </ol>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Exercice 6.3</p>
-<p>On observe un voxel dont l’anisotropie fractionnelle est basse. Donnez deux interprétations de cette observation.</p>
+<p class="admonition-title">Exercice 3</p>
+<p>Choisissez la bonne réponse. On dispose de données d’IRM de diffusion à haute résolution HARDI:
+On peut générer une carte avec un tenseur de diffusion par voxel.
+On peut générer une carte avec plusieurs tenseurs de diffusion par voxel.
+On doit utiliser plusieurs tenseurs de diffusion par voxel pour reconstruire des fibres.
+Réponses a et b.
+Réponses a, b et c.</p>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Exercice 6.4</p>
-<p>Citez trois exemples de faisceaux de fibres.</p>
+<p class="admonition-title">Exercice 4</p>
+<p>Choisissez la bonne  réponse. Les fibres reconstruites en IRM de diffusion…
+Peuvent manquer des fibres existantes, à cause notamment du “fiber kissing”, ou des fibres qui n’existent pas, à cause notamment des croisements de fibres.
+Reflètent l’ensemble des axones dans le cerveau.
+Dépendent à la fois du type de données recueillies et de l’algorithme utilisé.
+Réponses a et b.
+Réponses a, b et c.</p>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Exercice 6.5</p>
-<p>Citez deux exemples de problèmes qui peuvent faire échouer un processus de tractographie “streamline” déterministe.</p>
+<p class="admonition-title">Exercice 5</p>
+<p>Une chercheuse souhaite reconstruire le faisceau longitudinal supérieur au niveau individuel, à l’aide de données d’IRM de diffusion. La méthode utilisée est une tractographie “streamline” déterministe. Citez deux exemples de problèmes qui peuvent faire échouer cette approche. Expliquer comment la chercheuse peut limiter ces problèmes.</p>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Exercice 6.6</p>
-<p>Quel est l’avantage de réaliser des statistiques du groupe sur un faisceau de fibres, plutôt que voxel par voxel avec un recalage anatomique traditionnel, comme en IRMf?</p>
+<p class="admonition-title">Exercice 6</p>
+<p>On s’intéresse au faisceau arqué chez un patient qui a une tumeur au cerveau. On réalise un examen en IRM de diffusion à haute résolution. Pensez vous qu’on puisse réaliser une tractographie virtuelle de ce faisceau? Quel aspect de la méthode devra potentiellement être modifié pour prendre en compte pour accommoder la présence de la tumeur? Justifiez vos réponses.</p>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Exercice 6.7</p>
+<p class="admonition-title">Exercice 7</p>
 <p>Pour répondre aux questions de cet exercice, lisez d’abord l’article <em>Quantification of apparent axon density and orientation dispersion in the white matter of youth born with congenital heart disease</em> de Easson et collaborateurs (publié en 2020 dans la revue <em>Neuroimage</em>, volume 205, ID 116255).
 Celui-ci est disponible en libre accès à cette <a class="reference external" href="https://doi.org/10.1016/j.neuroimage.2019.116255">adresse</a>.
 Les questions suivantes requièrent des réponses à développement court.</p>
 <ul class="simple">
-<li><p>Quel type de participants a été recruté dans cette étude?</p></li>
-<li><p>Quel est l’objectif principal de l’étude?</p></li>
-<li><p>Quels sont les critères d’inclusion et d’exclusion?</p></li>
 <li><p>Quelle technique de neuroimagerie est utilisée? S’agit-il d’une technique structurelle ou fonctionnelle?</p></li>
 <li><p>Quelle type de séquence d’acquisition d’image est utilisé? Listez les paramètres.</p></li>
-<li><p>Quelles types d’analyses ont été appliqués?</p></li>
-<li><p>Quelle figure (ou tableau) répond à l’objectif principal de l’étude?</p></li>
+<li><p>Quelle technique de tractographie a été appliquée?</p></li>
+<li><p>Quelle techniques de tractométrie ont été appliquées?</p></li>
 <li><p>Quel est le résultat principal de l’étude?</p></li>
 </ul>
 </div>
