@@ -10,7 +10,7 @@ chapters:
 - file: irm_fonctionnelle
 - file: connectivite
 - file: irm_diffusion
-- file: tep
 - file: imagerie_optique
+- file: tep
 - file: cartes_statistiques
 - file: reproductibilite
