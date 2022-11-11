@@ -375,28 +375,28 @@ Vrai/faux. Les données d’imagerie optique sont …
 
 ```{admonition} Exercice 2
 Vrai/faux. On souhaite enregistrer l’activité cérébrale d’un patient en imagerie optique au niveau du cortex sensorimoteur.
-On peut positionner précisément l’activité au niveau du scalp du participant.
-On peut positionner précisément l’activité au niveau du cerveau du participant.
-La qualité des données dépendra du positionnement des capteurs et émetteurs.
-Une IRM T1 individuelle du sujet permet d’améliorer la localisation de l’activité dans le cerveau.
+ 1. On peut positionner précisément l’activité au niveau du scalp du participant.
+ 2. On peut positionner précisément l’activité au niveau du cerveau du participant.
+ 3. La qualité des données dépendra du positionnement des capteurs et émetteurs.
+ 4. Une IRM T1 individuelle du sujet permet d’améliorer la localisation de l’activité dans le cerveau.
 ```
 
 ```{admonition} Exercice 3
 Choisissez la bonne réponse. En imagerie optique cérébrale, la lumière proche infrarouge…
-… peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.
-… diffuse dans les tissus biologiques et peut être observée à proximité de la source.
-… est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.
-réponses b et c.
-réponses a, b et c.
+ a. peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.
+ b. diffuse dans les tissus biologiques et peut être observée à proximité de la source.
+ c. est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.
+ d. réponses b et c.
+ e. réponses a, b et c.
 ```
 
 ```{admonition} Exercice 4
 Choissez la bonne réponse. En imagerie optique, la résolution spatiale …
-… est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.
-… dépend du placement des émetteurs et récepteurs.
-… correspond au profil de diffusion de la lumière dans les tissus.
-réponses b et c.
-réponses a, b et c.
+ a. est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.
+ b. dépend du placement des émetteurs et récepteurs.
+ c. correspond au profil de diffusion de la lumière dans les tissus.
+ d. réponses b et c.
+ e. réponses a, b et c.
 ```
 
 ```{admonition} Exercice 5
