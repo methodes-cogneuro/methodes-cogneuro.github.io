@@ -383,20 +383,20 @@ Vrai/faux. On souhaite enregistrer l’activité cérébrale d’un patient en i
 
 ```{admonition} Exercice 3
 Choisissez la bonne réponse. En imagerie optique cérébrale, la lumière proche infrarouge…
- a. peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.
- b. diffuse dans les tissus biologiques et peut être observée à proximité de la source.
- c. est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.
- d. réponses b et c.
- e. réponses a, b et c.
+ 1. peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.
+ 2. diffuse dans les tissus biologiques et peut être observée à proximité de la source.
+ 3. est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.
+ 4. réponses 2 et 3.
+ 5. réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 4
 Choissez la bonne réponse. En imagerie optique, la résolution spatiale …
- a. est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.
- b. dépend du placement des émetteurs et récepteurs.
- c. correspond au profil de diffusion de la lumière dans les tissus.
- d. réponses b et c.
- e. réponses a, b et c.
+ 1. est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.
+ 2. dépend du placement des émetteurs et récepteurs.
+ 3. correspond au profil de diffusion de la lumière dans les tissus.
+ 4. réponses 2 et 3.
+ 5. réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 5
