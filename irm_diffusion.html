@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>IRM de diffusion &#8212; Méthodes en neurosciences cognitives</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,49 +20,65 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tomographie par émission de positrons" href="tep.html" />
+    <link rel="next" title="Imagerie optique" href="imagerie_optique.html" />
     <link rel="prev" title="Connectivité fonctionnelle" href="connectivite.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,10 +87,15 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -85,14 +108,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="cartes_cerebrales.html">
    Cartes cérébrales
@@ -124,13 +148,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tep.html">
-   Tomographie par émission de positrons
+  <a class="reference internal" href="imagerie_optique.html">
+   Imagerie optique
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="imagerie_optique.html">
-   Imagerie optique
+  <a class="reference internal" href="tep.html">
+   Tomographie par émission de positrons
   </a>
  </li>
  <li class="toctree-l1">
@@ -146,94 +170,181 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/irm_diffusion.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/irm_diffusion.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/irm_diffusion.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/irm_diffusion.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/irm_diffusion.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/irm_diffusion.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objectifs-du-cours">
    Objectifs du cours
@@ -327,17 +438,126 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>IRM de diffusion</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs-du-cours">
+   Objectifs du cours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
+   Principes physiques et physiologiques
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion-de-l-eau">
+     Diffusion de l’eau
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion-isotrope-et-anisotrope">
+     Diffusion isotrope et anisotrope
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion-et-fibres-de-matiere-blanche">
+     Diffusion et fibres de matière blanche
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acquisition-irmd">
+     Acquisition IRMd
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tenseur-de-diffusion">
+   Tenseur de diffusion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-modele-du-tenseur">
+     Le modèle du tenseur
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#imagerie-par-tenseurs-de-diffusion">
+     Imagerie par tenseurs de diffusion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caracteristiques-des-tenseurs">
+     Caractéristiques des tenseurs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tractographie">
+   Tractographie
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tractographie-streamline">
+     Tractographie streamline
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#croisement-de-fibres">
+     Croisement de fibres
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#faisceaux-de-fibres">
+     Faisceaux de fibres
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   Références
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="irm-de-diffusion">
-<span id="irm-diffusion-chapitre"></span><h1>IRM de diffusion<a class="headerlink" href="#irm-de-diffusion" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="irm-de-diffusion">
+<span id="irm-diffusion-chapitre"></span><h1>IRM de diffusion<a class="headerlink" href="#irm-de-diffusion" title="Permalink to this headline">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -361,8 +581,8 @@
     </td>
   </tr>
 </table>
-<div class="section" id="objectifs-du-cours">
-<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">¶</a></h2>
+<section id="objectifs-du-cours">
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">#</a></h2>
 <p>Ce cours a pour but de vous initier aux principes de l’imagerie par résonance magnétique de diffusion (IRMd). L’IRMd est une modalité de neuroimagerie qui nous permet d’étudier les <strong>fibres de matière blanche</strong>. Nous allons donc pouvoir examiner les connexions entre différentes régions, autant interhémisphériques (i.e., fibres de matière blanche voyageant d’un hémisphère à l’autre), qu’intrahémisphériques (i.e., fibres de matière blanche voyageant au sein d’un même hémisphère). Pour vous faire une idée concrète de ce à quoi ressemblent les fibres de matière blanche, vous pouvez regarder cette <a class="reference external" href="https://www.youtube.com/watch?v=PazaHElk6wc">vidéo</a> présentant des dissections cérébrales, tirée du <a class="reference external" href="http://www.neuroanatomy.ca/">cours de neuroanatomie fonctionnelle de UBC</a>.</p>
 <p>Pendant ce cours, nous allons aborder :</p>
 <ul class="simple">
@@ -370,15 +590,17 @@
 <li><p>Le modèle du <strong>tenseur de diffusion</strong>.</p></li>
 <li><p>Les analyses de <strong>tractographie</strong>.</p></li>
 </ul>
-</div>
-<div class="section" id="principes-physiques-et-physiologiques">
-<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="diffusion-de-l-eau">
-<h3>Diffusion de l’eau<a class="headerlink" href="#diffusion-de-l-eau" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="diffusion-water-fig">
+</section>
+<section id="principes-physiques-et-physiologiques">
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">#</a></h2>
+<section id="diffusion-de-l-eau">
+<h3>Diffusion de l’eau<a class="headerlink" href="#diffusion-de-l-eau" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="diffusion-water-fig">
 <a class="reference internal image-reference" href="_images/diffusion-water.jpg"><img alt="_images/diffusion-water.jpg" src="_images/diffusion-water.jpg" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Illustration de la diffusion d’une goutte d’encre dans un verre d’eau. Image par <a class="reference external" href="https://www.shutterstock.com/g/NARUDON+ATSAWALARPSAKUN">Narudon Atsawalarpsakun</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-photo/blue-food-coloring-diffuse-water-inside-736860766">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">736860766</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#diffusion-water-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Illustration de la diffusion d’une goutte d’encre dans un verre d’eau. Image par <a class="reference external" href="https://www.shutterstock.com/g/NARUDON+ATSAWALARPSAKUN">Narudon Atsawalarpsakun</a> disponible sur <a class="reference external" href="https://www.shutterstock.com/image-photo/blue-food-coloring-diffuse-water-inside-736860766">shutterstock</a> ID <code class="docutils literal notranslate"><span class="pre">736860766</span></code>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#diffusion-water-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>En IRM de diffusion, nous nous intéressons à la manière dont l’eau diffuse dans le cerveau. En examinant comment l’eau se diffuse, nous pouvons apprendre des informations sur le milieu de diffusion, dans notre cas, le cerveau ! Plus précisément, l’IRMd nous permet d’en apprendre davantage sur les <strong>propriétés de la microstructure</strong> des fibres de matière blanche. Pour un exemple concret de diffusion, nous pouvons imaginer ce qui se passe lorsque nous laissons tomber une goutte d’encre dans un verre d’eau, illustrée en <a class="reference internal" href="#diffusion-water-fig"><span class="std std-numref">Fig. 63</span></a>. L’encre va au cours du temps se diffuser dans l’eau, colorant l’eau petit à petit, jusqu’à ce qu’elle devienne colorée de manière homogène. Les molécules d’eau et d’encre entrent en collision dans des directions aléatoires, et suivent un processus de marche aléatoire appelé <a class="reference external" href="https://fr.wikipedia.org/wiki/Mouvement_brownien">mouvement Brownien</a>, voir <a class="reference internal" href="#brownian-fig"><span class="std std-numref">Fig. 64</span></a>.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -504,15 +726,17 @@
 </div>
 </div>
 </div>
-<div class="figure align-default" id="brownian-fig" style="width: 500px">
+<figure class="align-default" id="brownian-fig" style="width: 500px">
 <div class="cell_output docutils container">
 <img alt="_images/irm_diffusion_1_0.png" src="_images/irm_diffusion_1_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Illustration de mouvement Brownien d’une molécule. Le point de départ est indiqué par un cercle rouge. Les trajectoires de couleurs correspondent à des marches aléatoires simulées suivant un mouvement Brownien. Les points bleus indiquent le point d’arrivée de chaque marche. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.  Le code de simulation de mouvement Brownien est adapté du <a class="reference external" href="https://scipy-cookbook.readthedocs.io/items/BrownianMotion.html">Scipy Cookbook</a> sous une <a class="reference external" href="https://github.com/scipy/scipy-cookbook/blob/master/LICENSE.txt">licence</a> proche de MIT.</span><a class="headerlink" href="#brownian-fig" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="diffusion-isotrope-et-anisotrope">
-<h3>Diffusion isotrope et anisotrope<a class="headerlink" href="#diffusion-isotrope-et-anisotrope" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Illustration de mouvement Brownien d’une molécule. Le point de départ est indiqué par un cercle rouge. Les trajectoires de couleurs correspondent à des marches aléatoires simulées suivant un mouvement Brownien. Les points bleus indiquent le point d’arrivée de chaque marche. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.  Le code de simulation de mouvement Brownien est adapté du <a class="reference external" href="https://scipy-cookbook.readthedocs.io/items/BrownianMotion.html">Scipy Cookbook</a> sous une <a class="reference external" href="https://github.com/scipy/scipy-cookbook/blob/master/LICENSE.txt">licence</a> proche de MIT.</span><a class="headerlink" href="#brownian-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="diffusion-isotrope-et-anisotrope">
+<h3>Diffusion isotrope et anisotrope<a class="headerlink" href="#diffusion-isotrope-et-anisotrope" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_speed</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
@@ -547,25 +771,29 @@
 </div>
 </div>
 </div>
-<div class="figure align-default" id="anisotropic-fig" style="width: 800px">
+<figure class="align-default" id="anisotropic-fig" style="width: 800px">
 <div class="cell_output docutils container">
 <img alt="_images/irm_diffusion_3_0.png" src="_images/irm_diffusion_3_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 65 </span><span class="caption-text">Diffusion isotrope vs anisotrope. Chaque rond bleu représente le point d’arrivée d’une molécule d’eau selon une simulation de marche aléatoire avec un processus Brownien en 3D. Sur le graphe de gauche, la vitesse de diffusion des molécules d’eau est identique dans toutes les directions. Sur les graphes du milieu et de droite, la vitesse de diffusion est supérieure selon l’axe <code class="docutils literal notranslate"><span class="pre">x</span></code> que selon <code class="docutils literal notranslate"><span class="pre">y</span></code> et <code class="docutils literal notranslate"><span class="pre">z</span></code>. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#anisotropic-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Diffusion isotrope vs anisotrope. Chaque rond bleu représente le point d’arrivée d’une molécule d’eau selon une simulation de marche aléatoire avec un processus Brownien en 3D. Sur le graphe de gauche, la vitesse de diffusion des molécules d’eau est identique dans toutes les directions. Sur les graphes du milieu et de droite, la vitesse de diffusion est supérieure selon l’axe <code class="docutils literal notranslate"><span class="pre">x</span></code> que selon <code class="docutils literal notranslate"><span class="pre">y</span></code> et <code class="docutils literal notranslate"><span class="pre">z</span></code>. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#anisotropic-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Le déplacement des molécules d’eau dans un milieu suit un mouvement Brownien. Si le milieu a des caractéristiques similaires dans toutes les directions, on parle de milieu <strong>isotrope</strong>. Le graphe de gauche de la <a class="reference internal" href="#anisotropic-fig"><span class="std std-numref">Fig. 65</span></a> représente l’ensemble des points d’arrivée de marches aléatoires dans un tel milieu isotrope. On remarque que les molécules se répartissent approximativement dans une sphère. Que se passe-t-il si la diffusion est plus rapide dans une direction donnée, par exemple l’axe <code class="docutils literal notranslate"><span class="pre">x</span></code>? On parle alors de milieu <strong>anisotrope</strong>. Sur le graphe du milieu, on voit que la forme remplie par les molécules s’allonge, et ressemble plus à un ballon de football américain qu’à une sphère (ou, en termes mathématiques, une ellipse). Plus la différence de vitesse de diffusion sur <code class="docutils literal notranslate"><span class="pre">x</span></code> grandit par rapport aux directions <code class="docutils literal notranslate"><span class="pre">y</span></code> et <code class="docutils literal notranslate"><span class="pre">z</span></code>, et plus la forme s’allonge (graphe de droite).</p>
-</div>
-<div class="section" id="diffusion-et-fibres-de-matiere-blanche">
-<h3>Diffusion et fibres de matière blanche<a class="headerlink" href="#diffusion-et-fibres-de-matiere-blanche" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="dissection-fig">
+</section>
+<section id="diffusion-et-fibres-de-matiere-blanche">
+<h3>Diffusion et fibres de matière blanche<a class="headerlink" href="#diffusion-et-fibres-de-matiere-blanche" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="dissection-fig">
 <a class="reference internal image-reference" href="_images/dissection.png"><img alt="_images/dissection.png" src="_images/dissection.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 66 </span><span class="caption-text">Dissection cérébrale illustrant l’organisation de la matière blanche cérébrale en faisceaux de fibres. Bas droite: schéma illustrant la diffusion de l’eau contrainte par les fibres. Le point rouge correspond à l’origine de marches aléatoires, dont les terminaisons sont indiquées par les points bleus. Images de cerveau tirées de <span id="id1">[<a class="reference internal" href="#id33">BFH+20</a>]</span>, sous licence CC-BY 4.0. Le reste de la figure par P Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspirée par la thèse de C. Poupon, 1999.</span><a class="headerlink" href="#dissection-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Dissection cérébrale illustrant l’organisation de la matière blanche cérébrale en faisceaux de fibres. Bas droite: schéma illustrant la diffusion de l’eau contrainte par les fibres. Le point rouge correspond à l’origine de marches aléatoires, dont les terminaisons sont indiquées par les points bleus. Images de cerveau tirées de <span id="id1">[<a class="reference internal" href="#id33" title="Mudathir Bakhit, Masazumi Fujii, Ryo Hiruta, Masayuki Yamada, Kenichiro Iwami, Taku Sato, and Kiyoshi Saito. The superior frontal longitudinal tract: a connection between the dorsal premotor and the dorsolateral prefrontal cortices. Sci. Rep., 10(1):15855, September 2020.">BFH+20</a>]</span>, sous licence CC-BY 4.0. Le reste de la figure par P Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspirée par la thèse de C. Poupon, 1999.</span><a class="headerlink" href="#dissection-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Les axones des neurones viennent contraindre la diffusion de l’eau, les molécules d’eau ne peuvent donc pas se déplacer librement dans toutes les directions. Le profil de diffusion des molécules d’eau suit alors une forme anisotrope, comme on vient de le voir en <a class="reference internal" href="#anisotropic-fig"><span class="std std-numref">Fig. 65</span></a>. L’eau diffuse plus facilement dans la direction parallèle aux fibres. La diffusion est donc anisotrope et le coefficient de diffusion sera alors plus élevé dans cette direction parallèle, voir <a class="reference internal" href="#dissection-fig"><span class="std std-numref">Fig. 66</span></a>.
 Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configuration des axones. Le phénomène de diffusion dépend de la structure du tissu! C’est le principe physiologique à l’origine des mesures en IRMd.</p>
-</div>
-<div class="section" id="acquisition-irmd">
-<h3>Acquisition IRMd<a class="headerlink" href="#acquisition-irmd" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="acquisition-irmd">
+<h3>Acquisition IRMd<a class="headerlink" href="#acquisition-irmd" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -596,27 +824,31 @@ Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configura
 </div>
 </div>
 </div>
-<div class="figure align-default" id="diffusion-direction-fig" style="width: 600px">
+<figure class="align-default" id="diffusion-direction-fig" style="width: 600px">
 <div class="cell_output docutils container">
 <img alt="_images/irm_diffusion_5_0.png" src="_images/irm_diffusion_5_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 67 </span><span class="caption-text">Volumes IRM pondérées en diffusion. Chaque coupe axiale représente un volume T2* pondérée en diffusion pour une direction différente. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Le code est adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/denoise_patch2self/#example-denoise-patch2self">tutorial</a> de la librairie <a class="reference external" href="https://dipy.org/">Dipy</a>, distribuée sous licence <a class="reference external" href="https://github.com/dipy/dipy/blob/master/LICENSE">BSD 3-Clause</a>.</span><a class="headerlink" href="#diffusion-direction-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Volumes IRM pondérées en diffusion. Chaque coupe axiale représente un volume T2* pondérée en diffusion pour une direction différente. Figure générée à l’aide de code Python par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>. Le code est adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/denoise_patch2self/#example-denoise-patch2self">tutorial</a> de la librairie <a class="reference external" href="https://dipy.org/">Dipy</a>, distribuée sous licence <a class="reference external" href="https://github.com/dipy/dipy/blob/master/LICENSE">BSD 3-Clause</a>.</span><a class="headerlink" href="#diffusion-direction-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>En IRM de diffusion, nous allons prendre des images selon plusieurs orientations. Ce sont des images pondérées en T2* que nous acquérons en IRMd. La séquence appliquée rend l’image sensible à la diffusion de l’eau, dans une direction donnée. Pour un voxel donné, nous allons prendre des mesures dans différentes directions, qui vont nous dire si l’eau a beaucoup diffusée dans cette direction là, un peu comme les points bleus de la <a class="reference internal" href="#dissection-fig"><span class="std std-numref">Fig. 66</span></a>. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, pour une direction que l’on a sélectionnée, voir <a class="reference internal" href="#diffusion-direction-fig"><span class="std std-numref">Fig. 67</span></a></p>
-</div>
-</div>
-<div class="section" id="tenseur-de-diffusion">
-<h2>Tenseur de diffusion<a class="headerlink" href="#tenseur-de-diffusion" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="le-modele-du-tenseur">
-<h3>Le modèle du tenseur<a class="headerlink" href="#le-modele-du-tenseur" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="tensor-schematic-fig">
+</section>
+</section>
+<section id="tenseur-de-diffusion">
+<h2>Tenseur de diffusion<a class="headerlink" href="#tenseur-de-diffusion" title="Permalink to this headline">#</a></h2>
+<section id="le-modele-du-tenseur">
+<h3>Le modèle du tenseur<a class="headerlink" href="#le-modele-du-tenseur" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="tensor-schematic-fig">
 <a class="reference internal image-reference" href="_images/tensor-schematic.png"><img alt="_images/tensor-schematic.png" src="_images/tensor-schematic.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">La diffusion des molécules d’eau au cours du temps peut se visualiser comme un nuage de points. À cause des contraintes de l’environnement, notamment les axones, ce nuage prend la forme d’un ballon de rugby (haut, gauche). La forme du nuage peut être approximée avec un modèle de tenseur (bas à gauche). Les paramètres principaux de ce modèle sont les directions principales de diffusion <span class="math notranslate nohighlight">\(e_1\)</span>, <span class="math notranslate nohighlight">\(e_2\)</span>, <span class="math notranslate nohighlight">\(e_3\)</span>, ainsi que les valeurs de diffusion associées à ces directions <span class="math notranslate nohighlight">\(\lambda_1 \geq \lambda_2 \geq \lambda_3\)</span>. Figure par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspirée par M. Descoteaux et C. Poupon,</span><a class="headerlink" href="#tensor-schematic-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">La diffusion des molécules d’eau au cours du temps peut se visualiser comme un nuage de points. À cause des contraintes de l’environnement, notamment les axones, ce nuage prend la forme d’un ballon de rugby (haut, gauche). La forme du nuage peut être approximée avec un modèle de tenseur (bas à gauche). Les paramètres principaux de ce modèle sont les directions principales de diffusion <span class="math notranslate nohighlight">\(e_1\)</span>, <span class="math notranslate nohighlight">\(e_2\)</span>, <span class="math notranslate nohighlight">\(e_3\)</span>, ainsi que les valeurs de diffusion associées à ces directions <span class="math notranslate nohighlight">\(\lambda_1 \geq \lambda_2 \geq \lambda_3\)</span>. Figure par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspirée par M. Descoteaux et C. Poupon,</span><a class="headerlink" href="#tensor-schematic-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>À partir des simulations ci-dessus, il est intuitif d’imaginer la diffusion de l’eau comme un ballon, plus ou moins allongé. Mathématiquement, cela se formule avec un tenseur de diffusion, ou <strong>modèle Gaussien</strong>, voir <a class="reference internal" href="#tensor-schematic-fig"><span class="std std-numref">Fig. 68</span></a>. Pour estimer la forme du ballon dans chaque voxel, nous utilisons les différentes valeurs de diffusion obtenues pour chaque direction d’acquisition. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d’acquisition, nous obtiendrons plutôt un ballon de soccer.</p>
-</div>
-<div class="section" id="imagerie-par-tenseurs-de-diffusion">
-<h3>Imagerie par tenseurs de diffusion<a class="headerlink" href="#imagerie-par-tenseurs-de-diffusion" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="imagerie-par-tenseurs-de-diffusion">
+<h3>Imagerie par tenseurs de diffusion<a class="headerlink" href="#imagerie-par-tenseurs-de-diffusion" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import des modules</span>
@@ -705,16 +937,18 @@ Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configura
 </div>
 </div>
 </div>
-<div class="figure align-default" id="tensor-fig" style="width: 800px">
+<figure class="align-default" id="tensor-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/irm_diffusion_7_1.png" src="_images/irm_diffusion_7_1.png" />
+<img alt="_images/irm_diffusion_7_2.png" src="_images/irm_diffusion_7_2.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Tenseurs de diffusion estimés sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque tenseur code pour la direction principale de diffusion, ainsi que l’anisotropie fractionnelle de chaque tenseur. Les tenseurs les plus brillants sont fortement anisotropes, c’est-à-dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_dti/#example-reconst-dti">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#tensor-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Tenseurs de diffusion estimés sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque tenseur code pour la direction principale de diffusion, ainsi que l’anisotropie fractionnelle de chaque tenseur. Les tenseurs les plus brillants sont fortement anisotropes, c’est-à-dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_dti/#example-reconst-dti">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#tensor-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>L’imagerie par tenseurs de diffusion (<em>diffusion tensor imaging</em>, DTI) est l’une des premières techniques d’analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d’au moins six directions d’acquisition: <code class="docutils literal notranslate"><span class="pre">xy</span></code>, <code class="docutils literal notranslate"><span class="pre">xz</span></code>, <code class="docutils literal notranslate"><span class="pre">yz</span></code>, <code class="docutils literal notranslate"><span class="pre">-xy</span></code>, <code class="docutils literal notranslate"><span class="pre">-xz</span></code>, <code class="docutils literal notranslate"><span class="pre">y-z</span></code>. C’est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon). Comme nous avons ces mesures pour chacun des voxels, nous pouvons créer un volume cérébral où la valeur de chaque voxel est un tenseur (ballon), voir <a class="reference internal" href="#tensor-fig"><span class="std std-numref">Fig. 69</span></a>.</p>
-</div>
-<div class="section" id="caracteristiques-des-tenseurs">
-<h3>Caractéristiques des tenseurs<a class="headerlink" href="#caracteristiques-des-tenseurs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="caracteristiques-des-tenseurs">
+<h3>Caractéristiques des tenseurs<a class="headerlink" href="#caracteristiques-des-tenseurs" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -745,12 +979,14 @@ Alors, en sachant comment diffuse l’eau, nous pouvons déterminer la configura
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fa-md-rgb-fig" style="width: 800px">
+<figure class="align-default" id="fa-md-rgb-fig" style="width: 800px">
 <div class="cell_output docutils container">
 <img alt="_images/irm_diffusion_9_0.png" src="_images/irm_diffusion_9_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Cartes dérivées de tenseurs en IRM de diffusion: anisotropie fractionnelle (gauche), diffusivité moyenne (milieu) et direction principale du tenseur (droite). Pour la direction principale, l’axe médial-latéral (<code class="docutils literal notranslate"><span class="pre">x</span></code>) est codé en rouge, l’axe antérieur-postérieur (<code class="docutils literal notranslate"><span class="pre">y</span></code>) est codé en vert, et l’axe ventral-dorsal (<code class="docutils literal notranslate"><span class="pre">z</span></code>) est codé en bleu. Figure générée à l’aide de code Python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_fwdti/#example-reconst-fwdti">tutoriel Dipy</a> par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fa-md-rgb-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Cartes dérivées de tenseurs en IRM de diffusion: anisotropie fractionnelle (gauche), diffusivité moyenne (milieu) et direction principale du tenseur (droite). Pour la direction principale, l’axe médial-latéral (<code class="docutils literal notranslate"><span class="pre">x</span></code>) est codé en rouge, l’axe antérieur-postérieur (<code class="docutils literal notranslate"><span class="pre">y</span></code>) est codé en vert, et l’axe ventral-dorsal (<code class="docutils literal notranslate"><span class="pre">z</span></code>) est codé en bleu. Figure générée à l’aide de code Python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_fwdti/#example-reconst-fwdti">tutoriel Dipy</a> par P. Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fa-md-rgb-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Il est possible de résumer certaines caractéristiques importantes des tenseurs de diffusion à l’aide d’une unique mesure, comme l’anisotropie fractionnelle et la diffusivité moyenne (voir définitions ci-dessous). On extrait donc une mesure par voxel, ce qui peut se représenter avec une carte cérébrale, de manière similaire à ce que l’on a vu avec les images pondérées en T1 ou en T2, voir <a class="reference internal" href="#fa-md-rgb-fig"><span class="std std-numref">Fig. 70</span></a>. Il est aussi possible de créer une image en couleurs, qui code pour la direction principale de diffusion.</p>
 <div class="admonition-anisotropie-fractionnelle admonition">
 <p class="admonition-title">Anisotropie fractionnelle</p>
@@ -766,12 +1002,12 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 <p class="admonition-title">Direction principale de diffusion</p>
 <p>Afin de visualiser dans quelle direction principale pointe les tenseurs, une approche populaire consiste à coder chaque axe <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> et <code class="docutils literal notranslate"><span class="pre">z</span></code> avec une couleur (rouge, vert, bleu, respectivement). Pour une direction donnée, on mélange les trois couleurs dans une proportion correspondant aux contributions des trois axes.</p>
 </div>
-</div>
-</div>
-<div class="section" id="tractographie">
-<h2>Tractographie<a class="headerlink" href="#tractographie" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="tractographie-streamline">
-<h3>Tractographie streamline<a class="headerlink" href="#tractographie-streamline" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="tractographie">
+<h2>Tractographie<a class="headerlink" href="#tractographie" title="Permalink to this headline">#</a></h2>
+<section id="tractographie-streamline">
+<h3>Tractographie streamline<a class="headerlink" href="#tractographie-streamline" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -865,30 +1101,36 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fibers-fig" style="width: 800px">
+<figure class="align-default" id="fibers-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/irm_diffusion_12_0.png" src="_images/irm_diffusion_12_0.png" />
+<img alt="_images/irm_diffusion_12_1.png" src="_images/irm_diffusion_12_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 71 </span><span class="caption-text">Fibres reconstruites par une approche streamline déterministe, qui consiste à tracer une fibre en suivant la direction principale de chaque tenseur de manière itérative, à partir de l’ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque fibre code pour la direction principale de diffusion le long de la fibre. Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fibers-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Fibres reconstruites par une approche streamline déterministe, qui consiste à tracer une fibre en suivant la direction principale de chaque tenseur de manière itérative, à partir de l’ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque fibre code pour la direction principale de diffusion le long de la fibre. Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fibers-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>La <a class="reference external" href="https://fr.wikipedia.org/wiki/Tractographie">tractographie</a> permet de tracer le chemin des fibres de matière blanche in vivo. Il existe plusieurs approches de tractographie. La tractographie <em>streamline</em> déterministe permet de reconstruire les fibres de matière blanche en partant d’un point donné dans la matière grise et en se déplaçant de manière itérative selon la direction principale de diffusion. Le chemin va se terminer lorsque nous arrivons dans la matière grise. Ce chemin va être tracé grâce à un logiciel. La tractographie probabiliste est similaire à la tractographie déterministe, mais considère en plus une incertitude sur la direction des fibres de matière blanche. Donc au lieu de reconstruire une seule fibre associée à un point de la matière blanche, la tractographie probabiliste va en reconstruire plusieurs qui seront toutes légèrement différentes.</p>
 <div class="admonition-etapes-de-pretraitement admonition">
 <p class="admonition-title">Étapes de prétraitement</p>
 <p>Tout comme l’IRMf des étapes de recalage et de débruitage sont nécessaires pour préparer les données avant d’estimer les tenseurs et effectuer la tractographie. De nombreux paramètres sont à sélectionner pour la tractographie elle-même, qui peuvent influencer les résultats. Il est aussi nécessaire de sélectionner un masque de la matière blanche qui contient les points de départ pour la reconstruction de fibres, obtenu ici par seuillage d’une carte de FA.</p>
-<div class="figure align-default" id="mask-wm-fig" style="width: 500px">
+<figure class="align-default" id="mask-wm-fig" style="width: 500px">
 <div class="cell_output docutils container">
 <img alt="_images/irm_diffusion_11_0.png" src="_images/irm_diffusion_11_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 72 </span><span class="caption-text">Carte d’anisotropite fractionnelle (gauche) et masque de la matière blanche obtenue par seuillage (droite). Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#mask-wm-fig" title="Permalink to this image">¶</a></p>
+<figcaption>
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Carte d’anisotropite fractionnelle (gauche) et masque de la matière blanche obtenue par seuillage (droite). Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#mask-wm-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
-</div>
-</div>
-<div class="section" id="croisement-de-fibres">
-<h3>Croisement de fibres<a class="headerlink" href="#croisement-de-fibres" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="crossing-fibers">
+</section>
+<section id="croisement-de-fibres">
+<h3>Croisement de fibres<a class="headerlink" href="#croisement-de-fibres" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="crossing-fibers">
 <a class="reference internal image-reference" href="_images/crossing-fibers.png"><img alt="_images/crossing-fibers.png" src="_images/crossing-fibers.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text">Illustration du problème de croisement de fibres, illustré à gauche. La diffusion de l’eau dans chaque fibre est associée à un tenseur qui pointe dans une direction différente (milieu). Lorsqu’on essaye d’approximer la diffusion dans le croisement avec un seul tenseur, on observe un tenseur isotrope (droite). Figure par P Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspiré par la thèse de C. Poupon, 1999.</span><a class="headerlink" href="#crossing-fibers" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Illustration du problème de croisement de fibres, illustré à gauche. La diffusion de l’eau dans chaque fibre est associée à un tenseur qui pointe dans une direction différente (milieu). Lorsqu’on essaye d’approximer la diffusion dans le croisement avec un seul tenseur, on observe un tenseur isotrope (droite). Figure par P Bellec, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, inspiré par la thèse de C. Poupon, 1999.</span><a class="headerlink" href="#crossing-fibers" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Une limitation que nous rencontrons avec l’imagerie en tenseur de diffusion est le croisement de fibres. Il est très courant dans la matière blanche d’avoir plusieurs faisceaux de fibres qui se croisent. Lorsque  beaucoup de fibres se croisent comme dans la figure ci-dessous, le tenseur de diffusion apparaît isotrope, même s’il y a effectivement des fibres présentes dans le voxel. Dans ce cas, l’algorithme de reconstruction de fibres ne saura pas quelle direction suivre. Une des technique utilisée pour résoudre ce problème est l’<strong>imagerie de diffusion à haute résolution</strong>, qui nous permet d’estimer plusieurs tenseurs pour un même voxel. Cette technique consiste à effectuer l’acquisition des données sur de nombreuses directions (une trentaine à une soixantaine de directions) en utilisant une <strong>séquence HARDI</strong> (<em>High Angular Resolution Diffusion Imaging</em>). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -938,12 +1180,14 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fodf-fig" style="width: 800px">
+<figure class="align-default" id="fodf-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/irm_diffusion_14_0.png" src="_images/irm_diffusion_14_0.png" />
+<img alt="_images/irm_diffusion_14_76.png" src="_images/irm_diffusion_14_76.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 74 </span><span class="caption-text">Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_csd/#example-reconst-csd">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fodf-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/reconst_csd/#example-reconst-csd">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fodf-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Avec une séquence HARDI, nous pouvons estimer une fonction de distribution des orientations de fibres (<em>fiber Orientation Distribution Function</em>, fODF) lorsqu’il y a des croisements de fibres perpendiculaires. Ceci nous permet d’estimer plusieurs tenseurs à l’intérieur d’un voxel et de surpasser certaines limites du tenseur de diffusion (DTI). Dans les zones à faible anisotropie nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principale dans les fibres les plus importantes.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -998,26 +1242,30 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fodf-tracts-fig" style="width: 800px">
+<figure class="align-default" id="fodf-tracts-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/irm_diffusion_16_0.png" src="_images/irm_diffusion_16_0.png" />
+<img alt="_images/irm_diffusion_16_1.png" src="_images/irm_diffusion_16_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 75 </span><span class="caption-text">Fibres reconstruites par une approche streamline déterministe avec une approche multi-tenseurs, qui permet de suivre plusieurs pics de diffusion à chaque voxel, à partir de l’ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Cette approche permet d’être plus robuste à la présence de croisement de fibres. Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fodf-tracts-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Fibres reconstruites par une approche streamline déterministe avec une approche multi-tenseurs, qui permet de suivre plusieurs pics de diffusion à chaque voxel, à partir de l’ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Cette approche permet d’être plus robuste à la présence de croisement de fibres. Figure générée par du code python adapté d’un <a class="reference external" href="https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx">tutoriel Dipy</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fodf-tracts-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>La capacité de fODF de représenter plusieurs tenseurs à chaque voxel permet de reconstruire des fibres qui se croisent, comme il est apparent dans le zoom de la <a class="reference internal" href="#fodf-tracts-fig"><span class="std std-numref">Fig. 75</span></a>. Il est important de réaliser que les données utilisées pour générer <a class="reference internal" href="#fibers-fig"><span class="std std-numref">Fig. 71</span></a> et <a class="reference internal" href="#fodf-tracts-fig"><span class="std std-numref">Fig. 75</span></a> sont les mêmes, mais les fibres reconstruites sont très différentes! Les paramètres que l’on choisit pour la méthode de reconstruction vont aussi changer la forme et le nombre de fibres. La tractographie en IRMd n’est donc pas une science exacte, et les faux positifs (une fibre reconstruite qui n’existe pas vraiment) ainsi que les faux négatifs (une fibre que l’on ne reconstruit pas mais qui existe pourtant) sont très courants.</p>
-</div>
-<div class="section" id="faisceaux-de-fibres">
-<h3>Faisceaux de fibres<a class="headerlink" href="#faisceaux-de-fibres" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="faisceaux-fig">
+</section>
+<section id="faisceaux-de-fibres">
+<h3>Faisceaux de fibres<a class="headerlink" href="#faisceaux-de-fibres" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="faisceaux-fig">
 <a class="reference internal image-reference" href="_images/faisceaux.png"><img alt="_images/faisceaux.png" src="_images/faisceaux.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">Illustration de trois faisceaux de fibres: les radiations optiques (OR), le faisceau arquée (AF) et le faisceau occipital vertical (VOF). Les faisceaux sont présentés sur différentes vues d’une dissection (A, B, D), ainsi qu’à l’aide d’une dissection virtuelle (C). Figure tirées de <span id="id2">[<a class="reference internal" href="#id34">JHY+20</a>]</span>, sous licence CC-BY 4.0.</span><a class="headerlink" href="#faisceaux-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Illustration de trois faisceaux de fibres: les radiations optiques (OR), le faisceau arquée (AF) et le faisceau occipital vertical (VOF). Les faisceaux sont présentés sur différentes vues d’une dissection (A, B, D), ainsi qu’à l’aide d’une dissection virtuelle (C). Figure tirées de <span id="id2">[<a class="reference internal" href="#id34" title="Tatsuya Jitsuishi, Seiichiro Hirono, Tatsuya Yamamoto, Keiko Kitajo, Yasuo Iwadate, and Atsushi Yamaguchi. White matter dissection and structural connectivity of the human vertical occipital fasciculus to link vision-associated brain cortex. Sci. Rep., 10(1):820, January 2020.">JHY+20</a>]</span>, sous licence CC-BY 4.0.</span><a class="headerlink" href="#faisceaux-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons à partir des études de dissection. Dans une <strong>reconstruction systématique</strong> des fibres, tout va être tracé, alors que dans une <strong>dissection virtuelle</strong>, seuls certains paquets de fibres vont être sélectionnés. Ces a priori permettent de limiter les faux positifs, et l’utilisation d’algorithmes de tractographie performants permet de limiter les faux négatifs. Il existe un certain nombre de faisceaux de fibres classiques avec des schémas de dissection bien établis, comme le corps calleux, le faisceau arqué, ou bien le fascicule longitudinal supérieur.</p>
 <p>Il est possible de calculer la valeur moyenne de l’anisotropie fractionnelle, ou tout autre métrique, le long d’une fibre. Cette approche est appellée <strong>tractométrie</strong>: on effectue une série de mesures le long d’une fibre. La fibre peut également être découpée en segments, pour améliorer la précision spatiale de la mesure. On peut ensuite comparer ces valeurs entre différents individus pour faire des tests statistiques. Dans ce cas, le recalage entre individus se fait via l’identification de faisceaux de fibres, plutôt que par une méthode de déformation non-linéaire.</p>
-</div>
-</div>
-<div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
 <p>Dans ce cours, nous avons vu les principes de l’IRM de diffusion. Plus précisément, nous avons vu:</p>
 <ul class="simple">
 <li><p>Comment obtenir des images en IRMd grâce à la diffusion de l’eau dans différentes directions</p></li>
@@ -1026,10 +1274,11 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 <li><p>Comment estimer les croisements de fibres.</p></li>
 <li><p>Comment l’IRMd peut être utilisée pour effectuer une dissection virtuelle.</p></li>
 </ul>
-</div>
-<div class="section" id="references">
-<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id3"><dl class="citation">
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id3">
+<dl class="citation">
 <dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id1">BFH+20</a></span></dt>
 <dd><p>Mudathir Bakhit, Masazumi Fujii, Ryo Hiruta, Masayuki Yamada, Kenichiro Iwami, Taku Sato, and Kiyoshi Saito. The superior frontal longitudinal tract: a connection between the dorsal premotor and the dorsolateral prefrontal cortices. <em>Sci. Rep.</em>, 10(1):15855, September 2020.</p>
 </dd>
@@ -1037,10 +1286,10 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 <dd><p>Tatsuya Jitsuishi, Seiichiro Hirono, Tatsuya Yamamoto, Keiko Kitajo, Yasuo Iwadate, and Atsushi Yamaguchi. White matter dissection and structural connectivity of the human vertical occipital fasciculus to link vision-associated brain cortex. <em>Sci. Rep.</em>, 10(1):820, January 2020.</p>
 </dd>
 </dl>
-</p>
 </div>
-<div class="section" id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Vrai/faux. Les images générées par le scanner en IRM de diffusion sont…</p>
@@ -1063,21 +1312,25 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l�
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 3</p>
-<p>Choisissez la bonne réponse. On dispose de données d’IRM de diffusion à haute résolution HARDI:
-On peut générer une carte avec un tenseur de diffusion par voxel.
-On peut générer une carte avec plusieurs tenseurs de diffusion par voxel.
-On doit utiliser plusieurs tenseurs de diffusion par voxel pour reconstruire des fibres.
-Réponses a et b.
-Réponses a, b et c.</p>
+<p>Choisissez la bonne réponse. On dispose de données d’IRM de diffusion à haute résolution HARDI:</p>
+<ol class="simple">
+<li><p>On peut générer une carte avec un tenseur de diffusion par voxel.</p></li>
+<li><p>On peut générer une carte avec plusieurs tenseurs de diffusion par voxel.</p></li>
+<li><p>On doit utiliser plusieurs tenseurs de diffusion par voxel pour reconstruire des fibres.</p></li>
+<li><p>Réponses 1 et 2.</p></li>
+<li><p>Réponses 1, 2 et 3.</p></li>
+</ol>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 4</p>
-<p>Choisissez la bonne  réponse. Les fibres reconstruites en IRM de diffusion…
-Peuvent manquer des fibres existantes, à cause notamment du “fiber kissing”, ou des fibres qui n’existent pas, à cause notamment des croisements de fibres.
-Reflètent l’ensemble des axones dans le cerveau.
-Dépendent à la fois du type de données recueillies et de l’algorithme utilisé.
-Réponses a et b.
-Réponses a, b et c.</p>
+<p>Choisissez la bonne  réponse. Les fibres reconstruites en IRM de diffusion…</p>
+<ol class="simple">
+<li><p>Peuvent manquer des fibres existantes, à cause notamment du “fiber kissing”, ou des fibres qui n’existent pas, à cause notamment des croisements de fibres.</p></li>
+<li><p>Reflètent l’ensemble des axones dans le cerveau.</p></li>
+<li><p>Dépendent à la fois du type de données recueillies et de l’algorithme utilisé.</p></li>
+<li><p>Réponses 1 et 2.</p></li>
+<li><p>Réponses 1, 2 et 3.</p></li>
+</ol>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice 5</p>
@@ -1100,8 +1353,8 @@ Les questions suivantes requièrent des réponses à développement court.</p>
 <li><p>Quel est le résultat principal de l’étude?</p></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1125,54 +1378,48 @@ Les questions suivantes requièrent des réponses à développement court.</p>
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="connectivite.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Connectivité fonctionnelle</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="connectivite.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Connectivité fonctionnelle</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="imagerie_optique.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Imagerie optique</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="tep.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Tomographie par émission de positrons</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Pierre Bellec et l'équipe PSY3018<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pierre Bellec et l'équipe PSY3018<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

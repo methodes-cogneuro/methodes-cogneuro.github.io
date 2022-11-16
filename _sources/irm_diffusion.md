@@ -710,21 +710,21 @@ Anisotropie fractionnelle et diffusivité moyenne: vrai-faux.
 ```{admonition} Exercice 3
 :class: note
 Choisissez la bonne réponse. On dispose de données d’IRM de diffusion à haute résolution HARDI:
-On peut générer une carte avec un tenseur de diffusion par voxel.
-On peut générer une carte avec plusieurs tenseurs de diffusion par voxel.
-On doit utiliser plusieurs tenseurs de diffusion par voxel pour reconstruire des fibres.
-Réponses a et b.
-Réponses a, b et c.
+ 1. On peut générer une carte avec un tenseur de diffusion par voxel.
+ 2. On peut générer une carte avec plusieurs tenseurs de diffusion par voxel.
+ 3. On doit utiliser plusieurs tenseurs de diffusion par voxel pour reconstruire des fibres.
+ 4. Réponses 1 et 2.
+ 5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 4
 :class: note
 Choisissez la bonne  réponse. Les fibres reconstruites en IRM de diffusion…
-Peuvent manquer des fibres existantes, à cause notamment du “fiber kissing”, ou des fibres qui n’existent pas, à cause notamment des croisements de fibres.
-Reflètent l’ensemble des axones dans le cerveau.
-Dépendent à la fois du type de données recueillies et de l’algorithme utilisé.
-Réponses a et b.
-Réponses a, b et c.
+ 1. Peuvent manquer des fibres existantes, à cause notamment du “fiber kissing”, ou des fibres qui n’existent pas, à cause notamment des croisements de fibres.
+ 2. Reflètent l’ensemble des axones dans le cerveau.
+ 3. Dépendent à la fois du type de données recueillies et de l’algorithme utilisé.
+ 4. Réponses 1 et 2.
+ 5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 5

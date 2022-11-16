@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Imagerie optique &#8212; Méthodes en neurosciences cognitives</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,36 +20,35 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -55,10 +56,27 @@
     <link rel="next" title="Tomographie par émission de positrons" href="tep.html" />
     <link rel="prev" title="IRM de diffusion" href="irm_diffusion.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -67,10 +85,15 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -83,14 +106,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="cartes_cerebrales.html">
    Cartes cérébrales
@@ -144,94 +168,181 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/imagerie_optique.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/imagerie_optique.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/imagerie_optique.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/imagerie_optique.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/imagerie_optique.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/imagerie_optique.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
    Principes physiques et physiologiques
@@ -320,17 +431,121 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Imagerie optique</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
+   Principes physiques et physiologiques
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lumiere-infrarouge-et-tissus-biologiques">
+     Lumière infrarouge et tissus biologiques
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spectre-d-absorption-des-tissus">
+     Spectre d’absorption des tissus
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diffusion-de-la-lumiere">
+     Diffusion de la lumière
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#couplage-neurovasculaire">
+     Couplage neurovasculaire
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acquisition-et-traitement">
+   Acquisition et traitement
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recalage-avec-l-anatomie">
+     Recalage avec l’anatomie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#montage">
+     Montage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#artefact-de-mouvement">
+     Artefact de mouvement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtrage">
+     Filtrage
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-en-neuroscience-cognitive">
+   Application en neuroscience cognitive
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reponse-hemodynamique">
+     Réponse hémodynamique
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#carte-d-activation">
+     Carte d’activation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flexibilite-experimentale">
+     Flexibilité expérimentale
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="imagerie-optique">
-<span id="imagerie-optique-chapitre"></span><h1>Imagerie optique<a class="headerlink" href="#imagerie-optique" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="imagerie-optique">
+<span id="imagerie-optique-chapitre"></span><h1>Imagerie optique<a class="headerlink" href="#imagerie-optique" title="Permalink to this headline">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -386,20 +601,22 @@
   </tr>
 </table>
 <p>L’imagerie optique cérébrale, encore appelée spectroscopie proche infrarouge fonctionnelle, est une technique qui permet de mesurer les corrélats vasculaires de l’activité cérébrale, de manière assez similaire à l’IRMf. En revanche, elle repose sur un principe physique très différent: la diffusion et l’absorption de la lumière dans les tissus cérébraux. Ses limites et faiblesses sont aussi bien distinctes de l’IRMf.</p>
-<div class="figure align-default" id="fnirs-fig">
+<figure class="align-default" id="fnirs-fig">
 <a class="reference internal image-reference" href="_images/fnirs.jpg"><img alt="_images/fnirs.jpg" src="_images/fnirs.jpg" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 77 </span><span class="caption-text">Système d’imagerie optique <a class="reference external" href="https://www.gowerlabs.co.uk/nts-main">NTS gowerlabs</a>. Image tirée de <a class="reference external" href="https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy#/media/File:Blonde_fNIRS_lady.jpg">wikipedia</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA 4.0</a>.</span><a class="headerlink" href="#fnirs-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Système d’imagerie optique <a class="reference external" href="https://www.gowerlabs.co.uk/nts-main">NTS gowerlabs</a>. Image tirée de <a class="reference external" href="https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy#/media/File:Blonde_fNIRS_lady.jpg">wikipedia</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA 4.0</a>.</span><a class="headerlink" href="#fnirs-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Les objectifs spécifiques de ce chapitre sont :</p>
 <ul class="simple">
 <li><p>Principes physiques et physiologiques de l’imagerie optique.</p></li>
 <li><p>Acquisition et traitement d’images en imagerie optique.</p></li>
 <li><p>Applications de l’imagerie optique en neuroscience cognitive.</p></li>
 </ul>
-<div class="section" id="principes-physiques-et-physiologiques">
-<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="lumiere-infrarouge-et-tissus-biologiques">
-<h3>Lumière infrarouge et tissus biologiques<a class="headerlink" href="#lumiere-infrarouge-et-tissus-biologiques" title="Permalink to this headline">¶</a></h3>
+<section id="principes-physiques-et-physiologiques">
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">#</a></h2>
+<section id="lumiere-infrarouge-et-tissus-biologiques">
+<h3>Lumière infrarouge et tissus biologiques<a class="headerlink" href="#lumiere-infrarouge-et-tissus-biologiques" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -415,45 +632,51 @@
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/61rWjVkpgh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 <p>La lumière pénètre et diffuse au travers des tissus biologiques. Cela peut être observé facilement, par exemple en plaçant une lampe de poche derrière votre main. Votre main est en partie transparente et la lumière peut la pénétrer. Certains tissus vont plus absorber la lumière que d’autres, et permettre de voir le genre de tissus présent à l’intérieur de notre main. Mais quel genre de tissus exactement? cela va dépendre du genre de lumière… La lumière proche infra-rouge est intéressante de ce point de vue, car elle est particulièrement absorbée par l’hémoglobine. La vidéo ci-dessus permet ainsi d’observer assez clairement la vascularisation de la main avec de la lumière (et une caméra) proche-infrarouge. Karl von Vierordt en 1876 avait déjà pu remarquer qu’il était possible d’observer la diminution d’oxyhémoglobine dans la main avec cette technique, en limitant l’arrivée de sang dans la main au moyen d’une ligature. L’imagerie optique cérébrale repose aussi sur les propriétés physiques de la lumière proche infrarouge dans les tissus biologiques.</p>
-</div>
-<div class="section" id="spectre-d-absorption-des-tissus">
-<h3>Spectre d’absorption des tissus<a class="headerlink" href="#spectre-d-absorption-des-tissus" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="spectre-hemoglobine-fig">
+</section>
+<section id="spectre-d-absorption-des-tissus">
+<h3>Spectre d’absorption des tissus<a class="headerlink" href="#spectre-d-absorption-des-tissus" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="spectre-hemoglobine-fig">
 <a class="reference internal image-reference" href="_images/spectre_hemoglobine.png"><img alt="_images/spectre_hemoglobine.png" src="_images/spectre_hemoglobine.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 78 </span><span class="caption-text">Niveau d’absorption de la lumière par l’oxy- et la désoxyhémoglobine, en fonction de la longueur d’onde. La région proche infrarouge (NIR, near infra-red) est indiquée. Image tirée de <a class="reference external" href="https://doi.org/10.3390/healthcare5020020">Abtahi et al. (2017)</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0">CC-BY 4.0</a>.</span><a class="headerlink" href="#spectre-hemoglobine-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Niveau d’absorption de la lumière par l’oxy- et la désoxyhémoglobine, en fonction de la longueur d’onde. La région proche infrarouge (NIR, near infra-red) est indiquée. Image tirée de <a class="reference external" href="https://doi.org/10.3390/healthcare5020020">Abtahi et al. (2017)</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0">CC-BY 4.0</a>.</span><a class="headerlink" href="#spectre-hemoglobine-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Ce diagramme représente quelles longueurs d’ondes de la lumière sont absorbées par l’oxy- et la désoxy-hémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et HbR (hémoglobine non oxygénée en bleu). On peut voir qu’il y a des longueurs d’onde pour lesquelles le niveau d’absorption HbO2 vs HbRest très différent. Par exemple, à 700 nanomètres la lumière est plus absorbée par HbR, alors qu’à 900 nanomètres la lumière est plus absorbée par HbO2. Si on peut mesurer le niveau d’absorption dans le sang pour ces deux couleurs, en les comparant, on va pouvoir essayer de dissocier les concentrations en HbO2 et HbR.  Un autre point important: ces longueurs d’onde sont très peu absorbées par l’eau, et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques. Donc, juste en étudiant la quantité d’absorption de deux longueurs d’onde proche infrarouge dans le cerveau, on va pouvoir quantifier le contenu en HbO2 et HB! Mais reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.</p>
-</div>
-<div class="section" id="diffusion-de-la-lumiere">
-<h3>Diffusion de la lumière<a class="headerlink" href="#diffusion-de-la-lumiere" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="nir-diffusion-fig">
+</section>
+<section id="diffusion-de-la-lumiere">
+<h3>Diffusion de la lumière<a class="headerlink" href="#diffusion-de-la-lumiere" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="nir-diffusion-fig">
 <a class="reference internal image-reference" href="_images/nir-diffusion.png"><img alt="_images/nir-diffusion.png" src="_images/nir-diffusion.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 79 </span><span class="caption-text">Mesure localisée dans le cerveau en imagerie optique. Un <em>émetteur</em> de lumière proche infrarouge est appliquée sur le scalp. Cette lumière est diffusée dans le cerveau. Après avoir traversé une petite portion de tissus cérébraux, elle va être émise de nouveau à la surface du scalp, et mesurée par un <em>récepteur</em> Image tirée de <a class="reference external" href="https://doi.org/10.3390/healthcare5020020">Abtahi et al. (2017)</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0">CC-BY 4.0</a>.</span><a class="headerlink" href="#nir-diffusion-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Mesure localisée dans le cerveau en imagerie optique. Un <em>émetteur</em> de lumière proche infrarouge est appliquée sur le scalp. Cette lumière est diffusée dans le cerveau. Après avoir traversé une petite portion de tissus cérébraux, elle va être émise de nouveau à la surface du scalp, et mesurée par un <em>récepteur</em> Image tirée de <a class="reference external" href="https://doi.org/10.3390/healthcare5020020">Abtahi et al. (2017)</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0">CC-BY 4.0</a>.</span><a class="headerlink" href="#nir-diffusion-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Dans le premier exemple que l’on a vu, avec une lampe qui illumine la main, la lumière traverse notre main en ligne droite depuis la lampe, jusqu’à notre œil. Si l’on applique le même principe au cerveau, la lumière va traverser l’ensemble des tissus, et on ne pourra pas identifier quelle région du cerveau a absorbé la lumière. On ne pourra jamais faire des images avec cette méthode.
 Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière va se diffuser, selon un principe de marche aléatoire. Si on regarde le scalp autour de l’émetteur de lumière, la lumière diffusée va pouvoir être mesurée. Plus on va loin de l’émetteur, et plus cette lumière a traversé loin dans le cerveau. Si on va trop loin, de nombreux tissus seront mélangés. Si on va trop près, la lumière diffusée n’aura pas pénétré jusqu’au cerveau. Mais si on met notre détecteur à la bonne distance de l’émetteur (quelques cms), cette lumière aura traversé une région spécifique du cerveau, qui aura une forme en “U”.</p>
 <div class="caution attention admonition" id="nirs-warning">
 <p class="admonition-title">Attention!</p>
 <p>Seules les régions cérébrales proches du scalp pourront être mesurées précisément avec l’imagerie optique. Pour mesurer la lumière qui a pénétré très profondément dans le cerveau, il faudra que celle-ci traverse de nombreux tissus, et on n’aura pas une mesure spécifique des tissus profonds.</p>
 </div>
-</div>
-<div class="section" id="couplage-neurovasculaire">
-<h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="couplage-neurovasculaire">
+<h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">#</a></h3>
 <p>On a maintenant vu le principe physique qui nous permet de mesurer la concentration en HbO2 et HbRdans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l’imagerie optique est le même que pour l’IRMf, c’est-à-dire le <strong>couplage neurovasculaire</strong>. Vous pouvez vous référez à la <a class="reference internal" href="irm_fonctionnelle.html#couplage-neurovasculaire-irmf-section"><span class="std std-ref">section</span></a> du chapitre sur l’IRMf pour plus de détails. Brièvement, l’activité neuronale, notamment post-synaptique, requiert une consommation d’oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d’oxygène va entraîner une augmentation d’HbO2 et une diminution relative d’HbRà proximité des populations de neurones activés. C’est ce phénomène de couplage neurovasculaire qu’on mesure à la fois en IRMf et en imagerie optique.</p>
-</div>
-</div>
-<div class="section" id="acquisition-et-traitement">
-<h2>Acquisition et traitement<a class="headerlink" href="#acquisition-et-traitement" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="recalage-avec-l-anatomie">
-<h3>Recalage avec l’anatomie<a class="headerlink" href="#recalage-avec-l-anatomie" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="fiducials-fig">
+</section>
+</section>
+<section id="acquisition-et-traitement">
+<h2>Acquisition et traitement<a class="headerlink" href="#acquisition-et-traitement" title="Permalink to this headline">#</a></h2>
+<section id="recalage-avec-l-anatomie">
+<h3>Recalage avec l’anatomie<a class="headerlink" href="#recalage-avec-l-anatomie" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="fiducials-fig">
 <a class="reference internal image-reference" href="_images/fiducials.png"><img alt="_images/fiducials.png" src="_images/fiducials.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 80 </span><span class="caption-text">Points de repère sur la tête et alignement imagerie optique / IRM. Haut à gauche: installation d’un montage d’imagerie optique sur un jeune participant. Haut à droite: différents points de repères standards sont identifiés sur la tête du participant. Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM. Ces points de repères sont utilisés pour recaler la position des émetteurs / récepteurs d’imagerie optique avec l’IRM structurelle du participant. Figure tirée de <a class="reference external" href="https://doi.org/10.1117/1.nph.1.2.025006">LLoyd-Fox et al. (2014)</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/3.0/">CC Attribution unported 3.0</a>.</span><a class="headerlink" href="#fiducials-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Points de repère sur la tête et alignement imagerie optique / IRM. Haut à gauche: installation d’un montage d’imagerie optique sur un jeune participant. Haut à droite: différents points de repères standards sont identifiés sur la tête du participant. Bas: ces mêmes points de repère sont manuellement identifiés sur une reconstruction 3D du visage en IRM. Ces points de repères sont utilisés pour recaler la position des émetteurs / récepteurs d’imagerie optique avec l’IRM structurelle du participant. Figure tirée de <a class="reference external" href="https://doi.org/10.1117/1.nph.1.2.025006">LLoyd-Fox et al. (2014)</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/3.0/">CC Attribution unported 3.0</a>.</span><a class="headerlink" href="#fiducials-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Afin de localiser l’activité cérébrale mesurée, il est courant d’utiliser une IRM structurelle du participant de recherche. Il est alors important de pouvoir situer les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau. Deux techniques principales sont utilisées. La première technique consiste à utiliser certais points de repères anatomiques sur la tête du participant, tel qu’illustré dans la <a class="reference internal" href="#fiducials-fig"><span class="std std-numref">Fig. 80</span></a>. Ces points de repère sont aussi visibles dans l’IRM structurelle, et permettent de mettre en correspondance les deux types de mesure. La deuxième approche consiste à utiliser un système de <strong>neuronavigation</strong>, comme par exemple ce <a class="reference external" href="https://www.neurocaregroup.com/brainsight-nirs">système</a> qui utilise des caméras pour mettre en correspondance la position des émetteurs et récepteurs de lumière proche infrarouge avec l’IRM structurelle.</p>
-</div>
-<div class="section" id="montage">
-<h3>Montage<a class="headerlink" href="#montage" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="montage">
+<h3>Montage<a class="headerlink" href="#montage" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
@@ -492,14 +715,16 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fnirs-montage-fig">
+<figure class="align-default" id="fnirs-montage-fig">
 <a class="reference internal image-reference" href="_images/fnirs-montage.png"><img alt="_images/fnirs-montage.png" src="_images/fnirs-montage.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 81 </span><span class="caption-text">Un montage d’émetteurs/récepteurs en imagerie optique cérébrale. La position des sources de lumière est indiquée en rouge, la position des récepteurs est indiquée en noir. La position des sources, qui correspond aux tissus cérébraux entre la source et l’émetteur, est indiquée par des points oranges, et la trajectoire de la lumière est indiquée par des traits blancs. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-montage-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Un montage d’émetteurs/récepteurs en imagerie optique cérébrale. La position des sources de lumière est indiquée en rouge, la position des récepteurs est indiquée en noir. La position des sources, qui correspond aux tissus cérébraux entre la source et l’émetteur, est indiquée par des points oranges, et la trajectoire de la lumière est indiquée par des traits blancs. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-montage-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>On voit dans la figure <a class="reference internal" href="#fnirs-montage-fig"><span class="std std-numref">Fig. 81</span></a> un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur). Chaque mesure est faite selon un ligne qui rejoint le récepteur à l’émetteur, et le point milieu (la <em>source</em>) est indiquée en orange. Différents montages existent, qui varient aussi bien par le nombre d’émetteurs et de récepteurs que leur disposition. Ces montages vont donner plus ou moins de résolution spatiale et d’accès aux sources profondes, et seront aussi plus ou moins dispendieux et complexes à installer selon le nombre des capteurs utilisés.</p>
-</div>
-<div class="section" id="artefact-de-mouvement">
-<h3>Artefact de mouvement<a class="headerlink" href="#artefact-de-mouvement" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="artefact-de-mouvement">
+<h3>Artefact de mouvement<a class="headerlink" href="#artefact-de-mouvement" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne.preprocessing.nirs</span> <span class="kn">import</span> <span class="p">(</span><span class="n">optical_density</span><span class="p">,</span>
@@ -535,16 +760,18 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fnirs-motion-fig" style="width: 800px">
+<figure class="align-default" id="fnirs-motion-fig" style="width: 800px">
 <div class="cell_output docutils container">
 <img alt="_images/imagerie_optique_5_3.png" src="_images/imagerie_optique_5_3.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 82 </span><span class="caption-text">Corrections des artefacts de mouvement dans une acquisition d’imagerie optique. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-motion-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Corrections des artefacts de mouvement dans une acquisition d’imagerie optique. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-motion-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Tout comme les données d’IRMf, les données d’imagerie optique sont sensibles au mouvement. Il est possible de tirer partie de l’excellente résolution d’acquisition de l’imagerie optique pour identifier des changements brusques dans le signal, indicateurs de mouvement. Ces changments brusques peuvent alors être corrigés, tel qu’illustré dans la <a class="reference internal" href="#fnirs-motion-fig"><span class="std std-numref">Fig. 82</span></a>.</p>
-</div>
-<div class="section" id="filtrage">
-<h3>Filtrage<a class="headerlink" href="#filtrage" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="filtrage">
+<h3>Filtrage<a class="headerlink" href="#filtrage" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reconstruction des données d&#39;hémoglobine</span>
@@ -582,19 +809,21 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fnirs-filtrage-fig" style="width: 800px">
+<figure class="align-default" id="fnirs-filtrage-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/imagerie_optique_7_16.png" src="_images/imagerie_optique_7_16.png" />
+<img alt="_images/imagerie_optique_7_18.png" src="_images/imagerie_optique_7_18.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 83 </span><span class="caption-text">Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-filtrage-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-filtrage-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Un autre point commun avec l’IRMf est la présence de différentes sources de bruit, qui peuvent être réduites par des techniques de filtrage. Ces techniques sont plus efficaces en imagerie optique qu’en IRMf, car on dispose d’une meilleure résolution d’acquisition. Il est possible de supprimer les dérives lentes, comme on l’avait vu en IRMf, mais aussi d’éliminer les fréquences cardiaques, ce qui est difficile de faire en IRMf où le TR est généralement supérieur à 1 seconde.</p>
-</div>
-</div>
-<div class="section" id="application-en-neuroscience-cognitive">
-<h2>Application en neuroscience cognitive<a class="headerlink" href="#application-en-neuroscience-cognitive" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="reponse-hemodynamique">
-<h3>Réponse hémodynamique<a class="headerlink" href="#reponse-hemodynamique" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="application-en-neuroscience-cognitive">
+<h2>Application en neuroscience cognitive<a class="headerlink" href="#application-en-neuroscience-cognitive" title="Permalink to this headline">#</a></h2>
+<section id="reponse-hemodynamique">
+<h3>Réponse hémodynamique<a class="headerlink" href="#reponse-hemodynamique" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reject_criteria</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">hbo</span><span class="o">=</span><span class="mf">80e-6</span><span class="p">)</span>
@@ -624,11 +853,13 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </div>
 </div>
 </div>
-<div class="figure align-default" id="fnirs-evoked-fig">
+<figure class="align-default" id="fnirs-evoked-fig">
 <a class="reference internal image-reference" href="_images/fnirs-evoked.png"><img alt="_images/fnirs-evoked.png" src="_images/fnirs-evoked.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 84 </span><span class="caption-text">Activité HbO2 et HbR évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l’ensemble des sources.
-Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code) et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-evoked-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Activité HbO2 et HbR évoquée par une tâche de mouvement de doigt (tapping) et une tâche contrôle, moyennée sur l’ensemble des sources.
+Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code) et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-evoked-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>L’imagerie optique permet de réaliser des expériences cognitives similaires à ce que l’on peut faire en IRMf.
 Dans la <a class="reference internal" href="#fnirs-filtrage-fig"><span class="std std-numref">Fig. 83</span></a>, on voit une série d’<strong>évènements</strong> qui ont été annotés.
 Ces évènements sont de trois types: mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">gauche</span></code>, mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code> et condition de <code class="docutils literal notranslate"><span class="pre">contrôle</span></code>.
@@ -637,9 +868,9 @@ Les données de l’ensemble des sources ont été moyennées pour les mouvement
 Les mesures HbO2 et HbR ont en revanche été séparées.
 On voit un profil caractéristique de réponse hémodynamique en HbO2.
 Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup plus petit (en valeur absolue).</p>
-</div>
-<div class="section" id="carte-d-activation">
-<h3>Carte d’activation<a class="headerlink" href="#carte-d-activation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="carte-d-activation">
+<h3>Carte d’activation<a class="headerlink" href="#carte-d-activation" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
@@ -654,25 +885,29 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 </div>
 </div>
 </div>
-<div class="figure align-center" id="fnirs-activation-fig" style="width: 800px">
+<figure class="align-center" id="fnirs-activation-fig" style="width: 800px">
 <div class="cell_output docutils container">
 <img alt="_images/imagerie_optique_11_2.png" src="_images/imagerie_optique_11_2.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 85 </span><span class="caption-text">Potentiel évoqué par un mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code>, pour l’ensemble des capteurs. La mosaïque de couleurs à gauche du graphe indique la localisation spatiale correspondant à chaque courbe. Pour différents points temps, une carte topographique d’activation indique le niveau d’activité évoquée pour chaque source spatiale, et pour chaque instant. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-activation-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Potentiel évoqué par un mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code>, pour l’ensemble des capteurs. La mosaïque de couleurs à gauche du graphe indique la localisation spatiale correspondant à chaque courbe. Pour différents points temps, une carte topographique d’activation indique le niveau d’activité évoquée pour chaque source spatiale, et pour chaque instant. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-activation-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Le profil de réponse évoquée par un mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code> peut aussi être estimé indépendamment pour chacune des sources spatiales mesurées. Il est ainsi possible de reconstruire une carte d’activité évoquée au cours du temps. En IRMf, ce type de carte est généralement résumée avec un seul paramètre d’amplitude de la réponse, mais la vitesse d’échantillonnage supérieure de l’imagerie optique permet d’étudier la dynamique de la réponse vasculaire de manière plus fine. Dans ce cas, dans la mesure où les paires d’émetteurs/capteurs ont été disposées autour du cortex sensorimoteur, l’ensemble des sources présentent une réponse évoquée forte en HbO2.</p>
-</div>
-<div class="section" id="flexibilite-experimentale">
-<h3>Flexibilité expérimentale<a class="headerlink" href="#flexibilite-experimentale" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="fnirs-high-altitude-fig">
+</section>
+<section id="flexibilite-experimentale">
+<h3>Flexibilité expérimentale<a class="headerlink" href="#flexibilite-experimentale" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="fnirs-high-altitude-fig">
 <a class="reference internal image-reference" href="_images/fnirs-high-altitude.jpg"><img alt="_images/fnirs-high-altitude.jpg" src="_images/fnirs-high-altitude.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 86 </span><span class="caption-text">Mesure de l’oxygénation cérébrale à haute altitude avec un système d’imagerie optique portatif (PortaLite, Artinis Medical Systems). Image tirée de <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/5/5b/Picture_of_NIRS_measurement_at_high_alltitude.jpg">wikipédia</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-SA 4.0</a>.</span><a class="headerlink" href="#fnirs-high-altitude-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Mesure de l’oxygénation cérébrale à haute altitude avec un système d’imagerie optique portatif (PortaLite, Artinis Medical Systems). Image tirée de <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/5/5b/Picture_of_NIRS_measurement_at_high_alltitude.jpg">wikipédia</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-SA 4.0</a>.</span><a class="headerlink" href="#fnirs-high-altitude-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Une des grandes forces de l’imagerie optique par rapport au FDG TEP ou bien à l’IRMf est la flexibilité expérimentale. Même si les artefacts de mouvement peuvent être un problème, il est possible d’enregistrer l’activité d’un athlète en mouvement (<a class="reference internal" href="#fnirs-high-altitude-fig"><span class="std std-numref">Fig. 86</span></a>). Il est aussi possible d’enregistre l’activité du cerveau d’un <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/transcoded/3/33/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video2.ogv/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video2.ogv.480p.vp9.webm">musicien qui pratique son instrument</a>, ou bien encore de <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bd/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video3.ogv/Imaging-Brain-Function-with-Functional-Near-Infrared-Spectroscopy-in-Unconstrained-Environments-Video3.ogv.360p.vp9.webm">deux musiciens qui jouent ensemble</a> (une technique appelée hyper-scanning). Même s’il est possible de <a class="reference external" href="https://ieeexplore.ieee.org/document/6688614">jouer du violoncelle dans un IRM</a>, ce type d’expérience est bien plus facile de mise en oeuvre avec l’imagerie optique. Cette technique est aussi plus simple à mettre en oeuvre chez des sujets qui ont des difficultés à rester immobiles, comme les très jeunes enfants (<a class="reference internal" href="#fiducials-fig"><span class="std std-numref">Fig. 80</span></a>).</p>
-</div>
-</div>
-<div class="section" id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
 <p>Dans ce cours, nous avons vu les principes de l’imagerie optique. Plus précisément, nous avons vu:</p>
 <ul class="simple">
 <li><p>Comment la lumière proche infrarouge permet de mesurer le couplage neurovasculaire.</p></li>
@@ -680,9 +915,9 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 <li><p>Comment les signaux d’imagerie optique sont nettoyés pour améliorer la qualité.</p></li>
 <li><p>Comment on peut générer une carte d’activation en réponse à une série d’événements.</p></li>
 </ul>
-</div>
-<div class="section" id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
 <div class="admonition-exercice-1 admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Vrai/faux. Les données d’imagerie optique sont …</p>
@@ -695,29 +930,35 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 </div>
 <div class="admonition-exercice-2 admonition">
 <p class="admonition-title">Exercice 2</p>
-<p>Vrai/faux. On souhaite enregistrer l’activité cérébrale d’un patient en imagerie optique au niveau du cortex sensorimoteur.
-On peut positionner précisément l’activité au niveau du scalp du participant.
-On peut positionner précisément l’activité au niveau du cerveau du participant.
-La qualité des données dépendra du positionnement des capteurs et émetteurs.
-Une IRM T1 individuelle du sujet permet d’améliorer la localisation de l’activité dans le cerveau.</p>
+<p>Vrai/faux. On souhaite enregistrer l’activité cérébrale d’un patient en imagerie optique au niveau du cortex sensorimoteur.</p>
+<ol class="simple">
+<li><p>On peut positionner précisément l’activité au niveau du scalp du participant.</p></li>
+<li><p>On peut positionner précisément l’activité au niveau du cerveau du participant.</p></li>
+<li><p>La qualité des données dépendra du positionnement des capteurs et émetteurs.</p></li>
+<li><p>Une IRM T1 individuelle du sujet permet d’améliorer la localisation de l’activité dans le cerveau.</p></li>
+</ol>
 </div>
 <div class="admonition-exercice-3 admonition">
 <p class="admonition-title">Exercice 3</p>
-<p>Choisissez la bonne réponse. En imagerie optique cérébrale, la lumière proche infrarouge…
-… peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.
-… diffuse dans les tissus biologiques et peut être observée à proximité de la source.
-… est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.
-réponses b et c.
-réponses a, b et c.</p>
+<p>Choisissez la bonne réponse. En imagerie optique cérébrale, la lumière proche infrarouge…</p>
+<ol class="simple">
+<li><p>peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.</p></li>
+<li><p>diffuse dans les tissus biologiques et peut être observée à proximité de la source.</p></li>
+<li><p>est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.</p></li>
+<li><p>réponses 2 et 3.</p></li>
+<li><p>réponses 1, 2 et 3.</p></li>
+</ol>
 </div>
 <div class="admonition-exercice-4 admonition">
 <p class="admonition-title">Exercice 4</p>
-<p>Choissez la bonne réponse. En imagerie optique, la résolution spatiale …
-… est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.
-… dépend du placement des émetteurs et récepteurs.
-… correspond au profil de diffusion de la lumière dans les tissus.
-réponses b et c.
-réponses a, b et c.</p>
+<p>Choissez la bonne réponse. En imagerie optique, la résolution spatiale …</p>
+<ol class="simple">
+<li><p>est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.</p></li>
+<li><p>dépend du placement des émetteurs et récepteurs.</p></li>
+<li><p>correspond au profil de diffusion de la lumière dans les tissus.</p></li>
+<li><p>réponses 2 et 3.</p></li>
+<li><p>réponses 1, 2 et 3.</p></li>
+</ol>
 </div>
 <div class="admonition-exercice-5 admonition">
 <p class="admonition-title">Exercice 5</p>
@@ -740,8 +981,8 @@ On observe des fluctuations lentes d’activité au niveau du cortex temporal. E
 <li><p>Comment est générée l’activité évoquée?</p></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -765,54 +1006,48 @@ On observe des fluctuations lentes d’activité au niveau du cortex temporal. E
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="irm_diffusion.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">IRM de diffusion</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="irm_diffusion.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">IRM de diffusion</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tep.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tomographie par émission de positrons</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="tep.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Tomographie par émission de positrons</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Pierre Bellec et l'équipe PSY3018<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pierre Bellec et l'équipe PSY3018<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

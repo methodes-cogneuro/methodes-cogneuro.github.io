@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Reproductibilité et controverses &#8212; Méthodes en neurosciences cognitives</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,46 +20,62 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Cartes statistiques" href="cartes_statistiques.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -66,10 +84,15 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -82,14 +105,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="cartes_cerebrales.html">
    Cartes cérébrales
@@ -121,13 +145,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tep.html">
-   Tomographie par émission de positrons
+  <a class="reference internal" href="imagerie_optique.html">
+   Imagerie optique
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="imagerie_optique.html">
-   Imagerie optique
+  <a class="reference internal" href="tep.html">
+   Tomographie par émission de positrons
   </a>
  </li>
  <li class="toctree-l1">
@@ -143,94 +167,181 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/reproductibilite.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/reproductibilite.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/reproductibilite.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/reproductibilite.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/reproductibilite.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/reproductibilite.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#la-crise-de-reproductibilite">
    La crise de reproductibilité
@@ -336,17 +447,138 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Reproductibilité et controverses</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#la-crise-de-reproductibilite">
+   La crise de reproductibilité
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#une-crise-quelle-crise">
+     Une crise? Quelle crise?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-methode-scientifique">
+     La méthode scientifique
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-methode-scientifique-hacked">
+     La méthode scientifique: hacked
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#biais-de-publication">
+       Biais de publication
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#p-hacking">
+       p-hacking
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#harking">
+       HARKing
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reproducibilite-et-neuroimagerie">
+   Reproducibilité et neuroimagerie
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#degres-de-liberte-en-recherche">
+     Degrés de liberté en recherche
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tailles-d-effet">
+     Tailles d’effet
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#methodes-incompletes">
+     Méthodes incomplètes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#des-solutions">
+   Des solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etudes-pre-enregistrees">
+     Études pré-enregistrées
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code">
+     Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partage-de-donnees">
+     Partage de données
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partage-d-environnement">
+     Partage d’environnement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#puissance-statistique-et-meilleures-pratiques">
+     Puissance statistique et meilleures pratiques
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercices">
+   Exercices
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="reproductibilite-et-controverses">
-<span id="reproductibilite-controverses-chapitre"></span><h1>Reproductibilité et controverses<a class="headerlink" href="#reproductibilite-et-controverses" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="reproductibilite-et-controverses">
+<span id="reproductibilite-controverses-chapitre"></span><h1>Reproductibilité et controverses<a class="headerlink" href="#reproductibilite-et-controverses" title="Permalink to this headline">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -394,14 +626,16 @@
 <li><p>Comprendre certaines pratiques scientifiques douteuses qui participent au manque de reproductibilité en neurosciences cognitives.</p></li>
 <li><p>Connaître certains outils qui peuvent améliorer la reproductibilité en neurosciences cognitives.</p></li>
 </ul>
-<div class="section" id="la-crise-de-reproductibilite">
-<h2>La crise de reproductibilité<a class="headerlink" href="#la-crise-de-reproductibilite" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="une-crise-quelle-crise">
-<h3>Une crise? Quelle crise?<a class="headerlink" href="#une-crise-quelle-crise" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="significant-fig">
+<section id="la-crise-de-reproductibilite">
+<h2>La crise de reproductibilité<a class="headerlink" href="#la-crise-de-reproductibilite" title="Permalink to this headline">#</a></h2>
+<section id="une-crise-quelle-crise">
+<h3>Une crise? Quelle crise?<a class="headerlink" href="#une-crise-quelle-crise" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="significant-fig">
 <a class="reference internal image-reference" href="_images/significant.png"><img alt="_images/significant.png" src="_images/significant.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 108 </span><span class="caption-text">Cette figure illustre un exemple de processus pouvant amener à un résultat scientifique controversé (ainsi qu’un exemple de problème de comparaisons multiples). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/882/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#significant-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">Cette figure illustre un exemple de processus pouvant amener à un résultat scientifique controversé (ainsi qu’un exemple de problème de comparaisons multiples). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/882/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#significant-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>En 2016, un sondage effectué auprès de 1576 chercheurs a été mené dans le but de voir si, dans la
 perception des professionnels dans la recherche, il y avait une crise de
 reproductibilité, et si oui, laquelle (<a class="reference external" href="https://doi.org/10.1038/533452a">Baker, 2016</a>).
@@ -415,13 +649,15 @@ reproductibilité. Parmi les raisons les plus fréquemment mentionnées,
 on retrouve la <em>pression de publier</em>, la <em>publication sélective</em> (les gens ne publient
 seulement que ce qui fonctionne bien) ainsi que la <em>puissance statistique limitée</em>.
 Ce chapitre cherchera à expliquer certaines de ces notions plus en détails en commençant par formaliser le processus de génération de connaissances scientifiques.</p>
-</div>
-<div class="section" id="la-methode-scientifique">
-<h3>La méthode scientifique<a class="headerlink" href="#la-methode-scientifique" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="researchcycle-original-fig">
+</section>
+<section id="la-methode-scientifique">
+<h3>La méthode scientifique<a class="headerlink" href="#la-methode-scientifique" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="researchcycle-original-fig">
 <a class="reference internal image-reference" href="_images/researchcycle_original.png"><img alt="_images/researchcycle_original.png" src="_images/researchcycle_original.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 109 </span><span class="caption-text">Cette figure illustre le cycle des découvertes scientifiques selon l’approche de la méthode scientifique décrite par <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>. Figure adaptée d’un travail original par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>. La figure adaptée par P. Bellec est elle-même disponible sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#researchcycle-original-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Cette figure illustre le cycle des découvertes scientifiques selon l’approche de la méthode scientifique décrite par <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>. Figure adaptée d’un travail original par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>. La figure adaptée par P. Bellec est elle-même disponible sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#researchcycle-original-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>La <a class="reference internal" href="#researchcycle-original-fig"><span class="std std-numref">Fig. 109</span></a> présente une version simplifiée de la méthode scientifique impliquée dans la découverte de connaissances, inspirée par la théorie de <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>, telle qu’elle est généralement implémentée dans la communauté de recherche.</p>
 <ul class="simple">
 <li><p>On commence avec une consultation des publications antérieures: celles-ci représentent les connaissances qui ont été accumulées par d’autres chercheurs avant nous.</p></li>
@@ -433,42 +669,46 @@ Ce chapitre cherchera à expliquer certaines de ces notions plus en détails en 
 <li><p>Les résultats de la recherche sont alors publiés pour permettre au reste de la communauté de recherche de continuer à formuler de nouvelles hypothèses.</p></li>
 </ul>
 <p>Comme on utilise des statistiques rigoureuses dans cette approche, on ne génère qu’une quantité limitée de faux positifs, et donc, on fait des découvertes scientifiques sans faire trop d’erreurs. En pratique, cette approche peut être adaptée de nombreuses manières en y incluant <em>des pratiques de recherche douteuses</em> qui vont compromettre l’intégrité et la rigueur des conclusions de l’étude.</p>
-</div>
-<div class="section" id="la-methode-scientifique-hacked">
-<h3>La méthode scientifique: hacked<a class="headerlink" href="#la-methode-scientifique-hacked" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="researchcycle-hacked-fig">
+</section>
+<section id="la-methode-scientifique-hacked">
+<h3>La méthode scientifique: hacked<a class="headerlink" href="#la-methode-scientifique-hacked" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="researchcycle-hacked-fig">
 <a class="reference internal image-reference" href="_images/researchcycle_hacked.png"><img alt="_images/researchcycle_hacked.png" src="_images/researchcycle_hacked.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 110 </span><span class="caption-text">Cette figure illustre les pratiques douteuses qui peuvent affecter négativement l’intégrité du cycle des découvertes scientifiques. Figure adaptée d’un travail original par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>. La figure intègre aussi une image <a class="reference external" href="https://www.shutterstock.com/image-vector/computer-hacker-laptop-icon-787273936">shutterstock</a>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#researchcycle-hacked-fig" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="biais-de-publication">
-<h4>Biais de publication<a class="headerlink" href="#biais-de-publication" title="Permalink to this headline">¶</a></h4>
+<figcaption>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Cette figure illustre les pratiques douteuses qui peuvent affecter négativement l’intégrité du cycle des découvertes scientifiques. Figure adaptée d’un travail original par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>. La figure intègre aussi une image <a class="reference external" href="https://www.shutterstock.com/image-vector/computer-hacker-laptop-icon-787273936">shutterstock</a>, utilisée sous licence shutterstock standard.</span><a class="headerlink" href="#researchcycle-hacked-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="biais-de-publication">
+<h4>Biais de publication<a class="headerlink" href="#biais-de-publication" title="Permalink to this headline">#</a></h4>
 <p>La publication sélective est un des problèmes les plus importants identifiés dans le sondage vu plus tôt. Cela signifie que les résultats d’une étude ne sont publiés que lorsqu’ils sont positifs, c’est à dire uniquement s’ils confirment les hypothèses de l’équipe de recherche. Si ce type de pratique est systématique dans une communauté de recherche, il se peut que plusieurs groupes rapportent un résultat, qui semblera alors robuste, alors qu’en fait, un nombre plus important de groupes de recherche n’ont pas pu répliquer cet effet et ne l’ont donc jamais publié. Cela vient déformer complètement la collection de connaissances accumulée par la communauté scientifique, collection qui sera elle-même à l’origine des hypothèses des études futures.</p>
-</div>
-<div class="section" id="p-hacking">
-<h4>p-hacking<a class="headerlink" href="#p-hacking" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="p-hacking">
+<h4>p-hacking<a class="headerlink" href="#p-hacking" title="Permalink to this headline">#</a></h4>
 <p>Si nous voyons que nos résultats ne correspondent pas à nos attentes, il est possible que nous nous demandions si nous avons commis une erreur ou si nous avons bien choisi la technique d’analyse optimale. Nous risquons alors de revisiter la manière
 à laquelle nous analysons les données jusqu’à ce que les résultats deviennent significatifs. Ce type d’approche a été baptisé <em>p-hacking</em>. Le p-hacking peut prendre de nombreuses formes: exclusion arbitraire de “valeurs aberrantes”, sélection d’un sous-groupe qui montre l’effet attendu, changement des paramètres de prétraitement, etc.</p>
-</div>
-<div class="section" id="harking">
-<h4>HARKing<a class="headerlink" href="#harking" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="harking">
+<h4>HARKing<a class="headerlink" href="#harking" title="Permalink to this headline">#</a></h4>
 <p>La dernière pratique douteuse est baptisée le « HARKing ». Le terme HARK est un acronyme originaire de l’anglais pour les termes « Hypothesis after results are known », ou bien “définition des hypothèses après que les résultats soient connus”. On va effectuer de nombreux tests à partir des données recueillies et on va formuler a posteriori des hypothèses correspondant aux résultats significatifs dans l’échantillon. Ce processus n’est pas nécessairement malicieux, mais il peut émerger d’une volonté d’interpréter les données à tout prix. Cette démarche n’est pas nécessairement problématique, du moment que les hypothèses sont (correctement) présentées comme étant de nature exploratoire, guidées par les données, plutôt que comme des hypothèses formulées a priori de façon rigoureuse.</p>
-</div>
-</div>
-</div>
-<div class="section" id="reproducibilite-et-neuroimagerie">
-<h2>Reproducibilité et neuroimagerie<a class="headerlink" href="#reproducibilite-et-neuroimagerie" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="reproducibilite-et-neuroimagerie">
+<h2>Reproducibilité et neuroimagerie<a class="headerlink" href="#reproducibilite-et-neuroimagerie" title="Permalink to this headline">#</a></h2>
 <p>Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, ainsi que d’autres facteurs qui peuvent contribuer au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaines de traitement en neuroimagerie.</p>
 <ul class="simple">
 <li><p>Tout d’abord, il est possible de faire varier de façon importante les conclusions d’une étude juste en modifiant les choix analytiques que l’on fait concernant la chaine de traitement (ce que l’on appelle les <strong>degrés de liberté en recherche</strong>).</p></li>
 <li><p>Ensuite, il est possible de confondre les effets significatifs et les effets importants (on doit considérer la <strong>taille des effets</strong>).</p></li>
 <li><p>Enfin, à cause de la complexité des méthodes utilisées, il est souvent difficile, voir impossible, de vraiment comprendre les méthodes utilisées dans un article seulement sur la base du texte de cet article (<strong>méthodes incomplètes</strong>).</p></li>
 </ul>
-<div class="section" id="degres-de-liberte-en-recherche">
-<h3>Degrés de liberté en recherche<a class="headerlink" href="#degres-de-liberte-en-recherche" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="multi-analyses-fmri-fig">
+<section id="degres-de-liberte-en-recherche">
+<h3>Degrés de liberté en recherche<a class="headerlink" href="#degres-de-liberte-en-recherche" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="multi-analyses-fmri-fig">
 <a class="reference internal image-reference" href="_images/multi_analyses_fmri.png"><img alt="_images/multi_analyses_fmri.png" src="_images/multi_analyses_fmri.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 111 </span><span class="caption-text">Cette figure résume les cartes d’activations IRMf générées par 64 équipes indépendantes à partir des mêmes données et ayant pour objectif de tester la même hypothèse. Les équipes ont été séparées en trois sous-groupes sur la base de la similarité spatiale de leurs cartes d’activation à l’aide d’un algorithme automatique. Le premier groupe (cluster 1) est le plus gros, avec 50 équipes, alors que les deux autres sous-groupes incluent 7 équipes chacun. Notez les variations importantes entre les trois sous-groupes. Figure tirée de <a class="reference external" href="https://doi.org/10.1101/843193">Botvinik-Nezer et al., 2020</a> sous licence <a class="reference external" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC-BY-NC-ND 4.0</a>.</span><a class="headerlink" href="#multi-analyses-fmri-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Cette figure résume les cartes d’activations IRMf générées par 64 équipes indépendantes à partir des mêmes données et ayant pour objectif de tester la même hypothèse. Les équipes ont été séparées en trois sous-groupes sur la base de la similarité spatiale de leurs cartes d’activation à l’aide d’un algorithme automatique. Le premier groupe (cluster 1) est le plus gros, avec 50 équipes, alors que les deux autres sous-groupes incluent 7 équipes chacun. Notez les variations importantes entre les trois sous-groupes. Figure tirée de <a class="reference external" href="https://doi.org/10.1101/843193">Botvinik-Nezer et al., 2020</a> sous licence <a class="reference external" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC-BY-NC-ND 4.0</a>.</span><a class="headerlink" href="#multi-analyses-fmri-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Pour chacune des techniques étudiées dans ces notes de cours, il est nécessaire d’implémenter une série d’étapes d’analyse et de choisir certains paramètres pour chacune de ces étapes. Dans la mesure où l’on n’a pas de vérité de terrain à laquelle se référer en neuroimagerie, il n’existe pas de consensus sur le choix optimal concernant ces paramètres. De plus, ce choix est probablement dépendant de la population d’intérêt et des questions de recherche dans une large mesure. Pour quantifier cette variabilité, une étude récente a invité 70 équipes de recherche à analyser le même jeu de données par activation en IRMf <a class="reference external" href="https://doi.org/10.1101/843193">Botvinik-Nezer et al., 2020</a> et à tester les mêmes hypothèses. Un premier résultat frappant est que chaque équipe a utilisé une approche unique pour analyser les données, illustrant ainsi le manque criant de standardisation dans le domaine. Un autre résultat frappant est que, pour une hypothèse donnée, certaines équipes ont produit des cartes très différentes (voir <a class="reference internal" href="#multi-analyses-fmri-fig"><span class="std std-numref">Fig. 111</span></a>). Bien que certains sous-groupes d’équipes aient identifié des cartes très similaires, certains choix ont amené à des différences importantes. Par ailleurs, même pour les équipes générant des cartes similaires, leur interprétation de la carte pour répondre à l’hypothèse variait substantiellement!</p>
 <div class="tip admonition" id="researcher-degrees-freedom-tip">
 <p class="admonition-title">Degrés de liberté en recherche et p-hacking</p>
@@ -479,9 +719,9 @@ En effet, il est toujours possible de comparer plusieurs approches pour sélecti
 <p class="admonition-title">Impact des logiciels d’analyse et de l’environnement virtuel</p>
 <p>Au-delà des paramètres utilisés dans une analyse, des différences substantielles peuvent venir du choix du logiciel ou de la version du logiciel utilisé (<a class="reference external" href="https://doi.org/10.1002/hbm.24603">Bowring et al., 2019</a>). Même des changements mineurs peuvent avoir un impact sur les résultats. Et cela n’est pas limité au logiciel de neuroimagerie en tant que tel. Un changement de système d’opération peut lui aussi créer des différences, par exemple, dans une analyse de morphométrie (<a class="reference external" href="https://doi.org/10.1371/journal.pone.0038234">Gronenschild et al., 2012</a>).</p>
 </div>
-</div>
-<div class="section" id="tailles-d-effet">
-<h3>Tailles d’effet<a class="headerlink" href="#tailles-d-effet" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="tailles-d-effet">
+<h3>Tailles d’effet<a class="headerlink" href="#tailles-d-effet" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -534,12 +774,14 @@ En effet, il est toujours possible de comparer plusieurs approches pour sélecti
 </div>
 </div>
 </div>
-<div class="figure align-default" id="effect-size-fig" style="width: 800px">
+<figure class="align-default" id="effect-size-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/reproductibilite_1_0.png" src="_images/reproductibilite_1_0.png" />
+<img alt="_images/reproductibilite_1_1.png" src="_images/reproductibilite_1_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 112 </span><span class="caption-text">Illustration de deux distributions de groupes suivant une loi normale pour différentes tailles d’effet mesurées avec le <em>d</em> de Cohen. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#effect-size-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Illustration de deux distributions de groupes suivant une loi normale pour différentes tailles d’effet mesurées avec le <em>d</em> de Cohen. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#effect-size-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Une autre erreur commune en neuroimagerie est d’interpréter une différence significative comme étant une différence importante. Par exemple, imaginons que l’on trouve une différence significative concernant le volume de l’amygdale entre deux groupes: celui-ci serait réduit chez des personnes sur le spectre de l’autisme par rapport à des individus neurotypiques. Cela signifierait que la différence de la moyenne des distributions est différente, mais il se peut tout à fait qu’un individu sur le spectre ait une amygdale plus grande qu’un individu neurotypique.</p>
 <p>Plutôt que de seulement se fier à la significativité, il est important de mesurer la taille de
 l’effet, c’est à dire la différence qui existe entre les deux populations. On peut par exemple considérer la différence des moyennes que l’on divise ensuite par l’écart type des deux populations - une mesure appelée le <em>d</em> de Cohen. Un <em>d</em> de Cohen de 0.1 ou 0.2 est courant pour des différences de groupes entre populations cliniques. Avec ce type de différence, les distributions des deux groupes se chevauchent de manière importante. Un <em>d</em> de Cohen de 2 décrirait pour sa part un effet de groupe très important, où le score de presque tous les membres d’un groupe est inférieur au score de tous les membres de l’autre groupe.</p>
@@ -547,20 +789,22 @@ l’effet, c’est à dire la différence qui existe entre les deux populations.
 <p class="admonition-title">Valeur <em>p</em> et taille d’effet</p>
 <p>La valeur <em>p</em> ne nous donne aucune information directe sur la taille de l’effet. Une valeur <em>p</em> peut être très significative, par exemple <em>p&lt;0.000001</em> simplement parce que l’on compare deux groupes ayant une très grande taille d’échantillon, par exemple N=10000 par groupe. Dans ce cas, même de toutes petites différences peuvent devenir très significatives.</p>
 </div>
-</div>
-<div class="section" id="methodes-incompletes">
-<h3>Méthodes incomplètes<a class="headerlink" href="#methodes-incompletes" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="machine-learning-fig">
+</section>
+<section id="methodes-incompletes">
+<h3>Méthodes incomplètes<a class="headerlink" href="#methodes-incompletes" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="machine-learning-fig">
 <a class="reference internal image-reference" href="_images/machine_learning.png"><img alt="_images/machine_learning.png" src="_images/machine_learning.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 113 </span><span class="caption-text">Cette figure illustre le processus parfois chaotique de développement d’une méthode optimale et la difficulté de communiquer ce processus de manière claire et complète dans la section de méthodes d’un article. Cette figure est tirée de <a class="reference external" href="https://xkcd.com/1838/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#machine-learning-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Cette figure illustre le processus parfois chaotique de développement d’une méthode optimale et la difficulté de communiquer ce processus de manière claire et complète dans la section de méthodes d’un article. Cette figure est tirée de <a class="reference external" href="https://xkcd.com/1838/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#machine-learning-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Le manque de détails dans la section “Méthodes” d’un article peut être un autre obstacle majeur à la reproduction des résultats. Comme les techniques d’analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d’avoir une description complète des méthodes. Il est aussi courant d’omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l’article. Le texte d’un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l’article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l’article. Il est tout à fait possible que d’autres analyses soient omises entièrement de l’article et que les membres de l’équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l’article.</p>
-</div>
-</div>
-<div class="section" id="des-solutions">
-<h2>Des solutions<a class="headerlink" href="#des-solutions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="etudes-pre-enregistrees">
-<h3>Études pré-enregistrées<a class="headerlink" href="#etudes-pre-enregistrees" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="des-solutions">
+<h2>Des solutions<a class="headerlink" href="#des-solutions" title="Permalink to this headline">#</a></h2>
+<section id="etudes-pre-enregistrees">
+<h3>Études pré-enregistrées<a class="headerlink" href="#etudes-pre-enregistrees" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -600,12 +844,14 @@ l’effet, c’est à dire la différence qui existe entre les deux populations.
 </div>
 </div>
 </div>
-<div class="figure align-default" id="registered-report-fig" style="width: 600px">
+<figure class="align-default" id="registered-report-fig" style="width: 600px">
 <div class="cell_output docutils container">
 <img alt="_images/reproductibilite_3_0.png" src="_images/reproductibilite_3_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 114 </span><span class="caption-text">Pourcentage de “découvertes négatives” dans la littérature. Les découvertes négatives viennent d’études pour lesquelles les analyses ne confirment pas les hypothèses de recherche. On compare ici des articles traditionnels avec des études pré-enregistrées portant sur de nouvelles hypothèses de recherche, ainsi que des études pré-enregistrées portant sur des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de <a class="reference external" href="https://doi.org/10.31234/osf.io/3czyt">Allen et Mehler, 2018</a> sur 127 études pré-enregistrées. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#registered-report-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Pourcentage de “découvertes négatives” dans la littérature. Les découvertes négatives viennent d’études pour lesquelles les analyses ne confirment pas les hypothèses de recherche. On compare ici des articles traditionnels avec des études pré-enregistrées portant sur de nouvelles hypothèses de recherche, ainsi que des études pré-enregistrées portant sur des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de <a class="reference external" href="https://doi.org/10.31234/osf.io/3czyt">Allen et Mehler, 2018</a> sur 127 études pré-enregistrées. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#registered-report-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l’on appelle une <strong>étude pré-enregistrée</strong>. Un des problèmes dans le cercle présenté en <a class="reference internal" href="#researchcycle-original-fig"><span class="std std-numref">Fig. 109</span></a>, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l’équipe de recherche décide simplement de passer au prochain projet plutôt qu’investir dans la publication d’un résultat négatif. Une manière d’éliminer ça,
 c’est de soumetre la publication avec les hypothèses et les plans d’analyse, avant de recueillir les données. Cela permet aux
 reviewers de critiquer la conception de l’étude avant qu’elle soit terminée, et permet donc de modifier le protocole de recherche si nécessaire. L’article est alors accepté, <em>quelque soit le résultat de l’étude</em>. Si les
@@ -613,39 +859,45 @@ résultats ne correspondent pas aux hypothèses, l’article
 serait déjà accepté et publié tout de même. Cela ne veut pas dire qu’on ne
 peut pas présenter des nouvelles analyses auxquelles on n’avait pas pensé
 avant. Celles-ci seront alors présentées (correctement) comme exploratoires, plutôt que confirmatoires. En d’autres termes, cette approche élimine le HARKing, et il semble en pratique que cette approche fonctionne (voir <a class="reference internal" href="#registered-report-fig"><span class="std std-numref">Fig. 114</span></a>).</p>
-</div>
-<div class="section" id="code">
-<h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="python-fig">
+</section>
+<section id="code">
+<h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="python-fig">
 <a class="reference internal image-reference" href="_images/python.png"><img alt="_images/python.png" src="_images/python.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 115 </span><span class="caption-text">Cette figure illustre les avantages d’automatiser les analyses scientifiques à l’aide de code (de manière métaphorique). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/353/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#python-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Cette figure illustre les avantages d’automatiser les analyses scientifiques à l’aide de code (de manière métaphorique). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/353/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#python-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Une autre solution pour rendre les analyses scientifiques en neuroimagerie plus reproductible est d’apprendre à coder. Automatiser les analyses permet de les rendre plus facile à reproduire pour quiconque. Il peut y avoir des erreurs dans le code, mais elles peuvent être vues et réparées par d’autres. Les analyses qui ne reposent pas sur du code représentent un obstacle majeur à la reproductibilité. Pour être vraiment utile, le code d’une analyse doit être partagé publiquement. Ce code constitue alors un artefact de recherche très important, beaucoup plus détaillé et spécifique que la section méthodologique d’un article. Beaucoup de gens utilisent la plateforme <a class="reference external" href="https://github.com/">Github</a> pour partager des éléments de code et aussi afin de partager les modifications qui y sont faites avec le temps. Il est aussi possible d’archiver une version du code sur une plateforme comme <a class="reference external" href="https://zenodo.org/">zenodo</a> qui fournit un identifiant unique pour ce code, comme pour un article. Si le code est de haute qualité et réutilisable, il est même possible de publier un article sur ce code dans un journal comme le <a class="reference external" href="https://joss.theoj.org/">Journal of Open Source Software</a>.</p>
-</div>
-<div class="section" id="partage-de-donnees">
-<h3>Partage de données<a class="headerlink" href="#partage-de-donnees" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="openneuro-downloads-fig">
+</section>
+<section id="partage-de-donnees">
+<h3>Partage de données<a class="headerlink" href="#partage-de-donnees" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="openneuro-downloads-fig">
 <a class="reference internal image-reference" href="_images/openneuro-downloads.jpg"><img alt="_images/openneuro-downloads.jpg" src="_images/openneuro-downloads.jpg" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 116 </span><span class="caption-text">Nombre de jeux de données ouverts en neuroimagerie et nombre de participants disponibles sur la plateforme de partage de données <a class="reference external" href="https://openneuro.org/">openneuro</a>. Figure tirée de <a class="reference external" href="https://doi.org/10.7554/eLife.71774">Markiewicz et al., 2021</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#openneuro-downloads-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Nombre de jeux de données ouverts en neuroimagerie et nombre de participants disponibles sur la plateforme de partage de données <a class="reference external" href="https://openneuro.org/">openneuro</a>. Figure tirée de <a class="reference external" href="https://doi.org/10.7554/eLife.71774">Markiewicz et al., 2021</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#openneuro-downloads-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Une autre solution pour améliorer la reproducibilité est de partager les données de recherche. La <code class="xref std std-numref docutils literal notranslate"><span class="pre">(openneuro-downloads-fig)</span></code> illustre l’adoption rapide de cette pratique dans la communauté de recherche en neuroimagerie. Partager ses données permet à d’autres laboratoires de répliquer les analyses ou essayer d’autres méthodes. Cela permet aussi au laboratoire d’origine de disposer d’une archive bien organisée pour de futurs projets. Le partage des données humaines est en revanche rendu complexe dans certaines parties du monde (comme le Québec) à cause de considérations éthiques ou bien légales. Il est en revanche toujours possible de partager des cartes statistiques de groupe, par exemple en utilisant une plateforme comme <a class="reference external" href="https://neurovault.org/">neurovault</a>.</p>
-</div>
-<div class="section" id="partage-d-environnement">
-<h3>Partage d’environnement<a class="headerlink" href="#partage-d-environnement" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="partage-d-environnement">
+<h3>Partage d’environnement<a class="headerlink" href="#partage-d-environnement" title="Permalink to this headline">#</a></h3>
 <p>Des outils existent également pour partager un environnement de travail, ce qui est possible gratuitement grâce aux technologies libres. Il existe diverses solutions. Le language <code class="docutils literal notranslate"><span class="pre">python</span></code> permet de décrire un ensemble de dépendances (avec versions) au moyen d’un simple fichier texte <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Certaines versions de linux comme <a class="reference external" href="https://neuro.debian.net/">neurodebian</a> ont également un grand nombre d’outils de neuroimagerie prêts à l’installation, incluant des fonctionnalités de contrôle des versions. Les <code class="docutils literal notranslate"><span class="pre">containers</span></code> sont une autre famille de solutions qui permettent de partager un ensemble de librairies ainsi que le système d’exploitation. Des variantes de <code class="docutils literal notranslate"><span class="pre">containers</span></code> ont été spécifiquement développées pour les neurosciences cognitives, comme <a class="reference external" href="https://www.repronim.org/neurodocker/">neurodocker</a>. Un dernier exemple est <a class="reference external" href="https://mybinder.org/">mybinder</a> qui permet d’importer un <code class="docutils literal notranslate"><span class="pre">container</span></code> avec toutes les dépendances d’un projet et de ré-exécuter ce code dans un fureteur internet, sans avoir à installer quoi que ce soit. Pour la version en ligne de ces notes de cours, il y a une petite fusée en haut à droite qui démarre mybinder. Comme les notes de cours utilisent des données ouvertes pour beaucoup de figures, il est possible de reproduire (et modifier) les figures du cours de cette manière.</p>
-</div>
-<div class="section" id="puissance-statistique-et-meilleures-pratiques">
-<h3>Puissance statistique et meilleures pratiques<a class="headerlink" href="#puissance-statistique-et-meilleures-pratiques" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="puissance-statistique-et-meilleures-pratiques">
+<h3>Puissance statistique et meilleures pratiques<a class="headerlink" href="#puissance-statistique-et-meilleures-pratiques" title="Permalink to this headline">#</a></h3>
 <p>Certains articles se concentrent sur la formulation de « guides » des meilleures
 pratiques pour différentes méthodes de recherche. Le domaine des neurosciences cognitives a par exemple un guide baptisé COBIDAS <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5685169/">(Nichols et al., 2017)</a>, qui a également une version pour la MEG <a class="reference external" href="https://osf.io/a8dhx/">(Pernet et al., 2020)</a>. Ce type de guide permet de sélectionner des méthodes qui sont non seulement reproductibles, mais idéalement aussi robustes et pourront être répliquées avec des méthodes ou des données différentes. Un point important à considérer est celui de la <strong>puissance statistique</strong> d’une étude. Alors que la valeur <em>p</em> nous informe sur la fréquence de faux positifs, c’est-à-dire une détection faite en l’absence de signal, la puissance statistique nous informe sur la fréquence des faux négatifs, c’est-à-dire le signal qu’on n’arrive pas à détecter. Pour qu’un résultat soit reproductible, il est critique que la puissance statistique du test soit élevée. Avec le modèle linéaire général, la puissance statistique dépend de la taille d’effet, du nombre de participants dans l’étude ainsi que du taux de faux positifs <em>p</em> du test. Voir cette <a class="reference external" href="https://rpsychologist.com/d3/nhst/">page internet</a> pour expérimenter avec différents paramètres.</p>
-</div>
-</div>
-<div class="section" id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default" id="research-cycle-fig">
+</section>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="research-cycle-fig">
 <a class="reference internal image-reference" href="_images/research-cycle.jpg"><img alt="_images/research-cycle.jpg" src="_images/research-cycle.jpg" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 117 </span><span class="caption-text">Un cycle de découvertes en recherche qui inclut la préservation et la réutilisation des données. Figure par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>.</span><a class="headerlink" href="#research-cycle-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Un cycle de découvertes en recherche qui inclut la préservation et la réutilisation des données. Figure par <a class="reference external" href="https://info.scriberia.com/contact-us">scriberia</a> dans le cadre du livre <a class="reference external" href="https://the-turing-way.netlify.app">The Turing way</a> sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, DOI: <a class="reference external" href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>.</span><a class="headerlink" href="#research-cycle-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Dans ce chapitre, on a vu:</p>
 <ul class="simple">
 <li><p>certaines pratiques de recherche douteuses qui peuvent amener à des découvertes scientifiques non-reproductibles.</p></li>
@@ -665,9 +917,9 @@ pratiques pour différentes méthodes de recherche. Le domaine des neurosciences
 </li>
 </ul>
 <p>On voit aujourd’hui émerger une nouvelle approche de découverte scientifique qui inclut notamment le partage et la ré-utilisation de données, ce qui va amener une science plus reproductible et fiable (<a class="reference internal" href="#research-cycle-fig"><span class="std std-numref">Fig. 117</span></a>).</p>
-</div>
-<div class="section" id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 10.1</p>
 <p>Choisissez la bonne réponse.
@@ -719,8 +971,8 @@ Parmi les procédures suivantes, laquelle (lesquelles) n’est (ne sont) pas sta
 <p class="admonition-title">Exercice 10.6</p>
 <p>Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe): des sujets en santé ainsi que des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée utilisant un atlas comprenant 90 régions et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression qui inclut l’âge et le sexe des participants. Le seuil de significativité est fixé à p&lt;0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifiez trois problèmes majeurs avec cette conclusion.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -744,45 +996,41 @@ Parmi les procédures suivantes, laquelle (lesquelles) n’est (ne sont) pas sta
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="cartes_statistiques.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Cartes statistiques</p>
-            </div>
-        </a>
-    </div>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cartes_statistiques.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Cartes statistiques</p>
+        </div>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Pierre Bellec et l'équipe PSY3018<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Pierre Bellec et l'équipe PSY3018<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>
