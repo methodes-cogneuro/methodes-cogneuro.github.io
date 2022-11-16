@@ -245,7 +245,7 @@ L'approche de régression linéaire que l'on vient de voir est simple et puissan
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
 from nilearn.plotting import plot_design_matrix
-design_df = df[["subject_label", "age", "sexe"]].replace(['femelle', 'male'], value=[0., 1.])
+design_df = df[["subject_label", "age", "sexe"]].replace(['F', 'M'], value=[0., 1.])
 design_matrix = make_second_level_design_matrix(
     subject_label,
     design_df
