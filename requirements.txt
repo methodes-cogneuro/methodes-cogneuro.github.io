@@ -12,3 +12,4 @@ mne>=0.24.0
 pooch>=1.5.2
 pyvistaqt>=0.5.0
 pyqt6
+jupytext

@@ -170,15 +170,18 @@ unwanted = np.nonzero(raw_intensity.annotations.description == '15.0')
 raw_intensity.annotations.delete(unwanted)
 
 # Visualize le montage
-fig = plt.figure(figsize=(10, 10), dpi=300)
+#fig = plt.figure(figsize=(10, 10), dpi=300)
 
-brain = mne.viz.Brain(
-    'fsaverage', subjects_dir=subjects_dir, background='w', cortex='0.5')
-brain.add_sensors(
-    raw_intensity.info, trans='fsaverage',
-    fnirs=['channels', 'pairs', 'sources', 'detectors'])
-brain.show_view(azimuth=20, elevation=60, distance=400)
-brain.save_image('imagerie_optique/fnirs-montage.png')
+# Had to comment out the figure generation: it leads to a dead kernel
+# Unclear why
+
+#brain = mne.viz.Brain(
+#    'fsaverage', subjects_dir=subjects_dir, background='w', cortex='0.5')
+#brain.add_sensors(
+#    raw_intensity.info, trans='fsaverage',
+#    fnirs=['channels', 'pairs', 'sources', 'detectors'])
+#brain.show_view(azimuth=20, elevation=60, distance=400)
+#brain.save_image('imagerie_optique/fnirs-montage.png')
 ```
 
 ```{figure} imagerie_optique/fnirs-montage.png

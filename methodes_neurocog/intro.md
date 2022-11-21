@@ -130,3 +130,8 @@ Ce livre est dans une large mesure "reproductible": de nombreuses figures sont g
  * Certaines images du livre ont été obtenues sous droits illimités pour diffusion web et limités pour impression (500k copies) via [shutterstock](https://www.shutterstock.com) par P. Bellec.
 
  Les auteurs sont très reconnaissants pour l'énorme travail et la générosité des communautés qui créent et maintiennent tous ces projets!
+
+ ## Statistiques
+ La génération des figures pour les différents chapitres du livre a requis les temps suivants:
+ ```{nb-exec-table}
+```
