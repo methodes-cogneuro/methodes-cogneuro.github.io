@@ -44,10 +44,6 @@ kernelspec:
   </tr>
 </table>
 
-```{warning}
-Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
-```
-
 ## Objectifs du cours
 
 Dans ce chapitre, il sera question de l'utilisation du modèle de régression pour générer des cartes statistiques cérébrales de groupe. Les statistiques de groupe permettent de combiner les mesures du cerveau de plusieurs individus et ainsi de contraster des groupes (ex. groupe de personnes jeunes et groupe de personnes âgées) ou bien de tester l'association avec une variable continue (ex. l'âge).
@@ -512,58 +508,66 @@ En règle générale, on doit faire un compromis entre la résolution (notre cap
 
 ## Exercices
 
-```{admonition} Exercice 9.1
+```{admonition} Exercice 1
 :class: note
-On souhaite comparer la connectivité entre deux groupes de sujets, jeunes vs âgés.
-Décrivez les variables prédictives à inclure dans un modèle de régression.  
-Quelles autres variables vous semblent-elles importantes à inclure dans le modèle?
+Vrai/faux. Le modèle de régression général peut être utilisé pour effectuer des statistiques de groupe pour les types de mesures suivantes… 
+ 1. IRMf
+ 2. IRM T1 (VBM)
+ 3. IRM T1 (volumétrie)
+ 4. IRM T1 (épaisseur corticale)
+ 5. Tomographie par émission de positrons
+ 6. Imagerie optique
+ 7. Imagerie de diffusion
 ```
 
-```{admonition} Exercice 9.2
+```{admonition} Exercice 2
 :class: note
-Vrai/faux (expliquez pourquoi)
-Le modèle de régression peut être utilisé pour effectuer des statistiques de groupe pour les types de mesures suivantes… (vrai/faux)
- * IRMf
- * IRM T1 (VBM)
- * IRM T1 (volumétrie)
- * IRM T1 (épaisseur corticale)
- * Données comportementales
- * Tomographie par émission de positrons
- * Imagerie optique
- * Imagerie de diffusion
+Vrai/faux. La situation suivante inclut un problème de comparaisons multiples en statistique:
+ 1. On effectue de manière répétée des mesures du volume cérébral chez N=100 sujets jeunes et N=100 sujets âgés, puis on compare statistiquement la moyenne des deux groupes. 
+ 2. On répète un test statistique à chaque voxel dans une image du cerveau, par exemple.
+ 3. On acquiert 300 volumes cérébraux chez un individu en IRMf. 
+ 4. On a quatre sous-groupes, et on compare statistiquement chacune des trois paires possibles de sous-groupes, par exemple.
 ```
 
-```{admonition} Exercice 9.3
+```{admonition} Exercice 3
 :class: note
-Vrai/faux. On observe une différence de moyenne entre deux groupes, et l’on effectue un test statistique qui nous donne une valeur p.
- * La valeur p est la probabilité qu’il n’y ait pas de vraie différence.
- * Une faible valeur p indique une forte probabilité qu’il y ait une vraie différence.
- * La valeur p indique la probabilité d’observer cette différence, au moins, s’il n’existait vraiment aucune différence entre les deux groupes.
+Choisissez la bonne réponse. On observe une différence de moyenne entre deux groupes, et l’on effectue un test statistique qui nous donne une valeur p.
+ 1. La valeur p est la probabilité de l’hypothèse nulle où il n’existe pas de vraie différence.
+ 2. Une faible valeur p indique une forte probabilité qu’il y ait une vraie différence.
+ 3. La valeur p indique la probabilité d’observer cette différence, au moins, s’il n’existait vraiment aucune différence entre les deux groupes.
 ```
 
-```{admonition} Exercice 9.4
+```{admonition} Exercice 4
 :class: note
-Vrai/faux. Un problème de comparaisons multiples signifie.
- * Qu’on effectue de manière répétée des test statistiques générant une valeur p.
- * Que l’on répète un test statistique à chaque voxel dans une image du cerveau, par exemple.
- * Que l’on teste beaucoup d’hypothèses dans un article, par exemple.
- * Que l’on a quatre sous-groupes, et que l’on compare chacune des trois paires possibles de sous-groupes, par exemple.
+On considère les analyses suivantes:
+ (hippocampe) On compare le volume de l’hippocampe entre deux groupes de sujets.
+ * (VBM) On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.
+ * (atlas) On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.
+ * (FDG) On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.
+
+On classe les analyses en fonction du nombre de comparaisons multiples impliquées. Choisissez la bonne réponse:
+ 1. VBM > atlas
+ 2. atlas > hippocampe
+ 3. atlas > FDG
+ 4. Réponses 1 et 2.
+ 5. Réponses 1, 2 et 3. 
 ```
 
-```{admonition} Exercice 9.5
+```{admonition} Exercice 5
 :class: note
-Classer les analyses suivantes du plus petit au plus grand, en fonction du nombre de comparaisons multiples impliquées. Indiquez le nombre approximatif de comparaisons.
- * On compare la densité de matière grise entre deux groupes de sujets à chaque voxel du cerveau.
- * On compare le métabolisme du glucose entre deux groupes de sujets à chaque voxel du cerveau, à l’aide du FDG-TEP.
- * On compare le volume de régions cérébrales entre deux groupes de sujets, à partir d’un atlas qui comprend 90 régions.
- * On compare le volume de l’hippocampe entre deux groupes de sujets.
+On souhaite comparer la connectivité au repos en IRMf à partir d’une région cible dans le cortex cingulaire postérieur entre deux groupes de sujets, jeunes vs âgés. On applique un modèle linéaire général à chaque voxel. 
+ * Décrivez les variables prédictives indispensables à inclure dans ce modèle.
+ * Quelles autres variables vous semblent-elles importantes à inclure dans le modèle?
+ * Est-ce que ces variables peuvent modifier la différence observée entre personnes jeunes et âgées?
 ```
 
-```{admonition} Exercice 9.6
+```{admonition} Exercice 6
 :class: note
-Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://doi.org/10.1101/611186 ) sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring [doi](https://doi.org/10.1016/j.dadm.2019.07.007). Les questions suivantes requièrent des réponses à développement court.
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://doi.org/10.1101/611186) sur Biorxiv sous licence CC0). Les questions suivantes requièrent des réponses à développement court.
 - Quelle est la variable dépendante du modèle linéaire?
 - Quelles variables explicatives sont incluses dans le modèle linéaire?
 - Sait on combien de comparaisons multiples sont faites?
-- Comment est ce que les comparaisons multiples sont corrigées?
+- Comment est-ce que les comparaisons multiples sont corrigées?
 ```
+
+
