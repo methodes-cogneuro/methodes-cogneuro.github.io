@@ -702,15 +702,18 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 <span class="n">raw_intensity</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">unwanted</span><span class="p">)</span>
 
 <span class="c1"># Visualize le montage</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="c1">#fig = plt.figure(figsize=(10, 10), dpi=300)</span>
 
-<span class="n">brain</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">Brain</span><span class="p">(</span>
-    <span class="s1">&#39;fsaverage&#39;</span><span class="p">,</span> <span class="n">subjects_dir</span><span class="o">=</span><span class="n">subjects_dir</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">cortex</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span>
-<span class="n">brain</span><span class="o">.</span><span class="n">add_sensors</span><span class="p">(</span>
-    <span class="n">raw_intensity</span><span class="o">.</span><span class="n">info</span><span class="p">,</span> <span class="n">trans</span><span class="o">=</span><span class="s1">&#39;fsaverage&#39;</span><span class="p">,</span>
-    <span class="n">fnirs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">,</span> <span class="s1">&#39;pairs&#39;</span><span class="p">,</span> <span class="s1">&#39;sources&#39;</span><span class="p">,</span> <span class="s1">&#39;detectors&#39;</span><span class="p">])</span>
-<span class="n">brain</span><span class="o">.</span><span class="n">show_view</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-<span class="n">brain</span><span class="o">.</span><span class="n">save_image</span><span class="p">(</span><span class="s1">&#39;imagerie_optique/fnirs-montage.png&#39;</span><span class="p">)</span>
+<span class="c1"># Had to comment out the figure generation: it leads to a dead kernel</span>
+<span class="c1"># Unclear why</span>
+
+<span class="c1">#brain = mne.viz.Brain(</span>
+<span class="c1">#    &#39;fsaverage&#39;, subjects_dir=subjects_dir, background=&#39;w&#39;, cortex=&#39;0.5&#39;)</span>
+<span class="c1">#brain.add_sensors(</span>
+<span class="c1">#    raw_intensity.info, trans=&#39;fsaverage&#39;,</span>
+<span class="c1">#    fnirs=[&#39;channels&#39;, &#39;pairs&#39;, &#39;sources&#39;, &#39;detectors&#39;])</span>
+<span class="c1">#brain.show_view(azimuth=20, elevation=60, distance=400)</span>
+<span class="c1">#brain.save_image(&#39;imagerie_optique/fnirs-montage.png&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -811,7 +814,7 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </div>
 <figure class="align-default" id="fnirs-filtrage-fig" style="width: 800px">
 <div class="cell_output docutils container">
-<img alt="_images/imagerie_optique_7_18.png" src="_images/imagerie_optique_7_18.png" />
+<img alt="_images/imagerie_optique_7_17.png" src="_images/imagerie_optique_7_17.png" />
 </div>
 <figcaption>
 <p><span class="caption-number">Fig. 83 </span><span class="caption-text">Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-filtrage-fig" title="Permalink to this image">#</a></p>
