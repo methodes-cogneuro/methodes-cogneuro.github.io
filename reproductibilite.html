@@ -42,6 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -258,6 +259,68 @@ title="Fullscreen mode"
 
 </button>
 
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/psy3018/notes_cours_psy3018"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Freproductibilite.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/reproductibilite.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -382,8 +445,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reproducibilite-et-neuroimagerie">
-   Reproducibilité et neuroimagerie
+  <a class="reference internal nav-link" href="#reproductibilite-et-neuroimagerie">
+   Reproductibilité et neuroimagerie
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -504,8 +567,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reproducibilite-et-neuroimagerie">
-   Reproducibilité et neuroimagerie
+  <a class="reference internal nav-link" href="#reproductibilite-et-neuroimagerie">
+   Reproductibilité et neuroimagerie
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -619,7 +682,7 @@ title="Print to PDF"
 <p class="admonition-title">Warning</p>
 <p>Ce chapitre va être mis à jour à l’automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.</p>
 </div>
-<p>Durant ce cours, nous avons effectué un survol de diverses techniques de neuroimagerie qui ouvrent une fenêtre fascinante sur la structure et la fonction du cerveau. Par contre, ces techniques sont régulièrement présentées dans des articles scientifiques qui semblent peu crédibles. Dans cet ultime cours, nous allons discuter des controverses entourant la neuroimagerie, et de façon plus large, de la crise de reproducibilité en sciences.</p>
+<p>Durant ce cours, nous avons effectué un survol de diverses techniques de neuroimagerie qui ouvrent une fenêtre fascinante sur la structure et la fonction du cerveau. Par contre, ces techniques sont régulièrement présentées dans des articles scientifiques qui semblent peu crédibles. Dans cet ultime cours, nous allons discuter des controverses entourant la neuroimagerie, et de façon plus large, de la crise de reproductibilité en sciences.</p>
 <p>Les objectifs de ce cours sont les suivants :</p>
 <ul class="simple">
 <li><p>Comprendre la crise de reproductibilité en sciences.</p></li>
@@ -648,7 +711,7 @@ Dans le sondage, 70% des personnes sondées rapportaient avoir échoué à repro
 reproductibilité. Parmi les raisons les plus fréquemment mentionnées,
 on retrouve la <em>pression de publier</em>, la <em>publication sélective</em> (les gens ne publient
 seulement que ce qui fonctionne bien) ainsi que la <em>puissance statistique limitée</em>.
-Ce chapitre cherchera à expliquer certaines de ces notions plus en détails en commençant par formaliser le processus de génération de connaissances scientifiques.</p>
+Ce chapitre cherchera à expliquer certaines de ces notions plus en détail en commençant par formaliser le processus de génération de connaissances scientifiques.</p>
 </section>
 <section id="la-methode-scientifique">
 <h3>La méthode scientifique<a class="headerlink" href="#la-methode-scientifique" title="Permalink to this headline">#</a></h3>
@@ -661,7 +724,7 @@ Ce chapitre cherchera à expliquer certaines de ces notions plus en détails en 
 <p>La <a class="reference internal" href="#researchcycle-original-fig"><span class="std std-numref">Fig. 109</span></a> présente une version simplifiée de la méthode scientifique impliquée dans la découverte de connaissances, inspirée par la théorie de <a class="reference external" href="https://fr.wikipedia.org/wiki/Karl_Popper#Philosophie_des_sciences">Karl Popper</a>, telle qu’elle est généralement implémentée dans la communauté de recherche.</p>
 <ul class="simple">
 <li><p>On commence avec une consultation des publications antérieures: celles-ci représentent les connaissances qui ont été accumulées par d’autres chercheurs avant nous.</p></li>
-<li><p>En lisant cette littérature, les chercheuses/chercheurs peuvent prendre connaissance de ce qui a déjà été découvert et formuler des hypothèses en lien avec ce que l’on sait déjà sur des choses qu’on ne connait pas encore.</p></li>
+<li><p>En lisant cette littérature, les chercheuses/chercheurs peuvent prendre connaissance de ce qui a déjà été découvert et formuler des hypothèses en lien avec ce que l’on sait déjà sur des choses qu’on ne connaît pas encore.</p></li>
 <li><p>Les chercheuses/chercheurs vont alors construire un devis de recherche: nombre de participants, groupes, tests statistiques, etc. Elles/ils vont aussi faire des prédictions concernant les résultats qu’elles/ils pensent obtenir.</p></li>
 <li><p>Une fois le devis de recherche élaboré, il est maintenant temps de recueillir les données.</p></li>
 <li><p>Ensuite, on analyse les données en suivant le protocole qui avait été établi dans le devis de recherche.</p></li>
@@ -680,7 +743,7 @@ Ce chapitre cherchera à expliquer certaines de ces notions plus en détails en 
 </figure>
 <section id="biais-de-publication">
 <h4>Biais de publication<a class="headerlink" href="#biais-de-publication" title="Permalink to this headline">#</a></h4>
-<p>La publication sélective est un des problèmes les plus importants identifiés dans le sondage vu plus tôt. Cela signifie que les résultats d’une étude ne sont publiés que lorsqu’ils sont positifs, c’est à dire uniquement s’ils confirment les hypothèses de l’équipe de recherche. Si ce type de pratique est systématique dans une communauté de recherche, il se peut que plusieurs groupes rapportent un résultat, qui semblera alors robuste, alors qu’en fait, un nombre plus important de groupes de recherche n’ont pas pu répliquer cet effet et ne l’ont donc jamais publié. Cela vient déformer complètement la collection de connaissances accumulée par la communauté scientifique, collection qui sera elle-même à l’origine des hypothèses des études futures.</p>
+<p>La publication sélective est un des problèmes les plus importants identifiés dans le sondage vu plus tôt. Cela signifie que les résultats d’une étude ne sont publiés que lorsqu’ils sont positifs, c’est-à-dire uniquement s’ils confirment les hypothèses de l’équipe de recherche. Si ce type de pratique est systématique dans une communauté de recherche, il se peut que plusieurs groupes rapportent un résultat, qui semblera alors robuste, alors qu’en fait, un nombre plus important de groupes de recherche n’ont pas pu répliquer cet effet et ne l’ont donc jamais publié. Cela vient déformer complètement la collection de connaissances accumulée par la communauté scientifique, collection qui sera elle-même à l’origine des hypothèses des études futures.</p>
 </section>
 <section id="p-hacking">
 <h4>p-hacking<a class="headerlink" href="#p-hacking" title="Permalink to this headline">#</a></h4>
@@ -693,11 +756,11 @@ Ce chapitre cherchera à expliquer certaines de ces notions plus en détails en 
 </section>
 </section>
 </section>
-<section id="reproducibilite-et-neuroimagerie">
-<h2>Reproducibilité et neuroimagerie<a class="headerlink" href="#reproducibilite-et-neuroimagerie" title="Permalink to this headline">#</a></h2>
-<p>Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, ainsi que d’autres facteurs qui peuvent contribuer au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaines de traitement en neuroimagerie.</p>
+<section id="reproductibilite-et-neuroimagerie">
+<h2>Reproductibilité et neuroimagerie<a class="headerlink" href="#reproductibilite-et-neuroimagerie" title="Permalink to this headline">#</a></h2>
+<p>Nous allons maintenant voir comment la neuroimagerie représente un domaine particulièrement propice au p-hacking, ainsi que d’autres facteurs qui peuvent contribuer au manque de reproductibilité. Ces facteurs sont tous liés à la complexité des chaînes de traitement en neuroimagerie.</p>
 <ul class="simple">
-<li><p>Tout d’abord, il est possible de faire varier de façon importante les conclusions d’une étude juste en modifiant les choix analytiques que l’on fait concernant la chaine de traitement (ce que l’on appelle les <strong>degrés de liberté en recherche</strong>).</p></li>
+<li><p>Tout d’abord, il est possible de faire varier de façon importante les conclusions d’une étude juste en modifiant les choix analytiques que l’on fait concernant la chaîne de traitement (ce que l’on appelle les <strong>degrés de liberté en recherche</strong>).</p></li>
 <li><p>Ensuite, il est possible de confondre les effets significatifs et les effets importants (on doit considérer la <strong>taille des effets</strong>).</p></li>
 <li><p>Enfin, à cause de la complexité des méthodes utilisées, il est souvent difficile, voir impossible, de vraiment comprendre les méthodes utilisées dans un article seulement sur la base du texte de cet article (<strong>méthodes incomplètes</strong>).</p></li>
 </ul>
@@ -779,12 +842,12 @@ En effet, il est toujours possible de comparer plusieurs approches pour sélecti
 <img alt="_images/reproductibilite_1_1.png" src="_images/reproductibilite_1_1.png" />
 </div>
 <figcaption>
-<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Illustration de deux distributions de groupes suivant une loi normale pour différentes tailles d’effet mesurées avec le <em>d</em> de Cohen. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#effect-size-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Illustration de deux distributions de groupes suivant une loi normale pour différentes tailles d’effet mesurées avec le <em>d</em> de Cohen. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#effect-size-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Une autre erreur commune en neuroimagerie est d’interpréter une différence significative comme étant une différence importante. Par exemple, imaginons que l’on trouve une différence significative concernant le volume de l’amygdale entre deux groupes: celui-ci serait réduit chez des personnes sur le spectre de l’autisme par rapport à des individus neurotypiques. Cela signifierait que la différence de la moyenne des distributions est différente, mais il se peut tout à fait qu’un individu sur le spectre ait une amygdale plus grande qu’un individu neurotypique.</p>
 <p>Plutôt que de seulement se fier à la significativité, il est important de mesurer la taille de
-l’effet, c’est à dire la différence qui existe entre les deux populations. On peut par exemple considérer la différence des moyennes que l’on divise ensuite par l’écart type des deux populations - une mesure appelée le <em>d</em> de Cohen. Un <em>d</em> de Cohen de 0.1 ou 0.2 est courant pour des différences de groupes entre populations cliniques. Avec ce type de différence, les distributions des deux groupes se chevauchent de manière importante. Un <em>d</em> de Cohen de 2 décrirait pour sa part un effet de groupe très important, où le score de presque tous les membres d’un groupe est inférieur au score de tous les membres de l’autre groupe.</p>
+l’effet, c’est-à-dire la différence qui existe entre les deux populations. On peut par exemple considérer la différence des moyennes que l’on divise ensuite par l’écart type des deux populations - une mesure appelée le <em>d</em> de Cohen. Un <em>d</em> de Cohen de 0.1 ou 0.2 est courant pour des différences de groupes entre populations cliniques. Avec ce type de différence, les distributions des deux groupes se chevauchent de manière importante. Un <em>d</em> de Cohen de 2 décrirait pour sa part un effet de groupe très important, où le score de presque tous les membres d’un groupe est inférieur au score de tous les membres de l’autre groupe.</p>
 <div class="caution attention admonition" id="p-value-warning">
 <p class="admonition-title">Valeur <em>p</em> et taille d’effet</p>
 <p>La valeur <em>p</em> ne nous donne aucune information directe sur la taille de l’effet. Une valeur <em>p</em> peut être très significative, par exemple <em>p&lt;0.000001</em> simplement parce que l’on compare deux groupes ayant une très grande taille d’échantillon, par exemple N=10000 par groupe. Dans ce cas, même de toutes petites différences peuvent devenir très significatives.</p>
@@ -798,7 +861,7 @@ l’effet, c’est à dire la différence qui existe entre les deux populations.
 <p><span class="caption-number">Fig. 113 </span><span class="caption-text">Cette figure illustre le processus parfois chaotique de développement d’une méthode optimale et la difficulté de communiquer ce processus de manière claire et complète dans la section de méthodes d’un article. Cette figure est tirée de <a class="reference external" href="https://xkcd.com/1838/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#machine-learning-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Le manque de détails dans la section “Méthodes” d’un article peut être un autre obstacle majeur à la reproduction des résultats. Comme les techniques d’analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d’avoir une description complète des méthodes. Il est aussi courant d’omettre les étapes qui ont amené à la sélection des méthodes utilisées dans l’article. Le texte d’un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l’article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l’article. Il est tout à fait possible que d’autres analyses soient omises entièrement de l’article et que les membres de l’équipe de recherche soient eux même incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l’article.</p>
+<p>Le manque de détails dans la section “Méthodes” d’un article peut être un autre obstacle majeur à la reproduction des résultats. Comme les techniques d’analyse utilisées en neuroimagerie sont souvent complexes, il est très rare d’avoir une description complète des méthodes. Il est aussi courant de mettre les étapes qui ont amené à la sélection des méthodes utilisées dans l’article. Le texte d’un article scientifique est généralement écrit de manière à raconter une histoire claire. Le matériel supplémentaire de l’article contient parfois (mais pas toujours) plus de détails méthodologiques ainsi que des expériences supplémentaires, non essentielles au narratif principal de l’article. Il est tout à fait possible que d’autres analyses soient omises entièrement de l’article et que les membres de l’équipe de recherche soient eux-mêmes incapables de retracer le processus qui a amené à la sélection des analyses finales publiées dans l’article.</p>
 </section>
 </section>
 <section id="des-solutions">
@@ -849,16 +912,16 @@ l’effet, c’est à dire la différence qui existe entre les deux populations.
 <img alt="_images/reproductibilite_3_0.png" src="_images/reproductibilite_3_0.png" />
 </div>
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Pourcentage de “découvertes négatives” dans la littérature. Les découvertes négatives viennent d’études pour lesquelles les analyses ne confirment pas les hypothèses de recherche. On compare ici des articles traditionnels avec des études pré-enregistrées portant sur de nouvelles hypothèses de recherche, ainsi que des études pré-enregistrées portant sur des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de <a class="reference external" href="https://doi.org/10.31234/osf.io/3czyt">Allen et Mehler, 2018</a> sur 127 études pré-enregistrées. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous license <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#registered-report-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Pourcentage de “découvertes négatives” dans la littérature. Les découvertes négatives viennent d’études pour lesquelles les analyses ne confirment pas les hypothèses de recherche. On compare ici des articles traditionnels avec des études pré-enregistrées portant sur de nouvelles hypothèses de recherche, ainsi que des études pré-enregistrées portant sur des études de réplication de résultats déjà publiés. Pour chaque pourcentage, une valeur estimée minimale et maximale est fournie. Statistiques tirées de <a class="reference external" href="https://doi.org/10.31234/osf.io/3czyt">Allen et Mehler, 2018</a> sur 127 études pré-enregistrées. Figure générée avec du code python à l’aide de la librairie <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> (cliquer sur + pour voir le code). Cette figure produite par P. Bellec est distribuée sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#registered-report-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l’on appelle une <strong>étude pré-enregistrée</strong>. Un des problèmes dans le cercle présenté en <a class="reference internal" href="#researchcycle-original-fig"><span class="std std-numref">Fig. 109</span></a>, c’est qu’on choisit de publier que quand on connait les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l’équipe de recherche décide simplement de passer au prochain projet plutôt qu’investir dans la publication d’un résultat négatif. Une manière d’éliminer ça,
+<p>Une première idée qui gagne en popularité pour répondre à la crise de la reproductibilité est ce que l’on appelle une <strong>étude pré-enregistrée</strong>. Un des problèmes dans le cercle présenté en <a class="reference internal" href="#researchcycle-original-fig"><span class="std std-numref">Fig. 109</span></a>, c’est qu’on choisit de ne publier que quand on connaît les résultats. Comme publier un article est un processus long et coûteux (certains journaux demandent plusieurs milliers de dollars de frais de publication) et que les résultats négatifs sont peu valorisés, il est compréhensible que l’équipe de recherche décide simplement de passer au prochain projet plutôt qu’investir dans la publication d’un résultat négatif. Une manière d’éliminer ça,
 c’est de soumetre la publication avec les hypothèses et les plans d’analyse, avant de recueillir les données. Cela permet aux
 reviewers de critiquer la conception de l’étude avant qu’elle soit terminée, et permet donc de modifier le protocole de recherche si nécessaire. L’article est alors accepté, <em>quelque soit le résultat de l’étude</em>. Si les
 résultats ne correspondent pas aux hypothèses, l’article
 serait déjà accepté et publié tout de même. Cela ne veut pas dire qu’on ne
 peut pas présenter des nouvelles analyses auxquelles on n’avait pas pensé
-avant. Celles-ci seront alors présentées (correctement) comme exploratoires, plutôt que confirmatoires. En d’autres termes, cette approche élimine le HARKing, et il semble en pratique que cette approche fonctionne (voir <a class="reference internal" href="#registered-report-fig"><span class="std std-numref">Fig. 114</span></a>).</p>
+avant. Celles-ci sont alors présentées (correctement) comme exploratoires, plutôt que confirmatoires. En d’autres termes, cette approche élimine le HARKing, et il semble en pratique que cette approche fonctionne (voir <a class="reference internal" href="#registered-report-fig"><span class="std std-numref">Fig. 114</span></a>).</p>
 </section>
 <section id="code">
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">#</a></h3>
@@ -868,7 +931,7 @@ avant. Celles-ci seront alors présentées (correctement) comme exploratoires, p
 <p><span class="caption-number">Fig. 115 </span><span class="caption-text">Cette figure illustre les avantages d’automatiser les analyses scientifiques à l’aide de code (de manière métaphorique). Cette figure est tirée de <a class="reference external" href="https://xkcd.com/353/">xkcd webcomic</a>, sous licence <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC 2.5</a>.</span><a class="headerlink" href="#python-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Une autre solution pour rendre les analyses scientifiques en neuroimagerie plus reproductible est d’apprendre à coder. Automatiser les analyses permet de les rendre plus facile à reproduire pour quiconque. Il peut y avoir des erreurs dans le code, mais elles peuvent être vues et réparées par d’autres. Les analyses qui ne reposent pas sur du code représentent un obstacle majeur à la reproductibilité. Pour être vraiment utile, le code d’une analyse doit être partagé publiquement. Ce code constitue alors un artefact de recherche très important, beaucoup plus détaillé et spécifique que la section méthodologique d’un article. Beaucoup de gens utilisent la plateforme <a class="reference external" href="https://github.com/">Github</a> pour partager des éléments de code et aussi afin de partager les modifications qui y sont faites avec le temps. Il est aussi possible d’archiver une version du code sur une plateforme comme <a class="reference external" href="https://zenodo.org/">zenodo</a> qui fournit un identifiant unique pour ce code, comme pour un article. Si le code est de haute qualité et réutilisable, il est même possible de publier un article sur ce code dans un journal comme le <a class="reference external" href="https://joss.theoj.org/">Journal of Open Source Software</a>.</p>
+<p>Une autre solution pour rendre les analyses scientifiques en neuroimagerie plus reproductible est d’apprendre à coder. Automatiser les analyses permet de les rendre plus faciles à reproduire pour quiconque. Il peut y avoir des erreurs dans le code, mais elles peuvent être vues et réparées par d’autres. Les analyses qui ne reposent pas sur du code représentent un obstacle majeur à la reproductibilité. Pour être vraiment utile, le code d’une analyse doit être partagé publiquement. Ce code constitue alors un artefact de recherche très important, beaucoup plus détaillé et spécifique que la section méthodologique d’un article. Beaucoup de gens utilisent la plateforme <a class="reference external" href="https://github.com/">Github</a> pour partager des éléments de code et aussi afin de partager les modifications qui y sont faites avec le temps. Il est aussi possible d’archiver une version du code sur une plateforme comme <a class="reference external" href="https://zenodo.org/">zenodo</a> qui fournit un identifiant unique pour ce code, comme pour un article. Si le code est de haute qualité et réutilisable, il est même possible de publier un article sur ce code dans un journal comme le <a class="reference external" href="https://joss.theoj.org/">Journal of Open Source Software</a>.</p>
 </section>
 <section id="partage-de-donnees">
 <h3>Partage de données<a class="headerlink" href="#partage-de-donnees" title="Permalink to this headline">#</a></h3>
@@ -882,7 +945,7 @@ avant. Celles-ci seront alors présentées (correctement) comme exploratoires, p
 </section>
 <section id="partage-d-environnement">
 <h3>Partage d’environnement<a class="headerlink" href="#partage-d-environnement" title="Permalink to this headline">#</a></h3>
-<p>Des outils existent également pour partager un environnement de travail, ce qui est possible gratuitement grâce aux technologies libres. Il existe diverses solutions. Le language <code class="docutils literal notranslate"><span class="pre">python</span></code> permet de décrire un ensemble de dépendances (avec versions) au moyen d’un simple fichier texte <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Certaines versions de linux comme <a class="reference external" href="https://neuro.debian.net/">neurodebian</a> ont également un grand nombre d’outils de neuroimagerie prêts à l’installation, incluant des fonctionnalités de contrôle des versions. Les <code class="docutils literal notranslate"><span class="pre">containers</span></code> sont une autre famille de solutions qui permettent de partager un ensemble de librairies ainsi que le système d’exploitation. Des variantes de <code class="docutils literal notranslate"><span class="pre">containers</span></code> ont été spécifiquement développées pour les neurosciences cognitives, comme <a class="reference external" href="https://www.repronim.org/neurodocker/">neurodocker</a>. Un dernier exemple est <a class="reference external" href="https://mybinder.org/">mybinder</a> qui permet d’importer un <code class="docutils literal notranslate"><span class="pre">container</span></code> avec toutes les dépendances d’un projet et de ré-exécuter ce code dans un fureteur internet, sans avoir à installer quoi que ce soit. Pour la version en ligne de ces notes de cours, il y a une petite fusée en haut à droite qui démarre mybinder. Comme les notes de cours utilisent des données ouvertes pour beaucoup de figures, il est possible de reproduire (et modifier) les figures du cours de cette manière.</p>
+<p>Des outils existent également pour partager un environnement de travail, ce qui est possible gratuitement grâce aux technologies libres. Il existe diverses solutions. Le language <code class="docutils literal notranslate"><span class="pre">python</span></code> permet de décrire un ensemble de dépendances (avec versions) au moyen d’un simple fichier texte <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Certaines versions de linux comme <a class="reference external" href="https://neuro.debian.net/">neurodebian</a> ont également un grand nombre d’outils de neuroimagerie prêts à l’installation, incluant des fonctionnalités de contrôle des versions. Les <code class="docutils literal notranslate"><span class="pre">containers</span></code> sont une autre famille de solutions qui permettent de partager un ensemble de librairies ainsi que le système d’exploitation. Des variantes de <code class="docutils literal notranslate"><span class="pre">containers</span></code> ont été spécifiquement développées pour les neurosciences cognitives, comme <a class="reference external" href="https://www.repronim.org/neurodocker/">neurodocker</a>. Un dernier exemple est <a class="reference external" href="https://mybinder.org/">mybinder</a> qui permet d’importer un <code class="docutils literal notranslate"><span class="pre">container</span></code> avec toutes les dépendances d’un projet et de ré-exécuter ce code dans un fureteur internet, sans avoir à installer quoi que ce soit. Pour la version en ligne de ces notes de cours, il y a une petite fusée en haut à droite qui démarre la plateforme mybinder. Comme les notes de cours utilisent des données ouvertes pour beaucoup de figures, il est possible de reproduire (et modifier) les figures du cours de cette manière.</p>
 </section>
 <section id="puissance-statistique-et-meilleures-pratiques">
 <h3>Puissance statistique et meilleures pratiques<a class="headerlink" href="#puissance-statistique-et-meilleures-pratiques" title="Permalink to this headline">#</a></h3>
@@ -908,7 +971,7 @@ pratiques pour différentes méthodes de recherche. Le domaine des neurosciences
 <li><p>difficultés à décrire les méthodes de manière complète dans un article.</p></li>
 </ul>
 </li>
-<li><p>des nouvelles pratiques qui permettent d’améliorer la reproducibilité de la science:</p>
+<li><p>des nouvelles pratiques qui permettent d’améliorer la reproductibilité de la science:</p>
 <ul>
 <li><p>études pré-enregistrées</p></li>
 <li><p>partage de code, données et environnement</p></li>
@@ -916,7 +979,7 @@ pratiques pour différentes méthodes de recherche. Le domaine des neurosciences
 </ul>
 </li>
 </ul>
-<p>On voit aujourd’hui émerger une nouvelle approche de découverte scientifique qui inclut notamment le partage et la ré-utilisation de données, ce qui va amener une science plus reproductible et fiable (<a class="reference internal" href="#research-cycle-fig"><span class="std std-numref">Fig. 117</span></a>).</p>
+<p>On voit aujourd’hui émerger une nouvelle approche de découverte scientifique qui inclut notamment le partage et la réutilisation de données, ce qui va amener une science plus reproductible et fiable (<a class="reference internal" href="#research-cycle-fig"><span class="std std-numref">Fig. 117</span></a>).</p>
 </section>
 <section id="exercices">
 <h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
