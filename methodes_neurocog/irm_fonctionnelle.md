@@ -165,7 +165,7 @@ Le volume du cerveau (3D) est formé plusieurs milliers voxels, qui sont de peti
 
 ```{warning}
 :name: tr-irmf-warning
-Le paramètre `TR` en IRM fait référence au temps entre deux excitations radio-fréquences, qui est très court. En IRMf, le paramètre `TR` est la durée d'acquisition d'un volume entier, qui comprend de nombreuses excitations radio-fréquences.
+Le paramètre `TR` en IRM fait référence au temps entre deux excitations radio-fréquences, qui est très court. En IRMf, le paramètre `TR` est la durée qui sépare l'acquisition de deux volumes successifs. Chaque volume en IRMf comprend de nombreuses excitations radio-fréquences.
 ```
 
 ```{admonition} Compromis entre résolution spatiale et temporelle en IRMf
