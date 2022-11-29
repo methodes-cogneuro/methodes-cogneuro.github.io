@@ -170,7 +170,7 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/9GZvd_
 
 
 ## Contrastes $T_1$ et $T_2$
-Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radiofréquences fait basculer les spins selon l'axe $B_1$, axe perpendiculaire à $B_0$. Une fois les impulsions radiofréquences arrêtées, les spins s'alignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
+Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radiofréquences fait basculer les spins selon le plan orthogonal à $B_0$. Une fois les impulsions radiofréquences arrêtées, les spins s'alignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
 
 **Relaxation en $T_1$**. L'augmentation de la composante selon $B_0$ (composante $M_z$), ou _relaxation longitudinale_, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le $T_1$. Le temps $T_1$ correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z ($M_0$). Pour ceux qui sont à l'aise avec les expressions mathématiques, la repousse en $B_0$ suit l'équation $M_z(t) = M_0 ( 1 - e^{-t / T_1})$.
 
