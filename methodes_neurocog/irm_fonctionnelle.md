@@ -172,7 +172,7 @@ Le paramètre `TR` en IRM fait référence au temps entre deux excitations radio
 :class: tip
 :name: resolution
 
-Lorsque l'on choisit une séquence d'IRMf, on est souvent amené à privilégier la résolution temporelle versus spatiale. On peut par exemple faire des images du cerveau entier en 700 ms avec une résolution spatiale de 3 x 3 x 3 mm$^3$, ou bien acquérir la même image avec une résolution spatiale de 2 x 2 x 2 mm$^3$, mais cette fois-ci en 1500 ms. Il n'y a pas un choix de paramètre meilleur qu'un autre, mais la chercheuse doit décider si la résolution spatiale ou temporelle est plus importante pour ses questions de recherche.
+Lorsque l'on choisit une séquence d'IRMf, on est parfois amené à privilégier la résolution temporelle versus spatiale, dépendemment de la question de recherche. On peut par exemple faire des images du cerveau entier en 700 ms avec une résolution spatiale de 3 x 3 x 3 mm$^3$, ou bien acquérir la même image avec une résolution spatiale de 2 x 2 x 2 mm$^3$, mais cette fois-ci en 1500 ms. Il n'y a pas un choix de paramètre meilleur qu'un autre.
 ```
 (couplage-neurovasculaire-irmf-section)=
 ### Couplage neurovasculaire
