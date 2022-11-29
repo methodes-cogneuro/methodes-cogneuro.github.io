@@ -52,10 +52,6 @@ kernelspec:
 </table>
 
 
-```{warning}
-Ce chapitre va être mis à jour à l'automne 2022. En particulier les exercices vont être révisés, et certains exercices pourraient être ajoutés ou supprimés.
-```
-
 Durant ce cours, nous avons effectué un survol de diverses techniques de neuroimagerie qui ouvrent une fenêtre fascinante sur la structure et la fonction du cerveau. Par contre, ces techniques sont régulièrement présentées dans des articles scientifiques qui semblent peu crédibles. Dans cet ultime cours, nous allons discuter des controverses entourant la neuroimagerie, et de façon plus large, de la crise de reproductibilité en sciences.
 
 Les objectifs de ce cours sont les suivants :
@@ -339,52 +335,53 @@ Dans ce chapitre, on a vu:
 On voit aujourd'hui émerger une nouvelle approche de découverte scientifique qui inclut notamment le partage et la réutilisation de données, ce qui va amener une science plus reproductible et fiable ({numref}`research-cycle-fig`).
 
 ## Exercices
+```{admonition} Exercice 1
+:class: note
+Vrai/faux. La significativité des résultats dans une étude de neuroimagerie peut être impactée par...
+ 1. le logiciel que l’on utilise pour tester l’hypothèse de recherche.
+ 2. les paramètres que l’on choisit pour analyser les données, comme par exemple la quantité de lissage spatial.
+ 3. le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
+ 4. la version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
+```
 
-```{admonition} Exercice 10.1
+```{admonition} Exercice 2
+:class: note
+Vrai/faux. La puissance statistique...
+ 1. indique la probabilité de détecter un effet avec une procédure statistique.
+ 2. contrôle le taux de faux positifs.
+ 3. décroît avec le nombre de sujets dans l’étude.
+ 4. croît avec le seuil de significativité choisi pour l’étude (seuil p).
+ 5. décroît avec la taille de l’effet testé.
+```
+
+```{admonition} Exercice 3
 :class: note
 Choisissez la bonne réponse.
 Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire d’avoir accès...
   1. aux données utilisées dans l’étude
   2. au code utilisé pour générer les résultats de l’étude, s’il existe
   3. à l’environnement (version des logiciels) utilisé dans l’étude
-  4. Toutes ces réponses.
+  4. Réponses 1 et 2. 
+  5. Réponses 1, 2 et 3. 
 ```
 
-```{admonition} Exercice 10.2
-:class: note
-Vrai/faux. La significativité des résultats dans une étude de neuroimagerie peut être impactée par...
- * le logiciel que l’on utilise pour tester l’hypothèse de recherche.
- * les paramètres que l’on choisit pour analyser les données, comme par exemple la quantité de lissage spatial.
- * le système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
- * la version du système d’exploitation de l’ordinateur utilisé pour effectuer les analyses.
-```
-
-```{admonition} Exercice 10.3
-:class: note
-Vrai/faux. La puissance statistique...
- * indique la probabilité de détecter un effet avec une procédure statistique.
- * contrôle le taux de faux positifs.
- * dépend du nombre de sujets dans l’étude.
- * dépend du seuil de significativité choisi pour l’étude (seuil p).
- * dépend de la taille de l’effet testé.
-```
-
-```{admonition} Exercice 10.4
+```{admonition} Exercice 4
 :class: note
 Choisissez la bonne réponse.
 Parmi les procédures suivantes, laquelle (lesquelles) n'est (ne sont) pas statistiquement valide(s)?
- * Présenter comme hypothèse d’une étude une observation faite seulement après l'obtention et l'analyse des données.
- * Redéfinir les critères d’exclusion des participants en se basant sur la qualité des données, et ce, après avoir effectué une première analyse des données.
- * Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original parce que ce sous-groupe est le seul qui présente des résultats significatifs.
- * Aucune des trois procédures présentées ci-haut n’est valide.
+ 1. Présenter comme hypothèse d’une étude une observation faite seulement après l'obtention et l'analyse des données.
+ 2. Redéfinir les critères d’exclusion des participants en se basant sur la qualité des données, et ce, après avoir effectué une première analyse des données.
+ 3. Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original parce que ce sous-groupe est le seul qui présente des résultats significatifs.
+ 4. Aucune des trois procédures présentées ci-haut n’est valide.
+ 5. Réponses 2 et 3. 
 ```
 
-```{admonition} Exercice 10.5
+```{admonition} Exercice 5
 :class: note
 Une équipe de recherche a effectué une étude par activation en imagerie optique chez des nouveaux-nés. Le comité d’éthique n’a pas permis le partage des données de recherche. Proposez deux actions concrètes pour améliorer malgré tout la reproductibilité de l’étude.
 ```
 
-```{admonition} Exercice 10.6
+```{admonition} Exercice 6
 :class: note
 Une équipe de recherche compare le volume de différentes régions du cerveau entre deux groupes de sujets (N=20 par groupe): des sujets en santé ainsi que des sujets présentant des signes de dépression. Pour cela, l’équipe effectue une analyse par volumétrie automatisée utilisant un atlas comprenant 90 régions et teste l’effet de groupe sur chaque région indépendamment avec un modèle de régression qui inclut l’âge et le sexe des participants. Le seuil de significativité est fixé à p<0.05. Le seul test significatif est identifié au niveau de l’amygdale (p=0.041). La conclusion de l’étude est “Le volume de l’amygdale est plus petit chez les individus présentant des signes de dépression, mais le volume de l’hippocampe est normal”. Identifiez trois problèmes majeurs avec cette conclusion.    
 ```
