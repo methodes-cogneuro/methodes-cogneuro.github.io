@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Imagerie par résonance magnétique &#8212; Méthodes en neurosciences cognitives</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,62 +64,94 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'irm';</script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Analyses morphométriques" href="morphometrie.html" />
     <link rel="prev" title="Cartes cérébrales" href="cartes_cerebrales.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Méthodes en neurosciences cognitives</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,467 +161,251 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_cerebrales.html">
-   Cartes cérébrales
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Imagerie par résonance magnétique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="morphometrie.html">
-   Analyses morphométriques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_fonctionnelle.html">
-   IRM fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_diffusion.html">
-   IRM de diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagerie_optique.html">
-   Imagerie optique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tep.html">
-   Tomographie par émission de positrons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_statistiques.html">
-   Cartes statistiques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="reproductibilite.html">
-   Reproductibilité et controverses
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_cerebrales.html">Cartes cérébrales</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Imagerie par résonance magnétique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morphometrie.html">Analyses morphométriques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_fonctionnelle.html">IRM fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectivite.html">Connectivité fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_diffusion.html">IRM de diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagerie_optique.html">Imagerie optique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tep.html">Tomographie par émission de positrons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_statistiques.html">Cartes statistiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproductibilite.html">Reproductibilité et controverses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Références</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/irm.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/irm.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Firm.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/irm.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Firm.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/irm.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/irm.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/irm.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anatomie-d-un-irm">
-   Anatomie d’un IRM
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#spin-magnetique-et-champ-b0">
-   Spin magnétique et champ B0
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resonance-magnetique">
-   Résonance magnétique
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#selection-de-coupes-et-formation-d-images">
-   Sélection de coupes et formation d’images
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contrastes-t-1-et-t-2">
-   Contrastes
-   <span class="math notranslate nohighlight">
-    \(T_1\)
-   </span>
-   et
-   <span class="math notranslate nohighlight">
-    \(T_2\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#t-2-irmf-irmd">
-   <span class="math notranslate nohighlight">
-    \(T_2^*\)
-   </span>
-   , IRMf, IRMd
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#console-et-sequences-d-acquisition">
-   Console et séquences d’acquisition.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ressources-supplementaires">
-   Ressources supplémentaires
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Imagerie par résonance magnétique</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anatomie-d-un-irm">
-   Anatomie d’un IRM
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#spin-magnetique-et-champ-b0">
-   Spin magnétique et champ B0
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resonance-magnetique">
-   Résonance magnétique
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#selection-de-coupes-et-formation-d-images">
-   Sélection de coupes et formation d’images
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contrastes-t-1-et-t-2">
-   Contrastes
-   <span class="math notranslate nohighlight">
-    \(T_1\)
-   </span>
-   et
-   <span class="math notranslate nohighlight">
-    \(T_2\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#t-2-irmf-irmd">
-   <span class="math notranslate nohighlight">
-    \(T_2^*\)
-   </span>
-   , IRMf, IRMd
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#console-et-sequences-d-acquisition">
-   Console et séquences d’acquisition.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ressources-supplementaires">
-   Ressources supplémentaires
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Imagerie par résonance magnétique</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomie-d-un-irm">Anatomie d’un IRM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-magnetique-et-champ-b0">Spin magnétique et champ B0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-magnetique">Résonance magnétique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-de-coupes-et-formation-d-images">Sélection de coupes et formation d’images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastes-t-1-et-t-2">Contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-2-irmf-irmd"><span class="math notranslate nohighlight">\(T_2^*\)</span>, IRMf, IRMd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#console-et-sequences-d-acquisition">Console et séquences d’acquisition.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-supplementaires">Ressources supplémentaires</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="imagerie-par-resonance-magnetique">
-<span id="irm-chapitre"></span><h1>Imagerie par résonance magnétique<a class="headerlink" href="#imagerie-par-resonance-magnetique" title="Permalink to this headline">#</a></h1>
+<span id="irm-chapitre"></span><h1>Imagerie par résonance magnétique<a class="headerlink" href="#imagerie-par-resonance-magnetique" title="Permalink to this heading">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -602,7 +429,7 @@ title="Print to PDF"
   </tr>
 </table>
 <section id="objectifs-du-cours">
-<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">#</a></h2>
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this heading">#</a></h2>
 <p>Ce cours a pour but de vous initier aux principes physiques de l’imagerie par résonance magnétique. Au courant de ce cours, nous allons aborder quatre principes fondamentaux de l’IRM:</p>
 <ul class="simple">
 <li><p>La résonance magnétique</p></li>
@@ -612,7 +439,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="anatomie-d-un-irm">
-<h2>Anatomie d’un IRM<a class="headerlink" href="#anatomie-d-un-irm" title="Permalink to this headline">#</a></h2>
+<h2>Anatomie d’un IRM<a class="headerlink" href="#anatomie-d-un-irm" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="irm-schema-fig">
 <a class="reference internal image-reference" href="_images/irm_schema.png"><img alt="_images/irm_schema.png" src="_images/irm_schema.png" style="width: 800px;" /></a>
 <figcaption>
@@ -635,6 +462,11 @@ title="Print to PDF"
 <p>En créant un anneau avec du fil électrique et en passant un courant électrique, nous produisons un champ magnétique. Dans la vidéo ci-dessous, nous pouvons voir les lignes de champ magnétique se dessiner lorsque le champ magnétique est activé. Les lignes de champ sont droites lorsqu’elles passent par le centre de l’anneau, mais elles se propagent en cercles en s’éloignant du centre de l’anneau. Pour obtenir un champ magnétique constant à l’intérieur de l’anneau, nous pouvons épaissir l’anneau de sorte à former un cylindre. C’est le même principe que nous retrouvons dans un appareil IRM !</p>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -645,6 +477,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/bq6IhapfucE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
@@ -656,7 +489,7 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </div>
 </section>
 <section id="spin-magnetique-et-champ-b0">
-<h2>Spin magnétique et champ B0<a class="headerlink" href="#spin-magnetique-et-champ-b0" title="Permalink to this headline">#</a></h2>
+<h2>Spin magnétique et champ B0<a class="headerlink" href="#spin-magnetique-et-champ-b0" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="spin-fig">
 <a class="reference internal image-reference" href="_images/spin.png"><img alt="_images/spin.png" src="_images/spin.png" style="width: 500px;" /></a>
 <figcaption>
@@ -671,12 +504,17 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 <p>L’aimant de l’IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. La force de l’aimant principal est mesurée en Teslas (T). Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu’en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre! Les appareils à 7T représentent à ce jour la nouvelle frontière utilisée en recherche, et quelques appareils à 10T+ existent dans le monde. Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!</p>
 </section>
 <section id="resonance-magnetique">
-<h2>Résonance magnétique<a class="headerlink" href="#resonance-magnetique" title="Permalink to this headline">#</a></h2>
+<h2>Résonance magnétique<a class="headerlink" href="#resonance-magnetique" title="Permalink to this heading">#</a></h2>
 <div class="admonition-la-resonance-pas-juste-magnetique admonition">
 <p class="admonition-title">La résonance… pas juste magnétique</p>
 <p>Nous retrouvons les phénomènes de résonance dans de nombreuses situations. Un exemple connu est la résonance entre le vent et le pont de Tacoma, qui a mené à l’effondrement du pont, voir la vidéo ci-dessous.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -687,6 +525,7 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/3mclp9QmCGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
@@ -703,7 +542,7 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </div>
 </section>
 <section id="selection-de-coupes-et-formation-d-images">
-<h2>Sélection de coupes et formation d’images<a class="headerlink" href="#selection-de-coupes-et-formation-d-images" title="Permalink to this headline">#</a></h2>
+<h2>Sélection de coupes et formation d’images<a class="headerlink" href="#selection-de-coupes-et-formation-d-images" title="Permalink to this heading">#</a></h2>
 <p>Nous avons vu comment une onde radio-fréquence permet d’exciter les noyaux d’hydrogène et mesurer la réponse à cette excitation pour interroger les caractéristiques des tissus. Mais comment faire une image? Les <strong>bobines de gradient</strong> permettent de faire varier l’amplitude du champ magnétique dans trois directions:</p>
 <ul class="simple">
 <li><p>Direction z : des pieds vers la tête</p></li>
@@ -722,6 +561,11 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 <p>L’acquisition d’une image nécessite de modifier les gradients de manière rapide. Les changements rapides de courant dans les bobines de gradient, ainsi que dans les bobines émettrices d’ondes radio-fréquences, provoquent des expansions et des contractions rapides des bobines. Ces mouvements créent un bruit important. Chaque type d’image a sa “musique” propre, qui dépend de la nature et de l’ordre des excitations et des gradients. Voir extraits ci-dessous.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -732,22 +576,28 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/9GZvd_4ot04?start=11" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 </section>
 <section id="contrastes-t-1-et-t-2">
-<h2>Contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span><a class="headerlink" href="#contrastes-t-1-et-t-2" title="Permalink to this headline">#</a></h2>
+<h2>Contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span><a class="headerlink" href="#contrastes-t-1-et-t-2" title="Permalink to this heading">#</a></h2>
 <p>Les contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span> sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d’hydrogène sont alignés avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. L’application d’impulsions radiofréquences fait basculer les spins selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>, axe perpendiculaire à <span class="math notranslate nohighlight">\(B_0\)</span>. Une fois les impulsions radiofréquences arrêtées, les spins s’alignent avec le champ <span class="math notranslate nohighlight">\(B_0\)</span>. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span>.</p>
 <p><strong>Relaxation en <span class="math notranslate nohighlight">\(T_1\)</span></strong>. L’augmentation de la composante selon <span class="math notranslate nohighlight">\(B_0\)</span> (composante <span class="math notranslate nohighlight">\(M_z\)</span>), ou <em>relaxation longitudinale</em>, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s’appelle le <span class="math notranslate nohighlight">\(T_1\)</span>. Le temps <span class="math notranslate nohighlight">\(T_1\)</span> correspond au temps écoulé pour obtenir 63% de la valeur d’équilibre de la contribution du moment magnétique selon l’axe z (<span class="math notranslate nohighlight">\(M_0\)</span>). Pour ceux qui sont à l’aise avec les expressions mathématiques, la repousse en <span class="math notranslate nohighlight">\(B_0\)</span> suit l’équation <span class="math notranslate nohighlight">\(M_z(t) = M_0 ( 1 - e^{-t / T_1})\)</span>.</p>
 <figure class="align-default" id="t1-fig">
 <a class="reference internal image-reference" href="_images/t1.png"><img alt="_images/t1.png" src="_images/t1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Le processus de relaxation <span class="math notranslate nohighlight">\(T_1\)</span>. Pour un voxel donné, on mesure la repousse du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_0\)</span>. La vitesse de cette repousse dépend de deux paramètres: la valeur d’équilibre <span class="math notranslate nohighlight">\(M_0\)</span> et le temps <span class="math notranslate nohighlight">\(T_1\)</span>. En général, on ne mesure qu’un seul point de la courbe, au temps <code class="docutils literal notranslate"><span class="pre">TE</span></code>, et on parle alors de signal pondéré en <span class="math notranslate nohighlight">\(T_1\)</span>. Figure adaptée de <span id="id1">[<a class="reference internal" href="#id36" title="John P Ridgway. Cardiovascular magnetic resonance physics for clinicians: part I. J. Cardiovasc. Magn. Reson., 12:71, November 2010.">Rid10</a>]</span> sous license <a class="reference external" href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a>.</span><a class="headerlink" href="#t1-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Le processus de relaxation <span class="math notranslate nohighlight">\(T_1\)</span>. Pour un voxel donné, on mesure la repousse du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_0\)</span>. La vitesse de cette repousse dépend de deux paramètres: la valeur d’équilibre <span class="math notranslate nohighlight">\(M_0\)</span> et le temps <span class="math notranslate nohighlight">\(T_1\)</span>. En général, on ne mesure qu’un seul point de la courbe, au temps <code class="docutils literal notranslate"><span class="pre">TE</span></code>, et on parle alors de signal pondéré en <span class="math notranslate nohighlight">\(T_1\)</span>. Figure adaptée de <span id="id1">[<a class="reference internal" href="references.html#id33" title="John P Ridgway. Cardiovascular magnetic resonance physics for clinicians: part I. J. Cardiovasc. Magn. Reson., 12:71, November 2010.">Rid10</a>]</span> sous license <a class="reference external" href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a>.</span><a class="headerlink" href="#t1-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Pondération en <span class="math notranslate nohighlight">\(T_1\)</span></strong>. Pour estimer le paramètre <span class="math notranslate nohighlight">\(T_1\)</span>, il est nécessaire d’effectuer plusieurs mesures au cours du temps pour évaluer la croissance de la courbe. En général, on ne mesure qu’un seul point de la courbe, au temps <code class="docutils literal notranslate"><span class="pre">TE</span></code>, et on parle alors de signal pondéré en <span class="math notranslate nohighlight">\(T_1\)</span>. Si le paramètre <span class="math notranslate nohighlight">\(T_1\)</span> augmente, cela veut dire que la courbe croit plus lentement, et le signal pondéré en <span class="math notranslate nohighlight">\(T_1\)</span> va diminuer. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques <span class="math notranslate nohighlight">\(T_1\)</span> différentes, ce qui permet d’obtenir des images d’IRM structurelle.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enlève les warnings</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -798,11 +648,10 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="relax-t1-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_7_0.png" src="_images/irm_7_0.png" />
-</div>
+<img alt="_images/7c021824a72b109b2ea8770704c4a680003d5ddbf582d96d7e7913d4a12e69ed.png" src="_images/7c021824a72b109b2ea8770704c4a680003d5ddbf582d96d7e7913d4a12e69ed.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Relaxation longitudinale et contraste <span class="math notranslate nohighlight">\(T_1\)</span>. Image de gauche: croissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_0\)</span>, appelé <span class="math notranslate nohighlight">\(M_{z}\)</span>. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps <span class="math notranslate nohighlight">\(TE\)</span> (pondéré en <span class="math notranslate nohighlight">\(T_1\)</span>) présente un contraste entre les différents types de tissus. Cette figure est générée par du code python, cliquer sur + pour voir le code.</span><a class="headerlink" href="#relax-t1-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -815,11 +664,16 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 <figure class="align-default" id="t2-fig">
 <a class="reference internal image-reference" href="_images/t2.png"><img alt="_images/t2.png" src="_images/t2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Le processus de relaxation <span class="math notranslate nohighlight">\(T_2\)</span>. Pour un voxel donné, on mesure la décroissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>. La vitesse de cette décroissance dépend du temps <span class="math notranslate nohighlight">\(T_2\)</span>. En général, on ne mesure qu’un seul point de la courbe, au temps <code class="docutils literal notranslate"><span class="pre">TE</span></code>, et on parle alors de signal pondéré en <span class="math notranslate nohighlight">\(T_2\)</span>. Figure adaptée de <span id="id2">[<a class="reference internal" href="#id36" title="John P Ridgway. Cardiovascular magnetic resonance physics for clinicians: part I. J. Cardiovasc. Magn. Reson., 12:71, November 2010.">Rid10</a>]</span> sous license <a class="reference external" href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a>.</span><a class="headerlink" href="#t2-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Le processus de relaxation <span class="math notranslate nohighlight">\(T_2\)</span>. Pour un voxel donné, on mesure la décroissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>. La vitesse de cette décroissance dépend du temps <span class="math notranslate nohighlight">\(T_2\)</span>. En général, on ne mesure qu’un seul point de la courbe, au temps <code class="docutils literal notranslate"><span class="pre">TE</span></code>, et on parle alors de signal pondéré en <span class="math notranslate nohighlight">\(T_2\)</span>. Figure adaptée de <span id="id2">[<a class="reference internal" href="references.html#id33" title="John P Ridgway. Cardiovascular magnetic resonance physics for clinicians: part I. J. Cardiovasc. Magn. Reson., 12:71, November 2010.">Rid10</a>]</span> sous license <a class="reference external" href="https://creativecommons.org/licenses/by/2.0">CC-BY 2.0</a>.</span><a class="headerlink" href="#t2-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Pondération en <span class="math notranslate nohighlight">\(T_2\)</span></strong>. Comme vu précédemment, on ne mesure généralement qu’un seul point de la courbe, au temps <code class="docutils literal notranslate"><span class="pre">TE</span></code>, et on parle alors de signal pondéré en <span class="math notranslate nohighlight">\(T_2\)</span>. Si le paramètre <span class="math notranslate nohighlight">\(T_2\)</span> augmente, cela veut dire que la courbe décroit plus lentement, et le signal pondéré en <span class="math notranslate nohighlight">\(T_2\)</span> va augmenter. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques <span class="math notranslate nohighlight">\(T_2\)</span> différentes, ce qui permet d’obtenir des images d’IRM structurelle comme pour le <span class="math notranslate nohighlight">\(T_1\)</span>. En général, les images <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span> sont presque mirroirs l’une de l’autre, mais comme le <span class="math notranslate nohighlight">\(T_2\)</span> est très sensible au déphasage, l’information capturée sur les tissus est complémentaire.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enlève les warnings</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -870,11 +724,10 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="relax-t2-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_9_0.png" src="_images/irm_9_0.png" />
-</div>
+<img alt="_images/a180cb8136c79645b6d94389a2d204a1975e9555c71e8537b64c0605b9c74edb.png" src="_images/a180cb8136c79645b6d94389a2d204a1975e9555c71e8537b64c0605b9c74edb.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Relaxation transverse et contraste <span class="math notranslate nohighlight">\(T_2\)</span>. Image de gauche: décroissance du champ magnétique selon l’axe <span class="math notranslate nohighlight">\(B_1\)</span>, appelé <span class="math notranslate nohighlight">\(M_{xy}\)</span>. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps <span class="math notranslate nohighlight">\(TE\)</span> présente un contraste entre les différents types de tissus. Ce contraste est pour l’essentiel inversé par rapport au contraste <span class="math notranslate nohighlight">\(T_1\)</span>. Cette figure est générée par du code python, cliquer sur + pour voir le code.</span><a class="headerlink" href="#relax-t2-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -897,17 +750,17 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </div>
 </section>
 <section id="t-2-irmf-irmd">
-<h2><span class="math notranslate nohighlight">\(T_2^*\)</span>, IRMf, IRMd<a class="headerlink" href="#t-2-irmf-irmd" title="Permalink to this headline">#</a></h2>
+<h2><span class="math notranslate nohighlight">\(T_2^*\)</span>, IRMf, IRMd<a class="headerlink" href="#t-2-irmf-irmd" title="Permalink to this heading">#</a></h2>
 <p><strong>Déphasage.</strong> Comme nous l’avons vu dans l’encadré <a class="reference internal" href="#phase-tip"><span class="std std-ref">sur la phase</span></a>, les impulsions radiofréquences vont non seulement faire basculer les spins, mais aussi les mettre en phase. Lorsque nous arrêtons les impulsions, les spins vont progressivement se déphaser. Ce déphasage est dû à des micro-interactions entre protons ainsi que des molécules des tissus qui présentent des propriétés magnétiques. La courbe de relaxation va avoir la même forme, mais avec des temps caractéristiques modifiés, que nous appelons <span class="math notranslate nohighlight">\(T_1^*\)</span> et <span class="math notranslate nohighlight">\(T_2^*\)</span>.</p>
 <p><strong>IRM fonctionnelle.</strong> Les inhomogénéités dans le champ magnétique qui causent le déphasage peuvent notamment être créées par la désoxyhémoglobine que nous retrouvons dans le sang. Nous allons voir plus en détails comment l’oxyhémoglobine et la désoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l’<a class="reference external" href="https://psy3018.github.io/irm_fonctionnelle.html">IRM fonctionnelle</a>. En IRM fonctionnelle, nous utilisons des séquences pondérées en T2*.</p>
 <p><strong>IRM de diffusion.</strong> En IRM de diffusion, nous utilisons également un contraste en T2*. Par contre, en IRM de diffusion, nous mesurons les inhomogénéités en alternant la direction des impulsions (ex. en donnant une impulsion selon l’axe xy, puis en donnant une impulsion selon l’axe -xy). En effectuant plusieurs images avec des directions d’excitation différentes, nous pouvons obtenir une idée de la direction de la diffusion de l’eau. Cette opération nous permet au final de connaître la direction des fibres de matière blanche, car plus une fibre pointe vers une direction donnée, plus la diffusion sera grande dans cette direction. Nous allons revenir sur ce sujet dans le chapitre sur <a class="reference external" href="https://psy3018.github.io/irm_diffusion.html">l’IRM de diffusion</a></p>
 </section>
 <section id="console-et-sequences-d-acquisition">
-<h2>Console et séquences d’acquisition.<a class="headerlink" href="#console-et-sequences-d-acquisition" title="Permalink to this headline">#</a></h2>
+<h2>Console et séquences d’acquisition.<a class="headerlink" href="#console-et-sequences-d-acquisition" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="irm-console-fig">
 <a class="reference internal image-reference" href="_images/irm_console.png"><img alt="_images/irm_console.png" src="_images/irm_console.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Connexions entre la console et les différentes parties d’un système IRM. Figure adaptée par P. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l’article par Gruber et coll. (2018) <span id="id3">[<a class="reference internal" href="#id13" title="Bernhard Gruber, Martijn Froeling, Tim Leiner, and Dennis W J Klomp. RF coils: a practical guide for nonphysicists. J. Magn. Reson. Imaging, June 2018.">GFLK18</a>]</span>, sous licence CC-BY-NC.</span><a class="headerlink" href="#irm-console-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Connexions entre la console et les différentes parties d’un système IRM. Figure adaptée par P. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l’article par Gruber et coll. (2018) <span id="id3">[<a class="reference internal" href="references.html#id10" title="Bernhard Gruber, Martijn Froeling, Tim Leiner, and Dennis W J Klomp. RF coils: a practical guide for nonphysicists. J. Magn. Reson. Imaging, June 2018.">GFLK18</a>]</span>, sous licence CC-BY-NC.</span><a class="headerlink" href="#irm-console-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>L’ensemble des éléments de l’appareil IRM peuvent être contrôlés par la console (voir <a class="reference internal" href="#irm-console-fig"><span class="std std-numref">Fig. 19</span></a>). Nous avons vu ensemble les principes clés de l’IRM, mais une image réelle est acquise avec une série complexe d’excitations et de mesures, que l’on appelle une <em>séquence d’acquisition</em>.</p>
@@ -928,11 +781,11 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 </ul>
 </section>
 <section id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
 <p>Ce chapitre vous a introduit aux principes physiques de l’IRM. Nous avons vu les différentes composantes d’un appareil IRM, les différents phénomènes magnétiques nous permettant d’acquérir des images, ainsi que quelques paramètres que nous pouvons modifier lors de l’acquisition de données IRM. Lors du prochain chapitre, nous parlerons de morphométrie à l’aide de l’IRM structurelle.</p>
 </section>
 <section id="ressources-supplementaires">
-<h2>Ressources supplémentaires<a class="headerlink" href="#ressources-supplementaires" title="Permalink to this headline">#</a></h2>
+<h2>Ressources supplémentaires<a class="headerlink" href="#ressources-supplementaires" title="Permalink to this heading">#</a></h2>
 <p>La physique de l’IRM est un domaine très riche, que l’on n’a fait que commencer à découvrir. Quelques ressources pour un point de vue différent ou bien pour aller plus loin:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://mriquestions.com/what-is-t2.html">Plus de détails</a> sur le processus de relaxation.</p></li>
@@ -940,25 +793,12 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 <li><p>Une (longue) série de cours sur la physique de l’IRM, en <a class="reference external" href="https://www.youtube.com/watch?v=35gfOtjRcic">vidéos youtube</a>.</p></li>
 </ul>
 </section>
-<section id="references">
-<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id4">
-<dl class="citation">
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id3">GFLK18</a></span></dt>
-<dd><p>Bernhard Gruber, Martijn Froeling, Tim Leiner, and Dennis W J Klomp. RF coils: a practical guide for nonphysicists. <em>J. Magn. Reson. Imaging</em>, June 2018.</p>
-</dd>
-<dt class="label" id="id36"><span class="brackets">Rid10</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
-<dd><p>John P Ridgway. Cardiovascular magnetic resonance physics for clinicians: part I. <em>J. Cardiovasc. Magn. Reson.</em>, 12:71, November 2010.</p>
-</dd>
-</dl>
-</div>
-</section>
 <section id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this heading">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Vrai ou faux?</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>TE &lt; TR</p></li>
 <li><p>TE &gt; T1</p></li>
 <li><p>La force du champ magnétique d’un IRM est liée à la taille de l’IRM.</p></li>
@@ -968,7 +808,7 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 <div class="note admonition">
 <p class="admonition-title">Exercice 2</p>
 <p>Choisissez la bonne réponse. un proton d’hydrogène a…</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Une fréquence de rotation fixe durant une acquisition IRM, c’est la fréquence de Larmor.</p></li>
 <li><p>Une fréquence de rotation variable durant une acquisition IRM.</p></li>
 <li><p>Une fréquence de rotation qui dépend de la force du champ magnétique dans l’IRM.</p></li>
@@ -991,7 +831,7 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 <div class="note admonition">
 <p class="admonition-title">Exercice 6</p>
 <p>Pour répondre à cette question, lisez l’article de Shukla et collaborateurs, “<em>Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia</em>”, publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/">adresse</a>. Les questions suivantes sont à développement court.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Quelle est la force de l’aimant de l’IRM?</p></li>
 <li><p>Quel est le TR de l’acquisition structurelle?</p></li>
 <li><p>Quel est le TE de l’acquisition structurelle?</p></li>
@@ -1014,7 +854,7 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1022,50 +862,115 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="cartes_cerebrales.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Cartes cérébrales</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cartes_cerebrales.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cartes cérébrales</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="morphometrie.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="morphometrie.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Analyses morphométriques</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Pierre Bellec et l'équipe PSY3018<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomie-d-un-irm">Anatomie d’un IRM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-magnetique-et-champ-b0">Spin magnétique et champ B0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-magnetique">Résonance magnétique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-de-coupes-et-formation-d-images">Sélection de coupes et formation d’images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastes-t-1-et-t-2">Contrastes <span class="math notranslate nohighlight">\(T_1\)</span> et <span class="math notranslate nohighlight">\(T_2\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-2-irmf-irmd"><span class="math notranslate nohighlight">\(T_2^*\)</span>, IRMf, IRMd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#console-et-sequences-d-acquisition">Console et séquences d’acquisition.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-supplementaires">Ressources supplémentaires</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pierre Bellec et l'équipe PSY3018
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

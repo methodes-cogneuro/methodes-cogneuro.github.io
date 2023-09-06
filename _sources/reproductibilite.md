@@ -184,7 +184,7 @@ df1 = df1.melt(var_name='d')
 df1['group'] = 0
 df2 = df2.melt(var_name='d')
 df2['group'] = 1
-df = df1.append(df2, ignore_index=True)
+df = pd.concat([df1, df2], ignore_index=True)
 
 # On visualise les distributions
 import seaborn as sns
@@ -249,7 +249,7 @@ negative_findings = pd.DataFrame({
 
 # Initialise la figure
 fig, ax = plt.subplots(figsize=(6, 4))
-
+print('test')
 # Estimation maximale
 sns.set_color_codes("pastel")
 sns.barplot(x="%max", y="source", data=negative_findings,
@@ -303,7 +303,7 @@ name: openneuro-downloads-fig
 ---
 Nombre de jeux de données ouverts en neuroimagerie et nombre de participants disponibles sur la plateforme de partage de données [openneuro](https://openneuro.org/). Figure tirée de [Markiewicz et al., 2021](https://doi.org/10.7554/eLife.71774) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-Une autre solution pour améliorer la reproducibilité est de partager les données de recherche. La {numref}`(openneuro-downloads-fig)` illustre l'adoption rapide de cette pratique dans la communauté de recherche en neuroimagerie. Partager ses données permet à d'autres laboratoires de répliquer les analyses ou essayer d'autres méthodes. Cela permet aussi au laboratoire d'origine de disposer d'une archive bien organisée pour de futurs projets. Le partage des données humaines est en revanche rendu complexe dans certaines parties du monde (comme le Québec) à cause de considérations éthiques ou bien légales. Il est en revanche toujours possible de partager des cartes statistiques de groupe, par exemple en utilisant une plateforme comme [neurovault](https://neurovault.org/).
+Une autre solution pour améliorer la reproducibilité est de partager les données de recherche. La {numref}`openneuro-downloads-fig` illustre l'adoption rapide de cette pratique dans la communauté de recherche en neuroimagerie. Partager ses données permet à d'autres laboratoires de répliquer les analyses ou essayer d'autres méthodes. Cela permet aussi au laboratoire d'origine de disposer d'une archive bien organisée pour de futurs projets. Le partage des données humaines est en revanche rendu complexe dans certaines parties du monde (comme le Québec) à cause de considérations éthiques ou bien légales. Il est en revanche toujours possible de partager des cartes statistiques de groupe, par exemple en utilisant une plateforme comme [neurovault](https://neurovault.org/).
 
 ### Partage d'environnement
 Des outils existent également pour partager un environnement de travail, ce qui est possible gratuitement grâce aux technologies libres. Il existe diverses solutions. Le language `python` permet de décrire un ensemble de dépendances (avec versions) au moyen d'un simple fichier texte `requirements.txt`. Certaines versions de linux comme [neurodebian](https://neuro.debian.net/) ont également un grand nombre d'outils de neuroimagerie prêts à l'installation, incluant des fonctionnalités de contrôle des versions. Les `containers` sont une autre famille de solutions qui permettent de partager un ensemble de librairies ainsi que le système d'exploitation. Des variantes de `containers` ont été spécifiquement développées pour les neurosciences cognitives, comme [neurodocker](https://www.repronim.org/neurodocker/). Un dernier exemple est [mybinder](https://mybinder.org/) qui permet d'importer un `container` avec toutes les dépendances d'un projet et de ré-exécuter ce code dans un fureteur internet, sans avoir à installer quoi que ce soit. Pour la version en ligne de ces notes de cours, il y a une petite fusée en haut à droite qui démarre la plateforme mybinder. Comme les notes de cours utilisent des données ouvertes pour beaucoup de figures, il est possible de reproduire (et modifier) les figures du cours de cette manière.
@@ -361,8 +361,8 @@ Pour pouvoir reproduire exactement un résultat de recherche, il est nécessaire
   1. aux données utilisées dans l’étude
   2. au code utilisé pour générer les résultats de l’étude, s’il existe
   3. à l’environnement (version des logiciels) utilisé dans l’étude
-  4. Réponses 1 et 2. 
-  5. Réponses 1, 2 et 3. 
+  4. Réponses 1 et 2.
+  5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 4
@@ -373,7 +373,7 @@ Parmi les procédures suivantes, laquelle (lesquelles) n'est (ne sont) pas stati
  2. Redéfinir les critères d’exclusion des participants en se basant sur la qualité des données, et ce, après avoir effectué une première analyse des données.
  3. Présenter dans une étude uniquement les résultats d’un sous-groupe du devis de recherche original parce que ce sous-groupe est le seul qui présente des résultats significatifs.
  4. Aucune des trois procédures présentées ci-haut n’est valide.
- 5. Réponses 2 et 3. 
+ 5. Réponses 2 et 3.
 ```
 
 ```{admonition} Exercice 5

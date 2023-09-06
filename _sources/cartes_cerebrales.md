@@ -153,15 +153,15 @@ plot_anat(
   cut_coords=[-17, 0, 17],
   title='IRM en contraste T1'
 )
-glue("t1-fig", fig, display=False)
+glue("t1-fig-intro", fig, display=False)
 ```
 
-```{glue:figure} t1-fig
+```{glue:figure} t1-fig-intro
 :figwidth: 800px
-:name: "t1-fig"
+:name: "t1-fig-intro"
 Un exemple d'IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer à travers les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé template MNI152 2009 {cite:p}`Fonov2011-xr` (cliquer sur + pour voir le code).
 ```
-Le type d'image le plus couramment acquis avec un appareil d'IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure {ref}`ci-dessus <t1-fig>`, on distingue aisément certains éléments anatomiques:
+Le type d'image le plus couramment acquis avec un appareil d'IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure {ref}`ci-dessus <t1-fig-intro>`, on distingue aisément certains éléments anatomiques:
  * La **matière grise**, en périphérie du cortex, apparaît en gris dans l'image. C'est là que les corps des neurones sont présents.
  * Il est aussi possible de distinguer la **matière blanche** en blanc (ou plutôt gris clair) qui contient des paquets d'axones - c'est à dire les connexions entre les neurones.
  * Enfin, en **noir**, on peut voir des structures comme les ventricules, qui contiennent de l'eau, des nutriments, ainsi que des déchets métaboliques.
@@ -219,7 +219,7 @@ glue("irmf-fig", fig, display=False)
 ```{glue:figure} irmf-fig
 :figwidth: 800px
 :name: "irmf-fig"
-Exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagittal (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer à travers les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig>`, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé ADHD200 {cite:p}`HD-200_Consortium2012-uv, BELLEC2017275` (cliquer sur + pour voir le code).
+Exemple d'un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagittal (milieu) et axial (droite). Voir l'astuce {ref}`Naviguer à travers les coupes du cerveau<coupes-tip>` pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l'{ref}`IRM anatomique <t1-fig-intro>`, et que l'on a beaucoup de mal à voir les détails de l'anatomie du cerveau. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) à partir d'un jeu de données public appelé ADHD200 {cite:p}`HD-200_Consortium2012-uv, BELLEC2017275` (cliquer sur + pour voir le code).
 ```
 
 Ces mesures ne reflètent pas directement l'activité des neurones, mais plutôt l'oxygénation du sang. On parle de signal dépendant du niveau d'oxygénation dans sang, ou signal BOLD (pour *Blood Oxygen Level Dependent*, en anglais). Comme on le verra dans la section {ref}`couplage-neurovasculaire-section`, ce signal BOLD reflète malgré tout de manière indirecte l'activité des neurones et va nous permettre de faire des cartes de l'activité du cerveau. Il y a deux types majeurs de techniques d'analyse en IRMf:
@@ -315,13 +315,7 @@ Gauche: illustration d'une régression linéaire entre une variable indépendant
 Le dernier aspect important qui sera abordé dans ces notes de cours est une discussion sur la manière d'analyser les données. Cela implique notamment les étapes d'analyse d'images qui sont nécessaires pour générer des mesures interprétables. Cela implique aussi de faire des statistiques sur les images du cerveau que l'on génère. Il existe de nombreuses manières d'effectuer ces analyses statistiques et le domaine des neurosciences cognitives utilise de plus en plus des techniques multivariées d'apprentissage machine. Mais la technique de référence reste le modèle de régression linéaire qui est appliqué indépendamment à chaque voxel. Il s'agit d'un modèle très flexible qui permet de répondre à un grand nombre de questions, aussi bien au niveau individuel que de groupe. Le modèle de régression linéaire est utilisé par l'ensemble des techniques de neuroimagerie vues durant le cours. Le fait de répéter un test statistique à chaque voxel, des dizaines de milliers de fois, pose aussi un problème lorsque vient le temps d'établir le seuil de significativité. Nous discuterons de la régression linéaire et des approches de seuillage dans le chapitre {ref}`cartes-statistiques-chapitre`. Enfin, il est possible d'abuser de ce type de modèle statistique de multiples manières et ainsi amener à la publication de résultats non reproductibles. Nous discuterons de ces défis et de solutions possibles dans le dernier chapitre: {ref}`reproductibilite-controverses-chapitre`.
 
 ## Conclusions
-Ce chapitre vous présente un rapide tour d'horizon des différentes méthodes utilisées en neurosciences cognitives. Nous espérons que cela vous donne envie d'en apprendre davantage et d'explorer les chapitres de ce livre!
-
-## Références
-
-```{bibliography}
-:filter: docname in docnames
-```
+Ce chapitre vous présente un rapide tour d'horizon des différentes méthodes utilisées en neurosciences cognitives qui disposent d'une bonne résolution spatiale. Nous espérons que cela vous donne envie d'en apprendre davantage et d'explorer les chapitres de ce livre!
 
 ## Exercices
 
@@ -333,7 +327,6 @@ On effectue une stimulation visuelle durant 200 ms et on souhaite étudier la r�
  2. L’IRMf permet de séparer l’activité neuronale durant la phase précoce (0-100 ms) par rapport à la phase tardive (100ms-200ms) de l’expérience.
  3. L’imagerie optique permet de séparer l’activité neuronale durant la phase précoce (0-100 ms) par rapport à la phase tardive (100ms-200ms) de l’expérience.
 ```
-
 
 ```{admonition} Exercice 2
 :class: note

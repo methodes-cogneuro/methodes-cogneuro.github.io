@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tomographie par émission de positrons &#8212; Méthodes en neurosciences cognitives</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,62 +64,94 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tep';</script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Cartes statistiques" href="cartes_statistiques.html" />
     <link rel="prev" title="Imagerie optique" href="imagerie_optique.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Méthodes en neurosciences cognitives</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,517 +161,263 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_cerebrales.html">
-   Cartes cérébrales
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm.html">
-   Imagerie par résonance magnétique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="morphometrie.html">
-   Analyses morphométriques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_fonctionnelle.html">
-   IRM fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_diffusion.html">
-   IRM de diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagerie_optique.html">
-   Imagerie optique
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tomographie par émission de positrons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_statistiques.html">
-   Cartes statistiques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="reproductibilite.html">
-   Reproductibilité et controverses
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_cerebrales.html">Cartes cérébrales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm.html">Imagerie par résonance magnétique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morphometrie.html">Analyses morphométriques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_fonctionnelle.html">IRM fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectivite.html">Connectivité fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_diffusion.html">IRM de diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagerie_optique.html">Imagerie optique</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tomographie par émission de positrons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_statistiques.html">Cartes statistiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproductibilite.html">Reproductibilité et controverses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Références</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/tep.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/tep.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Ftep.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/tep.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Ftep.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/tep.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/tep.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/tep.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
-   Principes physiques et physiologiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#radiotraceurs">
-     Radiotraceurs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#isotopes-et-radioactivite">
-     Isotopes et radioactivité
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#precurseurs-et-biomarqueurs">
-     Précurseurs et biomarqueurs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qualites-d-un-radiotraceur">
-     Qualités d’un radiotraceur
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#generation-d-images-en-tep">
-   Génération d’images en TEP
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cyclotron">
-     Cyclotron
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#detection-de-coincidences">
-     Détection de coincidences
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tomographie">
-     Tomographie
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tep-en-neurosciences-cognitives">
-   TEP en neurosciences cognitives
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fdg-tep-et-metabolisme-du-glucose">
-     FDG TEP et métabolisme du glucose
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#imagerie-des-recepteurs">
-     Imagerie des récepteurs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta">
-     Radioligands pour les plaques Béta amyloïde (A
-     <span class="math notranslate nohighlight">
-      \({\beta}\)
-     </span>
-     )
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion-et-resume">
-   Conclusion et résumé
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tomographie par émission de positrons</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
-   Principes physiques et physiologiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#radiotraceurs">
-     Radiotraceurs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#isotopes-et-radioactivite">
-     Isotopes et radioactivité
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#precurseurs-et-biomarqueurs">
-     Précurseurs et biomarqueurs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qualites-d-un-radiotraceur">
-     Qualités d’un radiotraceur
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#generation-d-images-en-tep">
-   Génération d’images en TEP
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cyclotron">
-     Cyclotron
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#detection-de-coincidences">
-     Détection de coincidences
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tomographie">
-     Tomographie
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tep-en-neurosciences-cognitives">
-   TEP en neurosciences cognitives
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fdg-tep-et-metabolisme-du-glucose">
-     FDG TEP et métabolisme du glucose
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#imagerie-des-recepteurs">
-     Imagerie des récepteurs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta">
-     Radioligands pour les plaques Béta amyloïde (A
-     <span class="math notranslate nohighlight">
-      \({\beta}\)
-     </span>
-     )
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion-et-resume">
-   Conclusion et résumé
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tomographie par émission de positrons</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">Principes physiques et physiologiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiotraceurs">Radiotraceurs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isotopes-et-radioactivite">Isotopes et radioactivité</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precurseurs-et-biomarqueurs">Précurseurs et biomarqueurs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualites-d-un-radiotraceur">Qualités d’un radiotraceur</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generation-d-images-en-tep">Génération d’images en TEP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cyclotron">Cyclotron</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-de-coincidences">Détection de coincidences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tomographie">Tomographie</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tep-en-neurosciences-cognitives">TEP en neurosciences cognitives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fdg-tep-et-metabolisme-du-glucose">FDG TEP et métabolisme du glucose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagerie-des-recepteurs">Imagerie des récepteurs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta">Radioligands pour les plaques Béta amyloïde (A<span class="math notranslate nohighlight">\({\beta}\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-et-resume">Conclusion et résumé</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="tomographie-par-emission-de-positrons">
-<span id="tep-chapitre"></span><h1>Tomographie par émission de positrons<a class="headerlink" href="#tomographie-par-emission-de-positrons" title="Permalink to this headline">#</a></h1>
+<span id="tep-chapitre"></span><h1>Tomographie par émission de positrons<a class="headerlink" href="#tomographie-par-emission-de-positrons" title="Permalink to this heading">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -654,7 +443,7 @@ title="Print to PDF"
   </tr>
 </table>
 <section id="objectifs-du-cours">
-<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">#</a></h2>
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this heading">#</a></h2>
 <p>La <a class="reference external" href="https://fr.wikipedia.org/wiki/Tomographie_par_%C3%A9mission_de_positons">tomographie par émission de positrons</a> est une technique d’imagerie qui permet de cibler de nombreuses caractéristiques du cerveau, aussi bien au niveau structurel que fonctionnel. Couplée avec un radiotraceur de Fluorodésoxyglucose (FDG), la TEP est couramment utilisée pour cartographier l’activité du cerveau au travers de différentes conditions expérimentales. Avec d’autres traceurs, elle permet de cartographier les dépôts de protéines anormales, ou bien encore la présence de différents récepteurs de neurotransmetteurs.</p>
 <figure class="align-default" id="tep-scanner-fig">
 <a class="reference internal image-reference" href="_images/tep.jpg"><img alt="_images/tep.jpg" src="_images/tep.jpg" style="width: 600px;" /></a>
@@ -670,9 +459,9 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="principes-physiques-et-physiologiques">
-<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">#</a></h2>
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this heading">#</a></h2>
 <section id="radiotraceurs">
-<h3>Radiotraceurs<a class="headerlink" href="#radiotraceurs" title="Permalink to this headline">#</a></h3>
+<h3>Radiotraceurs<a class="headerlink" href="#radiotraceurs" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="radiotraceur-fig">
 <a class="reference internal image-reference" href="_images/radiotraceur.png"><img alt="_images/radiotraceur.png" src="_images/radiotraceur.png" style="width: 800px;" /></a>
 <figcaption>
@@ -691,7 +480,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="isotopes-et-radioactivite">
-<h3>Isotopes et radioactivité<a class="headerlink" href="#isotopes-et-radioactivite" title="Permalink to this headline">#</a></h3>
+<h3>Isotopes et radioactivité<a class="headerlink" href="#isotopes-et-radioactivite" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="isotope-fig">
 <a class="reference internal image-reference" href="_images/isotope.png"><img alt="_images/isotope.png" src="_images/isotope.png" style="width: 800px;" /></a>
 <figcaption>
@@ -702,7 +491,7 @@ title="Print to PDF"
 <p>Les radioisotopes sont produits dans un cyclotron, et vont commencer à se désintégrer immédiatement. La <strong>demi-vie</strong> du radiotraceur correspond au temps nécessaire pour que la moitié des atomes radioactifs contenus dans le traceur se soient transformés en atomes stables. Chaque désintégration atomique est aléatoire, mais à cause du grand nombre d’atomes contenus dans une dose de radiotraceurs, la demi-vie est un phénomène très stable. L’imagerie TEP utilise un certain nombre d’isotopes bien connus. Certains, comme celui fabriqué à partir de fluor (ou <span class="math notranslate nohighlight">\(^{18}\)</span><strong>F</strong>), ont une demi-vie assez longue. Cela nous permet de les produire sur un site spécialisé, puis de les transporter sur le lieu de l’étude. D’autres radioisotopes, comme celui fabriqué à partir d’oxygène (ou <span class="math notranslate nohighlight">\(^{15}\)</span><strong>O</strong>) ont une demi-vie très courte. Au niveau logistique, ceci nécessite que le cyclotron se trouve à proximité du site ou l’expérimentation se déroule, car le radiotraceur doit immédiatement être utilisé après sa production. Référons nous au tableau d’isotopes pour comprendre de combien de temps nous disposons pour effectuer un scan TEP en fonction de l’isotope utilisé.</p>
 <div class="tip admonition" id="isotopes-table">
 <p class="admonition-title">Tableau d’isotopes TEP</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Radioisotopes</strong></p></th>
 <th class="head"><p><strong>Demi-vie</strong></p></th>
@@ -738,7 +527,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="precurseurs-et-biomarqueurs">
-<h3>Précurseurs et biomarqueurs<a class="headerlink" href="#precurseurs-et-biomarqueurs" title="Permalink to this headline">#</a></h3>
+<h3>Précurseurs et biomarqueurs<a class="headerlink" href="#precurseurs-et-biomarqueurs" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="fdg-fig">
 <a class="reference internal image-reference" href="_images/fdg.jpg"><img alt="_images/fdg.jpg" src="_images/fdg.jpg" style="width: 500px;" /></a>
 <figcaption>
@@ -748,7 +537,7 @@ title="Print to PDF"
 <p>Le précurseur peut être une molécule endogène (déjà présente dans l’organisme, soit l’oxygène ou le glucose) dont la concentration est altérée en présence de l’activité cérébrale ou bien d’une pathologie. Le précurseur peut aussi être une molécule qui va s’accrocher à une partie spécifique du cerveau (par exemple les récepteurs d’un certain neurotransmetteur). Une réaction chimique est utilisée pour synthétiser une molécule qui regroupe le radioisotope et le précurseur. Dans l’exemple du FDG, une molécule de glucose standard va perdre un oxygène et un hydrogène, qui vont être remplacés par du <span class="math notranslate nohighlight">\(^{18}\)</span><strong>F</strong> synthétisé par un cyclotron, voir <a class="reference internal" href="#fdg-fig"><span class="std std-numref">Fig. 90</span></a>. Comme nous le verrons plus tard dans ce chapitre, le glucose va s’accumuler dans les parties du cerveau où les neurones sont les plus actifs. La FDG va ainsi agir comme un biomarqueur de l’activité cérébrale.</p>
 </section>
 <section id="qualites-d-un-radiotraceur">
-<h3>Qualités d’un radiotraceur<a class="headerlink" href="#qualites-d-un-radiotraceur" title="Permalink to this headline">#</a></h3>
+<h3>Qualités d’un radiotraceur<a class="headerlink" href="#qualites-d-un-radiotraceur" title="Permalink to this heading">#</a></h3>
 <p>Pour être utile en neuroimagerie, un radiotraceur doit posséder les qualités suivantes:</p>
 <ul class="simple">
 <li><p><strong>Perméabilité à la barrière hémato-encéphalique</strong> : le traceur injecté dans le sang doit pouvoir se rendre au cerveau.</p></li>
@@ -760,11 +549,16 @@ title="Print to PDF"
 </section>
 </section>
 <section id="generation-d-images-en-tep">
-<h2>Génération d’images en TEP<a class="headerlink" href="#generation-d-images-en-tep" title="Permalink to this headline">#</a></h2>
+<h2>Génération d’images en TEP<a class="headerlink" href="#generation-d-images-en-tep" title="Permalink to this heading">#</a></h2>
 <p>Nous avons couvert les principes physiologiques et physiques des radiotraceurs. nous permettant de traduire l’activité métabolique du cerveau en image. Maintenant, il s’agit de préciser comment l’activité des radiotraceurs peut être utilisée pour générer une image. Pour cela, nous avons besoin de deux pièces d’infrastructure: le cyclotron et le scanner TEP. Nous aurons aussi besoin de méthodes d’analyses d’image.</p>
 <section id="cyclotron">
-<h3>Cyclotron<a class="headerlink" href="#cyclotron" title="Permalink to this headline">#</a></h3>
+<h3>Cyclotron<a class="headerlink" href="#cyclotron" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -775,6 +569,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6BxyqFK2KRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
@@ -795,7 +590,7 @@ title="Print to PDF"
 <p>Une fois produite, la dose de radiotraceur doit être acheminée rapidement pour être injectée au participant de recherche. La demi-vie du FDG est d’environ deux heures, ce qui permet de produire le radiotraceur et de l’utiliser sur des sites différents, si nécessaire. Durant le transport, la dose de radiotraceurs émet continuellement des radiations, et il est nécessaire d’utiliser des équipements de protection (<a class="reference internal" href="#injection-tep-fig"><span class="std std-numref">Fig. 92</span></a>).</p>
 </section>
 <section id="detection-de-coincidences">
-<h3>Détection de coincidences<a class="headerlink" href="#detection-de-coincidences" title="Permalink to this headline">#</a></h3>
+<h3>Détection de coincidences<a class="headerlink" href="#detection-de-coincidences" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="coincidence-fig">
 <a class="reference internal image-reference" href="_images/coincidence_tep.png"><img alt="_images/coincidence_tep.png" src="_images/coincidence_tep.png" style="width: 800px;" /></a>
 <figcaption>
@@ -805,7 +600,7 @@ title="Print to PDF"
 <p>Une fois le radiotraceur injecté et accumulé sur la cible, la radioactivité est émise par les parties du cerveau que l’on souhaite étudier. Pour chaque évènement radiactif, les deux rayons gamma sortent de la boîte crânienne dans des directions diamétralement opposées. Le scanner TEP est muni de capteurs (ou de caméras, car ces capteurs mesurent des photons) disposés en cercle autour de la tête du participant (<a class="reference internal" href="#coincidence-fig"><span class="std std-numref">Fig. 93</span></a>). Comme les rayons gamma se déplacent à grande vitesse, ils viennent frapper deux caméras pratiquement au même moment (à quelques nanosecondes près). Cette arrivée simultanée, appelée <strong>coincidence</strong>, est détectée par le scanneur TEP. Il est possible possible de savoir qu’un événement radioactif a eu lieu sur la droite reliant les capteurs, et il est possible de calculer l’activité accumulée au cours du temps selon l’ensemble des droites possibles. Pour le FDG, il existe plusieurs millions d’événements radioactifs par minutes, et on effectue une mesure accumulée sur plusieurs dizaines de minutes. Mais ces mesures, appelées <strong>projections</strong>, ne correspondent pas (encore) à une image du cerveau.</p>
 </section>
 <section id="tomographie">
-<h3>Tomographie<a class="headerlink" href="#tomographie" title="Permalink to this headline">#</a></h3>
+<h3>Tomographie<a class="headerlink" href="#tomographie" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="projection-fig">
 <a class="reference internal image-reference" href="_images/projection.gif"><img alt="_images/projection.gif" src="_images/projection.gif" style="width: 800px;" /></a>
 <figcaption>
@@ -814,6 +609,11 @@ title="Print to PDF"
 </figure>
 <p>La figure <a class="reference internal" href="#projection-fig"><span class="std std-numref">Fig. 94</span></a> illustre comment un object 2D peut être convertie en un série de projections. La tomographie est une opération qui consiste à reconstruire une image 3D du cerveau à partir de la combinaison des mesures prises par l’ensemble des caméras. Si l’on disposait de l’ensemble des projections possibles, on pourrait en théorie faire une reconstruction parfaite. En pratique, on est limité par la taille et le nombre des caméras du scaneur TEP. La figure ci dessous illustre une image simplifiée de coupe 2D du cerveau, le processus de projections multiples, et une reconstruction de l’image à partir des projections. Pour un appareil TEP humain, la résolution spatiale est de l’ordre de 4-7 mm.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -858,11 +658,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="radon-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/tep_3_0.png" src="_images/tep_3_0.png" />
-</div>
+<img alt="_images/a6c6a5b4f8ceab7734a38c3d01ab06ccecdf600d59becccfbae72a1def9ea7d5.png" src="_images/a6c6a5b4f8ceab7734a38c3d01ab06ccecdf600d59becccfbae72a1def9ea7d5.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 95 </span><span class="caption-text">Une image 2D ressemblant à une coupe de cerveau (image de gauche). Représentation de la même image avec une série de projections correspondant à différentes positions dans l’espace et différents angles de projection (image du centre). Image reconstruite à partir des projections (image de droite). Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://scikit-image.org/docs/dev/auto_examples/transform/plot_radon_transform.html">scikit-image</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#radon-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -870,10 +669,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="tep-en-neurosciences-cognitives">
-<h2>TEP en neurosciences cognitives<a class="headerlink" href="#tep-en-neurosciences-cognitives" title="Permalink to this headline">#</a></h2>
+<h2>TEP en neurosciences cognitives<a class="headerlink" href="#tep-en-neurosciences-cognitives" title="Permalink to this heading">#</a></h2>
 <p>Nous allons maintenant discuter de quelques radiotraceurs en TEP et de leur utilisation en neuroscience cognitive</p>
 <section id="fdg-tep-et-metabolisme-du-glucose">
-<h3>FDG TEP et métabolisme du glucose<a class="headerlink" href="#fdg-tep-et-metabolisme-du-glucose" title="Permalink to this headline">#</a></h3>
+<h3>FDG TEP et métabolisme du glucose<a class="headerlink" href="#fdg-tep-et-metabolisme-du-glucose" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="tep2-fig">
 <a class="reference internal image-reference" href="_images/fig_tep.jpg"><img alt="_images/fig_tep.jpg" src="_images/fig_tep.jpg" style="width: 800px;" /></a>
 <figcaption>
@@ -887,7 +686,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="imagerie-des-recepteurs">
-<h3>Imagerie des récepteurs<a class="headerlink" href="#imagerie-des-recepteurs" title="Permalink to this headline">#</a></h3>
+<h3>Imagerie des récepteurs<a class="headerlink" href="#imagerie-des-recepteurs" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="receptors-fig">
 <a class="reference internal image-reference" href="_images/receptors-tep.jpeg"><img alt="_images/receptors-tep.jpeg" src="_images/receptors-tep.jpeg" style="width: 800px;" /></a>
 <figcaption>
@@ -897,7 +696,7 @@ title="Print to PDF"
 <p>Il existe de nombreux types de neurotransmetteurs dans le cerveau, qui joue un rôle clé dans la communication neuronale, au niveau des synapses, et sont associés à des <strong>récepteurs</strong> spécifiques. Certains de ces neurotransmetteurs sont particulièrement impliqués dans certains processus coginitifs, comme la dopamine et les récopmenses. Il est donc utile de comprendre la distribution spatial des récepteurs pour différents neurotransmetteurs. Ce récepteur agit comme biomarqueur, ou alors, comme cible d’arrimage d’un radioisotope et de son précurseur. Des ligands ont été conçus spécifiquement pour des récepteurs spécifiques, par exepmle les récepteurs dopaminergiques de type D2 et D3.</p>
 </section>
 <section id="radioligands-pour-les-plaques-beta-amyloide-a-beta">
-<h3>Radioligands pour les plaques Béta amyloïde (A<span class="math notranslate nohighlight">\({\beta}\)</span>)<a class="headerlink" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta" title="Permalink to this headline">#</a></h3>
+<h3>Radioligands pour les plaques Béta amyloïde (A<span class="math notranslate nohighlight">\({\beta}\)</span>)<a class="headerlink" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="pib-fig">
 <a class="reference internal image-reference" href="_images/pib.jpg"><img alt="_images/pib.jpg" src="_images/pib.jpg" style="width: 500px;" /></a>
 <figcaption>
@@ -908,7 +707,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="conclusion-et-resume">
-<h2>Conclusion et résumé<a class="headerlink" href="#conclusion-et-resume" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion et résumé<a class="headerlink" href="#conclusion-et-resume" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Un radiotraceur est composé d’un précurseur, qui s’accroche à une cible, puis un isotope, qui se désintègre en émettant des rayons gamma.</p></li>
 <li><p>En enregistrant les coincidences d’arrivée de photons, on peut reconstruire une représentation 3D de la concentration du radiotraceur à l’aide d’une opération dite de Tomographie</p></li>
@@ -918,14 +717,14 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="references">
-<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <span class="target" id="id1"></span></section>
 <section id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this heading">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Les données de tomographie par émission de positrons sont (vrai/faux)</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Des données avec une meilleure résolution spatiale que l’IRMf.</p></li>
 <li><p>Des données avec une résolution spatiale largement supérieure à l’imagerie optique.</p></li>
 <li><p>Des données qui donnent une image de l’activité neuronale dans tout le cerveau.</p></li>
@@ -934,7 +733,7 @@ title="Print to PDF"
 <div class="note admonition">
 <p class="admonition-title">Exercice 2</p>
 <p>Les données de tomographie par émission de positrons sont (vrai/faux)</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Des données avec une meilleure résolution temporelle que l’imagerie optique.</p></li>
 <li><p>Des données moins chères à recueillir que l’IRMf.</p></li>
 <li><p>Des données qui peuvent capturer le métabolisme du glucose.</p></li>
@@ -944,7 +743,7 @@ title="Print to PDF"
 <div class="note admonition">
 <p class="admonition-title">Exercice 3</p>
 <p>Choisissez la bonne réponse: Dans un radiotraceur cérébral:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>L’isotope détermine la demi-vie.</p></li>
 <li><p>Le précurseur détermine la cible du traceur.</p></li>
 <li><p>Le radiotraceur dans son ensemble doit pouvoir traverser la barrière hémato-encéphalique.</p></li>
@@ -985,7 +784,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -993,50 +792,127 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="imagerie_optique.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Imagerie optique</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="imagerie_optique.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Imagerie optique</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="cartes_statistiques.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="cartes_statistiques.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Cartes statistiques</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Pierre Bellec et l'équipe PSY3018<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">Principes physiques et physiologiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiotraceurs">Radiotraceurs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isotopes-et-radioactivite">Isotopes et radioactivité</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precurseurs-et-biomarqueurs">Précurseurs et biomarqueurs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualites-d-un-radiotraceur">Qualités d’un radiotraceur</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generation-d-images-en-tep">Génération d’images en TEP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cyclotron">Cyclotron</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-de-coincidences">Détection de coincidences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tomographie">Tomographie</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tep-en-neurosciences-cognitives">TEP en neurosciences cognitives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fdg-tep-et-metabolisme-du-glucose">FDG TEP et métabolisme du glucose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagerie-des-recepteurs">Imagerie des récepteurs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radioligands-pour-les-plaques-beta-amyloide-a-beta">Radioligands pour les plaques Béta amyloïde (A<span class="math notranslate nohighlight">\({\beta}\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-et-resume">Conclusion et résumé</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pierre Bellec et l'équipe PSY3018
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

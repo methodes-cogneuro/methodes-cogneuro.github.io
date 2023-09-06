@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>IRM fonctionnelle &#8212; Méthodes en neurosciences cognitives</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,62 +64,94 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'irm_fonctionnelle';</script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Connectivité fonctionnelle" href="connectivite.html" />
     <link rel="prev" title="Analyses morphométriques" href="morphometrie.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Méthodes en neurosciences cognitives</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,573 +161,271 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_cerebrales.html">
-   Cartes cérébrales
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm.html">
-   Imagerie par résonance magnétique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="morphometrie.html">
-   Analyses morphométriques
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   IRM fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_diffusion.html">
-   IRM de diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagerie_optique.html">
-   Imagerie optique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tep.html">
-   Tomographie par émission de positrons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_statistiques.html">
-   Cartes statistiques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="reproductibilite.html">
-   Reproductibilité et controverses
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_cerebrales.html">Cartes cérébrales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm.html">Imagerie par résonance magnétique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morphometrie.html">Analyses morphométriques</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">IRM fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectivite.html">Connectivité fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_diffusion.html">IRM de diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagerie_optique.html">Imagerie optique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tep.html">Tomographie par émission de positrons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_statistiques.html">Cartes statistiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproductibilite.html">Reproductibilité et controverses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Références</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/irm_fonctionnelle.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/irm_fonctionnelle.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Firm_fonctionnelle.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/irm_fonctionnelle.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Firm_fonctionnelle.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/irm_fonctionnelle.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/irm_fonctionnelle.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/irm_fonctionnelle.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
-   Principes physiques et physiologiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#images-3d-t">
-     Images 3D+t
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#couplage-neurovasculaire">
-     Couplage neurovasculaire
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#le-signal-bold">
-     Le signal BOLD
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fonction-de-reponse-hemodynamique">
-     Fonction de réponse hémodynamique
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reponse-a-une-impulsion-courte">
-       Réponse à une impulsion courte
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#le-cerveau-bold-comme-un-systeme">
-       Le cerveau (BOLD) comme un système
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pretraitement-des-donnees-d-irmf">
-   Prétraitement des données d’IRMf
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recalage">
-     Recalage
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#recalage-du-mouvement">
-       Recalage du mouvement
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#recalage-bold-avec-t-1">
-       Recalage BOLD avec
-       <span class="math notranslate nohighlight">
-        \(T_1\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#recalage-dans-l-espace-stereotaxique">
-       Recalage dans l’espace stéréotaxique
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lissage-spatiale">
-     Lissage spatiale
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtrage-des-facteurs-de-non-interet">
-     Filtrage des facteurs de non-intérêt
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyses-statistiques">
-   Analyses statistiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#irmf-experience-basee-sur-une-tache">
-     IRMf - Expérience basée sur une tâche
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-univariee-massive">
-     Régression univariée massive
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#irmf-cartes-d-activation">
-     IRMf - Cartes d’activation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>IRM fonctionnelle</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
-   Principes physiques et physiologiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#images-3d-t">
-     Images 3D+t
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#couplage-neurovasculaire">
-     Couplage neurovasculaire
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#le-signal-bold">
-     Le signal BOLD
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fonction-de-reponse-hemodynamique">
-     Fonction de réponse hémodynamique
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reponse-a-une-impulsion-courte">
-       Réponse à une impulsion courte
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#le-cerveau-bold-comme-un-systeme">
-       Le cerveau (BOLD) comme un système
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pretraitement-des-donnees-d-irmf">
-   Prétraitement des données d’IRMf
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recalage">
-     Recalage
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#recalage-du-mouvement">
-       Recalage du mouvement
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#recalage-bold-avec-t-1">
-       Recalage BOLD avec
-       <span class="math notranslate nohighlight">
-        \(T_1\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#recalage-dans-l-espace-stereotaxique">
-       Recalage dans l’espace stéréotaxique
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lissage-spatiale">
-     Lissage spatiale
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtrage-des-facteurs-de-non-interet">
-     Filtrage des facteurs de non-intérêt
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyses-statistiques">
-   Analyses statistiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#irmf-experience-basee-sur-une-tache">
-     IRMf - Expérience basée sur une tâche
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-univariee-massive">
-     Régression univariée massive
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#irmf-cartes-d-activation">
-     IRMf - Cartes d’activation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>IRM fonctionnelle</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">Principes physiques et physiologiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#images-3d-t">Images 3D+t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couplage-neurovasculaire">Couplage neurovasculaire</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#le-signal-bold">Le signal BOLD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-de-reponse-hemodynamique">Fonction de réponse hémodynamique</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reponse-a-une-impulsion-courte">Réponse à une impulsion courte</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#le-cerveau-bold-comme-un-systeme">Le cerveau (BOLD) comme un système</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraitement-des-donnees-d-irmf">Prétraitement des données d’IRMf</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage">Recalage</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-du-mouvement">Recalage du mouvement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-bold-avec-t-1">Recalage BOLD avec <span class="math notranslate nohighlight">\(T_1\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-dans-l-espace-stereotaxique">Recalage dans l’espace stéréotaxique</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lissage-spatiale">Lissage spatiale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrage-des-facteurs-de-non-interet">Filtrage des facteurs de non-intérêt</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyses-statistiques">Analyses statistiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irmf-experience-basee-sur-une-tache">IRMf - Expérience basée sur une tâche</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-univariee-massive">Régression univariée massive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irmf-cartes-d-activation">IRMf - Cartes d’activation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="irm-fonctionnelle">
-<span id="irmf-chapitre"></span><h1>IRM fonctionnelle<a class="headerlink" href="#irm-fonctionnelle" title="Permalink to this headline">#</a></h1>
+<span id="irmf-chapitre"></span><h1>IRM fonctionnelle<a class="headerlink" href="#irm-fonctionnelle" title="Permalink to this heading">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -716,7 +457,7 @@ title="Print to PDF"
   </tr>
 </table>
 <section id="objectifs-du-cours">
-<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">#</a></h2>
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique_fonctionnelle">L’imagerie par résonnance magnétique fonctionnelle</a>
 est une modalité d’imagerie qui permet de mesurer indirectement l’activité cérébrale. L’IRMf acquiert des images du cerveau en action en relation avec différentes conditions expérimentales, ayant été conçues pour isoler des processus cognitifs spécifiques. L’IRMf permet donc de cartographier l’organisation fonctionnelle du cerveau, dans différents contextes cognitifs.</p>
 <figure class="align-default" id="irmf-ecran-fig">
@@ -734,33 +475,38 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </ul>
 </section>
 <section id="principes-physiques-et-physiologiques">
-<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">#</a></h2>
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this heading">#</a></h2>
 <section id="images-3d-t">
-<h3>Images 3D+t<a class="headerlink" href="#images-3d-t" title="Permalink to this headline">#</a></h3>
-<table class="colwidths-auto table">
+<h3>Images 3D+t<a class="headerlink" href="#images-3d-t" title="Permalink to this heading">#</a></h3>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">IRM</span> <span class="pre">structurelle</span></code></p></th>
-<th class="text-align:right head"><p><code class="docutils literal notranslate"><span class="pre">IRM</span> <span class="pre">fonctionnelle</span> <span class="pre">(T2*)</span></code></p></th>
+<th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">IRM</span> <span class="pre">structurelle</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">IRM</span> <span class="pre">fonctionnelle</span> <span class="pre">(T2*)</span></code></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Objet</span> <span class="pre">d'étude</span></code></p></td>
-<td class="text-align:center"><p><strong>Anatomie, structures et propriétés des tissus</strong></p></td>
-<td class="text-align:right"><p><strong>Organisation fonctionnelle</strong></p></td>
+<td class="text-center"><p><strong>Anatomie, structures et propriétés des tissus</strong></p></td>
+<td class="text-right"><p><strong>Organisation fonctionnelle</strong></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Dimension</span></code></p></td>
-<td class="text-align:center"><p>1 volume - <strong>3D</strong></p></td>
-<td class="text-align:right"><p>Plusieurs volumes dans le temps - <strong>4D</strong></p></td>
+<td class="text-center"><p>1 volume - <strong>3D</strong></p></td>
+<td class="text-right"><p>Plusieurs volumes dans le temps - <strong>4D</strong></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Durée</span> <span class="pre">de</span> <span class="pre">l'acquisition</span></code></p></td>
-<td class="text-align:center"><p>Plusieurs minutes</p></td>
-<td class="text-align:right"><p>Secondes</p></td>
+<td class="text-center"><p>Plusieurs minutes</p></td>
+<td class="text-right"><p>Secondes</p></td>
 </tr>
 </tbody>
 </table>
 <p>Les images d’IRMf sont un peu comme un film du cerveau en action. Elles sont composées d’une <strong>série de volumes 3D</strong> qui se succèdent à une fréquence donnée, plutôt que d’un unique volume comme c’était le cas en IRM. Nous parlons alors d’images <strong>4D</strong>, ou bien <strong>3D+t</strong> puisqu’aux dimensions spatiales (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>) s’ajoute la dimension du temps <code class="docutils literal notranslate"><span class="pre">t</span></code>. Nous pourrions, par exemple, acquérir 1 volume cérébral toutes les 2 secondes, pendant 6 minutes, ce qui résulterait en un jeu de données d’IRMf composé de 180 volumes 3D du cerveau.</p>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#importe les librairies nécessaires</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -838,11 +584,10 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="voxel-timeseries-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_fonctionnelle_1_1.png" src="_images/irm_fonctionnelle_1_1.png" />
-</div>
+<img alt="_images/132bb3fbaa9dd3850e308aea7e7e1d0f0f415c14de18aa74d9dbeda2ade06246.png" src="_images/132bb3fbaa9dd3850e308aea7e7e1d0f0f415c14de18aa74d9dbeda2ade06246.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 42 </span><span class="caption-text">Illustration d’un élément de volume (voxel), de taille 3 mm x 3 mm x 3 mm, et le décours temporel IRMf associé.</span><a class="headerlink" href="#voxel-timeseries-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -858,11 +603,11 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </div>
 </section>
 <section id="couplage-neurovasculaire">
-<span id="couplage-neurovasculaire-irmf-section"></span><h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">#</a></h3>
+<span id="couplage-neurovasculaire-irmf-section"></span><h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="neurovascular-fig">
 <a class="reference internal image-reference" href="_images/neurovascular-fig.jpg"><img alt="_images/neurovascular-fig.jpg" src="_images/neurovascular-fig.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text"><strong>Résumé de l’architecture neuro-gliale-vasculaire</strong>. (a) Les astrocytes s’enveloppent autour des synapses, et ont des projections jusqu’à la surface des micro-capillaires. (b) Les astrocytes établissent des domaines anatomiques exclusifs, qui chevauchent de manière minimale ceux de leurs voisins astrocytes. (c) Schéma représentant la morphologie d’une cellule gliale, avec un corps connecté à une structure en arbre. (d) Micro-circuit neuronal. (e) microvascularisation cérébrale. (f) illustration de la taille des micro-circuits neuronaux et de la vascularisation. (g) pourcentage d’occupation du volume dans l’espace du circuit. Figure tirée de l’article par Zisis et coll. (2021) <span id="id1">[<a class="reference internal" href="#id22" title="E Zisis, D Keller, L Kanari, A Arnaudon, M Gevaert, T Delemontex, B Coste, A Foni, M Abdellah, C Calì, K Hess, P J Magistretti, F Schürmann, and H Markram. Architecture of the Neuro-Glia-Vascular system. bioRxiv, 2021.">ZKK+21</a>]</span>, sous licence CC-BY-NC-ND.</span><a class="headerlink" href="#neurovascular-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text"><strong>Résumé de l’architecture neuro-gliale-vasculaire</strong>. (a) Les astrocytes s’enveloppent autour des synapses, et ont des projections jusqu’à la surface des micro-capillaires. (b) Les astrocytes établissent des domaines anatomiques exclusifs, qui chevauchent de manière minimale ceux de leurs voisins astrocytes. (c) Schéma représentant la morphologie d’une cellule gliale, avec un corps connecté à une structure en arbre. (d) Micro-circuit neuronal. (e) microvascularisation cérébrale. (f) illustration de la taille des micro-circuits neuronaux et de la vascularisation. (g) pourcentage d’occupation du volume dans l’espace du circuit. Figure tirée de l’article par Zisis et coll. (2021) <span id="id1">[<a class="reference internal" href="references.html#id16" title="E Zisis, D Keller, L Kanari, A Arnaudon, M Gevaert, T Delemontex, B Coste, A Foni, M Abdellah, C Calì, K Hess, P J Magistretti, F Schürmann, and H Markram. Architecture of the Neuro-Glia-Vascular system. bioRxiv, 2021.">ZKK+21</a>]</span>, sous licence CC-BY-NC-ND.</span><a class="headerlink" href="#neurovascular-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Le lien entre activité neuronale et signal IRMf repose sur le phénomène du <strong>couplage neurovasculaire</strong>, et plus spécifiquement le couplage entre l’activité post-synaptique des neurones et les micro-capillaires sanguins. La production de neurotransmetteurs dans la fente synaptique entrainent une série de réactions chimiques dans les cellules gliales avoisinantes. Lorsque l’activité neuronale augmente, les réactions chimiques qui l’accompagnent entraînent une <strong>demande métabolique</strong> en nutriments et ultimement l’extraction d’oxygène dans les micro-capillaires de manière locale. Les événements suivants se produisent alors:</p>
@@ -871,10 +616,10 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 <li><p>augmentation du flux sanguin;</p></li>
 <li><p>augmentation l’acheminement en oxygène (oxyhémoglobine) vers les populations de neurones activés.</p></li>
 </ul>
-<p>L’augmentation d’extraction d’oxygène entraîne donc de manière paradoxale une augmentation locale de la concentration d’<strong>oxyhémoglobine</strong> (sang oxygéné) par rapport à la concentration en <strong>désoxyhémoglobine</strong> (sang désoxygéné) localement, ce qui est détectable au moyen de l’IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) <span id="id2">[<a class="reference internal" href="#id23" title="R B Buxton, E C Wong, and L R Frank. Dynamics of blood flow and oxygenation changes during brain activation: the balloon model. Magn. Reson. Med., 39(6):855–864, June 1998.">BWF98</a>]</span>.</p>
+<p>L’augmentation d’extraction d’oxygène entraîne donc de manière paradoxale une augmentation locale de la concentration d’<strong>oxyhémoglobine</strong> (sang oxygéné) par rapport à la concentration en <strong>désoxyhémoglobine</strong> (sang désoxygéné) localement, ce qui est détectable au moyen de l’IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) <span id="id2">[<a class="reference internal" href="references.html#id17" title="R B Buxton, E C Wong, and L R Frank. Dynamics of blood flow and oxygenation changes during brain activation: the balloon model. Magn. Reson. Med., 39(6):855–864, June 1998.">BWF98</a>]</span>.</p>
 </section>
 <section id="le-signal-bold">
-<h3>Le signal BOLD<a class="headerlink" href="#le-signal-bold" title="Permalink to this headline">#</a></h3>
+<h3>Le signal BOLD<a class="headerlink" href="#le-signal-bold" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="hemoglobine-fig">
 <a class="reference internal image-reference" href="_images/hemoglobine-fig.jpg"><img alt="_images/hemoglobine-fig.jpg" src="_images/hemoglobine-fig.jpg" style="width: 600px;" /></a>
 <figcaption>
@@ -887,29 +632,29 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 <li><p>La <strong>désoxyhémoglobine</strong> est <strong>paramagnétique</strong></p></li>
 </ul>
 <p>Ce que cela veut dire, c’est que quand elles sont soumises à des impulsions électromagnétiques, ces deux molécules se comportent de manière très différente. La désoxyhémoglobine va créer des inhomogénéités du champ magnétique, alors que l’oxyhémoglobine n’a pas d’effet sur ce même champ. Les séquences IRM pondérées <span class="math notranslate nohighlight">\(T_2^*\)</span> sont très sensibles à de telles inhomogénéités. La désoxyhémoglobine déforme donc le champ magnétique <span class="math notranslate nohighlight">\(B_O\)</span> induit par l’aimant, ce qui fait en sorte que le temps de relaxation <span class="math notranslate nohighlight">\(T_2^*\)</span> est plus rapide. Les images acquises en IRMf utilisent donc un contraste en <span class="math notranslate nohighlight">\(T_2^*\)</span>, et cela a pour effet d’amplifier le signal quand le sang devient plus oxygéné en réponse à une augmentation de l’activité neuronale. Pour cette raison, le signal utilisé en IRMf est appelé signal BOLD, pour <em>Blood oxygenation level-dependent</em>, soit signal dépendant de l’oxygénation du sang.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="text-align:center head"><p>‘Désoxyhémoglobine’</p></th>
-<th class="text-align:right head"><p><code class="docutils literal notranslate"><span class="pre">Oxyhémoglobine</span></code></p></th>
+<th class="head text-center"><p>‘Désoxyhémoglobine’</p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">Oxyhémoglobine</span></code></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Propriétés électromagnétiques</p></td>
-<td class="text-align:center"><p>Paramagnétique</p></td>
-<td class="text-align:right"><p>Diamagnétique</p></td>
+<td class="text-center"><p>Paramagnétique</p></td>
+<td class="text-right"><p>Diamagnétique</p></td>
 </tr>
 <tr class="row-odd"><td><p>Impact sur le signal BOLD</p></td>
-<td class="text-align:center"><p><strong>Réduit</strong> le signal BOLD</p></td>
-<td class="text-align:right"><p><strong>Augmente</strong> le signal BOLD</p></td>
+<td class="text-center"><p><strong>Réduit</strong> le signal BOLD</p></td>
+<td class="text-right"><p><strong>Augmente</strong> le signal BOLD</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(T_2^*\)</span></p></td>
-<td class="text-align:center"><p>Décroît plus <strong>rapidement</strong></p></td>
-<td class="text-align:right"><p>Décroît plus <strong>lentement</strong></p></td>
+<td class="text-center"><p>Décroît plus <strong>rapidement</strong></p></td>
+<td class="text-right"><p>Décroît plus <strong>lentement</strong></p></td>
 </tr>
 <tr class="row-odd"><td><p>Effet sur le champ</p></td>
-<td class="text-align:center"><p><strong>Ajout d’inhomogénéités/distorsions</strong></p></td>
-<td class="text-align:right"><p><strong>Pas d’inhomogénéités</strong></p></td>
+<td class="text-center"><p><strong>Ajout d’inhomogénéités/distorsions</strong></p></td>
+<td class="text-right"><p><strong>Pas d’inhomogénéités</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -921,10 +666,15 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </figure>
 </section>
 <section id="fonction-de-reponse-hemodynamique">
-<h3>Fonction de réponse hémodynamique<a class="headerlink" href="#fonction-de-reponse-hemodynamique" title="Permalink to this headline">#</a></h3>
+<h3>Fonction de réponse hémodynamique<a class="headerlink" href="#fonction-de-reponse-hemodynamique" title="Permalink to this heading">#</a></h3>
 <section id="reponse-a-une-impulsion-courte">
-<h4>Réponse à une impulsion courte<a class="headerlink" href="#reponse-a-une-impulsion-courte" title="Permalink to this headline">#</a></h4>
+<h4>Réponse à une impulsion courte<a class="headerlink" href="#reponse-a-une-impulsion-courte" title="Permalink to this heading">#</a></h4>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To get an impulse response, we simulate a single event</span>
 <span class="c1"># occurring at time t=0, with duration 1s.</span>
@@ -955,13 +705,12 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="hrf-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_fonctionnelle_3_1.png" src="_images/irm_fonctionnelle_3_1.png" />
-</div>
+<img alt="_images/7cab0a23bbce464aeae82839f6303d8f542da371c340f93a99d791a74169c21a.png" src="_images/7cab0a23bbce464aeae82839f6303d8f542da371c340f93a99d791a74169c21a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Réponse hémodynamique à une impulsion unitaire d’une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) <span id="id3">[<a class="reference internal" href="#id24" title="G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. Neuroimage, 9(4):416–429, April 1999.">Glo99</a>]</span>. Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Réponse hémodynamique à une impulsion unitaire d’une durée de seconde, suivant le modèle proposé par Glover and coll. (1999) <span id="id3">[<a class="reference internal" href="references.html#id18" title="G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. Neuroimage, 9(4):416–429, April 1999.">Glo99</a>]</span>. Le code pour générer cette figure est adaptée d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La figure qui suit montre la réponse hémodynamique attendue suite à une impulsion finie d’activation au temps 0, et de durée de 1 seconde. La réponse à ce type de stimulus permet de visualiser la réponse hémodynamique la plus largement utilisée, décrivant la relation maintenue entre l’activité neuronale (bleu) et le signal BOLD (rouge), en fonction du temps. L’axe <code class="docutils literal notranslate"><span class="pre">x</span></code> représente le temps, en secondes, et l’axe <code class="docutils literal notranslate"><span class="pre">y</span></code> le signal cérébral, exprimé en pourcentage du changement par rapport à une ligne de base. Les caractéristiques importantes de la fonction de réponse hémodynamique sont:</p>
@@ -974,18 +723,18 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </ul>
 <div class="tip admonition" id="adequation-du-modele-tip">
 <p class="admonition-title">Attention!</p>
-<p>Le modèle de réponse hémodynamique ci-dessus est très rigide et peut s’avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est différent de l’étude originale de Glover and coll. (1999) <span id="id4">[<a class="reference internal" href="#id24" title="G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. Neuroimage, 9(4):416–429, April 1999.">Glo99</a>]</span>. C’est probablement le cas, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires. La fonction de réponse hémodynamique peut également varier d’une région du cerveau à l’autre. Il est possible d’utiliser des modèles de la réponse hémodynamique qui sont plus flexibles et permettent, par exemple, de modifier le temps du pic de la réponse.</p>
+<p>Le modèle de réponse hémodynamique ci-dessus est très rigide et peut s’avérer être une hypothèse invalide pour certaines populations, notamment si le couplage neurovasculaire est différent de l’étude originale de Glover and coll. (1999) <span id="id4">[<a class="reference internal" href="references.html#id18" title="G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. Neuroimage, 9(4):416–429, April 1999.">Glo99</a>]</span>. C’est probablement le cas, par exemple, chez les personnes âgées ou chez les individus ayant des maladies cardiovasculaires. La fonction de réponse hémodynamique peut également varier d’une région du cerveau à l’autre. Il est possible d’utiliser des modèles de la réponse hémodynamique qui sont plus flexibles et permettent, par exemple, de modifier le temps du pic de la réponse.</p>
 </div>
 </section>
 <section id="le-cerveau-bold-comme-un-systeme">
-<h4>Le cerveau (BOLD) comme un système<a class="headerlink" href="#le-cerveau-bold-comme-un-systeme" title="Permalink to this headline">#</a></h4>
+<h4>Le cerveau (BOLD) comme un système<a class="headerlink" href="#le-cerveau-bold-comme-un-systeme" title="Permalink to this heading">#</a></h4>
 <figure class="align-default" id="systeme-fig">
 <a class="reference internal image-reference" href="_images/systeme-fig.png"><img alt="_images/systeme-fig.png" src="_images/systeme-fig.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 47 </span><span class="caption-text">Un système prend un décours temporel d’entrée et lui associe un décours temporel de sortie. Figure sous licence CC-BY.</span><a class="headerlink" href="#systeme-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Le processus qui transforme l’activité neuronale en un signal BOLD peut se formaliser dans le cadre général de la théorie des systèmes. Plus spécifiquement, la fonction de réponse hémodynamique de la <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 46</span></a> est généralement approximée comme un système linéaire et invariant dans le temps. Cette approximation sous-tend les inférences que l’on fait sur l’organisation fonctionnelle du cerveau: nous l’employons dans le but d’estimer la réponse à une tâche ou condition donnée. La fonction de réponse hémodynamique de la <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 46</span></a> se rapporte à un contexte expérimental simple: une stimulation courte et isolée. En réalité, les <strong>paradigmes expérimentaux sont beaucoup plus complexes</strong>: ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d’une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu’advient-il alors de la fonction de réponse hémodynamique? Une propriété clé d’un système linéaire est d’être additif, c’est à dire que la réponse à une stimulation longue peut être décomposée comme la superposition de réponses à des stimulations plus courtes. Une autre hypothèse clé est l’<strong>invariance dans le temps</strong>, qui nous dit que la réponse du système ne va pas varier si on effectue la même stimulation courte à différents instants. Quand on <strong>combine</strong> l’hypothèse de linéarité avec l’invariance dans le temps, il est possible de prédire la réponse à n’importe quelle série de stimuli complexes à partir de la réponse à une unique stimulation courte, comme présentée en <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 46</span></a>. L’étude de Logothetis et al. (2001) <span id="id5">[<a class="reference internal" href="#id25" title="N K Logothetis, J Pauls, M Augath, T Trinath, and A Oeltermann. Neurophysiological investigation of the basis of the fMRI signal. Nature, 412(6843):150–157, July 2001.">LPA+01</a>]</span> a été la première à démontrer chez le singe que cette hypothèse de linéarité et d’invariance semble être assez bien respectée, au moins dans le cortex visuel pour des stimuli visuels simples (contexte de l’étude).</p>
+<p>Le processus qui transforme l’activité neuronale en un signal BOLD peut se formaliser dans le cadre général de la théorie des systèmes. Plus spécifiquement, la fonction de réponse hémodynamique de la <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 46</span></a> est généralement approximée comme un système linéaire et invariant dans le temps. Cette approximation sous-tend les inférences que l’on fait sur l’organisation fonctionnelle du cerveau: nous l’employons dans le but d’estimer la réponse à une tâche ou condition donnée. La fonction de réponse hémodynamique de la <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 46</span></a> se rapporte à un contexte expérimental simple: une stimulation courte et isolée. En réalité, les <strong>paradigmes expérimentaux sont beaucoup plus complexes</strong>: ils alternent à maintes reprises entre différentes conditions expérimentales/stimuli (par blocs, aléatoirement ou dans un ordre précis). De plus, ils comportent souvent plus d’une stimulation rapprochée dans le temps, ou/et des stimuli qui se prolongent sur plusieurs millisecondes ou secondes. Qu’advient-il alors de la fonction de réponse hémodynamique? Une propriété clé d’un système linéaire est d’être additif, c’est à dire que la réponse à une stimulation longue peut être décomposée comme la superposition de réponses à des stimulations plus courtes. Une autre hypothèse clé est l’<strong>invariance dans le temps</strong>, qui nous dit que la réponse du système ne va pas varier si on effectue la même stimulation courte à différents instants. Quand on <strong>combine</strong> l’hypothèse de linéarité avec l’invariance dans le temps, il est possible de prédire la réponse à n’importe quelle série de stimuli complexes à partir de la réponse à une unique stimulation courte, comme présentée en <a class="reference internal" href="#hrf-fig"><span class="std std-numref">Fig. 46</span></a>. L’étude de Logothetis et al. (2001) <span id="id5">[<a class="reference internal" href="references.html#id19" title="N K Logothetis, J Pauls, M Augath, T Trinath, and A Oeltermann. Neurophysiological investigation of the basis of the fMRI signal. Nature, 412(6843):150–157, July 2001.">LPA+01</a>]</span> a été la première à démontrer chez le singe que cette hypothèse de linéarité et d’invariance semble être assez bien respectée, au moins dans le cortex visuel pour des stimuli visuels simples (contexte de l’étude).</p>
 <div class="tip admonition" id="additivite-tip">
 <p class="admonition-title">Additivité</p>
 <p>Un système est dit <strong>additif</strong> si la réponse à plusieurs impulsions correspond à la somme des réponses à ces impulsions prises indépendamment. Ce comportement est illustré ci-dessous.</p>
@@ -1000,7 +749,7 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </section>
 </section>
 <section id="pretraitement-des-donnees-d-irmf">
-<h2>Prétraitement des données d’IRMf<a class="headerlink" href="#pretraitement-des-donnees-d-irmf" title="Permalink to this headline">#</a></h2>
+<h2>Prétraitement des données d’IRMf<a class="headerlink" href="#pretraitement-des-donnees-d-irmf" title="Permalink to this heading">#</a></h2>
 <p>Nous avons abordé dans les sections précédentes divers aspects de la modélisation de la réponse hémodynamique. Un autre point important en IRMf est la modélisation du bruit et des sources de variations qui peuvent être présentes dans les séries temporelles. Différents <strong>facteurs confondants</strong> et <strong>artéfacts</strong> (provenant du scanner IRM ou du sujet scanné lui-même) peuvent induire des fluctuations substantielles dans le signal BOLD mesuré, et venir confondre les inférences faites sur l’activité neuronale en réponse à des tâches:</p>
 <ul class="simple">
 <li><p>bruit cardiaque,</p></li>
@@ -1011,10 +760,10 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </ul>
 <p>Différentes stratégies de modélisation peuvent être employées pour réduire l’influence des facteurs confondants et des artéfacts. Dans cette section, nous présentons un aperçu de trois grandes étapes de prétraitement en IRMf, qui, typiquement sont appliquées séquentiellement. On parle de <em>chaîne de traitements</em>, ou encore <em>pipeline</em> ou <em>worflow</em> en anglais.</p>
 <section id="recalage">
-<h3>Recalage<a class="headerlink" href="#recalage" title="Permalink to this headline">#</a></h3>
+<h3>Recalage<a class="headerlink" href="#recalage" title="Permalink to this heading">#</a></h3>
 <p>Le recalage consiste à aligner une image à une image de référence. C’est une étape de prétraitement complétée avant les analyses statistiques de groupe, comme celles-ci présupposent qu’il y a une correspondance entre les voxels des images provenant de différents sujets. Nous avons déjà discuté du <a class="reference internal" href="morphometrie.html#registration-tip"><span class="std std-ref">recalage</span></a> dans la section sur la <a class="reference internal" href="morphometrie.html"><span class="doc std std-doc">morphometrie</span></a>. Nous allons voir que trois types de recalage sont utilisés en IRM fonctionnelle.</p>
 <section id="recalage-du-mouvement">
-<h4>Recalage du mouvement<a class="headerlink" href="#recalage-du-mouvement" title="Permalink to this headline">#</a></h4>
+<h4>Recalage du mouvement<a class="headerlink" href="#recalage-du-mouvement" title="Permalink to this heading">#</a></h4>
 <figure class="align-default" id="mouvement-fig">
 <a class="reference internal image-reference" href="_images/mouvement-fig.png"><img alt="_images/mouvement-fig.png" src="_images/mouvement-fig.png" style="width: 500px;" /></a>
 <figcaption>
@@ -1028,11 +777,11 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </div>
 </section>
 <section id="recalage-bold-avec-t-1">
-<h4>Recalage BOLD avec <span class="math notranslate nohighlight">\(T_1\)</span><a class="headerlink" href="#recalage-bold-avec-t-1" title="Permalink to this headline">#</a></h4>
+<h4>Recalage BOLD avec <span class="math notranslate nohighlight">\(T_1\)</span><a class="headerlink" href="#recalage-bold-avec-t-1" title="Permalink to this heading">#</a></h4>
 <p>Il est commun d’aligner l’image BOLD avec l’image anatomique <span class="math notranslate nohighlight">\(T_1\)</span> du sujet. Pourquoi? L’image fonctionnelle détient une moins bonne résolution spatiale que l’image structurelle <span class="math notranslate nohighlight">\(T_1\)</span>: nous avons de plus courtes durées d’acquisition pour acquérir un même volume. Le contraste entre structures anatomiques est aussi bien meilleur en <span class="math notranslate nohighlight">\(T_1\)</span>. Il est donc utile de superposer les deux images pour localiser les activations BOLD. Cette transformation est estimée de manière rigide, comme le mouvement. Notez qu’il existe aussi des déformations non-rigides causées par les non-uniformités du champ, et qui peuvent être corrigées de manière additionnelle.</p>
 </section>
 <section id="recalage-dans-l-espace-stereotaxique">
-<h4>Recalage dans l’espace stéréotaxique<a class="headerlink" href="#recalage-dans-l-espace-stereotaxique" title="Permalink to this headline">#</a></h4>
+<h4>Recalage dans l’espace stéréotaxique<a class="headerlink" href="#recalage-dans-l-espace-stereotaxique" title="Permalink to this heading">#</a></h4>
 <figure class="align-default" id="registration-macaque-fig">
 <a class="reference internal image-reference" href="_images/registration-macaque.gif"><img alt="_images/registration-macaque.gif" src="_images/registration-macaque.gif" style="width: 500px;" /></a>
 <figcaption>
@@ -1043,8 +792,13 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </section>
 </section>
 <section id="lissage-spatiale">
-<h3>Lissage spatiale<a class="headerlink" href="#lissage-spatiale" title="Permalink to this headline">#</a></h3>
+<h3>Lissage spatiale<a class="headerlink" href="#lissage-spatiale" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies nécessaires</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1093,11 +847,10 @@ est une modalité d’imagerie qui permet de mesurer indirectement l’activité
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="smoothing-fmri-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_fonctionnelle_5_0.png" src="_images/irm_fonctionnelle_5_0.png" />
-</div>
+<img alt="_images/100285039aae6666d9dcb4c5302ed19acbcf3a174c130392e9db8ff78885a137.png" src="_images/100285039aae6666d9dcb4c5302ed19acbcf3a174c130392e9db8ff78885a137.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 51 </span><span class="caption-text">Illustration de l’impact du lissage sur un volume BOLD.
 À mesure que le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> augmente, la mesure en un voxel représente la moyenne dans un voisinage spatial de plus en plus grand.
@@ -1107,8 +860,13 @@ Cette figure est générée par du code python à l’aide de la librairie <a cl
 <p>Nous revenons ici sur une étape de prétraitement que nous avons déjà abordé lors du cours sur la VBM: le lissage spatial. Le processus du lissage est semblable pour l’IRM fonctionnelle, mais l’objectif de cette étape est un peu différent. Le bruit thermique aléatoire joue un plus grand rôle dans le signal BOLD, et peut avoir un effet néfaste sur les analyses statistiques. Le lissage spatial permet de diminuer ce bruit aléatoire. Mis à part l’amélioration du rapport signal sur bruit, le lissage permet également d’atténuer les imperfections de recalage entre sujets, en diffusant l’activité dans l’espace. De manière plus opérationnelle, le lissage consiste à prendre les voxels de l’image et à les remplacer par une nouvelle valeur considérant les valeurs des voxels voisins. Chaque voxel voisin se voit attribuer une pondération qui quantifie sa contribution à la nouvelle valeur attribuée à un voxel cible. La valeur originale du voxel cible est celle qui aura la plus grande pondération, et les valeurs des voxels voisins seront pondérés en fonction de la proximité entretenue avec le voxel cible. Donc, le lissage remplace la valeur associée à chaque voxel par une moyenne pondérée de ses voisins. Comme c’est une moyenne pondérée, la valeur originale du voxel est celle qui aura la plus grande pondération, mais les valeurs des voxels situés directement autour vont aussi l’affecter grandement. Le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> (<em>full width at half maximum</em>) contrôle l’échelle de ce lissage (plus important ou moins important). Il détermine l’étalement des voxels voisins qui participent à la nouvelle valeur d’un voxel cible. D’un point de vue mathématique, le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> représente la moitié de la largeur de la courbe gaussienne, qui décrit du bruit distribuée aléatoirement. Une plus grande valeur <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> sous-tend une participation plus étalée des voxels voisins à la nouvelle valeur  d’un voxel cible de l’image. Plusieurs études choisissent <code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">mm</span></code> comme valeur pour le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code>.</p>
 </section>
 <section id="filtrage-des-facteurs-de-non-interet">
-<h3>Filtrage des facteurs de non-intérêt<a class="headerlink" href="#filtrage-des-facteurs-de-non-interet" title="Permalink to this headline">#</a></h3>
+<h3>Filtrage des facteurs de non-intérêt<a class="headerlink" href="#filtrage-des-facteurs-de-non-interet" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies nécessaires</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1180,11 +938,10 @@ Cette figure est générée par du code python à l’aide de la librairie <a cl
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="detrending-fmri-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_fonctionnelle_7_0.png" src="_images/irm_fonctionnelle_7_0.png" />
-</div>
+<img alt="_images/6fd642cc462b62d3b731d85fa50e0445e7fcad4539e668f8e899dd88af10a469.png" src="_images/6fd642cc462b62d3b731d85fa50e0445e7fcad4539e668f8e899dd88af10a469.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 52 </span><span class="caption-text">On extrait les séries temporelles associées à l’atlas Harvard-Oxford avant (à gauche) et après (à droite) régression des dérives lentes.
 Cette figure est adaptée d’un tutoriel de la librairie <a class="reference external" href="https://nilearn.github.io/auto_examples/06_manipulating_images/plot_nifti_labels_simple.html#sphx-glr-auto-examples-06-manipulating-images-plot-nifti-labels-simple-py">nilearn</a> à partir du jeu de données <code class="docutils literal notranslate"><span class="pre">development_fmri</span></code> (cliquer sur + pour voir le code). La figure est sous licence CC-BY.</span><a class="headerlink" href="#detrending-fmri-fig" title="Permalink to this image">#</a></p>
@@ -1194,11 +951,16 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </section>
 </section>
 <section id="analyses-statistiques">
-<h2>Analyses statistiques<a class="headerlink" href="#analyses-statistiques" title="Permalink to this headline">#</a></h2>
+<h2>Analyses statistiques<a class="headerlink" href="#analyses-statistiques" title="Permalink to this heading">#</a></h2>
 <p>Les analyses statistiques comportent généralement des <strong>analyses individuelles</strong> dans lesquelles les séries temporelles sont analysées séparément pour chacun des sujets (on analyse l’effet des manipulations expérimentales), puis des <strong>analyses de groupe</strong> (on analyse l’effet de groupe), où ces données sont combinées pour plusieurs sujets pour être analysées. Dans cette section nous allons discuter brièvement de la génération de cartes statistiques individuelles. Nous reviendrons sur les analyses de groupe, et les modèles statistiques utilisées dans le chapitre sur les <a class="reference internal" href="cartes_statistiques.html"><span class="doc std std-doc">cartes statistiques cérébrales</span></a>.</p>
 <section id="irmf-experience-basee-sur-une-tache">
-<h3>IRMf - Expérience basée sur une tâche<a class="headerlink" href="#irmf-experience-basee-sur-une-tache" title="Permalink to this headline">#</a></h3>
+<h3>IRMf - Expérience basée sur une tâche<a class="headerlink" href="#irmf-experience-basee-sur-une-tache" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_spm_auditory</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span>
@@ -1241,25 +1003,29 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="hrf-auditory-fig" style="width: 500px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_fonctionnelle_9_0.png" src="_images/irm_fonctionnelle_9_0.png" />
-</div>
+<img alt="_images/9826bbf72c6aa96e686e5e4f8e8e5594016f2508879097760f9fb14e247ca414.png" src="_images/9826bbf72c6aa96e686e5e4f8e8e5594016f2508879097760f9fb14e247ca414.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Illustration d’un paradigme auditif en blocs. En bleu: périodes de stimulations audio. En rouge: réponse cérébrale prédite avec le modèle de réponse linéaire invariante dans le temps, et une réponse unitaire suivant le modèle de Glover et al. (1999) <span id="id6">[<a class="reference internal" href="#id24" title="G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. Neuroimage, 9(4):416–429, April 1999.">Glo99</a>]</span>. Le code pour générer cette figure est adapté d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-auditory-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Illustration d’un paradigme auditif en blocs. En bleu: périodes de stimulations audio. En rouge: réponse cérébrale prédite avec le modèle de réponse linéaire invariante dans le temps, et une réponse unitaire suivant le modèle de Glover et al. (1999) <span id="id6">[<a class="reference internal" href="references.html#id18" title="G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. Neuroimage, 9(4):416–429, April 1999.">Glo99</a>]</span>. Le code pour générer cette figure est adapté d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#hrf-auditory-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Pour déterminer si l’activité des voxels du cerveau changent en réponse à des manipulations expérimentales, une approche expérimentale standard consiste à manipuler la tâche que réalise le sujet dans le scanneur, par exemple en alternant différentes conditions par blocs (stimulations audio, silence). Nous avons ensuite recours à des contrastes, aussi appelés analyses de soustraction qui procèdent en comparant les séries temporelles d’une condition à une autre condition, ou à un seuil de base. De manière simplifiée, l’analyse consiste à faire la différence de moyenne entre la période de silence et la période de stimulations auditives. Ces contrastes sont répétés pour chacun des voxels du cerveau, et génère une <strong>carte statistique cérébrale</strong>.</p>
 </section>
 <section id="regression-univariee-massive">
-<h3>Régression univariée massive<a class="headerlink" href="#regression-univariee-massive" title="Permalink to this headline">#</a></h3>
+<h3>Régression univariée massive<a class="headerlink" href="#regression-univariee-massive" title="Permalink to this heading">#</a></h3>
 <p>Il est possible de généraliser l’analyse de soustraction pour tenir compte de <strong>1) la forme de la réponse hémodynamique</strong>
 <strong>2) la présence de plusieurs conditions dans une même expérience</strong>. En pratique, en faisant une hypothèse de système linéaire et invariant dans le temps, on génère une prédiction de la forme de la réponse à une condition expérimentale, comme dans la <a class="reference internal" href="#hrf-auditory-fig"><span class="std std-numref">Fig. 53</span></a>. Un modèle de régression linéaire est alors utilisé pour estimer l’amplitude de cette réponse, afin d’ajuster le modèle au plus près des valeurs mesurées dans un voxel. Cette régression génère un paramètre d’amplitude (et un test de significativité) pour chaque voxel. On parle de régression univariée, car chaque voxel du cerveau est analysé indépendamment. Et on parle de régression univariée massive, car on répète cette procédure pour des dizaines (ou même des centaines) de milliers de voxels!</p>
 </section>
 <section id="irmf-cartes-d-activation">
-<span id="activation-section"></span><h3>IRMf - Cartes d’activation<a class="headerlink" href="#irmf-cartes-d-activation" title="Permalink to this headline">#</a></h3>
+<span id="activation-section"></span><h3>IRMf - Cartes d’activation<a class="headerlink" href="#irmf-cartes-d-activation" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
 <span class="kn">from</span> <span class="nn">nilearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_spm_auditory</span>
@@ -1337,11 +1103,10 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="auditory-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/irm_fonctionnelle_11_0.png" src="_images/irm_fonctionnelle_11_0.png" />
-</div>
+<img alt="_images/b40a16b79014fc7572719de50312fdce11dc54bc916e2986eb0938cf9a12504c.png" src="_images/b40a16b79014fc7572719de50312fdce11dc54bc916e2986eb0938cf9a12504c.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 54 </span><span class="caption-text">Carte d’activation pour un paradigme en blocs auditifs. Les trois principaux pics d’activation ont été identifiés, et le signal est présenté pour chaque pic, superposé avec l’activité prédite par le modèle basé sur les stimuli auditifs. Notez comme la forme de la réponse est identique pour les trois voxels sélectionnés, mais que l’amplitude du modèle varie (elle est estimée par la régression). Le code pour générer cette figure est adapté d’un <a class="reference external" href="https://nilearn.github.io/auto_examples/04_glm_first_level/plot_hrf.html#sphx-glr-auto-examples-04-glm-first-level-plot-hrf-py">tutoriel</a> Nilearn, et la figure est sous licence CC-BY.</span><a class="headerlink" href="#auditory-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1350,7 +1115,7 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </section>
 </section>
 <section id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
 <p>La réalisation d’une expérience d’IRMf nécessite de bien penser les conditions d’intérêt et de contrôles pour isoler des processus cognitifs pertinents, mais cela requiert aussi de réfléchir aux hypothèses sous-jacentes:</p>
 <ul class="simple">
 <li><p><strong>hypothèses neuronales</strong>: les populations de neurones vont s’activer en réponse à nos conditions.</p></li>
@@ -1359,31 +1124,12 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 </ul>
 <p>Pour toutes ces raisons, il existe toujours des limitations importantes à l’interprétation que l’on peut faire de résultats en IRMf. Mais c’est aussi la technique cerveau entier non-invasive qui dispose de la meilleure résolution spatiale à ce jour.</p>
 </section>
-<section id="references">
-<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id7">
-<dl class="citation">
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id2">BWF98</a></span></dt>
-<dd><p>R B Buxton, E C Wong, and L R Frank. Dynamics of blood flow and oxygenation changes during brain activation: the balloon model. <em>Magn. Reson. Med.</em>, 39(6):855–864, June 1998.</p>
-</dd>
-<dt class="label" id="id24"><span class="brackets">Glo99</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>,<a href="#id6">3</a>)</span></dt>
-<dd><p>G H Glover. Deconvolution of impulse response in event-related BOLD fMRI. <em>Neuroimage</em>, 9(4):416–429, April 1999.</p>
-</dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id5">LPA+01</a></span></dt>
-<dd><p>N K Logothetis, J Pauls, M Augath, T Trinath, and A Oeltermann. Neurophysiological investigation of the basis of the fMRI signal. <em>Nature</em>, 412(6843):150–157, July 2001.</p>
-</dd>
-<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id1">ZKK+21</a></span></dt>
-<dd><p>E Zisis, D Keller, L Kanari, A Arnaudon, M Gevaert, T Delemontex, B Coste, A Foni, M Abdellah, C Calì, K Hess, P J Magistretti, F Schürmann, and H Markram. Architecture of the Neuro-Glia-Vascular system. <em>bioRxiv</em>, 2021.</p>
-</dd>
-</dl>
-</div>
-</section>
 <section id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this heading">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Vrai / faux?</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>La réponse hémodynamique est faible une seconde après l’excitation neuronale.</p></li>
 <li><p>La réponse hémodynamique est maximale 2 secondes après l’excitation neuronale.</p></li>
 <li><p>La réponse hémodynamique est toujours visible 7 secondes après l’excitation neuronale.</p></li>
@@ -1393,7 +1139,7 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <div class="note admonition">
 <p class="admonition-title">Exercice 2</p>
 <p>Vrai / faux?</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Les données en IRM fonctionnelle et structurelle doivent être alignées pour générer une carte d’activation.</p></li>
 <li><p>Le filtrage des facteurs de non-intérêt est important pour générer une carte d’activation.</p></li>
 <li><p>Le lissage spatial est utile, même pour une analyse individuelle.</p></li>
@@ -1402,7 +1148,7 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <div class="note admonition">
 <p class="admonition-title">Exercice 3</p>
 <p>Qu’est ce que le signal BOLD? (vrai / faux).</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Une séquence d’IRM pondérée en T2*.</p></li>
 <li><p>Un type de séquence d’IRM qui mesure directement l’activité des neurones.</p></li>
 <li><p>Un type de séquence d’IRM qui mesure l’oxygénation du sang.</p></li>
@@ -1411,7 +1157,7 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <div class="note admonition">
 <p class="admonition-title">Exercice 4</p>
 <p>Vrai / faux. Le principe d’additivité de la réponse hémodynamique est…</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Un modèle mathématique.</p></li>
 <li><p>Une propriété de base du couplage neurovasculaire, toujours vérifiée.</p></li>
 <li><p>Une hypothèse courante, en partie confirmée expérimentalement.</p></li>
@@ -1420,7 +1166,7 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <div class="note admonition">
 <p class="admonition-title">Exercice 5</p>
 <p>Choisissez la bonne réponse. Des données d’IRMf sont en général…</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Une image du cerveau.</p></li>
 <li><p>Une dizaine d’images du cerveau.</p></li>
 <li><p>Des dizaines d’images du cerveau, ou plus.</p></li>
@@ -1443,7 +1189,7 @@ Cette figure est adaptée d’un tutoriel de la librairie <a class="reference ex
 <p>Pour répondre aux questions de cet exercice, lisez d’abord l’article <em>High-resolution functional MRI of the human amygdala at 7 T</em> de Mensen et collaborateurs (publié en 2013 dans la revue <em>European Journal of radiology</em>, volume 82, pages 728 à 733).
 Celui-ci est disponible en libre accès à cette <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3629563/">adresse</a>.
 Les questions suivantes requièrent des réponses à développement court.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Quelle technique de neuroimagerie est utilisée? S’agit-il d’une technique structurelle ou fonctionnelle?</p></li>
 <li><p>Quelle est la force de l’IRM?</p></li>
 <li><p>Quel type de séquence d’acquisition d’image est utilisé? Listez les paramètres: TE et taille du champ de vue (en mm), durée de l’acquisition.</p></li>
@@ -1466,7 +1212,7 @@ Les questions suivantes requièrent des réponses à développement court.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1474,50 +1220,135 @@ Les questions suivantes requièrent des réponses à développement court.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="morphometrie.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Analyses morphométriques</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="morphometrie.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyses morphométriques</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="connectivite.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="connectivite.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Connectivité fonctionnelle</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Pierre Bellec et l'équipe PSY3018<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">Principes physiques et physiologiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#images-3d-t">Images 3D+t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couplage-neurovasculaire">Couplage neurovasculaire</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#le-signal-bold">Le signal BOLD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-de-reponse-hemodynamique">Fonction de réponse hémodynamique</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reponse-a-une-impulsion-courte">Réponse à une impulsion courte</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#le-cerveau-bold-comme-un-systeme">Le cerveau (BOLD) comme un système</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraitement-des-donnees-d-irmf">Prétraitement des données d’IRMf</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage">Recalage</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-du-mouvement">Recalage du mouvement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-bold-avec-t-1">Recalage BOLD avec <span class="math notranslate nohighlight">\(T_1\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-dans-l-espace-stereotaxique">Recalage dans l’espace stéréotaxique</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lissage-spatiale">Lissage spatiale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrage-des-facteurs-de-non-interet">Filtrage des facteurs de non-intérêt</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyses-statistiques">Analyses statistiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irmf-experience-basee-sur-une-tache">IRMf - Expérience basée sur une tâche</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-univariee-massive">Régression univariée massive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irmf-cartes-d-activation">IRMf - Cartes d’activation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pierre Bellec et l'équipe PSY3018
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

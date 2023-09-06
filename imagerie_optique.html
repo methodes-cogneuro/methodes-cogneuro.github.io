@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Imagerie optique &#8212; Méthodes en neurosciences cognitives</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,62 +62,94 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'imagerie_optique';</script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tomographie par émission de positrons" href="tep.html" />
     <link rel="prev" title="IRM de diffusion" href="irm_diffusion.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Méthodes en neurosciences cognitives</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,499 +159,262 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_cerebrales.html">
-   Cartes cérébrales
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm.html">
-   Imagerie par résonance magnétique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="morphometrie.html">
-   Analyses morphométriques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_fonctionnelle.html">
-   IRM fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_diffusion.html">
-   IRM de diffusion
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Imagerie optique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tep.html">
-   Tomographie par émission de positrons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_statistiques.html">
-   Cartes statistiques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="reproductibilite.html">
-   Reproductibilité et controverses
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_cerebrales.html">Cartes cérébrales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm.html">Imagerie par résonance magnétique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morphometrie.html">Analyses morphométriques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_fonctionnelle.html">IRM fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectivite.html">Connectivité fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_diffusion.html">IRM de diffusion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Imagerie optique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tep.html">Tomographie par émission de positrons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_statistiques.html">Cartes statistiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproductibilite.html">Reproductibilité et controverses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Références</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/imagerie_optique.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/imagerie_optique.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Fimagerie_optique.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/imagerie_optique.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Fimagerie_optique.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/imagerie_optique.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/imagerie_optique.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/imagerie_optique.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
-   Principes physiques et physiologiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lumiere-infrarouge-et-tissus-biologiques">
-     Lumière infrarouge et tissus biologiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spectre-d-absorption-des-tissus">
-     Spectre d’absorption des tissus
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#diffusion-de-la-lumiere">
-     Diffusion de la lumière
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#couplage-neurovasculaire">
-     Couplage neurovasculaire
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#acquisition-et-traitement">
-   Acquisition et traitement
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recalage-avec-l-anatomie">
-     Recalage avec l’anatomie
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#montage">
-     Montage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#artefact-de-mouvement">
-     Artefact de mouvement
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtrage">
-     Filtrage
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application-en-neuroscience-cognitive">
-   Application en neuroscience cognitive
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reponse-hemodynamique">
-     Réponse hémodynamique
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#carte-d-activation">
-     Carte d’activation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flexibilite-experimentale">
-     Flexibilité expérimentale
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Imagerie optique</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">
-   Principes physiques et physiologiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lumiere-infrarouge-et-tissus-biologiques">
-     Lumière infrarouge et tissus biologiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spectre-d-absorption-des-tissus">
-     Spectre d’absorption des tissus
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#diffusion-de-la-lumiere">
-     Diffusion de la lumière
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#couplage-neurovasculaire">
-     Couplage neurovasculaire
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#acquisition-et-traitement">
-   Acquisition et traitement
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recalage-avec-l-anatomie">
-     Recalage avec l’anatomie
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#montage">
-     Montage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#artefact-de-mouvement">
-     Artefact de mouvement
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtrage">
-     Filtrage
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application-en-neuroscience-cognitive">
-   Application en neuroscience cognitive
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reponse-hemodynamique">
-     Réponse hémodynamique
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#carte-d-activation">
-     Carte d’activation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flexibilite-experimentale">
-     Flexibilité expérimentale
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Imagerie optique</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">Principes physiques et physiologiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lumiere-infrarouge-et-tissus-biologiques">Lumière infrarouge et tissus biologiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectre-d-absorption-des-tissus">Spectre d’absorption des tissus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-de-la-lumiere">Diffusion de la lumière</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couplage-neurovasculaire">Couplage neurovasculaire</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acquisition-et-traitement">Acquisition et traitement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-avec-l-anatomie">Recalage avec l’anatomie</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#montage">Montage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artefact-de-mouvement">Artefact de mouvement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrage">Filtrage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-en-neuroscience-cognitive">Application en neuroscience cognitive</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reponse-hemodynamique">Réponse hémodynamique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carte-d-activation">Carte d’activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flexibilite-experimentale">Flexibilité expérimentale</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="imagerie-optique">
-<span id="imagerie-optique-chapitre"></span><h1>Imagerie optique<a class="headerlink" href="#imagerie-optique" title="Permalink to this headline">#</a></h1>
+<span id="imagerie-optique-chapitre"></span><h1>Imagerie optique<a class="headerlink" href="#imagerie-optique" title="Permalink to this heading">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -677,10 +483,15 @@ title="Print to PDF"
 <li><p>Applications de l’imagerie optique en neuroscience cognitive.</p></li>
 </ul>
 <section id="principes-physiques-et-physiologiques">
-<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this headline">#</a></h2>
+<h2>Principes physiques et physiologiques<a class="headerlink" href="#principes-physiques-et-physiologiques" title="Permalink to this heading">#</a></h2>
 <section id="lumiere-infrarouge-et-tissus-biologiques">
-<h3>Lumière infrarouge et tissus biologiques<a class="headerlink" href="#lumiere-infrarouge-et-tissus-biologiques" title="Permalink to this headline">#</a></h3>
+<h3>Lumière infrarouge et tissus biologiques<a class="headerlink" href="#lumiere-infrarouge-et-tissus-biologiques" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -691,13 +502,14 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/61rWjVkpgh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 <p>La lumière pénètre et diffuse au travers des tissus biologiques. Cela peut être observé facilement, par exemple en plaçant une lampe de poche derrière votre main. Votre main est en partie transparente et la lumière peut la pénétrer. Certains tissus vont plus absorber la lumière que d’autres, et permettre de voir le genre de tissus présent à l’intérieur de notre main. Mais quel genre de tissus exactement? cela va dépendre du genre de lumière… La lumière proche infra-rouge est intéressante de ce point de vue, car elle est particulièrement absorbée par l’hémoglobine. La vidéo ci-dessus permet ainsi d’observer assez clairement la vascularisation de la main avec de la lumière (et une caméra) proche-infrarouge. Karl von Vierordt en 1876 avait déjà pu remarquer qu’il était possible d’observer la diminution d’oxyhémoglobine dans la main avec cette technique, en limitant l’arrivée de sang dans la main au moyen d’une ligature. L’imagerie optique cérébrale repose aussi sur les propriétés physiques de la lumière proche infrarouge dans les tissus biologiques.</p>
 </section>
 <section id="spectre-d-absorption-des-tissus">
-<h3>Spectre d’absorption des tissus<a class="headerlink" href="#spectre-d-absorption-des-tissus" title="Permalink to this headline">#</a></h3>
+<h3>Spectre d’absorption des tissus<a class="headerlink" href="#spectre-d-absorption-des-tissus" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="spectre-hemoglobine-fig">
 <a class="reference internal image-reference" href="_images/spectre_hemoglobine.png"><img alt="_images/spectre_hemoglobine.png" src="_images/spectre_hemoglobine.png" style="width: 600px;" /></a>
 <figcaption>
@@ -707,7 +519,7 @@ title="Print to PDF"
 <p>Ce diagramme représente quelles longueurs d’ondes de la lumière sont absorbées par l’oxy- et la désoxy-hémoglobine, donc HbO2 (hémoglobine oxygénée en rouge) et HbR (hémoglobine non oxygénée en bleu). On peut voir qu’il y a des longueurs d’onde pour lesquelles le niveau d’absorption HbO2 vs HbRest très différent. Par exemple, à 700 nanomètres la lumière est plus absorbée par HbR, alors qu’à 900 nanomètres la lumière est plus absorbée par HbO2. Si on peut mesurer le niveau d’absorption dans le sang pour ces deux couleurs, en les comparant, on va pouvoir essayer de dissocier les concentrations en HbO2 et HbR.  Un autre point important: ces longueurs d’onde sont très peu absorbées par l’eau, et la lumière proche infra-rouge va bien pénétrer dans les tissus biologiques. Donc, juste en étudiant la quantité d’absorption de deux longueurs d’onde proche infrarouge dans le cerveau, on va pouvoir quantifier le contenu en HbO2 et HB! Mais reste à savoir comment on peut faire cette mesure de manière localisée dans une petite région du cerveau.</p>
 </section>
 <section id="diffusion-de-la-lumiere">
-<h3>Diffusion de la lumière<a class="headerlink" href="#diffusion-de-la-lumiere" title="Permalink to this headline">#</a></h3>
+<h3>Diffusion de la lumière<a class="headerlink" href="#diffusion-de-la-lumiere" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="nir-diffusion-fig">
 <a class="reference internal image-reference" href="_images/nir-diffusion.png"><img alt="_images/nir-diffusion.png" src="_images/nir-diffusion.png" style="width: 300px;" /></a>
 <figcaption>
@@ -722,14 +534,14 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </div>
 </section>
 <section id="couplage-neurovasculaire">
-<h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this headline">#</a></h3>
+<h3>Couplage neurovasculaire<a class="headerlink" href="#couplage-neurovasculaire" title="Permalink to this heading">#</a></h3>
 <p>On a maintenant vu le principe physique qui nous permet de mesurer la concentration en HbO2 et HbRdans une région (superficielle) du cerveau. Le principe physiologique sur lequel repose l’imagerie optique est le même que pour l’IRMf, c’est-à-dire le <strong>couplage neurovasculaire</strong>. Vous pouvez vous référez à la <a class="reference internal" href="irm_fonctionnelle.html#couplage-neurovasculaire-irmf-section"><span class="std std-ref">section</span></a> du chapitre sur l’IRMf pour plus de détails. Brièvement, l’activité neuronale, notamment post-synaptique, requiert une consommation d’oxygène au niveau des cellules gliales, immédiatement à proximité des neurones concernés. Cette consommation d’oxygène va entraîner une augmentation d’HbO2 et une diminution relative d’HbRà proximité des populations de neurones activés. C’est ce phénomène de couplage neurovasculaire qu’on mesure à la fois en IRMf et en imagerie optique.</p>
 </section>
 </section>
 <section id="acquisition-et-traitement">
-<h2>Acquisition et traitement<a class="headerlink" href="#acquisition-et-traitement" title="Permalink to this headline">#</a></h2>
+<h2>Acquisition et traitement<a class="headerlink" href="#acquisition-et-traitement" title="Permalink to this heading">#</a></h2>
 <section id="recalage-avec-l-anatomie">
-<h3>Recalage avec l’anatomie<a class="headerlink" href="#recalage-avec-l-anatomie" title="Permalink to this headline">#</a></h3>
+<h3>Recalage avec l’anatomie<a class="headerlink" href="#recalage-avec-l-anatomie" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="fiducials-fig">
 <a class="reference internal image-reference" href="_images/fiducials.png"><img alt="_images/fiducials.png" src="_images/fiducials.png" style="width: 800px;" /></a>
 <figcaption>
@@ -739,8 +551,13 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 <p>Afin de localiser l’activité cérébrale mesurée, il est courant d’utiliser une IRM structurelle du participant de recherche. Il est alors important de pouvoir situer les émetteurs et récepteurs de lumière proche infrarouge par rapport aux différentes régions du cerveau. Deux techniques principales sont utilisées. La première technique consiste à utiliser certais points de repères anatomiques sur la tête du participant, tel qu’illustré dans la <a class="reference internal" href="#fiducials-fig"><span class="std std-numref">Fig. 80</span></a>. Ces points de repère sont aussi visibles dans l’IRM structurelle, et permettent de mettre en correspondance les deux types de mesure. La deuxième approche consiste à utiliser un système de <strong>neuronavigation</strong>, comme par exemple ce <a class="reference external" href="https://www.neurocaregroup.com/brainsight-nirs">système</a> qui utilise des caméras pour mettre en correspondance la position des émetteurs et récepteurs de lumière proche infrarouge avec l’IRM structurelle.</p>
 </section>
 <section id="montage">
-<h3>Montage<a class="headerlink" href="#montage" title="Permalink to this headline">#</a></h3>
+<h3>Montage<a class="headerlink" href="#montage" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
 <span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">op</span>
@@ -780,6 +597,7 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="fnirs-montage-fig">
 <a class="reference internal image-reference" href="_images/fnirs-montage.png"><img alt="_images/fnirs-montage.png" src="_images/fnirs-montage.png" style="width: 600px;" /></a>
@@ -790,8 +608,13 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 <p>On voit dans la figure <a class="reference internal" href="#fnirs-montage-fig"><span class="std std-numref">Fig. 81</span></a> un montage où on va avoir différents canaux qui peuvent être activés en pairs (récepteur + émetteur). Chaque mesure est faite selon un ligne qui rejoint le récepteur à l’émetteur, et le point milieu (la <em>source</em>) est indiquée en orange. Différents montages existent, qui varient aussi bien par le nombre d’émetteurs et de récepteurs que leur disposition. Ces montages vont donner plus ou moins de résolution spatiale et d’accès aux sources profondes, et seront aussi plus ou moins dispendieux et complexes à installer selon le nombre des capteurs utilisés.</p>
 </section>
 <section id="artefact-de-mouvement">
-<h3>Artefact de mouvement<a class="headerlink" href="#artefact-de-mouvement" title="Permalink to this headline">#</a></h3>
+<h3>Artefact de mouvement<a class="headerlink" href="#artefact-de-mouvement" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne.preprocessing.nirs</span> <span class="kn">import</span> <span class="p">(</span><span class="n">optical_density</span><span class="p">,</span>
                                     <span class="n">temporal_derivative_distribution_repair</span><span class="p">)</span>
@@ -825,11 +648,10 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="fnirs-motion-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/imagerie_optique_5_3.png" src="_images/imagerie_optique_5_3.png" />
-</div>
+<img alt="_images/b4d38fd0be2258e1703a3c7341baaadb60863b22858e60e076fe08526d9357f0.png" src="_images/b4d38fd0be2258e1703a3c7341baaadb60863b22858e60e076fe08526d9357f0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 82 </span><span class="caption-text">Corrections des artefacts de mouvement dans une acquisition d’imagerie optique. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_examples/preprocessing/fnirs_artifact_removal.html#sphx-glr-auto-examples-preprocessing-fnirs-artifact-removal-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-motion-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -837,8 +659,13 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 <p>Tout comme les données d’IRMf, les données d’imagerie optique sont sensibles au mouvement. Il est possible de tirer partie de l’excellente résolution d’acquisition de l’imagerie optique pour identifier des changements brusques dans le signal, indicateurs de mouvement. Ces changments brusques peuvent alors être corrigés, tel qu’illustré dans la <a class="reference internal" href="#fnirs-motion-fig"><span class="std std-numref">Fig. 82</span></a>.</p>
 </section>
 <section id="filtrage">
-<h3>Filtrage<a class="headerlink" href="#filtrage" title="Permalink to this headline">#</a></h3>
+<h3>Filtrage<a class="headerlink" href="#filtrage" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reconstruction des données d&#39;hémoglobine</span>
 <span class="n">raw_od</span> <span class="o">=</span> <span class="n">optical_density</span><span class="p">(</span><span class="n">raw_intensity</span><span class="p">)</span>
@@ -874,11 +701,10 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="fnirs-filtrage-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/imagerie_optique_7_17.png" src="_images/imagerie_optique_7_17.png" />
-</div>
+<img alt="_images/032660ff7a6f9fffdbe95200ce161da8b3b0da76549c4fc942a9c7d09432ee4c.png" src="_images/032660ff7a6f9fffdbe95200ce161da8b3b0da76549c4fc942a9c7d09432ee4c.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 83 </span><span class="caption-text">Filtrage des données HbO2 pour éliminer les dérives lentes et les fréquences cardiaques. Figure générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel MNE python</a> par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-filtrage-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -887,10 +713,15 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </section>
 </section>
 <section id="application-en-neuroscience-cognitive">
-<h2>Application en neuroscience cognitive<a class="headerlink" href="#application-en-neuroscience-cognitive" title="Permalink to this headline">#</a></h2>
+<h2>Application en neuroscience cognitive<a class="headerlink" href="#application-en-neuroscience-cognitive" title="Permalink to this heading">#</a></h2>
 <section id="reponse-hemodynamique">
-<h3>Réponse hémodynamique<a class="headerlink" href="#reponse-hemodynamique" title="Permalink to this headline">#</a></h3>
+<h3>Réponse hémodynamique<a class="headerlink" href="#reponse-hemodynamique" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reject_criteria</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">hbo</span><span class="o">=</span><span class="mf">80e-6</span><span class="p">)</span>
 <span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span>
@@ -918,6 +749,7 @@ Mais si on envoie de la lumière dans le cerveau, une partie de cette lumière v
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="fnirs-evoked-fig">
 <a class="reference internal image-reference" href="_images/fnirs-evoked.png"><img alt="_images/fnirs-evoked.png" src="_images/fnirs-evoked.png" style="width: 600px;" /></a>
@@ -936,8 +768,13 @@ On voit un profil caractéristique de réponse hémodynamique en HbO2.
 Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup plus petit (en valeur absolue).</p>
 </section>
 <section id="carte-d-activation">
-<h3>Carte d’activation<a class="headerlink" href="#carte-d-activation" title="Permalink to this headline">#</a></h3>
+<h3>Carte d’activation<a class="headerlink" href="#carte-d-activation" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
 <span class="n">topomap_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">extrapolate</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -950,10 +787,11 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="fnirs-activation-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/imagerie_optique_11_2.png" src="_images/imagerie_optique_11_2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 3200x1680 with 9 Axes&gt;
+</pre></div>
 </div>
 <figcaption>
 <p><span class="caption-number">Fig. 85 </span><span class="caption-text">Potentiel évoqué par un mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code>, pour l’ensemble des capteurs. La mosaïque de couleurs à gauche du graphe indique la localisation spatiale correspondant à chaque courbe. Pour différents points temps, une carte topographique d’activation indique le niveau d’activité évoquée pour chaque source spatiale, et pour chaque instant. Cette figure est générée par du code python adapté d’un <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/70_fnirs_processing.html#sphx-glr-auto-tutorials-preprocessing-70-fnirs-processing-py">tutoriel</a> de la librairie <a class="reference external" href="https://mne.tools">MNE python</a> (cliquer sur + pour voir le code), et est distribuée par P. Bellec sous licence <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.</span><a class="headerlink" href="#fnirs-activation-fig" title="Permalink to this image">#</a></p>
@@ -962,7 +800,7 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 <p>Le profil de réponse évoquée par un mouvement du doigt à <code class="docutils literal notranslate"><span class="pre">droite</span></code> peut aussi être estimé indépendamment pour chacune des sources spatiales mesurées. Il est ainsi possible de reconstruire une carte d’activité évoquée au cours du temps. En IRMf, ce type de carte est généralement résumée avec un seul paramètre d’amplitude de la réponse, mais la vitesse d’échantillonnage supérieure de l’imagerie optique permet d’étudier la dynamique de la réponse vasculaire de manière plus fine. Dans ce cas, dans la mesure où les paires d’émetteurs/capteurs ont été disposées autour du cortex sensorimoteur, l’ensemble des sources présentent une réponse évoquée forte en HbO2.</p>
 </section>
 <section id="flexibilite-experimentale">
-<h3>Flexibilité expérimentale<a class="headerlink" href="#flexibilite-experimentale" title="Permalink to this headline">#</a></h3>
+<h3>Flexibilité expérimentale<a class="headerlink" href="#flexibilite-experimentale" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="fnirs-high-altitude-fig">
 <a class="reference internal image-reference" href="_images/fnirs-high-altitude.jpg"><img alt="_images/fnirs-high-altitude.jpg" src="_images/fnirs-high-altitude.jpg" style="width: 300px;" /></a>
 <figcaption>
@@ -973,7 +811,7 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 </section>
 </section>
 <section id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
 <p>Dans ce cours, nous avons vu les principes de l’imagerie optique. Plus précisément, nous avons vu:</p>
 <ul class="simple">
 <li><p>Comment la lumière proche infrarouge permet de mesurer le couplage neurovasculaire.</p></li>
@@ -983,11 +821,11 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 </ul>
 </section>
 <section id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this heading">#</a></h2>
 <div class="admonition-exercice-1 admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Vrai/faux. Les données d’imagerie optique sont …</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Des données plus interprétables que l’IRMf.</p></li>
 <li><p>Des données plus flexible à recueillir que l’IRMf.</p></li>
 <li><p>Des données moins chères à recueillir que l’IRMf.</p></li>
@@ -997,7 +835,7 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 <div class="admonition-exercice-2 admonition">
 <p class="admonition-title">Exercice 2</p>
 <p>Vrai/faux. On souhaite enregistrer l’activité cérébrale d’un patient en imagerie optique au niveau du cortex sensorimoteur.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>On peut positionner précisément l’activité au niveau du scalp du participant.</p></li>
 <li><p>On peut positionner précisément l’activité au niveau du cerveau du participant.</p></li>
 <li><p>La qualité des données dépendra du positionnement des capteurs et émetteurs.</p></li>
@@ -1007,7 +845,7 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 <div class="admonition-exercice-3 admonition">
 <p class="admonition-title">Exercice 3</p>
 <p>Choisissez la bonne réponse. En imagerie optique cérébrale, la lumière proche infrarouge…</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.</p></li>
 <li><p>diffuse dans les tissus biologiques et peut être observée à proximité de la source.</p></li>
 <li><p>est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.</p></li>
@@ -1018,7 +856,7 @@ Comme attendu, le HbRsuit un profil inversé avec un pic plus tardif et beaucoup
 <div class="admonition-exercice-4 admonition">
 <p class="admonition-title">Exercice 4</p>
 <p>Choissez la bonne réponse. En imagerie optique, la résolution spatiale …</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.</p></li>
 <li><p>dépend du placement des émetteurs et récepteurs.</p></li>
 <li><p>correspond au profil de diffusion de la lumière dans les tissus.</p></li>
@@ -1062,7 +900,7 @@ On observe des fluctuations lentes d’activité au niveau du cortex temporal. E
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1070,50 +908,126 @@ On observe des fluctuations lentes d’activité au niveau du cortex temporal. E
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="irm_diffusion.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">IRM de diffusion</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="irm_diffusion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">IRM de diffusion</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="tep.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="tep.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Tomographie par émission de positrons</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Pierre Bellec et l'équipe PSY3018<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principes-physiques-et-physiologiques">Principes physiques et physiologiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lumiere-infrarouge-et-tissus-biologiques">Lumière infrarouge et tissus biologiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectre-d-absorption-des-tissus">Spectre d’absorption des tissus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-de-la-lumiere">Diffusion de la lumière</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couplage-neurovasculaire">Couplage neurovasculaire</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acquisition-et-traitement">Acquisition et traitement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recalage-avec-l-anatomie">Recalage avec l’anatomie</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#montage">Montage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artefact-de-mouvement">Artefact de mouvement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrage">Filtrage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-en-neuroscience-cognitive">Application en neuroscience cognitive</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reponse-hemodynamique">Réponse hémodynamique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carte-d-activation">Carte d’activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flexibilite-experimentale">Flexibilité expérimentale</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pierre Bellec et l'équipe PSY3018
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Connectivité fonctionnelle &#8212; Méthodes en neurosciences cognitives</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,62 +62,94 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'connectivite';</script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="IRM de diffusion" href="irm_diffusion.html" />
     <link rel="prev" title="IRM fonctionnelle" href="irm_fonctionnelle.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Méthodes en neurosciences cognitives</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,447 +159,251 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_cerebrales.html">
-   Cartes cérébrales
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm.html">
-   Imagerie par résonance magnétique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="morphometrie.html">
-   Analyses morphométriques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_fonctionnelle.html">
-   IRM fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_diffusion.html">
-   IRM de diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagerie_optique.html">
-   Imagerie optique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tep.html">
-   Tomographie par émission de positrons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_statistiques.html">
-   Cartes statistiques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="reproductibilite.html">
-   Reproductibilité et controverses
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_cerebrales.html">Cartes cérébrales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm.html">Imagerie par résonance magnétique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morphometrie.html">Analyses morphométriques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_fonctionnelle.html">IRM fonctionnelle</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Connectivité fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_diffusion.html">IRM de diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagerie_optique.html">Imagerie optique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tep.html">Tomographie par émission de positrons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_statistiques.html">Cartes statistiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproductibilite.html">Reproductibilité et controverses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Références</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/connectivite.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/connectivite.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Fconnectivite.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/connectivite.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Fconnectivite.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/connectivite.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/connectivite.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/connectivite.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs">
-   Objectifs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#carte-de-connectivite-fonctionnelle">
-   Carte de connectivité fonctionnelle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reseau-du-mode-par-defaut">
-   Réseau du mode par défaut
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deactivations">
-   Déactivations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dan-et-correlations-negatives">
-   DAN et corrélations négatives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connectomes-et-reseaux">
-   Connectomes et réseaux
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#atlas-de-reseaux">
-   Atlas de réseaux
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bonus">
-   Bonus
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Connectivité fonctionnelle</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs">
-   Objectifs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#carte-de-connectivite-fonctionnelle">
-   Carte de connectivité fonctionnelle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reseau-du-mode-par-defaut">
-   Réseau du mode par défaut
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deactivations">
-   Déactivations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dan-et-correlations-negatives">
-   DAN et corrélations négatives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connectomes-et-reseaux">
-   Connectomes et réseaux
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#atlas-de-reseaux">
-   Atlas de réseaux
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bonus">
-   Bonus
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Connectivité fonctionnelle</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs">Objectifs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Connectivité fonctionnelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carte-de-connectivite-fonctionnelle">Carte de connectivité fonctionnelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reseau-du-mode-par-defaut">Réseau du mode par défaut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivations">Déactivations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dan-et-correlations-negatives">DAN et corrélations négatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectomes-et-reseaux">Connectomes et réseaux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atlas-de-reseaux">Atlas de réseaux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus">Bonus</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="connectivite-fonctionnelle">
-<span id="connectivite-chapitre"></span><h1>Connectivité fonctionnelle<a class="headerlink" href="#connectivite-fonctionnelle" title="Permalink to this headline">#</a></h1>
+<span id="connectivite-chapitre"></span><h1>Connectivité fonctionnelle<a class="headerlink" href="#connectivite-fonctionnelle" title="Permalink to this heading">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -582,12 +429,12 @@ title="Print to PDF"
   </tr>
 </table>
 <section id="objectifs">
-<h2>Objectifs<a class="headerlink" href="#objectifs" title="Permalink to this headline">#</a></h2>
+<h2>Objectifs<a class="headerlink" href="#objectifs" title="Permalink to this heading">#</a></h2>
 <p>Dans le chapitre sur les <a class="reference internal" href="irm_fonctionnelle.html"><span class="doc std std-doc">cartes d’activation en IRMf</span></a>, nous avons vu que ce type d’analyse met l’emphase sur la notion de ségrégation fonctionnelle, c’est à dire à quel point certaines régions cérébrales sont engagées spécifiquement par une certaine catégorie de processus cognitifs. Mais il est bien connu que les processus cognitifs requièrent aussi un certain degré d’<strong>intégration fonctionnelle</strong>, où différentes régions du cerveau interagissent ensemble pour effectuer une tâche. Cette notion d’intégration amène à concevoir le cerveau comme un réseau, ou encore un graphe, qui décrit la <strong>connectivité fonctionnelle</strong> entre régions du cerveau. Ce chapitre introduit des notions de base utilisées pour étudier la connectivité du cerveau à l’aide de l’IRMf.</p>
 <figure class="align-default" id="brain-graph-fig">
 <a class="reference internal image-reference" href="_images/brain-graph-fig.png"><img alt="_images/brain-graph-fig.png" src="_images/brain-graph-fig.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Graphe de connectivité fonctionnelle moyen sur le jeu de données ADHD-200. Chaque nœud du graphe représente une région du cerveau, et les connexions représentent la connectivité fonctionnelle moyenne sur le jeu de données ADHD-200 <span id="id1">[<a class="reference internal" href="#id23" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span>, après seuillage. L’échelle de couleur et la taille des noeuds représentent le nombre de connexions (degré) associé à chaque noeud. Le graphe est généré à l’aide de la librairie <a class="reference external" href="https://gephi.org/">gephi</a>. La figure est tirée de <span id="id2">[<a class="reference internal" href="#id24" title="Pierre Bellec, Carlton Chu, François Chouinard-Decorte, Yassine Benhajali, Daniel S. Margulies, and R. Cameron Craddock. The neuro bureau adhd-200 preprocessed repository. NeuroImage, 144:275-286, 2017. Data Sharing Part II. doi:https://doi.org/10.1016/j.neuroimage.2016.06.034.">BCCD+17</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#brain-graph-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Graphe de connectivité fonctionnelle moyen sur le jeu de données ADHD-200. Chaque nœud du graphe représente une région du cerveau, et les connexions représentent la connectivité fonctionnelle moyenne sur le jeu de données ADHD-200 <span id="id1">[<a class="reference internal" href="references.html#id3" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span>, après seuillage. L’échelle de couleur et la taille des noeuds représentent le nombre de connexions (degré) associé à chaque noeud. Le graphe est généré à l’aide de la librairie <a class="reference external" href="https://gephi.org/">gephi</a>. La figure est tirée de <span id="id2">[<a class="reference internal" href="references.html#id4" title="Pierre Bellec, Carlton Chu, François Chouinard-Decorte, Yassine Benhajali, Daniel S. Margulies, and R. Cameron Craddock. The neuro bureau adhd-200 preprocessed repository. NeuroImage, 144:275-286, 2017. Data Sharing Part II. doi:https://doi.org/10.1016/j.neuroimage.2016.06.034.">BCCD+17</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#brain-graph-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Les objectifs spécifiques du chaptire sont de:</p>
@@ -599,8 +446,13 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="id3">
-<h2>Connectivité fonctionnelle<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2>Connectivité fonctionnelle<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importer les librairies</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -678,7 +530,7 @@ title="Print to PDF"
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">time_samp</span><span class="p">],</span> <span class="n">y2</span><span class="p">,</span> <span class="n">color2</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temps (s.)&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;BOLD (u.a.)&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Séries temporelles (r=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Séries temporelles (r=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="n">y2</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 
 <span class="c1"># plot les séries temporelles</span>
 <span class="n">ax_plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -693,16 +545,15 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="connectivity-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/connectivite_1_2.png" src="_images/connectivite_1_2.png" />
-</div>
+<img alt="_images/53c5ade922246b9fe5fdbdc88b20444ebf6a0f727e4938390875ff34a3535776.png" src="_images/53c5ade922246b9fe5fdbdc88b20444ebf6a0f727e4938390875ff34a3535776.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Connectivité fonctionnelle entre régions cérébrales, pour un sujet du jeu de données ADHD-200 <span id="id4">[<a class="reference internal" href="#id23" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span>. Pour chaque région (à gauche), on extrait l’activité moyenne. Pour chaque paire de régions, la connectivité est mesurée par la corrélation <code class="docutils literal notranslate"><span class="pre">r</span></code> entre les séries temporelles associées (à droite). Les couleurs des régions et des séries temporelles se correspondent. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#connectivity-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Connectivité fonctionnelle entre régions cérébrales, pour un sujet du jeu de données ADHD-200 <span id="id4">[<a class="reference internal" href="references.html#id3" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span>. Pour chaque région (à gauche), on extrait l’activité moyenne. Pour chaque paire de régions, la connectivité est mesurée par la corrélation <code class="docutils literal notranslate"><span class="pre">r</span></code> entre les séries temporelles associées (à droite). Les couleurs des régions et des séries temporelles se correspondent. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#connectivity-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>La <em><strong>connectivité fonctionnelle</strong></em> est un terme relativement générique utilisé pour décrire une mesure des dépendances spatiales de l’activité cérébrale <span id="id5">[<a class="reference internal" href="#id41" title="Michael D. Fox and Marcus E. Raichle. Spontaneous fluctuations in brain activity observed with functional magnetic resonance imaging. Nature Reviews Neuroscience, 8(9):700–711, September 2007. URL: https://doi.org/10.1038/nrn2201, doi:10.1038/nrn2201.">FR07</a>]</span>. La technique la plus simple pour mener ce genre d’analyse est d’extraire les décours temporels de deux régions,  et d’en déterminer la corrélation <code class="docutils literal notranslate"><span class="pre">r</span></code>. La connectivité fonctionnelle s’interprète alors de la manière suivante dans le cadre de l’expérience:</p>
+<p>La <em><strong>connectivité fonctionnelle</strong></em> est un terme relativement générique utilisé pour décrire une mesure des dépendances spatiales de l’activité cérébrale <span id="id5">[<a class="reference internal" href="references.html#id21" title="Michael D. Fox and Marcus E. Raichle. Spontaneous fluctuations in brain activity observed with functional magnetic resonance imaging. Nature Reviews Neuroscience, 8(9):700–711, September 2007. URL: https://doi.org/10.1038/nrn2201, doi:10.1038/nrn2201.">FR07</a>]</span>. La technique la plus simple pour mener ce genre d’analyse est d’extraire les décours temporels de deux régions,  et d’en déterminer la corrélation <code class="docutils literal notranslate"><span class="pre">r</span></code>. La connectivité fonctionnelle s’interprète alors de la manière suivante dans le cadre de l’expérience:</p>
 <ul class="simple">
 <li><p>élevée (<code class="docutils literal notranslate"><span class="pre">r</span></code> proche de 1): les deux régions sont impliquées dans des processus cognitifs similaires,</p></li>
 <li><p>faible (<code class="docutils literal notranslate"><span class="pre">r</span></code> proche de zéro): les processus cognitifs sont indépendants,</p></li>
@@ -715,8 +566,13 @@ title="Print to PDF"
 </div>
 </section>
 <section id="carte-de-connectivite-fonctionnelle">
-<h2>Carte de connectivité fonctionnelle<a class="headerlink" href="#carte-de-connectivite-fonctionnelle" title="Permalink to this headline">#</a></h2>
+<h2>Carte de connectivité fonctionnelle<a class="headerlink" href="#carte-de-connectivite-fonctionnelle" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importer les librairies</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -804,28 +660,32 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="fcmri-map-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/connectivite_3_2.png" src="_images/connectivite_3_2.png" />
-</div>
+<img alt="_images/54c6e2dc140730fe814d45349b121fa1a9bd6d0dae4387267e5f1bf4d074c25f.png" src="_images/54c6e2dc140730fe814d45349b121fa1a9bd6d0dae4387267e5f1bf4d074c25f.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Cartes de connectivité au repos générées à partir des données IRMf d’un individu du jeu de données ADHD-200 <span id="id6">[<a class="reference internal" href="#id23" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span> (bas, droit). La région cible utilisée est dans le cortex sensorimoteur droit (haut, gauche) identifie le réseau sensorimoteur. Les cinq premières minutes d’activité BOLD associée à la région cible sont représentées (haut, droit). Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#fcmri-map-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Cartes de connectivité au repos générées à partir des données IRMf d’un individu du jeu de données ADHD-200 <span id="id6">[<a class="reference internal" href="references.html#id3" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span> (bas, droit). La région cible utilisée est dans le cortex sensorimoteur droit (haut, gauche) identifie le réseau sensorimoteur. Les cinq premières minutes d’activité BOLD associée à la région cible sont représentées (haut, droit). Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#fcmri-map-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Le concept de carte fonctionnelle au repos a été introduit par Biswal et collègues (1995) <span id="id7">[<a class="reference internal" href="#id40" title="B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. Magn. Reson. Med., 34(4):537–541, October 1995.">BYHH95</a>]</span>. Au lieu de regarder la connectivité fonctionnelle entre deux régions, on va comparer l’activité d’une région cible avec l’ensemble des voxels dans le cerveau. <span id="id8">[<a class="reference internal" href="#id40" title="B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. Magn. Reson. Med., 34(4):537–541, October 1995.">BYHH95</a>]</span> ont utilisé une région dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d’activation et une tâche motrice. Biswal et collègues ont alors eu l’idée d’observer les fluctuations BOLD dans une condition de <strong>repos</strong>, en l’absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 57</span></a>, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l’aire motrice supplémentaire, le cortex prémoteur et d’autres régions du cerveau connues pour leur implication dans le <strong>réseau moteur</strong>. Cette étude a tout d’abord engendré beaucoup de septicisme, au motif que ces patrons d’activité fonctionnelle corrélée auraient pu refléter du bruit cardiaque ou respiratoire.</p>
+<p>Le concept de carte fonctionnelle au repos a été introduit par Biswal et collègues (1995) <span id="id7">[<a class="reference internal" href="references.html#id20" title="B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. Magn. Reson. Med., 34(4):537–541, October 1995.">BYHH95</a>]</span>. Au lieu de regarder la connectivité fonctionnelle entre deux régions, on va comparer l’activité d’une région cible avec l’ensemble des voxels dans le cerveau. <span id="id8">[<a class="reference internal" href="references.html#id20" title="B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. Magn. Reson. Med., 34(4):537–541, October 1995.">BYHH95</a>]</span> ont utilisé une région dans le cortex sensorimoteur primaire droit. Cette région cible avait été obtenue avec une carte d’activation et une tâche motrice. Biswal et collègues ont alors eu l’idée d’observer les fluctuations BOLD dans une condition de <strong>repos</strong>, en l’absence de tâche expérimentale. Cette carte révèle un ensemble distribué de régions (voir <a class="reference internal" href="#fcmri-map-fig"><span class="std std-numref">Fig. 57</span></a>, cible M1 droit), qui comprend le cortex sensorimoteur gauche, mais aussi l’aire motrice supplémentaire, le cortex prémoteur et d’autres régions du cerveau connues pour leur implication dans le <strong>réseau moteur</strong>. Cette étude a tout d’abord engendré beaucoup de septicisme, au motif que ces patrons d’activité fonctionnelle corrélée auraient pu refléter du bruit cardiaque ou respiratoire.</p>
 <div class="tip admonition" id="fluctuations-lentes">
 <p class="admonition-title">Fluctuations lentes</p>
-<p>Une autre observation clé de Biswal et collègues (1995) <span id="id9">[<a class="reference internal" href="#id40" title="B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. Magn. Reson. Med., 34(4):537–541, October 1995.">BYHH95</a>]</span> est que le signal BOLD au repos est dominé par des fluctuations lentes, avec des bouffées d’activité d’une durée de 20 à 30 secondes, clairement visibles dans la <a class="reference internal" href="#connectivity-fig"><span class="std std-numref">Fig. 56</span></a>. Plus spécifiquement, le spectre du signal BOLD au repos est dominé par les fréquences inférieures à 0.08 Hz, et même 0.03-0.05 Hz.</p>
+<p>Une autre observation clé de Biswal et collègues (1995) <span id="id9">[<a class="reference internal" href="references.html#id20" title="B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. Magn. Reson. Med., 34(4):537–541, October 1995.">BYHH95</a>]</span> est que le signal BOLD au repos est dominé par des fluctuations lentes, avec des bouffées d’activité d’une durée de 20 à 30 secondes, clairement visibles dans la <a class="reference internal" href="#connectivity-fig"><span class="std std-numref">Fig. 56</span></a>. Plus spécifiquement, le spectre du signal BOLD au repos est dominé par les fréquences inférieures à 0.08 Hz, et même 0.03-0.05 Hz.</p>
 </div>
 <div class="tip admonition" id="shmuel-bold">
 <p class="admonition-title">Activité au repos BOLD et électrophysiologie</p>
-<p>le travail de Shmuel et collèges (2008) <span id="id10">[<a class="reference internal" href="#id43" title="Amir Shmuel and David A Leopold. Neuronal correlates of spontaneous fluctuations in fMRI signals in monkey visual cortex: implications for functional connectivity at rest. Hum. Brain Mapp., 29(7):751–761, July 2008.">SL08</a>]</span> a démontré que l’activité BOLD au repos corrèle aux fluctuations spontanées d’activité neuronales dans le cortex visuel d’un macaque anesthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l’activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).</p>
+<p>le travail de Shmuel et collèges (2008) <span id="id10">[<a class="reference internal" href="references.html#id23" title="Amir Shmuel and David A Leopold. Neuronal correlates of spontaneous fluctuations in fMRI signals in monkey visual cortex: implications for functional connectivity at rest. Hum. Brain Mapp., 29(7):751–761, July 2008.">SL08</a>]</span> a démontré que l’activité BOLD au repos corrèle aux fluctuations spontanées d’activité neuronales dans le cortex visuel d’un macaque anesthésié, ce qui démontre que la connectivité fonctionnelle reflète au moins partiellement la synchronie de l’activité neuronale, et pas simplement du bruit physiologique (cardiaque, respiration).</p>
 </div>
 </section>
 <section id="reseau-du-mode-par-defaut">
-<h2>Réseau du mode par défaut<a class="headerlink" href="#reseau-du-mode-par-defaut" title="Permalink to this headline">#</a></h2>
+<h2>Réseau du mode par défaut<a class="headerlink" href="#reseau-du-mode-par-defaut" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -913,24 +773,28 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="fcmri-dmn-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/connectivite_5_2.png" src="_images/connectivite_5_2.png" />
-</div>
+<img alt="_images/4ee3f34cc6536334dc0a406c26b3961b53080e9f018b5448b910beb9f6f70f6f.png" src="_images/4ee3f34cc6536334dc0a406c26b3961b53080e9f018b5448b910beb9f6f70f6f.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Cartes de connectivité au repos générées à partir des données IRMf d’un individu du jeu de données ADHD-200 <span id="id11">[<a class="reference internal" href="#id23" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span> (bas, droit). La région cible utilisée est dans le cortex cingulaire postérieur (haut, gauche) identifie le réseau du mode par défaut. Les cinq premières minutes d’activité BOLD associée à la région cible sont représentées (haut, droit). Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#fcmri-dmn-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Cartes de connectivité au repos générées à partir des données IRMf d’un individu du jeu de données ADHD-200 <span id="id11">[<a class="reference internal" href="references.html#id3" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span> (bas, droit). La région cible utilisée est dans le cortex cingulaire postérieur (haut, gauche) identifie le réseau du mode par défaut. Les cinq premières minutes d’activité BOLD associée à la région cible sont représentées (haut, droit). Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#fcmri-dmn-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>La crédibilité des cartes de connectivité au repos s’est renforcée quand différents groupes de recherche ont pu identifier d’autres réseaux en utilisant des régions cibles différentes, notamment le réseau visuel et le réseau auditif. Mais c’est l’étude de Greicius et collaborateurs, en 2003 <span id="id12">[<a class="reference internal" href="#id42" title="Michael D Greicius, Ben Krasnow, Allan L Reiss, and Vinod Menon. Functional connectivity in the resting brain: a network analysis of the default mode hypothesis. Proc. Natl. Acad. Sci. U. S. A., 100(1):253–258, January 2003.">GKRM03</a>]</span>, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n’avait pas encore été identifié: le <strong>réseau du mode par défaut</strong> (voir <a class="reference internal" href="#fcmri-dmn-fig"><span class="std std-numref">Fig. 58</span></a>, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau.</p>
+<p>La crédibilité des cartes de connectivité au repos s’est renforcée quand différents groupes de recherche ont pu identifier d’autres réseaux en utilisant des régions cibles différentes, notamment le réseau visuel et le réseau auditif. Mais c’est l’étude de Greicius et collaborateurs, en 2003 <span id="id12">[<a class="reference internal" href="references.html#id22" title="Michael D Greicius, Ben Krasnow, Allan L Reiss, and Vinod Menon. Functional connectivity in the resting brain: a network analysis of the default mode hypothesis. Proc. Natl. Acad. Sci. U. S. A., 100(1):253–258, January 2003.">GKRM03</a>]</span>, qui a déclenché un énorme intérêt pour les cartes de connectivité au repos en utilisant une région cible dans le cortex cingulaire postérieur (PCC) pour identifier un réseau fonctionnel qui n’avait pas encore été identifié: le <strong>réseau du mode par défaut</strong> (voir <a class="reference internal" href="#fcmri-dmn-fig"><span class="std std-numref">Fig. 58</span></a>, cible PCC). Nous allons discuter dans la prochaine section des origines de ce réseau.</p>
 <div class="caution attention admonition" id="fcmri-map-warning">
 <p class="admonition-title">Variabilité intra- et inter-individuelle</p>
 <p>La <a class="reference internal" href="#fcmri-dmn-fig"><span class="std std-numref">Fig. 58</span></a> peut donner l’impression que les réseaux de connectivité sont extrêmement stables. En réalité, les cartes de connectivité varient beaucoup au cours du temps, c’est-à-dire en regardant différentes fenêtres d’activité pour un même individu, et également entre individus. Effectivement, les coordonnées d’une région cible peuvent être partiellement inexactes même si on procède au recalage des images. Caractériser la variabilité intra- et inter-individuelle des cartes de connectivité est un domaine de recherche actif.</p>
 </div>
 </section>
 <section id="deactivations">
-<h2>Déactivations<a class="headerlink" href="#deactivations" title="Permalink to this headline">#</a></h2>
+<h2>Déactivations<a class="headerlink" href="#deactivations" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importer les librairies</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -988,20 +852,24 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="deactivation-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/connectivite_7_0.png" src="_images/connectivite_7_0.png" />
-</div>
+<img alt="_images/17caf2082730e7c84162398f806012a2e830d5f4b5e6267b98e1e931f45aec99.png" src="_images/17caf2082730e7c84162398f806012a2e830d5f4b5e6267b98e1e931f45aec99.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 59 </span><span class="caption-text">Carte d’activation individuelle dans un paradigme auditif (jeu de données <a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/data/auditory/">spm_auditory</a>). Le seuil de significativité est sélectionné de manière libérale (<code class="docutils literal notranslate"><span class="pre">|z|&gt;2</span></code>). Une déactivation modérée est identifiée dans différentes régions du cerveau, incluant le cortex cingulaire postérieur (PCC) et le cortex préfrontal médian (mPFC). Le PCC et le mPFC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#deactivation-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Le réseau du mode par défaut a d’abord été découvert au travers d’études par activation <span id="id13">[<a class="reference internal" href="#id45" title="G L Shulman, J A Fiez, M Corbetta, R L Buckner, F M Miezin, M E Raichle, and S E Petersen. Common blood flow changes across visual tasks: II. decreases in cerebral cortex. J. Cogn. Neurosci., 9(5):648–663, 1997.">SFC+97</a>]</span> combinent 9 études PET qui utilisent la même condition de contrôle de “repos” (consistant à regarder des stimuli visuels de manière passive), et . Les auteurs démontrent qu’un ensemble de régions sont systématiquement plus impliquées au repos que durant des des tâches variées mais cognitivement demandantes. Ces régions impliquent notamment notamment le cortex cingulaire postérieur (PCC). L’”<em>hypothèse du mode par défaut</em>” stipule qu’il existe un certain nombre de processus cognitifs d’introspection qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité “par défaut” <span id="id14">[<a class="reference internal" href="#id46" title="M E Raichle, A M MacLeod, A Z Snyder, W J Powers, D A Gusnard, and G L Shulman. A default mode of brain function. Proc. Natl. Acad. Sci. U. S. A., 98(2):676–682, January 2001.">RMS+01</a>]</span>. Les cartes de connectivité au repos en IRMf avec une région cible dans le PCC identifient également le réseau du mode par défaut, voir <a class="reference internal" href="#fcmri-dmn-fig"><span class="std std-numref">Fig. 58</span></a>.</p>
+<p>Le réseau du mode par défaut a d’abord été découvert au travers d’études par activation <span id="id13">[<a class="reference internal" href="references.html#id25" title="G L Shulman, J A Fiez, M Corbetta, R L Buckner, F M Miezin, M E Raichle, and S E Petersen. Common blood flow changes across visual tasks: II. decreases in cerebral cortex. J. Cogn. Neurosci., 9(5):648–663, 1997.">SFC+97</a>]</span> combinent 9 études PET qui utilisent la même condition de contrôle de “repos” (consistant à regarder des stimuli visuels de manière passive), et . Les auteurs démontrent qu’un ensemble de régions sont systématiquement plus impliquées au repos que durant des des tâches variées mais cognitivement demandantes. Ces régions impliquent notamment notamment le cortex cingulaire postérieur (PCC). L’”<em>hypothèse du mode par défaut</em>” stipule qu’il existe un certain nombre de processus cognitifs d’introspection qui seraient systématiquement présents dans un état de repos, et il existerait un réseau fonctionnel qui soutiendrait cette activité “par défaut” <span id="id14">[<a class="reference internal" href="references.html#id26" title="M E Raichle, A M MacLeod, A Z Snyder, W J Powers, D A Gusnard, and G L Shulman. A default mode of brain function. Proc. Natl. Acad. Sci. U. S. A., 98(2):676–682, January 2001.">RMS+01</a>]</span>. Les cartes de connectivité au repos en IRMf avec une région cible dans le PCC identifient également le réseau du mode par défaut, voir <a class="reference internal" href="#fcmri-dmn-fig"><span class="std std-numref">Fig. 58</span></a>.</p>
 </section>
 <section id="dan-et-correlations-negatives">
-<h2>DAN et corrélations négatives<a class="headerlink" href="#dan-et-correlations-negatives" title="Permalink to this headline">#</a></h2>
+<h2>DAN et corrélations négatives<a class="headerlink" href="#dan-et-correlations-negatives" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importer les librairies</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1101,16 +969,15 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="negative-dmn-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/connectivite_9_2.png" src="_images/connectivite_9_2.png" />
-</div>
+<img alt="_images/a6af2c3f58d27a11cbcc5b08a131af33ddea1ca4e7658ff61bee9029f8d66764.png" src="_images/a6af2c3f58d27a11cbcc5b08a131af33ddea1ca4e7658ff61bee9029f8d66764.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Une région cible est sélectionnée au niveau “frontal eye field” (FEF), pour générer une carte de connectivité sur un sujet du jeu de données ADHD-200 <span id="id15">[<a class="reference internal" href="#id23" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span>. Le seuil de significativité est sélectionné de manière libérale (<code class="docutils literal notranslate"><span class="pre">|r|&gt;0.2</span></code>). En plus du réseau attentional dorsal associé au FEF, la carte de connectivité met en évidence une corrélation négative avec le PCC et le cortex cingulaire antérieur (ACC). L’ACC et le PCC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#negative-dmn-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Une région cible est sélectionnée au niveau “frontal eye field” (FEF), pour générer une carte de connectivité sur un sujet du jeu de données ADHD-200 <span id="id15">[<a class="reference internal" href="references.html#id3" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">HD200Consortium12</a>]</span>. Le seuil de significativité est sélectionné de manière libérale (<code class="docutils literal notranslate"><span class="pre">|r|&gt;0.2</span></code>). En plus du réseau attentional dorsal associé au FEF, la carte de connectivité met en évidence une corrélation négative avec le PCC et le cortex cingulaire antérieur (ACC). L’ACC et le PCC sont des régions clés du réseau du mode par défaut. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#negative-dmn-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Le réseau du mode par défaut n’est pas le seul que l’on puisse identifier au repos. On a déjà vu le réseau sensorimoteur qui a été le premier identifié par Biswal. Un autre réseau couramment examiné dans la littérature est le réseau attentionnel dorsal (DAN), qui comprend notamment les sillons intra-pariétaux supérieurs et les champs oculaires frontaux. Le DAN est souvent identifié comme activé dans les expériences utilisant une tâche cognitivement demandante en IRMf, et est parfois appelé le “task positive network” - même s’il n’est pas positivement engagé par toutes les tâches. En 2005, Fox et collègues <span id="id16">[<a class="reference internal" href="#id47" title="Michael D Fox, Abraham Z Snyder, Justin L Vincent, Maurizio Corbetta, David C Van Essen, and Marcus E Raichle. The human brain is intrinsically organized into dynamic, anticorrelated functional networks. Proc. Natl. Acad. Sci. U. S. A., 102(27):9673–9678, July 2005.">FSV+05</a>]</span> remarquent une corrélation négative entre le DAN et le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état mental dirigé vers les stimuli extérieurs, et un état introspectif, reflétant la compétition entre deux réseaux distribués.</p>
+<p>Le réseau du mode par défaut n’est pas le seul que l’on puisse identifier au repos. On a déjà vu le réseau sensorimoteur qui a été le premier identifié par Biswal. Un autre réseau couramment examiné dans la littérature est le réseau attentionnel dorsal (DAN), qui comprend notamment les sillons intra-pariétaux supérieurs et les champs oculaires frontaux. Le DAN est souvent identifié comme activé dans les expériences utilisant une tâche cognitivement demandante en IRMf, et est parfois appelé le “task positive network” - même s’il n’est pas positivement engagé par toutes les tâches. En 2005, Fox et collègues <span id="id16">[<a class="reference internal" href="references.html#id27" title="Michael D Fox, Abraham Z Snyder, Justin L Vincent, Maurizio Corbetta, David C Van Essen, and Marcus E Raichle. The human brain is intrinsically organized into dynamic, anticorrelated functional networks. Proc. Natl. Acad. Sci. U. S. A., 102(27):9673–9678, July 2005.">FSV+05</a>]</span> remarquent une corrélation négative entre le DAN et le réseau du mode par défaut. Cette analyse renforce la notion de transitions spontanées entre un état mental dirigé vers les stimuli extérieurs, et un état introspectif, reflétant la compétition entre deux réseaux distribués.</p>
 <div class="caution attention admonition" id="negative-r-warning">
 <p class="admonition-title">Controverses sur la régression du signal global</p>
 <p>Les corrélations négatives de la <a class="reference internal" href="#negative-dmn-fig"><span class="std std-numref">Fig. 60</span></a> sont fortes uniquement quand on applique certaines étapes de débruitage des données, et notamment la <em>régression du signal global</em>. Une controverse importante est née autour des connexions négatives, car certains chercheurs pensent qu’il s’agit d’un artefact lié à cette étape de prétraitement. Malgré tout, les corrélations négatives peuvent être observées de manière robuste pour les sujets qui bougent très peu, et dont le signal est donc particulièrement propre. Leur amplitude est cependant faible en l’absence de régression du signal global.</p>
@@ -1121,8 +988,13 @@ title="Print to PDF"
 </div>
 </section>
 <section id="connectomes-et-reseaux">
-<h2>Connectomes et réseaux<a class="headerlink" href="#connectomes-et-reseaux" title="Permalink to this headline">#</a></h2>
+<h2>Connectomes et réseaux<a class="headerlink" href="#connectomes-et-reseaux" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1216,11 +1088,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="network-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/connectivite_11_1.png" src="_images/connectivite_11_1.png" />
-</div>
+<img alt="_images/0fa3eb16e185e9ca09b79e8d6dbc060f3f0d45e042663784f5bc7c7dc1566292.png" src="_images/0fa3eb16e185e9ca09b79e8d6dbc060f3f0d45e042663784f5bc7c7dc1566292.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 61 </span><span class="caption-text">Une parcellisation fonctionnelle du cerveau avec 122 parcelles est présentée à gauche (BASC). Au centre, on voit une matrice où chaque élément représente la corrélation entre l’activité de deux parcelles. Les parcelles ont été ordonnées de manière à mettre en évidence des carrés diagonaux: ce sont des groupes de régions dont l’activité corrèlent fortement entre elles, et peu avec le reste du cerveau. Des algorithmes de type clustering permettent de détecter automatiquement ces groupes de parcelles, appelés réseaux fonctionnels. Un exemple de réseaux fonctionnels générés avec un clustering hiérarchique est présenté à droite, qui identifie notamment le réseau du mode par défaut. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#network-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1232,8 +1103,13 @@ title="Print to PDF"
 </div>
 </section>
 <section id="atlas-de-reseaux">
-<h2>Atlas de réseaux<a class="headerlink" href="#atlas-de-reseaux" title="Permalink to this headline">#</a></h2>
+<h2>Atlas de réseaux<a class="headerlink" href="#atlas-de-reseaux" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -1286,75 +1162,34 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-center" id="yeo-krienen-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/connectivite_13_0.png" src="_images/connectivite_13_0.png" />
-</div>
+<img alt="_images/0c187e97b1bec3c9f4ce615d137dbd617c9075b86e0d937872cde54fef5eba26.png" src="_images/0c187e97b1bec3c9f4ce615d137dbd617c9075b86e0d937872cde54fef5eba26.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Atlas de Yeo-Krienen <span id="id17">[<a class="reference internal" href="#id48" title="B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. J. Neurophysiol., 106(3):1125–1165, September 2011.">YKS+11</a>]</span> construit par une analyse de clustering à partir de données IRMf au repos d’un grand nombre de sujets. Les réseaux sont définis à plusieurs résolutions dans cet atlas (7 et 17). Ici, le découpage en 7 grands réseaux distribués est présenté. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#yeo-krienen-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Atlas de Yeo-Krienen <span id="id17">[<a class="reference internal" href="references.html#id28" title="B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. J. Neurophysiol., 106(3):1125–1165, September 2011.">YKS+11</a>]</span> construit par une analyse de clustering à partir de données IRMf au repos d’un grand nombre de sujets. Les réseaux sont définis à plusieurs résolutions dans cet atlas (7 et 17). Ici, le découpage en 7 grands réseaux distribués est présenté. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.</span><a class="headerlink" href="#yeo-krienen-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Il existe des atlas standards des réseaux au repos, qui ont été générés sur un grand nombre de sujets. L’atlas de Yeo, Krienen et collègues <span id="id18">[<a class="reference internal" href="#id48" title="B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. J. Neurophysiol., 106(3):1125–1165, September 2011.">YKS+11</a>]</span> est très utilisé, et identifient sept grands réseaux, voir <a class="reference internal" href="#yeo-krienen-fig"><span class="std std-numref">Fig. 62</span></a>. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l’attentionnel ventral. Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. Notez qu’il n’y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés.</p>
+<p>Il existe des atlas standards des réseaux au repos, qui ont été générés sur un grand nombre de sujets. L’atlas de Yeo, Krienen et collègues <span id="id18">[<a class="reference internal" href="references.html#id28" title="B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. J. Neurophysiol., 106(3):1125–1165, September 2011.">YKS+11</a>]</span> est très utilisé, et identifient sept grands réseaux, voir <a class="reference internal" href="#yeo-krienen-fig"><span class="std std-numref">Fig. 62</span></a>. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l’attentionnel ventral. Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. Notez qu’il n’y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés.</p>
 <div class="tip admonition" id="number-networks-tip">
 <p class="admonition-title">Nombre de réseaux au repos</p>
-<p>De nombreux articles ont étudié un découpage en 7 réseaux corticaux. Mais l’étude de Yeo, Krienen et coll. <span id="id19">[<a class="reference internal" href="#id48" title="B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. J. Neurophysiol., 106(3):1125–1165, September 2011.">YKS+11</a>]</span> a également proposé un découpage en 17 sous-réseaux, et depuis plusieurs atlas ont été proposés avec des centaines de régions. Vous pouvez utiliser cet <a class="reference external" href="https://simexp.github.io/multiscale_dashboard/index.html">outil interactif</a> pour explorer l’organisation multi-échelle des réseaux fonctionnels de manière interactive, à l’aide de l’atlas MIST <span id="id20">[<a class="reference internal" href="#id50" title="S Urchs, J Armoza, Y Benhajali, J St-Aubin, and others. MIST: a multi-resolution parcellation of functional brain networks [version 2; peer review: 4 approved]. MNI Open Res., 2019.">UAB+19</a>]</span>.</p>
+<p>De nombreux articles ont étudié un découpage en 7 réseaux corticaux. Mais l’étude de Yeo, Krienen et coll. <span id="id19">[<a class="reference internal" href="references.html#id28" title="B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. J. Neurophysiol., 106(3):1125–1165, September 2011.">YKS+11</a>]</span> a également proposé un découpage en 17 sous-réseaux, et depuis plusieurs atlas ont été proposés avec des centaines de régions. Vous pouvez utiliser cet <a class="reference external" href="https://simexp.github.io/multiscale_dashboard/index.html">outil interactif</a> pour explorer l’organisation multi-échelle des réseaux fonctionnels de manière interactive, à l’aide de l’atlas MIST <span id="id20">[<a class="reference internal" href="references.html#id30" title="S Urchs, J Armoza, Y Benhajali, J St-Aubin, and others. MIST: a multi-resolution parcellation of functional brain networks [version 2; peer review: 4 approved]. MNI Open Res., 2019.">UAB+19</a>]</span>.</p>
 </div>
 </section>
 <section id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>La connectivité fonctionnelle consiste à mesurer la cohérence (corrélation) entre l’activité de deux régions (ou voxels) du cerveau.</p></li>
 <li><p>Une carte de connectivité fonctionnelle permet d’étudier la connectivité entre une région cible et le reste du cerveau.</p></li>
 <li><p>Un réseau fonctionnel est un groupe de régions dont l’activité spontanée présente une forte connectivité fonctionnelle intra-réseau, et une faible connectivité avec le reste du cerveau. Différents atlas des réseaux au repos existent, et à différentes échelles.</p></li>
 </ul>
 </section>
-<section id="references">
-<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id21">
-<dl class="citation">
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id2">BCCD+17</a></span></dt>
-<dd><p>Pierre Bellec, Carlton Chu, François Chouinard-Decorte, Yassine Benhajali, Daniel S. Margulies, and R. Cameron Craddock. The neuro bureau adhd-200 preprocessed repository. <em>NeuroImage</em>, 144:275–286, 2017. Data Sharing Part II. <a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.neuroimage.2016.06.034">doi:https://doi.org/10.1016/j.neuroimage.2016.06.034</a>.</p>
-</dd>
-<dt class="label" id="id40"><span class="brackets">BYHH95</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>,<a href="#id9">3</a>)</span></dt>
-<dd><p>B Biswal, F Z Yetkin, V M Haughton, and J S Hyde. Functional connectivity in the motor cortex of resting human brain using echo-planar MRI. <em>Magn. Reson. Med.</em>, 34(4):537–541, October 1995.</p>
-</dd>
-<dt class="label" id="id47"><span class="brackets"><a class="fn-backref" href="#id16">FSV+05</a></span></dt>
-<dd><p>Michael D Fox, Abraham Z Snyder, Justin L Vincent, Maurizio Corbetta, David C Van Essen, and Marcus E Raichle. The human brain is intrinsically organized into dynamic, anticorrelated functional networks. <em>Proc. Natl. Acad. Sci. U. S. A.</em>, 102(27):9673–9678, July 2005.</p>
-</dd>
-<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id5">FR07</a></span></dt>
-<dd><p>Michael D. Fox and Marcus E. Raichle. Spontaneous fluctuations in brain activity observed with functional magnetic resonance imaging. <em>Nature Reviews Neuroscience</em>, 8(9):700–711, September 2007. URL: <a class="reference external" href="https://doi.org/10.1038/nrn2201">https://doi.org/10.1038/nrn2201</a>, <a class="reference external" href="https://doi.org/10.1038/nrn2201">doi:10.1038/nrn2201</a>.</p>
-</dd>
-<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id12">GKRM03</a></span></dt>
-<dd><p>Michael D Greicius, Ben Krasnow, Allan L Reiss, and Vinod Menon. Functional connectivity in the resting brain: a network analysis of the default mode hypothesis. <em>Proc. Natl. Acad. Sci. U. S. A.</em>, 100(1):253–258, January 2003.</p>
-</dd>
-<dt class="label" id="id46"><span class="brackets"><a class="fn-backref" href="#id14">RMS+01</a></span></dt>
-<dd><p>M E Raichle, A M MacLeod, A Z Snyder, W J Powers, D A Gusnard, and G L Shulman. A default mode of brain function. <em>Proc. Natl. Acad. Sci. U. S. A.</em>, 98(2):676–682, January 2001.</p>
-</dd>
-<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id10">SL08</a></span></dt>
-<dd><p>Amir Shmuel and David A Leopold. Neuronal correlates of spontaneous fluctuations in fMRI signals in monkey visual cortex: implications for functional connectivity at rest. <em>Hum. Brain Mapp.</em>, 29(7):751–761, July 2008.</p>
-</dd>
-<dt class="label" id="id45"><span class="brackets"><a class="fn-backref" href="#id13">SFC+97</a></span></dt>
-<dd><p>G L Shulman, J A Fiez, M Corbetta, R L Buckner, F M Miezin, M E Raichle, and S E Petersen. Common blood flow changes across visual tasks: II. decreases in cerebral cortex. <em>J. Cogn. Neurosci.</em>, 9(5):648–663, 1997.</p>
-</dd>
-<dt class="label" id="id50"><span class="brackets"><a class="fn-backref" href="#id20">UAB+19</a></span></dt>
-<dd><p>S Urchs, J Armoza, Y Benhajali, J St-Aubin, and others. MIST: a multi-resolution parcellation of functional brain networks [version 2; peer review: 4 approved]. <em>MNI Open Res.</em>, 2019.</p>
-</dd>
-<dt class="label" id="id48"><span class="brackets">YKS+11</span><span class="fn-backref">(<a href="#id17">1</a>,<a href="#id18">2</a>,<a href="#id19">3</a>)</span></dt>
-<dd><p>B T Thomas Yeo, Fenna M Krienen, Jorge Sepulcre, Mert R Sabuncu, Danial Lashkari, Marisa Hollinshead, Joshua L Roffman, Jordan W Smoller, Lilla Zöllei, Jonathan R Polimeni, Bruce Fischl, Hesheng Liu, and Randy L Buckner. The organization of the human cerebral cortex estimated by intrinsic functional connectivity. <em>J. Neurophysiol.</em>, 106(3):1125–1165, September 2011.</p>
-</dd>
-<dt class="label" id="id23"><span class="brackets">HD200Consortium12</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id4">2</a>,<a href="#id6">3</a>,<a href="#id11">4</a>,<a href="#id15">5</a>)</span></dt>
-<dd><p>HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. <em>Front. Syst. Neurosci.</em>, 6:62, September 2012. <a class="reference external" href="https://doi.org/https://dx.doi.org/10.3389%2Ffnsys.2012.00062">doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062</a>.</p>
-</dd>
-</dl>
-</div>
-</section>
 <section id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this heading">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Carte de connectivité: vrai/faux</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Une carte de connectivité change si on change la région cible.</p></li>
 <li><p>Pour définir une région cible, on doit faire une carte d’activation.</p></li>
 <li><p>Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.</p></li>
@@ -1364,7 +1199,7 @@ title="Print to PDF"
 <div class="note admonition">
 <p class="admonition-title">Exercice 2</p>
 <p>Réseaux fonctionnels: vrai/faux</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Un réseau fonctionnel est composé de voxels/régions présentant une connectivité fonctionnelle forte.</p></li>
 <li><p>Les régions du réseau du mode par défaut sont corrélées négativement avec les régions du réseau sensorimoteur.</p></li>
 <li><p>Les atlas des réseaux au repos identifient de sept à plusieurs centaines de réseaux au repos.</p></li>
@@ -1373,7 +1208,7 @@ title="Print to PDF"
 <div class="note admonition">
 <p class="admonition-title">Exercice 3</p>
 <p>Choisissez la bonne réponse:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>L’activité spontanée du cerveau ne s’observe que dans un état de repos.</p></li>
 <li><p>L’activité cérébrale évoquée par une tâche peut être caractérisée par une carte d’activation IRMf.</p></li>
 <li><p>Les cartes de connectivité peuvent révéler l’activité cérébrale dans une tâche ou au repos.</p></li>
@@ -1384,7 +1219,7 @@ title="Print to PDF"
 <div class="note admonition">
 <p class="admonition-title">Exercice 4</p>
 <p>Choisissez la bonne réponse:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>La connectivité fonctionnelle se mesure entre deux régions.</p></li>
 <li><p>La connectivité fonctionnelle se mesure entre une région et tous les voxels du cerveau.</p></li>
 <li><p>La connectivité fonctionnelle se mesure entre toutes les paires de régions dans un atlas.</p></li>
@@ -1403,7 +1238,7 @@ title="Print to PDF"
 <div class="note admonition">
 <p class="admonition-title">Exercice 7</p>
 <p>Pour répondre à cette question, lisez l’article de Shukla et collaborateurs, “<em>Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia</em>”, publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/">adresse</a>. Les questions suivantes sont à développement court.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Quel logiciel a été utilisé pour analyser les données d’IRMf?</p></li>
 <li><p>Quelle condition expérimentale était utilisée pendant les acquisitions d’IRMf?</p></li>
 <li><p>Quel était le paramètre de lissage spatial?</p></li>
@@ -1416,9 +1251,14 @@ title="Print to PDF"
 </div>
 </section>
 <section id="bonus">
-<h2>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">#</a></h2>
+<h2>Bonus<a class="headerlink" href="#bonus" title="Permalink to this heading">#</a></h2>
 <p>Ces exercices bonus concernent la vidéo “resting-state network” suivante:</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -1429,13 +1269,14 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/_Iph3WW9UOU?start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Exercice bonus 1</p>
 <p>“La septième jour” (sic), extrait en français: 0:54 - 4:35</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Qui représente le jeune homme?</p></li>
 <li><p>À quel résultat fait-il référence?</p></li>
 <li><p>Qui représente la jeune femme?</p></li>
@@ -1455,7 +1296,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 <div class="note admonition">
 <p class="admonition-title">Exercice bonus 2</p>
 <p>“Neuro-météorologie”: 4:48 - 5:30</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>De quels réseaux parle-t-on ici?</p></li>
 <li><p>Pourquoi qualifie-t-il le réseau du mode par défaut et le réseau “tâche-positif” de “Yin and yang”?</p></li>
 <li><p>Est ce qu’il manque des réseaux dans cette prévision?</p></li>
@@ -1483,7 +1324,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
 <div class="note admonition">
 <p class="admonition-title">Exercice bonus 3</p>
 <p>“Hardball”: 8:01 - 9:46</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Est-il vrai que l’activité spontanée est présente aussi bien au repos que durant une tâche?</p></li>
 <li><p>Est-il vrai que l’activité spontanée a été principalement étudiée dans un état de repos en IRMf?</p></li>
 <li><p>En quoi est-il “non psychologique” d’étudier une condition de repos?</p></li>
@@ -1505,7 +1346,7 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1513,50 +1354,115 @@ Mais, comme l’a dit le philosophe latin (Sénèque, NDLR): le repos est loin d
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="irm_fonctionnelle.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">IRM fonctionnelle</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="irm_fonctionnelle.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">IRM fonctionnelle</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="irm_diffusion.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="irm_diffusion.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">IRM de diffusion</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Pierre Bellec et l'équipe PSY3018<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs">Objectifs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Connectivité fonctionnelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carte-de-connectivite-fonctionnelle">Carte de connectivité fonctionnelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reseau-du-mode-par-defaut">Réseau du mode par défaut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivations">Déactivations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dan-et-correlations-negatives">DAN et corrélations négatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectomes-et-reseaux">Connectomes et réseaux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atlas-de-reseaux">Atlas de réseaux</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus">Bonus</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pierre Bellec et l'équipe PSY3018
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

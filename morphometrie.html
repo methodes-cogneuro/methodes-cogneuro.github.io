@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Analyses morphométriques &#8212; Méthodes en neurosciences cognitives</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,62 +64,94 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'morphometrie';</script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="IRM fonctionnelle" href="irm_fonctionnelle.html" />
     <link rel="prev" title="Imagerie par résonance magnétique" href="irm.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Méthodes en neurosciences cognitives</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,549 +161,266 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_cerebrales.html">
-   Cartes cérébrales
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm.html">
-   Imagerie par résonance magnétique
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Analyses morphométriques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_fonctionnelle.html">
-   IRM fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="connectivite.html">
-   Connectivité fonctionnelle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="irm_diffusion.html">
-   IRM de diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagerie_optique.html">
-   Imagerie optique
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tep.html">
-   Tomographie par émission de positrons
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cartes_statistiques.html">
-   Cartes statistiques
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="reproductibilite.html">
-   Reproductibilité et controverses
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_cerebrales.html">Cartes cérébrales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm.html">Imagerie par résonance magnétique</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyses morphométriques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_fonctionnelle.html">IRM fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectivite.html">Connectivité fonctionnelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="irm_diffusion.html">IRM de diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagerie_optique.html">Imagerie optique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tep.html">Tomographie par émission de positrons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartes_statistiques.html">Cartes statistiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproductibilite.html">Reproductibilité et controverses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Références</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/psy3018/notes_cours_psy3018/main?urlpath=tree/methodes_neurocog/morphometrie.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/morphometrie.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Fmorphometrie.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/morphometrie.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/issues/new?title=Issue%20on%20page%20%2Fmorphometrie.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/psy3018/notes_cours_psy3018/edit/main/methodes_neurocog/morphometrie.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/morphometrie.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/morphometrie.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#morphometrie">
-   Morphométrie
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#volumetrie">
-   Volumétrie
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#segmentation-manuelle">
-     Segmentation manuelle
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#segmentation-automatique">
-     Segmentation automatique
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analyses-statistiques">
-     Analyses statistiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#controle-de-qualite">
-     Contrôle de qualité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vbm">
-   VBM
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#densite-de-matiere-grise">
-     Densité de matière grise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#segmentation">
-     Segmentation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lissage">
-     Lissage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     Analyses statistiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     Contrôle de qualité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyses-de-surface">
-   Analyses de surface
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extraction-de-surface">
-     Extraction de surface
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#epaisseur-surface-et-volume">
-     Épaisseur, surface et volume
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
-     Analyses statistiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
-     Contrôle de qualité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Analyses morphométriques</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objectifs-du-cours">
-   Objectifs du cours
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#morphometrie">
-   Morphométrie
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#volumetrie">
-   Volumétrie
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#segmentation-manuelle">
-     Segmentation manuelle
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#segmentation-automatique">
-     Segmentation automatique
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analyses-statistiques">
-     Analyses statistiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#controle-de-qualite">
-     Contrôle de qualité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vbm">
-   VBM
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#densite-de-matiere-grise">
-     Densité de matière grise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#segmentation">
-     Segmentation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lissage">
-     Lissage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     Analyses statistiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     Contrôle de qualité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyses-de-surface">
-   Analyses de surface
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extraction-de-surface">
-     Extraction de surface
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#epaisseur-surface-et-volume">
-     Épaisseur, surface et volume
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
-     Analyses statistiques
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
-     Contrôle de qualité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   Références
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercices">
-   Exercices
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analyses morphométriques</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morphometrie">Morphométrie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volumetrie">Volumétrie</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-manuelle">Segmentation manuelle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-automatique">Segmentation automatique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyses-statistiques">Analyses statistiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-qualite">Contrôle de qualité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vbm">VBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#densite-de-matiere-grise">Densité de matière grise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation">Segmentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lissage">Lissage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Analyses statistiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Contrôle de qualité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyses-de-surface">Analyses de surface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extraction-de-surface">Extraction de surface</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epaisseur-surface-et-volume">Épaisseur, surface et volume</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Analyses statistiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Contrôle de qualité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="analyses-morphometriques">
-<span id="morphometrie-chapitre"></span><h1>Analyses morphométriques<a class="headerlink" href="#analyses-morphometriques" title="Permalink to this headline">#</a></h1>
+<span id="morphometrie-chapitre"></span><h1>Analyses morphométriques<a class="headerlink" href="#analyses-morphometriques" title="Permalink to this heading">#</a></h1>
 <table>
   <tr>
     <td align="center">
@@ -695,7 +455,7 @@ title="Print to PDF"
   </tr>
 </table>
 <section id="objectifs-du-cours">
-<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this headline">#</a></h2>
+<h2>Objectifs du cours<a class="headerlink" href="#objectifs-du-cours" title="Permalink to this heading">#</a></h2>
 <p>Ce cours introduit différentes approches pour quantifier la morphologie du cerveau à l’aide des données d’imagerie par résonance magnétique anatomique. Il sera question dans ce chapitre de trois grandes approches d’analyse:</p>
 <ul class="simple">
 <li><p>la <strong>volumétrie</strong>, qui vise à mesurer la taille d’une région cérébrale;</p></li>
@@ -705,7 +465,7 @@ title="Print to PDF"
 <p>On parlera également d’étapes d’analyse d’images utiles pour l’ensemble de ces techniques: le <strong>recalage</strong>, la <strong>segmentation</strong>, le <strong>lissage</strong> et le <strong>contrôle de qualité</strong>.</p>
 </section>
 <section id="morphometrie">
-<h2>Morphométrie<a class="headerlink" href="#morphometrie" title="Permalink to this headline">#</a></h2>
+<h2>Morphométrie<a class="headerlink" href="#morphometrie" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="morphometrie-durer-fig">
 <a class="reference internal image-reference" href="_images/morphometrie_durer.jpg"><img alt="_images/morphometrie_durer.jpg" src="_images/morphometrie_durer.jpg" style="width: 600px;" /></a>
 <figcaption>
@@ -724,22 +484,22 @@ Combinée avec des outils automatiques d’analyse d’images, l’IRM permet do
 <figcaption>
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Cette figure illustre des différences morphologiques entre des individus présentant des profils cliniques différents: sans atteinte cognitive (haut), troubles légers de la cognition (milieu), démence de type Alzheimer (bas).
 Par ailleurs, il est également possible d’observer des différences longitudinales au sein d’un même individu (de gauche à droite, visite initiale, suivi après deux ans, différence entre les deux images).
-Figure tirée de <span id="id1">[<a class="reference internal" href="#id28" title="Christian Ledig, Andreas Schuh, Ricardo Guerrero, Rolf A Heckemann, and Daniel Rueckert. Structural brain imaging in alzheimer's disease and mild cognitive impairment: biomarker analysis and shared morphometry database. Sci. Rep., 8(1):1–16, July 2018.">LSG+18</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#ledig2018-fig" title="Permalink to this image">#</a></p>
+Figure tirée de <span id="id1">[<a class="reference internal" href="references.html#id12" title="Christian Ledig, Andreas Schuh, Ricardo Guerrero, Rolf A Heckemann, and Daniel Rueckert. Structural brain imaging in alzheimer's disease and mild cognitive impairment: biomarker analysis and shared morphometry database. Sci. Rep., 8(1):1–16, July 2018.">LSG+18</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#ledig2018-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Comme le démontre la figure ci-haut, les études morphologiques IRM permettent de comparer des individus et des groupes.
 De telles comparaisons peuvent nous informer sur l’effet de l’âge, ou bien encore l’effet d’une lésion ou d’une maladie sur la forme du cerveau.</p>
 </section>
 <section id="volumetrie">
-<h2>Volumétrie<a class="headerlink" href="#volumetrie" title="Permalink to this headline">#</a></h2>
+<h2>Volumétrie<a class="headerlink" href="#volumetrie" title="Permalink to this heading">#</a></h2>
 <section id="segmentation-manuelle">
-<h3>Segmentation manuelle<a class="headerlink" href="#segmentation-manuelle" title="Permalink to this headline">#</a></h3>
+<h3>Segmentation manuelle<a class="headerlink" href="#segmentation-manuelle" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="ashempour2019-fig">
 <a class="reference internal image-reference" href="_images/ashempour2019.jpg"><img alt="_images/ashempour2019.jpg" src="_images/ashempour2019.jpg" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">Cette figure illustre un protocole de segmentation manuelle de l’amygdale.
 Vue coronale d’une segmentation manuelle de l’amygdale gauche (jaune) et droit (bleu) avant (gauche) et après (droite) avoir procédé aux corrections dans le plan coronal.
-Figure tirée de <span id="id2">[<a class="reference internal" href="#id29" title="Niloofar Hashempour, Jetro J Tuulari, Harri Merisaari, Kristian Lidauer, Iiris Luukkonen, Jani Saunavaara, Riitta Parkkola, Tuire Lähdesmäki, Satu J Lehtola, Maria Keskinen, John D Lewis, Noora M Scheinin, Linnea Karlsson, and Hasse Karlsson. A novel approach for manual segmentation of the amygdala and hippocampus in neonate MRI. Front. Neurosci., 13:1025, September 2019.">HTM+19</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#ashempour2019-fig" title="Permalink to this image">#</a></p>
+Figure tirée de <span id="id2">[<a class="reference internal" href="references.html#id13" title="Niloofar Hashempour, Jetro J Tuulari, Harri Merisaari, Kristian Lidauer, Iiris Luukkonen, Jani Saunavaara, Riitta Parkkola, Tuire Lähdesmäki, Satu J Lehtola, Maria Keskinen, John D Lewis, Noora M Scheinin, Linnea Karlsson, and Hasse Karlsson. A novel approach for manual segmentation of the amygdala and hippocampus in neonate MRI. Front. Neurosci., 13:1025, September 2019.">HTM+19</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#ashempour2019-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La <strong>volumétrie manuelle</strong> consiste à délimiter visuellement une aire cérébrale particulière, comme l’hippocampe ou l’amygdale (voir <a class="reference internal" href="#ashempour2019-fig"><span class="std std-numref">Fig. 23</span></a>).
@@ -749,15 +509,20 @@ On commence d’abord par segmenter une structure dans un premier plan de coupe 
 <div><p>Pour un rappel concernant les différents types de coupes du cerveau, veuillez vous référer au <a class="reference internal" href="cartes_cerebrales.html#coupes-tip"><span class="std std-ref">Chapitre 1: Cartes cérébrales</span></a>.</p>
 </div></blockquote>
 <p>Afin de déterminer où une région cérébrale se situe, ce type d’approche nécessite également un protocole de segmentation avec des critères anatomiques clairs.
-Pour certaines structures, comme pour l’hippocampe, il existe des protocoles détaillés (par exemple: <span id="id3">[<a class="reference internal" href="#id27" title="Laura E M Wisse, Ana M Daugherty, Rosanna K Olsen, David Berron, Valerie A Carr, Craig E L Stark, Robert S C Amaral, Katrin Amunts, Jean C Augustinack, Andrew R Bender, Jeffrey D Bernstein, Marina Boccardi, Martina Bocchetta, Alison Burggren, M Mallar Chakravarty, Marie Chupin, Arne Ekstrom, Robin de Flores, Ricardo Insausti, Prabesh Kanel, Olga Kedo, Kristen M Kennedy, Geoffrey A Kerchner, Karen F LaRocque, Xiuwen Liu, Anne Maass, Nicolai Malykhin, Susanne G Mueller, Noa Ofen, Daniela J Palombo, Mansi B Parekh, John B Pluta, Jens C Pruessner, Naftali Raz, Karen M Rodrigue, Dorothee Schoemaker, Andrea T Shafer, Trevor A Steve, Nanthia Suthana, Lei Wang, Julie L Winterburn, Michael A Yassa, Paul A Yushkevich, Renaud la Joie, and Hippocampal Subfields Group. A harmonized segmentation protocol for hippocampal and parahippocampal subregions: why do we need one and what are the key goals? Hippocampus, 27(1):3–11, January 2017.">WDO+17</a>]</span>).
+Pour certaines structures, comme pour l’hippocampe, il existe des protocoles détaillés (par exemple: <span id="id3">[<a class="reference internal" href="references.html#id11" title="Laura E M Wisse, Ana M Daugherty, Rosanna K Olsen, David Berron, Valerie A Carr, Craig E L Stark, Robert S C Amaral, Katrin Amunts, Jean C Augustinack, Andrew R Bender, Jeffrey D Bernstein, Marina Boccardi, Martina Bocchetta, Alison Burggren, M Mallar Chakravarty, Marie Chupin, Arne Ekstrom, Robin de Flores, Ricardo Insausti, Prabesh Kanel, Olga Kedo, Kristen M Kennedy, Geoffrey A Kerchner, Karen F LaRocque, Xiuwen Liu, Anne Maass, Nicolai Malykhin, Susanne G Mueller, Noa Ofen, Daniela J Palombo, Mansi B Parekh, John B Pluta, Jens C Pruessner, Naftali Raz, Karen M Rodrigue, Dorothee Schoemaker, Andrea T Shafer, Trevor A Steve, Nanthia Suthana, Lei Wang, Julie L Winterburn, Michael A Yassa, Paul A Yushkevich, Renaud la Joie, and Hippocampal Subfields Group. A harmonized segmentation protocol for hippocampal and parahippocampal subregions: why do we need one and what are the key goals? Hippocampus, 27(1):3–11, January 2017.">WDO+17</a>]</span>).
 Mais pour d’autres régions, comme les aires visuelles (V1, V2, etc.), il est nécessaire de réaliser des expériences fonctionnelles afin de pouvoir les délimiter.
 En effet, dans ce dernier cas, les délimitations anatomiques ne sont pas toujours disponibles ou bien établies.</p>
 <p>Un protocole de segmentation rigoureux est nécessaire pour obtenir un bon niveau de <a class="reference external" href="https://en.wikipedia.org/wiki/Inter-rater_reliability">concordance</a> des résultats entre différents chercheurs (accord inter-juges).
 Certains protocoles proposent aussi un processus de certification, ce qui offre une garantie que la personne effectuant la segmentation applique le protocole correctement.</p>
 </section>
 <section id="segmentation-automatique">
-<h3>Segmentation automatique<a class="headerlink" href="#segmentation-automatique" title="Permalink to this headline">#</a></h3>
+<h3>Segmentation automatique<a class="headerlink" href="#segmentation-automatique" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Téléchargement de l&#39;atlas Harvard-Oxford</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -787,14 +552,13 @@ Certains protocoles proposent aussi un processus de certification, ce qui offre 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="harvard-oxford-fig" style="width: 800px">
-<div class="cell_output docutils container">
-<img alt="_images/morphometrie_1_0.png" src="_images/morphometrie_1_0.png" />
-</div>
+<img alt="_images/0e9872a8974233c2a955c428cac317bce28e082e516a07d4436525cf61172d2f.png" src="_images/0e9872a8974233c2a955c428cac317bce28e082e516a07d4436525cf61172d2f.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Un exemple d’atlas de régions anatomiques: l’atlas Harvard-Oxford.
-Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé fetch_atlas_harvard_oxford (<a class="reference external" href="https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html">Nilearn, section 9.2.1: Basic Atlas plotting</a>) <span id="id4">[<a class="reference internal" href="#id24" title="Rahul S. Desikan, Florent Ségonne, Bruce Fischl, Brian T. Quinn, Bradford C. Dickerson, Deborah Blacker, Randy L. Buckner, Anders M. Dale, R. Paul Maguire, Bradley T. Hyman, Marilyn S. Albert, and Ronald J. Killiany. An automated labeling system for subdividing the human cerebral cortex on mri scans into gyral based regions of interest. NeuroImage, 31(3):968-980, 2006. URL: https://www.sciencedirect.com/science/article/pii/S1053811906000437, doi:https://doi.org/10.1016/j.neuroimage.2006.01.021.">DSF+06</a>, <a class="reference internal" href="#id23" title="Jean A. Frazier, Sufen Chiu, Janis L. Breeze, Nikos Makris, Nicholas Lange, David N. Kennedy, Martha R. Herbert, Eileen K. Bent, Vamsi K. Koneru, Megan E. Dieterich, Steven M. Hodge, Scott L. Rauch, P. Ellen Grant, Bruce M. Cohen, Larry J. Seidman, Verne S. Caviness, and Joseph Biederman. Structural brain magnetic resonance imaging of limbic and thalamic volumes in pediatric bipolar disorder. American Journal of Psychiatry, 162(7):1256-1265, 2005. doi:10.1176/appi.ajp.162.7.1256.">FCB+05</a>, <a class="reference internal" href="#id25" title="Jill M. Goldstein, Larry J. Seidman, Nikos Makris, Todd Ahern, Liam M. O’Brien, Verne S. Caviness, David N. Kennedy, Stephen V. Faraone, and Ming T. Tsuang. Hypothalamic abnormalities in schizophrenia: sex effects and genetic vulnerability. Biological Psychiatry, 61(8):935-945, 2007. URL: https://www.sciencedirect.com/science/article/pii/S0006322306008195, doi:https://doi.org/10.1016/j.biopsych.2006.06.027.">GSM+07</a>, <a class="reference internal" href="#id22" title="Nikos Makris, Jill M. Goldstein, David Kennedy, Steven M. Hodge, Verne S. Caviness, Stephen V. Faraone, Ming T. Tsuang, and Larry J. Seidman. Decreased volume of left and total anterior insular lobule in schizophrenia. Schizophrenia Research, 83(2):155-171, 2006. URL: https://www.sciencedirect.com/science/article/pii/S0920996405004998, doi:https://doi.org/10.1016/j.schres.2005.11.020.">MGK+06</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#harvard-oxford-fig" title="Permalink to this image">#</a></p>
+Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé fetch_atlas_harvard_oxford (<a class="reference external" href="https://nilearn.github.io/auto_examples/01_plotting/plot_atlas.html">Nilearn, section 9.2.1: Basic Atlas plotting</a>) <span id="id4">[<a class="reference internal" href="references.html#id8" title="Rahul S. Desikan, Florent Ségonne, Bruce Fischl, Brian T. Quinn, Bradford C. Dickerson, Deborah Blacker, Randy L. Buckner, Anders M. Dale, R. Paul Maguire, Bradley T. Hyman, Marilyn S. Albert, and Ronald J. Killiany. An automated labeling system for subdividing the human cerebral cortex on mri scans into gyral based regions of interest. NeuroImage, 31(3):968-980, 2006. URL: https://www.sciencedirect.com/science/article/pii/S1053811906000437, doi:https://doi.org/10.1016/j.neuroimage.2006.01.021.">DSF+06</a>, <a class="reference internal" href="references.html#id7" title="Jean A. Frazier, Sufen Chiu, Janis L. Breeze, Nikos Makris, Nicholas Lange, David N. Kennedy, Martha R. Herbert, Eileen K. Bent, Vamsi K. Koneru, Megan E. Dieterich, Steven M. Hodge, Scott L. Rauch, P. Ellen Grant, Bruce M. Cohen, Larry J. Seidman, Verne S. Caviness, and Joseph Biederman. Structural brain magnetic resonance imaging of limbic and thalamic volumes in pediatric bipolar disorder. American Journal of Psychiatry, 162(7):1256-1265, 2005. doi:10.1176/appi.ajp.162.7.1256.">FCB+05</a>, <a class="reference internal" href="references.html#id9" title="Jill M. Goldstein, Larry J. Seidman, Nikos Makris, Todd Ahern, Liam M. O’Brien, Verne S. Caviness, David N. Kennedy, Stephen V. Faraone, and Ming T. Tsuang. Hypothalamic abnormalities in schizophrenia: sex effects and genetic vulnerability. Biological Psychiatry, 61(8):935-945, 2007. URL: https://www.sciencedirect.com/science/article/pii/S0006322306008195, doi:https://doi.org/10.1016/j.biopsych.2006.06.027.">GSM+07</a>, <a class="reference internal" href="references.html#id6" title="Nikos Makris, Jill M. Goldstein, David Kennedy, Steven M. Hodge, Verne S. Caviness, Stephen V. Faraone, Ming T. Tsuang, and Larry J. Seidman. Decreased volume of left and total anterior insular lobule in schizophrenia. Schizophrenia Research, 83(2):155-171, 2006. URL: https://www.sciencedirect.com/science/article/pii/S0920996405004998, doi:https://doi.org/10.1016/j.schres.2005.11.020.">MGK+06</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#harvard-oxford-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Afin d’automatiser le travail de segmentation, il est possible d’utiliser un atlas, c’est-à-dire une segmentation déjà effectuée par une équipe de chercheurs.
@@ -811,25 +575,25 @@ L’objectif du recalage est d’augmenter le niveau de similarité entre les im
 Autrement dit, des endroits adjacents dans les images non-recalées doivent toujours être adjacents après le recalage.
 Les images ci-dessous illustrent l’effet de différents types de recalage.
 Elles sont tirées de la documentation du logiciel <a class="reference external" href="https://www.slicer.org/wiki/Documentation:Nightly:Registration:RegistrationLibrary:RegLib_C42">slicer</a>, sous licence CC-Attributions Share Alike.</p>
-<figure class="align-left" id="id50" style="width: 400px">
+<figure class="align-left" id="id17" style="width: 400px">
 <img alt="_images/registration_slicer_raw.gif" src="_images/registration_slicer_raw.gif" />
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Images brutes: deux scans du même sujet, prises durant deux séances d’acquisition différentes.</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Images brutes: deux scans du même sujet, prises durant deux séances d’acquisition différentes.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 <div class="legend">
-<figure class="margin-caption align-left" id="id51" style="width: 400px">
+<figure class="margin-caption align-left" id="id18" style="width: 400px">
 <img alt="_images/registration_slicer_affine.gif" src="_images/registration_slicer_affine.gif" />
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Images recalées par un processus de transformation affine seulement.</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Images recalées par un processus de transformation affine seulement.</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 <div class="legend">
-<figure class="margin-caption align-left" id="id52" style="width: 400px">
+<figure class="margin-caption align-left" id="id19" style="width: 400px">
 <img alt="_images/registration_slicer_nonlinear.gif" src="_images/registration_slicer_nonlinear.gif" />
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Images recalées par une transformation affine suivie d’une transformation non-linéaire.</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Images recalées par une transformation affine suivie d’une transformation non-linéaire.</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 <div class="legend">
-<figure class="margin-caption align-left" id="id53" style="width: 400px">
+<figure class="margin-caption align-left" id="id20" style="width: 400px">
 <img alt="_images/registration_slicer_nonlinear_only.gif" src="_images/registration_slicer_nonlinear_only.gif" />
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Visualisation des effets du recalage non-linéaire seulement.</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Visualisation des effets du recalage non-linéaire seulement.</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -843,6 +607,11 @@ Elles sont tirées de la documentation du logiciel <a class="reference external"
 </figure>
 </div>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ce code récupère des données IRM T1</span>
 <span class="c1"># et génère une image dans trois plans de coupes</span>
@@ -871,32 +640,31 @@ Elles sont tirées de la documentation du logiciel <a class="reference external"
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="tip admonition" id="stereotaxique-tip">
 <p class="admonition-title">Espace stéréotaxique</p>
 <p>Afin de définir une anatomie de référence, les chercheurs utilisent généralement un cerveau “moyen”.
 Pour y parvenir, les cerveaux de plusieurs dizaines d’individus sont recalés les uns avec les autres, puis moyennés jusqu’à obtenir une seule image.
 Si le recalage a bien fonctionné, comme dans le cas de l’atlas MNI152 ci-dessous, les détails de la neuroanatomie sont préservés dans la moyenne.</p>
-<figure class="align-left" id="id54" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/morphometrie_3_0.png" src="_images/morphometrie_3_0.png" />
-</div>
+<figure class="align-left" id="id21" style="width: 600px">
+<img alt="_images/6fd05ef70bee405f9fded9221c4bebbe80e6bd4220d47afeae2e559b0332d2f9.png" src="_images/6fd05ef70bee405f9fded9221c4bebbe80e6bd4220d47afeae2e559b0332d2f9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 29 </span><span class="caption-text">Espace stéréotaxique de l’Institut Neurologique de Montréal (MNI).
-Cette espace de référence a été obtenu en faisant la moyenne des images cérébrales de 152 sujets après avoir procédé à un recalage non-linéaire itératif <span id="id5">[<a class="reference internal" href="#id21" title="Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. Neuroimage, 54(1):313–327, January 2011.">FEB+11</a>]</span>.</span><a class="headerlink" href="#id54" title="Permalink to this image">#</a></p>
+Cette espace de référence a été obtenu en faisant la moyenne des images cérébrales de 152 sujets après avoir procédé à un recalage non-linéaire itératif <span id="id5">[<a class="reference internal" href="references.html#id5" title="Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. Neuroimage, 54(1):313–327, January 2011.">FEB+11</a>]</span>.</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 </section>
 <section id="analyses-statistiques">
-<h3>Analyses statistiques<a class="headerlink" href="#analyses-statistiques" title="Permalink to this headline">#</a></h3>
+<h3>Analyses statistiques<a class="headerlink" href="#analyses-statistiques" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="ledig2018-stats-fig">
 <a class="reference internal image-reference" href="_images/ledig2018_stats.png"><img alt="_images/ledig2018_stats.png" src="_images/ledig2018_stats.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 30 </span><span class="caption-text">Cette figure illustre les différences de volume de l’hippocampe entre des participants cognitivement sains (HC), des participants présentant des troubles cognitifs légers stables (sMCI) ou progressifs (pMCI), ainsi que des patients atteints d’une démence de type Alzheimer (AD), dans la cohorte ADNI.
 Plus les symptômes cliniques sont sévères, plus la probabilité de présenter la maladie d’Alzheimer est grande, et plus le stade d’avancement de la maladie est sévère.
 L’atrophie de l’hippocampe est claire chez les patients présentant les symptômes les plus sévères.
-Figure tirée de <span id="id6">[<a class="reference internal" href="#id28" title="Christian Ledig, Andreas Schuh, Ricardo Guerrero, Rolf A Heckemann, and Daniel Rueckert. Structural brain imaging in alzheimer's disease and mild cognitive impairment: biomarker analysis and shared morphometry database. Sci. Rep., 8(1):1–16, July 2018.">LSG+18</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#ledig2018-stats-fig" title="Permalink to this image">#</a></p>
+Figure tirée de <span id="id6">[<a class="reference internal" href="references.html#id12" title="Christian Ledig, Andreas Schuh, Ricardo Guerrero, Rolf A Heckemann, and Daniel Rueckert. Structural brain imaging in alzheimer's disease and mild cognitive impairment: biomarker analysis and shared morphometry database. Sci. Rep., 8(1):1–16, July 2018.">LSG+18</a>]</span>, sous licence CC-BY.</span><a class="headerlink" href="#ledig2018-stats-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Afin de procéder aux analyses statistiques, on extrait d’abord le volume de chaque structure segmentée (en <span class="math notranslate nohighlight">\(mm^3\)</span>).
@@ -904,7 +672,7 @@ On peut ensuite comparer statistiquement le volume moyen entre deux groupes, par
 Dans l’exemple de la <a class="reference internal" href="#ledig2018-stats-fig"><span class="std std-numref">Fig. 30</span></a>, on compare le volume de l’hippocampe entre différents groupes cliniques ayant différents niveaux de risques liés à la maladie d’Alzheimer.</p>
 </section>
 <section id="controle-de-qualite">
-<h3>Contrôle de qualité<a class="headerlink" href="#controle-de-qualite" title="Permalink to this headline">#</a></h3>
+<h3>Contrôle de qualité<a class="headerlink" href="#controle-de-qualite" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="artefact-fig">
 <a class="reference internal image-reference" href="_images/artefact-fig.png"><img alt="_images/artefact-fig.png" src="_images/artefact-fig.png" style="width: 600px;" /></a>
 <figcaption>
@@ -927,9 +695,9 @@ Conserver ces dernières pourrait avoir des impacts importants sur les résultat
 </section>
 </section>
 <section id="vbm">
-<h2>VBM<a class="headerlink" href="#vbm" title="Permalink to this headline">#</a></h2>
+<h2>VBM<a class="headerlink" href="#vbm" title="Permalink to this heading">#</a></h2>
 <section id="densite-de-matiere-grise">
-<h3>Densité de matière grise<a class="headerlink" href="#densite-de-matiere-grise" title="Permalink to this headline">#</a></h3>
+<h3>Densité de matière grise<a class="headerlink" href="#densite-de-matiere-grise" title="Permalink to this heading">#</a></h3>
 <p>La morphométrie basée sur les voxels (<em>voxel-based morphometry</em> ou VBM) a pour objectif de mesurer le volume de matière grise situé immédiatement autour d’un voxel donné.
 Cette approche n’est donc pas limitée par le besoin d’avoir des frontières préétablies claires entre différentes structures cérébrales.
 Lorsque l’on génère une mesure de volume pour l’ensemble des voxels du cerveau à l’aide de ce genre de technique, on obtient une carte 3D de la densité de la matière grise.
@@ -940,8 +708,13 @@ D’un autre côté, cette technique comporte aussi un inconvénient important.
 En effet, le grand nombre de mesures générées pose un problème de <em>comparaisons multiples</em> lorsque vient le temps de faire les analyses statistiques (voir le <a class="reference internal" href="cartes_statistiques.html#cartes-statistiques-chapitre"><span class="std std-ref">Chapitre 9: Cartes statistiques</span></a>).</p>
 </section>
 <section id="segmentation">
-<h3>Segmentation<a class="headerlink" href="#segmentation" title="Permalink to this headline">#</a></h3>
+<h3>Segmentation<a class="headerlink" href="#segmentation" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies nécessaires</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1031,14 +804,13 @@ En effet, le grand nombre de mesures générées pose un problème de <em>compar
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="mni-segmentation-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/morphometrie_5_0.png" src="_images/morphometrie_5_0.png" />
-</div>
+<img alt="_images/f142bc54aaaccf7f7bf0a8931ee72cd161f821b99b5ff74e2f004f6ee33ec20c.png" src="_images/f142bc54aaaccf7f7bf0a8931ee72cd161f821b99b5ff74e2f004f6ee33ec20c.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 33 </span><span class="caption-text">Segmentation probabiliste des principaux types de tissus et distribution des valeurs pondérées en T1 dans les voxels “purs” (probabilité supérieure à 80% pour un type de tissu donné).
-L’image pondérée en T1 ainsi que les segmentations correspondent à l’espace stéréotaxique MNI152 <span id="id7">[<a class="reference internal" href="#id21" title="Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. Neuroimage, 54(1):313–327, January 2011.">FEB+11</a>]</span>.</span><a class="headerlink" href="#mni-segmentation-fig" title="Permalink to this image">#</a></p>
+L’image pondérée en T1 ainsi que les segmentations correspondent à l’espace stéréotaxique MNI152 <span id="id7">[<a class="reference internal" href="references.html#id5" title="Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. Neuroimage, 54(1):313–327, January 2011.">FEB+11</a>]</span>.</span><a class="headerlink" href="#mni-segmentation-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Une étape importante de la VBM est la segmentation.
@@ -1057,8 +829,13 @@ On appelle ce genre d’effet de mélange de noir et de blanc un volume partiel 
 </div>
 </section>
 <section id="lissage">
-<h3>Lissage<a class="headerlink" href="#lissage" title="Permalink to this headline">#</a></h3>
+<h3>Lissage<a class="headerlink" href="#lissage" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importe les librairies nécessaires</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1100,15 +877,14 @@ On appelle ce genre d’effet de mélange de noir et de blanc un volume partiel 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="smoothing-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/morphometrie_7_0.png" src="_images/morphometrie_7_0.png" />
-</div>
+<img alt="_images/de073d9cecea0b42b6a6ee210b4494ee7e71137d53c3df48b865675a418408a0.png" src="_images/de073d9cecea0b42b6a6ee210b4494ee7e71137d53c3df48b865675a418408a0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 34 </span><span class="caption-text">Illustration de l’impact du lissage sur une carte de densité de matière grise en VBM.
 À mesure que le paramètre <code class="docutils literal notranslate"><span class="pre">FWHM</span></code> augmente, la mesure de la densité représente une région entourant le voxel de plus en plus grande.
-Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé template MNI152 2009 <span id="id8">[<a class="reference internal" href="#id21" title="Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. Neuroimage, 54(1):313–327, January 2011.">FEB+11</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#smoothing-fig" title="Permalink to this image">#</a></p>
+Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé template MNI152 2009 <span id="id8">[<a class="reference internal" href="references.html#id5" title="Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. Neuroimage, 54(1):313–327, January 2011.">FEB+11</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#smoothing-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>L’étape suivante correspond au <em>lissage spatial</em>.
@@ -1121,8 +897,13 @@ La taille de la région est contrôlée par un paramètre de <em>largeur à mi-h
 Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage contenant les voxels qui auront un impact sur la valeur lissée du voxel (voir la <a class="reference internal" href="#smoothing-fig"><span class="std std-numref">Fig. 34</span></a>).</p>
 </section>
 <section id="id9">
-<h3>Analyses statistiques<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<h3>Analyses statistiques<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1184,11 +965,10 @@ Plus la valeur de FWHM est grande, plus grand sera le rayon du voisinage contena
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="vbm-fig" style="width: 600px">
-<div class="cell_output docutils container">
-<img alt="_images/morphometrie_9_103.png" src="_images/morphometrie_9_103.png" />
-</div>
+<img alt="_images/0fc8e1565921967acdba0284e98c4b2bae7610f3ab57a2ab1f0f7bd4f95bd8ee.png" src="_images/0fc8e1565921967acdba0284e98c4b2bae7610f3ab57a2ab1f0f7bd4f95bd8ee.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 35 </span><span class="caption-text">Régression linéaire en VBM.
 On teste ici l’effet de l’âge sur un groupe (N=50) de participants de la base de données OASIS.
@@ -1203,14 +983,14 @@ Dans l’exemple ci-dessus, on teste l’effet de l’âge sur la matière grise
 C’est généralement ce genre d’image qui sera par la suite inséré à l’intérieur des publications scientifiques.</p>
 </section>
 <section id="id10">
-<h3>Contrôle de qualité<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h3>Contrôle de qualité<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="segmentation-error-volume-fig">
 <a class="reference internal image-reference" href="_images/segmentation-error-volume-fig.png"><img alt="_images/segmentation-error-volume-fig.png" src="_images/segmentation-error-volume-fig.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 36 </span><span class="caption-text">Image de gauche: IRM individuelle pondérée en T1.
 Image de droite: classification matière grise et matière blanche générée par le logiciel <a class="reference external" href="http://stnava.github.io/ANTs/">ANTS</a>.
 Notez comment la matière blanche proche du gyrus est classifié de manière erronnée comme matière grise.
-Image sous licence CC Attribution, tirée de Klein et al., 2017 <span id="id11">[<a class="reference internal" href="#id30" title="Arno Klein, Satrajit S Ghosh, Forrest S Bao, Joachim Giard, Yrjö Häme, Eliezer Stavsky, Noah Lee, Brian Rossa, Martin Reuter, Elias Chaibub Neto, and Anisha Keshavan. Mindboggling morphometry of human brains. PLoS Comput. Biol., 13(2):e1005350, February 2017.">KGB+17</a>]</span>.</span><a class="headerlink" href="#segmentation-error-volume-fig" title="Permalink to this image">#</a></p>
+Image sous licence CC Attribution, tirée de Klein et al., 2017 <span id="id11">[<a class="reference internal" href="references.html#id14" title="Arno Klein, Satrajit S Ghosh, Forrest S Bao, Joachim Giard, Yrjö Häme, Eliezer Stavsky, Noah Lee, Brian Rossa, Martin Reuter, Elias Chaibub Neto, and Anisha Keshavan. Mindboggling morphometry of human brains. PLoS Comput. Biol., 13(2):e1005350, February 2017.">KGB+17</a>]</span>.</span><a class="headerlink" href="#segmentation-error-volume-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Comme pour toute opération automatisée, il existe toujours une possibilité d’erreur en VBM.
@@ -1223,16 +1003,16 @@ Il est aussi envisageable de corriger cette partie de la segmentation de façon 
 </section>
 </section>
 <section id="analyses-de-surface">
-<h2>Analyses de surface<a class="headerlink" href="#analyses-de-surface" title="Permalink to this headline">#</a></h2>
+<h2>Analyses de surface<a class="headerlink" href="#analyses-de-surface" title="Permalink to this heading">#</a></h2>
 <section id="extraction-de-surface">
-<h3>Extraction de surface<a class="headerlink" href="#extraction-de-surface" title="Permalink to this headline">#</a></h3>
+<h3>Extraction de surface<a class="headerlink" href="#extraction-de-surface" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="surface-fig">
 <a class="reference internal image-reference" href="_images/surface-fig.png"><img alt="_images/surface-fig.png" src="_images/surface-fig.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">Illustration de la position de la surface piale et de la surface intérieure.
 En haut: coupe d’IRM pondérée en T1 avec les surfaces estimées de manière automatique.
 En bas: illustration schématique des surfaces.
-Figure adaptée par P. Bellec à partir de figures de l’article de Klein et al., 2017 <span id="id12">[<a class="reference internal" href="#id30" title="Arno Klein, Satrajit S Ghosh, Forrest S Bao, Joachim Giard, Yrjö Häme, Eliezer Stavsky, Noah Lee, Brian Rossa, Martin Reuter, Elias Chaibub Neto, and Anisha Keshavan. Mindboggling morphometry of human brains. PLoS Comput. Biol., 13(2):e1005350, February 2017.">KGB+17</a>]</span> sous licence CC-BY.</span><a class="headerlink" href="#surface-fig" title="Permalink to this image">#</a></p>
+Figure adaptée par P. Bellec à partir de figures de l’article de Klein et al., 2017 <span id="id12">[<a class="reference internal" href="references.html#id14" title="Arno Klein, Satrajit S Ghosh, Forrest S Bao, Joachim Giard, Yrjö Häme, Eliezer Stavsky, Noah Lee, Brian Rossa, Martin Reuter, Elias Chaibub Neto, and Anisha Keshavan. Mindboggling morphometry of human brains. PLoS Comput. Biol., 13(2):e1005350, February 2017.">KGB+17</a>]</span> sous licence CC-BY.</span><a class="headerlink" href="#surface-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu’elles exploitent le ruban que la matière grise forme en s’étendant à la surface de la matière blanche.
@@ -1255,12 +1035,12 @@ Générer une surface à partir d’une IRM structurelle peut prendre jusqu’à
 </div>
 </section>
 <section id="epaisseur-surface-et-volume">
-<h3>Épaisseur, surface et volume<a class="headerlink" href="#epaisseur-surface-et-volume" title="Permalink to this headline">#</a></h3>
+<h3>Épaisseur, surface et volume<a class="headerlink" href="#epaisseur-surface-et-volume" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="thickness-fig">
 <a class="reference internal image-reference" href="_images/thickness-fig.png"><img alt="_images/thickness-fig.png" src="_images/thickness-fig.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 38 </span><span class="caption-text">Illustration des mesures de surface, d’épaisseur et de volume du cortex.
-Figure adaptée par P. Bellec à partir de figures de l’article de Winkler et al., 2018 <span id="id13">[<a class="reference internal" href="#id31" title="Anderson M Winkler, Douglas N Greve, Knut J Bjuland, Thomas E Nichols, Mert R Sabuncu, Asta K Håberg, Jon Skranes, and Lars M Rimol. Joint analysis of cortical area and thickness as a replacement for the analysis of the volume of the cerebral cortex. Cereb. Cortex, 28(2):738–749, February 2018.">WGB+18</a>]</span> sous licence CC-BY.</span><a class="headerlink" href="#thickness-fig" title="Permalink to this image">#</a></p>
+Figure adaptée par P. Bellec à partir de figures de l’article de Winkler et al., 2018 <span id="id13">[<a class="reference internal" href="references.html#id15" title="Anderson M Winkler, Douglas N Greve, Knut J Bjuland, Thomas E Nichols, Mert R Sabuncu, Asta K Håberg, Jon Skranes, and Lars M Rimol. Joint analysis of cortical area and thickness as a replacement for the analysis of the volume of the cerebral cortex. Cereb. Cortex, 28(2):738–749, February 2018.">WGB+18</a>]</span> sous licence CC-BY.</span><a class="headerlink" href="#thickness-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La reconstruction de la géométrie de la surface va permettre de décomposer le volume de la matière grise en une épaisseur locale, et une surface locale.
@@ -1273,8 +1053,13 @@ Pour les structures enfouies dans la boîte crânienne, telles que les thalami e
 </div>
 </section>
 <section id="id14">
-<h3>Analyses statistiques<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<h3>Analyses statistiques<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="n">fsaverage</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_surf_fsaverage</span><span class="p">()</span>
@@ -1295,11 +1080,10 @@ Pour les structures enfouies dans la boîte crânienne, telles que les thalami e
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <figure class="align-default" id="surf-stat-fig" style="width: 700px">
-<div class="cell_output docutils container">
-<img alt="_images/morphometrie_11_0.png" src="_images/morphometrie_11_0.png" />
-</div>
+<img alt="_images/55734e94263197ba1a39b0ed9993684d1d7238d1c0aafc405356cd441084c01d.png" src="_images/55734e94263197ba1a39b0ed9993684d1d7238d1c0aafc405356cd441084c01d.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 39 </span><span class="caption-text">Projection de la carte statistique présentée à la <a class="reference internal" href="#vbm-fig"><span class="std std-numref">Fig. 35</span></a> sur l’atlas de surface corticale <code class="docutils literal notranslate"><span class="pre">fsaverage</span></code>. Cette figure est adaptée d’un tutoriel <a class="reference external" href="https://nilearn.github.io/modules/generated/nilearn.plotting.plot_surf_stat_map.html">Nilearn</a>.</span><a class="headerlink" href="#surf-stat-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1308,14 +1092,14 @@ Pour les structures enfouies dans la boîte crânienne, telles que les thalami e
 Mais à la place de faire un test statistique au niveau de chacun des voxels (comme en VBM), on fait maintenant un test pour chacun des vertex (surface).</p>
 </section>
 <section id="id15">
-<h3>Contrôle de qualité<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<h3>Contrôle de qualité<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="segmentation-error-surface-fig">
 <a class="reference internal image-reference" href="_images/segmentation-error-surface-fig.png"><img alt="_images/segmentation-error-surface-fig.png" src="_images/segmentation-error-surface-fig.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 40 </span><span class="caption-text">Image de gauche: IRM individuelle pondérée en T1.
 Image de droite: Extraction de surface automatisée.
 Notez que la surface piale ne suit pas correctement l’interface entre la matière grise et le liquide céphalo-rachidien à l’endroit indiqué.
-Image sous licence CC Attribution, tirée de Klein et al., 2017 <span id="id16">[<a class="reference internal" href="#id30" title="Arno Klein, Satrajit S Ghosh, Forrest S Bao, Joachim Giard, Yrjö Häme, Eliezer Stavsky, Noah Lee, Brian Rossa, Martin Reuter, Elias Chaibub Neto, and Anisha Keshavan. Mindboggling morphometry of human brains. PLoS Comput. Biol., 13(2):e1005350, February 2017.">KGB+17</a>]</span>.</span><a class="headerlink" href="#segmentation-error-surface-fig" title="Permalink to this image">#</a></p>
+Image sous licence CC Attribution, tirée de Klein et al., 2017 <span id="id16">[<a class="reference internal" href="references.html#id14" title="Arno Klein, Satrajit S Ghosh, Forrest S Bao, Joachim Giard, Yrjö Häme, Eliezer Stavsky, Noah Lee, Brian Rossa, Martin Reuter, Elias Chaibub Neto, and Anisha Keshavan. Mindboggling morphometry of human brains. PLoS Comput. Biol., 13(2):e1005350, February 2017.">KGB+17</a>]</span>.</span><a class="headerlink" href="#segmentation-error-surface-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La technique d’extraction de surface n’est pas robuste aux effets des volumes partiels.
@@ -1325,53 +1109,16 @@ C’est pourquoi il est souhaitable de procéder à des contrôles de qualité f
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>Ce chapitre vous a introduit aux différentes familles de techniques de morphologie computationnelle qu’il est possible d’utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
 On y a discuté de plusieurs techniques clés d’analyse d’image et l’on a commencé à introduire certains modèles statistiques.</p>
 </section>
-<section id="references">
-<h2>Références<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id17">
-<dl class="citation">
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id4">DSF+06</a></span></dt>
-<dd><p>Rahul S. Desikan, Florent Ségonne, Bruce Fischl, Brian T. Quinn, Bradford C. Dickerson, Deborah Blacker, Randy L. Buckner, Anders M. Dale, R. Paul Maguire, Bradley T. Hyman, Marilyn S. Albert, and Ronald J. Killiany. An automated labeling system for subdividing the human cerebral cortex on mri scans into gyral based regions of interest. <em>NeuroImage</em>, 31(3):968–980, 2006. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811906000437">https://www.sciencedirect.com/science/article/pii/S1053811906000437</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.neuroimage.2006.01.021">doi:https://doi.org/10.1016/j.neuroimage.2006.01.021</a>.</p>
-</dd>
-<dt class="label" id="id21"><span class="brackets">FEB+11</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>,<a href="#id8">3</a>)</span></dt>
-<dd><p>Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. <em>Neuroimage</em>, 54(1):313–327, January 2011.</p>
-</dd>
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id4">FCB+05</a></span></dt>
-<dd><p>Jean A. Frazier, Sufen Chiu, Janis L. Breeze, Nikos Makris, Nicholas Lange, David N. Kennedy, Martha R. Herbert, Eileen K. Bent, Vamsi K. Koneru, Megan E. Dieterich, Steven M. Hodge, Scott L. Rauch, P. Ellen Grant, Bruce M. Cohen, Larry J. Seidman, Verne S. Caviness, and Joseph Biederman. Structural brain magnetic resonance imaging of limbic and thalamic volumes in pediatric bipolar disorder. <em>American Journal of Psychiatry</em>, 162(7):1256–1265, 2005. <a class="reference external" href="https://doi.org/10.1176/appi.ajp.162.7.1256">doi:10.1176/appi.ajp.162.7.1256</a>.</p>
-</dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id4">GSM+07</a></span></dt>
-<dd><p>Jill M. Goldstein, Larry J. Seidman, Nikos Makris, Todd Ahern, Liam M. O’Brien, Verne S. Caviness, David N. Kennedy, Stephen V. Faraone, and Ming T. Tsuang. Hypothalamic abnormalities in schizophrenia: sex effects and genetic vulnerability. <em>Biological Psychiatry</em>, 61(8):935–945, 2007. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0006322306008195">https://www.sciencedirect.com/science/article/pii/S0006322306008195</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.biopsych.2006.06.027">doi:https://doi.org/10.1016/j.biopsych.2006.06.027</a>.</p>
-</dd>
-<dt class="label" id="id29"><span class="brackets"><a class="fn-backref" href="#id2">HTM+19</a></span></dt>
-<dd><p>Niloofar Hashempour, Jetro J Tuulari, Harri Merisaari, Kristian Lidauer, Iiris Luukkonen, Jani Saunavaara, Riitta Parkkola, Tuire Lähdesmäki, Satu J Lehtola, Maria Keskinen, John D Lewis, Noora M Scheinin, Linnea Karlsson, and Hasse Karlsson. A novel approach for manual segmentation of the amygdala and hippocampus in neonate MRI. <em>Front. Neurosci.</em>, 13:1025, September 2019.</p>
-</dd>
-<dt class="label" id="id30"><span class="brackets">KGB+17</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id12">2</a>,<a href="#id16">3</a>)</span></dt>
-<dd><p>Arno Klein, Satrajit S Ghosh, Forrest S Bao, Joachim Giard, Yrjö Häme, Eliezer Stavsky, Noah Lee, Brian Rossa, Martin Reuter, Elias Chaibub Neto, and Anisha Keshavan. Mindboggling morphometry of human brains. <em>PLoS Comput. Biol.</em>, 13(2):e1005350, February 2017.</p>
-</dd>
-<dt class="label" id="id28"><span class="brackets">LSG+18</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id6">2</a>)</span></dt>
-<dd><p>Christian Ledig, Andreas Schuh, Ricardo Guerrero, Rolf A Heckemann, and Daniel Rueckert. Structural brain imaging in alzheimer's disease and mild cognitive impairment: biomarker analysis and shared morphometry database. <em>Sci. Rep.</em>, 8(1):1–16, July 2018.</p>
-</dd>
-<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id4">MGK+06</a></span></dt>
-<dd><p>Nikos Makris, Jill M. Goldstein, David Kennedy, Steven M. Hodge, Verne S. Caviness, Stephen V. Faraone, Ming T. Tsuang, and Larry J. Seidman. Decreased volume of left and total anterior insular lobule in schizophrenia. <em>Schizophrenia Research</em>, 83(2):155–171, 2006. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920996405004998">https://www.sciencedirect.com/science/article/pii/S0920996405004998</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.schres.2005.11.020">doi:https://doi.org/10.1016/j.schres.2005.11.020</a>.</p>
-</dd>
-<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id13">WGB+18</a></span></dt>
-<dd><p>Anderson M Winkler, Douglas N Greve, Knut J Bjuland, Thomas E Nichols, Mert R Sabuncu, Asta K Håberg, Jon Skranes, and Lars M Rimol. Joint analysis of cortical area and thickness as a replacement for the analysis of the volume of the cerebral cortex. <em>Cereb. Cortex</em>, 28(2):738–749, February 2018.</p>
-</dd>
-<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id3">WDO+17</a></span></dt>
-<dd><p>Laura E M Wisse, Ana M Daugherty, Rosanna K Olsen, David Berron, Valerie A Carr, Craig E L Stark, Robert S C Amaral, Katrin Amunts, Jean C Augustinack, Andrew R Bender, Jeffrey D Bernstein, Marina Boccardi, Martina Bocchetta, Alison Burggren, M Mallar Chakravarty, Marie Chupin, Arne Ekstrom, Robin de Flores, Ricardo Insausti, Prabesh Kanel, Olga Kedo, Kristen M Kennedy, Geoffrey A Kerchner, Karen F LaRocque, Xiuwen Liu, Anne Maass, Nicolai Malykhin, Susanne G Mueller, Noa Ofen, Daniela J Palombo, Mansi B Parekh, John B Pluta, Jens C Pruessner, Naftali Raz, Karen M Rodrigue, Dorothee Schoemaker, Andrea T Shafer, Trevor A Steve, Nanthia Suthana, Lei Wang, Julie L Winterburn, Michael A Yassa, Paul A Yushkevich, Renaud la Joie, and Hippocampal Subfields Group. A harmonized segmentation protocol for hippocampal and parahippocampal subregions: why do we need one and what are the key goals? <em>Hippocampus</em>, 27(1):3–11, January 2017.</p>
-</dd>
-</dl>
-</div>
-</section>
 <section id="exercices">
-<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this headline">#</a></h2>
+<h2>Exercices<a class="headerlink" href="#exercices" title="Permalink to this heading">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Exercice 1</p>
 <p>Pour chacun des énoncés suivants, spécifiez si l’affirmation est vraie ou fausse.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.</p></li>
 <li><p>La présence de métal peut créer du bruit et des déformations dans une carte VBM.</p></li>
 <li><p>Un trou dans une carte cérébrale VBM signifie nécessairement qu’il y a un trou dans le cerveau du participant.</p></li>
@@ -1380,7 +1127,7 @@ On y a discuté de plusieurs techniques clés d’analyse d’image et l’on a 
 <div class="note admonition">
 <p class="admonition-title">Exercice 2</p>
 <p>Pour chacun des énoncés suivants, spécifiez si l’affirmation est vraie ou fausse.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Les données IRM doivent être recalées dans un espace stéréotaxique pour étudier la morphologie du cerveau à l’échelle d’une population en VBM.</p></li>
 <li><p>Les données IRM doivent être recalées dans un espace stéréotaxique pour effectuer une segmentation manuelle de l’hippocampe.</p></li>
 <li><p>La VBM repose sur la segmentation automatique de la matière grise dans une IRM.</p></li>
@@ -1389,7 +1136,7 @@ On y a discuté de plusieurs techniques clés d’analyse d’image et l’on a 
 <div class="note admonition">
 <p class="admonition-title">Exercice 3</p>
 <p>Choisissez la bonne réponse. Des données d’IRM pondérées en T1 pour un participant sont…</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Une image 3D d’un cerveau.</p></li>
 <li><p>Des dizaines d’images 2D sagittales d’un cerveau.</p></li>
 <li><p>Des dizaines d’images 2D axiales, coronales et sagittales d’un cerveau.</p></li>
@@ -1441,7 +1188,7 @@ Les questions suivantes requièrent des réponses à développement court.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1449,50 +1196,130 @@ Les questions suivantes requièrent des réponses à développement court.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="irm.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Imagerie par résonance magnétique</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="irm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Imagerie par résonance magnétique</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="irm_fonctionnelle.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="irm_fonctionnelle.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">IRM fonctionnelle</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Pierre Bellec et l'équipe PSY3018<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectifs-du-cours">Objectifs du cours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#morphometrie">Morphométrie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volumetrie">Volumétrie</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-manuelle">Segmentation manuelle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-automatique">Segmentation automatique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyses-statistiques">Analyses statistiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-qualite">Contrôle de qualité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vbm">VBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#densite-de-matiere-grise">Densité de matière grise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation">Segmentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lissage">Lissage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Analyses statistiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Contrôle de qualité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyses-de-surface">Analyses de surface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extraction-de-surface">Extraction de surface</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epaisseur-surface-et-volume">Épaisseur, surface et volume</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Analyses statistiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Contrôle de qualité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pierre Bellec et l'équipe PSY3018
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
