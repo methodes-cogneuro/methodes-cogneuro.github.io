@@ -640,11 +640,6 @@ La réalisation d'une expérience d'IRMf nécessite de bien penser les condition
 
  Pour toutes ces raisons, il existe toujours des limitations importantes à l'interprétation que l'on peut faire de résultats en IRMf. Mais c'est aussi la technique cerveau entier non-invasive qui dispose de la meilleure résolution spatiale à ce jour.
 
-## Références
-```{bibliography}
-:filter: docname in docnames
-```
-
 ## Exercices
 
 ```{admonition} Exercice 1

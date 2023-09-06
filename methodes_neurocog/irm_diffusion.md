@@ -682,11 +682,6 @@ Dans ce cours, nous avons vu les principes de l'IRM de diffusion. Plus précisé
 - Comment estimer les croisements de fibres.
 - Comment l'IRMd peut être utilisée pour effectuer une dissection virtuelle.
 
-## Références
-```{bibliography}
-:filter: docname in docnames
-```
-
 ## Exercices
 
 ```{admonition} Exercice 1

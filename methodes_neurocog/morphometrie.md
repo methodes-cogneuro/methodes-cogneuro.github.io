@@ -665,13 +665,6 @@ C'est pourquoi il est souhaitable de procéder à des contrôles de qualité fr�
 Ce chapitre vous a introduit aux différentes familles de techniques de morphologie computationnelle qu'il est possible d'utiliser avec des données acquises en imagerie par résonance magnétique anatomique.
 On y a discuté de plusieurs techniques clés d'analyse d'image et l'on a commencé à introduire certains modèles statistiques.
 
-
-## Références
-
-```{bibliography}
-:filter: docname in docnames
-```
-
 ## Exercices
 
 ```{admonition} Exercice 1
