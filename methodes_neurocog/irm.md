@@ -321,9 +321,9 @@ Lorsque nous acquérons des données IRM, nous ne mesurons généralement pas to
 ```
 
 ```{admonition} $TR$
-Nous appelons $TR$ le temps qui sépare deux excitations radiofréquence. Pour obtenir un IRM structurel, il y a besoin de plusieurs centaines de TRs. Il existe une autre définition, spécifique à la communauté IRMf, qui dit que le TR est la durée qui sépare deux volumes IRMf.
+Nous appelons $TR$ le temps qui sépare deux excitations radiofréquence. Pour obtenir un **IRM structurel** complet, plusieurs centaines de TRs sont nécessaires. Il existe une autre définition, spécifique à la communauté **IRM fonctionnelle**, qui dit que le TR est la durée qui sépare deux volumes IRMf.
 ```
-```{admonition} angle de bascule
+```{admonition} Angle de bascule
 Si nous nous intéressons à la fin du processus de relaxation, nous n'avons pas besoin de basculer les spins complètement dans la direction $B_1$, mais simplement à un certain nombre de degrés de $B_0$. Ce paramètre est appelé angle de bascule ("flip angle" en anglais).
 ```
 ```{admonition} $T_1$ vs $T_2$: cherchez la différence.
