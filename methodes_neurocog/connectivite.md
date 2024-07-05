@@ -743,12 +743,6 @@ De nombreux articles ont étudié un découpage en 7 réseaux corticaux. Mais l'
 * Une carte de connectivité fonctionnelle permet d'étudier la connectivité entre une région cible et le reste du cerveau.
 * Un réseau fonctionnel est un groupe de régions dont l’activité spontanée présente une forte connectivité fonctionnelle intra-réseau, et une faible connectivité avec le reste du cerveau. Différents atlas des réseaux au repos existent, et à différentes échelles.
 
-## Références
-
-```{bibliography}
-:filter: docname in docnames
-```
-
 ## Exercices
 
 ```{admonition} Exercice 1

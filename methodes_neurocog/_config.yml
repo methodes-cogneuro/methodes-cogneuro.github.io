@@ -3,6 +3,7 @@
 
 title: Méthodes en neurosciences cognitives
 author: Pierre Bellec et l'équipe PSY3018
+copyright: "2023"  # Copyright year to be placed in the footer
 logo: logo.png
 
 # Force re-execution of notebooks on each build.

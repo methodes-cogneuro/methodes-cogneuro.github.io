@@ -14,3 +14,4 @@ chapters:
 - file: tep
 - file: cartes_statistiques
 - file: reproductibilite
+- file: references.md

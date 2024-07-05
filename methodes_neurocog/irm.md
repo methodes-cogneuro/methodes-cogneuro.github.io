@@ -378,12 +378,6 @@ La physique de l'IRM est un domaine très riche, que l'on n'a fait que commencer
  * Une [explication en vidéo](https://www.youtube.com/watch?v=TQegSF4ZiIQ) de la résonance magnétique nucléaire.
  * Une (longue) série de cours sur la physique de l'IRM, en [vidéos youtube](https://www.youtube.com/watch?v=35gfOtjRcic).
 
-## Références
-
-```{bibliography}
-:filter: docname in docnames
-```
-
 ## Exercices
 
 ```{admonition} Exercice 1
