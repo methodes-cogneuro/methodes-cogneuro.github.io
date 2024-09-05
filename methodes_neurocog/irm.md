@@ -405,13 +405,13 @@ Vrai ou faux?
 
 ```{admonition} Exercice 2
 :class: note
-Choisissez la bonne réponse. un proton d’hydrogène a...
+Choisissez la bonne réponse. Lorsque nous appliquons un gradient pendant une acquisition IRM, la fréquence de rotation d'un proton d'hydrogène...
 
- 1. Une fréquence de rotation fixe durant une acquisition IRM, c’est la fréquence de Larmor.
- 2. Une fréquence de rotation variable durant une acquisition IRM.
- 3. Une fréquence de rotation qui dépend de la force du champ magnétique dans l'IRM.
- 4. Réponses 1 et 3.
- 5. Réponses 2 et 3.
+ 1. Reste fixe, c’est la fréquence de Larmor.
+ 2. Varie en fonction de la position dans le gradient.
+ 3. Ne change pas, peu importe la force du gradient.
+ 4. Peut augmenter ou diminuer selon la position dans le gradient.
+ 5. Réponses 2 et 4.
 ```
 
 ```{admonition} Exercice 3
@@ -430,6 +430,11 @@ On décide de modifier une séquence IRM pour diminuer l’angle de bascule: les
 ```
 
 ```{admonition} Exercice 6
+:class: note
+Expliquez comment le temps d'écho (TE) influence le niveau d'intensité d'une image pondérée en T1, ainsi que le contraste entre les différents types de tissus.
+```
+
+```{admonition} Exercice 7
 :class: note
 Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
  1. Quelle est la force de l'aimant de l'IRM?
