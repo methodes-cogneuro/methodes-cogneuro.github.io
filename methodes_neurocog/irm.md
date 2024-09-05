@@ -26,9 +26,17 @@ kernelspec:
         <a title="Contenu">🤔</a>
     </td>
     <td align="center">
+      <a href="https://github.com/jcohenadad">
+        <img src="https://avatars.githubusercontent.com/u/2482071?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Julien Cohen-Adad</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
       <a href="https://github.com/pbellec">
         <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
-        <br /><sub><b>Pierre bellec</b></sub>
+        <br /><sub><b>Lune bellec</b></sub>
       </a>
       <br />
         <a title="Contenu">🤔</a>

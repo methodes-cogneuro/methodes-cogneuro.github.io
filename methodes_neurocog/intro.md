@@ -47,6 +47,14 @@ Le développement de ce livre a démarré afin de servir d'outil de référence 
         <a title="Révision du texte">👀</a>
     </td>
     <td align="center">
+      <a href="https://github.com/jcohenadad">
+        <img src="https://avatars.githubusercontent.com/u/2482071?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Julien Cohen-Adad</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
       <a href="https://github.com/eddyfortier">
         <img src="https://avatars.githubusercontent.com/u/72314243?v=4?s=100" width="100px;" alt=""/>
         <br /><sub><b>Eddy Fortier</b></sub>
