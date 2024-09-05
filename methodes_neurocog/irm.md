@@ -59,9 +59,18 @@ Illustration schématique des principales composantes d'un appareil IRM. Figure 
 
  * Les **bobines de gradient**: permettent de faire varier l'intensité du champ magnétique dans l'espace. Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
- * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne créent un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.
+ * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne créent un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête, voir {numref}`antenne-fig`.
 
  Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans les prochaines sections.
+
+ ```{figure} ./irm/fig_antenne.jpg
+ ---
+ width: 800px
+ name: antenne-fig
+ ---
+Antenne émettrice-réceptrice de tête. Image par Raziel — Travail personnel sous license [CC BY-SA 3.0](https://commons.wikimedia.org/w/index.php?curid=5044068).
+ ```
+
 ```{warning}
 L'IRM est très sensible aux mouvements de la tête ! Il est possible d'utiliser des coussins ou autres dispositifs pour réduire le mouvement.
 ```
