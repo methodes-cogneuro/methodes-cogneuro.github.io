@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -42,7 +42,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -53,7 +53,7 @@
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -577,15 +577,15 @@ document.write(`
 </details>
 </div>
 <figure class="align-default" id="t1-fig-intro" style="width: 800px">
-<img alt="_images/d01b0585bbb24c490001c482b861e4c935c83668274f71a1e06a243b740bdd33.png" src="_images/d01b0585bbb24c490001c482b861e4c935c83668274f71a1e06a243b740bdd33.png" />
+<img alt="_images/87ede6dc8e01a3cb495db23cddd07f394d0c72dd73916022a38db7ba23415570.png" src="_images/87ede6dc8e01a3cb495db23cddd07f394d0c72dd73916022a38db7ba23415570.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">Un exemple d’IRM structurelle (ici avec un contraste dit T1), sur trois plans de coupes: coronal (gauche), sagital (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer à travers les coupes du cerveau</span></a> pour une explication de ces termes. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé template MNI152 2009 <span id="id3">[<a class="reference internal" href="references.html#id6" title="Vladimir Fonov, Alan C Evans, Kelly Botteron, C Robert Almli, Robert C McKinstry, D Louis Collins, and Brain Development Cooperative Group. Unbiased average age-appropriate atlases for pediatric studies. Neuroimage, 54(1):313–327, January 2011.">2</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#t1-fig-intro" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Le type d’image le plus couramment acquis avec un appareil d’IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure <a class="reference internal" href="#t1-fig-intro"><span class="std std-ref">ci-dessus</span></a>, on distingue aisément certains éléments anatomiques:</p>
+<p>Le type d’image le plus couramment acquis avec un appareil d’IRM vise à caractériser la morphologie du cerveau. Comme on peut le voir dans la figure <a class="reference internal" href="irm.html#t1-fig"><span class="std std-ref">ci-dessus</span></a>, on distingue aisément certains éléments anatomiques:</p>
 <ul class="simple">
-<li><p>La <strong>matière grise</strong>, en périphérie du cortex, apparaît en gris dans l’image. C’est là que les corps des neurones sont présents.</p></li>
-<li><p>Il est aussi possible de distinguer la <strong>matière blanche</strong> en blanc (ou plutôt gris clair) qui contient des paquets d’axones - c’est à dire les connexions entre les neurones.</p></li>
+<li><p>La <strong>matière grise</strong>, en périphérie du cortex, apparaît en gris foncé dans l’image. C’est là que les corps des neurones sont présents.</p></li>
+<li><p>Il est aussi possible de distinguer la <strong>matière blanche</strong> (en gris clair) qui contient des paquets d’axones - c’est à dire les connexions entre les neurones.</p></li>
 <li><p>Enfin, en <strong>noir</strong>, on peut voir des structures comme les ventricules, qui contiennent de l’eau, des nutriments, ainsi que des déchets métaboliques.</p></li>
 </ul>
 <p>La taille et la forme de ces structures peuvent varier en fonction de nombreux facteurs comportementaux ou démographiques. Par exemple, la quantité de matière grise diminue de manière massive avec l’âge: on parle d’<strong>atrophie corticale</strong>. Plusieurs techniques d’analyse des images ont été développées pour quantifier ces changements morphologiques, comme la <strong>volumétrie</strong>, la “<strong>voxel-based morphometry</strong>”, ou bien encore les <strong>analyses de surface</strong>. Ces techniques seront présentées dans le chapitre <a class="reference internal" href="morphometrie.html#morphometrie-chapitre"><span class="std std-ref">Analyses morphométriques</span></a>.</p>
@@ -646,7 +646,7 @@ Principaux plans de coupe en imagerie cérébrale. Figure par JonRichfield sous 
 </details>
 </div>
 <figure class="align-default" id="irmf-fig" style="width: 800px">
-<img alt="_images/059440615437f033aaee2087b2b7a6b27091ba27015867a755105a41513122c3.png" src="_images/059440615437f033aaee2087b2b7a6b27091ba27015867a755105a41513122c3.png" />
+<img alt="_images/cc525659710ef9e9d7508baea47224624a15a1a49d82651735a44ce49c2174d4.png" src="_images/cc525659710ef9e9d7508baea47224624a15a1a49d82651735a44ce49c2174d4.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Exemple d’un unique volume dans une série IRMf. Le volume est représenté sur trois plans de coupes: coronal (gauche), sagittal (milieu) et axial (droite). Voir l’astuce <a class="reference internal" href="#coupes-tip"><span class="std std-ref">Naviguer à travers les coupes du cerveau</span></a> pour une explication de ces termes. Remarquez que la résolution du volume est bien moins élevée que pour l’<a class="reference internal" href="#t1-fig-intro"><span class="std std-ref">IRM anatomique</span></a>, et que l’on a beaucoup de mal à voir les détails de l’anatomie du cerveau. Cette figure est générée par du code python à l’aide de la librairie <a class="reference external" href="https://nilearn.github.io/">nilearn</a> à partir d’un jeu de données public appelé ADHD200 <span id="id4">[<a class="reference internal" href="references.html#id4" title="HD-200 Consortium. The ADHD-200 consortium: a model to advance the translational potential of neuroimaging in clinical neuroscience. Front. Syst. Neurosci., 6:62, September 2012. doi:https://dx.doi.org/10.3389%2Ffnsys.2012.00062.">3</a>, <a class="reference internal" href="references.html#id5" title="Pierre Bellec, Carlton Chu, François Chouinard-Decorte, Yassine Benhajali, Daniel S. Margulies, and R. Cameron Craddock. The neuro bureau adhd-200 preprocessed repository. NeuroImage, 144:275-286, 2017. Data Sharing Part II. doi:https://doi.org/10.1016/j.neuroimage.2016.06.034.">4</a>]</span> (cliquer sur + pour voir le code).</span><a class="headerlink" href="#irmf-fig" title="Link to this image">#</a></p>
 </figcaption>
@@ -745,7 +745,7 @@ Principaux plans de coupe en imagerie cérébrale. Figure par JonRichfield sous 
 </details>
 </div>
 <figure class="align-default" id="regression-fig" style="width: 800px">
-<img alt="_images/fea86a9ae95f9546d2624d0954a0c2d40b78bb9c4a13c2209699de1f89c51296.png" src="_images/fea86a9ae95f9546d2624d0954a0c2d40b78bb9c4a13c2209699de1f89c51296.png" />
+<img alt="_images/5e98936a3e22556b396044cd317fd9fb868ee6b3278e286facf2611b3bb3abcd.png" src="_images/5e98936a3e22556b396044cd317fd9fb868ee6b3278e286facf2611b3bb3abcd.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 12 </span><span class="caption-text">Gauche: illustration d’une régression linéaire entre une variable indépendante sur l’axe des x (aussi appelé facteur d’explication) et une variable dépendante sur l’axe des y. La droite représente la meilleure relation linéaire entre x et y et l’intervalle de confiance statistique est également indiqué. Droite: un modèle de régression est appliqué à chaque voxel pour générer une carte cérébrale statistique. Ici, la carte statistique correspond aux changements d’activation IRMf lors d’un mouvement de la main. La figure de régression est adaptée de ce <a class="reference external" href="https://seaborn.pydata.org/tutorial/regression.html">tutoriel seaborn</a> à l’aide du jeu de données <code class="docutils literal notranslate"><span class="pre">tips</span></code>. La carte statistique est visualisée grâce à ce <a class="reference external" href="https://nilearn.github.io/auto_examples/01_plotting/plot_demo_plotting.html#sphx-glr-auto-examples-01-plotting-plot-demo-plotting-py">tutoriel nilearn</a> et une carte d’activité motrice distribuée via <a class="reference external" href="https://neurovault.org/">NeuroVault</a>. Cliquez sur + pour voir le code.</span><a class="headerlink" href="#regression-fig" title="Link to this image">#</a></p>
 </figcaption>

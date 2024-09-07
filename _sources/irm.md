@@ -26,9 +26,17 @@ kernelspec:
         <a title="Contenu">🤔</a>
     </td>
     <td align="center">
+      <a href="https://github.com/jcohenadad">
+        <img src="https://avatars.githubusercontent.com/u/2482071?v=4?s=100" width="100px;" alt=""/>
+        <br /><sub><b>Julien Cohen-Adad</b></sub>
+      </a>
+      <br />
+        <a title="Révision du texte">👀</a>
+    </td>
+    <td align="center">
       <a href="https://github.com/pbellec">
         <img src="https://avatars.githubusercontent.com/u/1670887?v=4?s=100" width="100px;" alt=""/>
-        <br /><sub><b>Pierre bellec</b></sub>
+        <br /><sub><b>Lune bellec</b></sub>
       </a>
       <br />
         <a title="Contenu">🤔</a>
@@ -59,9 +67,18 @@ Illustration schématique des principales composantes d'un appareil IRM. Figure 
 
  * Les **bobines de gradient**: permettent de faire varier l'intensité du champ magnétique dans l'espace. Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
- * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne créent un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête.
+ * L'**antenne radio-fréquence**: permet de (1) exciter la matière grâce à des émetteurs, et (2) mesurer la réponse de ces tissus biologiques à l'excitation grâce à des récepteurs. Les impulsions radio-fréquence générées par l'antenne créent un faible champ magnétique perpendiculaire au champ magnétique principal généré par l'aimant. Les antennes de réception peuvent aussi être placées dans un équipement spécifique pour la tête, voir {numref}`antenne-fig`.
 
  Nous allons parler plus en profondeur du fonctionnement de tous ces éléments dans les prochaines sections.
+
+ ```{figure} ./irm/fig_antenne.jpg
+ ---
+ width: 800px
+ name: antenne-fig
+ ---
+Antenne émettrice-réceptrice de tête. Image par Raziel — Travail personnel sous license [CC BY-SA 3.0](https://commons.wikimedia.org/w/index.php?curid=5044068).
+ ```
+
 ```{warning}
 L'IRM est très sensible aux mouvements de la tête ! Il est possible d'utiliser des coussins ou autres dispositifs pour réduire le mouvement.
 ```
@@ -101,7 +118,12 @@ Les protons qui constituent en partie les atomes se comportent comme des petits 
 Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Cette fréquence n'est donc pas fixe, mais **dépend de la force du champ magnétique!**  Placé dans un champ magnétique externe de 1T, un atome d'hydrogène tourne 42580000 fois par seconde. Plus le champ magnétique dans lequel se trouve un proton est fort, plus la vitesse à laquelle tourne le moment magnétique de ce proton va augmenter.
 ```
 
-L'aimant de l'IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. La force de l'aimant principal est mesurée en Teslas (T). Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre! Les appareils à 7T représentent à ce jour la nouvelle frontière utilisée en recherche, et quelques appareils à 10T+ existent dans le monde. Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!
+En l'absence de champ magnétique, les spins des atomes d'hydrogène pointent dans des directions aléatoires dans les tissus cérébraux. L'aimant de l'IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. La force de l'aimant principal est mesurée en Teslas (T). Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre! Les appareils à 7T représentent à ce jour la nouvelle frontière utilisée en recherche, et quelques appareils à 10T+ existent dans le monde. Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!
+
+```{admonition} Taille et poids d'un appareil IRM
+La taille et le poids d'un appareil IRM peut varier beaucoup. Par exemple, l'IRM 1.5T de type Aeara de la compagnie Siemens pèse 4.3 tonnes, et a une ouverture (le tube dans lequel entre la personne qui fait l'examen) de 70 cm de rayon. L'appareil 3T de type Prisma de Siemens pèse 13 tonnes et a une ouverture de 60 cm de rayon. Enfin, L'IRM 7T de type Terra de Siemens fait lui presque 25 tonnes, avec la même taille d'ouverture que l'appareil à 3T! En général, plus la force du champ magnétique B0 est grande et plus l'appareil est lourd.
+```
+
 
 ## Résonance magnétique
 ```{admonition} La résonance... pas juste magnétique
@@ -145,7 +167,7 @@ Nous avons vu comment une onde radio-fréquence permet d'exciter les noyaux d'hy
 
 Ces variations sont beaucoup plus faibles que le champ B0, et ne représentent qu'une fraction de teslas, mais cela va nous permettre d'extraire une information spatiale dans un processus de résonance. À l'aide de ces gradients, il est possible de mesurer des propriétés magnétiques de tissus situés à un point spécifique dans l'espace, et donc de faire une image (3D). Ce processus est complexe, mais la première étape est relativement simple à comprendre: c'est la sélection de coupe.
 
-Nous nous rappelons que la fréquence de Larmor d'une particule dépend de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d'hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d'hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d'excitation. De cette manière, au lieu de recevoir du signal de l'ensemble du cerveau, nous ne recevons du signal que de la coupe sélectionnée, car seuls les atomes d'hydrogène dans cette coupe seront entrés en résonance.
+Nous nous rappelons que la fréquence de Larmor d'une particule dépend de la force du champ magnétique dans lequel elle se trouve. En changeant la force du champ magnétique dans une direction donnée grâce aux bobines de gradient, nous allons modifier la fréquence de Larmor des atomes d'hydrogène à un endroit précis du gradient. Les impulsions radio-fréquence ne viendront exciter les atomes d'hydrogène que dans la coupe où le champ magnétique a la force qui correspond à la fréquence d'excitation. De cette manière, au lieu de recevoir du signal de l'ensemble du cerveau, nous ne recevons du signal que de la coupe sélectionnée, car seuls les atomes d'hydrogène dans cette coupe seront entrés en résonance. Ainsi, bien que la fréquence de Larmor soit fixe pour une force de champ magnétique donnée, elle peut varier localement durant une acquisition IRM en raison des gradients appliqués.
 
 Il nous reste encore à découper notre coupe en pixels... Mais cela sort largement du contexte de ce chapitre d'introduction. Pour en apprendre plus sur l'encodage spatial en IRM, vous pouvez consulter cette [ressource](https://www.imaios.com/en/e-Courses/e-MRI/Signal-spatial-encoding/Spatial-encoding-intro) (en anglais).
 
@@ -170,9 +192,9 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/9GZvd_
 
 
 ## Contrastes $T_1$ et $T_2$
-Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radiofréquences fait basculer les spins selon l'axe $B_1$, axe perpendiculaire à $B_0$. Une fois les impulsions radiofréquences arrêtées, les spins s'alignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
+Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une séance IRM. Initialement, les spins des protons d'hydrogène sont alignés avec le champ $B_0$. L'application d'impulsions radiofréquences fait basculer les spins selon le plan orthogonal à $B_0$. Une fois les impulsions radiofréquences arrêtées, les spins s'alignent avec le champ $B_0$. Ce réalignement est caractérisé par deux dynamiques distinctes, liées aux constantes de temps $T_1$ et $T_2$.
 
-**Relaxation en $T_1$**. L'augmentation de la composante selon $B_0$ (composante $M_z$), ou _relaxation longitudinale_, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le $T_1$. Le temps $T_1$ correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z ($M_0$). Pour ceux qui sont à l'aise avec les expressions mathématiques, la repousse en $B_0$ suit l'équation $M_z(t) = M_0 ( 1 - e^{-t / T_1})$.
+**Relaxation en $T_1$**. L'augmentation de la composante selon $B_0$ (composante $M_z$), ou _relaxation longitudinale_, suit une fonction exponentielle croissante. Le temps caractéristique de cette croissance (la vitesse de croissance) s'appelle le $T_1$. Le temps $T_1$ correspond au temps écoulé pour obtenir 63% de la valeur d'équilibre de la contribution du moment magnétique selon l'axe z ($M_0$). Pour ceux qui sont à l'aise avec les expressions mathématiques, la repousse en $B_0$ suit l'équation $M_z(t) = M_0 ( 1 - e^{-t / T_1})$, voir l'encadré {ref}`ci dessous <M0-tip>` pour la définition de $M_0$.
 
 ```{figure} ./irm/t1.png
 ---
@@ -321,9 +343,9 @@ Lorsque nous acquérons des données IRM, nous ne mesurons généralement pas to
 ```
 
 ```{admonition} $TR$
-Nous appelons $TR$ le temps qui sépare deux séries d'excitations. Cette valeur va correspondre au temps d'acquisition d'une coupe pour un IRM structurel, et le temps d'acquisition d'un volume cérébral complet en IRMf. C'est une convention bizarre, mais très utilisée par les physiciens IRM.
+Nous appelons $TR$ le temps qui sépare deux excitations radiofréquence. Pour obtenir un **IRM structurel** complet, plusieurs centaines de TRs sont nécessaires. Il existe une autre définition, spécifique à la communauté **IRM fonctionnelle**, qui dit que le TR est la durée qui sépare deux volumes IRMf.
 ```
-```{admonition} angle de bascule
+```{admonition} Angle de bascule
 Si nous nous intéressons à la fin du processus de relaxation, nous n'avons pas besoin de basculer les spins complètement dans la direction $B_1$, mais simplement à un certain nombre de degrés de $B_0$. Ce paramètre est appelé angle de bascule ("flip angle" en anglais).
 ```
 ```{admonition} $T_1$ vs $T_2$: cherchez la différence.
@@ -333,12 +355,12 @@ Pourquoi s'embêter à faire des contrastes $T_1$ et $T_2$ quand l'un semble êt
 ```
 
 ## $T_2^*$, IRMf, IRMd
-**Déphasage.** Comme nous l'avons vu dans l'encadré {ref}`sur la phase <phase-tip>`, les impulsions radiofréquences vont non seulement faire basculer les spins, mais aussi les mettre en phase. Lorsque nous arrêtons les impulsions, les spins vont progressivement se déphaser. Ce déphasage est dû à des micro-interactions entre protons ainsi que des molécules des tissus qui présentent des propriétés magnétiques. La courbe de relaxation va avoir la même forme, mais avec des temps caractéristiques modifiés, que nous appelons $T_1^*$ et $T_2^*$.
+**Déphasage.** Comme nous l'avons vu dans l'encadré {ref}`sur la phase <phase-tip>`, les impulsions radiofréquences vont non seulement faire basculer les spins, mais aussi les mettre en phase. Lorsque nous arrêtons les impulsions, les spins vont progressivement se déphaser. Ce déphasage est dû à des micro-interactions entre protons ainsi que des molécules des tissus qui présentent des propriétés magnétiques. La courbe de relaxation $T_2$ va avoir la même forme, mais avec des temps caractéristiques modifiés, que nous appelons $T_2^*$.
 
-**IRM fonctionnelle.** Les inhomogénéités dans le champ magnétique qui causent le déphasage peuvent notamment être créées par la désoxyhémoglobine que nous retrouvons dans le sang. Nous allons voir plus en détails comment l'oxyhémoglobine et la désoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l'[IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html). En IRM fonctionnelle, nous utilisons des séquences pondérées en T2*.
+**IRM fonctionnelle.** Les inhomogénéités dans le champ magnétique qui causent le déphasage peuvent notamment être créées par la désoxyhémoglobine que nous retrouvons dans le sang. Nous allons voir plus en détails comment l'oxyhémoglobine et la désoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l'[IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html). En IRM fonctionnelle, nous utilisons des séquences pondérées en $T_2^*$.
 
 
-**IRM de diffusion.** En IRM de diffusion, nous utilisons également un contraste en T2*. Par contre, en IRM de diffusion, nous mesurons les inhomogénéités en alternant la direction des impulsions (ex. en donnant une impulsion selon l'axe xy, puis en donnant une impulsion selon l'axe -xy). En effectuant plusieurs images avec des directions d'excitation différentes, nous pouvons obtenir une idée de la direction de la diffusion de l'eau. Cette opération nous permet au final de connaître la direction des fibres de matière blanche, car plus une fibre pointe vers une direction donnée, plus la diffusion sera grande dans cette direction. Nous allons revenir sur ce sujet dans le chapitre sur [l'IRM de diffusion](https://psy3018.github.io/irm_diffusion.html)
+**IRM de diffusion.** En IRM de diffusion, nous mesurons aussi un déphasage, mais ce déphasage est produit par le déplacement des molécules d'eau le long d'un gradient magnétique fort. En effectuant plusieurs images avec des directions de gradients différentes, nous pouvons obtenir une idée de l'amplitude et de la direction de diffusion des molécules d'eau. Cette opération nous permet au final de connaître la direction des fibres de matière blanche. Nous allons revenir sur ce sujet dans le chapitre sur [l'IRM de diffusion](https://psy3018.github.io/irm_diffusion.html)
 
 ## Console et séquences d'acquisition.
 ```{figure} ./irm/irm_console.png
@@ -391,13 +413,13 @@ Vrai ou faux?
 
 ```{admonition} Exercice 2
 :class: note
-Choisissez la bonne réponse. un proton d’hydrogène a...
+Choisissez la bonne réponse. Lorsque nous appliquons un gradient pendant une acquisition IRM, la fréquence de rotation d'un proton d'hydrogène...
 
- 1. Une fréquence de rotation fixe durant une acquisition IRM, c’est la fréquence de Larmor.
- 2. Une fréquence de rotation variable durant une acquisition IRM.
- 3. Une fréquence de rotation qui dépend de la force du champ magnétique dans l'IRM.
- 4. Réponses 1 et 3.
- 5. Réponses 2 et 3.
+ 1. Reste fixe, c’est la fréquence de Larmor.
+ 2. Varie en fonction de la position dans le gradient.
+ 3. Ne change pas, peu importe la force du gradient.
+ 4. Peut augmenter ou diminuer selon la position dans le gradient.
+ 5. Réponses 2 et 4.
 ```
 
 ```{admonition} Exercice 3
@@ -416,6 +438,11 @@ On décide de modifier une séquence IRM pour diminuer l’angle de bascule: les
 ```
 
 ```{admonition} Exercice 6
+:class: note
+Expliquez comment le temps d'écho (TE) influence le niveau d'intensité d'une image pondérée en T1, ainsi que le contraste entre les différents types de tissus.
+```
+
+```{admonition} Exercice 7
 :class: note
 Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
  1. Quelle est la force de l'aimant de l'IRM?
