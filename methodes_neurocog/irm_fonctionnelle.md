@@ -669,13 +669,21 @@ Qu’est ce que le signal BOLD? (vrai / faux).
 
 ```{admonition} Exercice 4
 :class: note
+Les méthodes suivantes sont généralement utilisées pour augmenter le ratio signal/bruit du signal BOLD (c.-à-d., augmenter le signal et/ou diminuer le bruit) : (vrai / faux).
+ 1. Le recalage BOLD en T1 est utilisé pour réduire l'influence du mouvement sur le signal
+ 2. Le recalage du mouvement consiste à ajuster les volumes de différents sujets entre eux (inter-sujet) pour éliminer l'influence du mouvement sur le signal de chaque participant.e.s.
+ 3. Il est de norme d'utiliser un filtre passe-haut pour retirer les fluctuations basses fréquences du signal.
+```
+
+```{admonition} Exercice 5
+:class: note
 Vrai / faux. Le principe d’additivité de la réponse hémodynamique est...
  1. Un modèle mathématique.
  2. Une propriété de base du couplage neurovasculaire, toujours vérifiée.
  3. Une hypothèse courante, en partie confirmée expérimentalement.
 ```
 
-```{admonition} Exercice 5
+```{admonition} Exercice 6
 :class: note
 Choisissez la bonne réponse. Des données d’IRMf sont en général...
  1. Une image du cerveau.
@@ -683,22 +691,22 @@ Choisissez la bonne réponse. Des données d’IRMf sont en général...
  3. Des dizaines d’images du cerveau, ou plus.
 ```
 
-```{admonition} Exercice 6
+```{admonition} Exercice 7
 :class: note
 Quelle molécule dans le sang provoque un changement de signal mesuré par le BOLD? Pourquoi est-ce que l’IRM y est sensible?
 ```
 
-```{admonition} Exercice 7
+```{admonition} Exercice 8
 :class: note
 Dans quelle portion de l’arbre vasculaire observe-t-on les changements principaux liés à l’activité neuronale locale?
 ```
 
-```{admonition} Exercice 8
+```{admonition} Exercice 9
 :class: note
 On compare l’activation pour une tâche de mémoire dans le cerveau entre deux groupes de participants: des sujets sains et des sujets âgés (N=200 par groupe). Notre hypothèse est que la différence d’activité sera la plus forte dans le cortex frontal. En réalité, on trouve des différences en périphérie du cerveau, ce qui suggère des artefacts de mouvement.Suggérer deux modifications au protocole (recueil des données ou technique d’analyse) qui permettrait d’éviter ce phénomène.
 ```
 
-```{admonition} Exercice 9
+```{admonition} Exercice 10
 :class: note
 Pour répondre aux questions de cet exercice, lisez d'abord l'article *High-resolution functional MRI of the human amygdala at 7 T* de Mensen et collaborateurs (publié en 2013 dans la revue *European Journal of radiology*, volume 82, pages 728 à 733).
 Celui-ci est disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3629563/).
