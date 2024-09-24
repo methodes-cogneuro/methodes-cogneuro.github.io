@@ -63,7 +63,7 @@ name: irm-schema-fig
 Illustration schématique des principales composantes d'un appareil IRM. Figure générée par P. Bellec, 2021, sous licence CC-BY.
 ```
 {numref}`irm-schema-fig` nous permet d'observer les éléments principaux d'un appareil IRM, et en particulier:
- * L'**aimant**: il s'agit d'une bobine qui génère un champ magnétique très important. Cette bobine est plongée dans de l'hélium liquide, proche du zéro absolu, ce qui la rend supra-condutrice: le courant électrique qui la traverse ne subit pas de perte d'énergie, et peut continuer de circuler pendant très longtemps. Pour cette raison, l'aimant de l'IRM continue de fonctionner en permanence, même quand on n'utilise pas la machine.
+ * L'**aimant**: il s'agit d'une bobine qui génère un champ magnétique très important. Cette bobine est plongée dans de l'hélium liquide, proche du zéro absolu, ce qui la rend supra-conductrice: le courant électrique qui la traverse ne subit pas de perte d'énergie, et peut continuer de circuler pendant très longtemps. Pour cette raison, l'aimant de l'IRM continue de fonctionner en permanence, même quand on n'utilise pas la machine.
 
  * Les **bobines de gradient**: permettent de faire varier l'intensité du champ magnétique dans l'espace. Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
