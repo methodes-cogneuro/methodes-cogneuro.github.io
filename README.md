@@ -19,7 +19,7 @@ Une Introduction aux Méthodes de Neuroimagerie en neurosciences cognitives
 Si vous souhaitez développer et construire les notes de cours PSY3018, vous devez:
 
 - Clonez ce repository
-- Exécutez `pip install -r requirements.txt` (il est recommandé d'effectuer cette commande dans un environnement virtuel).
+- Exécutez `pip install -r methodes_cogneuro/requirements.txt` (il est recommandé d'effectuer cette commande dans un environnement virtuel).
 - Modifier le contenu du livre à partir des fichiers `md`
 - Exécutez les notebooks (uniquement si vous avez changé le code) `jupyter book build --execute`
 - Si vous souhaitez avoir un apercu du site web: `jupyter book start`
@@ -31,7 +31,7 @@ Si vous souhaitez développer et construire les notes de cours PSY3018, vous dev
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/psy3018/notes_cours_psy3018/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of all contributors in the book.
 
 ## Credits
 
