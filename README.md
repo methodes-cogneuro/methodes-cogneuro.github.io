@@ -10,7 +10,7 @@ This work is licensed under a
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
-Notes de cours pour PSY3018 - Méthodes en neurosciences cognitives
+Une Introduction aux Méthodes de Neuroimagerie en neurosciences cognitives
 
 ## Usage
 
