@@ -14,20 +14,33 @@ Introduction aux Méthodes de Neuroimagerie en neurosciences cognitives
 
 ## Usage
 
+Le livre est construit avec **Jupyter Book v2 ([MyST](https://mystmd.org/))**. La
+configuration et la table des matières se trouvent dans `myst.yml`, et le contenu
+dans les fichiers `.md` du dossier `methodes_neurocog/`.
+
 ### Construire le livre
 
 Si vous souhaitez développer et construire les notes de cours PSY3018, vous devez:
 
-- Clonez ce repository
-- Exécutez `pip install -r methodes_cogneuro/requirements.txt` (il est recommandé d'effectuer cette commande dans un environnement virtuel).
-- Modifier le contenu du livre à partir des fichiers `md`
-- Exécutez les notebooks (uniquement si vous avez changé le code) `jupyter book build --execute`
-- Si vous souhaitez avoir un apercu du site web: `jupyter book start`
-
+- Cloner ce repository.
+- Installer la commande Jupyter Book v2 (via npm) : `npm install -g jupyter-book`.
+- (Optionnel) Installer les dépendances Python pour réexécuter les notebooks :
+  `pip install -r requirements.txt` (de préférence dans un environnement virtuel).
+- Modifier le contenu du livre à partir des fichiers `.md` (et la table des
+  matières dans `myst.yml`).
+- Prévisualiser le site localement : `jupyter book start`.
+- Construire le site statique : `jupyter book build --html` (résultat dans `_build/html`).
 
 ### Hosting the book
+
 - Ouvrir une pull request pour faire des changements.
-- Une fois les changements importés dans `main` une action github va construire le livre automatiquement.
+- Une fois les changements importés dans `main`, l'action GitHub
+  (`.github/workflows/deploy.yml`) construit le livre et le publie automatiquement
+  sur GitHub Pages (source : *GitHub Actions*).
+- Les anciennes URL de la version 1 (`/page_exemple.html`) sont redirigées vers les
+  nouvelles URL de la version 2 (`/page-exemple/`) grâce à `scripts/make_redirects.py`,
+  exécuté lors de la construction. Pour préserver une nouvelle ancienne URL, ajoutez-la
+  au dictionnaire `REDIRECTS` de ce script.
 
 ## Contributors
 

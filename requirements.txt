@@ -1,5 +1,6 @@
-
-jupyter-book>=0.11.1
+# Dépendances Python pour (ré)exécuter les notebooks.
+# Le livre lui-même est construit avec Jupyter Book v2 (MyST), installé via npm :
+#   npm install -g jupyter-book
 matplotlib>=3.4.2
 nilearn>=0.8.0
 seaborn>=0.11.1
