@@ -1,0 +1,47 @@
+# Builds the book with Jupyter Book v2 (MyST) and deploys to GitHub Pages.
+# Pages must be set to deploy from "GitHub Actions" (Settings > Pages > Source).
+name: Jupyter Book (via myst) GitHub Pages Deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+env:
+  # Site is served from the domain root, so BASE_URL is empty.
+  BASE_URL: ''
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel an in-progress production deploy.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Install Jupyter Book (via myst)
+        run: npm install -g jupyter-book
+      - name: Build HTML Assets
+        run: jupyter-book build --html
+      - name: Add backward-compatible redirects (old v1 .html URLs)
+        run: python3 scripts/make_redirects.py _build/html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_build/html'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
