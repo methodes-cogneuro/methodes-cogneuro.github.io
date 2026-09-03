@@ -300,6 +300,8 @@ Ce chapitre vous présente un rapide tour d'horizon des différentes méthodes u
 
 ## Exercices
 
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
 :class: note
 
