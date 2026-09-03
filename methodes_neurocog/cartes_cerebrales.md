@@ -345,6 +345,26 @@ Un participant à une étude a souffert d’un accident ayant laissé des débri
 :class: note
 On souhaite mesurer la réponse du cortex moteur à une activation motrice de manière longitudinale chez un participant athlète. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois, juste après un match de hockey. Proposez une méthode d’imagerie adaptée. Justifiez votre choix en citant une force de la technique, **spécifique à ce contexte**. Identifiez une limitation de cette technique.
 ```
+
+```{admonition} Exercice 7
+:class: note
+Quelle est la source du signal mesuré par un appareil de TEP?
+ 1. Le champ magnétique généré par les protons d’hydrogène du corps.
+ 2. Les rayons gamma émis par un traceur radioactif injecté dans le sang.
+ 3. L’absorption de lumière proche infrarouge par l’hémoglobine.
+ 4. Les courants électriques générés par l’activité des neurones.
+```
+
+```{admonition} Exercice 8*
+:class: note
+Une équipe souhaite étudier si la pratique régulière d’un instrument de musique pendant l’enfance est associée à des différences durables dans le cerveau adulte, à la fois:
+ * dans la **structure** des faisceaux de matière blanche reliant les aires auditives et motrices;
+ * dans la **synchronie de l’activité spontanée** entre ces mêmes régions, quand le participant est au repos.
+
+ 1. Proposez **deux** techniques de neuroimagerie, chacune adaptée à l’un des deux aspects de la question (structure des faisceaux; synchronie au repos). Pour chacune, précisez le principe physique et le principe physiologique mesurés.
+ 2. Pour l’une des deux techniques, précisez le type de carte cérébrale nécessaire pour répondre à la question de recherche (voir la distinction entre cartes d’activation et cartes de connectivité vue dans ce chapitre).
+ 3. Le groupe « musiciens » pourrait différer du groupe « non-musiciens » sur d’autres facteurs que la pratique musicale (âge, niveau socio-économique, etc.). Expliquez en une phrase pourquoi cela complique l’interprétation d’une différence observée, indépendamment de la technique choisie.
+```
 ## Contributeurs
 🤔 Contenu | 💻 Code | 🧩 Quizz | 👀 révision du texte
 ::::{grid}
