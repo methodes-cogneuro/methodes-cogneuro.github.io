@@ -318,7 +318,7 @@ Classez ces techniques selon leur résolution spatiale (à partir de la plus pr�
  3. TEP
 ```
 
-```{admonition} Exercice 3
+```{admonition} Exercice 3*
 :class: note
 Classez ces techniques selon leur résolution temporelle (à partir de la plus précise):
  1. TEP
