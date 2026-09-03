@@ -146,7 +146,7 @@ Il existe trois axes principaux utilisés afin de découper le cerveau: coronal 
  * l'axe `m` (ou `y`) va de l'arrière du crâne (postérieur) vers le visage (antérieur). Par référence à la souris, antérieur se dit parfois "rostral" (vers le museau) et postérieur se dit parfois "caudal" (vers la queue).
  * l'axe `d` (ou `z`) va des pieds vers la tête. La direction des pieds s'appelle "ventral" et la direction de la tête s'appelle "dorsal". Cette terminologie est logique quand on pense à une souris et illogique pour l'humain - mais on l'utilise quand même!
 ![Coupes cérébrales](./cartes_cerebrales/coupes.jpg)
-Principaux plans de coupe en imagerie cérébrale. Figure par JonRichfield sous license CC BY-SA 4.0, tirée de [wikimedia](https://commons.wikimedia.org/w/index.php?curid=36397692).
+Principaux plans de coupe en imagerie cérébrale. Figure par JonRichfield sous licence CC BY-SA 4.0, tirée de [wikimedia](https://commons.wikimedia.org/w/index.php?curid=36397692).
 ```
 
 ## IRM fonctionnelle
@@ -242,7 +242,7 @@ name: tep-fig
 ---
 Montage de coupes axiales d'un scanner TEP avec un radiotraceur FDG, illustrant le niveau d'activité métabolique du glucose durant la durée du scan. Image [shutterstock](https://www.shutterstock.com) ID `1342194254`.
 ```
-La dernière modalité de neuroimagerie que ce livre présente est la TEP. Le fonctionnement de la TEP est basé sur l'injection d'un produit radioactif, appelé radiotraceur, dans le sang du participant de recherche. Cela peut sembler effrayant, mais pas d'inquiétude. La dose radioactive auquelle est exposé le participant est faible et sans danger si l'on ne répète pas l'examen trop souvent. Le radiotraceur va aller s'accumuler dans certains tissus du cerveau et émettre des rayons gamma. Les rayons gamma sont en fait une forme de lumière (photons) à très haute énergie. Il est possible de détecter de façon précise l'origine de ces rayons gamma à l'aide d'une série de caméras disposées autour de la tête du sujet et d'ensuite reconstruire une carte du cerveau qui reflète la concentration en radiotraceur à chaque voxel. Le radiotraceur auquel nous ferons principalement référence durant ce cours est le fluorodeoxyglucose (FDG). Celui-ci est consommé comme carburant de manière indirecte par les neurones, tout comme l'oxygène. Le FDG PET fonctionne donc grâce au {ref}`couplage neurovasculaire <couplage-neurovasculaire-section>`, tout comme l'IRMf et l'imagerie optique. Il faut en revanche plusieurs minutes pour bâtir une carte de l'activité cérébrale, donc la résolution temporelle de la TEP est inférieure à celles de l'IRMf et de l'imagerie optique. Par ailleurs, comme vous pouvez l'observer sur les images ci-dessus, les cartes TEP reconstruites sont floues et la {ref}`résolution spatiale effective <resolution-spatiale-warning>` des images est inférieure à la taille des voxels. Enfin, il est important de savoir que beaucoup d'autres traceurs existent en dehors du FDG. Il existe notamment des traceurs structuraux. Tout comme pour l'IRM, la TEP peut donc être utilisée pour générer des images structurelles et fonctionnelles du cerveau. Cette technique d'imagerie sera présentée plus en détails dans le chapitre {ref}`tep-chapitre`.
+La dernière modalité de neuroimagerie que ce livre présente est la TEP. Le fonctionnement de la TEP est basé sur l'injection d'un produit radioactif, appelé radiotraceur, dans le sang du participant de recherche. Cela peut sembler effrayant, mais pas d'inquiétude. La dose radioactive à laquelle est exposé le participant est faible et sans danger si l'on ne répète pas l'examen trop souvent. Le radiotraceur va aller s'accumuler dans certains tissus du cerveau et émettre des rayons gamma. Les rayons gamma sont en fait une forme de lumière (photons) à très haute énergie. Il est possible de détecter de façon précise l'origine de ces rayons gamma à l'aide d'une série de caméras disposées autour de la tête du sujet et d'ensuite reconstruire une carte du cerveau qui reflète la concentration en radiotraceur à chaque voxel. Le radiotraceur auquel nous ferons principalement référence durant ce cours est le fluorodeoxyglucose (FDG). Celui-ci est consommé comme carburant de manière indirecte par les neurones, tout comme l'oxygène. La TEP par FDG fonctionne donc grâce au {ref}`couplage neurovasculaire <couplage-neurovasculaire-section>`, tout comme l'IRMf et l'imagerie optique. Il faut en revanche plusieurs minutes pour bâtir une carte de l'activité cérébrale, donc la résolution temporelle de la TEP est inférieure à celles de l'IRMf et de l'imagerie optique. Par ailleurs, comme vous pouvez l'observer sur les images ci-dessus, les cartes TEP reconstruites sont floues et la {ref}`résolution spatiale effective <resolution-spatiale-warning>` des images est inférieure à la taille des voxels. Enfin, il est important de savoir que beaucoup d'autres traceurs existent en dehors du FDG. Il existe notamment des traceurs structuraux. Tout comme pour l'IRM, la TEP peut donc être utilisée pour générer des images structurelles et fonctionnelles du cerveau. Cette technique d'imagerie sera présentée plus en détails dans le chapitre {ref}`tep-chapitre`.
 
 ## Cartes statistiques
 ```{code-cell} ipython 3
@@ -315,13 +315,13 @@ On effectue une stimulation visuelle durant 200 ms et on souhaite étudier la r�
 Classez ces techniques selon leur résolution spatiale (à partir de la plus précise):
  1. IRMf
  2. IRM structurelle
- 3. PET
+ 3. TEP
 ```
 
 ```{admonition} Exercice 3
 :class: note
 Classez ces techniques selon leur résolution temporelle (à partir de la plus précise):
- 1. PET
+ 1. TEP
  2. Imagerie optique
  3. IRM de diffusion
 ```
@@ -343,14 +343,14 @@ Un participant à une étude a souffert d’un accident ayant laissé des débri
 
 ```{admonition} Exercice 6
 :class: note
-On souhaite mesurer la réponse du cortex moteur à une activation motrice de manìère longitudinale chez un participant athlète. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois, juste après un match de hockey. Proposez une méthode d’imagerie adaptée. Justifiez votre choix en citant une force de la technique, **spécifique à ce contexte**. Identifiez une limitation de cette technique.
+On souhaite mesurer la réponse du cortex moteur à une activation motrice de manière longitudinale chez un participant athlète. Plus spécifiquement, on effectue une acquisition en imagerie fonctionnelle toutes les deux semaines pendant trois mois, juste après un match de hockey. Proposez une méthode d’imagerie adaptée. Justifiez votre choix en citant une force de la technique, **spécifique à ce contexte**. Identifiez une limitation de cette technique.
 ```
 ## Contributeurs
 🤔 Contenu | 💻 Code | 🧩 Quizz | 👀 révision du texte
 ::::{grid}
 :::{grid-item}
 ![Lune Bellec](https://avatars.githubusercontent.com/u/1670887?v=4?s=100)
-[Lune bellec](https://github.com/lunebellec) 🤔💻🧩👀
+[Lune Bellec](https://github.com/lunebellec) 🤔💻🧩👀
 :::
 
 :::{grid-item}
