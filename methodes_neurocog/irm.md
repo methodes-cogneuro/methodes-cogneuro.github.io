@@ -384,12 +384,14 @@ La physique de l'IRM est un domaine très riche, que l'on n'a fait que commencer
 
 ## Exercices
 
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
 :class: note
 Vrai ou faux?
  1. TE < TR
  2. TE > T1
- 3. La force du champ magnétique d’un IRM est liée à la taille de l’IRM.
+ 3. La force du champ magnétique d’un IRM est liée au poids de l’appareil.
  4. Les ventricules sont blancs dans une IRM pondérée en T1
 ```
 
@@ -419,7 +421,7 @@ On souhaite isoler le thalamus sur une image anatomique individuelle. Quel contr
 On décide de modifier une séquence IRM pour diminuer l’angle de bascule: les spins basculeront de 70 degrés, au lieu de 90 degrés. Quel sera l’effet sur le TR de cette modification?
 ```
 
-```{admonition} Exercice 6
+```{admonition} Exercice 6*
 :class: note
 Expliquez comment le temps de répétition (TR) influence le niveau d'intensité d'une image pondérée en T1, ainsi que le contraste entre les différents types de tissus.
 ```
@@ -432,6 +434,24 @@ Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "
  3. Quel est le TE de l'acquisition structurelle?
  4. Quel est le nom de la séquence utilisée pour l'acquisition structurelle?
  5. Quelle est la taille du champ de vue, exprimée en mm et dans les trois dimensions?
+```
+
+```{admonition} Exercice 8
+:class: note
+La fréquence de Larmor de l'hydrogène est de 42,58 MHz/T.
+
+ 1. À quelle fréquence l'antenne radio-fréquence doit-elle émettre pour faire entrer en résonance les protons d'hydrogène dans un appareil à 3T? Et dans un appareil à 7T?
+ 2. Sur l'appareil à 7T, on émet par erreur l'onde radio-fréquence calculée pour l'appareil à 3T. Que mesure-t-on?
+```
+
+```{admonition} Exercice 9*
+:class: note
+Deux projets se partagent le même appareil IRM.
+
+ * Le projet A veut mesurer l'activité cérébrale pendant que les participantes et participants regardent un film.
+ * Le projet B veut mesurer le temps $T_2$ de lésions de la matière blanche, sans que la mesure soit affectée par les inhomogénéités du champ magnétique.
+
+Pour chacun des deux projets, indiquez s'il faut une séquence en écho de spin ou en écho de gradient, et justifiez votre réponse en une ou deux phrases.
 ```
 
 ## Contributeurs
