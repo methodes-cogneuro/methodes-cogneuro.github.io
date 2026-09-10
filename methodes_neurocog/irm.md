@@ -29,7 +29,7 @@ name: irm-schema-fig
 Illustration schématique des principales composantes d'un appareil IRM. Figure générée par P. Bellec, 2021, sous licence CC-BY.
 ```
 {numref}`irm-schema-fig` nous permet d'observer les éléments principaux d'un appareil IRM, et en particulier:
- * L'**aimant**: il s'agit d'une bobine qui génère un champ magnétique très important. Cette bobine est plongée dans de l'hélium liquide, proche du zéro absolu, ce qui la rend supra-condutrice: le courant électrique qui la traverse ne subit pas de perte d'énergie, et peut continuer de circuler pendant très longtemps. Pour cette raison, l'aimant de l'IRM continue de fonctionner en permanence, même quand on n'utilise pas la machine.
+ * L'**aimant**: il s'agit d'une bobine qui génère un champ magnétique très important. Cette bobine est plongée dans de l'hélium liquide, proche du zéro absolu, ce qui la rend supraconductrice: le courant électrique qui la traverse ne subit pas de perte d'énergie, et peut continuer de circuler pendant très longtemps. Pour cette raison, l'aimant de l'IRM continue de fonctionner en permanence, même quand on n'utilise pas la machine.
 
  * Les **bobines de gradient**: permettent de faire varier l'intensité du champ magnétique dans l'espace. Durant l'acquisition des images, les gradients sont activés puis arrêtés plusieurs fois. Les gradients peuvent être produits dans toutes les directions.  
 
@@ -65,7 +65,8 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/bq6Iha
 
 ```{admonition} IRM et sécurité
 L’IRM est non invasif: il n’existe pas d’effet adverse connu sur la santé de l’exposition à un champ magnétique fort.
-En revanche, il faut s’assurer qu’il n’y ait pas de contre-indications, telles que la présence de certains métaux dans le corps ou des équipements médicaux tels qu’un pace maker.
+Les impulsions radio-fréquence déposent en revanche de l’énergie dans les tissus, sous forme de chaleur. Cette dose, appelée SAR (_specific absorption rate_), est surveillée en permanence et plafonnée par l’appareil.
+Il faut également s’assurer qu’il n’y ait pas de contre-indications, telles que la présence de certains métaux dans le corps ou des équipements médicaux tels qu’un pace maker.
 Le champ magnétique peut également attirer les objets métalliques et provoquer des accidents. Pour cette raison le personnel qui opère dans une salle d’IRM doit recevoir une formation adéquate aux mesures de sécurité.
 ```
 
@@ -87,7 +88,7 @@ Un atome d'hydrogène possède une fréquence de Larmor de 42.58 MHz/Tesla. Cett
 En l'absence de champ magnétique, les spins des atomes d'hydrogène pointent dans des directions aléatoires dans les tissus cérébraux. L'aimant de l'IRM contribue à aligner le moment magnétique des protons selon le même axe que le champ magnétique principal, appelé B0. Ce champ B0 va des pieds vers la tête. La force de l'aimant principal est mesurée en Teslas (T). Les appareils de 1.5T sont utilisés principalement à des fins cliniques alors qu'en recherche, le standard est plutôt de 3T, ce qui est environ 60000 fois plus puissant que le champ magnétique terrestre! Les appareils à 7T représentent à ce jour la nouvelle frontière utilisée en recherche, et quelques appareils à 10T+ existent dans le monde. Mais pourquoi voudrions-nous augmenter la force du champ magnétique? En augmentant la force du champ magnétique, nous pouvons gagner en résolution spatiale et temporelle. Par contre, augmenter la force du champ magnétique peut également introduire des artefacts!
 
 ```{admonition} Taille et poids d'un appareil IRM
-La taille et le poids d'un appareil IRM peut varier beaucoup. Par exemple, l'IRM 1.5T de type Aeara de la compagnie Siemens pèse 4.3 tonnes, et a une ouverture (le tube dans lequel entre la personne qui fait l'examen) de 70 cm de rayon. L'appareil 3T de type Prisma de Siemens pèse 13 tonnes et a une ouverture de 60 cm de rayon. Enfin, L'IRM 7T de type Terra de Siemens fait lui presque 25 tonnes, avec la même taille d'ouverture que l'appareil à 3T! En général, plus la force du champ magnétique B0 est grande et plus l'appareil est lourd.
+La taille et le poids d'un appareil IRM peut varier beaucoup. Par exemple, l'IRM 1.5T de type Aera de la compagnie Siemens pèse 4.3 tonnes, et a une ouverture (le tube dans lequel entre la personne qui fait l'examen) de 70 cm de diamètre. L'appareil 3T de type Prisma de Siemens pèse 13 tonnes et a une ouverture de 60 cm de diamètre. Enfin, L'IRM 7T de type Terra de Siemens fait lui presque 25 tonnes, avec la même taille d'ouverture que l'appareil à 3T! En général, plus la force du champ magnétique B0 est grande et plus l'appareil est lourd.
 ```
 
 
@@ -111,7 +112,7 @@ Nous pouvons penser à la résonance comme un mouvement de balançoire. Si nous 
 
 L'IRM exploite ce phénomène de résonance. **L'antenne radio-fréquence (RF)** crée une série d'**ondes radio-fréquences** dans la direction perpendiculaire au champ B0, c'est-à-dire en direction du champ B1. En produisant une série d'impulsions suivant la fréquence de Larmor de l'hydrogène, les atomes d'hydrogène entrent en résonance et basculent dans la direction perpendiculaire.
 
-En arrêtant les impulsions, les atomes d'hydrogène entrent en relaxation, c'est-à-dire que leur moment magnétique va retourner dans la direction initiale B0. Autrement dit, le moment magnétique en direction B1 décroît pour revenir dans la direction B0. Ce phénomène de relaxation est très important, car la vitesse de la relaxation va dépendre des caractéristiques des tissus qui ont été excités. La vitesse de relaxation est mesurée par les antennes de réception placées dans le casque autour de la tête du sujet!
+En arrêtant les impulsions, les atomes d'hydrogène entrent en relaxation, c'est-à-dire que leur moment magnétique va retourner dans la direction initiale B0. Autrement dit, la composante transverse du moment magnétique, dans le plan perpendiculaire à B0, décroît pendant que la composante alignée sur B0 repousse. Ce phénomène de relaxation est très important, car la vitesse de la relaxation va dépendre des caractéristiques des tissus qui ont été excités. La vitesse de relaxation est mesurée par les antennes de réception placées dans le casque autour de la tête du sujet!
 
 ```{admonition} Mise en phase
 :class: tip
@@ -121,7 +122,7 @@ Il est important de comprendre que le signal que nous mesurons en IRM ne provien
 ```
 
 ```{admonition} Pourquoi radio?
-Comme nous l'avons vu, la fréquence de Larmor de l'hydrogène est de 42.58 MHz/Tesla. Dans un IRM à 3T, nous allons donc exciter avec une onde à une fréquence d'environ 120 MHz, soit 120 millions d'ondes par seconde (!). Ce type de fréquences tombe dans le domaine des [ondes radio](https://fr.wikipedia.org/wiki/Onde_radio).
+Comme nous l'avons vu, la fréquence de Larmor de l'hydrogène est de 42.58 MHz/Tesla. Dans un IRM à 3T, nous allons donc exciter avec une onde à une fréquence d'environ 128 MHz, soit près de 128 millions d'ondes par seconde (!). Ce type de fréquences tombe dans le domaine des [ondes radio](https://fr.wikipedia.org/wiki/Onde_radio).
 ```
 
 ## Sélection de coupes et formation d'images  
@@ -167,10 +168,10 @@ Les contrastes $T_1$ et $T_2$ sont les paramètres principaux acquis durant une 
 width: 800px
 name: t1-fig
 ---
-Le processus de relaxation $T_1$. Pour un voxel donné, on mesure la repousse du champ magnétique selon l'axe $B_0$. La vitesse de cette repousse dépend de deux paramètres: la valeur d'équilibre $M_0$ et le temps $T_1$. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_1$. Figure adaptée de {cite:p}`Ridgway2010-dc` sous license [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0).
+Le processus de relaxation $T_1$. Pour un voxel donné, on mesure la repousse de l'aimantation selon l'axe $B_0$. La vitesse de cette repousse dépend de deux paramètres: la valeur d'équilibre $M_0$ et le temps $T_1$. En général, on ne laisse pas la repousse aller à son terme: on lit le signal au bout d'un temps `TR`, et on parle alors de signal pondéré en $T_1$. Figure adaptée de {cite:p}`Ridgway2010-dc` sous license [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0).
 ```
 
-**Pondération en $T_1$**. Pour estimer le paramètre $T_1$, il est nécessaire d'effectuer plusieurs mesures au cours du temps pour évaluer la croissance de la courbe. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_1$. Si le paramètre $T_1$ augmente, cela veut dire que la courbe croit plus lentement, et le signal pondéré en $T_1$ va diminuer. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques $T_1$ différentes, ce qui permet d'obtenir des images d'IRM structurelle.
+**Pondération en $T_1$**. Pour estimer le paramètre $T_1$, il est nécessaire d'effectuer plusieurs mesures au cours du temps pour évaluer la croissance de la courbe. En général, on ne mesure qu'un seul point de la courbe. L'antenne ne peut pas mesurer directement l'aimantation $M_z$, qui est alignée sur $B_0$: pour lire où en est la repousse, il faut d'abord rebasculer l'aimantation dans le plan transverse. Le temps laissé à la repousse avant cette lecture s'appelle le `TR`. On parle alors de signal pondéré en $T_1$. Si le paramètre $T_1$ augmente, cela veut dire que la courbe croit plus lentement, et le signal pondéré en $T_1$ va diminuer. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques $T_1$ différentes, ce qui permet d'obtenir des images d'IRM structurelle.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -180,17 +181,24 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Importer les librairies nécessaires
+# Note: nilearn.plotting doit être importé AVANT de créer la figure. Son import
+# bascule le backend matplotlib, ce qui vide le registre des figures de pyplot et
+# détacherait une figure déjà ouverte.
 import matplotlib.pyplot as plt
 import numpy as np
+from nilearn.datasets import fetch_icbm152_2009
+from nilearn.plotting import plot_anat
 
 # Initialise la figure
 fig = plt.figure(figsize=(15, 5))
 
 # Fonctions exponentielles pour les courbes T1 (à titre d'exemple seulement)
+# Le liquide céphalo-rachidien a le T1 le plus long et la densité de protons la
+# plus élevée; la matière blanche le T1 le plus court et la densité la plus faible.
 t = np.linspace(0,5,100)
-y1 = 70 * (1 - np.exp(-t / 1.2))
-y2 = 85 * (1 - np.exp(-t / 1.3))
-y3 = 100 * (1 - np.exp(-t / 1.5))
+y1 = 100 * (1 - np.exp(-t / 4.0))
+y2 = 84 * (1 - np.exp(-t / 1.3))
+y3 = 70 * (1 - np.exp(-t / 0.85))
 
 # Tracer la figure
 ax_plot = plt.subplot(1, 3, 1)
@@ -198,9 +206,7 @@ plt.plot(t, y1, label="Liquide céphalo-rachidien")
 plt.plot(t, y2, label="matière grise")
 plt.plot(t, y3, label="matière blanche")
 plt.vlines(1, 0, 60, colors="black", linestyles="--")
-plt.text(1, 60, "TE")
-plt.vlines(4, 0, 60, colors="black", linestyles="--")
-plt.text(4, 60, "TR")
+plt.text(1, 60, "TR")
 plt.xlabel("Temps", loc="right")
 plt.ylabel("Mz", loc="top")
 plt.title("Courbe en T1")
@@ -208,10 +214,7 @@ plt.legend()
 plt.gca().axes.yaxis.set_ticklabels([])
 plt.gca().axes.xaxis.set_ticklabels([])
 
-#Importer les modules requis et le jeu de données
-from nilearn.datasets import fetch_icbm152_2009
-from nilearn.plotting import plot_anat
-
+# Charger le jeu de données
 data_mri = fetch_icbm152_2009()
 
 # afficher l'image pondérée en T1
@@ -230,7 +233,7 @@ fig.savefig(
 ---
 name: relax-t1-fig
 ---
-Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du champ magnétique selon l'axe $B_0$, appelé $M_{z}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TE$ (pondéré en $T_1$) présente un contraste entre les différents types de tissus. Cette figure est générée par du code python, cliquer sur + pour voir le code.
+Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance de la composante de l'aimantation selon l'axe $B_0$, appelée $M_{z}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation longitudinale. Image de droite: une image générée par lecture au temps $TR$ (pondéré en $T_1$) présente un contraste entre les différents types de tissus. Cette figure est générée par du code python, cliquer sur + pour voir le code.
 ```
 
 ```{admonition} M0
@@ -239,17 +242,17 @@ Relaxation longitudinale et contraste $T_1$. Image de gauche: croissance du cham
 À l'état d'équilibre, la contribution du moment magnétique selon l'axe $B_0$ est appelée $M_0$. Cette valeur dépend de la densité de protons dans les tissus, c'est-à-dire du nombre d'atomes d'hydrogène présents dans le tissu. Ainsi, d'un voxel à un autre, nous n'obtenons pas nécessairement la même valeur de $M_0$. Il est possible d'imager ce paramètre, et on parle alors d'image en densité de protons (PD en anglais, pour proton density).
 ```
 
-**Relaxation en $T_2$**. La diminution de la composante selon $B_1$ (composante $M_{xy}$), ou _relaxation transverse_, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s'appelle le $T_2$. Le temps $T_2$ correspond au temps écoulé pour obtenir 37% de la valeur de la contribution du moment magnétique initial selon l'axe $B_1$. Pour ceux qui sont à l'aise avec les expressions mathématiques, la décroissance en $B_1$ suit l'équation $M_{xy}(t) = M_1 e^{-t / T_2}$. La constante $M_1$ va dépendre entre autres choses de la densité de protons, comme $M_0$, et va varier d'un tissu à l'autre.
+**Relaxation en $T_2$**. La diminution de la composante transverse du moment magnétique (composante $M_{xy}$, dans le plan perpendiculaire à $B_0$), ou _relaxation transverse_, suit une fonction exponentielle décroissante. Le temps caractéristique de cette décroissance (la vitesse de décroissance) s'appelle le $T_2$. Le temps $T_2$ correspond au temps écoulé pour obtenir 37% de la valeur de l'aimantation transverse initiale. Pour ceux qui sont à l'aise avec les expressions mathématiques, la décroissance de $M_{xy}$ suit l'équation $M_{xy}(t) = M_1 e^{-t / T_2}$. La constante $M_1$ va dépendre entre autres choses de la densité de protons, comme $M_0$, et va varier d'un tissu à l'autre.
 
 ```{figure} ./irm/t2.png
 ---
 width: 800px
 name: t2-fig
 ---
-Le processus de relaxation $T_2$. Pour un voxel donné, on mesure la décroissance du champ magnétique selon l'axe $B_1$. La vitesse de cette décroissance dépend du temps $T_2$. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_2$. Figure adaptée de {cite:p}`Ridgway2010-dc` sous license [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0).
+Le processus de relaxation $T_2$. Pour un voxel donné, on mesure la décroissance de l'aimantation transverse $M_{xy}$. La vitesse de cette décroissance dépend du temps $T_2$. En général, on ne mesure qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_2$. Figure adaptée de {cite:p}`Ridgway2010-dc` sous license [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0).
 ```
 
-**Pondération en $T_2$**. Comme vu précédemment, on ne mesure généralement qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_2$. Si le paramètre $T_2$ augmente, cela veut dire que la courbe décroit plus lentement, et le signal pondéré en $T_2$ va augmenter. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques $T_2$ différentes, ce qui permet d'obtenir des images d'IRM structurelle comme pour le $T_1$. En général, les images $T_1$ et $T_2$ sont presque mirroirs l'une de l'autre, mais comme le $T_2$ est très sensible au déphasage, l'information capturée sur les tissus est complémentaire.
+**Pondération en $T_2$**. Comme vu précédemment, on ne mesure généralement qu'un seul point de la courbe, au temps `TE`, et on parle alors de signal pondéré en $T_2$. Si le paramètre $T_2$ augmente, cela veut dire que la courbe décroit plus lentement, et le signal pondéré en $T_2$ va augmenter. Différents tissus (matière grise, matière blanche, liquide céphalo-rachidien) ont des caractéristiques $T_2$ différentes, ce qui permet d'obtenir des images d'IRM structurelle comme pour le $T_1$. En général, les images $T_1$ et $T_2$ sont presque miroirs l'une de l'autre, mais comme le $T_2$ est très sensible au déphasage, l'information capturée sur les tissus est complémentaire.
 
 
 ```{code-cell} ipython 3
@@ -260,8 +263,13 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Importer les librairies nécessaires
+# Note: nilearn.plotting doit être importé AVANT de créer la figure. Son import
+# bascule le backend matplotlib, ce qui vide le registre des figures de pyplot et
+# détacherait une figure déjà ouverte.
 import matplotlib.pyplot as plt
 import numpy as np
+from nilearn.datasets import fetch_icbm152_2009
+from nilearn.plotting import plot_anat
 
 # Initialise la figure
 fig = plt.figure(figsize=(15, 5))
@@ -282,16 +290,13 @@ plt.text(1.1, 60, "TE")
 plt.vlines(4, 0, 60, colors="black", linestyles="--")
 plt.text(4, 60, "TR")
 plt.xlabel("Temps", loc="right")
-plt.ylabel("Mz", loc="top")
+plt.ylabel("Mxy", loc="top")
 plt.title("Courbe en T2")
 plt.legend()
 plt.gca().axes.yaxis.set_ticklabels([])
 plt.gca().axes.xaxis.set_ticklabels([])
 
-#Importer les modules requis et le jeu de données
-from nilearn.datasets import fetch_icbm152_2009
-from nilearn.plotting import plot_anat
-
+# Charger le jeu de données
 data_mri = fetch_icbm152_2009()
 
 # afficher l'image pondérée en T2
@@ -311,17 +316,17 @@ fig.savefig(
 ---
 name: relax-t2-fig
 ---
-Relaxation transverse et contraste $T_2$. Image de gauche: décroissance du champ magnétique selon l'axe $B_1$, appelé $M_{xy}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
+Relaxation transverse et contraste $T_2$. Image de gauche: décroissance de la composante transverse de l'aimantation, appelée $M_{xy}$. Notez que différents types de tissus présentent des courbes distinctes de relaxation transverse. Image de droite: une image générée par lecture au temps $TE$ présente un contraste entre les différents types de tissus. Ce contraste est pour l'essentiel inversé par rapport au contraste $T_1$. Cette figure est générée par du code python, cliquer sur + pour voir le code.
 ```
 ```{admonition} $TE$
-Lorsque nous acquérons des données IRM, nous ne mesurons généralement pas toute la courbe de relaxation, mais simplement un point de mesure au temps $TE$. En choisissant le $TE$ adéquatement, nous allons obtenir des valeurs de lecture très différentes pour les différents tissus. Le temps $TE$ sera différent pour un contraste $T_1$ et un contraste $T_2$.
+Lorsque nous acquérons des données IRM, nous ne mesurons généralement pas toute la courbe de relaxation, mais simplement un point de mesure au temps $TE$. En choisissant le $TE$ adéquatement, nous allons obtenir des valeurs de lecture très différentes pour les différents tissus. Le temps $TE$ est le délai entre l'excitation et la lecture: c'est lui qui fixe le point de mesure sur la courbe de décroissance transverse.
 ```
 
 ```{admonition} $TR$
-Nous appelons $TR$ le temps qui sépare deux excitations radiofréquence. Pour obtenir un **IRM structurel** complet, plusieurs centaines de TRs sont nécessaires. Il existe une autre définition, spécifique à la communauté **IRM fonctionnelle**, qui dit que le TR est la durée qui sépare deux volumes IRMf.
+Nous appelons $TR$ le temps qui sépare deux excitations radiofréquence. C'est donc aussi le temps laissé à la repousse longitudinale avant la lecture suivante: c'est le $TR$ qui fixe le contraste $T_1$. Pour obtenir un **IRM structurel** complet, plusieurs centaines de TRs sont nécessaires. Il existe une autre définition, spécifique à la communauté **IRM fonctionnelle**, qui dit que le TR est la durée qui sépare deux volumes IRMf.
 ```
 ```{admonition} Angle de bascule
-Si nous nous intéressons à la fin du processus de relaxation, nous n'avons pas besoin de basculer les spins complètement dans la direction $B_1$, mais simplement à un certain nombre de degrés de $B_0$. Ce paramètre est appelé angle de bascule ("flip angle" en anglais).
+Nous n'avons pas besoin de basculer les spins complètement dans le plan transverse: nous pouvons nous contenter de les écarter de $B_0$ d'un certain nombre de degrés. Ce paramètre est appelé angle de bascule ("flip angle" en anglais). Un angle plus faible produit un signal moins intense, mais il laisse une partie de l'aimantation alignée sur $B_0$: la repousse longitudinale a donc moins de chemin à parcourir, et nous pouvons ré-exciter plus tôt. C'est de cette manière que l'on raccourcit le $TR$ pour accélérer une acquisition.
 ```
 ```{admonition} $T_1$ vs $T_2$: cherchez la différence.
 :class: tip
@@ -332,10 +337,10 @@ Pourquoi s'embêter à faire des contrastes $T_1$ et $T_2$ quand l'un semble êt
 ## $T_2^*$, IRMf, IRMd
 **Déphasage.** Comme nous l'avons vu dans l'encadré {ref}`sur la phase <phase-tip>`, les impulsions radiofréquences vont non seulement faire basculer les spins, mais aussi les mettre en phase. Lorsque nous arrêtons les impulsions, les spins vont progressivement se déphaser. Ce déphasage est dû à des micro-interactions entre protons ainsi que des molécules des tissus qui présentent des propriétés magnétiques. La courbe de relaxation $T_2$ va avoir la même forme, mais avec des temps caractéristiques modifiés, que nous appelons $T_2^*$.
 
-**IRM fonctionnelle.** Les inhomogénéités dans le champ magnétique qui causent le déphasage peuvent notamment être créées par la désoxyhémoglobine que nous retrouvons dans le sang. Nous allons voir plus en détails comment l'oxyhémoglobine et la désoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l'[IRM fonctionnelle](https://psy3018.github.io/irm_fonctionnelle.html). En IRM fonctionnelle, nous utilisons des séquences pondérées en $T_2^*$.
+**IRM fonctionnelle.** Les inhomogénéités dans le champ magnétique qui causent le déphasage peuvent notamment être créées par la désoxyhémoglobine que nous retrouvons dans le sang. Nous allons voir plus en détails comment l'oxyhémoglobine et la désoxyhémoglobine perturbent le champ magnétique dans le chapitre sur l'[IRM fonctionnelle](irm_fonctionnelle). En IRM fonctionnelle, nous utilisons des séquences pondérées en $T_2^*$.
 
 
-**IRM de diffusion.** En IRM de diffusion, nous mesurons aussi un déphasage, mais ce déphasage est produit par le déplacement des molécules d'eau le long d'un gradient magnétique fort. En effectuant plusieurs images avec des directions de gradients différentes, nous pouvons obtenir une idée de l'amplitude et de la direction de diffusion des molécules d'eau. Cette opération nous permet au final de connaître la direction des fibres de matière blanche. Nous allons revenir sur ce sujet dans le chapitre sur [l'IRM de diffusion](https://psy3018.github.io/irm_diffusion.html)
+**IRM de diffusion.** En IRM de diffusion, nous mesurons aussi un déphasage, mais ce déphasage est produit par le déplacement des molécules d'eau le long d'un gradient magnétique fort. En effectuant plusieurs images avec des directions de gradients différentes, nous pouvons obtenir une idée de l'amplitude et de la direction de diffusion des molécules d'eau. Cette opération nous permet au final de connaître la direction des fibres de matière blanche. Nous allons revenir sur ce sujet dans le chapitre sur [l'IRM de diffusion](irm_diffusion).
 
 ## Console et séquences d'acquisition.
 ```{figure} ./irm/irm_console.png
@@ -347,6 +352,8 @@ Connexions entre la console et les différentes parties d'un système IRM. Figur
 ```
 
 L'ensemble des éléments de l'appareil IRM peuvent être contrôlés par la console (voir {numref}`irm-console-fig`). Nous avons vu ensemble les principes clés de l'IRM, mais une image réelle est acquise avec une série complexe d'excitations et de mesures, que l'on appelle une _séquence d'acquisition_.
+
+Les séquences se regroupent en deux grandes familles, selon la manière dont le signal est relu. L'**écho de spin** ajoute une impulsion supplémentaire qui vient remettre en phase les spins déphasés par les inhomogénéités du champ: le signal obtenu ne dépend alors que du $T_2$. L'**écho de gradient** ne corrige pas ce déphasage, ce qui le rend plus rapide et donne accès au $T_2^*$. Chaque constructeur donne ensuite ses propres noms aux séquences qu'il propose. On rencontre couramment le **MPRAGE** pour l'anatomie pondérée en $T_1$, le **FLAIR** pour une image pondérée en $T_2$ dans laquelle le signal du liquide céphalo-rachidien est supprimé, et l'**EPI** (_echo planar imaging_), très rapide, utilisé aussi bien en IRM fonctionnelle qu'en IRM de diffusion.
 
 ```{figure} ./irm/fov.png
 ---
@@ -414,7 +421,7 @@ On décide de modifier une séquence IRM pour diminuer l’angle de bascule: les
 
 ```{admonition} Exercice 6
 :class: note
-Expliquez comment le temps d'écho (TE) influence le niveau d'intensité d'une image pondérée en T1, ainsi que le contraste entre les différents types de tissus.
+Expliquez comment le temps de répétition (TR) influence le niveau d'intensité d'une image pondérée en T1, ainsi que le contraste entre les différents types de tissus.
 ```
 
 ```{admonition} Exercice 7
