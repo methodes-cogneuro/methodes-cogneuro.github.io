@@ -18,7 +18,7 @@ kernelspec:
 width: 800px
 name: cartes-cerebrales-fig
 ---
-L'arbre de la neuroimagerie. Chaque branche représente une des techniques qui seront présentées durant le cours. Figure adaptée par P. Bellec à partir d'une variété de sources non libres de droit et inspirée du livre {cite:p}`wager2015`.
+L'arbre de la neuroimagerie. Chaque branche représente une des techniques qui seront présentées durant le cours. Figure adaptée par L. Bellec à partir d'une variété de sources non libres de droit et inspirée du livre {cite:p}`wager2015`.
 ```
 Ce premier chapitre a pour but de donner un aperçu du livre dans sa globalité. Toutes les techniques de neuroimagerie que l'on va voir ont des forces et faiblesses distinctes, ce qui les rendent mieux adaptées à différents types d'applications. Pour chaque technique, on vise ici à se familiariser avec quatre aspects:
  * Quel est le **principe physique** qui nous permet d'obtenir une mesure?
@@ -32,7 +32,7 @@ Ce premier chapitre a pour but de donner un aperçu du livre dans sa globalité.
 width: 800px
 name: structure-function-fig
 ---
-Illustration des techniques structurelles et fonctionnelles étudiées dans ce livre, ainsi que quelques applications possibles en neurosciences cognitives. Figure adaptée par P. Bellec à partir d'une variété de sources non libres de droit et inspirée du livre {cite:p}`wager2015`.
+Illustration des techniques structurelles et fonctionnelles étudiées dans ce livre, ainsi que quelques applications possibles en neurosciences cognitives. Figure adaptée par L. Bellec à partir d'une variété de sources non libres de droit et inspirée du livre {cite:p}`wager2015`.
 ```
 
 Les techniques étudiées dans ce cours ont pour point commun de générer des cartes du cerveau. Ce sont aussi des outils centraux dans beaucoup d'études en neurosciences cognitives qui utilisent la neuroimagerie. Ces techniques incluent:
@@ -50,7 +50,7 @@ Les deux premières techniques, IRM structurelle et de diffusion, permettent d'�
 width: 800px
 name: resolution-fig
 ---
-Illustration du compromis entre résolution temporelle et spatiale pour les techniques de neuroimagerie étudiées dans ce livre. Figure adaptée par P. Bellec à partir d'une variété de sources non libres de droit.
+Illustration du compromis entre résolution temporelle et spatiale pour les techniques de neuroimagerie étudiées dans ce livre. Figure adaptée par L. Bellec à partir d'une variété de sources non libres de droit.
 ```
 
 Les techniques vues dans ce cours ont en commun d'avoir une bonne résolution spatiale, mais il existe malgré tout des variations importantes entre chacune de ces techniques:

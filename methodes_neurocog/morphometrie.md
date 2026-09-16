@@ -259,7 +259,7 @@ name: qc-fail-fig
 Le recalage peut parfois échouer de manière spectaculaire.
 Ici, la forme rouge indique le pourtour attendu du cerveau et de certains repères anatomiques.
 L'IRM individuelle recalée n'est pas du tout alignée avec les repères attendus.
-Figure par P. Bellec, sous licence CC-BY.
+Figure par L. Bellec, sous licence CC-BY.
 ```
 
 Il est possible d'obtenir des résultats aberrants en volumétrie, soit à cause de la présence d'erreurs dans les étapes de recalage linéaire et/ou non-linéaire ({numref}`qc-fail-fig`), soit à cause d'artefacts lors de l'acquisition des données (présence d'objets métalliques, etc. {numref}`artefact-fig`). Les images peuvent également être de mauvaise qualité si le sujet de recherche bouge pendant l'acquisition.
@@ -572,7 +572,7 @@ name: surface-fig
 Illustration de la position de la surface piale et de la surface intérieure.
 En haut: coupe d'IRM pondérée en T1 avec les surfaces estimées de manière automatique.
 En bas: illustration schématique des surfaces.
-Figure adaptée par P. Bellec à partir de figures de l'article de Klein et al., 2017 {cite:p}`Klein2017-zh` sous licence CC-BY.
+Figure adaptée par L. Bellec à partir de figures de l'article de Klein et al., 2017 {cite:p}`Klein2017-zh` sous licence CC-BY.
 ```
 
 Les analyses de surface corticale diffèrent des précédentes techniques de morphométrie en ce qu'elles exploitent le ruban que la matière grise forme en s'étendant à la surface de la matière blanche.
@@ -604,7 +604,7 @@ width: 600px
 name: thickness-fig
 ---
 Illustration des mesures de surface, d'épaisseur et de volume du cortex.
-Figure adaptée par P. Bellec à partir de figures de l'article de Winkler et al., 2018 {cite:p}`Winkler2018-wq` sous licence CC-BY.
+Figure adaptée par L. Bellec à partir de figures de l'article de Winkler et al., 2018 {cite:p}`Winkler2018-wq` sous licence CC-BY.
 ```
 
 La reconstruction de la géométrie de la surface va permettre de décomposer le volume de la matière grise en une épaisseur locale, et une surface locale.

@@ -26,7 +26,7 @@ Ce cours a pour but de vous initier aux principes physiques de l'imagerie par r�
 width: 800px
 name: irm-schema-fig
 ---
-Illustration schématique des principales composantes d'un appareil IRM. Figure générée par P. Bellec, 2021, sous licence CC-BY.
+Illustration schématique des principales composantes d'un appareil IRM. Figure générée par L. Bellec, 2021, sous licence CC-BY.
 ```
 {numref}`irm-schema-fig` nous permet d'observer les éléments principaux d'un appareil IRM, et en particulier:
  * L'**aimant**: il s'agit d'une bobine qui génère un champ magnétique très important. Cette bobine est plongée dans de l'hélium liquide, proche du zéro absolu, ce qui la rend supraconductrice: le courant électrique qui la traverse ne subit pas de perte d'énergie, et peut continuer de circuler pendant très longtemps. Pour cette raison, l'aimant de l'IRM continue de fonctionner en permanence, même quand on n'utilise pas la machine.
@@ -76,7 +76,7 @@ Le champ magnétique peut également attirer les objets métalliques et provoque
 width: 500px
 name: spin-fig
 ---
-Un proton est comme un petit aimant, dont le champ magnétique oscille autour d’une position donnée (mouvement de précession), et caractérisé par un moment angulaire, ou spin.  Partie droite de la figure générée par P. Bellec, 2021, sous licence CC-BY. La partie gauche de la figure est adaptée d'une image [shutterstock](https://www.shutterstock.com) ID `130826045`, utilisée sous licence shutterstock standard.
+Un proton est comme un petit aimant, dont le champ magnétique oscille autour d’une position donnée (mouvement de précession), et caractérisé par un moment angulaire, ou spin.  Partie droite de la figure générée par L. Bellec, 2021, sous licence CC-BY. La partie gauche de la figure est adaptée d'une image [shutterstock](https://www.shutterstock.com) ID `130826045`, utilisée sous licence shutterstock standard.
 ```
 
 Les protons qui constituent en partie les atomes se comportent comme des petits aimants qui tournent autour de leur propre axe, de manière analogue à une toupie (voir {numref}`spin-fig`). Cette rotation du moment magnétique est appelé le mouvement de précession et dépend entre autre de la composition du noyau. Ainsi, chaque type de noyau possède une *fréquence de Larmor* caractéristique.
@@ -348,7 +348,7 @@ Pourquoi s'embêter à faire des contrastes $T_1$ et $T_2$ quand l'un semble êt
 width: 500px
 name: irm-console-fig
 ---
-Connexions entre la console et les différentes parties d'un système IRM. Figure adaptée par P. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l'article par Gruber et coll. (2018) {cite:p}`Gruber2018-pq`, sous licence CC-BY-NC.
+Connexions entre la console et les différentes parties d'un système IRM. Figure adaptée par L. Bellec, 2021, sous licence CC-BY. La Figure originale est tirée de l'article par Gruber et coll. (2018) {cite:p}`Gruber2018-pq`, sous licence CC-BY-NC.
 ```
 
 L'ensemble des éléments de l'appareil IRM peuvent être contrôlés par la console (voir {numref}`irm-console-fig`). Nous avons vu ensemble les principes clés de l'IRM, mais une image réelle est acquise avec une série complexe d'excitations et de mesures, que l'on appelle une _séquence d'acquisition_.
@@ -360,7 +360,7 @@ Les séquences se regroupent en deux grandes familles, selon la manière dont le
 width: 500px
 name: fov-fig
 ---
-Le champ de vue est un paramètre important des séquences IRM. Il définit la position et la taille du volume cérébral acquis. On définit généralement une matrice correspondant au plan de coupes, dont la taille est définie par le nombre de voxels. On définit ensuite le nombre de coupes, et enfin la taille des voxels. En combinant ces informations, on peut en déduire la taille du champ de vue. Schéma par Pierre Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Le champ de vue est un paramètre important des séquences IRM. Il définit la position et la taille du volume cérébral acquis. On définit généralement une matrice correspondant au plan de coupes, dont la taille est définie par le nombre de voxels. On définit ensuite le nombre de coupes, et enfin la taille des voxels. En combinant ces informations, on peut en déduire la taille du champ de vue. Schéma par Lune Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ```
 
