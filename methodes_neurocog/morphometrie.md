@@ -263,7 +263,7 @@ Figure par L. Bellec, sous licence CC-BY.
 ```
 
 Il est possible d'obtenir des résultats aberrants en volumétrie, soit à cause de la présence d'erreurs dans les étapes de recalage linéaire et/ou non-linéaire ({numref}`qc-fail-fig`), soit à cause d'artefacts lors de l'acquisition des données (présence d'objets métalliques, etc. {numref}`artefact-fig`). Les images peuvent également être de mauvaise qualité si le sujet de recherche bouge pendant l'acquisition.
-Il est important d'effectuer un contrồle de qualité afin d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
+Il est important d'effectuer un contrôle de qualité afin d'éliminer les images inutilisables avant de procéder aux analyses statistiques.
 Conserver ces dernières pourrait avoir des impacts importants sur les résultats ainsi que sur les conclusions tirées.
 
 ## VBM
@@ -676,6 +676,8 @@ On y a discuté de plusieurs techniques clés d'analyse d'image et l'on a commen
 
 ## Exercices
 
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
 :class: note
 
@@ -683,6 +685,8 @@ Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fau
  1. Les mouvements d’un participant de recherche peuvent créer du bruit dans une carte VBM.
  2. La présence de métal peut créer du bruit et des déformations dans une carte VBM.
  3. Un trou dans une carte cérébrale VBM signifie nécessairement qu'il y a un trou dans le cerveau du participant.
+ 4. Le recalage utilisé en VBM s'adapte à l'anatomie individuelle de chaque participant.
+ 5. La VBM permet de mesurer séparément l'épaisseur et la surface corticale.
 ```
 
 ```{admonition} Exercice 2
@@ -692,6 +696,8 @@ Pour chacun des énoncés suivants, spécifiez si l'affirmation est vraie ou fau
  1. Les données IRM doivent être recalées dans un espace stéréotaxique pour étudier la morphologie du cerveau à l’échelle d’une population en VBM.
  2. Les données IRM doivent être recalées dans un espace stéréotaxique pour effectuer une segmentation manuelle de l’hippocampe.
  3. La VBM repose sur la segmentation automatique de la matière grise dans une IRM.
+ 4. Un recalage affine peut déformer une région du cerveau sans affecter les régions voisines.
+ 5. L'espace stéréotaxique MNI152 a été obtenu en moyennant les images cérébrales de 152 personnes recalées les unes sur les autres.
 ```
 
 ```{admonition} Exercice 3
@@ -701,7 +707,8 @@ Choisissez la bonne réponse. Des données d’IRM pondérées en T1 pour un par
  1. Une image 3D d’un cerveau.
  2. Des dizaines d’images 2D sagittales d’un cerveau.
  3. Des dizaines d’images 2D axiales, coronales et sagittales d’un cerveau.
- 4. Toutes ces réponses.
+ 4. Une série d'images 3D d'un cerveau, acquises les unes après les autres.
+ 5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 4
@@ -738,6 +745,37 @@ Les questions suivantes requièrent des réponses à développement court.
  - Les régions d'intérêt (ROI) sont-elles définies? Si oui, de quelle façon? Avec quel atlas? Combien y en a-t-il?
  - Quelles mesures morphologiques sont utilisées pour chaque région?
 ```
+
+```{admonition} Exercice 8
+:class: note
+
+Lors de la segmentation d'une IRM pondérée en T1, certains voxels situés sur la paroi de matière blanche qui borde un ventricule se voient attribuer une proportion importante de matière grise, alors qu'il n'y a pas de matière grise à cet endroit.
+ 1. Comment appelle-t-on ce phénomène, et pourquoi se produit-il?
+ 2. Quelle conséquence a-t-il sur une carte de densité de matière grise obtenue en VBM?
+```
+
+```{admonition} Exercice 9*
+:class: note
+
+Une équipe teste l'hypothèse qu'une maladie neurodégénérative atteint à la fois le cortex préfrontal et le thalamus (une structure centrale).
+Elle dispose d'une IRM pondérée en T1 pour 30 patients et 30 témoins.
+Elle traite l'ensemble des données avec une analyse de surface, mesure l'épaisseur corticale en chaque vertex, et compare les deux groupes.
+Les résultats montrent un amincissement significatif du cortex préfrontal, et aucune différence significative au niveau du thalamus.
+L'équipe conclut que la maladie atteint le cortex préfrontal, mais épargne le thalamus.
+ 1. Que pensez-vous de la conclusion de l'équipe concernant le thalamus?
+ 2. Proposez une modification du protocole permettant de tester l'hypothèse complète. Justifiez votre choix parmi la volumétrie manuelle, la volumétrie automatique par atlas et la VBM.
+```
+
+```{admonition} Exercice 10*
+:class: note
+
+Une équipe compare la morphologie du cortex temporal entre deux groupes de participants et participantes.
+Une analyse VBM ne révèle aucune différence significative de densité de matière grise entre les deux groupes.
+L'équipe reprend les mêmes données avec une analyse de surface: le cortex temporal du premier groupe est significativement plus mince, mais sa surface corticale est significativement plus étendue.
+ 1. Ces trois résultats sont-ils contradictoires? Justifiez votre réponse.
+ 2. Que peut-on en conclure sur ce que mesure la VBM?
+```
+
 ## Contributeurs
 
 🤔 Contenu | 💻 Code | 🧩 Quizz | 👀 révision du texte
