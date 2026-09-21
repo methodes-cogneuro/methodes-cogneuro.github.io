@@ -650,6 +650,8 @@ Vrai / faux?
  1. Les données en IRM fonctionnelle et structurelle doivent être alignées pour générer une carte d’activation.
  2. Le filtrage des facteurs de non-intérêt est important pour générer une carte d’activation.
  3. Le lissage spatial est utile, même pour une analyse individuelle.
+ 4. Le recalage des données vers un espace stéréotaxique est important pour les analyses de groupe.
+ 5. Le bruit dans les données IRMf comme les dérives lentes peut impacter négativement la modélisation de l’activité liée aux neurones.
 ```
 
 ```{admonition} Exercice 3
