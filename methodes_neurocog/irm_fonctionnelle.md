@@ -304,7 +304,7 @@ Souvent, le sujet ne maintient pas exactement la même position de la tête dans
 ```{admonition} Mouvements excessifs
 :class: tip
 :name: motion-tip
-Le niveau de mouvement varie en fonction de la population étudiée. Les enfants et les personnes âgés ont tendance à bouger davantage que les jeunes adultes. Certains chercheurs choisissent d'exclure les sujets ayant bougé au-delà d'un certain seuil.
+Le niveau de mouvement varie en fonction de la population étudiée. Les enfants et les personnes âgées ont tendance à bouger davantage que les jeunes adultes. Certains chercheurs choisissent d'exclure les sujets ayant bougé au-delà d'un certain seuil.
 ```
 
 #### Recalage BOLD avec $T_1$
@@ -635,6 +635,8 @@ La réalisation d'une expérience d'IRMf nécessite de bien penser les condition
 
 ## Exercices
 
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
 :class: note
 Vrai / faux?
@@ -648,26 +650,30 @@ Vrai / faux?
 :class: note
 Vrai / faux?
  1. Les données en IRM fonctionnelle et structurelle doivent être alignées pour générer une carte d’activation.
- 2. Le filtrage des facteurs de non-intérêt est important pour générer une carte d’activation.
+ 2. Puisque le lissage spatial atténue l’effet des petites erreurs d’alignement, il peut remplacer l’étape de correction de mouvement du sujet.
  3. Le lissage spatial est utile, même pour une analyse individuelle.
- 4. Le recalage des données vers un espace stéréotaxique est important pour les analyses de groupe.
- 5. Le bruit dans les données IRMf comme les dérives lentes peut impacter négativement la modélisation de l’activité liée aux neurones.
+ 4. Le filtrage des dérives lentes du scanner n’est nécessaire que pour les analyses de groupe.
+ 5. Le recalage des données vers un espace stéréotaxique est important pour les analyses de groupe.
 ```
 
 ```{admonition} Exercice 3
 :class: note
-Qu’est ce que le signal BOLD? (vrai / faux).
+Choisissez la bonne réponse. Le signal BOLD est...
  1. Une séquence d’IRM pondérée en T2*.
  2. Un type de séquence d’IRM qui mesure directement l’activité des neurones.
  3. Un type de séquence d’IRM qui mesure l’oxygénation du sang.
+ 4. Réponses 1 et 3.
+ 5. Réponses 1, 2 et 3.
 ```
 
-```{admonition} Exercice 4
+```{admonition} Exercice 4*
 :class: note
 Vrai / faux. Le principe d’additivité de la réponse hémodynamique est...
  1. Un modèle mathématique.
  2. Une propriété de base du couplage neurovasculaire, toujours vérifiée.
  3. Une hypothèse courante, en partie confirmée expérimentalement.
+ 4. Une propriété qui suffit, à elle seule, à prédire la réponse à n'importe quelle série de stimuli à partir de la réponse à une seule stimulation courte.
+ 5. Une hypothèse dont dépend la prédiction de la réponse à une condition expérimentale, telle qu'utilisée dans la régression univariée massive.
 ```
 
 ```{admonition} Exercice 5
@@ -676,6 +682,8 @@ Choisissez la bonne réponse. Des données d’IRMf sont en général...
  1. Une image du cerveau.
  2. Une dizaine d’images du cerveau.
  3. Des dizaines d’images du cerveau, ou plus.
+ 4. Une série temporelle pour chaque voxel du cerveau.
+ 5. Réponses 3 et 4.
 ```
 
 ```{admonition} Exercice 6
@@ -688,12 +696,14 @@ Quelle molécule dans le sang provoque un changement de signal mesuré par le BO
 Dans quelle portion de l’arbre vasculaire observe-t-on les changements principaux liés à l’activité neuronale locale?
 ```
 
-```{admonition} Exercice 8
+```{admonition} Exercice 8*
 :class: note
-On compare l’activation pour une tâche de mémoire dans le cerveau entre deux groupes de participants: des sujets sains et des sujets âgés (N=200 par groupe). Notre hypothèse est que la différence d’activité sera la plus forte dans le cortex frontal. En réalité, on trouve des différences en périphérie du cerveau, ce qui suggère des artefacts de mouvement.Suggérer deux modifications au protocole (recueil des données ou technique d’analyse) qui permettrait d’éviter ce phénomène.
+On compare l’activation pour une tâche de mémoire dans le cerveau entre deux groupes de participants: des jeunes adultes et des personnes âgées (N=200 par groupe). Notre hypothèse est que la différence d’activité sera la plus forte dans le cortex frontal. En réalité, on trouve des différences en périphérie du cerveau, ce qui suggère des artefacts de mouvement.
+ 1. Suggérer deux modifications au protocole (recueil des données et/ou technique d’analyse) qui permettraient d’éviter ce phénomène.
+ 2. Expliquer pourquoi les artefacts de mouvement sont particulièrement forts en périphérie du cerveau. Nommer ensuite une autre région du cerveau où l’on s’attendrait aussi à de forts artefacts de mouvement, en justifiant.
 ```
 
-```{admonition} Exercice 9
+```{admonition} Exercice 9*
 :class: note
 Pour répondre aux questions de cet exercice, lisez d'abord l'article *High-resolution functional MRI of the human amygdala at 7 T* de Mensen et collaborateurs (publié en 2013 dans la revue *European Journal of radiology*, volume 82, pages 728 à 733).
 Celui-ci est disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3629563/).
