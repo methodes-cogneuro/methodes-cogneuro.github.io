@@ -37,10 +37,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from nilearn.image import math_img
-from nilearn import plotting, input_data
-from nilearn.input_data import NiftiLabelsMasker
+from nilearn import plotting
+from nilearn.maskers import NiftiLabelsMasker, NiftiMasker
 from nilearn import datasets # Fetch data using nilearn
-from nilearn.input_data import NiftiMasker
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -49,7 +48,7 @@ warnings.filterwarnings("ignore")
 fig = plt.figure(figsize=(10, 9), dpi=300)
 
 # Importe les données
-basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+basc = datasets.fetch_atlas_basc_multiscale_2015(resolution=122) # the BASC multiscale atlas
 adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
 
 # Paramètres du pré-traitement
@@ -60,13 +59,13 @@ high_variance_confounds = False
 time_samp = range(0, 100)
 
 # Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
-masker = input_data.NiftiLabelsMasker(
-                                      basc['scale122'],
+masker = NiftiLabelsMasker(
+                                      basc['maps'],
                                       resampling_target="data",
                                       high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       memory='nilearn_cache',
                                       memory_level=1,
                                       smoothing_fwhm=fwhm).fit()
@@ -75,11 +74,12 @@ print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
 
 # Fonction pour montrer une parcelle
 def _montre_roi(num_parcel, title, ax_plot, cmap):
-    plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+    plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['maps']),
               threshold=0.5,
               axes=ax_plot,
               vmax=1,
               cmap=cmap,
+              colorbar=False,
               title=title)
 
 # Montre les parcelles
@@ -162,10 +162,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from nilearn.image import math_img
-from nilearn import plotting, input_data
-from nilearn.input_data import NiftiLabelsMasker
+from nilearn import plotting
+from nilearn.maskers import NiftiLabelsMasker, NiftiMasker
 from nilearn import datasets # Fetch data using nilearn
-from nilearn.input_data import NiftiMasker
 
 
 import warnings
@@ -175,7 +174,7 @@ warnings.filterwarnings("ignore")
 fig = plt.figure(figsize=(10, 8), dpi=300)
 
 # Importe les données
-basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+basc = datasets.fetch_atlas_basc_multiscale_2015(resolution=122) # the BASC multiscale atlas
 adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
 
 # Paramètres du pré-traitement
@@ -186,13 +185,13 @@ high_variance_confounds = False
 time_samp = range(0, 100)
 
 # Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
-masker = input_data.NiftiLabelsMasker(
-                                      basc['scale122'],
+masker = NiftiLabelsMasker(
+                                      basc['maps'],
                                       resampling_target="data",
                                       high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       memory='nilearn_cache',
                                       memory_level=1,
                                       smoothing_fwhm=fwhm).fit()
@@ -200,10 +199,10 @@ tseries = masker.transform(adhd.func[num_data])
 print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
 
 # Charge les données par voxel
-masker_voxel = input_data.NiftiMasker(high_pass=high_pass,
+masker_voxel = NiftiMasker(high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       smoothing_fwhm=fwhm
                                      ).fit(adhd.func[num_data])
 tseries_voxel = masker_voxel.transform(adhd.func[num_data])
@@ -212,10 +211,11 @@ print(f"Time series with shape {tseries_voxel.shape} (# time points, # voxels))"
 # Montre une parcelle
 ax_plot = plt.subplot2grid((2, 3), (0, 0), colspan=2)
 num_parcel = 73
-plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['maps']),
                   threshold=0.5,
                   axes=ax_plot,
                   vmax=1,
+                  colorbar=False,
                   title="région cible (M1 droit)")
 
 # plot la série temporelle d'une région
@@ -276,10 +276,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from nilearn.image import math_img
-from nilearn import plotting, input_data
-from nilearn.input_data import NiftiLabelsMasker
+from nilearn import plotting
+from nilearn.maskers import NiftiLabelsMasker, NiftiMasker
 from nilearn import datasets # Fetch data using nilearn
-from nilearn.input_data import NiftiMasker
 
 
 import warnings
@@ -289,7 +288,7 @@ warnings.filterwarnings("ignore")
 fig = plt.figure(figsize=(10, 11), dpi=300)
 
 # Importe les données
-basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+basc = datasets.fetch_atlas_basc_multiscale_2015(resolution=122) # the BASC multiscale atlas
 adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
 
 # Paramètres du pré-traitement
@@ -300,13 +299,13 @@ high_variance_confounds = False
 time_samp = range(0, 100)
 
 # Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
-masker = input_data.NiftiLabelsMasker(
-                                      basc['scale122'],
+masker = NiftiLabelsMasker(
+                                      basc['maps'],
                                       resampling_target="data",
                                       high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       memory='nilearn_cache',
                                       memory_level=1,
                                       smoothing_fwhm=fwhm).fit()
@@ -314,10 +313,10 @@ tseries = masker.transform(adhd.func[num_data])
 print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
 
 # Charge les données par voxel
-masker_voxel = input_data.NiftiMasker(high_pass=high_pass,
+masker_voxel = NiftiMasker(high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       smoothing_fwhm=fwhm
                                      ).fit(adhd.func[num_data])
 tseries_voxel = masker_voxel.transform(adhd.func[num_data])
@@ -326,10 +325,11 @@ print(f"Time series with shape {tseries_voxel.shape} (# time points, # voxels))"
 # Montre une parcelle
 ax_plot = plt.subplot2grid((4, 3), (0, 0), colspan=2)
 num_parcel = 17
-plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['maps']),
                   threshold=0.5,
                   axes=ax_plot,
                   vmax=1,
+                  colorbar=False,
                   title="région cible (PCC)")
 
 # plot la série temporelle d'une région
@@ -388,9 +388,7 @@ from nilearn.image import math_img
 from nilearn import image
 from nilearn import masking
 from nilearn.glm.first_level import FirstLevelModel
-from nilearn import input_data
-from nilearn.input_data import NiftiLabelsMasker
-from nilearn.input_data import NiftiMasker
+from nilearn.maskers import NiftiLabelsMasker, NiftiMasker
 from nilearn import plotting
 
 # initialisation de la figure
@@ -401,11 +399,11 @@ subject_data = datasets.fetch_spm_auditory()
 fmri_img = image.concat_imgs(subject_data.func)
 
 # Make an average
-mean_img = image.mean_img(fmri_img)
+mean_img = image.mean_img(fmri_img, copy_header=True)
 mask = masking.compute_epi_mask(mean_img)
 
 # Clean and smooth data
-fmri_img = image.clean_img(fmri_img, high_pass=0.01, t_r=7, standardize=False)
+fmri_img = image.clean_img(fmri_img, high_pass=0.01, t_r=7, standardize=None)
 fmri_img = image.smooth_img(fmri_img, 8.)
 
 # load events
@@ -457,16 +455,14 @@ from nilearn.image import math_img
 from nilearn import image
 from nilearn import masking
 from nilearn.glm.first_level import FirstLevelModel
-from nilearn import input_data
-from nilearn.input_data import NiftiLabelsMasker
-from nilearn.input_data import NiftiMasker
+from nilearn.maskers import NiftiLabelsMasker, NiftiMasker
 from nilearn import plotting
 
 # initialisation de la figure
 fig = plt.figure(figsize=(12,8))
 
 # Importe les données
-basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+basc = datasets.fetch_atlas_basc_multiscale_2015(resolution=122) # the BASC multiscale atlas
 adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
 
 # Paramètres du pré-traitement
@@ -477,13 +473,13 @@ high_variance_confounds = False
 time_samp = range(0, 100)
 
 # Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
-masker = input_data.NiftiLabelsMasker(
-                                      basc['scale122'],
+masker = NiftiLabelsMasker(
+                                      basc['maps'],
                                       resampling_target="data",
                                       high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       memory='nilearn_cache',
                                       memory_level=1,
                                       smoothing_fwhm=fwhm).fit()
@@ -491,10 +487,10 @@ tseries = masker.transform(adhd.func[num_data])
 print(f"Time series with shape {tseries.shape} (# time points, # parcels))")
 
 # Charge les données par voxel
-masker_voxel = input_data.NiftiMasker(high_pass=high_pass,
+masker_voxel = NiftiMasker(high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       smoothing_fwhm=fwhm
                                      ).fit(adhd.func[num_data])
 tseries_voxel = masker_voxel.transform(adhd.func[num_data])
@@ -506,17 +502,18 @@ gb_signal = signal_clean(
                         tseries.mean(axis=1).reshape([tseries.shape[0], 1]),
                         high_pass=high_pass,
                         t_r=3,
-                        standardize=True)
+                        standardize="zscore_sample")
 tseries = masker.transform(adhd.func[num_data], confounds=gb_signal)
 tseries_voxel = masker_voxel.transform(adhd.func[num_data], confounds=gb_signal)
 
 # Montre une parcelle
 ax_plot = plt.subplot2grid((2, 3), (0, 0), colspan=2)
 num_parcel = 113
-plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['scale122']),
+plotting.plot_roi(math_img(f'img == {num_parcel}', img=basc['maps']),
                   threshold=0.5,
                   axes=ax_plot,
                   vmax=1,
+                  colorbar=False,
                   title="région cible (FEF)")
 
 # plot la série temporelle d'une région
@@ -579,16 +576,14 @@ from nilearn.image import math_img
 from nilearn import image
 from nilearn import masking
 from nilearn.glm.first_level import FirstLevelModel
-from nilearn import input_data
-from nilearn.input_data import NiftiLabelsMasker
-from nilearn.input_data import NiftiMasker
+from nilearn.maskers import NiftiLabelsMasker, NiftiMasker
 from nilearn import plotting
 
 # initialisation de la figure
 fig = plt.figure(figsize=(12, 5), dpi=300)
 
 # Importe les données
-basc = datasets.fetch_atlas_basc_multiscale_2015() # the BASC multiscale atlas
+basc = datasets.fetch_atlas_basc_multiscale_2015(resolution=122) # the BASC multiscale atlas
 adhd = datasets.fetch_adhd(n_subjects=10)          # ADHD200 preprocessed data (Athena pipeline)\
 
 # Paramètres du pré-traitement
@@ -599,13 +594,13 @@ high_variance_confounds = False
 time_samp = range(0, 100)
 
 # Extrait le signal par parcelle pour un atlas fonctionnel (BASC)
-masker = input_data.NiftiLabelsMasker(
-                                      basc['scale122'],
+masker = NiftiLabelsMasker(
+                                      basc['maps'],
                                       resampling_target="data",
                                       high_pass=high_pass,
                                       t_r=3,
                                       high_variance_confounds=high_variance_confounds,
-                                      standardize=True,
+                                      standardize="zscore_sample",
                                       memory='nilearn_cache',
                                       memory_level=1,
                                       smoothing_fwhm=fwhm).fit()
@@ -619,12 +614,12 @@ gb_signal = signal_clean(
                         tseries.mean(axis=1).reshape([tseries.shape[0], 1]),
                         high_pass=high_pass,
                         t_r=3,
-                        standardize=True)
+                        standardize="zscore_sample")
 tseries = masker.transform(adhd.func[num_data], confounds=gb_signal)
 
 # Affiche le template
 ax_plot = plt.subplot2grid((2, 4), (0, 0), colspan=2)
-plotting.plot_roi(basc['scale122'], title="parcellisation", axes=ax_plot, colorbar=True, cmap="turbo")
+plotting.plot_roi(basc['maps'], title="parcellisation", axes=ax_plot, colorbar=True, cmap="turbo")
 
 # We generate a connectome
 from nilearn.connectome import ConnectivityMeasure
@@ -685,7 +680,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from nilearn import datasets # Fetch data using nilearn
-atlas_yeo = datasets.fetch_atlas_yeo_2011()        # the Yeo-Krienen atlas
+atlas_yeo = datasets.fetch_atlas_yeo_2011(         # the Yeo-Krienen atlas
+    n_networks=7, thickness="thick")
 
 # initialisation de la figure
 fig = plt.figure(figsize=(24, 16), dpi=300)
@@ -695,35 +691,35 @@ from nilearn import plotting
 from nilearn.image import math_img
 import matplotlib.pyplot as plt
 ax_plot = plt.subplot(4, 2, 1)
-plotting.plot_roi(atlas_yeo.thick_7, title='Yeo-Krienen atlas-7',
+plotting.plot_roi(atlas_yeo['maps'], title='Yeo-Krienen atlas-7',
                   colorbar=True, cmap='Paired', axes=ax_plot)
 
 ax_plot = plt.subplot(4, 2, 2)
-plotting.plot_roi(math_img('(img==1).astype(\'float\')', img=atlas_yeo.thick_7), title='Visuel',
+plotting.plot_roi(math_img('(img==1).astype(\'float\')', img=atlas_yeo['maps']), title='Visuel',
                   colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
 
 ax_plot = plt.subplot(4, 2, 3)
-plotting.plot_roi(math_img('2 * (img==2).astype(\'float\')', img=atlas_yeo.thick_7), title='Sensorimoteur',
+plotting.plot_roi(math_img('2 * (img==2).astype(\'float\')', img=atlas_yeo['maps']), title='Sensorimoteur',
                   colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
 
 ax_plot = plt.subplot(4, 2, 4)
-plotting.plot_roi(math_img('3 * (img==3).astype(\'float\')', img=atlas_yeo.thick_7), title='Attentionnel dorsal',
+plotting.plot_roi(math_img('3 * (img==3).astype(\'float\')', img=atlas_yeo['maps']), title='Attentionnel dorsal',
                   cut_coords=(-27, -5, 58), colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
 
 ax_plot = plt.subplot(4, 2, 5)
-plotting.plot_roi(math_img('4 * (img==4).astype(\'float\')', img=atlas_yeo.thick_7), title='Attentionnel ventral / salience',
+plotting.plot_roi(math_img('4 * (img==4).astype(\'float\')', img=atlas_yeo['maps']), title='Attentionnel ventral / salience',
                   cut_coords=(-3, 19, 24), colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
 
 ax_plot = plt.subplot(4, 2, 6)
-plotting.plot_roi(math_img('5 * (img==5).astype(\'float\')', img=atlas_yeo.thick_7), title='mésolimbique',
+plotting.plot_roi(math_img('5 * (img==5).astype(\'float\')', img=atlas_yeo['maps']), title='limbique',
                   colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
 
 ax_plot = plt.subplot(4, 2, 7)
-plotting.plot_roi(math_img('6 * (img==6).astype(\'float\')', img=atlas_yeo.thick_7), title='frontopariétal',
+plotting.plot_roi(math_img('6 * (img==6).astype(\'float\')', img=atlas_yeo['maps']), title='frontopariétal',
                   colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
 
 ax_plot = plt.subplot(4, 2, 8)
-plotting.plot_roi(math_img('7 * (img==7).astype(\'float\')', img=atlas_yeo.thick_7), title='mode par défaut',
+plotting.plot_roi(math_img('7 * (img==7).astype(\'float\')', img=atlas_yeo['maps']), title='mode par défaut',
                   colorbar=True, cmap='Paired', axes=ax_plot, vmin=1, vmax=7)
 
 fig.savefig(
@@ -740,7 +736,7 @@ width: 600px
 ---
 Atlas de Yeo-Krienen {cite:p}`Yeo2011-sc` construit par une analyse de clustering à partir de données IRMf au repos d'un grand nombre de sujets. Les réseaux sont définis à plusieurs résolutions dans cet atlas (7 et 17). Ici, le découpage en 7 grands réseaux distribués est présenté. Cette figure est générée par du code python à l'aide de la librairie [nilearn](https://nilearn.github.io/) (cliquer sur + pour voir le code), et est distribuée sous licence CC-BY.
 ```
-Il existe des atlas standards des réseaux au repos, qui ont été générés sur un grand nombre de sujets. L'atlas de Yeo, Krienen et collègues {cite:p}`Yeo2011-sc` est très utilisé, et identifie sept grands réseaux, voir {numref}`yeo-krienen-fig`. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l'attentionnel ventral. Il y a également un réseau visuel, et un réseau mésolimbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. Notez qu'il n'y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés.
+Il existe des atlas standards des réseaux au repos, qui ont été générés sur un grand nombre de sujets. L'atlas de Yeo, Krienen et collègues {cite:p}`Yeo2011-sc` est très utilisé, et identifie sept grands réseaux, voir {numref}`yeo-krienen-fig`. Certains de ces réseaux ont déjà été discutés dans ce chapitre: mode par défaut, attentionnel dorsal, sensorimoteur. Il faut ajouter deux autres réseaux associatifs: le frontopariétal et l'attentionnel ventral. Il y a également un réseau visuel, et un réseau limbique impliquant le pôle temporal et le cortex orbitofrontal. Notez que cet atlas ignore toutes les structures sous-corticales. Notez qu'il n'y a pas un nombre exact de réseaux cérébraux, mais plutôt une hiérarchie de réseaux plus ou moins spécialisés.
 
 ```{admonition} Nombre de réseaux au repos
 :class: tip
