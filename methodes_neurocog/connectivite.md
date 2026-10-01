@@ -762,6 +762,8 @@ De nombreux articles ont étudié un découpage en 7 réseaux corticaux. Mais l'
 
 ## Exercices
 
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
 :class: note
 Carte de connectivité: vrai/faux
@@ -769,14 +771,17 @@ Carte de connectivité: vrai/faux
  2. Pour définir une région cible, on doit faire une carte d’activation.
  3. Une carte de connectivité fonctionnelle présente des valeurs entre 0 et 1.
  4. Une carte d’activation en IRMf est un outil qui peut permettre d’identifier le réseau du mode par défaut.
+ 5. Une carte de connectivité peut contenir des dizaines de milliers de coefficients de corrélation.
 ```
 
 ```{admonition} Exercice 2
 :class: note
-Réseaux fonctionnels: vrai/faux
+Réseaux fonctionnels et atlas: vrai/faux
  1. Un réseau fonctionnel est composé de voxels/régions présentant une connectivité fonctionnelle forte.
  2. Les régions du réseau du mode par défaut sont corrélées négativement avec les régions du réseau sensorimoteur.
  3. Les atlas des réseaux au repos identifient de sept à plusieurs centaines de réseaux au repos.
+ 4. L'atlas de Yeo-Krienen découpe l'ensemble du cerveau en sept réseaux, structures sous-corticales incluses.
+ 5. On peut utiliser un atlas anatomique comme Harvard-Oxford pour calculer un connectome fonctionnel.
 ```
 
 ```{admonition} Exercice 3
@@ -804,12 +809,12 @@ Choisissez la bonne réponse:
 On dispose d’un atlas de régions cérébrales, et on sélectionne une région cible dans le cortex cingulaire postérieur (PCC). Pour un jeu de données IRMf au repos, on calcule un connectome fonctionnel avec l’atlas, ainsi qu’une carte de connectivité utilisant la région PCC comme cible. Expliquer une similarité et une différence entre la colonne du connectome correspondant au PCC, et la carte de connectivité (cible PCC).
 ```
 
-```{admonition} Exercice 6
+```{admonition} Exercice 6*
 :class: note
-On compare la connectivité fonctionnelle au repos entre un groupe de personnes jeunes et un groupe de personnes âgées. On génère des cartes de connectivité avec une région cible dans le cortex postérieur cingulaire. On applique des tests statistiques et on identifie une baisse de la connectivité avec le cortex frontal médian. Proposez trois hypothèses qui pourraient expliquer cette observation.
+On compare la connectivité fonctionnelle au repos entre un groupe de personnes jeunes et un groupe de personnes âgées. On génère des cartes de connectivité avec une région cible dans le cortex postérieur cingulaire. On applique des tests statistiques et on identifie, chez les personnes âgées, une baisse de la connectivité avec le cortex frontal médian. Proposez trois hypothèses qui pourraient expliquer cette observation.
 ```
 
-```{admonition} Exercice 7
+```{admonition} Exercice 7*
 :class: note
 Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "_Aberrant Frontostriatal Connectivity in Negative Symptoms of Schizophrenia_", publié dans Schizophrenia Bulletin (2019, 45(5): 1051-59) et disponible en libre accès à cette [adresse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6737477/). Les questions suivantes sont à développement court.
  1. Quel logiciel a été utilisé pour analyser les données d'IRMf?
@@ -820,6 +825,21 @@ Pour répondre à cette question, lisez l'article de Shukla et collaborateurs, "
  6. Dans quel espace stéréotaxique les analyses de groupe sont-elles effectuées?
  7. Quel atlas de régions est utilisé?
  8. Quel type de mesure de connectivité est utilisée dans l'article?
+```
+
+```{admonition} Exercice 8*
+:class: note
+Dans un jeu de données au repos, deux régions présentent une connectivité fonctionnelle élevée (`r = 0,7`). Une collègue va vérifier dans une étude d'IRM de diffusion et constate qu'aucune fibre ne relie directement ces deux régions. Elle en conclut que la mesure de connectivité fonctionnelle est erronée.
+ 1. Expliquez pourquoi sa conclusion ne suit pas.
+ 2. Décrivez deux mécanismes distincts qui peuvent produire une forte connectivité fonctionnelle entre deux régions non reliées directement.
+```
+
+```{admonition} Exercice 9
+:class: note
+On souhaite comparer la connectivité fonctionnelle au repos entre un groupe d'enfants et un groupe de jeunes adultes. On calcule un connectome fonctionnel pour chaque participant, avec le même atlas. Les enfants ont bougé environ deux fois plus que les adultes.
+ 1. On a vu au chapitre sur l'[IRM fonctionnelle](irm_fonctionnelle) que les artefacts de mouvement sont particulièrement forts en périphérie du cerveau. Rappelez brièvement pourquoi.
+ 2. Quelles connexions du connectome risquent donc de présenter les plus fortes différences entre les deux groupes, sans qu'aucune différence d'activité neuronale ne soit en cause? Justifiez.
+ 3. L'équipe interprète la différence observée comme un effet du développement. Quelle vérification devrait-elle faire avant d'en arriver là?
 ```
 
 ## Bonus
