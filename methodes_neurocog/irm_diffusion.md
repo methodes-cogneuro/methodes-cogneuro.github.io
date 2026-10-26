@@ -14,13 +14,14 @@ kernelspec:
 
 ## Objectifs 
 
-Ce cours a pour but de vous initier aux principes de l'imagerie par résonance magnétique de diffusion (IRMd). L'IRMd est une modalité de neuroimagerie qui nous permet d'étudier les **fibres de matière blanche**. Nous allons donc pouvoir examiner les connexions entre différentes régions, autant interhémisphériques (i.e., fibres de matière blanche voyageant d'un hémisphère à l'autre), qu'intrahémisphériques (i.e., fibres de matière blanche voyageant au sein d'un même hémisphère). Pour vous faire une idée concrète de ce à quoi ressemblent les fibres de matière blanche, vous pouvez regarder cette [vidéo](https://www.youtube.com/watch?v=PazaHElk6wc) présentant des dissections cérébrales, tirée du [cours de neuroanatomie fonctionnelle de UBC](http://www.neuroanatomy.ca/).
+Ce cours a pour but de vous initier aux principes de l'imagerie par résonance magnétique de diffusion (IRMd). L'IRMd est une modalité de neuroimagerie qui nous permet d'étudier les **fibres de matière blanche**. Nous allons donc pouvoir examiner les connexions entre différentes régions, autant interhémisphériques (i.e., fibres de matière blanche voyageant d'un hémisphère à l'autre), qu'intrahémisphériques (i.e., fibres de matière blanche voyageant au sein d'un même hémisphère). Pour vous faire une idée concrète de ce à quoi ressemblent les fibres de matière blanche, vous pouvez regarder cette [vidéo](https://www.youtube.com/watch?v=PazaHElk6wc) présentant des dissections cérébrales, tirée du cours de neuroanatomie fonctionnelle de l'Université de la Colombie-Britannique (UBC).
 
 Pendant ce cours, nous allons aborder :
 
    - Les principes **physiques** et **physiologiques** du signal en IRMd.
-   - Le modèle du **tenseur de diffusion**.
-   - Les analyses de **tractographie**.
+   - Le modèle du **tenseur de diffusion**, et l'interprétation des mesures qui en sont dérivées.
+   - Le problème des **croisements de fibres**, et les acquisitions HARDI qui permettent de le contourner.
+   - Les analyses de **tractographie**, de **dissection virtuelle** et de **tractométrie**.
 
 ## Principes physiques et physiologiques
 
@@ -209,7 +210,7 @@ width: 800px
 ---
 Diffusion isotrope vs anisotrope. Chaque rond bleu représente le point d'arrivée d'une molécule d'eau selon une simulation de marche aléatoire avec un processus Brownien en 3D. Sur le graphe de gauche, la vitesse de diffusion des molécules d'eau est identique dans toutes les directions. Sur les graphes du milieu et de droite, la vitesse de diffusion est supérieure selon l'axe `x` que selon `y` et `z`. Figure générée à l'aide de code Python par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-Le déplacement des molécules d'eau dans un milieu suit un mouvement Brownien. Si le milieu a des caractéristiques similaires dans toutes les directions, on parle de milieu **isotrope**. Le graphe de gauche de la {numref}`anisotropic-fig` représente l'ensemble des points d'arrivée de marches aléatoires dans un tel milieu isotrope. On remarque que les molécules se répartissent approximativement dans une sphère. Que se passe-t-il si la diffusion est plus rapide dans une direction donnée, par exemple l'axe `x`? On parle alors de milieu **anisotrope**. Sur le graphe du milieu, on voit que la forme remplie par les molécules s'allonge, et ressemble plus à un ballon de football américain qu'à une sphère (ou, en termes mathématiques, une ellipse). Plus la différence de vitesse de diffusion sur `x` grandit par rapport aux directions `y` et `z`, et plus la forme s'allonge (graphe de droite).
+Le déplacement des molécules d'eau dans un milieu suit un mouvement Brownien. Si le milieu a des caractéristiques similaires dans toutes les directions, on parle de milieu **isotrope**. Le graphe de gauche de la {numref}`anisotropic-fig` représente l'ensemble des points d'arrivée de marches aléatoires dans un tel milieu isotrope. On remarque que les molécules se répartissent approximativement dans une sphère. Que se passe-t-il si la diffusion est plus rapide dans une direction donnée, par exemple l'axe `x`? On parle alors de milieu **anisotrope**. Sur le graphe du milieu, on voit que la forme remplie par les molécules s'allonge, et ressemble plus à un ballon de rugby qu'à une sphère (ou, en termes mathématiques, un ellipsoïde). Plus la différence de vitesse de diffusion sur `x` grandit par rapport aux directions `y` et `z`, et plus la forme s'allonge (graphe de droite).
 
 ### Diffusion et fibres de matière blanche
 ```{figure} irm_diffusion/dissection.png
@@ -220,7 +221,9 @@ name: dissection-fig
 Dissection cérébrale illustrant l'organisation de la matière blanche cérébrale en faisceaux de fibres. Bas droite: schéma illustrant la diffusion de l'eau contrainte par les fibres. Le point rouge correspond à l'origine de marches aléatoires, dont les terminaisons sont indiquées par les points bleus. Images de cerveau tirées de {cite:p}`Bakhit2020-yk`, sous licence CC-BY 4.0. Le reste de la figure par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), inspirée par la thèse de C. Poupon, 1999.
 ```
 Les axones des neurones viennent contraindre la diffusion de l'eau, les molécules d'eau ne peuvent donc pas se déplacer librement dans toutes les directions. Le profil de diffusion des molécules d'eau suit alors une forme anisotrope, comme on vient de le voir en {numref}`anisotropic-fig`. L'eau diffuse plus facilement dans la direction parallèle aux fibres. La diffusion est donc anisotrope et le coefficient de diffusion sera alors plus élevé dans cette direction parallèle, voir {numref}`dissection-fig`.
-Alors, en sachant comment diffuse l'eau, nous pouvons déterminer la configuration des axones. Le phénomène de diffusion dépend de la structure du tissu! C'est le principe physiologique à l'origine des mesures en IRMd.
+Alors, en sachant comment diffuse l'eau, nous pouvons inférer l'orientation des axones. Le phénomène de diffusion dépend de la structure du tissu! C'est le principe physiologique à l'origine des mesures en IRMd.
+
+Il faut toutefois garder les échelles en tête. Pendant la durée d'une mesure (quelques dizaines de millisecondes), une molécule d'eau ne se déplace que d'une dizaine de micromètres environ, alors qu'un voxel d'IRMd mesure typiquement 2 mm de côté. Chaque voxel contient donc un nombre énorme d'axones, et l'IRMd ne voit jamais un axone individuel : elle mesure la diffusion **moyenne** de l'eau dans le voxel, qui reflète l'orientation dominante des fibres qui le traversent.
 
 ### Acquisition IRMd
 ```{code-cell} ipython 3
@@ -259,9 +262,11 @@ fig1.savefig(
 name: diffusion-direction-fig
 width: 600px
 ---
-Volumes IRM pondérées en diffusion. Chaque coupe axiale représente un volume $T_2$ pondérée en diffusion pour une direction différente. Figure générée à l'aide de code Python par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Le code est adapté d'un [tutorial](https://dipy.org/documentation/1.4.1./examples_built/denoise_patch2self/#example-denoise-patch2self) de la librairie [Dipy](https://dipy.org/), distribuée sous licence [BSD 3-Clause](https://github.com/dipy/dipy/blob/master/LICENSE).
+Volumes IRM pondérés en diffusion. Chaque coupe axiale représente un volume $T_2$ pondéré en diffusion pour une direction différente. Figure générée à l'aide de code Python par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Le code est adapté d'un [tutoriel](https://docs.dipy.org/stable/examples_built/preprocessing/denoise_patch2self.html) de la librairie [Dipy](https://dipy.org/), distribuée sous licence [BSD 3-Clause](https://github.com/dipy/dipy/blob/master/LICENSE).
 ```
-En IRM de diffusion, nous allons prendre des images selon plusieurs orientations de gradients. Ce sont des images pondérées en $T_2$, avec une pondération additionnelle correspondant à la diffusion de l'eau dans une direction correspondant à la direction du gradient appliqué. Pour un voxel donné, nous allons prendre des mesures dans différentes directions de gradients, qui vont nous dire si l'eau a beaucoup diffusé dans cette direction là, un peu comme les points bleus de la {numref}`dissection-fig`. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, pour une direction que l'on a sélectionnée, voir {numref}`diffusion-direction-fig`
+En IRM de diffusion, nous allons prendre des images selon plusieurs orientations de gradients. Ce sont des images pondérées en $T_2$, avec une pondération additionnelle correspondant à la diffusion de l'eau dans la direction du gradient appliqué. Pour un voxel donné, nous allons prendre des mesures dans différentes directions de gradients, qui vont nous dire si l'eau a beaucoup diffusé dans cette direction là, un peu comme les points bleus de la {numref}`dissection-fig`. Pour un volume IRMd, la valeur en un voxel nous dit si le point bleu est loin ou pas du point rouge, pour une direction que l'on a sélectionnée, voir {numref}`diffusion-direction-fig`.
+
+Attention au sens de cette relation : **plus l'eau diffuse dans la direction du gradient, plus le signal est atténué**, et plus le voxel apparaît sombre. C'est pourquoi le liquide céphalo-rachidien, où l'eau diffuse librement dans toutes les directions, est sombre sur toutes les images pondérées en diffusion. Pour mesurer cette atténuation, on acquiert aussi au moins une image de référence sans pondération en diffusion (dite image $b=0$), à laquelle on compare chaque image pondérée.
 
 ## Tenseur de diffusion
 
@@ -272,7 +277,7 @@ En IRM de diffusion, nous allons prendre des images selon plusieurs orientations
 width: 600px
 name: tensor-schematic-fig
 ---
-La diffusion des molécules d'eau au cours du temps peut se visualiser comme un nuage de points. À cause des contraintes de l'environnement, notamment les axones, ce nuage prend la forme d'un ballon de rugby (haut, gauche). La forme du nuage peut être approximée avec un modèle de tenseur (bas à gauche). Les paramètres principaux de ce modèle sont les directions principales de diffusion $e_1$, $e_2$, $e_3$, ainsi que les valeurs de diffusion associées à ces directions $\lambda_1 \geq \lambda_2 \geq \lambda_3$. Figure par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), inspirée par M. Descoteaux et C. Poupon,
+La diffusion des molécules d'eau au cours du temps peut se visualiser comme un nuage de points. À cause des contraintes de l'environnement, notamment les axones, ce nuage prend la forme d'un ballon de rugby (haut, gauche). La forme du nuage peut être approximée avec un modèle de tenseur (bas à gauche). Les paramètres principaux de ce modèle sont les directions principales de diffusion $e_1$, $e_2$, $e_3$, ainsi que les valeurs de diffusion associées à ces directions $\lambda_1 \geq \lambda_2 \geq \lambda_3$. Figure par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), inspirée par M. Descoteaux et C. Poupon.
 ```
 
 À partir des simulations ci-dessus, il est intuitif d'imaginer la diffusion de l'eau comme un ballon, plus ou moins allongé. Mathématiquement, cela se formule avec un tenseur de diffusion, ou **modèle Gaussien**, voir {numref}`tensor-schematic-fig`. Pour estimer la forme du ballon dans chaque voxel, nous utilisons les différentes valeurs de diffusion obtenues pour chaque direction d'acquisition. Si la diffusion est plus grande selon une certaine direction, notre ballon ressemblera plutôt à un ballon de rugby. Si la diffusion est semblable dans toutes les directions d'acquisition, nous obtiendrons plutôt un ballon de soccer.
@@ -338,12 +343,12 @@ scene.add(actor.tensor_slicer(evals, evecs, scalar_colors=cfa, sphere=sphere,
 scene.set_camera(position=(14.87946710578175, 25.770232149765413, 173.54578028650144),
                  focal_point=(33.43851200470716, 40.67356830562871, 15.545914873824975),
                  view_up=(0.003256400517440014, 0.9955397521536979, 0.09428678453221151))
-window.record(scene, n_frames=1, out_path='tensor-slice.png',
+window.record(scene, n_frames=1, out_path='irm_diffusion/tensor-slice.png',
               size=(1000, 1000), reset_camera=False)
 scene.set_camera(position=(6.398539759431944, 36.122368120824724, 21.074961978614017),
                  focal_point=(17.02336666201742, 55.39317316617157, 7.230217513090364),
                  view_up=(0.10205867972271891, 0.5426923506538308, 0.8337080055001721))
-window.record(scene, n_frames=1, out_path='tensor-zoom.png',
+window.record(scene, n_frames=1, out_path='irm_diffusion/tensor-zoom.png',
               size=(600, 600), reset_camera=False)             
 
 # Make figure
@@ -352,10 +357,10 @@ import imageio
 fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=200,
                         subplot_kw={'xticks': [], 'yticks': []})
 fig1.subplots_adjust(hspace=0.3, wspace=0.05)
-im = imageio.imread('tensor-slice.png')
+im = imageio.imread('irm_diffusion/tensor-slice.png')
 ax.flat[0].imshow(im, interpolation='antialiased')
 ax.flat[0].set_title('full slice')
-im = imageio.imread('tensor-zoom.png')
+im = imageio.imread('irm_diffusion/tensor-zoom.png')
 ax.flat[1].imshow(im, interpolation='none')
 ax.flat[1].set_title('zoom')
 
@@ -372,10 +377,10 @@ fig1.savefig(
 name: tensor-fig
 width: 800px
 ---
-Tenseurs de diffusion estimés sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque tenseur code pour la direction principale de diffusion, ainsi que l'anisotropie fractionnelle de chaque tenseur. Les tenseurs les plus brillants sont fortement anisotropes, c'est-à-dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_dti/#example-reconst-dti) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Tenseurs de diffusion estimés sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque tenseur code pour la direction principale de diffusion, et sa luminosité pour l'anisotropie fractionnelle (voir plus bas). Les tenseurs les plus brillants sont fortement anisotropes, c'est-à-dire que la direction principale de diffusion est nettement plus forte que les directions transverses. Figure générée par du code python adapté d'un [tutoriel Dipy](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_dti.html) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-L'imagerie par tenseurs de diffusion (*diffusion tensor imaging*, DTI) est l'une des premières techniques d'analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d'au moins six directions d'acquisition: `xy`, `xz`, `yz`, `-xy`, `-xz`, `y-z`. C'est en combinant les images dans ces six directions que nous pouvons estimer notre tenseur de diffusion (notre ballon). Comme nous avons ces mesures pour chacun des voxels, nous pouvons créer un volume cérébral où la valeur de chaque voxel est un tenseur (ballon), voir {numref}`tensor-fig`.
+L'imagerie par tenseurs de diffusion (*diffusion tensor imaging*, DTI) est l'une des premières techniques d'analyse qui a vu le jour en IRM de diffusion. Pour estimer la forme de notre ballon, nous avons besoin d'au moins six directions de gradient différentes, en plus de l'image de référence $b=0$. La raison est mathématique : un tenseur est décrit par six paramètres inconnus (trois pour l'orientation du ballon dans l'espace, trois pour sa longueur selon chacun de ses axes), et chaque direction de gradient fournit une mesure. C'est en combinant ces images que nous pouvons estimer notre tenseur de diffusion (notre ballon). Comme nous avons ces mesures pour chacun des voxels, nous pouvons créer un volume cérébral où la valeur de chaque voxel est un tenseur (ballon), voir {numref}`tensor-fig`.
 
 ### Caractéristiques des tenseurs
 
@@ -415,12 +420,16 @@ fig1.savefig(
 name: fa-md-rgb-fig
 width: 800px
 ---
- Cartes dérivées de tenseurs en IRM de diffusion: anisotropie fractionnelle (gauche), diffusivité moyenne (milieu) et direction principale du tenseur (droite). Pour la direction principale, l'axe médial-latéral (`x`) est codé en rouge, l'axe antérieur-postérieur (`y`) est codé en vert, et l'axe ventral-dorsal (`z`) est codé en bleu. Figure générée à l'aide de code Python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_fwdti/#example-reconst-fwdti) par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+ Cartes dérivées de tenseurs en IRM de diffusion: anisotropie fractionnelle (gauche), diffusivité moyenne (milieu) et direction principale du tenseur (droite). Pour la direction principale, l'axe gauche-droite (`x`) est codé en rouge, l'axe antérieur-postérieur (`y`) est codé en vert, et l'axe inférieur-supérieur (`z`) est codé en bleu. Figure générée à l'aide de code Python adapté d'un [tutoriel Dipy](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_fwdti.html) par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 Il est possible de résumer certaines caractéristiques importantes des tenseurs de diffusion à l'aide d'une unique mesure, comme l'anisotropie fractionnelle et la diffusivité moyenne (voir définitions ci-dessous). On extrait donc une mesure par voxel, ce qui peut se représenter avec une carte cérébrale, voir {numref}`fa-md-rgb-fig`. Il est aussi possible de créer une image en couleurs, qui code pour la direction principale de diffusion.
 
 ```{admonition} Anisotropie fractionnelle
-Une mesure populaire est l'[anisotropie fractionnelle](https://en.wikipedia.org/wiki/Fractional_anisotropy) (FA en anglais), qui permet de mesurer le degré d'anisotropie d'un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d'anisotropie fractionnelle de 0 indique une diffusion isotrope (ballon de soccer), alors qu'une valeur de 1 indique une diffusion fortement anisotropie (ballon de rugby). Par exemple, l'anisotropie fractionnelle de l'eau mesuré dans une bouteille, sans structure, est 0. Les valeurs fortes de FA se retrouvent généralement dans la matière blanche.
+Une mesure populaire est l'[anisotropie fractionnelle](https://en.wikipedia.org/wiki/Fractional_anisotropy) (FA en anglais), qui permet de mesurer le degré d'anisotropie d'un phénomène de diffusion, en prenant des valeurs entre 0 et 1. Une valeur d'anisotropie fractionnelle de 0 indique une diffusion isotrope (ballon de soccer), alors qu'une valeur proche de 1 indique une diffusion fortement anisotrope (ballon de rugby très allongé). Par exemple, l'anisotropie fractionnelle de l'eau mesurée dans une bouteille, sans structure, est 0. Les valeurs fortes de FA se retrouvent généralement dans la matière blanche.
+```
+```{admonition} Interpréter l'anisotropie fractionnelle
+:class: warning
+On lit souvent qu'une FA élevée traduit une matière blanche « en bonne santé » ou « intègre ». C'est un raccourci trompeur. La FA d'un voxel dépend de nombreux facteurs : la densité d'axones, leur myélinisation, mais aussi la façon dont les fibres sont organisées dans le voxel. Des fibres bien alignées donnent une FA élevée; des fibres qui se croisent ou qui s'éventent donnent une FA plus faible, même si chacune d'elles est parfaitement saine (voir la section sur les croisements de fibres, plus bas). Une différence de FA entre deux groupes indique donc que *quelque chose* diffère dans la microstructure, sans dire quoi.
 ```
 ```{admonition} Diffusivité moyenne
 Nous pouvons aussi mesurer la **diffusivité moyenne** selon l'équation suivante (voir {numref}`tensor-schematic-fig` pour les notations):
@@ -429,7 +438,7 @@ La diffusivité moyenne nous indique à quel point il y a de la diffusion à l'i
 ```
 
 ```{admonition} Direction principale de diffusion
-Afin de visualiser dans quelle direction principale pointe les tenseurs, une approche populaire consiste à coder chaque axe `x`, `y` et `z` avec une couleur (rouge, vert, bleu, respectivement). Pour une direction donnée, on mélange les trois couleurs dans une proportion correspondant aux contributions des trois axes.
+Afin de visualiser dans quelle direction principale pointent les tenseurs, une approche populaire consiste à coder chaque axe `x`, `y` et `z` avec une couleur (rouge, vert, bleu, respectivement). Pour une direction donnée, on mélange les trois couleurs dans une proportion correspondant aux contributions des trois axes. La luminosité est généralement modulée par la FA, de sorte que les voxels peu anisotropes, où la direction principale a peu de sens, apparaissent sombres.
 ```
 
 ## Tractographie
@@ -534,20 +543,21 @@ fig1.savefig(
 name: fibers-fig
 width: 800px
 ---
-Fibres reconstruites par une approche streamline déterministe, qui consiste à tracer une fibre en suivant la direction principale de chaque tenseur de manière itérative, à partir de l'ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque fibre code pour la direction principale de diffusion le long de la fibre. Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Fibres reconstruites par une approche streamline déterministe, qui consiste à tracer une fibre en suivant la direction principale de chaque tenseur de manière itérative, à partir de l'ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). La couleur de chaque fibre code pour son orientation, avec la même convention que la {numref}`fa-md-rgb-fig`. Figure générée par du code python adapté d'un [tutoriel Dipy](https://docs.dipy.org/stable/examples_built/quick_start/tracking_introduction_eudx.html) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
 
-La [tractographie](https://fr.wikipedia.org/wiki/Tractographie) permet de tracer le chemin des fibres de matière blanche in vivo. Il existe plusieurs approches de tractographie. La tractographie *streamline* déterministe permet de reconstruire les fibres de matière blanche en partant d'un point donné dans la matière grise et en se déplaçant de manière itérative selon la direction principale de diffusion. Le chemin va se terminer lorsque nous arrivons dans la matière grise. Ce chemin va être tracé grâce à un logiciel. La tractographie probabiliste est similaire à la tractographie déterministe, mais considère en plus une incertitude sur la direction des fibres de matière blanche. Donc au lieu de reconstruire une seule fibre associée à un point de la matière blanche, la tractographie probabiliste va en reconstruire plusieurs qui seront toutes légèrement différentes.
+La [tractographie](https://fr.wikipedia.org/wiki/Tractographie) permet de tracer le chemin des fibres de matière blanche in vivo. Il existe plusieurs approches de tractographie. La tractographie *streamline* déterministe reconstruit une fibre en partant d'un point de départ (une « graine ») placé dans la matière blanche, et en avançant pas à pas selon la direction principale de diffusion du voxel où elle se trouve. Le chemin s'arrête lorsqu'il quitte la matière blanche, ce que l'on détecte typiquement par une anisotropie fractionnelle trop faible, ou lorsqu'il devrait tourner de manière trop abrupte pour correspondre à un faisceau d'axones plausible. La tractographie probabiliste est similaire à la tractographie déterministe, mais considère en plus une incertitude sur la direction des fibres de matière blanche. Donc au lieu de reconstruire une seule fibre associée à un point de la matière blanche, la tractographie probabiliste va en reconstruire plusieurs qui seront toutes légèrement différentes.
 
-```{admonition} Étapes de prétraitement
-Tout comme l'IRMf des étapes de recalage et de débruitage sont nécessaires pour préparer les données avant d'estimer les tenseurs et effectuer la tractographie. De nombreux paramètres sont à sélectionner pour la tractographie elle-même, qui peuvent influencer les résultats. Il est aussi nécessaire de sélectionner un masque de la matière blanche qui contient les points de départ pour la reconstruction de fibres, obtenu ici par seuillage d'une carte de FA.
+````{admonition} Étapes de prétraitement
+Tout comme en IRMf, des étapes de prétraitement sont nécessaires pour préparer les données avant d'estimer les tenseurs et d'effectuer la tractographie : correction du mouvement de la tête entre les volumes, correction des distorsions causées par les courants de Foucault induits par les gradients de diffusion, et correction des distorsions géométriques propres aux séquences rapides (EPI), en plus du débruitage. De nombreux paramètres sont à sélectionner pour la tractographie elle-même, qui peuvent influencer les résultats. Il est aussi nécessaire de sélectionner un masque de la matière blanche qui contient les points de départ pour la reconstruction de fibres, obtenu ici par seuillage d'une carte de FA (voir {numref}`mask-wm-fig`).
 ```{figure} irm_diffusion/mask-wm-fig.png
 ---
 name: mask-wm-fig
 width: 500px
 ---
-Carte d'anisotropite fractionnelle (gauche) et masque de la matière blanche obtenue par seuillage (droite). Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Carte d'anisotropie fractionnelle (gauche) et masque de la matière blanche obtenu par seuillage (droite). Figure générée par du code python adapté d'un [tutoriel Dipy](https://docs.dipy.org/stable/examples_built/quick_start/tracking_introduction_eudx.html) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
+````
 
 ### Croisement de fibres
 ```{figure} irm_diffusion/crossing-fibers.png
@@ -555,9 +565,13 @@ Carte d'anisotropite fractionnelle (gauche) et masque de la matière blanche obt
 width: 800px
 name: crossing-fibers
 ---
-Illustration du problème de croisement de fibres, illustré à gauche. La diffusion de l'eau dans chaque fibre est associée à un tenseur qui pointe dans une direction différente (milieu). Lorsqu'on essaye d'approximer la diffusion dans le croisement avec un seul tenseur, on observe un tenseur isotrope (droite). Figure par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), inspiré par la thèse de C. Poupon, 1999.
+Illustration du problème de croisement de fibres, illustré à gauche. La diffusion de l'eau dans chaque faisceau est associée à un tenseur qui pointe dans une direction différente (milieu). Lorsqu'on essaye d'approximer la diffusion dans le croisement avec un seul tenseur, on obtient un tenseur aplati, en forme de disque, qui apparaît rond lorsqu'on le regarde de face (droite) : son anisotropie fractionnelle est faible, et sa direction principale ne correspond à aucun des deux faisceaux. Figure par L. Bellec, sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), inspirée par la thèse de C. Poupon, 1999.
 ```
-Une limitation que nous rencontrons avec l'imagerie en tenseur de diffusion est le croisement de fibres. Il est très courant dans la matière blanche d'avoir plusieurs faisceaux de fibres qui se croisent. Lorsque  beaucoup de fibres se croisent comme dans la figure ci-dessous, le tenseur de diffusion apparaît isotrope, même s'il y a effectivement des fibres présentes dans le voxel. Dans ce cas, l'algorithme de reconstruction de fibres ne saura pas quelle direction suivre. Une des technique utilisée pour résoudre ce problème est l'**imagerie de diffusion à haute résolution**, qui nous permet d'estimer plusieurs tenseurs pour un même voxel. Cette technique consiste à effectuer l'acquisition des données sur de nombreuses directions (une trentaine à une soixantaine de directions) en utilisant une **séquence HARDI** (*High Angular Resolution Diffusion Imaging*). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.
+Une limitation que nous rencontrons avec l'imagerie en tenseur de diffusion est le croisement de fibres. Il est très courant dans la matière blanche d'avoir plusieurs faisceaux de fibres qui se croisent dans un même voxel. Un seul tenseur ne peut représenter qu'une seule direction principale. Lorsque deux faisceaux se croisent, comme dans la {numref}`crossing-fibers`, le tenseur s'aplatit en disque et son anisotropie fractionnelle chute, même si le voxel est rempli de fibres parfaitement organisées. Avec trois faisceaux orthogonaux, le tenseur deviendrait même une sphère. Dans ce cas, l'algorithme de reconstruction de fibres ne saura pas quelle direction suivre.
+
+Le croisement n'est pas la seule configuration ambiguë. Deux faisceaux peuvent aussi se rapprocher, se toucher dans un voxel, puis repartir chacun de leur côté sans se croiser : on parle de fibres qui « s'embrassent » (*fiber kissing*). Vue de l'intérieur du voxel, cette situation produit un profil de diffusion très semblable à celui d'un croisement. L'algorithme de tractographie ne peut pas distinguer les deux cas, et risque de passer d'un faisceau à l'autre, reconstruisant ainsi une connexion qui n'existe pas.
+
+Une des techniques utilisées pour résoudre ce problème est l'**imagerie de diffusion à haute résolution angulaire**, qui nous permet d'estimer plusieurs directions de fibres dans un même voxel. Le terme « angulaire » est important : il ne s'agit pas d'utiliser des voxels plus petits, mais d'échantillonner beaucoup plus de directions de gradient (typiquement soixante directions ou plus, contre une trentaine pour une acquisition DTI usuelle), en utilisant une **séquence HARDI** (*High Angular Resolution Diffusion Imaging*). Les acquisitions réalisées avec cette séquence sont plus longues que celles en DTI, 5-30 min vs 3-4 min.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -612,9 +626,9 @@ fig1.savefig(
 name: fodf-fig
 width: 800px
 ---
-Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/reconst_csd/#example-reconst-csd) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Estimation de fODF sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Chaque forme représente la fODF d'un voxel, étirée dans chaque direction où se trouvent des fibres. Figure générée par du code python adapté d'un [tutoriel Dipy](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_csd.html) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-Avec une séquence HARDI, nous pouvons estimer une fonction de distribution des orientations de fibres (*fiber Orientation Distribution Function*, fODF) lorsqu'il y a des croisements de fibres perpendiculaires. Ceci nous permet d'estimer plusieurs tenseurs à l'intérieur d'un voxel et de surpasser certaines limites du tenseur de diffusion (DTI). Dans les zones à faible anisotropie nous observons plusieurs directions, comme des petits ballons dans chaque voxel, alors que nous observons une direction principale dans les fibres les plus importantes.
+Avec une séquence HARDI, nous pouvons estimer dans chaque voxel une fonction de distribution des orientations de fibres (*fiber Orientation Distribution Function*, fODF). Plutôt qu'un seul ballon, la fODF décrit quelle proportion des fibres du voxel pointe dans chaque direction. Elle peut donc représenter plusieurs directions de fibres dans un même voxel, quel que soit l'angle sous lequel elles se croisent, et surpasser ainsi la principale limite du tenseur de diffusion (DTI). Dans le zoom de la {numref}`fodf-fig`, chaque fODF est dessinée comme une forme étirée dans les directions où se trouvent des fibres. Dans un faisceau cohérent, elle prend la forme d'un pétale unique et allongé, qui suit le faisceau. Là où plusieurs faisceaux se croisent, elle prend la forme d'une petite fleur à plusieurs pétales, un par direction de fibres.
 
 ```{code-cell} ipython 3
 :tags: ["hide-input", "remove-output"]
@@ -641,12 +655,12 @@ scene.add(fodf_spheres)
 scene.set_camera(position=(14.87946710578175, 25.770232149765413, 173.54578028650144),
                  focal_point=(33.43851200470716, 40.67356830562871, 15.545914873824975),
                  view_up=(0.003256400517440014, 0.9955397521536979, 0.09428678453221151))
-window.record(scene, n_frames=1, out_path='fibers-slice.png',
+window.record(scene, n_frames=1, out_path='irm_diffusion/fodf-tracts-slice.png',
               size=(1000, 1000), reset_camera=False)
 scene.set_camera(position=(6.398539759431944, 36.122368120824724, 21.074961978614017),
                  focal_point=(17.02336666201742, 55.39317316617157, 7.230217513090364),
                  view_up=(0.10205867972271891, 0.5426923506538308, 0.8337080055001721))
-window.record(scene, n_frames=1, out_path='fibers-zoom.png',
+window.record(scene, n_frames=1, out_path='irm_diffusion/fodf-tracts-zoom.png',
               size=(1000, 1000), reset_camera=False)
 
 # Make figure
@@ -655,10 +669,10 @@ import imageio
 fig1, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=300,
                         subplot_kw={'xticks': [], 'yticks': []})
 fig1.subplots_adjust(hspace=0.3, wspace=0.05)
-im = imageio.imread('fibers-slice.png')
+im = imageio.imread('irm_diffusion/fodf-tracts-slice.png')
 ax.flat[0].imshow(im, interpolation='antialiased')
 ax.flat[0].set_title('full slice')
-im = imageio.imread('fibers-zoom.png')
+im = imageio.imread('irm_diffusion/fodf-tracts-zoom.png')
 ax.flat[1].imshow(im, interpolation='antialiased')
 ax.flat[1].set_title('zoom')
 
@@ -675,9 +689,9 @@ fig1.savefig(
 name: fodf-tracts-fig
 width: 800px
 ---
-Fibres reconstruites par une approche streamline déterministe avec une approche multi-tenseurs, qui permet de suivre plusieurs pics de diffusion à chaque voxel, à partir de l'ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Cette approche permet d'être plus robuste à la présence de croisement de fibres. Figure générée par du code python adapté d'un [tutoriel Dipy](https://dipy.org/documentation/1.4.1./examples_built/tracking_introduction_eudx/#example-tracking-introduction-eudx) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Fibres reconstruites par une approche streamline déterministe à partir des fODF, qui permet de suivre plusieurs directions de fibres à chaque voxel, à partir de l'ensemble des points dans la matière blanche sur une coupe axiale (gauche) et zoom sur une portion de la coupe (droite). Cette approche permet d'être plus robuste à la présence de croisement de fibres. Figure générée par du code python adapté d'un [tutoriel Dipy](https://docs.dipy.org/stable/examples_built/quick_start/tracking_introduction_eudx.html) par L. Bellec sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 ```
-La capacité de fODF de représenter plusieurs tenseurs à chaque voxel permet de reconstruire des fibres qui se croisent, comme il est apparent dans le zoom de la {numref}`fodf-tracts-fig`. Il est important de réaliser que les données utilisées pour générer {numref}`fibers-fig` et {numref}`fodf-tracts-fig` sont les mêmes, mais les fibres reconstruites sont très différentes! Les paramètres que l'on choisit pour la méthode de reconstruction vont aussi changer la forme et le nombre de fibres. La tractographie en IRMd n'est donc pas une science exacte, et les faux positifs (une fibre reconstruite qui n'existe pas vraiment) ainsi que les faux négatifs (une fibre que l'on ne reconstruit pas mais qui existe pourtant) sont très courants.
+La capacité des fODF de représenter plusieurs directions de fibres à chaque voxel permet de reconstruire des fibres qui se croisent, comme il est apparent dans le zoom de la {numref}`fodf-tracts-fig`. Il est important de réaliser que les données utilisées pour générer {numref}`fibers-fig` et {numref}`fodf-tracts-fig` sont les mêmes, mais les fibres reconstruites sont très différentes! Les paramètres que l'on choisit pour la méthode de reconstruction vont aussi changer la forme et le nombre de fibres. La tractographie en IRMd n'est donc pas une science exacte, et les faux positifs (une fibre reconstruite qui n'existe pas vraiment) ainsi que les faux négatifs (une fibre que l'on ne reconstruit pas mais qui existe pourtant) sont très courants.
 
 ### Faisceaux de fibres
 
@@ -686,20 +700,22 @@ La capacité de fODF de représenter plusieurs tenseurs à chaque voxel permet d
 width: 800px
 name: faisceaux-fig
 ---
- Illustration de trois faisceaux de fibres: les radiations optiques (OR), le faisceau arquée (AF) et le faisceau occipital vertical (VOF). Les faisceaux sont présentés sur différentes vues d'une dissection (A, B, D), ainsi qu'à l'aide d'une dissection virtuelle (C). Figure tirées de {cite:p}`Jitsuishi2020-cd`, sous licence CC-BY 4.0.
+ Illustration de trois faisceaux de fibres: les radiations optiques (OR), le faisceau arqué (AF) et le faisceau occipital vertical (VOF). Les faisceaux sont présentés sur différentes vues d'une dissection (A, B, D), ainsi qu'à l'aide d'une dissection virtuelle (C). Figure tirée de {cite:p}`Jitsuishi2020-cd`, sous licence CC-BY 4.0.
 ```
-Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons à partir des études de dissection. Dans une **reconstruction systématique** des fibres, tout va être tracé, alors que dans une **dissection virtuelle**, seuls certains paquets de fibres vont être sélectionnés. Ces a priori permettent de limiter les faux positifs, et l'utilisation d'algorithmes de tractographie performants permet de limiter les faux négatifs. Il existe un certain nombre de faisceaux de fibres classiques avec des schémas de dissection bien établis, comme le corps calleux, le faisceau arqué, ou bien le fascicule longitudinal supérieur.
+Nous pouvons fournir aux algorithmes de tractographie des a priori sur les fibres dans le cerveau que nous connaissons à partir des études de dissection. Dans une **reconstruction systématique** des fibres, tout va être tracé, alors que dans une **dissection virtuelle**, seuls certains faisceaux de fibres vont être sélectionnés. Pour cela, on définit sur l'anatomie du participant des **régions d'inclusion**, par lesquelles une fibre doit passer pour être conservée, et des **régions d'exclusion**, qui éliminent toute fibre qui les traverse. Ces régions sont placées selon ce que les études de dissection nous apprennent du trajet du faisceau recherché. Ces a priori permettent de limiter les faux positifs, et l'utilisation d'algorithmes de tractographie performants permet de limiter les faux négatifs. Il existe un certain nombre de faisceaux de fibres classiques avec des schémas de dissection bien établis, comme le corps calleux (qui relie les deux hémisphères), le faisceau arqué (qui relie des régions du langage des lobes temporal et frontal), ou bien le faisceau longitudinal supérieur (qui relie les lobes frontal et pariétal).
 
-Il est possible de calculer la valeur moyenne de l'anisotropie fractionnelle, ou tout autre métrique, le long d'une fibre. Cette approche est appellée **tractométrie**: on effectue une série de mesures le long d’une fibre. La fibre peut également être découpée en segments, pour améliorer la précision spatiale de la mesure. On peut ensuite comparer ces valeurs entre différents individus pour faire des tests statistiques. Dans ce cas, le recalage entre individus se fait via l'identification de faisceaux de fibres, plutôt que par une méthode de déformation non-linéaire.
+Il est possible de calculer la valeur moyenne de l'anisotropie fractionnelle, ou tout autre métrique, le long d'une fibre. Cette approche est appelée **tractométrie**: on effectue une série de mesures le long d'un faisceau. Le faisceau peut également être découpé en segments, pour améliorer la précision spatiale de la mesure. On peut ensuite comparer ces valeurs entre différents individus pour faire des tests statistiques. Dans ce cas, le recalage entre individus se fait via l'identification de faisceaux de fibres, plutôt que par une méthode de déformation non-linéaire.
 
 ## Conclusion
 
 Dans ce cours, nous avons vu les principes de l'IRM de diffusion. Plus précisément, nous avons vu:
 - Comment obtenir des images en IRMd grâce à la diffusion de l'eau dans différentes directions
-- Comment estimer le processus de diffusion à l'aide de tenseurs et d'en mesurer différentes métriques (diffusivité moyenne, anisotropie fractionnelle)
+- Pourquoi le signal diminue lorsque l'eau diffuse dans la direction du gradient.
+- Comment estimer le processus de diffusion à l'aide de tenseurs et d'en mesurer différentes métriques (diffusivité moyenne, anisotropie fractionnelle), et pourquoi une différence de FA ne dit pas, à elle seule, ce qui a changé dans la microstructure.
 - Le principe des méthodes de tractographie.
-- Comment estimer les croisements de fibres.
-- Comment l'IRMd peut être utilisée pour effectuer une dissection virtuelle.
+- Pourquoi les croisements de fibres (et les fibres qui « s'embrassent ») mettent le tenseur en échec, et comment les acquisitions HARDI et les fODF permettent d'estimer plusieurs directions de fibres par voxel.
+- Comment l'IRMd peut être utilisée pour effectuer une dissection virtuelle, à l'aide de régions d'inclusion et d'exclusion.
+- Comment la tractométrie permet de comparer des mesures le long d'un faisceau entre individus.
 
 ## Exercices
 
