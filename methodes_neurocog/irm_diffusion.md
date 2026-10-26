@@ -719,13 +719,16 @@ Dans ce cours, nous avons vu les principes de l'IRM de diffusion. Plus précisé
 
 ## Exercices
 
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
 :class: note
 Vrai/faux. Les images générées par le scanner en IRM de diffusion sont…
  1. Une image avec un tenseur à chaque voxel.
- 2. Une image avec un ou plusieurs tenseurs à chaque voxel.
- 3. Une série d’images sensibles à la diffusion de l’eau dans différentes directions.
- 4. Des images où l’on voit les fibres de matière blanche du cerveau en 3D.
+ 2. Une image avec une ou plusieurs directions de fibres à chaque voxel.
+ 3. Une série d'images sensibles à la diffusion de l'eau dans différentes directions.
+ 4. Des images où l'on voit les fibres de matière blanche du cerveau en 3D.
+ 5. Des images où les voxels dans lesquels l'eau diffuse beaucoup dans la direction du gradient apparaissent plus clairs.
 ```
 
 ```{admonition} Exercice 2
@@ -735,36 +738,37 @@ Anisotropie fractionnelle et diffusivité moyenne: vrai-faux.
  2. Le corps calleux a une très forte diffusivité moyenne.
  3. Une zone avec de nombreux croisements de fibres peut avoir une faible anisotropie fractionnelle.
  4. Le corps calleux a une faible anisotropie fractionnelle.
+ 5. Une anisotropie fractionnelle plus faible chez un groupe de patients démontre que leurs axones sont moins myélinisés.
 ```
 
 ```{admonition} Exercice 3
 :class: note
-Choisissez la bonne réponse. On dispose de données d’IRM de diffusion à haute résolution HARDI:
+Choisissez la bonne réponse. On dispose de données d'IRM de diffusion à haute résolution angulaire (HARDI):
  1. On peut générer une carte avec un tenseur de diffusion par voxel.
- 2. On peut générer une carte avec plusieurs tenseurs de diffusion par voxel.
- 3. On doit utiliser plusieurs tenseurs de diffusion par voxel pour reconstruire des fibres.
+ 2. On peut générer une carte avec plusieurs directions de fibres par voxel.
+ 3. On doit estimer plusieurs directions de fibres par voxel pour pouvoir reconstruire des fibres.
  4. Réponses 1 et 2.
  5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 4
 :class: note
-Choisissez la bonne  réponse. Les fibres reconstruites en IRM de diffusion…
- 1. Peuvent manquer des fibres existantes, à cause notamment du “fiber kissing”, ou des fibres qui n’existent pas, à cause notamment des croisements de fibres.
- 2. Reflètent l’ensemble des axones dans le cerveau.
- 3. Dépendent à la fois du type de données recueillies et de l’algorithme utilisé.
+Choisissez la bonne réponse. Les fibres reconstruites en IRM de diffusion…
+ 1. Peuvent manquer des fibres existantes, à cause notamment du “fiber kissing”, ou des fibres qui n'existent pas, à cause notamment des croisements de fibres.
+ 2. Reflètent l'ensemble des axones dans le cerveau.
+ 3. Dépendent à la fois du type de données recueillies et de l'algorithme utilisé.
  4. Réponses 1 et 2.
  5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 5
 :class: note
-Une chercheuse souhaite reconstruire le faisceau longitudinal supérieur au niveau individuel, à l’aide de données d’IRM de diffusion. La méthode utilisée est une tractographie “streamline” déterministe. Citez deux exemples de problèmes qui peuvent faire échouer cette approche. Expliquer comment la chercheuse peut limiter ces problèmes.
+Une chercheuse souhaite reconstruire le faisceau longitudinal supérieur au niveau individuel, à l'aide de données d'IRM de diffusion. La méthode utilisée est une tractographie “streamline” déterministe. Citez deux exemples de problèmes qui peuvent faire échouer cette approche. Expliquez comment la chercheuse peut limiter ces problèmes.
 ```
 
-```{admonition} Exercice 6
+```{admonition} Exercice 6*
 :class: note
-On s’intéresse au faisceau arqué chez un patient qui a une tumeur au cerveau. On réalise un examen en IRM de diffusion à haute résolution. Pensez vous qu’on puisse réaliser une tractographie virtuelle de ce faisceau? Quel aspect de la méthode devra potentiellement être modifié pour prendre en compte pour accommoder la présence de la tumeur? Justifiez vos réponses.
+On s'intéresse au faisceau arqué chez un patient qui a une tumeur au cerveau. On réalise un examen en IRM de diffusion à haute résolution angulaire. Pensez-vous qu'on puisse réaliser une dissection virtuelle de ce faisceau? Quel aspect de la méthode devra potentiellement être modifié pour tenir compte de la présence de la tumeur? Justifiez vos réponses.
 ```
 
 ```{admonition} Exercice 7
@@ -773,10 +777,26 @@ Pour répondre aux questions de cet exercice, lisez d'abord l'article *Quantific
 Celui-ci est disponible en libre accès à cette [adresse](https://doi.org/10.1016/j.neuroimage.2019.116255).
 Les questions suivantes requièrent des réponses à développement court.
  - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
- - Quelle type de séquence d'acquisition d'image est utilisé? Listez les paramètres.
+ - Quel type de séquence d'acquisition est utilisé?
  - Quelle technique de tractographie a été appliquée?
- - Quelle techniques de tractométrie ont été appliquées?
+ - Quelles techniques de tractométrie ont été appliquées?
+ - Pourquoi les auteurs complètent-ils l'anisotropie fractionnelle par d'autres mesures?
  - Quel est le résultat principal de l'étude?
+```
+
+```{admonition} Exercice 8
+:class: note
+On acquiert une image pondérée en diffusion avec un gradient orienté de gauche à droite.
+ 1. Le centre du corps calleux apparaît-il clair ou sombre sur cette image? Justifiez.
+ 2. Même question pour une image acquise avec un gradient orienté d'avant en arrière.
+ 3. Comment apparaît le liquide céphalo-rachidien des ventricules sur ces deux images?
+```
+
+```{admonition} Exercice 9*
+:class: note
+Dans une région de la matière blanche, deux faisceaux de fibres se croisent à angle droit à l'intérieur de chaque voxel. À la suite d'une lésion, l'un des deux faisceaux dégénère, alors que l'autre reste intact. On estime un tenseur de diffusion dans ces voxels avant et après la lésion.
+ 1. Comment l'anisotropie fractionnelle de ces voxels évolue-t-elle? Justifiez.
+ 2. Que peut-on en conclure sur l'utilisation de l'anisotropie fractionnelle comme marqueur de la santé de la matière blanche?
 ```
 
 ## Contributeurs
