@@ -337,57 +337,81 @@ Dans ce cours, nous avons vu les principes de l'imagerie optique. Plus précisé
 - Comment on peut générer une carte d'activation en réponse à une série d'événements.
 
 ## Exercices
+
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
-Vrai/faux. Les données d’imagerie optique sont …
- 1. Des données plus interprétables que l’IRMf.
- 2. Des données plus flexible à recueillir que l’IRMf.
- 3. Des données moins chères à recueillir que l’IRMf.
- 4. Des données qui donnent une image détaillée de l’activité neuronale dans le cortex.
+:class: note
+Vrai/faux. Les données d'imagerie optique sont…
+ 1. Des données qui permettent de distinguer les variations d'HbO2 et d'HbR, contrairement à l'IRMf.
+ 2. Des données plus flexibles à recueillir que l'IRMf.
+ 3. Des données moins chères à recueillir que l'IRMf.
+ 4. Des données qui donnent une image détaillée de l'activité neuronale dans le cortex.
 ```
 
 ```{admonition} Exercice 2
-Vrai/faux. On souhaite enregistrer l’activité cérébrale d’un patient en imagerie optique au niveau du cortex sensorimoteur.
- 1. On peut positionner précisément l’activité au niveau du scalp du participant.
- 2. On peut positionner précisément l’activité au niveau du cerveau du participant.
- 3. La qualité des données dépendra du positionnement des capteurs et émetteurs.
- 4. Une IRM T1 individuelle du sujet permet d’améliorer la localisation de l’activité dans le cerveau.
+:class: note
+Vrai/faux. On souhaite enregistrer l'activité cérébrale d'un patient en imagerie optique au niveau du cortex sensorimoteur.
+ 1. On peut connaître précisément la position des émetteurs et des récepteurs sur le scalp du participant.
+ 2. On peut positionner précisément l'activité au niveau du cerveau du participant.
+ 3. La qualité des données dépendra du positionnement des émetteurs et des récepteurs.
+ 4. Une IRM T1 individuelle du participant permet d'améliorer la localisation de l'activité dans le cerveau.
 ```
 
 ```{admonition} Exercice 3
+:class: note
 Choisissez la bonne réponse. En imagerie optique cérébrale, la lumière proche infrarouge…
- 1. peut traverser les tissus biologiques sur une longue distance, même d’un bout à l’autre de la tête.
- 2. diffuse dans les tissus biologiques et peut être observée à proximité de la source.
- 3. est absorbée par la désoxyhémoglobine et l’oxyhémoglobine.
- 4. réponses 2 et 3.
- 5. réponses 1, 2 et 3.
+ 1. peut traverser les tissus biologiques sur une longue distance, même d'un bout à l'autre de la tête.
+ 2. diffuse dans les tissus biologiques et peut être observée à proximité de l'émetteur.
+ 3. est absorbée par la désoxyhémoglobine et l'oxyhémoglobine.
+ 4. Réponses 2 et 3.
+ 5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 4
-Choissez la bonne réponse. En imagerie optique, la résolution spatiale …
- 1. est identique chez tous les sujets, si on utilise le même appareil pour l’acquisition.
- 2. dépend du placement des émetteurs et récepteurs.
+:class: note
+Choisissez la bonne réponse. En imagerie optique, la résolution spatiale…
+ 1. est identique chez tous les participants, si on utilise le même appareil pour l'acquisition.
+ 2. dépend du placement des émetteurs et des récepteurs.
  3. correspond au profil de diffusion de la lumière dans les tissus.
- 4. réponses 2 et 3.
- 5. réponses 1, 2 et 3.
+ 4. Réponses 2 et 3.
+ 5. Réponses 1, 2 et 3.
 ```
 
 ```{admonition} Exercice 5
-On souhaite mesurer l’activité du cortex moteur durant la vie quotidienne d’une personne âgée, de manière longitudinale tous les jours pour une semaine. Citez un avantage, une limitation et une considération éthique pertinents pour l’utilisation de l’imagerie optique pour ce projet.
+:class: note
+On souhaite mesurer l'activité du cortex moteur durant la vie quotidienne d'une personne âgée, de manière longitudinale tous les jours pendant une semaine. Citez un avantage, une limitation et une considération éthique pertinents pour l'utilisation de l'imagerie optique dans ce projet.
 ```
 
 ```{admonition} Exercice 6
-On souhaite étudier l’activité spontanée du cerveau chez un bébé de 3 semaines. On utilise un montage en imagerie optique, et on mesure l’activité au repos dans les bras d’un parent.
-Le bébé bouge la tête de manière soudaine, est ce que la résolution temporelle de l’imagerie optique va présenter un avantage par rapport à l’IRMf pour tenir compte de ces mouvements?
-On observe des fluctuations lentes d’activité au niveau du cortex temporal. Est ce que la résolution temporelle de l’imagerie optique va présenter un avantage par rapport à l’IRMf pour caractériser ces fluctuations?
+:class: note
+On souhaite étudier l'activité spontanée du cerveau chez un bébé de 3 semaines. On utilise un montage d'imagerie optique, et on mesure l'activité au repos dans les bras d'un parent.
+ 1. Le bébé bouge la tête de manière soudaine. Est-ce que la résolution temporelle de l'imagerie optique va présenter un avantage par rapport à l'IRMf pour tenir compte de ces mouvements?
+ 2. On observe des fluctuations lentes d'activité au niveau du cortex temporal. Est-ce que la résolution temporelle de l'imagerie optique va présenter un avantage par rapport à l'IRMf pour caractériser ces fluctuations?
 ```
 
 ```{admonition} Exercice 7
-Pour répondre aux questions de cet exercice, lisez d'abord l'article *Distinct hemispheric specializations for native and non-native languages in one-day-old newborns identified by fNIRS* de Vannasing et collaborateurs (disponible en [accès libre](https://doi.org/10.1016/j.neuropsychologia.2016.01.038) sous licence CC-BY-NC-ND et publié dans le journal Neuropsychologia en 2016. Les questions suivantes requièrent des réponses à développement court.
+:class: note
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Distinct hemispheric specializations for native and non-native languages in one-day-old newborns identified by fNIRS* de Vannasing et collaborateurs (disponible en [accès libre](https://doi.org/10.1016/j.neuropsychologia.2016.01.038) sous licence CC-BY-NC-ND et publié dans le journal Neuropsychologia en 2016). Les questions suivantes requièrent des réponses à développement court.
 - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
 - Quel montage d'imagerie optique a été utilisé?
 - Quels types de stimuli ont été utilisés?
 - Quel contrôle de qualité a été appliqué sur les données?
 - Comment est générée l'activité évoquée?
+```
+
+```{admonition} Exercice 8*
+:class: note
+Une équipe enregistre l'activité cérébrale en imagerie optique pendant une tâche de calcul mental, les yeux fermés. Le montage comprend deux groupes de canaux, l'un au-dessus du cortex préfrontal gauche, l'autre au-dessus du cortex préfrontal droit (à l'avant de la tête, derrière le front), séparés de plusieurs centimètres. L'équipe ajoute un canal témoin au-dessus du cortex visuel (à l'arrière de la tête), une région que la tâche ne devrait pas solliciter. Tous les canaux, y compris le canal témoin, montrent la même augmentation d'HbO2 pendant la tâche. La carte topographique présente son maximum sur la ligne médiane, entre les deux groupes de canaux.
+ 1. Que peut-on conclure de l'activité sur la ligne médiane?
+ 2. Proposez une explication à la réponse du canal témoin, et une modification du montage qui permettrait de la vérifier.
+```
+
+```{admonition} Exercice 9
+:class: note
+Un appareil d'imagerie optique bon marché n'utilise qu'une seule longueur d'onde: 800 nanomètres. Aidez-vous de la {numref}`spectre-hemoglobine-fig`.
+ 1. Lors d'une activation, la concentration en HbO2 augmente et celle en HbR diminue. Quel changement cet appareil peut-il mesurer, et lequel lui échappe?
+ 2. Quelles longueurs d'onde choisiriez-vous plutôt? Justifiez.
 ```
 
 ## Contributeurs
