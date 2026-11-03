@@ -163,6 +163,7 @@ Le lien entre activité neuronale et signal IRMf repose sur le phénomène du **
  L'augmentation d'extraction d'oxygène entraîne donc de manière paradoxale une augmentation locale de la concentration d'**oxyhémoglobine** (sang oxygéné) par rapport à la concentration en **désoxyhémoglobine** (sang désoxygéné) localement, ce qui est détectable au moyen de l'IRMf. Le premier modèle quantitatif du couplage neurovasculaire (dit “modèle du ballon”) a été proposé par Buxton et coll. (1998) {cite:p}`Buxton1998-jy`.
 
 
+(signal-bold-section)=
 ### Le signal BOLD
 ```{figure} ./irm_fonctionnelle/hemoglobine-fig.jpg
 ---
