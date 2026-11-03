@@ -31,7 +31,7 @@ En tant que chercheur·euse·s, il est important de reconnaître l’impact que 
 width: 800px
 name: research-cycle-fig-impact-env
 ---
-Cycle de découvertes en recherche. Figure par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807).
+Cycle de découvertes en recherche. Figure par [scriberia](https://info.scriberia.com/contact-us) dans le cadre du livre [The Turing way](https://the-turing-way.netlify.app) sous licence [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), DOI: [10.5281/zenodo.3332807](https://hdl.handle.net/10.5281%2Fzenodo.3332807).
 ```
 
 La {numref}`research-cycle-fig-impact-env` dépeint les différentes étapes de la méthode scientifique intégrant les principes de science ouverte. Avant de discuter des coûts environnementaux associés à chaque étape, de la cueillette de données à la réutilisation des données de recherche, nous allons brièvement voir comment il est possible d’estimer l’empreinte environnementale des activités de recherche. À la fin du chapitre, nous allons proposer quelques pistes de solutions et de réflexions pour réduire cette empreinte.

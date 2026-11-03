@@ -25,6 +25,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    # A hung network request (e.g. a publisher captcha) must not hold the
+    # pages concurrency group for hours.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Setup Pages

@@ -234,7 +234,7 @@ Les données TEP doivent être prétraitées avant analyses statistiques. Il est
 width: 800px
 name: receptors-fig
 ---
-Images de traceurs TEP pour 18 récepteurs et transporteurs de neurotransmetteurs différents, au travers de 9 systèmes de neurotransmetteurs et 1200 participants en santé. Tiré de [Hansen et al. (2021)](https://www.biorxiv.org/content/10.1101/2021.10.28.466336v1) sous licence CC-BY 4.0.
+Images de traceurs TEP pour 18 récepteurs et transporteurs de neurotransmetteurs différents, au travers de 9 systèmes de neurotransmetteurs et 1200 participants en santé. Tiré de [Hansen et al. (2021)](https://hdl.handle.net/10.1101%2F2021.10.28.466336) sous licence CC-BY 4.0.
 ```
 Il existe de nombreux types de neurotransmetteurs dans le cerveau, qui joue un rôle clé dans la communication neuronale, au niveau des synapses, et sont associés à des **récepteurs** spécifiques. Certains de ces neurotransmetteurs sont particulièrement impliqués dans certains processus coginitifs, comme la dopamine et les récopmenses. Il est donc utile de comprendre la distribution spatial des récepteurs pour différents neurotransmetteurs. Ce récepteur agit comme biomarqueur, ou alors, comme cible d'arrimage d'un radioisotope et de son précurseur. Des ligands ont été conçus spécifiquement pour des récepteurs spécifiques, par exepmle les récepteurs dopaminergiques de type D2 et D3.
 
@@ -302,7 +302,7 @@ On souhaite mesurer le niveau d’activité au repos dans le cerveau d’une per
 ```  
 
 ```{admonition} Exercice 6
-Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://doi.org/10.1101/611186 ) sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring [doi](https://doi.org/10.1016/j.dadm.2019.07.007). Les questions suivantes requièrent des réponses à développement court.
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://hdl.handle.net/10.1101%2F611186 ) sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring [doi](https://hdl.handle.net/10.1016%2Fj.dadm.2019.07.007). Les questions suivantes requièrent des réponses à développement court.
 - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
 - Quelle type de radiotraceurs est utilisé?
 - Quelle normalisation est appliquée aux cartes?

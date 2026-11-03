@@ -774,7 +774,7 @@ On s'intéresse au faisceau arqué chez un patient qui a une tumeur au cerveau. 
 ```{admonition} Exercice 7
 :class: note
 Pour répondre aux questions de cet exercice, lisez d'abord l'article *Quantification of apparent axon density and orientation dispersion in the white matter of youth born with congenital heart disease* de Easson et collaborateurs (publié en 2020 dans la revue *Neuroimage*, volume 205, ID 116255).
-Celui-ci est disponible en libre accès à cette [adresse](https://doi.org/10.1016/j.neuroimage.2019.116255).
+Celui-ci est disponible en libre accès à cette [adresse](https://hdl.handle.net/10.1016%2Fj.neuroimage.2019.116255).
 Les questions suivantes requièrent des réponses à développement court.
  - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
  - Quel type de séquence d'acquisition est utilisé?
