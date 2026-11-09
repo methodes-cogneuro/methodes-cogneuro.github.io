@@ -282,28 +282,32 @@ Une deuxième protéine anormale caractérise la maladie d'Alzheimer: la protéi
 
 ## Exercices
 
+Les exercices marqués d'un astérisque (*) sont plus difficiles.
+
 ```{admonition} Exercice 1
 :class: note
-Les données de tomographie par émission de positrons sont (vrai/faux)
- 1. Des données avec une meilleure résolution spatiale que l’IRMf.
- 2. Des données avec une résolution spatiale largement supérieure à l’imagerie optique.
- 3. Des données qui donnent une image de l’activité neuronale dans tout le cerveau.
-
+Vrai/faux. Les données de tomographie par émission de positrons sont…
+ 1. Des données avec une meilleure résolution spatiale que l'IRMf.
+ 2. Des données qui permettent de mesurer les structures profondes du cerveau, contrairement à l'imagerie optique.
+ 3. Des données qui, avec le FDG, mesurent la réponse vasculaire à l'activité neuronale, comme l'IRMf.
+ 4. Des données où une seule coïncidence détectée indique exactement où l'isotope s'est désintégré.
+ 5. Des données qui reposent sur la détection de paires de photons émis dans des directions opposées.
 ```
 
 ```{admonition} Exercice 2
 :class: note
-Les données de tomographie par émission de positrons sont (vrai/faux)
- 1. Des données avec une meilleure résolution temporelle que l’imagerie optique.
- 2. Des données moins chères à recueillir que l’IRMf.
+Vrai/faux. Les données de tomographie par émission de positrons sont…
+ 1. Des données avec une meilleure résolution temporelle que l'imagerie optique.
+ 2. Des données que l'on peut recueillir aussi souvent que souhaité chez un même participant.
  3. Des données qui peuvent capturer le métabolisme du glucose.
  4. Des données qui peuvent capturer la structure du cerveau.
+ 5. Des données qui, avec le FDG et une seule injection, permettent de comparer deux conditions de 10 minutes chacune (yeux fermés, puis yeux ouverts), présentées l'une après l'autre pendant une même acquisition de 20 minutes.
 ```
 
 ```{admonition} Exercice 3
 :class: note
-Choisissez la bonne réponse: Dans un radiotraceur cérébral:
- 1. L’isotope détermine la demi-vie.
+Choisissez la bonne réponse. Dans un radiotraceur cérébral…
+ 1. L'isotope détermine la demi-vie.
  2. Le précurseur détermine la cible du traceur.
  3. Le radiotraceur dans son ensemble doit pouvoir traverser la barrière hémato-encéphalique.
  4. Réponses 1 et 2.
@@ -312,19 +316,50 @@ Choisissez la bonne réponse: Dans un radiotraceur cérébral:
 
 ```{admonition} Exercice 4
 :class: note
-On effectue une imagerie TEP des plaques de beta amyloide chez un patient jeune en santé, et l’on observe un dépôt substantiel dans la matière blanche. Proposer deux explications à cette observation.
+On effectue une imagerie TEP des plaques de bêta-amyloïde chez un patient jeune en santé, et l'on observe un dépôt substantiel dans la matière blanche. Proposez deux explications à cette observation.
 ```
 
 ```{admonition} Exercice 5
-On souhaite mesurer le niveau d’activité au repos dans le cerveau d’une personne âgée ainsi que la présence de dépôt de plaques beta-amyloide dans le réseau du mode par défaut, au niveau individuel. L’expérience aura lieu à côté d’un cyclotron. Quelle(s) technique(s) de neuroimagerie utiliseriez vous, et pourquoi?
-```  
+:class: note
+On souhaite mesurer le niveau d'activité au repos dans le cerveau d'une personne âgée ainsi que la présence de dépôts de plaques bêta-amyloïdes dans le réseau du mode par défaut, au niveau individuel. L'expérience aura lieu à côté d'un cyclotron. Quelle(s) technique(s) de neuroimagerie utiliseriez-vous, et pourquoi?
+```
 
 ```{admonition} Exercice 6
-Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [preprint](https://hdl.handle.net/10.1101%2F611186 ) sur Biorxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring [doi](https://hdl.handle.net/10.1016%2Fj.dadm.2019.07.007). Les questions suivantes requièrent des réponses à développement court.
+:class: note
+Pour répondre aux questions de cet exercice, lisez d'abord l'article *Tau pathology in cognitively normal older adults* de Ziontz et collaborateurs (disponible comme [prépublication](https://hdl.handle.net/10.1101%2F611186) sur bioRxiv sous licence CC0 et publié dans le journal Alzheimer's & Dementia: Diagnosis, Assessment & Disease Monitoring, [lien](https://hdl.handle.net/10.1016%2Fj.dadm.2019.07.007)). Les questions suivantes requièrent des réponses à développement court.
 - Quelle technique de neuroimagerie est utilisée? S'agit-il d'une technique structurelle ou fonctionnelle?
-- Quelle type de radiotraceurs est utilisé?
+- Quel type de radiotraceurs est utilisé?
 - Quelle normalisation est appliquée aux cartes?
 - Quelles régions sont utilisées pour les analyses statistiques?
+```
+
+```{admonition} Exercice 7
+:class: note
+Une équipe veut comparer, chez les mêmes participants, quatre conditions expérimentales: lire des mots, écouter des mots, répéter des mots, et le repos. Elle hésite entre deux traceurs TEP: le [$^{18}$**F**]FDG et l'eau marquée à l'oxygène 15.
+ 1. Quel traceur choisiriez-vous? Justifiez en vous appuyant sur la demi-vie de chaque isotope.
+ 2. Quelle contrainte ce choix impose-t-il sur le lieu de l'expérience?
+```
+
+```{admonition} Exercice 8*
+:class: note
+Un participant reçoit une injection de FDG au repos, les yeux fermés. Trente-cinq minutes après l'injection, juste avant le début de l'acquisition, on lui demande d'ouvrir les yeux et de regarder un damier qui clignote, pendant toute l'acquisition (20 minutes).
+ 1. Comparé à un participant resté les yeux fermés du début à la fin, s'attend-on à observer une augmentation du signal dans le cortex visuel (à l'arrière du cerveau)? Justifiez.
+ 2. Le même protocole, réalisé avec de l'eau marquée à l'oxygène 15 injectée au moment où le participant ouvre les yeux, poserait-il le même problème? Justifiez.
+```
+
+```{admonition} Exercice 9
+:class: note
+Choisissez la bonne réponse. Un hôpital n'a pas de cyclotron: les radiotraceurs sont produits dans un centre situé à deux heures de route. Aidez-vous du {ref}`tableau d'isotopes <isotopes-table>`. Quelles études TEP cet hôpital peut-il réaliser?
+ 1. Une étude du métabolisme du glucose au [$^{18}$**F**]FDG.
+ 2. Une étude des plaques amyloïdes au [$^{11}$**C**]PIB.
+ 3. Une étude d'activation à l'eau marquée à l'oxygène 15.
+ 4. Une étude des plaques amyloïdes au [$^{18}$**F**]florbétapir.
+ 5. Réponses 1 et 4.
+```
+
+```{admonition} Exercice 10
+:class: note
+On mesure les plaques amyloïdes en TEP, en normalisant les cartes par la matière grise du cervelet (la structure située à l'arrière du cerveau, sous les lobes occipitaux). On étudie une forme génétique rare de la maladie d'Alzheimer, dans laquelle des plaques se forment aussi dans le cervelet. Quel effet cela aura-t-il sur les valeurs de SUVR dans le cortex de ces patients? Quelle conséquence pour l'interprétation?
 ```
 
 ## Contributeurs
